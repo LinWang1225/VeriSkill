@@ -1,6 +1,6 @@
 ---
 description: "VeriSkill 共演化：取批 → 判决 → 审计(重跑+放回) → 改进 D → 改进 G → 门控 → 记账，重复 N 轮"
-argument-hint: "rounds=10 batch=40 audit_frac=0.1 rubric_threshold=0.6 replay_K=3 train_ratio=0.8 split_seed=0 final_test_max=50 edit_budget=6"
+argument-hint: "rounds=10 batch=40 audit_frac=0.1 rubric_threshold=0.6 replay_K=3 train_ratio=0.8 split_seed=0 final_test_max=50 edit_budget=6 eval_every=4 eval_baseline=false"
 allowed-tools: Task, Read, Write, Edit, Bash, Glob, Grep
 ---
 
@@ -91,16 +91,22 @@ rule/规则字样（`rules_hit`、`rule_fp_counts`、`add_rule`）与判据
 | 纸面不可判出栏清单 | `stats/fn_out_of_scope.jsonl` |
 | TN 累计清单 | `stats/tn_seen.list` |
 | 审计累计账 | `stats/audit_tally.json` |
+| 周期 test 评估时间序列 | `stats/test_eval.jsonl` |
 | 每轮输出 | `rounds/r<N>/` |
+| 每 checkpoint eval 明细 | `rounds/r<N>/test_eval/` |
 | 快照 | `history/` |
 | 全局状态 | `ledger.json` |
 | 汇总报告 | `report.md` |
+| 成功率演进图 | `stats/test_eval.svg`（`.png` 若装了 matplotlib） |
 
 外部脚本：`verify.sh <batch.list> <out.jsonl>` 文本判决（压缩版轨迹目录
 默认 `pool/traj`，`VERISKILL_TRAJ` 可临时指别处；完整版默认
 `$VERISKILL_TRAJ.full`，`VERISKILL_TRAJ_FULL` 可指别处）；
 `oracle_run.sh <轨迹路径> [--new-traj-out <路径>]` 重跑取真值并产新
-轨迹；`lib/pool.py` 登记、取批、排审计队列。全部永不编辑。
+轨迹；`lib/pool.py` 登记、取批、排审计队列；
+`eval_test.sh` 周期/收尾用当前技能重跑 test 集记成功率并追加时间序列；
+`plot_test_eval.py` 读时间序列画成功率演进图。全部永不编辑（`plot_*.py`
+除外，是报表工具）。
 
 ## 参数
 
@@ -112,8 +118,10 @@ rubric_threshold=0.6  评分细则通过线（verify.sh 用）
 replay_K=3          同一条目最多被取用几次
 train_ratio=0.8     训练集比例
 split_seed=0        划分随机种子
-final_test_max=50   收尾最多重跑多少条测试条目
+final_test_max=50   收尾最多重跑多少条测试条目（也是周期 eval 的抽样上限）
 edit_budget=6       每个子 Agent 每轮的编辑预算上限
+eval_every=4        每 N 轮用当前技能跑一次 test 集记成功率（0=关，收尾仍出图）
+eval_baseline=false Setup 末跑一次 r=0 基线点（多花 ≤final_test_max 次重跑）
 ```
 
 本次调用实际传入的参数：
@@ -191,7 +199,8 @@ Task 工具按名字调用。派发时把输入清单逐项写进 prompt，路�
    `stats/rule_fp_counts.json` = `{}`；`stats/audited.json` = `[]`；
    `stats/fn_pending.jsonl`、`stats/fn_out_of_scope.jsonl`、
    `stats/tn_seen.list` 空文件；`stats/tn_traj/` 空目录；
-   `stats/audit_tally.json` = `{"recent":[]}`。
+   `stats/audit_tally.json` = `{"recent":[]}`；
+   `stats/test_eval.jsonl` 空文件（周期 eval 时间序列）。
 3. `ledger.json` 不存在则初始化：
 
 ```json
@@ -224,6 +233,19 @@ python3 lib/pool.py register --meta pool/meta.json --traj-dir pool/traj \
 ```json
 {"items": [{"id": "<id>", "g_version": 0, "used_count": 0, "split": "train|test"}]}
 ```
+
+6. **基线评测（仅 `eval_baseline=true`）**：在快照后、循环前用初始
+   技能跑一次 test 集作 r=0 基线点：
+
+   ```bash
+   bash eval_test.sh --meta pool/meta.json --out-dir rounds/r0_test_eval \
+     --max $final_test_max --seed 0 --round 0 --g-version 0 \
+     --series stats/test_eval.jsonl
+   ```
+
+   成本同一次 checkpoint（≤`final_test_max` 次重跑调用）。不想花这笔钱就
+   留 `eval_baseline=false`（默认），图从第一个 `eval_every` 倍数轮起画。
+   **即使开了基线，也只写 `stats/test_eval.jsonl`，不喂 G/D、不动 test 池。**
 
 ---
 
@@ -517,6 +539,34 @@ r=<r> 批=<n> fail_rate=<x> FP=<n> FN=<n> 审计=<x/y> 放回=<n> D=<动作> G=<
 
 子 Agent 返回 `needs_human=true` 只记录，不停循环、不回滚合法编辑。
 
+### 8. 周期测试评估（仅 `eval_every > 0` 且 `r % eval_every == 0`）
+
+本轮技能已在第 6 步定版，正好用它量一下当前 skill 在 test 集上的实战
+成功率。**纯监测**：结果只进 `stats/test_eval.jsonl`，不喂 G/D、不
+影响审计账与停止条件、不改 test 池。test 条目重跑**不带
+`--new-traj-out`**，池子保持原样（同收尾）。
+
+抽样与收尾同一口径（按 ID 排序 `random.seed(0)` 取前 `final_test_max`），
+所以各 checkpoint 之间、与收尾终点直接可比。
+
+```bash
+bash eval_test.sh --meta pool/meta.json --out-dir rounds/r<r>/test_eval \
+  --max $final_test_max --seed 0 --round $r --g-version $ledger.g_version \
+  --series stats/test_eval.jsonl
+```
+
+整批可能超过 Bash 工具 10 分钟上限，用 `run_in_background` 跑，通知到了
+再读 `rounds/r<r>/test_eval/summary.json`（脚本退出时已把汇总原子追加进
+`stats/test_eval.jsonl`）。
+
+聊天里输出一行、`report.md` 追加一节：
+
+```text
+r=<r> test评估 成功率=<x> (<pass>/<judged>，环境故障 <env>) g_version=<v>
+```
+
+`eval_every=0` 跳过本步（收尾仍会出图）。
+
 ---
 
 ## 停止
@@ -532,6 +582,8 @@ r=<r> 批=<n> fail_rate=<x> FP=<n> FN=<n> 审计=<x/y> 放回=<n> D=<动作> G=<
 - Oracle 环境故障率超 30%（累计尝试满 10 次后才评估）；
 - 核心脚本、数据或状态损坏。
 
+周期 test 评估（`stats/test_eval.jsonl`）只记录展示，不作为停止依据。
+
 ## 收尾
 
 1. 对全部 `split=test` 条目跑 `verify.sh`（判决便宜，全跑），算
@@ -542,8 +594,17 @@ r=<r> 批=<n> fail_rate=<x> FP=<n> FN=<n> 审计=<x/y> 放回=<n> D=<动作> G=<
    不放回**，test 池保持原样）。
 3. 在这批条目上统计：**test 实战通过率**（oracle_pass 率，G 的最终
    成绩）、D 的 TP/FP/FN/TN 与准确率，存 `rounds/final_test/`。
+   把这个最终点补进 `stats/test_eval.jsonl`：若末行 `round`≠`rounds`
+   则按 `eval_test.sh` 的 summary 行格式追加一条（`round=rounds`、
+   `g_version=最终`、`skill_hash=当前指纹`、`success_rate=本批通过率`），
+   复用刚花的重跑预算，不另花钱；末行已是 `rounds`（周期点恰好命中）
+   就跳过。
 4. 不得根据 test 结果再改 G 或 D。
-5. 最终输出：逐轮指标表；test 指标（注明重跑了几条）；最终 accepted
+5. 画成功率演进图：`python3 plot_test_eval.py stats/test_eval.jsonl`，
+   出 `stats/test_eval.svg`（无依赖必出；装了 matplotlib 额外出
+   `.png`），stdout 另打 ASCII 折线与数据表。
+6. 最终输出：逐轮指标表；test 指标（注明重跑了几条）；**成功率演进图
+   路径 `stats/test_eval.svg` 及趋势一句话**；最终 accepted
    快照路径和 `g_version`；每轮 D/G 编辑摘要与回滚记录；全部判据清单
    （带依据和累计误杀数）；证据缺口（`fn_out_of_scope.jsonl` 条数及
    占全部 FN 的比例）；待人定夺清单（各轮 `needs_human` 与
@@ -559,6 +620,9 @@ r=<r> 批=<n> fail_rate=<x> FP=<n> FN=<n> 审计=<x/y> 放回=<n> D=<动作> G=<
 - 不建 Oracle 结果缓存，去重只靠 `stats/audited.json`。
 - 永不编辑 `verify.sh`、`oracle_run.sh`、`lib/` 下的脚本。
 - 编排者不直接改 G/D；子 Agent 不读派发清单外的路径。
-- test 条目在收尾前不可见。
+- test 条目在收尾前不可见；周期 test 评估（`eval_test.sh`）是**纯监测**：
+  结果只写 `stats/test_eval.jsonl` 与 `rounds/r<N>/test_eval/`，绝不进
+  d-improve/g-improve 的派发清单、不写 `audited.json`/`audit_tally.json`、
+  不参与停止与收敛判断；test 池永不改写（不带 `--new-traj-out`）。
 - 所有抽样、编辑、接受、回滚都要能从 `history/`、`ledger.json`、
   `report.md` 复现。

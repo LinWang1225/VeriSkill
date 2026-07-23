@@ -16,6 +16,10 @@
 内环每轮转：D 判轨迹 → fail 喂 G 改技能。
 外环抽查：Oracle 重跑取真值 → FP/FN 喂 D 改 critics → 新轨迹放回。
 
+周期监测：每 `eval_every`（默认 10）轮用当前技能在 test 集上重跑一次记
+成功率，收尾把各 checkpoint 串成成功率演进图（`stats/test_eval.svg`）。
+纯监测，不回写池子、不喂 G/D、不影响收敛。
+
 花钱主项是审计的重跑（每条一次做题调用）；配 checker 的条目判分零
 模型调用。
 
@@ -28,6 +32,8 @@
 │   └── agents/                      # d-improve / g-improve 子 Agent
 ├── verify.sh                        # D 文本判决（永不编辑）
 ├── oracle_run.sh                    # 审计：重跑+判分+产新轨迹（永不编辑）
+├── eval_test.sh                     # 周期/收尾：当前技能跑 test 集记成功率（永不编辑）
+├── plot_test_eval.py                # 报表：成功率演进图（SVG，无依赖）
 ├── lib/                             # 后端适配、JSON 解析、池子操作（永不编辑）
 ├── workspace/
 │   ├── actor_skills/                # G 技能库（空库冷启动）
