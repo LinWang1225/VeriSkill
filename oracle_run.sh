@@ -203,7 +203,23 @@ main() {
 
   backend_preflight || exit 5
   WORK_ORACLE="$(mktemp -d "${TMPDIR:-/tmp}/veriskill-oracle-XXXXXX")"
-  trap 'rm -rf "${WORK_ORACLE:-}"' EXIT
+  # 失败(非零退出)时把现场(task/prompt/raw.txt/err.txt)留到 oracle_failures/<id>/
+  # 供排查，再清 /tmp temp；成功则照常清。raw.txt 里的真因(如 429)不再随 temp 蒸发。
+  _cleanup() {
+    local rc=$?
+    if [ "$rc" -ne 0 ] && [ -n "${WORK_ORACLE:-}" ] && [ -n "${id:-}" ]; then
+      mkdir -p "$HERE/oracle_failures/$id" 2>/dev/null || true
+      cp -a "$WORK_ORACLE/." "$HERE/oracle_failures/$id/" 2>/dev/null || true
+      # 通知只写 loop 日志、不写 stderr：eval_test.sh 取 stderr 末行当 error，
+      # 写 stderr 会盖住真因（[id] 重跑调用失败：… / 环境故障：…）
+      if [ -n "${VERISKILL_LOOP_LOG:-}" ]; then
+        printf '[%s] [%s] 失败现场已保存到 %s/oracle_failures/%s (rc=%s)\n' \
+          "$(date +%H:%M:%S)" "$id" "$HERE" "$id" "$rc" >> "$VERISKILL_LOOP_LOG" 2>/dev/null || true
+      fi
+    fi
+    rm -rf "${WORK_ORACLE:-}" 2>/dev/null || true
+  }
+  trap _cleanup EXIT
   local work="$WORK_ORACLE"
 
   # ---- 1) 从轨迹抽题目（extract.py 要求两个都抽；答案抽出即闲置，
@@ -233,7 +249,8 @@ main() {
 
   if ! backend_run "$solve_dir" "$solve_dir/prompt.txt" exec \
          > "$solve_dir/raw.txt" 2>"$solve_dir/err.txt"; then
-    echo "[$id] 重跑调用失败：$(tail -n 3 "$solve_dir/err.txt" | tr '\n' ' ')" >&2
+    # 真因常在 stdout(raw.txt，如 429 的 API Error)，stderr 可能空；两边都记下来
+    echo "[$id] 重跑调用失败：stderr=$(tail -n 3 "$solve_dir/err.txt" | tr '\n' ' ') | stdout=$(tail -c 300 "$solve_dir/raw.txt" | tr '\n' ' ')" >&2
     exit 5
   fi
   if ! python3 "$HERE/lib/jsonx.py" solve --item "$id" \

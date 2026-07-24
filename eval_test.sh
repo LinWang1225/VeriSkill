@@ -138,6 +138,40 @@ if [ -s "$OUT_DIR/sample.list" ]; then
   xargs -P "$JOBS" -I{} bash -c 'eval_one "$1"' _ {} < "$OUT_DIR/sample.list"
 fi
 
+# ---- 3b) 延后重试：主批次跑完后，对瞬时失败(429/后端抖动)的条目再补跑一次。
+# 主批次里 eval_one 的立即重试只隔 15s，扛不过 >15s 的 429 窗口；这里等到其它
+# 题都跑完、429 多半已过再补跑（顺序跑，不再加并发，避免又把端点打 429）。
+# 模型自报的"环境故障"(数据真缺)跳过——重试也救不回，白烧调用。
+deferred=""
+if [ -s "$OUT_DIR/sample.list" ]; then
+  while IFS= read -r id; do
+    [ -n "$id" ] || continue
+    rc=$(cat "$TMP/$id.rc" 2>/dev/null || echo 0)
+    if [ "$rc" -ne 0 ] || ! [ -s "$TMP/$id.out" ]; then
+      grep -q '环境故障：' "$TMP/$id.err" 2>/dev/null && continue   # 模型自报，跳过
+      deferred="$deferred $id"
+    fi
+  done < "$OUT_DIR/sample.list"
+fi
+if [ -n "$deferred" ]; then
+  _log "eval_test RETRY round=$ROUND: defer-retrying transient failures:$deferred"
+  for id in $deferred; do
+    [ -n "$id" ] || continue
+    set +e
+    bash "$HERE/oracle_run.sh" "$TRAJ_DIR/$id.md" > "$TMP/$id.out" 2>"$TMP/$id.err"
+    drc=$?
+    set -e
+    echo "$drc" > "$TMP/$id.rc"
+    if [ "$drc" -eq 0 ] && [ -s "$TMP/$id.out" ]; then
+      _log "eval r=$ROUND $id: RECOVERED $(python3 -c 'import json,sys;o=json.load(open(sys.argv[1]));print("pass=%s src=%s result=%r"%(o.get("oracle_pass"),o.get("truth_source",""),(o.get("skill_result") or "")[:80]))' "$TMP/$id.out" 2>/dev/null || head -c 120 "$TMP/$id.out")"
+    else
+      _log "eval r=$ROUND $id: still ENV_FAIL rc=$drc after defer-retry - $(tail -1 "$TMP/$id.err" 2>/dev/null)"
+    fi
+  done
+else
+  _log "eval_test RETRY round=$ROUND: no transient failures to defer-retry"
+fi
+
 # ---- 4) 汇总：逐条解析，写 results.jsonl + summary.json，必要时追加序列 ----
 python3 - "$OUT_DIR" "$TMP" "$ROUND" "$GVERSION" "$FP" "$SERIES" <<'PY'
 import json, os, sys, time

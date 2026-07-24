@@ -20,6 +20,8 @@ rounds/
 history/
 # Audit stats.
 stats/
+# Oracle failure scenes (raw.txt/err.txt kept for inspection).
+oracle_failures/
 # Evolved skill libraries (cold-start empty; skills grow from data).
 workspace/actor_skills/*
 !workspace/actor_skills/.gitkeep
