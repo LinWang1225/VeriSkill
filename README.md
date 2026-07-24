@@ -87,7 +87,7 @@ cd veriskill
 
 # 2. 一次性 Setup（幂等可重跑）：
 #    转换 pkl→pool/traj、生成 checker、写 env.sh/.claude/settings.json
-#    （token 从 /root/data/EvoSkill/.claude/settings.json 读入）、生成
+#    （token 从 /root/data/veriskill/.claude/settings.json 读入）、生成
 #    门控白名单、轨迹格式体检、后端 selftest（花一次最小调用）
 bash adapters/setup_officeqa_101.sh
 

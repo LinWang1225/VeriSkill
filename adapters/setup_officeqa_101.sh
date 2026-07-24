@@ -34,13 +34,13 @@ EOT
 echo "== 3/6 技能库（冷启动：两库为空，一切由共演化从数据里长出）=="
 ls workspace/critics workspace/actor_skills
 
-echo "== 4/6 后端接线（token 从 EvoSkill 设置读入，不打印）=="
+echo "== 4/6 后端接线（token 从 VeriSkill 自身 settings.json 读入，不打印）=="
 python3 - <<'PY'
 import json, os
-src = json.load(open("/root/data/EvoSkill/.claude/settings.json"))
+src = json.load(open("/root/data/veriskill/.claude/settings.json"))
 env = src.get("env", {})
 tok = env.get("ANTHROPIC_AUTH_TOKEN", "")
-assert tok, "EvoSkill settings 里没有 ANTHROPIC_AUTH_TOKEN"
+assert tok, "VeriSkill settings 里没有 ANTHROPIC_AUTH_TOKEN"
 base = env.get("ANTHROPIC_BASE_URL", "https://ark.cn-beijing.volces.com/api/coding")
 os.makedirs(".claude", exist_ok=True)
 cfg = {"env": {"ANTHROPIC_AUTH_TOKEN": tok, "ANTHROPIC_API_KEY": tok,
