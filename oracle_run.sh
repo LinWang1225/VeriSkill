@@ -247,10 +247,26 @@ main() {
   fi
   write_solve_prompt "$solve_dir/prompt.txt" "$has_actor" "$has_check" "$data_name"
 
-  if ! backend_run "$solve_dir" "$solve_dir/prompt.txt" exec \
-         > "$solve_dir/raw.txt" 2>"$solve_dir/err.txt"; then
-    # 真因常在 stdout(raw.txt，如 429 的 API Error)，stderr 可能空；两边都记下来
-    echo "[$id] 重跑调用失败：stderr=$(tail -n 3 "$solve_dir/err.txt" | tr '\n' ' ') | stdout=$(tail -c 300 "$solve_dir/raw.txt" | tr '\n' ' ')" >&2
+  # 重跑：429"请求过频"(rate-limit)是瞬时的，端点提示"wait a short moment and
+  # retry"，退避重试，不要一遇就判 env_fail 丢掉这条审计/eval。
+  # 配额级 429(exceeded ... quota / reset at)短退避救不回，不浪费重试，记下真因即可。
+  local solve_ok=0 attempt
+  for attempt in 1 2 3 4 5; do
+    if backend_run "$solve_dir" "$solve_dir/prompt.txt" exec \
+           > "$solve_dir/raw.txt" 2>"$solve_dir/err.txt"; then
+      solve_ok=1; break
+    fi
+    if grep -q 'too frequent' "$solve_dir/raw.txt" 2>/dev/null || grep -q 'too frequent' "$solve_dir/err.txt" 2>/dev/null; then
+      echo "[$id] backend 429 请求过频，退避 $((attempt*10))s 后重试 ($attempt/5)" >&2
+      sleep $((attempt * 10))
+    else
+      # 配额级 429 / 非 429 故障：不重试。真因常在 stdout(raw.txt)，stderr 可能空
+      echo "[$id] 重跑调用失败：stderr=$(tail -n 3 "$solve_dir/err.txt" | tr '\n' ' ') | stdout=$(tail -c 300 "$solve_dir/raw.txt" | tr '\n' ' ')" >&2
+      exit 5
+    fi
+  done
+  if [ "$solve_ok" -ne 1 ]; then
+    echo "[$id] 重跑调用失败（请求过频退避 5 次仍 429）：$(tail -c 200 "$solve_dir/raw.txt" | tr '\n' ' ')" >&2
     exit 5
   fi
   if ! python3 "$HERE/lib/jsonx.py" solve --item "$id" \
