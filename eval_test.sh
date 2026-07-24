@@ -99,6 +99,14 @@ FP="$(bash "$HERE/oracle_run.sh" --fingerprint)"
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/veriskill-eval-XXXXXX")"
 trap 'rm -rf "${TMP:-}"' EXIT
 
+# 进度日志：把 eval 的后台进展落进 loop 日志（VERISKILL_LOOP_LOG 由
+# launch_loop_101.sh 导出，指向当前 loop_*.log）。未设置则静默不写。
+# 解决「基线/成功率 eval 跑起来后 loop 日志一片空白、不知道在干啥」的问题。
+_log() {
+  [ -n "${VERISKILL_LOOP_LOG:-}" ] || return 0
+  printf '[%s] %s\n' "$(date +%H:%M:%S)" "$*" >> "$VERISKILL_LOOP_LOG"
+}
+
 eval_one() {  # <id>
   local id="$1" out err rc
   out="$TMP/$id.out"; err="$TMP/$id.err"
@@ -114,10 +122,17 @@ eval_one() {  # <id>
     rc=$?
   fi
   set -e
+  if [ "$rc" -eq 0 ] && [ -s "$out" ]; then
+    _log "eval r=$ROUND $id: $(python3 -c 'import json,sys;o=json.load(open(sys.argv[1]));print("pass=%s src=%s result=%r"%(o.get("oracle_pass"),o.get("truth_source",""),(o.get("skill_result") or "")[:80]))' "$out" 2>/dev/null || head -c 120 "$out")"
+  else
+    _log "eval r=$ROUND $id: ENV_FAIL rc=$rc - $(tail -1 "$err" 2>/dev/null)"
+  fi
   echo "$rc" > "$TMP/$id.rc"
 }
-export -f eval_one
-export HERE TRAJ_DIR TMP
+export -f eval_one _log
+export HERE TRAJ_DIR TMP ROUND
+
+_log "eval_test START round=$ROUND g_version=$GVERSION fp=$FP items=$(wc -l < "$OUT_DIR/sample.list" 2>/dev/null || echo 0) jobs=$JOBS timeout=${VERISKILL_TIMEOUT:-600}"
 
 if [ -s "$OUT_DIR/sample.list" ]; then
   xargs -P "$JOBS" -I{} bash -c 'eval_one "$1"' _ {} < "$OUT_DIR/sample.list"
@@ -125,7 +140,7 @@ fi
 
 # ---- 4) 汇总：逐条解析，写 results.jsonl + summary.json，必要时追加序列 ----
 python3 - "$OUT_DIR" "$TMP" "$ROUND" "$GVERSION" "$FP" "$SERIES" <<'PY'
-import json, os, sys
+import json, os, sys, time
 out_dir, tmp, round_, gv, fp, series = sys.argv[1:7]
 round_ = int(round_); gv = int(gv)
 
@@ -176,6 +191,15 @@ with open(os.path.join(out_dir, "summary.json"), "w") as f:
     json.dump(summary, f, ensure_ascii=False, indent=1)
 
 print(json.dumps(summary, ensure_ascii=False))
+
+# 把 eval 终态汇总也落进 loop 日志（若有），tail -f 能看到收尾结论
+_ll = os.environ.get("VERISKILL_LOOP_LOG")
+if _ll:
+    _rs = "null" if rate is None else f"{rate:.4f}"
+    with open(_ll, "a", encoding="utf-8") as _lf:
+        _lf.write(f"[{time.strftime('%H:%M:%S')}] eval_test DONE round={round_} g_version={gv} "
+                  f"success_rate={_rs} pass={n_pass}/{n_judged} env_fail={n_env_fail} "
+                  f"of {len(sample)}\n")
 
 if series:
     # 原子追加一行（单行 write 在本地 fs 上原子；先去重同 round 旧行）

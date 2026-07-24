@@ -17,7 +17,8 @@ EVAL_EVERY="${4:-4}"; EVAL_BASELINE="${5:-false}"
 PROMPT="/veriskill-loop rounds=$ROUNDS batch=$BATCH audit_frac=$FRAC train_ratio=0.8 replay_K=3 eval_every=$EVAL_EVERY eval_baseline=$EVAL_BASELINE"
 
 LOG="loop_$(date +%m%d_%H%M).log"
-export PROMPT ROUNDS VS
+VERISKILL_LOOP_LOG="$VS/$LOG"   # 让 eval_test.sh 等子进程能把后台进展写进本 loop 日志
+export PROMPT ROUNDS VS VERISKILL_LOOP_LOG
 nohup bash -c '
 for i in 1 2 3 4 5; do
   echo "[watchdog] attempt $i start $(date "+%F %T")"
