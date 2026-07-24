@@ -1,0 +1,23 @@
+# 密钥/环境（永不提交）
+env.sh
+.claude/settings.json
+*.token
+# 基准答案钥匙（FrontierScience 含 canary，不公开）
+**/golds.json
+pool/checkers/golds.json
+# 运行态
+rounds/
+history/
+stats/
+workspace/actor_skills/*
+workspace/critics/*
+pool/traj/
+pool/traj_full/
+results/
+*.pkl
+loop_*.log
+ledger.json
+report.md
+# macOS
+._*
+.DS_Store
