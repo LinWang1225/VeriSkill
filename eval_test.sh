@@ -102,13 +102,18 @@ trap 'rm -rf "${TMP:-}"' EXIT
 eval_one() {  # <id>
   local id="$1" out err rc
   out="$TMP/$id.out"; err="$TMP/$id.err"
-  bash "$HERE/oracle_run.sh" "$TRAJ_DIR/$id.md" > "$out" 2>"$err" || true
+  # 关闭 errexit 以真实捕获 oracle_run.sh 的退出码（含瞬时失败）。不能
+  # 用 `cmd || true`：那会把 rc 永远罩成 0，使下面的重试成为死代码，
+  # 并让 results.jsonl 里 rc 恒为 0、用空的 stdout 解析失败掩盖真因。
+  set +e
+  bash "$HERE/oracle_run.sh" "$TRAJ_DIR/$id.md" > "$out" 2>"$err"
   rc=$?
   if [ "$rc" -ne 0 ]; then
     # 瞬时超时/解析失败占大头，重试一次（对齐审计步）
-    bash "$HERE/oracle_run.sh" "$TRAJ_DIR/$id.md" > "$out" 2>"$err" || true
+    bash "$HERE/oracle_run.sh" "$TRAJ_DIR/$id.md" > "$out" 2>"$err"
     rc=$?
   fi
+  set -e
   echo "$rc" > "$TMP/$id.rc"
 }
 export -f eval_one
