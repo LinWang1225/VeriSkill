@@ -1,0 +1,5 @@
+{"item": "q127", "round": 5, "rules_hit": [], "oracle_evidence": "checker: score_answer(tol=0): pred=95068 gold=80686 -> fail", "unjudgeable_count": 1}
+{"item": "q008", "round": 6, "rules_hit": [], "oracle_evidence": "checker: score_answer(tol=0): pred=[0.100, -191.814] gold=[0.096, −184.143] -> fail", "unjudgeable_count": 1}
+{"item": "q038", "round": 7, "rules_hit": [], "oracle_evidence": "checker: pred=6.14 gold=-18.51% -> fail", "unjudgeable_count": 1}
+{"item": "q063", "round": 7, "rules_hit": [], "oracle_evidence": "checker: pred=[44.00, 231.52] gold=[44.00,231.52] -> fail", "unjudgeable_count": 1}
+{"item": "q033", "round": 8, "rules_hit": [], "oracle_evidence": "checker: pred=5,283 million euros gold=44174 -> fail", "unjudgeable_count": 1}

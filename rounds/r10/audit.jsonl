@@ -1,0 +1,1 @@
+{"item": "q016", "segment": "误杀", "d_verdict": "fail", "oracle_pass": false, "kind": "TP", "skill_hash": "644d60f0f58d", "truth_source": "checker", "rules_hit": [], "normalized_score": 0.929, "oracle_evidence": "checker: score_answer(tol=0): pred='103000000' gold='92000000' -> fail", "skill_result": "103000000"}

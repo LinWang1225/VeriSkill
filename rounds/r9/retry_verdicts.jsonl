@@ -1,0 +1,1 @@
+{"item": "q030", "verdict": "pass", "rules_hit": [], "rubric_scores": {"答案格式规范": 2, "数值答案纯净度": 2}, "normalized_score": 1.0, "confidence": 1.0, "reason": "未命中任何 hard/soft 判据；答案格式规范（十分位精度、单位正确），数值纯净（无多余文字）；独立核查未发现明确错误（轨迹截断但无矛盾）。"}

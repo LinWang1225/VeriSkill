@@ -1,0 +1,20 @@
+{
+  "edits": [
+    {
+      "skill": "g-officeqa-extract-verify",
+      "type": "distill",
+      "cluster": "tn",
+      "support": 2,
+      "audited_support": 0,
+      "attribution": "能力缺陷",
+      "summary": "Add sum-to-total cross-check guidance to Step 4 Action-Check-Recovery: when table has both sub-period rows and a total row, sum sub-period values and verify against the reported total to catch column misalignment and transcription errors"
+    }
+  ],
+  "clusters_seen": 2,
+  "clusters_fixed": 0,
+  "skipped": [
+    "R-officeqa-data-aggregation-002 (q051, support=1, audited=true): model claimed FFO-4 but tools read FFO-3. Singleton, not enough evidence for a pattern.",
+    "数据源一致性 (q118, support=1, audited=true): model extracted 443872 but grep output shows 447362. Singleton, not enough evidence for a pattern."
+  ],
+  "needs_human": false
+}

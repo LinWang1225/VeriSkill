@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "critic": "d-officeqa-answer-format",
+      "type": "add_rule",
+      "rule_id": "R-officeqa-answer-format-001",
+      "evidence_items": ["#q010", "#q100"],
+      "summary": "新增答案格式检查规则：最终答案的格式与题目要求的输出格式不一致时扣分，覆盖列表式答案元素间空格缺失和数值答案含多余说明文字两类格式错误"
+    }
+  ],
+  "fp_seen": 0,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["q010", "q100"],
+  "unjudgeable": [],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

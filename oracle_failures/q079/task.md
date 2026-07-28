@@ -1,0 +1,1 @@
+What is the geometric mean across each of the 4 U.S. reserve asset values at the end of calendar month July across 2010-2013 inclusive rounded to the nearest hundredths place (geometric mean across 16 total values returned as a single value)?

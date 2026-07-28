@@ -1,0 +1,26 @@
+{
+  "edits": [
+    {
+      "skill": "g-officeqa-extract-verify",
+      "type": "distill",
+      "cluster": "tn",
+      "support": 2,
+      "audited_support": 2,
+      "attribution": "能力缺陷",
+      "summary": "Add independent calculation verification step (Python/tool cross-check) to catch formula and arithmetic errors, distilled from q055 and q113"
+    },
+    {
+      "skill": "g-officeqa-locate-source",
+      "type": "distill",
+      "cluster": "tn",
+      "support": 2,
+      "audited_support": 2,
+      "attribution": "能力缺陷",
+      "summary": "Add negative publication-lag sanity check (verify preceding edition lacks target data) to confirm edition mapping, distilled from q072 and q097"
+    }
+  ],
+  "clusters_seen": 1,
+  "clusters_fixed": 0,
+  "skipped": ["q128 (singleton failure, audited: true, Macaulay duration formula error -- only 1 item, cannot form a group)"],
+  "needs_human": false
+}

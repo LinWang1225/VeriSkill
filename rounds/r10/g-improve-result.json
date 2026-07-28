@@ -1,0 +1,17 @@
+{
+  "edits": [
+    {
+      "skill": "g-officeqa-extract-verify",
+      "type": "patch",
+      "cluster": "missing-check",
+      "support": 1,
+      "audited_support": 1,
+      "attribution": "能力缺陷",
+      "summary": "在步骤4中增加时间粒度一致性检查：验证提取行的粒度与题目要求匹配，防止用年度/财年汇总数据替代月度数据"
+    }
+  ],
+  "clusters_seen": 1,
+  "clusters_fixed": 1,
+  "skipped": ["q016: 单例失败(支持数1)，但错误模式清晰且g-officeqa-extract-verify存在明显能力缺口，已按例外处理"],
+  "needs_human": false
+}

@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "critic": "d-officeqa-data-aggregation",
+      "type": "rubric",
+      "rule_id": "",
+      "evidence_items": ["#28"],
+      "summary": "Added rubric item on data source consistency: when model claims table-extracted values, verify those values match the tool call results (column mapping, numerical position). Catches table misreading errors like q028 where model claimed 531 for 1945 but the table structure differs."
+    }
+  ],
+  "fp_seen": 1,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 0,
+  "fn_resolved": [],
+  "unjudgeable": ["q009", "q040"],
+  "unresolved": ["q019"],
+  "skipped": [],
+  "needs_human": false
+}

@@ -6,30 +6,16 @@ env.sh
 __pycache__/
 *.pyc
 
-# ---- Runtime state (framework cold-starts; these grow during a run) ----
-# Trajectory pool: audited/rolled each round; setup regenerates from source pkl.
+# ---- Runtime pool (audited/rolled each round; setup regenerates from source pkl) ----
 pool/traj/*
 !pool/traj/.gitkeep
 pool/checkers/*
 !pool/checkers/.gitkeep
 pool/meta.json
 pool/gate_allowlist.txt
-# Per-round verdicts / audit queue / replaced archives.
-rounds/
-# Pre/post snapshots kept for rollback.
-history/
-# Audit stats.
-stats/
-# Oracle failure scenes (raw.txt/err.txt kept for inspection).
-oracle_failures/
-# Evolved skill libraries (cold-start empty; skills grow from data).
-workspace/actor_skills/*
-!workspace/actor_skills/.gitkeep
-workspace/critics/*
-!workspace/critics/.gitkeep
-# Loop counters / generated report.
-ledger.json
-report.md
+# Runtime result artifacts are version-controlled (rounds/, history/,
+# stats/, oracle_failures/, workspace/{actor_skills,critics}, ledger.json,
+# report.md) so run outputs are tracked in-repo.
 
 # ---- Logs ----
 *.log

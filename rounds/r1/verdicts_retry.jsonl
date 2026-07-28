@@ -1,0 +1,1 @@
+{"item": "q079", "verdict": "pass", "rules_hit": [], "rubric_scores": {}, "normalized_score": 1.0, "confidence": 1.0, "reason": "无适用 critic，独立核查：轨迹的几何平均计算经复核约得 29346-29347，与声称的 29347.01 一致（误差在手动对数表精度内）；数据来源叙述与执行轨迹中的工具调用（搜索 Treasury Bulletin Table IFS-1）方向一致；推理链条自洽，答案格式符合题目要求。未发现明确成立的计算或引用错误。"}

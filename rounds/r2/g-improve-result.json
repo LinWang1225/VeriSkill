@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "skill": "g-officeqa-extract-verify",
+      "type": "distill",
+      "cluster": "tn",
+      "support": 4,
+      "audited_support": 0,
+      "attribution": "能力缺陷",
+      "summary": "Added Step 7 to verify final answer format matches question's output specification (distilled from 4 TN trajectories: q055, q097, q072, q113)"
+    }
+  ],
+  "clusters_seen": 0,
+  "clusters_fixed": 0,
+  "skipped": [
+    "q032 (R-officeqa-answer-format-001): singleton, support=1 < 2"
+  ],
+  "needs_human": false
+}

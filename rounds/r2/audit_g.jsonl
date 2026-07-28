@@ -1,0 +1,2 @@
+{"item": "q055", "segment": "随机", "d_verdict": "pass", "oracle_pass": true, "kind": "TN", "skill_hash": "e851c40e4bd6", "truth_source": "checker", "rules_hit": [], "normalized_score": 1.0, "oracle_evidence": "checker: pred=678,077.00百万美元 gold=678077.00 -> pass", "skill_result": "678,077.00 百万美元"}
+{"item": "q054", "segment": "误杀", "d_verdict": "fail", "oracle_pass": true, "kind": "FP", "skill_hash": "e851c40e4bd6", "truth_source": "checker", "rules_hit": [], "normalized_score": 0.0, "oracle_evidence": "checker: pred=1400.306 gold=1400.306 -> pass", "skill_result": "1400.306"}

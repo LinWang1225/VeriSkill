@@ -1,0 +1,26 @@
+{
+  "edits": [
+    {
+      "critic": "d-officeqa-answer-format",
+      "type": "rubric",
+      "rule_id": null,
+      "evidence_items": ["#q054"],
+      "summary": "在评分细则项中增加例外说明：数值精度仅验证小数点位数和单位格式等格式特征，不涉及四舍五入方向等数值正确性判断。解决FP q054中独立核查误判四舍五入方向的问题。"
+    },
+    {
+      "critic": "d-officeqa-data-aggregation",
+      "type": "add_rule",
+      "rule_id": "R-officeqa-data-aggregation-001",
+      "evidence_items": ["#q127", "#q005"],
+      "summary": "新增数据加总一致性检查规则：轨迹中列出多个独立数据项并给出加总总值时，验证明细数据项之和与声称的总值是否一致（差异超过明细数据项数量时命中）。覆盖FN q127（明细之和95,043≠声称总值95,068）和q005（明细之和964,376,459,270≠声称总值964,376,459,870）。"
+    }
+  ],
+  "fp_seen": 1,
+  "fp_resolved": 1,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["q127", "q005"],
+  "unjudgeable": ["q009"],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

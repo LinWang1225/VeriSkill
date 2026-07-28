@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "critic": "d-officeqa-data-aggregation",
+      "type": "narrow_rule",
+      "rule_id": "R-officeqa-data-aggregation-001",
+      "evidence_items": ["#q021"],
+      "summary": "收窄规则，排除计数类任务（统计某条件出现次数）——此类任务中明细数据项为命中计数值而非待加总的实际数值，原规则误将轨迹中的命中计数当作数据项求和"
+    }
+  ],
+  "fp_seen": 1,
+  "fp_resolved": 1,
+  "fn_clusters_seen": 0,
+  "fn_resolved": [],
+  "unjudgeable": ["q044"],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

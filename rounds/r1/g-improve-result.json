@@ -1,0 +1,26 @@
+{
+  "edits": [
+    {
+      "skill": "g-officeqa-locate-source",
+      "type": "new_skill",
+      "cluster": "tn",
+      "support": 3,
+      "audited_support": 3,
+      "attribution": "能力缺陷",
+      "summary": "新建技能：指导如何根据目标时间定位正确的 Treasury Bulletin 版本，考虑出版滞后（M月公报含M-1月数据），蒸馏自 q072/q113/q097 三条好轨迹的共同做法"
+    },
+    {
+      "skill": "g-officeqa-extract-verify",
+      "type": "new_skill",
+      "cluster": "tn",
+      "support": 3,
+      "audited_support": 3,
+      "attribution": "能力缺陷",
+      "summary": "新建技能：指导从 Treasury Bulletin 表格中提取数据、验证列头与行标签、交叉验证多个来源的一致性，蒸馏自 q072/q113/q097 三条好轨迹的共同做法"
+    }
+  ],
+  "clusters_seen": 0,
+  "clusters_fixed": 0,
+  "skipped": ["q127: 单例失败轨迹（audited: true），仅1条不足以归纳规律，跳过"],
+  "needs_human": false
+}

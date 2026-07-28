@@ -1,0 +1,20 @@
+{"item": "q002", "oracle_pass": false, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "1606.11%"}
+{"item": "q018", "oracle_pass": false, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "4"}
+{"item": "q031", "oracle_pass": false, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "1971"}
+{"item": "q036", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "1.8"}
+{"item": "q037", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "56"}
+{"item": "q045", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "4.815%"}
+{"item": "q057", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "[-1832816, -2049753, 216937]"}
+{"item": "q065", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "0.953 percentage points"}
+{"item": "q074", "oracle_pass": false, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "146.6"}
+{"item": "q075", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "[28, 2444.28]"}
+{"item": "q078", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "12"}
+{"item": "q083", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "139439"}
+{"item": "q089", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "236.7"}
+{"item": "q099", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "7.60%"}
+{"item": "q103", "oracle_pass": false, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "109233"}
+{"item": "q104", "oracle_pass": true, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "0.17 trillion dollars"}
+{"item": "q110", "oracle_pass": null, "truth_source": "", "skill_hash": "173477d8ed9e", "rc": 5, "error": "[q110] 重跑调用失败：stderr= | stdout=API Error: Request rejected (429) · You have exceeded the 5-hour usage quota. It will reset at 2026-07-28 03:00:40 +0800 CST. We recommend upgrading your plan for more q"}
+{"item": "q112", "oracle_pass": null, "truth_source": "", "skill_hash": "173477d8ed9e", "rc": 5, "error": "[q112] 重跑调用失败：stderr= | stdout=API Error: Request rejected (429) · You have exceeded the 5-hour usage quota. It will reset at 2026-07-28 03:00:40 +0800 CST. We recommend upgrading your plan for more q"}
+{"item": "q121", "oracle_pass": false, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "4630.4"}
+{"item": "q122", "oracle_pass": false, "truth_source": "checker", "skill_hash": "173477d8ed9e", "rc": 0, "error": "", "skill_result": "67241"}

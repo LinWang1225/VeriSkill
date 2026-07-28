@@ -1,0 +1,5 @@
+{"item": "q009", "round": 2, "rules_hit": [], "oracle_evidence": "checker: pred=6.2495十亿美元 gold=6.1596 -> fail", "unjudgeable_count": 2}
+{"item": "q040", "round": 4, "rules_hit": [], "oracle_evidence": "checker: score_answer(tol=0): pred=6379.29 gold=6378.54 -> fail", "unjudgeable_count": 2}
+{"item": "q028", "round": 3, "rules_hit": [], "oracle_evidence": "checker: score_answer(tol=0): pred=1941: 401 million dollars; 1944: 1,672 million dollars; 1945 gold=1567 -> fail", "unjudgeable_count": 2}
+{"item": "q032", "round": 4, "rules_hit": [], "oracle_evidence": "checker: score_answer(tol=0): pred=374443,381327,... gold=[374,443, 381,327,... -> fail", "unjudgeable_count": 2}
+{"item": "q044", "round": 9, "rules_hit": [], "oracle_evidence": "checker: score_answer(tol=0): pred='0.001' gold='0.068' -> fail", "unjudgeable_count": 2}
