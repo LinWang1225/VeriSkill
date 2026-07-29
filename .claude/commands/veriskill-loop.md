@@ -9,6 +9,28 @@ allowed-tools: Task, Read, Write, Edit, Bash, Glob, Grep
 判断子 Agent 的结论好坏，只检查其编辑是否合法。
 
 ## 核心逻辑
+## v5 同样本校准规则（优先级最高）
+
+本节覆盖下文所有冲突描述：
+
+1. **旧轨迹上的 D 判决只用于抽样，不得直接与当前 G 的 Oracle 重跑结果组成 TP/FP/FN/TN。**
+   保存为 `selection_d_verdict`。
+2. Oracle 必须用当前 G 重跑并写出 `new_traj`；随后把该 `new_traj` 放进隔离目录，
+   再调用一次 `verify.sh` 得到 `d_verdict`。只有这两个针对同一新轨迹的结果才能
+   形成审计标签，并写 `same_sample=true`。
+3. 没有 checker/truth 的条目默认是 `unscored`。`oracle_run.sh` 退出码 6 不重试、
+   不写 TP/FP/FN/TN，也不能进入 G/D 监督。只有显式设置
+   `VERISKILL_ALLOW_REDO_AS_TRUTH=1` 才允许旧式弱真值，且必须单独标注。
+4. 审计队列采用 `fail-low / fail-high / pass-low / pass-random` 四段分层，调用时传入：
+   `--checker-dir "$HERE/pool/checkers" --truth-dir "$HERE/pool/truth"`。
+5. 审计记录至少包含：`item`、`segment`、`selection_d_verdict`、`d_verdict`、
+   `oracle_pass`、`kind`、`same_sample`、`truth_source`、`new_traj`、`skill_hash`。
+6. G 的强监督输入是**当前 G 重跑且 Oracle 判错**的新轨迹，不论原选择 verdict 是 pass
+   还是 fail；不得继续用旧轨迹 hash 训练。D 只学习 `same_sample=true` 且有可靠真值的样本。
+7. D 门控和终止条件分别监控 FPR、FNR、balanced accuracy；阈值校准优先最大化
+   balanced accuracy，而不是原始 accuracy。最终报告必须把训练审计诊断与 held-out
+   同样本评估分开。
+
 
 评估对象自始至终是**技能**，不是单条答案。
 

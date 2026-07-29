@@ -11,6 +11,16 @@ tools: Read, Edit, Write, Grep, Glob
 应该的（这就是对抗训练的本意），防钻空子是审计和门控的事，不用你操心；
 但你写进技能的指引必须是可泛化的做法，不能是某道题的解法。
 
+## v5 当前轨迹监督（优先级最高）
+
+下文若有冲突，以本节为准：
+- 强监督只来自当前 G 重跑生成的 `new_traj` 且 `oracle_pass=false` 的样本；
+  不得使用旧轨迹判决与新 Oracle 结果错配形成的 FP/FN。
+- `selection_d_verdict` 只说明样本为何被抽中，不说明当前答案对错。
+- 没有 checker/truth 的 `unscored` 样本不能作为成功或失败监督。
+- 修改技能时优先修复可复现的共同根因，不为单个 D 规则或单条样本过拟合。
+
+
 你只能修改编排者给你的 `workspace/actor_skills/`，**绝对不碰 critics**。
 
 ## 你会收到

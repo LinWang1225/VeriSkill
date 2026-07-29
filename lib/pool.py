@@ -8,7 +8,7 @@
 
   register    扫描 pool/traj/ 里新出现的轨迹，登记进 meta.json（含 split）
   sample      取一批训练轨迹，写 batch.list，回写 used_count
-  audit-queue 按两段制排出本轮审计队列（剔除已审组合）
+  audit-queue 分层排出本轮审计队列（剔除已审组合与无真值条目）
 
 统一约定：所有随机操作先按条目 ID 排序，再 random.seed(轮号)，再抽。
 meta.json 写回一律先写临时文件再原子替换。
@@ -24,6 +24,7 @@ import random
 import re
 import sys
 import tempfile
+from pathlib import Path
 
 
 # ---------------------------------------------------------------- 公共
@@ -122,9 +123,31 @@ def cmd_sample(a):
 # ---------------------------------------------------------------- audit-queue
 
 def cmd_audit_queue(a):
-    with open(a.audited, encoding="utf-8") as f:
-        audited = set(json.load(f))
-
+    audited = set()
+    audited_path = Path(a.audited)
+    if audited_path.exists():
+        raw = audited_path.read_text(encoding="utf-8").strip()
+        if raw:
+            try:
+                obj = json.loads(raw)
+            except json.JSONDecodeError:
+                obj = None
+            if isinstance(obj, list):
+                for value in obj:
+                    if isinstance(value, str):
+                        audited.add(value)
+                    elif isinstance(value, dict) and value.get("dedup_key"):
+                        audited.add(str(value["dedup_key"]))
+            elif isinstance(obj, dict):
+                for value in obj.get("audited", []):
+                    audited.add(str(value))
+            else:
+                for line in raw.splitlines():
+                    row = json.loads(line)
+                    if isinstance(row, str):
+                        audited.add(row)
+                    elif isinstance(row, dict) and row.get("dedup_key"):
+                        audited.add(str(row["dedup_key"]))
     verdicts = []
     with open(a.verdicts, encoding="utf-8") as f:
         for line in f:
@@ -132,31 +155,73 @@ def cmd_audit_queue(a):
             if line:
                 verdicts.append(json.loads(line))
 
-    # 两种去重键都要查：checker/truth 条目审过一次记 <id>@static（结论与
-    # 技能无关，永久免审）；真实重做条目记 <id>@<指纹>（技能变了算新观测）
-    fresh = [v for v in verdicts
-             if f'{v["item"]}@static' not in audited
-             and f'{v["item"]}@{a.fingerprint}' not in audited]
+    fresh_all = [v for v in verdicts
+                 if f'{v["item"]}@static' not in audited
+                 and f'{v["item"]}@{a.fingerprint}' not in audited]
+
+    def has_truth(v):
+        if a.allow_redo_as_truth or not (a.checker_dir or a.truth_dir):
+            return True
+        item = v["item"]
+        checker = os.path.join(a.checker_dir, item + ".sh") if a.checker_dir else ""
+        truth = os.path.join(a.truth_dir, item + ".md") if a.truth_dir else ""
+        return (checker and os.path.isfile(checker) and os.access(checker, os.X_OK)) \
+            or (truth and os.path.isfile(truth))
+
+    fresh = [v for v in fresh_all if has_truth(v)]
+    skipped_no_truth = len(fresh_all) - len(fresh)
     passes = sorted((v for v in fresh if v["verdict"] == "pass"),
-                    key=lambda v: v["item"])
+                    key=lambda v: (v.get("confidence", 0), v["item"]))
     fails = sorted((v for v in fresh if v["verdict"] == "fail"),
                    key=lambda v: (v.get("confidence", 0), v["item"]))
 
-    b = a.budget
-    mis = fails[:b // 2]
-    rand_quota = b - len(mis)
+    b = max(0, a.budget)
+    segment_order = ("fail-low", "pass-low", "fail-high", "pass-random")
+    base, extra = divmod(b, len(segment_order))
+    targets = {name: base + (i < extra)
+               for i, name in enumerate(segment_order)}
+    selected = []
+    selected_ids = set()
+
+    def take(seq, n, segment):
+        taken = 0
+        for v in seq:
+            if taken >= n:
+                break
+            if v["item"] in selected_ids:
+                continue
+            selected.append((v, segment))
+            selected_ids.add(v["item"])
+            taken += 1
+
+    take(fails, targets["fail-low"], "fail-low")
+    take(reversed(fails), targets["fail-high"], "fail-high")
+    take(passes, targets["pass-low"], "pass-low")
+    remaining_passes = [v for v in passes if v["item"] not in selected_ids]
     random.seed(a.round)
-    rand = (random.sample(passes, rand_quota) if len(passes) > rand_quota
-            else list(passes))
+    random.shuffle(remaining_passes)
+    take(remaining_passes, targets["pass-random"], "pass-random")
 
-    for v in rand:
-        print(json.dumps({"item": v["item"], "segment": "随机"}, ensure_ascii=False))
-    for v in mis:
-        print(json.dumps({"item": v["item"], "segment": "误杀"}, ensure_ascii=False))
-    print(f"队列：随机 {len(rand)} + 误杀 {len(mis)}（预算 {b}，"
-          f"剔除已审 {len(verdicts) - len(fresh)} 条）", file=sys.stderr)
+    remaining = [v for v in sorted(fresh, key=lambda x: x["item"])
+                 if v["item"] not in selected_ids]
+    random.seed(a.round + 1000003)
+    random.shuffle(remaining)
+    for v in remaining:
+        if len(selected) >= b:
+            break
+        segment = "fail-low" if v["verdict"] == "fail" else "pass-random"
+        selected.append((v, segment))
+        selected_ids.add(v["item"])
 
+    counts = {k: 0 for k in ("fail-low", "fail-high", "pass-low", "pass-random")}
+    for v, segment in selected[:b]:
+        counts[segment] += 1
+        print(json.dumps({"item": v["item"], "segment": segment}, ensure_ascii=False))
+    print("队列：" + " + ".join(f"{k} {counts[k]}" for k in counts)
+          + f"（预算 {b}，剔除已审 {len(verdicts) - len(fresh_all)} 条，"
+            f"无 checker/truth {skipped_no_truth} 条）", file=sys.stderr)
 
+# VERISKILL_CALIBRATION_V5_163DCD8
 # ---------------------------------------------------------------- main
 
 def main():
@@ -182,6 +247,9 @@ def main():
     p.add_argument("--fingerprint", required=True)
     p.add_argument("--budget", type=int, required=True)
     p.add_argument("--round", type=int, required=True)
+    p.add_argument("--checker-dir")
+    p.add_argument("--truth-dir")
+    p.add_argument("--allow-redo-as-truth", action="store_true")
 
     a = ap.parse_args()
     {"register": cmd_register, "sample": cmd_sample,

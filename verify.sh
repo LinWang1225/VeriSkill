@@ -31,77 +31,55 @@ JOBS="${VERISKILL_JOBS:-4}"
 
 # ---------------------------------------------------------------- 提示词
 write_prompt() {
-  local out="$1"
-  cat > "$out" <<EOF
-你是 VeriSkill 的判别器 D。当前目录下有：
+  cat > "$1" <<EOF
+你是 VeriSkill 的判别器 D。你只允许读取当前工作目录里的：
+- traj.md（必要时 traj.full.md）：待判轨迹
+- critics/：当前 D 技能库
 
-- critics/  验证技能库
-- traj.md   一条解答轨迹（题目、激活技能、过程、最终答案）。它是某
-            一版解题技能库做题的执行样本，frontmatter 的 skill_hash
-            标版本
-- traj.full.md  traj.md 的完整版（过程未压缩）。**默认只读 traj.md**：
-            它的过程是压缩骨架，每个消息块前标 \`[块k]\`，骨架里
-            \`…（省略 N 行）\` 略去的部分在 traj.full.md 里以 \`## 块k\` 为
-            标题展开。只有核对某步细节、骨架不够用时，才用 Read/Grep 查
-            traj.full.md 的对应块（先 \`grep -n "^## 块k"\` 定位行号再 Read
-            该段），不要一开始就整篇读完整版。
+禁止读取或猜测 checker、truth、Oracle 输出、审计标签、其他条目的结果。
+你的职责是判断轨迹里的答案和过程是否有可直接证实的问题。证据不足不等于错误；
+不要因为轨迹简短、未展示全部中间步骤或看不出技能使用痕迹就判 fail。
 
-你只能读这三样东西。**你没有标准答案，也不要去别处找。** 你的核心
-任务是评**产出这条轨迹的那版技能好不好**：轨迹做对了 = 技能在这道
-题上是好的，判 pass；轨迹有错 = 技能没解决这道题的问题，判 fail。
-判断依据只有轨迹文本本身。你的判决直接反馈给技能库的改进，判错方向
-会把技能带偏。
+按固定流程执行：
+1. 读取 critics/，挑出适用 critic，把文件名写入 applicable_critics；没有则给空数组。
+2. 执行适用 critic 的规则。只有轨迹中的可观察证据明确满足触发条件时才命中；
+   执行不了、证据缺失或结论不明确都不命中。命中 [hard] 时
+   hard_rule_hit=true；命中 [soft] 时只写入 rules_hit。
+3. 没有命中 hard 时，按评分细则逐项打 0/1/2 分。
+   normalized_score = 总分 / (2 * 项数)。低于 ${THRESHOLD} 时
+   critic_verdict=fail，否则为 pass。没有适用 critic 时
+   critic_verdict=not_applicable、rubric_scores={}、normalized_score=null。
+4. 独立核查：只检查可由轨迹直接证实的重算不符、引用与原始证据矛盾、
+   单位/口径冲突或答非所问。给 independent_verdict，并给
+   evidence_coverage（0 到 1），表示实际覆盖关键结论的比例。
+5. 保守聚合：
+   - hard 命中 -> fail；
+   - critic 与独立核查都 fail -> fail；
+   - 仅独立核查 fail 时，必须有可定位直接错误且 evidence_coverage>=0.8 才 fail；
+   - 仅 critic fail 时 -> pass，disagreement=true，交给审计；
+   - 无适用 critic 时按独立核查的直接证据门槛决定。
 
-按下面的固定流程做，不要自由发挥：
-
-1. 读 critics/ 下所有文件。挑出与本条轨迹相关的 critic：看它的 tags 和
-   description 与题目类型、激活技能是否对得上。
-2. 逐条执行这些 critic 里的 R 判据（形如
-   \`- R-<名>-<三位数> [hard|soft] <判据内容> 依据:…\`）。
-   判据的形式不一：可能是一个核对条件（检查它在轨迹上是否成立）、
-   一个测试用例（把轨迹的答案代入，纸面推演结果是否符合）、一段验证
-   步骤（照着重算一遍）。不管哪种形式，都**老老实实执行**，只有执行
-   结果明确表明"违规成立"才算命中；执行不了或结果不明确的不算命中，
-   不要脑补。
-   - 命中任何一条 [hard] 判据 → verdict 直接为 fail，hard_rule_hit 置 true。
-   - 命中 [soft] 判据 → 记进 rules_hit，继续往下走。
-3. 没有命中 [hard] 规则时，按相关 critic 的评分细则逐项打分，每项
-   0/1/2 分（0=完全没做到，1=部分做到，2=做到）。
-   标准化分数 = 总分 ÷ (2 × 项数)。低于 ${THRESHOLD} 判 fail，否则判 pass。
-4. 独立核查（**无论有没有相关 critic 都必须做**）：不依赖任何 critic，
-   把轨迹自己过一遍——
-   - 过程里的每一步计算照着重算一遍，核对结果；
-   - 叙述里引用的数据与轨迹中的原始证据（工具调用结果、表格/数据
-     原文）逐一对照，看有没有取错数、张冠李戴；
-   - 检查推理链条是否自洽：步骤间衔接、单位与口径是否一致、最终
-     答案是否真的由过程推出、是否答了题目问的东西；
-   - 「激活技能」节列出了技能时，核对「过程」是否真的按技能的方法
-     执行了（声明用了某技能但过程里毫无痕迹的，按未验证步骤对待）。
-   只有发现**明确成立**的错误（重算对不上、引用与证据矛盾、答非
-   所问）才算命中；执行不了或拿不准的不算，不要脑补。命中 →
-   verdict 为 fail，并在 reason 里指明是哪一步、错在哪。
-
-只输出下面这个 JSON，不要有任何别的文字：
-
-\`\`\`json
+只输出一个 JSON 对象，不要输出代码围栏或其他文字：
 {
   "verdict": "pass 或 fail",
+  "critic_verdict": "pass 或 fail 或 not_applicable",
+  "independent_verdict": "pass 或 fail",
+  "independent_direct_error": false,
   "hard_rule_hit": false,
-  "rules_hit": ["命中的 R 编号"],
-  "rubric_scores": {"细则项名": 0},
-  "normalized_score": 0.0,
-  "reason": "一到两句话：判成这样的直接依据"
+  "applicable_critics": [],
+  "rules_hit": [],
+  "rubric_scores": {},
+  "normalized_score": null,
+  "evidence_coverage": 0.0,
+  "disagreement": false,
+  "reason": "一到两句话，指出直接证据；分歧时分别说明两条路径"
 }
-\`\`\`
-
-最终 verdict：critic 判据/评分（第 2、3 步）与独立核查（第 4 步）
-任一判 fail 即 fail。找不到相关 critic 时，rubric_scores 给空对象，
-verdict 由第 4 步独立核查决定：核查通过 → normalized_score 给 1.0、
-判 pass；核查发现明确错误 → normalized_score 给 0.0、判 fail。
-reason 里写明"无适用 critic，独立核查：…"。
+字段必须一致。independent_direct_error 只有在 reason 能定位具体矛盾或重算错误时
+才能为 true。不要把“未展示”“没写全”“无法核对”改写成已经成立的错误。
 EOF
 }
 
+# VERISKILL_CALIBRATION_V5_163DCD8
 # ------------------------------------------------------- 判一条（子进程）
 # 不用 RETURN trap：bash 里函数内设的 RETURN trap 会一直留到之后的调用栈，
 # 等外层函数返回时再触发一次，那时局部变量早没了。显式清理最省事。
@@ -115,7 +93,6 @@ verify_one() {
 
 _verify_one_inner() {
   local id="$1" outfile="$2" work="$3"
-
   if [ ! -f "$TRAJ_DIR/$id.md" ]; then
     echo "[$id] 轨迹文件不存在：$TRAJ_DIR/$id.md" >&2
     return 1
@@ -123,30 +100,46 @@ _verify_one_inner() {
 
   cp -R "$CRITICS" "$work/critics"
   cp "$TRAJ_DIR/$id.md" "$work/traj.md"
-  # 完整版（按需查看）：若存在则一并放进工作区。D 默认读压缩版 traj.md，
-  # 骨架不够用时再 Read traj.full.md 的对应块。默认在 $TRAJ_DIR.full。
   local full_dir="${VERISKILL_TRAJ_FULL:-$TRAJ_DIR.full}"
   [ -f "$full_dir/$id.md" ] && cp "$full_dir/$id.md" "$work/traj.full.md"
-  write_prompt "$work/prompt.txt"
 
+  local check_traj="$work/traj.md"
+  [ -f "$work/traj.full.md" ] && check_traj="$work/traj.full.md"
+  if ! python3 "$HERE/lib/trajectory_checks.py" check "$check_traj" \
+         > "$work/static_checks.json" 2>"$work/static_err.txt"; then
+    echo "[$id] 确定性轨迹检查失败：$(cat "$work/static_err.txt")" >&2
+    return 1
+  fi
+  if python3 -c 'import json,sys;sys.exit(0 if json.load(open(sys.argv[1])).get("hard_errors") else 1)' \
+       "$work/static_checks.json"; then
+    python3 "$HERE/lib/trajectory_checks.py" verdict-from-checks \
+      --item "$id" --checks "$work/static_checks.json" > "$outfile"
+    return 0
+  fi
+
+  write_prompt "$work/prompt.txt"
   local raw="$work/raw.txt"
   if ! backend_run "$work" "$work/prompt.txt" readonly > "$raw" 2>"$work/err.txt"; then
     echo "[$id] 后端调用失败：$(tail -n 3 "$work/err.txt" | tr '\n' ' ')" >&2
     return 1
   fi
 
+  local model_out="$work/model_verdict.json"
   if ! python3 "$HERE/lib/jsonx.py" verdict --item "$id" --threshold "$THRESHOLD" \
-         < "$raw" > "$outfile" 2>"$work/parse_err.txt"; then
+         < "$raw" > "$model_out" 2>"$work/parse_err.txt"; then
     echo "[$id] 解析判决失败：$(cat "$work/parse_err.txt")" >&2
     return 1
   fi
-
-  # 事后检查：判决理由不该提到真值来源，提到了说明隔离可能被绕过。
-  # 只查 reason 字段，不能整行 grep —— 免得误伤字段名之类的正常内容。
+  if ! python3 "$HERE/lib/trajectory_checks.py" merge-verdict \
+         --checks "$work/static_checks.json" --verdict "$model_out" > "$outfile"; then
+    echo "[$id] 合并确定性检查与模型判决失败" >&2
+    return 1
+  fi
   if python3 -c '
 import json,sys,re
-r = json.load(open(sys.argv[1]))["reason"]
-sys.exit(0 if re.search(r"oracle|truth|标准答案|参考答案", r, re.I) else 1)' "$outfile" 2>/dev/null; then
+r = json.load(open(sys.argv[1])).get("reason", "")
+sys.exit(0 if re.search(r"oracle|truth|标准答案|参考答案|审计标签|真值", r, re.I) else 1)' \
+       "$outfile" 2>/dev/null; then
     echo "[$id] 警告：判决理由提到了真值来源，请人工看一眼" >&2
   fi
 }

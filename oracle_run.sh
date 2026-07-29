@@ -23,6 +23,7 @@
 #      3  轨迹里抽不出「题目」节，没法重跑
 #      4  校验脚本自身异常，或参数不对
 #      5  模型调用失败、输出解析不了、或模型自报执行环境故障
+#      6  没有 checker/truth，无法得到可靠真值（不应重试）
 #
 # 重跑结果的判分真值，按序取第一个能用的：
 #   1. pool/checkers/<id>.sh   —— 专用校验脚本，零模型调用。
@@ -323,10 +324,15 @@ print(json.dumps(o, ensure_ascii=False))' "$tj" "$result"
     exit 0
   fi
 
-  # ---- 没有 checker/truth：只能看执行本身，成功得出结果、没报错 = pass ----
-  emit "$id" true "无 checker/truth；重跑成功得出结果（没报错）。执行证据：$evidence" \
-       "$fp" redo "$result"
-  exit 0
+  # ---- 没有 checker/truth：执行成功不等于答案正确，默认不产监督 ----
+  if [ "${VERISKILL_ALLOW_REDO_AS_TRUTH:-0}" = "1" ]; then
+    emit "$id" true "弱真值：无 checker/truth；重跑成功。执行证据：$evidence" \
+         "$fp" redo "$result"
+    exit 0
+  fi
+  echo "[$id] 无 checker/truth：重跑成功不能作为答案正确真值；该条未评分" >&2
+  exit 6
+  # VERISKILL_CALIBRATION_V5_163DCD8
 }
 
 main "$@"

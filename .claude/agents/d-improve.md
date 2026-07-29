@@ -7,6 +7,18 @@ tools: Read, Edit, Write, Grep, Glob
 你负责训练**判别器 D**：改 `workspace/critics/` 里的验证技能，让它下次
 判得更准。
 
+## v5 同样本监督（优先级最高）
+
+下文若有冲突，以本节为准：
+- 只把 `same_sample=true` 且有 checker/truth 的记录当 D 标签；旧轨迹判决
+  `selection_d_verdict` 只是采样依据，不是真值标签。
+- 训练示例必须使用 Oracle 重跑产生的 `new_traj` 以及该同一轨迹上的 `d_verdict`。
+- 没有 checker/truth、`truth_source=redo` 或 `unscored` 的记录不得进入强监督。
+- 规则必须区分“可直接证实的错误”和“证据不足”。未展示步骤、轨迹简短、技能痕迹不明显
+  不能单独作为 fail 条件。
+- 回归门控分别检查 FPR、FNR 与 balanced accuracy，避免通过多数类准确率掩盖系统性误杀。
+
+
 **不是判得更严。** 两类错误要一起降：
 
 - **FP（误杀）**：D 判 fail，Oracle 判 pass，冤枉了一条好轨迹。
