@@ -139,6 +139,77 @@ class PoolRegressionTests(unittest.TestCase):
         rows = self.run_queue(verdicts, {"scored"}, budget=2)
         self.assertEqual([r["item"] for r in rows], ["scored"])
 
+    def run_sample(self, meta, batch_path, round_no=1, batch=2, replay_k=3):
+        return subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "lib" / "pool.py"),
+                "sample",
+                "--meta", str(meta),
+                "--round", str(round_no),
+                "--batch", str(batch),
+                "--replay-k", str(replay_k),
+                "--out-batch", str(batch_path),
+            ],
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+
+    def make_meta(self, d, n_train=5, n_test=1):
+        items = [
+            {"id": f"q{i}", "split": "train", "used_count": 0, "g_version": 0}
+            for i in range(n_train)
+        ] + [
+            {"id": "qt", "split": "test", "used_count": 0, "g_version": 0}
+            for _ in range(n_test)
+        ]
+        meta = d / "meta.json"
+        meta.write_text(json.dumps({"items": items}), encoding="utf-8")
+        return meta
+
+    def used_counts(self, meta):
+        return {it["id"]: it["used_count"]
+                for it in json.loads(meta.read_text(encoding="utf-8"))["items"]}
+
+    def test_sample_is_idempotent_on_crash_replay(self):
+        with tempfile.TemporaryDirectory() as td:
+            d = Path(td)
+            meta = self.make_meta(d)
+            batch_path = d / "batch.list"
+
+            self.run_sample(meta, batch_path)
+            first_batch = batch_path.read_text(encoding="utf-8")
+            used_after_first = self.used_counts(meta)
+
+            # Crash-replay: same round, batch.list still present -> must not
+            # re-increment used_count and must re-emit the same batch.
+            proc = self.run_sample(meta, batch_path)
+            self.assertTrue(json.loads(proc.stdout)["resumed"])
+            self.assertEqual(batch_path.read_text(encoding="utf-8"), first_batch)
+            self.assertEqual(self.used_counts(meta), used_after_first)
+
+            # Exactly the two picked train items counted once; test split untouched.
+            counted = {k for k, v in self.used_counts(meta).items() if v == 1}
+            self.assertEqual(len(counted), 2)
+            self.assertNotIn("qt", counted)
+
+    def test_sample_reruns_fresh_only_after_checkpoint_deleted(self):
+        with tempfile.TemporaryDirectory() as td:
+            d = Path(td)
+            meta = self.make_meta(d)
+            batch_path = d / "batch.list"
+
+            self.run_sample(meta, batch_path)
+            self.assertEqual(sum(self.used_counts(meta).values()), 2)
+
+            # Deleting the checkpoint is the lever to force a fresh sample,
+            # which then (deterministically) re-counts the same two items.
+            batch_path.unlink()
+            proc = self.run_sample(meta, batch_path)
+            self.assertNotIn("resumed", json.loads(proc.stdout))
+            self.assertEqual(sum(self.used_counts(meta).values()), 4)
+
 
 if __name__ == "__main__":
     unittest.main()

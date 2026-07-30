@@ -96,6 +96,17 @@ def cmd_register(a):
 # ---------------------------------------------------------------- sample
 
 def cmd_sample(a):
+    out_path = Path(a.out_batch)
+    # 幂等：本轮已写过 batch（文件存在且非空）就原样回吐，不再 +1 used_count。
+    # 同轮重抽本就得到同一批（seed=轮号），重跑的唯一副作用是把 used_count
+    # 重复 +1，提前烧掉 replay_K 预算、误触"池子耗尽"。编排者崩溃续跑据此
+    # 安全重入，不依赖编排者自觉检查文件是否存在；想强制重抽就先删掉该文件。
+    if out_path.exists():
+        existing_ids = [ln for ln in out_path.read_text(encoding="utf-8").splitlines() if ln.strip()]
+        if existing_ids:
+            print(json.dumps({"batch": len(existing_ids), "resumed": True}))
+            return
+
     meta = load_meta(a.meta)
     eligible = [it for it in meta["items"]
                 if it["split"] == "train" and it["used_count"] < a.replay_k]
@@ -108,15 +119,19 @@ def cmd_sample(a):
     picked = (random.sample(eligible, a.batch)
               if len(eligible) > a.batch else list(eligible))
 
-    ids = {it["id"] for it in picked}
+    batch_sorted = sorted(it["id"] for it in picked)
+    # 先落 out_batch（本轮取批的 checkpoint）再回写 used_count：out_batch 存在
+    # 即视为本轮已取样。崩溃若落在两者之间，只可能少计一次（安全方向），
+    # 不会重复计数烧预算。
+    with open(a.out_batch, "w") as f:
+        f.write("".join(i + "\n" for i in batch_sorted))
+
+    ids = set(batch_sorted)
     for it in meta["items"]:
         if it["id"] in ids:
             it["used_count"] += 1
     save_meta(a.meta, meta)
 
-    batch_sorted = sorted(it["id"] for it in picked)
-    with open(a.out_batch, "w") as f:
-        f.write("".join(i + "\n" for i in batch_sorted))
     print(json.dumps({"batch": len(batch_sorted)}))
 
 
