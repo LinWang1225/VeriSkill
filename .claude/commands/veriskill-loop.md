@@ -1,650 +1,583 @@
 ---
-description: "VeriSkill 共演化：取批 → 判决 → 审计(重跑+放回) → 改进 D → 改进 G → 门控 → 记账，重复 N 轮"
-argument-hint: "rounds=10 batch=40 audit_frac=0.1 rubric_threshold=0.6 replay_K=3 train_ratio=0.8 split_seed=0 final_test_max=50 edit_budget=6 eval_every=4 eval_baseline=false"
+description: "VeriSkill v6：current_batch → G 候选技能 → D 静态审查/打回 → Oracle 同题对比 → D 学规则 → 候选提交"
+argument-hint: "rounds=12 batch=24 oracle_frac=0.25 max_gd_revisions=2 revise_audit=1 min_oracle_scored=2 min_improvements=1 max_regressions=0 replay_K=3 train_ratio=0.8 split_seed=0 edit_budget_g=6 edit_budget_d=4 eval_every=3 final_test_max=20 eval_baseline=true"
 allowed-tools: Task, Read, Write, Edit, Bash, Glob, Grep
 ---
 
-你是**流程编排者**：管流程，不管内容。你**不直接修改**
-`workspace/critics/` 和 `workspace/actor_skills/` 里的任何内容，也不
-判断子 Agent 的结论好坏，只检查其编辑是否合法。
+你是 VeriSkill v6 的流程编排者。你只负责数据隔离、候选版本、调用顺序、门控、回滚和记账；技能内容由 G/D 子 Agent 决定。
 
-## 核心逻辑
-## v5 同样本校准规则（优先级最高）
+## 唯一正确的算法流程
 
-本节覆盖下文所有冲突描述：
-
-1. **旧轨迹上的 D 判决只用于抽样，不得直接与当前 G 的 Oracle 重跑结果组成 TP/FP/FN/TN。**
-   保存为 `selection_d_verdict`。
-2. Oracle 必须用当前 G 重跑并写出 `new_traj`；随后把该 `new_traj` 放进隔离目录，
-   再调用一次 `verify.sh` 得到 `d_verdict`。只有这两个针对同一新轨迹的结果才能
-   形成审计标签，并写 `same_sample=true`。
-3. 没有 checker/truth 的条目默认是 `unscored`。`oracle_run.sh` 退出码 6 不重试、
-   不写 TP/FP/FN/TN，也不能进入 G/D 监督。只有显式设置
-   `VERISKILL_ALLOW_REDO_AS_TRUTH=1` 才允许旧式弱真值，且必须单独标注。
-4. 审计队列采用 `fail-low / fail-high / pass-low / pass-random` 四段分层，调用时传入：
-   `--checker-dir "$HERE/pool/checkers" --truth-dir "$HERE/pool/truth"`。
-5. 审计记录至少包含：`item`、`segment`、`selection_d_verdict`、`d_verdict`、
-   `oracle_pass`、`kind`、`same_sample`、`truth_source`、`new_traj`、`skill_hash`。
-6. G 的强监督输入是**当前 G 重跑且 Oracle 判错**的新轨迹，不论原选择 verdict 是 pass
-   还是 fail；不得继续用旧轨迹 hash 训练。D 只学习 `same_sample=true` 且有可靠真值的样本。
-7. D 门控和终止条件分别监控 FPR、FNR、balanced accuracy；阈值校准优先最大化
-   balanced accuracy，而不是原始 accuracy。最终报告必须把训练审计诊断与 held-out
-   同样本评估分开。
-
-
-评估对象自始至终是**技能**，不是单条答案。
-
-- **G**（生成器）= 解题技能库 `workspace/actor_skills/`。它只产技能，
-  不产轨迹。
-- **D**（判别器/verify）= 验证技能库 `workspace/critics/`。**D 的核心
-  任务是判断技能改得好不好**：池子里每条轨迹是某一版技能做题的执行
-  样本（frontmatter 的 `skill_hash` 标版本），D 读轨迹文本给出
-  pass/fail，就是在评那一版技能在这道题上的表现。D 的 fail 直接反馈
-  给 g-improve 改技能。便宜，但可能判错。
-- **Oracle** = `oracle_run.sh`。抽查 D 判得准不准：带**当前技能**把
-  任务真实重跑一遍、给新结果判真值（oracle_pass），对照 D 的判决记
-  FP/FN 喂 d-improve 改 critics。重跑同时产出一条带当前 `skill_hash`
-  的新轨迹，审计完成后替换池子里的旧轨迹——池子随轮次逐步变成新技能
-  的执行样本。新轨迹只有 Oracle 会生成。
-
-内环每轮转：D 判轨迹 → fail 喂 G 改技能。
-外环抽查：Oracle 重跑取真值 → FP/FN 喂 D 改 critics → 新轨迹放回。
-
-花钱主项是审计的重跑（每条一次做题调用）；配了 checker 的条目判分
-零模型调用。
-
-冷启动：两库都从空目录起步。critics 为空时 D 靠判决提示词里的独立
-核查照样能给出 fail，G 第 1 轮就有素材；审计暴露的 FP/FN 让 D 第 1
-轮起建 critic。初始轨迹是外部导入的（g_version: 0），随审计逐步被
-替换。
+评估对象是 G 生成的**候选 skill library**，不是旧轨迹答案。
 
 ```text
-Setup:
-    查文件和后端 → 登记轨迹池（哈希划分 train/test）
-    → 初始化 stats/ 和 ledger.json → 存初始快照
-
-for r in 1..rounds:
-    1 取批    从训练集确定性地抽 batch 条        （pool.py sample）
-    2 判决    D 给整批判 pass/fail               （verify.sh，只读文本）
-    3 审计    挑 B 条：Oracle 重跑取真值，记 TP/FP/FN/TN，新轨迹放回
-    4 训 D    d-improve 按审计修 critics：先修误杀，漏放攒够 2 例才立判据
-    5 训 G    g-improve 按可信失败修 actor_skills：聚类 ≥2 例才动手
-    6 门控    合法性检查 + 冒烟测试 → 接受或整体回滚
-    7 记账    report.md 追加一行，聊天报一行
-
-停止: 跑满 rounds / 最近 20 次审计全对 / 池子耗尽 / 故障率超限 / 用户叫停
-收尾: test 条目判决 + 抽样重跑 → 终章报告
+current_batch 训练轨迹
+        ↓
+G 读取整批轨迹，提炼 candidate skills
+        ↓
+D 同时读取轨迹、baseline skills、candidate skills 和 manifest
+        ├─ REVISE  → 把具体反馈退回 G，最多修订 max_gd_revisions 次
+        ├─ PASS    → 进入 Oracle
+        └─ ABSTAIN → 进入 Oracle
+                         ↓
+Oracle 在同一批条目上分别运行 baseline 与同一 candidate fingerprint
+                         ↓
+baseline-candidate 配对真值
+        ├─ 给 D：更新候选审查规则库
+        ├─ 给 G：保存 regression / unresolved failure，下一轮使用
+        └─ 门控：只有真实净提升且无超限 regression 才提交 candidate
 ```
 
-## 关键约定
+另外，每轮最多抽查 `revise_audit` 个 D=REVISE 候选条目，用于发现 D 过度打回。REVISE 候选无论抽查结果如何都不在该轮直接提交；抽查只校准 D。
 
-**1. fail 是阳性。** 真值 = Oracle 重跑成绩（同时是 G 的实战成绩）。
-**FP（误杀）**= D 判 fail 但真值 pass；**FN（漏放）**= D 判 pass 但
-真值 fail；**TP** = 双 fail；**TN** = 双 pass。FP 比 FN 更有害：被
-误杀的轨迹会被当成失败案例喂给 G，让它去修不存在的错误。
+## 核心不变量
 
-**2. 单轮审计数字是噪声。** fail_rate 和单轮 FP/FN 只记录、只展示，
-不参与任何自动判断；收敛只看累计账 `stats/audit_tally.json`（最近
-20 次审计的 kind 序列）。
-
-**3. R 判据形式自由、边界固定。** critics 里带 ID 的检查项：
-`- R-<critic名>-<三位数> [hard|soft] <判据内容> 依据:<证据>`。
-内容不限形式（核对条件、代入验算、重算步骤、反例模式都行）；唯一硬
-要求是**只靠读轨迹文本加纸面推演就能执行**（需要真实运行环境的验证
-归 Oracle）。`[hard]` 命中即 fail，`[soft]` 只扣分。历史沿用的
-rule/规则字样（`rules_hit`、`rule_fp_counts`、`add_rule`）与判据
-同义，JSON 字段名不改。
-
-## 固定路径
-
-| 对象 | 路径 |
-|---|---|
-| 生成器技能库 G | `workspace/actor_skills/` |
-| 判别器技能库 D | `workspace/critics/` |
-| 轨迹池（审计后滚动替换） | `pool/traj/<id>.md` |
-| 轨迹完整版（初始导入，D 按需查） | `pool/traj.full/<id>.md` |
-| 池子元数据 | `pool/meta.json` |
-| 审计产出的新轨迹（放回前落点） | `rounds/r<N>/new_traj/<id>.md` |
-| 被替换下来的旧轨迹存档 | `rounds/r<N>/replaced/<id>.md` |
-| TN 轨迹快照（门控冒烟用） | `stats/tn_traj/<id>.md` |
-| 规则误杀累计 | `stats/rule_fp_counts.json` |
-| 已审计组合 | `stats/audited.json` |
-| 未成簇的漏放暂存 | `stats/fn_pending.jsonl` |
-| 纸面不可判出栏清单 | `stats/fn_out_of_scope.jsonl` |
-| TN 累计清单 | `stats/tn_seen.list` |
-| 审计累计账 | `stats/audit_tally.json` |
-| 周期 test 评估时间序列 | `stats/test_eval.jsonl` |
-| 每轮输出 | `rounds/r<N>/` |
-| 每 checkpoint eval 明细 | `rounds/r<N>/test_eval/` |
-| 快照 | `history/` |
-| 全局状态 | `ledger.json` |
-| 汇总报告 | `report.md` |
-| 成功率演进图 | `stats/test_eval.svg`（`.png` 若装了 matplotlib） |
-
-外部脚本：`verify.sh <batch.list> <out.jsonl>` 文本判决（压缩版轨迹目录
-默认 `pool/traj`，`VERISKILL_TRAJ` 可临时指别处；完整版默认
-`$VERISKILL_TRAJ.full`，`VERISKILL_TRAJ_FULL` 可指别处）；
-`oracle_run.sh <轨迹路径> [--new-traj-out <路径>]` 重跑取真值并产新
-轨迹；`lib/pool.py` 登记、取批、排审计队列；
-`eval_test.sh` 周期/收尾用当前技能重跑 test 集记成功率并追加时间序列；
-`plot_test_eval.py` 读时间序列画成功率演进图。全部永不编辑（`plot_*.py`
-除外，是报表工具）。
+1. G 只编辑 `rounds/r<N>/candidate/iter<K>/`，绝不直接编辑 `workspace/actor_skills/`。
+2. D 的 `review_candidate` 模式只读；只有 `learn_from_oracle` 模式可编辑 `workspace/critics/`。
+3. Oracle 的 baseline 和 candidate 必须针对相同 item、相同 checker/truth，并记录同一 candidate fingerprint。
+4. `pool/traj/` 与 `pool/traj.full/` 是只读训练数据。Oracle 新轨迹单独保存，绝不替换原始池。
+5. 没有 `pool/checkers/<id>.sh` 或 `pool/truth/<id>.md` 的条目可以供 G/D 静态阅读，但不能进入 Oracle 门控真值。
+6. `truth_source=redo`、环境故障、缺少配对或指纹不一致的记录不进入候选接受判断，也不训练 D。
+7. test split 只用于 checkpoint/final evaluation，绝不进入 G、D 或 Oracle 反馈记忆。
+8. D PASS 只表示“值得进入 Oracle”，不表示候选应被提交。
+9. candidate 只有通过 baseline-candidate 真值门控后才能原子提交为正式 G。
+10. 旧版 `verify.sh` 可保留作轨迹诊断，但不得再作为主循环第一步，也不得把它的 pass/fail 直接喂 G。
 
 ## 参数
 
 ```text
-rounds=10           总轮数
-batch=40            每轮取多少条
-audit_frac=0.1      审计预算占 batch 的比例
-rubric_threshold=0.6  评分细则通过线（verify.sh 用）
-replay_K=3          同一条目最多被取用几次
-train_ratio=0.8     训练集比例
-split_seed=0        划分随机种子
-final_test_max=50   收尾最多重跑多少条测试条目（也是周期 eval 的抽样上限）
-edit_budget=6       每个子 Agent 每轮的编辑预算上限
-eval_every=4        每 N 轮用当前技能跑一次 test 集记成功率（0=关，收尾仍出图）
-eval_baseline=false Setup 末跑一次 r=0 基线点（多花 ≤final_test_max 次重跑）
+rounds=12              总轮数；续跑时从 ledger.round+1 到 rounds
+batch=24               current_batch 大小
+oracle_frac=0.25        PASS/ABSTAIN 候选进入 Oracle 的配对样本比例
+max_gd_revisions=2      D=REVISE 后允许 G 修改的最大次数，不含首稿
+revise_audit=1          每轮抽查多少个 REVISE 条目以校准 D
+min_oracle_scored=2     候选门控所需可靠 baseline-candidate 配对下限
+min_improvements=1      接受候选至少需要多少个 baseline fail→candidate pass
+max_regressions=0       接受候选允许的 baseline pass→candidate fail 上限
+replay_K=3              同一训练条目最多进入多少个 current_batch
+train_ratio=0.8         train/test 划分比例
+split_seed=0            划分种子
+edit_budget_g=6         G 单次候选生成/修订编辑预算
+edit_budget_d=4         D 每轮 learn_from_oracle 编辑预算
+final_test_max=20       checkpoint/final 最多评估 test 条目数
+eval_every=3            每 N 轮评估正式 G；0 表示只做 final
+eval_baseline=true      是否在 r0 评估正式 G
 ```
 
-本次调用实际传入的参数：
+兼容旧 launcher：
+
+- 只传 `audit_frac` 时，把它当作 `oracle_frac`；
+- 只传 `edit_budget` 时，同时作为 `edit_budget_g` 和 `edit_budget_d`；
+- `rubric_threshold` 参数在 v6 主流程中忽略并记录说明。
+
+本次参数：
 
 ```text
 $ARGUMENTS
 ```
 
-按 `key=value` 解析，没出现的键用默认值，解析不了的忽略并在开场说明。
-`rounds` 是**总轮数**：`ledger.round > 0`（续跑）时从 `ledger.round+1`
-跑到 `rounds`。
+## 固定目录
 
-**环境接线**（Setup 时做一次）：
+| 对象 | 路径 |
+|---|---|
+| 正式 G | `workspace/actor_skills/` |
+| D 规则库 | `workspace/critics/` |
+| 原始训练轨迹 | `pool/traj/`、`pool/traj.full/` |
+| 数据划分 | `pool/meta.json` |
+| 候选流程工具 | `lib/candidate_flow.py` |
+| 本轮 batch | `rounds/r<N>/current_batch.list` |
+| 本轮轨迹只读副本 | `rounds/r<N>/current_batch/` |
+| baseline 快照 | `rounds/r<N>/baseline_skills/` |
+| 候选版本 | `rounds/r<N>/candidate/iter<K>/` |
+| G manifest | `rounds/r<N>/manifests/iter<K>.json` |
+| D review | `rounds/r<N>/reviews/iter<K>.json` |
+| Oracle 队列 | `rounds/r<N>/oracle_queue.jsonl` |
+| baseline 新轨迹/结果 | `rounds/r<N>/oracle/baseline/`、`baseline.jsonl` |
+| candidate 新轨迹/结果 | `rounds/r<N>/oracle/candidate/`、`candidate.jsonl` |
+| 配对比较与门控 | `rounds/r<N>/comparison.jsonl`、`decision.json` |
+| Oracle→D | `rounds/r<N>/feedback/oracle_to_d.jsonl` |
+| Oracle→G | `rounds/r<N>/feedback/oracle_to_g.jsonl` |
+| 跨轮 G 经验 | `experience/oracle_to_g/` |
+| D 校准历史 | `experience/oracle_to_d/` |
+| 候选指标 | `stats/candidate_eval.jsonl` |
+| 正式 G test 时间序列 | `stats/test_eval.jsonl` |
+| 状态 | `ledger.json` |
 
-- 脚本假定位于项目根目录（与 `workspace/`、`pool/` 同级）；
-- `export VERISKILL_RUBRIC_THRESHOLD=<rubric_threshold>`（不 export
-  则 verify.sh 用自己的默认值）；
-- `VERISKILL_BACKEND` 必须已设置（claude / codex / custom / stub）；
-- 可选：`VERISKILL_JOBS`（并发，默认 4）、`VERISKILL_CHECK_SKILLS`、
-  `VERISKILL_MODEL`、`VERISKILL_TIMEOUT`、`VERISKILL_TASK_DATA`、
-  `VERISKILL_SOLVE_NOTE`。
+## Setup
 
-**长命令放后台跑**：整批 `verify.sh` 和重跑的 `oracle_run.sh` 可能
-超过 Bash 工具 10 分钟上限，用 `run_in_background`，通知到了再收结果。
+### 1. 预检
 
-**确定性**：登记、取批、审计队列一律用 `lib/pool.py` 子命令，不要
-自己写等价的抽样代码。
+必须存在：
 
-## 数据隔离
+- `pool/traj/`
+- `pool/meta.json`
+- `oracle_run.sh`
+- `eval_test.sh`
+- `lib/pool.py`
+- `lib/candidate_flow.py`
+- `tools/start_v6_experiment.py`
+- `.claude/agents/g-improve.md`
+- `.claude/agents/d-improve.md`
 
-- 只有 `split=train` 的条目能进 batch、作为改进 D/G 的依据。
-- `split=test` 的条目在收尾前不判决、不审计、不作为改进依据。唯二
-  例外是 Setup 的登记和格式体检（只做结构解析）。
-- Oracle 重跑的做题工作区只有题目、技能库和任务数据——看不到旧轨迹
-  的过程和答案，也看不到 gold/checker/truth。
-- `verify.sh` 的工作区只有压缩版轨迹、完整版轨迹（按需查）和 critics，看不到任何 Oracle 真值。
-- Oracle 重跑加载当前解题技能库和可选校验工具技能，**绝不加载
-  critics**——否则 FP/FN 全部失真。指纹里出现 critics 内容就是配错。
-- `d-improve` 能看 `audit.jsonl` 全部行（真值是它的监督信号）。
-- `g-improve` 只能看 `audit_g.jsonl`（kind 为 TN/FP 的行）。**不给它
-  FN 的真值**：那会把"D 没抓到的错长什么样"直接教给 G。
+缺失即停止，不自造替代实现。
 
-## 子 Agent 派发
-
-`d-improve` 和 `g-improve` 是 `.claude/agents/` 下的 subagent，用
-Task 工具按名字调用。派发时把输入清单逐项写进 prompt，路径一律相对
-项目根目录；子 Agent 只准读清单里的路径。
-
-回复应当只有一个 JSON 块，原样存进 `rounds/r<N>/<名字>-result.json`。
-不是合法 JSON 时，该侧按本轮无编辑处理（文件被改动则回滚到 before
-快照），原因记进报告。
-
----
-
-## Setup（round 1 之前做一次）
-
-1. 确认存在（缺任何一个就停下报告，不要自建替代实现）：
-   `pool/traj/`、`pool/meta.json`、`verify.sh`、`oracle_run.sh`。
-   `workspace/actor_skills/`、`workspace/critics/` 不存在就建空目录
-   （空库冷启动是常态，放了初始技能也接受）。
-   预检，任一不过也停下报告：
-   - **后端**：`bash verify.sh --selftest` 通过（一次最小调用）；
-   - **成本预估**：花钱主项是审计重跑（每轮 B 次做题调用）；判分
-     checker 条目零调用、truth 条目一次裁判。看 `pool/checkers/`、
-     `pool/truth/` 覆盖多少条目，把每轮预估调用数报告给用户再继续；
-   - **轨迹格式**（纯正则，不花钱）：
-
-     ```bash
-     python3 lib/extract.py --check pool/traj
-     ```
-
-     输出缺「题目」或「最终答案」节的条目清单。抽不出「题目」的条目
-     没法重跑审计——报告给用户，让他们补转换或接受审不了，再继续。
-2. 缺什么建什么：`rounds/`、`history/`、`stats/`、`report.md`；
-   `stats/rule_fp_counts.json` = `{}`；`stats/audited.json` = `[]`；
-   `stats/fn_pending.jsonl`、`stats/fn_out_of_scope.jsonl`、
-   `stats/tn_seen.list` 空文件；`stats/tn_traj/` 空目录；
-   `stats/audit_tally.json` = `{"recent":[]}`；
-   `stats/test_eval.jsonl` 空文件（周期 eval 时间序列）。
-3. `ledger.json` 不存在则初始化：
-
-```json
-{"round": 0, "g_version": 0, "oracle_attempts": 0, "oracle_failures": 0}
-```
-
-| 字段 | 含义 | 写 | 读 |
-|---|---|---|---|
-| `round` | 已完成的轮号 | 第 6 步 | 续跑时定起点 |
-| `g_version` | G 库版本计数 | 第 6 步（G 编辑存活时 +1） | 报表、快照命名、放回时写 meta |
-| `oracle_attempts` / `oracle_failures` | Oracle 累计尝试/故障数 | 第 3 步 | 停止条件 |
-
-这张表就是账本的全部，不要加没人读的字段。审计结果相关状态全记在
-`stats/audit_tally.json`，账本只管流程状态。
-
-4. 存初始快照 `history/r0_D_initial/`、`history/r0_G_initial/`。
-
-5. **登记轨迹池**（登记一次；split 由只依赖 ID 的哈希决定，可复现）：
+若 `ledger.json` 已存在但 `flow_version != 6`，立即停止。不要在旧轮次上续训，提示先执行：
 
 ```bash
-python3 lib/pool.py register --meta pool/meta.json --traj-dir pool/traj \
-  --seed $split_seed --train-ratio $train_ratio
+python3 tools/start_v6_experiment.py --label before_v6
+python3 tools/start_v6_experiment.py --label before_v6 --apply \
+  --recompute-split --split-seed "$split_seed" --train-ratio "$train_ratio"
 ```
 
-   核对容量：训练条目数 × `replay_K` < `rounds` × `batch` 时池子会
-   中途耗尽，先报告预计能跑几轮再开始。
+第一条只显示归档与重置计划，第二条才执行。默认会归档旧 rounds/stats/history/ledger、清空旧 G/D，并在存在 `pool/traj_orig/` 时恢复不可变原始轨迹。需要用旧 G 做 warm start 时显式加 `--preserve-actor`；不建议保留旧 critics。
 
-`pool/meta.json` 结构（`g_version` 只是记录，不参与选取）：
-
-```json
-{"items": [{"id": "<id>", "g_version": 0, "used_count": 0, "split": "train|test"}]}
-```
-
-6. **基线评测（仅 `eval_baseline=true`）**：在快照后、循环前用初始
-   技能跑一次 test 集作 r=0 基线点：
-
-   ```bash
-   bash eval_test.sh --meta pool/meta.json --out-dir rounds/r0_test_eval \
-     --max $final_test_max --seed 0 --round 0 --g-version 0 \
-     --series stats/test_eval.jsonl
-   ```
-
-   成本同一次 checkpoint（≤`final_test_max` 次重跑调用）。不想花这笔钱就
-   留 `eval_baseline=false`（默认），图从第一个 `eval_every` 倍数轮起画。
-   **即使开了基线，也只写 `stats/test_eval.jsonl`，不喂 G/D、不动 test 池。**
-
----
-
-## 每轮流程（r = 1..rounds）
-
-### 1. 取批
-
-建目录：`rounds/r<r>/`、`rounds/r<r>/new_traj/`、
-`rounds/r<r>/replaced/`、`rounds/r<r>/g_fail_items/`、
-`history/r<r>_D_before/`、`history/r<r>_G_before/`；两个技能库现状
-复制进 before 快照。
+创建缺失目录：
 
 ```bash
-python3 lib/pool.py sample --meta pool/meta.json --round $r --batch $batch \
-  --replay-k $replay_K --out-batch rounds/r$r/batch.list
+mkdir -p workspace/actor_skills workspace/critics rounds history stats \
+  experience/oracle_to_g experience/oracle_to_d
+: > /dev/null
+[ -f stats/candidate_eval.jsonl ] || : > stats/candidate_eval.jsonl
+[ -f stats/test_eval.jsonl ] || : > stats/test_eval.jsonl
 ```
 
-规则：`split=train` 且 `used_count < replay_K` 里随机抽 `batch` 条，
-不足全取，选中的 `used_count+1` 原子写回。退出码 3 = 池子耗尽：停止
-并报告。
-
-**抽样规矩**（编排者自己做的随机操作也遵守）：先按 ID 排序，再
-`random.seed(轮号)`，再抽；按 confidence 排序时并列按 ID 排。
-
-### 2. 文本判决
-
-D 判池子里的轨迹——即评产出各轨迹的那版技能：
+检查：
 
 ```bash
-bash verify.sh rounds/r<r>/batch.list rounds/r<r>/verdicts.jsonl
+python3 -m py_compile lib/candidate_flow.py
+bash -n oracle_run.sh
+bash oracle_run.sh --fingerprint
+python3 lib/extract.py --check pool/traj
 ```
 
-每行至少包含：
+### 2. 登记 train/test
+
+```bash
+python3 lib/pool.py register \
+  --meta pool/meta.json \
+  --traj-dir pool/traj \
+  --seed $split_seed \
+  --train-ratio $train_ratio
+```
+
+只允许 `split=train` 进入 current_batch。容量不足时先报告可运行轮数。
+
+### 3. 初始化 ledger
+
+不存在时写：
 
 ```json
-{"item":"<id>", "verdict":"pass|fail", "rules_hit":[],
- "rubric_scores":{}, "confidence":0.0, "reason":"..."}
+{
+  "flow_version": 6,
+  "round": 0,
+  "g_version": 0,
+  "d_version": 0,
+  "candidate_attempts": 0,
+  "accepted_candidates": 0,
+  "rejected_candidates": 0,
+  "oracle_attempts": 0,
+  "oracle_failures": 0
+}
 ```
 
-verify.sh 内部判决逻辑写死在它的提示词里，不用管也不许改。
+这些字段必须实际维护：
 
-**轨迹双版本**：`pool/traj/` 是压缩骨架版（过程每块标 `[块k]`），
-`pool/traj.full/` 是完整版（每块 `## 块k`，与压缩版块号一一对应）。
-verify.sh 默认把压缩版给 D，D 需要核对某步细节时自己用 Read/Grep 查
-完整版的对应块。一个条目两版对应同一道题，取批仍按 ID 抽一条，不算
-两道。
-`confidence` 的含义固定：标准化评分距 `rubric_threshold` 的远近
-（越远越接近 1）；命中 `[hard]` 判据的固定 0.9。审计排序依赖它。
+- `flow_version`：固定为 6，用于阻止旧流程状态续训；
+- `round`：完成到第几轮；
+- `g_version`：正式 G 成功提交次数；
+- `d_version`：D 规则编辑通过门控次数；
+- `candidate_attempts`：产生候选首稿次数；
+- `accepted_candidates` / `rejected_candidates`；
+- `oracle_attempts` / `oracle_failures`：baseline 和 candidate 调用分别计数。
 
-核对：行数、ID 与 batch.list 一一对应、JSON 合法。缺失的先重试一次
-（缺失条目写 `rounds/r<r>/retry.list` 再跑一遍，结果并入）；仍缺的
-补记：
+### 4. r0 快照与可选基线
 
-```json
-{"item":"<id>", "verdict":"fail", "rules_hit":[], "rubric_scores":{},
- "confidence":0, "reason":"verify 输出缺失或非法"}
+```bash
+cp -a workspace/actor_skills history/r0_G_initial
+cp -a workspace/critics history/r0_D_initial
 ```
 
-算 **fail_rate** = 本轮判 fail 的比例。
+`eval_baseline=true` 时：
 
-### 3. Oracle 审计（重跑 + 放回）
+```bash
+bash eval_test.sh --meta pool/meta.json --out-dir rounds/r0_test_eval \
+  --max $final_test_max --seed 0 --round 0 --g-version 0 \
+  --series stats/test_eval.jsonl
+```
 
-审计一条 = 带**当前技能**把该任务真实重跑一遍（一次做题调用，全程
-看不到旧轨迹的过程和答案），给新结果判真值得 **oracle_pass**；同时
-产出带当前 `skill_hash` 的新轨迹，审计成功后替换池子里的旧轨迹。
-oracle_pass 对照 D 判决记 FP/FN，也是 G 的实战成绩。
+该评估只读 test，不产生任何 G/D 反馈。
 
-判分真值按序取第一个能用的：① `pool/checkers/<id>.sh`（零模型
-调用）；② `pool/truth/<id>.md`（一次裁判调用）；③ 都没有 → 重跑
-成功得出结果且没报错即 pass。
+
+## 断点续跑与幂等
+
+watchdog 可能在一轮中途重启编排者。续跑时必须先检查现有产物，不能重复抽样、重复提交或重复累计指标：
+
+1. `$R/current_batch.list` 已存在时，不再调用 `pool.py sample`，直接使用原 batch。
+2. `$R/candidate_state.json`、baseline 和 candidate 已存在时，`candidate_flow.py prepare` 会返回 `resumed=true`；不得使用 `--force`，除非该轮已明确废弃并人工确认。
+3. 已存在且通过校验的 manifest/review 直接复用；只有文件缺失、JSON 非法或指纹不匹配时才重派对应 Agent。
+4. Oracle JSONL 按 item 去重。重启后只运行 baseline/candidate 中缺失的一侧，不重复调用已成功的一侧。
+5. `decision.json` 已存在且 baseline/candidate 内容指纹仍匹配时，不重复 compare。确需重跑 compare 时，`stats/candidate_eval.jsonl` 会按 round+candidate_version 覆盖，不重复追加。
+6. `candidate_flow.py commit` 是幂等的：正式 G 已等于已接受候选时返回 `already_committed=true`。ledger 的 g_version/accepted_candidates 只能在本轮首次提交后增加一次。
+7. 每个阶段完成后写空 marker：`sample.done`、`g_iter<K>.done`、`review_iter<K>.done`、`oracle.done`、`d_learn.done`、`commit.done`、`round.done`。marker 只能在对应输出校验通过后创建。
+8. ledger.round 只在 `round.done` 写好后推进。
+
+# 每轮流程
+
+设当前轮为 `r`，轮目录为 `R=rounds/r$r`。
+
+## 1. 抽取 current_batch
+
+```bash
+mkdir -p "$R/current_batch"
+python3 lib/pool.py sample \
+  --meta pool/meta.json \
+  --round "$r" \
+  --batch "$batch" \
+  --replay-k "$replay_K" \
+  --out-batch "$R/current_batch.list"
+```
+
+把轨迹复制成只读本轮输入，不移动、不覆盖原池：
+
+```bash
+while IFS= read -r id; do
+  [ -n "$id" ] || continue
+  cp "pool/traj/$id.md" "$R/current_batch/$id.md"
+  [ -f "pool/traj.full/$id.md" ] && \
+    cp "pool/traj.full/$id.md" "$R/current_batch/$id.full.md"
+done < "$R/current_batch.list"
+chmod -R a-w "$R/current_batch"
+```
+
+## 2. 准备 baseline 与候选 iter0
+
+```bash
+python3 lib/candidate_flow.py prepare \
+  --actor workspace/actor_skills \
+  --round-dir "$R"
+```
+
+读取 `candidate_state.json`，记录 `baseline_fingerprint`。从此到候选决策完成前，正式 G 不得变化。
+
+## 3. G 生成候选
+
+派发 `g-improve`，明确给出：
+
+- `current_batch.list=$R/current_batch.list`
+- `current_batch=$R/current_batch/`
+- `baseline_skills=$R/baseline_skills/`
+- `candidate_skills=$R/candidate/iter0/`
+- `manifest_out=$R/manifests/iter0.json`
+- `candidate_version=r$r-i0`
+- `base_fingerprint`
+- 最近若干 `experience/oracle_to_g/*.jsonl`
+- `edit_budget_g`
+
+G 返回的 JSON 原样保存为 `$R/g-result-iter0.json`。manifest 必须由 G 写到指定路径。
+
+验证：
+
+```bash
+python3 lib/candidate_flow.py validate-manifest \
+  --manifest "$R/manifests/iter0.json" \
+  --batch "$R/current_batch.list" \
+  --candidate-dir "$R/candidate/iter0" \
+  --base-fingerprint "<baseline_fingerprint>" \
+  --out "$R/manifests/iter0.validated.json"
+```
+
+验证失败：该轮候选无效，不调用 Oracle，记录 rejected，进入记账。
+
+## 4. D 审查候选，必要时打回 G
+
+令 `k=0`。派发 `d-improve mode=review_candidate`，明确给出：
+
+- current_batch、baseline、candidate iterK；
+- validated manifest；
+- `workspace/critics/` 只读；
+- `candidate_version=r$r-i$k`；
+- 实际 candidate fingerprint。
+
+保存为 `$R/reviews/iter$k.json`，然后验证：
+
+```bash
+python3 lib/candidate_flow.py validate-review \
+  --review "$R/reviews/iter$k.json" \
+  --batch "$R/current_batch.list" \
+  --candidate-fingerprint "<candidate_fingerprint>" \
+  --out "$R/reviews/iter$k.validated.json"
+```
+
+### D=REVISE 且 k < max_gd_revisions
+
+```bash
+python3 lib/candidate_flow.py clone-iteration \
+  --round-dir "$R" --from-iter "$k" --to-iter "$((k+1))"
+```
+
+再次派发 G，额外提供：
+
+- `previous_manifest=$R/manifests/iter$k.validated.json`
+- `d_feedback=$R/reviews/iter$k.validated.json`
+- 新 candidate 目录、manifest 路径和 candidate_version。
+
+验证新 manifest，再让 D review。最多修订 `max_gd_revisions` 次。
+
+### 防止无效争论
+
+若 D 连续两次给出本质相同的 REVISE 反馈，而 G manifest 已逐条回应，下一次 review 应优先 ABSTAIN，交给 Oracle；编排者不得让两个 Agent 无限循环。
+
+达到最大修订次数仍为 REVISE：不再打回，进入“REVISE 抽查”，本轮候选不能提交。
+
+## 5. 构建 Oracle 队列
 
 预算：
 
 ```text
-B = ceil(audit_frac × 本轮实际取到的条数)
+B = ceil(oracle_frac × 实际 current_batch 大小)
 ```
 
-不设下限；单轮审计的作用是给 D 提供错例、给池子补新样本，收敛判断
-只看累计账。
-
-**技能指纹** = 重跑会加载的全部技能内容哈希 12 位，每轮开头取一次：
+调用：
 
 ```bash
-bash oracle_run.sh --fingerprint
+python3 lib/candidate_flow.py build-oracle-queue \
+  --batch "$R/current_batch.list" \
+  --review "$R/reviews/iter$k.validated.json" \
+  --checker-dir pool/checkers \
+  --truth-dir pool/truth \
+  --budget "$B" \
+  --revise-audit "$revise_audit" \
+  --round "$r" \
+  --out "$R/oracle_queue.jsonl"
 ```
 
-**去重**：已审组合不再进队列（`pool.py audit-queue` 自动做）。键一律
-`<条目ID>@<技能指纹>`——技能一变，同一条目就是新观测。指纹不含
-critics，D 单独改动不影响它；D 改了、G 没动的轮次指纹不变，去重避免
-同一观测重复烧预算。（历史遗留的 `@static` 键 pool.py 仍会查到并
-跳过，不用清理。）
+队列规则由工具确定：
 
-B 计 `oracle_run.sh` 成功调用次数。每次审计一次做题调用；判分
-checker 零调用、truth 加一次裁判。
+- PASS/ABSTAIN：优先 `unjudgeable`、`partial`，再覆盖样本；
+- REVISE：最多抽查 `revise_audit` 个；
+- 没有 checker/truth 的条目排除；
+- 按轮次确定性选择。
 
-**排队列**（两段制：误杀段 `floor(B/2)` 条取判 fail 里 confidence
-最低的，找 FP；其余归随机段，从判 pass 里随机抽，抓 FN、防技能库
-朝"让 D 放行"的方向偏）：
+队列为空时：候选不能提交；记录“无可靠 Oracle 覆盖”。
+
+## 6. Oracle 同题运行 baseline 与 candidate
+
+先从 queue 提取 ID，每个 ID 必须运行两次，且两个结果都成功才形成配对。
+
+baseline：
 
 ```bash
-python3 lib/pool.py audit-queue --verdicts rounds/r$r/verdicts.jsonl \
-  --audited stats/audited.json --fingerprint <本轮指纹> \
-  --budget $B --round $r > rounds/r$r/audit_queue.jsonl
+VERISKILL_ACTOR_SKILLS="$R/baseline_skills" \
+  bash oracle_run.sh "pool/traj/$id.md" \
+  --new-traj-out "$R/oracle/baseline/$id.md"
 ```
 
-**执行**：逐条（放后台跑）
+candidate：
 
 ```bash
-bash oracle_run.sh pool/traj/<id>.md --new-traj-out rounds/r<r>/new_traj/<id>.md
+VERISKILL_ACTOR_SKILLS="$R/candidate/iter$k" \
+  bash oracle_run.sh "pool/traj/$id.md" \
+  --new-traj-out "$R/oracle/candidate/$id.md"
 ```
 
-退出码非 0 时**先原样重试一次**（瞬时超时和输出解析失败占大头，一次
-重试通常能救回）；仍非 0 才按环境故障处理：丢弃继续，不计入 B、不写
-audited.json、不放回，队列不补位。重试成功的按成功计，重试本身不额外
-占预算。环境故障率超 30% 停止循环（累计尝试满 10 次后才评估这条；
-故障率按最终结果计，重试救回的不算故障）。
+stdout 分别逐行写：
 
-**记录**，每条写一行 `rounds/r<r>/audit.jsonl`：
+- `$R/oracle/baseline.jsonl`
+- `$R/oracle/candidate.jsonl`
 
-```json
-{"item":"<id>", "segment":"误杀|随机", "d_verdict":"pass|fail",
- "oracle_pass": true, "kind":"TP|FP|FN|TN", "skill_hash":"<12位>",
- "truth_source":"checker|truth|redo", "rules_hit":[],
- "normalized_score": 0.72, "oracle_evidence":"...",
- "skill_result":"重跑得出的答案"}
+规则：
+
+- 每次调用最多原样重试一次；
+- baseline/candidate 任一环境失败，该 item 不形成配对；
+- 不覆盖 `pool/traj`；
+- 新轨迹只保存在本轮 Oracle 目录；
+- Oracle 前后重新计算 candidate 目录内容指纹，必须保持不变；同一批 candidate Oracle 结果中的 `skill_hash` 必须唯一。该 `skill_hash` 是原脚本运行指纹，不要求与 `candidate_flow.py` 的内容指纹字符串相等；
+- Oracle 不加载 critics。
+
+## 7. 配对比较与候选门控
+
+```bash
+python3 lib/candidate_flow.py compare \
+  --review "$R/reviews/iter$k.validated.json" \
+  --baseline "$R/oracle/baseline.jsonl" \
+  --candidate "$R/oracle/candidate.jsonl" \
+  --baseline-dir "$R/baseline_skills" \
+  --candidate-dir "$R/candidate/iter$k" \
+  --round "$r" \
+  --candidate-version "r$r-i$k" \
+  --gd-revisions "$k" \
+  --min-scored "$min_oracle_scored" \
+  --min-improvements "$min_improvements" \
+  --max-regressions "$max_regressions" \
+  --out-comparison "$R/comparison.jsonl" \
+  --out-decision "$R/decision.json" \
+  --out-to-d "$R/feedback/oracle_to_d.jsonl" \
+  --out-to-g "$R/feedback/oracle_to_g.jsonl" \
+  --metrics stats/candidate_eval.jsonl
 ```
 
-（`skill_hash`、`truth_source`、`skill_result` 抄 oracle_run 输出；
-`normalized_score` 从判决行抄，hard 命中记 null。）
+四种 paired outcome：
 
-**放回**（每条审计成功的条目，按此顺序）：
+- `improvement`：baseline fail → candidate pass；
+- `regression`：baseline pass → candidate fail；
+- `retained_pass`：两者都 pass；
+- `unresolved_fail`：两者都 fail。
 
-1. 旧轨迹存档：`cp pool/traj/<id>.md rounds/r<r>/replaced/<id>.md`，
-   同步 `[ -f pool/traj.full/<id>.md ] && cp pool/traj.full/<id>.md
-   rounds/r<r>/replaced/<id>.full.md`（旧完整版，供 g-improve 按需查；
-   初始导入无完整版时跳过）；
-2. TN 条目把这份旧轨迹复制进 `stats/tn_traj/<id>.md`（同名覆盖），同步
-   `mkdir -p stats/tn_traj.full && [ -f pool/traj.full/<id>.md ] && cp
-   pool/traj.full/<id>.md stats/tn_traj.full/<id>.md`（旧完整版；门控冒烟
-   `VERISKILL_TRAJ=stats/tn_traj` 时 verify.sh 自动找 `stats/tn_traj.full/`
-   按需查；初始导入无完整版时跳过）；
-3. `cp rounds/r<r>/new_traj/<id>.md pool/traj/<id>.md`，并同步
-   `cp rounds/r<r>/new_traj/<id>.md pool/traj.full/<id>.md`（Oracle 重跑
-   产的新轨迹是精简过程叙述，无压缩/完整之分，两份相同以保持一致）。
-   判 fail 的新
-   轨迹同样放回——它记录了当前技能做错什么，正是下一轮 D 判、G 修
-   的对象；
-4. `pool/meta.json` 该条目 `g_version` 改为当前 `ledger.g_version`。
+默认接受条件全部成立：
 
-**记账**：
+- D 最终不是 REVISE；
+- scored pairs ≥ `min_oracle_scored`；
+- improvement ≥ `min_improvements`；
+- regression ≤ `max_regressions`；
+- `net_gain=improvement-regression > 0`；
+- candidate pass count 不低于 baseline。
 
-- `<条目ID>@<技能指纹>` 记进 `stats/audited.json`；
-- kind 为 TN/FP 的行另存 `rounds/r<r>/audit_g.jsonl`（g-improve 唯一
-  能看的审计结果）；
-- TN 条目 ID 追加进 `stats/tn_seen.list`（去重）；
-- 每个 FP 命中的每条规则在 `stats/rule_fp_counts.json` +1；
-- 统计本轮 FP/FN 数（只用于派活）；
-- 每条 kind 按执行顺序追加进 `stats/audit_tally.json` 的 `recent`，
-  只留最后 20 条。
+不得人工改写 `decision.json` 绕过门控。
 
-### 4. 改进 D
+## 8. Oracle 反馈给 D 更新规则库
 
-先处理漏放暂存：本轮 FN 追加进 `stats/fn_pending.jsonl`，每行：
+只要有可靠配对，就派发 `d-improve mode=learn_from_oracle`，给出：
 
-```json
-{"item":"<id>", "round": 3, "rules_hit":[], "oracle_evidence":"..."}
+- review、manifest、冻结 candidate；
+- `$R/feedback/oracle_to_d.jsonl`；
+- baseline/candidate 新轨迹；
+- `workspace/critics/`；
+- 最近的 `experience/oracle_to_d/`；
+- `edit_budget_d`。
+
+调用前快照：
+
+```bash
+cp -a workspace/critics "history/r${r}_D_before"
 ```
 
-`oracle_evidence` 从 `audit.jsonl` 抄入（旧轮审计文件不再派发，暂存
-条目只有自带真值可用）。同一条目已有暂存行时覆盖不追加（换指纹重审
-再 FN 不能算两个例子）。追加后删掉 `round` 早于 `r−6` 的条目。
-这一步是必要的：每轮 FN 常只有 0–1 条，而 d-improve 要求同类 2 例
-才立判据，不跨轮攒 D 学不到新规则。
+D 返回保存为 `$R/d-learn-result.json`。检查：
 
-本轮 `FP == 0` 且暂存为空 → 跳过，记 `D=noop`。否则调 `d-improve`，
-只给它：
+- 只修改 critics；
+- frontmatter 合法；
+- R ID 全库唯一；
+- 没有具体答案、题面、test ID；
+- 新 hard 规则有足够跨样本证据；
+- 单文件改动不超过 40%；
+- 旧的明显反例仍不会被新规则误杀。
 
-- `rounds/r<r>/audit.jsonl`
-- FP 条目和暂存条目的轨迹路径：每条给压缩版和完整版两份。压缩版（D 判决
-  时读的那份：被放回过的用 `rounds/r<r>/replaced/<id>.md`，其余用
-  `pool/traj/<id>.md`）；完整版（被放回过的用
-  `rounds/r<r>/replaced/<id>.full.md`，其余用 `pool/traj.full/<id>.md`，
-  `[ -f ]` 守护，无则只给压缩版）
-- `stats/fn_pending.jsonl`
-- `workspace/critics/`
-- `stats/rule_fp_counts.json`（只读）
-- 编辑预算 <edit_budget>
-- 上轮回滚说明 `rounds/r<r-1>/rollback_D.txt`（存在才给）
+失败则整体回滚 critics。通过则：
 
-输出存 `rounds/r<r>/d-improve-result.json`。三处后处理：
+- `d_version += 1`；
+- 复制 `$R/feedback/oracle_to_d.jsonl` 到 `experience/oracle_to_d/r$r.jsonl`。
 
-- `narrow_rule` 类编辑：把 `rule_fp_counts.json` 里对应规则计数清零
-  （原值记进报告）——收窄后已是新规则，不再背旧账；
-- `fn_resolved` 的条目从暂存删掉；
-- `unjudgeable` 的条目在暂存行 `unjudgeable_count` +1；计数满 2 移出
-  暂存、追加进 `stats/fn_out_of_scope.jsonl`。这个文件的长度是证据
-  缺口指标：涨得快说明错误超出文本判别边界，该改的是证据保留策略或
-  Oracle 路径，不是 D。收尾时报告。
+D 的规则更新不影响本轮已经冻结的 candidate decision。
 
-### 5. 改进 G
+## 9. Oracle 反馈给 G
 
-从本轮 batch 选出：判 fail 且未被审计确认为 FP 的条目。每条复制三个
-文件到 `rounds/r<r>/g_fail_items/`：① D 判决时读的那份压缩版轨迹（被
-放回过的用 `rounds/r<r>/replaced/<id>.md`，其余用 `pool/traj/<id>.md`，
-落点 `<id>.md`）；② 对应完整版（被放回过的用
-`rounds/r<r>/replaced/<id>.full.md`，其余用 `pool/traj.full/<id>.md`，
-落点 `<id>.full.md`，`[ -f ]` 守护，无则跳过）；③ 标记文件 `<id>.meta`，
-内容一行：`audited: true`（审计确认的失败）或 `audited: false`（仅 D 判
-fail，可能混着未发现的误杀）。完整版按需给 g-improve 查细节（见其提示词
-「轨迹双版本」）。
-
-`g_fail_items/` 为空 → 跳过，记 `G=no_failure`。否则调 `g-improve`，
-只给它：
-
-- `rounds/r<r>/g_fail_items/`（含 `.meta`）
-- `rounds/r<r>/verdicts.jsonl`
-- `rounds/r<r>/audit_g.jsonl`
-- `stats/tn_seen.list`
-- `workspace/actor_skills/`
-- 编辑预算 <edit_budget>
-- 上轮回滚说明 `rounds/r<r-1>/rollback_G.txt`（存在才给）
-
-输出存 `rounds/r<r>/g-improve-result.json`。
-
-### 6. 门控：检查、接受或回滚
-
-只查合法性，不评内容。对每个子 Agent 改动的每个文件：
-
-- frontmatter 可解析，含 `name`、`description`、`tags`；
-- 单文件 ≤ 250 行；
-- 相对 before 快照的改动行数 ≤ 原文件行数的 40%。新建文件跳过 40%
-  检查，另加三条：文件名与 `name` 一致且匹配
-  `^[dg]-[a-z0-9]+(-[a-z0-9]+)+$`；名字末段不得是 general/misc/
-  common/helper/utils/solve 这类泛词；每轮每侧新建 ≤ 2 个；
-- 新增 R 判据只查信封：行首 `- R-<critic名>-<三位数> [hard|soft] `、
-  行内含 ` 依据:`；
-- R 的 ID 全库唯一；
-- 新增文本不含具体答案值、题面原句、条目 ID（条目 ID 唯一例外：
-  critics 里 R 判据的 `依据:` 字段）。题面原句用脚本比对：新增行与
-  本轮派发给该子 Agent 的任何轨迹文件有连续 8 字相同即命中，但以下
-  **不算命中**：
-  - frontmatter 行（`name:`、`description:`、`tags:` 及其值的键部分）；
-  - R 判据信封（行首 `- R-<critic名>-<三位数> [hard|soft] ` 与
-    ` 依据:` 标记本身）；
-  - 与 `pool/gate_allowlist.txt`（若存在，每行一个字符串）中任一条目
-    重叠的片段——数据集领域的通用词（语料名、机构名、栏目名）不构成
-    泄露，判据不提这些词根本没法写。
-  检查的本意是拦答案和题面的照抄，不是禁用领域词汇。
-
-**违规整体回滚**：该子 Agent 任一文件违规，其本轮全部编辑退回
-before 快照（编辑常互相依赖，不做单文件回滚）。原因写
-`rounds/r<r>/rollback_D.txt`（或 `_G.txt`）并记报告，下轮派活时给
-对应子 Agent。
-
-**冒烟测试**：从 `stats/tn_seen.list` 随机抽 2 条，用改后的 critics
-对 `stats/tn_traj/` 里的快照重跑 verify.sh（临时
-`export VERISKILL_TRAJ=stats/tn_traj`，跑完恢复）。要求跑通、JSON
-合法、且这 2 条仍判 pass——TN 是双确认过的好轨迹，改后被判 fail
-说明新规则过宽。任一条不满足，critics 整库回滚到
-`history/r<r>_D_before/`。（开局头几轮清单可能不足 2 条：跳过并记录。）
-
-**接受**：通过的版本快照到 `history/r<r>_accepted_D/`、
-`history/r<r>_accepted_G/`；`ledger.round = r`；G 侧有编辑存活时
-`ledger.g_version += 1`。
-
-### 7. 记账
-
-第一次写 `report.md` 先写表头，之后每轮追加一行：
-
-```markdown
-| 轮 | 批大小 | fail_rate | 本轮FP | 本轮FN | 审计通过 | 放回 | D动作 | G动作 | g_version | 回滚 |
-```
-
-`审计通过` = `<oracle_pass=true 条数>/<本轮成功审计数>`（当前技能
-重跑命中率，G 的实战成绩；审计数 0 填 `-`）。`放回` = 本轮替换进
-池子的新轨迹条数。
-
-聊天里输出一行：
+无论候选是否接受，只要 `$R/feedback/oracle_to_g.jsonl` 非空，就复制到：
 
 ```text
-r=<r> 批=<n> fail_rate=<x> FP=<n> FN=<n> 审计=<x/y> 放回=<n> D=<动作> G=<动作> g_version=<v>
+experience/oracle_to_g/r<r>.jsonl
 ```
 
-单轮 fail_rate 和 FP/FN 只记录不判断；收敛只看累计账。
+该文件只来自 train 条目，只保存 regression 与 unresolved failure。下一轮 G 可读取；本轮不在 Oracle 后再次无限修订，避免重复烧预算和选择性过拟合。
 
-**阈值自校准**：每条被审计条目自带一对标注（判决 `normalized_score`
-+ 真值）。历史累计非 null 行 ≥ 15 时：扫描候选阈值取判对率最高者，
-并列取最接近当前值的；与当前值差 ≥ 0.05 才更换；更换即
-`export VERISKILL_RUBRIC_THRESHOLD=<新值>` 并记报告（旧值、新值、
-样本数）。
+## 10. 提交或拒绝候选
 
-子 Agent 返回 `needs_human=true` 只记录，不停循环、不回滚合法编辑。
-
-### 8. 周期测试评估（仅 `eval_every > 0` 且 `r % eval_every == 0`）
-
-本轮技能已在第 6 步定版，正好用它量一下当前 skill 在 test 集上的实战
-成功率。**纯监测**：结果只进 `stats/test_eval.jsonl`，不喂 G/D、不
-影响审计账与停止条件、不改 test 池。test 条目重跑**不带
-`--new-traj-out`**，池子保持原样（同收尾）。
-
-抽样与收尾同一口径（按 ID 排序 `random.seed(0)` 取前 `final_test_max`），
-所以各 checkpoint 之间、与收尾终点直接可比。
+### decision.accepted=true
 
 ```bash
-bash eval_test.sh --meta pool/meta.json --out-dir rounds/r<r>/test_eval \
-  --max $final_test_max --seed 0 --round $r --g-version $ledger.g_version \
+python3 lib/candidate_flow.py commit \
+  --actor workspace/actor_skills \
+  --candidate "$R/candidate/iter$k" \
+  --decision "$R/decision.json" \
+  --backup "history/r${r}_G_before_commit"
+```
+
+提交成功后：
+
+- `g_version += 1`
+- `accepted_candidates += 1`
+- 保存 `history/r${r}_G_accepted/`
+
+### decision.accepted=false
+
+正式 G 保持不变：
+
+- `rejected_candidates += 1`
+- 候选目录和 decision 保留供分析；
+- 不把 candidate 内容复制进 workspace。
+
+`candidate_attempts` 每轮首稿成功产生后加 1，不按 revision 次数增加。
+
+## 11. checkpoint 与记账
+
+当 `eval_every > 0` 且 `r % eval_every == 0`，只评估正式 G：
+
+```bash
+bash eval_test.sh --meta pool/meta.json \
+  --out-dir "$R/test_eval" \
+  --max "$final_test_max" \
+  --seed 0 \
+  --round "$r" \
+  --g-version "<ledger.g_version>" \
   --series stats/test_eval.jsonl
 ```
 
-整批可能超过 Bash 工具 10 分钟上限，用 `run_in_background` 跑，通知到了
-再读 `rounds/r<r>/test_eval/summary.json`（脚本退出时已把汇总原子追加进
-`stats/test_eval.jsonl`）。
+更新 ledger 的 `round=r` 和调用计数，原子写回。
 
-聊天里输出一行、`report.md` 追加一节：
+每轮在 `report.md` 追加一行，至少包含：
 
 ```text
-r=<r> test评估 成功率=<x> (<pass>/<judged>，环境故障 <env>) g_version=<v>
+round | candidate | final D verdict | gd revisions | scored pairs |
+improvement | regression | retained | unresolved | net gain |
+accepted | g_version | d_version | Oracle failures
 ```
 
-`eval_every=0` 跳过本步（收尾仍会出图）。
+## 停止条件
 
----
+满足任一条件停止：
 
-## 停止
+- 跑满 rounds；
+- train 池按 replay_K 耗尽；
+- 累计 Oracle 最终环境故障率超过 30%，且 attempts ≥ 10；
+- 连续 3 轮没有候选被接受、D 没有新增有效校准，并且 current_batch 的主要未覆盖簇不再变化；
+- 用户明确停止。
 
-满足任一条即停：
+“D 连续 PASS”不是收敛；“G 技能文件数量不变”也不是收敛。
 
-- 跑满 `rounds` 轮；
-- 用户叫停；
-- **判准了**：累计账 `recent` 攒满 20 条且全是 TP/TN。不得用"连续
-  3 轮 FP+FN==0"代替——每轮只审几条，三轮抓不到错很平常，会过早
-  误判收敛；
-- 轨迹池耗尽；
-- Oracle 环境故障率超 30%（累计尝试满 10 次后才评估）；
-- 核心脚本、数据或状态损坏。
+## 最终评估与报告
 
-周期 test 评估（`stats/test_eval.jsonl`）只记录展示，不作为停止依据。
+结束时：
 
-## 收尾
+1. 用正式 G 在固定 test 子集运行 `eval_test.sh`；
+2. 画 `stats/test_eval.jsonl` 的 G success-rate 曲线；
+3. 汇总 `stats/candidate_eval.jsonl`。
 
-1. 对全部 `split=test` 条目跑 `verify.sh`（判决便宜，全跑），算
-   test fail_rate。
-2. 重跑只做其中 `final_test_max` 条（默认 50）：多于此数时按 ID 排序
-   `random.seed(0)` 抽样，抽样结果写进报告。逐条
-   `bash oracle_run.sh pool/traj/<id>.md`（**不带 --new-traj-out，
-   不放回**，test 池保持原样）。
-3. 在这批条目上统计：**test 实战通过率**（oracle_pass 率，G 的最终
-   成绩）、D 的 TP/FP/FN/TN 与准确率，存 `rounds/final_test/`。
-   把这个最终点补进 `stats/test_eval.jsonl`：若末行 `round`≠`rounds`
-   则按 `eval_test.sh` 的 summary 行格式追加一条（`round=rounds`、
-   `g_version=最终`、`skill_hash=当前指纹`、`success_rate=本批通过率`），
-   复用刚花的重跑预算，不另花钱；末行已是 `rounds`（周期点恰好命中）
-   就跳过。
-4. 不得根据 test 结果再改 G 或 D。
-5. 画成功率演进图：`python3 plot_test_eval.py stats/test_eval.jsonl`，
-   出 `stats/test_eval.svg`（无依赖必出；装了 matplotlib 额外出
-   `.png`），stdout 另打 ASCII 折线与数据表。
-6. 最终输出：逐轮指标表；test 指标（注明重跑了几条）；**成功率演进图
-   路径 `stats/test_eval.svg` 及趋势一句话**；最终 accepted
-   快照路径和 `g_version`；每轮 D/G 编辑摘要与回滚记录；全部判据清单
-   （带依据和累计误杀数）；证据缺口（`fn_out_of_scope.jsonl` 条数及
-   占全部 FN 的比例）；待人定夺清单（各轮 `needs_human` 与
-   `unresolved` 汇总）；三段结论——G 学会了什么、D 学会了什么、还剩
-   什么问题。
+必须分别报告：
 
-## 守则
+### G 演进
 
-- `pool/traj/` 只有第 3 步放回可写（旧轨迹必须先存档进
-  `rounds/r<N>/replaced/`），其余场合只读；`pool/meta.json` 只在
-  Setup 写入条目，循环中只改 `used_count` 和放回时的 `g_version`，
-  `split` 永不变。
-- 不建 Oracle 结果缓存，去重只靠 `stats/audited.json`。
-- 永不编辑 `verify.sh`、`oracle_run.sh`、`lib/` 下的脚本。
-- 编排者不直接改 G/D；子 Agent 不读派发清单外的路径。
-- test 条目在收尾前不可见；周期 test 评估（`eval_test.sh`）是**纯监测**：
-  结果只写 `stats/test_eval.jsonl` 与 `rounds/r<N>/test_eval/`，绝不进
-  d-improve/g-improve 的派发清单、不写 `audited.json`/`audit_tally.json`、
-  不参与停止与收敛判断；test 池永不改写（不带 `--new-traj-out`）。
-- 所有抽样、编辑、接受、回滚都要能从 `history/`、`ledger.json`、
-  `report.md` 复现。
+- 提议候选数与接受数；
+- candidate accept rate；
+- 每轮 improvement / regression / net_gain；
+- baseline 与 candidate paired pass rate；
+- 正式 G 的 held-out test success rate；
+- test 的 fail→pass 与 pass→fail 配对变化。
+
+### D 演进
+
+- PASS / REVISE / ABSTAIN 数量；
+- `correct_accept`；
+- `false_accept`；
+- `supported_revise`；
+- `false_reject_evidence`；
+- `useful_abstain`；
+- 平均 G-D revision 次数；
+- 因 D 打回后 uncovered/partial 是否下降。
+
+### 成本与可靠性
+
+- baseline 与 candidate Oracle 调用总数；
+- 可靠 scored pairs；
+- unscored 排除数；
+- 环境失败数；
+- 每个 accepted candidate 的 Oracle 成本。
+
+禁止继续报告旧定义的“D 判轨迹 TP/FP/FN/TN”作为主指标。v6 的 D 评估对象是候选 skill 的审查决策。

@@ -1,140 +1,238 @@
-# VeriSkill v4
+# VeriSkill v6
 
-技能共演化框架。评估对象自始至终是**技能**，不是单条答案：
+VeriSkill 让生成器技能库 G 与判别器规则库 D 共同演进，但两者的职责严格分开：
 
-- **G（生成器）** = 解题技能库 `workspace/actor_skills/`，只产技能。
-- **D（判别器/verify）** = 验证技能库 `workspace/critics/`。核心任务是
-  **判断技能改得好不好**：池子里每条轨迹是某版技能做题的执行样本
-  （frontmatter 的 `skill_hash` 标版本），D 读轨迹判 pass/fail 就是在
-  评那版技能。fail 直接反馈给 g-improve 改技能。
-- **Oracle** = `oracle_run.sh`。抽查 D 判得准不准：带**当前技能**把
-  任务真实重跑一遍、给新结果判真值（checker → truth → 没报错三级），
-  FP/FN 喂 d-improve 改 critics；重跑产出的新轨迹（带当前
-  `skill_hash`）**替换**池子里的旧轨迹，池子随轮次逐步变成新技能的
-  执行样本。
+- **G** 从一批训练轨迹中提炼一版隔离的候选 skill library；
+- **D** 同时阅读训练轨迹、正式技能、候选技能和 G 的 coverage manifest，判断候选是否应修改、可以进入 Oracle，或仅凭文本无法判断；
+- **Oracle** 在相同训练条目上分别运行正式技能和冻结的候选技能，用 checker/truth 做 baseline-candidate 配对比较；
+- Oracle 结果用于校准 D，并决定候选是否原子提交为新的正式 G。
 
-内环每轮转：D 判轨迹 → fail 喂 G 改技能。
-外环抽查：Oracle 重跑取真值 → FP/FN 喂 D 改 critics → 新轨迹放回。
+主循环不再是“D 判旧轨迹 → fail 喂 G”。正确流程是：
 
-周期监测：每 `eval_every`（默认 10）轮用当前技能在 test 集上重跑一次记
-成功率，收尾把各 checkpoint 串成成功率演进图（`stats/test_eval.svg`）。
-纯监测，不回写池子、不喂 G/D、不影响收敛。
+```text
+current_batch
+    ↓
+G 生成 candidate skills
+    ↓
+D review_candidate
+    ├─ REVISE  → G 修订，最多若干次
+    ├─ PASS    → Oracle
+    └─ ABSTAIN → Oracle
+                     ↓
+       baseline 与 candidate 同题执行
+                     ↓
+       improvement / regression / retained / unresolved
+             ├─ D learn_from_oracle
+             ├─ 失败经验进入下一轮 G
+             └─ 通过门控才提交 candidate
+```
 
-花钱主项是审计的重跑（每条一次做题调用）；配 checker 的条目判分零
-模型调用。
+## 关键约束
+
+1. G 只编辑 `rounds/r<N>/candidate/iter<K>/`，不能直接改正式技能库。
+2. D 的 `review_candidate` 模式只读；`learn_from_oracle` 模式才允许修改 critics。
+3. 原始 `pool/traj/` 和 `pool/traj.full/` 保持只读，Oracle 新轨迹不再覆盖训练池。
+4. 没有 checker/truth 的条目不进入候选接受门控。
+5. D=REVISE 的候选每轮可抽查少量条目，用于发现 D 的错误拒绝，但该候选不在当轮直接提交。
+6. 候选只有在相同条目上比 baseline 产生正净增益、且 regression 不超过阈值时才能提交。
+7. test split 只做 checkpoint/final evaluation，不进入 G/D 反馈。
 
 ## 目录布局
 
-```
-<项目根>/
+```text
+<repo>/
 ├── .claude/
-│   ├── commands/veriskill-loop.md   # /veriskill-loop 主流程（编排者）
-│   └── agents/                      # d-improve / g-improve 子 Agent
-├── verify.sh                        # D 文本判决（永不编辑）
-├── oracle_run.sh                    # 审计：重跑+判分+产新轨迹（永不编辑）
-├── eval_test.sh                     # 周期/收尾：当前技能跑 test 集记成功率（永不编辑）
-├── plot_test_eval.py                # 报表：成功率演进图（SVG，无依赖）
-├── lib/                             # 后端适配、JSON 解析、池子操作（永不编辑）
+│   ├── commands/veriskill-loop.md
+│   └── agents/
+│       ├── g-improve.md
+│       └── d-improve.md
+├── lib/
+│   └── candidate_flow.py          # 候选准备、校验、Oracle 配对、门控、提交、报告
+├── tools/
+│   └── start_v6_experiment.py     # 归档旧实验并初始化干净 v6 状态
 ├── workspace/
-│   ├── actor_skills/                # G 技能库（空库冷启动）
-│   └── critics/                     # D 技能库（空库冷启动）
-└── pool/
-    ├── traj/<id>.md                 # 轨迹池（审计后滚动替换）
-    ├── meta.json                    # Setup 登记，循环维护
-    ├── checkers/<id>.sh             # 可选：专用判分脚本
-    ├── truth/<id>.md                # 可选：参考答案
-    └── gate_allowlist.txt           # 可选：门控白名单（领域通用词）
+│   ├── actor_skills/              # 当前正式 G
+│   └── critics/                   # D 的候选审查规则库
+├── pool/
+│   ├── traj/                      # 原始训练轨迹，只读
+│   ├── traj.full/                 # 原始完整版轨迹，只读
+│   ├── checkers/                  # 可靠真值来源
+│   ├── truth/                     # 可靠真值来源
+│   └── meta.json                  # train/test split 与 replay 计数
+├── rounds/r<N>/
+│   ├── current_batch.list
+│   ├── current_batch/
+│   ├── baseline_skills/
+│   ├── candidate/iter<K>/
+│   ├── manifests/iter<K>.json
+│   ├── reviews/iter<K>.json
+│   ├── oracle/{baseline,candidate}/
+│   ├── comparison.jsonl
+│   ├── decision.json
+│   └── feedback/{oracle_to_d,oracle_to_g}.jsonl
+├── experience/
+│   ├── oracle_to_d/
+│   └── oracle_to_g/
+└── stats/
+    ├── candidate_eval.jsonl       # G/D 共演进主指标
+    └── test_eval.jsonl            # 正式 G 的 held-out 指标
 ```
 
-## 轨迹规范格式
 
-```markdown
----
-skill_hash: <12位指纹或省略>
----
-## 题目
-（题面）
-## 激活技能         # 可选
-## 过程             # 可选，保留原始证据（工具输出、表格原文）
-## 最终答案
-（答案）
-```
+## 从 v4/v5 安全开始新实验
 
-必须能切出「题目」「最终答案」两节（节标记的同义写法见
-`lib/extract.py` 文件头）。接入新数据集时在入库前写转换器统一成此
-格式；gold 只进 checker/truth，绝不进轨迹文件。
-
-## 在 101 服务器上跑起来（OfficeQA）
-
-### 服务器与路径
-
-| 对象 | 位置 |
-|---|---|
-| 服务器 | `11.11.1.101`（经跳板机 `113.44.113.202` 双跳：先 ssh 跳板机，再 `ssh 11.11.1.101`） |
-| 项目根 | `/root/data/officeqa_run/veriskill/` |
-| **轨迹池** | `/root/data/officeqa_run/veriskill/pool/traj/`（原始快照备份在 `pool/traj_orig/`，重置时 rsync 回来） |
-| 原始轨迹 pkl | `/root/data/officeqa_run/results/hard_ds4flash.pkl` |
-| 题目语料 | `/root/data/officeqa_run/workspace/data/treasury_bulletins/`（重跑时经 `VERISKILL_TASK_DATA` 以 symlink 挂进做题工作区） |
-| gold/判分 | `pool/checkers/`（`make_checkers.py` 生成，官方 `score_answer` 判分）；gold 源在 `/root/.officeqa_keys/`（轨迹池外，做题看不到） |
-| EvoSkill venv | `/root/data/EvoSkill/.venv/bin/python`（转换 pkl、checker 判分用） |
-
-### 部署 + 点火
+旧 ledger、used_count、rounds、旧式 critics 和被 Oracle 滚动替换过的轨迹不能直接续训。补丁提供安全迁移工具：
 
 ```bash
-# 1. 把本包解压为项目根（或合并进已有目录）
-cd /root/data/officeqa_run && unzip veriskill-v4.zip && mv v4 veriskill
-cd veriskill
+# 先只看计划，不修改文件
+python3 tools/start_v6_experiment.py --label before_v6
 
-# 2. 一次性 Setup（幂等可重跑）：
-#    转换 pkl→pool/traj、生成 checker、写 env.sh/.claude/settings.json
-#    （token 从 /root/data/veriskill/.claude/settings.json 读入）、生成
-#    门控白名单、轨迹格式体检、后端 selftest（花一次最小调用）
+# 归档旧实验并冷启动 v6；存在 pool/traj_orig 时自动恢复原始轨迹
+python3 tools/start_v6_experiment.py --label before_v6 --apply \
+  --recompute-split --split-seed 0 --train-ratio 0.8
+```
+
+默认行为：
+
+- 把旧 `rounds/`、`stats/`、`history/`、`experience/`、`ledger.json` 和 `report.md` 移到 `archive/before_v6/`；
+- 归档并清空旧 G/D；
+- 将 `pool/meta.json` 的 `used_count`、`g_version` 重置为 0；
+- 若存在 `pool/traj_orig/`，归档当前轨迹后恢复原始只读轨迹；
+- 初始化 `flow_version=6` 的 ledger。
+
+需要以旧 G 作为 warm start 时加 `--preserve-actor`。不建议使用 `--preserve-critics`，因为 v5 critics 检查的是答案轨迹，而 v6 critics 检查的是候选 skill。
+
+## 三个 prompt 的职责
+
+### `g-improve.md`
+
+读取整个 current_batch，对轨迹模式聚类，编辑候选技能目录，并写出：
+
+- 轨迹簇；
+- 技能改动；
+- 每条轨迹的 expected coverage；
+- 未覆盖项；
+- 对 D 反馈的逐条回应。
+
+### `d-improve.md mode=review_candidate`
+
+不修改规则库。逐条检查候选 skill 是否覆盖轨迹模式，输出：
+
+- `PASS`：静态结构充分，可以进入 Oracle；
+- `REVISE`：存在明确、可操作的候选缺陷，返回 G；
+- `ABSTAIN`：文本不足以判断真实效果，进入 Oracle。
+
+### `d-improve.md mode=learn_from_oracle`
+
+读取冻结候选上的 baseline-candidate 真值结果，更新候选审查规则。D 主要学习：
+
+- `false_accept`：放行了无效或退化候选；
+- `false_reject_evidence`：打回的候选在抽查中出现真实改善；
+- 哪些效果必须交给 Oracle，应写成 abstain 规则而不是 hard reject。
+
+## 候选工具
+
+```bash
+python3 lib/candidate_flow.py --help
+```
+
+常用命令：
+
+```bash
+# 准备本轮 baseline 与 candidate/iter0
+python3 lib/candidate_flow.py prepare \
+  --actor workspace/actor_skills \
+  --round-dir rounds/r1
+
+# 校验 G manifest
+python3 lib/candidate_flow.py validate-manifest \
+  --manifest rounds/r1/manifests/iter0.json \
+  --batch rounds/r1/current_batch.list \
+  --candidate-dir rounds/r1/candidate/iter0 \
+  --base-fingerprint <fingerprint>
+
+# 校验 D review
+python3 lib/candidate_flow.py validate-review \
+  --review rounds/r1/reviews/iter0.json \
+  --batch rounds/r1/current_batch.list \
+  --candidate-fingerprint <fingerprint>
+
+# 汇总演进结果
+python3 lib/candidate_flow.py report \
+  --metrics stats/candidate_eval.jsonl \
+  --out-json results/candidate_summary.json \
+  --out-md results/candidate_summary.md
+```
+
+## 推荐实验参数
+
+快速检查流程：
+
+```text
+rounds=2 batch=12 oracle_frac=0.25 max_gd_revisions=1
+revise_audit=1 min_oracle_scored=2 min_improvements=1 max_regressions=0
+```
+
+中等 pilot：
+
+```text
+rounds=6 batch=24 oracle_frac=0.25 max_gd_revisions=2
+revise_audit=1 min_oracle_scored=2 min_improvements=1 max_regressions=0
+eval_every=3
+```
+
+正式实验：
+
+```text
+rounds=12 batch=24 oracle_frac=0.25 max_gd_revisions=2
+revise_audit=1 min_oracle_scored=2 min_improvements=1 max_regressions=0
+replay_K=3 train_ratio=0.8 split_seed=0 eval_every=3 eval_baseline=true
+```
+
+旧 launcher 的第三个参数仍可传 `audit_frac`；v6 prompt 会把它映射为 `oracle_frac`。
+
+## 如何判断 G 是否演进正确
+
+主要看：
+
+- accepted candidate 数量和接受率；
+- baseline fail→candidate pass 的 `improvement`；
+- baseline pass→candidate fail 的 `regression`；
+- `net_gain = improvement - regression`；
+- 正式 G 在固定 test 子集上的成功率和逐题翻转。
+
+技能文件变多、D 更容易 PASS、训练批次通过率上升，都不能单独证明 G 有效。
+
+## 如何判断 D 是否演进正确
+
+主要看：
+
+- PASS / REVISE / ABSTAIN 分布；
+- `false_accept` 是否下降；
+- `false_reject_evidence` 是否下降；
+- ABSTAIN 是否集中在确实需要真实执行的问题；
+- D 打回后，下一候选的 uncovered/partial 数量是否减少；
+- 平均 G-D 修订次数是否稳定，而不是持续达到上限。
+
+v6 不再把“D 判轨迹的 TP/FP/FN/TN”作为主指标，因为 D 的直接评估对象已经变成候选 skill。
+
+## OfficeQA 运行
+
+原有 setup、backend、watchdog 和 `oracle_run.sh` 接线可以继续使用。`oracle_run.sh` 已支持通过环境变量切换技能目录：
+
+```bash
+VERISKILL_ACTOR_SKILLS=rounds/r1/baseline_skills \
+  bash oracle_run.sh pool/traj/q001.md --new-traj-out rounds/r1/oracle/baseline/q001.md
+
+VERISKILL_ACTOR_SKILLS=rounds/r1/candidate/iter0 \
+  bash oracle_run.sh pool/traj/q001.md --new-traj-out rounds/r1/oracle/candidate/q001.md
+```
+
+点火方式保持不变：
+
+```bash
 bash adapters/setup_officeqa_101.sh
-
-# 3. 点火（nohup 常驻，watchdog 自动重启，断链不影响）
-bash adapters/launch_loop_101.sh          # 默认 rounds=3 batch=30 audit_frac=0.2
-bash adapters/launch_loop_101.sh 5 30 0.2 # 续跑到第 5 轮（ledger.round 接着走）
+bash adapters/launch_loop_101.sh 6 24 0.25
 ```
 
-`env.sh` 里的关键项（setup 自动写好，改了下次点火生效）：
-
-- `VERISKILL_TIMEOUT=1500`：单次调用超时。hard 题重跑常超 10 分钟，
-  600 会大批误杀；
-- `CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0`：headless 无限等后台子
-  Agent，否则等满 600s 编排者就自行退出；
-- `VERISKILL_TASK_DATA` / `VERISKILL_SOLVE_NOTE`：语料挂载与做题守则
-  （只从源文档取数、带单位、禁上网、禁找答案文件）。
-
-### 监控与产出
-
-```bash
-tail -f loop_*.log            # watchdog 记每次 attempt 与退出码
-cat ledger.json               # round / g_version / oracle 计数
-cat report.md                 # 逐轮指标表 + 备注 + 收尾报告
-ls rounds/r<N>/               # 每轮判决、审计、放回、子 Agent 输出
-ls workspace/actor_skills/    # 长出来的解题技能
-ls workspace/critics/         # 长出来的验证技能
-```
-
-`rounds/r<N>/new_traj/` 是审计产出的新轨迹，`replaced/` 是被替换下来
-的旧轨迹存档；`history/` 存每轮前后与 accepted 快照，回滚从这里拿。
-
-### 已踩过的坑（本包已修复，列出防回退）
-
-1. 重跑超时要 1500s（600s 时 hard 题 6 条审计里 4 条被杀）。
-2. headless claude 等后台子 Agent 有 600s 上限，必须设
-   `CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0`。
-3. 门控 8 字重叠检查需排除 frontmatter 行/R 判据信封，并配
-   `pool/gate_allowlist.txt`（领域通用词），否则 critic 永远立不住
-   （`description:` 的 "descript" 八个字就能撞上轨迹英文文本）。
-4. 机器上有外部监控进程会 SIGKILL 长时进程树（无痕死亡）——launch
-   脚本的 watchdog 会记录退出码并自动续跑，最多 5 次。
-5. 远程 ssh 里别用 `pkill -f <脚本名>`——命令串本身含该字符串会把
-   自己的 shell 杀掉。
-
-## 接入新数据集
-
-在 `adapters/` 下放四样接入件（现有 OfficeQA 实现当样例）：
-转换器（原始轨迹→规范格式）、checker 生成器（零模型调用判分）、
-部署脚本（环境接线 + 幂等 setup）、点火脚本（nohup + watchdog）。
-技能库不属于接入件——G/D 从空库冷启动，技能由共演化从数据里长出。
+运行前建议从空 G、空 D 和干净 ledger 开始新的实验目录；旧 v4/v5 结果可作为历史记录，但不应续训，因为旧监督流程与 v6 的候选审查定义不同。
