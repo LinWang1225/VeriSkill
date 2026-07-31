@@ -299,7 +299,14 @@ touch "$R/g_iter$k.done"
 
 ## 4. D 审查候选，必要时打回 G
 
-令 `k=0`。派发 `d-improve mode=review_candidate`，明确给出：
+令 `k=0`。**review 前先快照 critics**，用于事后校验 D 在只读模式没有篡改规则库：
+
+```bash
+cp -a workspace/critics "$R/critics_before_review"
+critics_fp_before="$(python3 lib/candidate_flow.py fingerprint --skills-dir workspace/critics)"
+```
+
+派发 `d-improve mode=review_candidate`，明确给出：
 
 - current_batch、baseline、candidate iterK；
 - validated manifest；
@@ -307,7 +314,21 @@ touch "$R/g_iter$k.done"
 - `candidate_version=r$r-i$k`；
 - 实际 candidate fingerprint。
 
-保存为 `$R/reviews/iter$k.json`，然后验证：
+保存为 `$R/reviews/iter$k.json`。
+
+**review 后校验 critics 未被篡改**：
+
+```bash
+critics_fp_after="$(python3 lib/candidate_flow.py fingerprint --skills-dir workspace/critics)"
+if [ "$critics_fp_before" != "$critics_fp_after" ]; then
+  echo "[r$r] 警告：D 在 review_candidate 模式修改了 critics，从快照回滚" >&2
+  rm -rf workspace/critics && cp -a "$R/critics_before_review" workspace/critics
+fi
+```
+
+若指纹不一致：D 违反了只读约束，从快照恢复 critics，记录违规，该轮 D review 结果仍可用但标记 `critics_tampered=true`。
+
+然后验证 review：
 
 ```bash
 python3 lib/candidate_flow.py validate-review \
