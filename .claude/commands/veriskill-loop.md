@@ -600,7 +600,18 @@ touch "$R/round.done"
 
 结束时：
 
-1. 用正式 G 在固定 test 子集运行 `eval_test.sh`；
+1. 用正式 G 在固定 test 子集运行 `eval_final_same_sample.sh`（同时测 G 成功率和 D 判别准确率）：
+
+```bash
+bash eval_final_same_sample.sh --meta pool/meta.json \
+  --out-dir rounds/final_test \
+  --max "$final_test_max" \
+  --seed 0 \
+  --round "<ledger.round>" \
+  --g-version "<ledger.g_version>" \
+  --series stats/test_eval.jsonl
+```
+
 2. 画 `stats/test_eval.jsonl` 的 G success-rate 曲线；
 3. 汇总 `stats/candidate_eval.jsonl`。
 
