@@ -220,6 +220,7 @@ watchdog 可能在一轮中途重启编排者。续跑时必须先检查现有�
 6. `candidate_flow.py commit` 是幂等的：正式 G 已等于已接受候选时返回 `already_committed=true`。ledger 的 g_version/accepted_candidates 只能在本轮首次提交后增加一次。
 7. 每个阶段完成后写空 marker：`sample.done`、`g_iter<K>.done`、`review_iter<K>.done`、`oracle.done`、`d_learn.done`、`commit.done`、`round.done`。marker 只能在对应输出校验通过后创建。
 8. ledger.round 只在 `round.done` 写好后推进。
+9. **resume 时按 marker 判断入口**：若 `$R/commit.done` 已存在但 `$R/round.done` 不存在，说明 commit 完成但 checkpoint eval（step 11）未跑或中断——必须先补跑 step 11 的 eval 和记账，写 `round.done`，再推进 ledger.round。不得跳过 checkpoint 直接进入下一轮。
 
 # 每轮流程
 
@@ -247,6 +248,10 @@ while IFS= read -r id; do
     cp "pool/traj.full/$id.md" "$R/current_batch/$id.full.md"
 done < "$R/current_batch.list"
 chmod -R a-w "$R/current_batch"
+```
+
+```bash
+touch "$R/sample.done"
 ```
 
 ## 2. 准备 baseline 与候选 iter0
@@ -288,6 +293,10 @@ python3 lib/candidate_flow.py validate-manifest \
 
 验证失败：该轮候选无效，不调用 Oracle，记录 rejected，进入记账。
 
+```bash
+touch "$R/g_iter$k.done"
+```
+
 ## 4. D 审查候选，必要时打回 G
 
 令 `k=0`。派发 `d-improve mode=review_candidate`，明确给出：
@@ -327,7 +336,11 @@ python3 lib/candidate_flow.py clone-iteration \
 
 若 D 连续两次给出本质相同的 REVISE 反馈，而 G manifest 已逐条回应，下一次 review 应优先 ABSTAIN，交给 Oracle；编排者不得让两个 Agent 无限循环。
 
-达到最大修订次数仍为 REVISE：不再打回，进入“REVISE 抽查”，本轮候选不能提交。
+达到最大修订次数仍为 REVISE：不再打回，进入”REVISE 抽查”，本轮候选不能提交。
+
+```bash
+touch "$R/review_iter$k.done"
+```
 
 ## 5. 构建 Oracle 队列
 
@@ -393,6 +406,10 @@ stdout 分别逐行写：
 - 新轨迹只保存在本轮 Oracle 目录；
 - Oracle 前后重新计算 candidate 目录内容指纹，必须保持不变；同一批 candidate Oracle 结果中的 `skill_hash` 必须唯一。该 `skill_hash` 是原脚本运行指纹，不要求与 `candidate_flow.py` 的内容指纹字符串相等；
 - Oracle 不加载 critics。
+
+```bash
+touch "$R/oracle.done"
+```
 
 ## 7. 配对比较与候选门控
 
@@ -468,6 +485,10 @@ D 返回保存为 `$R/d-learn-result.json`。检查：
 
 D 的规则更新不影响本轮已经冻结的 candidate decision。
 
+```bash
+touch "$R/d_learn.done"
+```
+
 ## 9. Oracle 反馈给 G
 
 无论候选是否接受，只要 `$R/feedback/oracle_to_g.jsonl` 非空，就复制到：
@@ -506,6 +527,10 @@ python3 lib/candidate_flow.py commit \
 
 `candidate_attempts` 每轮首稿成功产生后加 1，不按 revision 次数增加。
 
+```bash
+touch "$R/commit.done"
+```
+
 ## 11. checkpoint 与记账
 
 当 `eval_every > 0` 且 `r % eval_every == 0`，只评估正式 G：
@@ -529,6 +554,14 @@ round | candidate | final D verdict | gd revisions | scored pairs |
 improvement | regression | retained | unresolved | net gain |
 accepted | g_version | d_version | Oracle failures
 ```
+
+checkpoint eval 完成且 ledger 原子写回后：
+
+```bash
+touch "$R/round.done"
+```
+
+只有 `round.done` 存在时，ledger.round 才推进到 `r`。resume 时若 `commit.done` 存在但 `round.done` 不存在，必须补跑 checkpoint eval 再写 `round.done`。
 
 ## 停止条件
 

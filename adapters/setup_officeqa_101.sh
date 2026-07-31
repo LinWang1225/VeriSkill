@@ -41,7 +41,7 @@ src = json.load(open("/root/data/veriskill/.claude/settings.json"))
 env = src.get("env", {})
 tok = env.get("ANTHROPIC_AUTH_TOKEN", "")
 assert tok, "VeriSkill settings 里没有 ANTHROPIC_AUTH_TOKEN"
-base = env.get("ANTHROPIC_BASE_URL", "https://ark.cn-beijing.volces.com/api/coding")
+base = env.get("ANTHROPIC_BASE_URL", "https://api.modelarts-maas.com/anthropic")
 os.makedirs(".claude", exist_ok=True)
 cfg = {"env": {"ANTHROPIC_AUTH_TOKEN": tok, "ANTHROPIC_API_KEY": tok,
                "ANTHROPIC_BASE_URL": base, "IS_SANDBOX": "1"}}

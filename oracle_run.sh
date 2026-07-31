@@ -306,9 +306,24 @@ main() {
     printf '%s\n' "$result" > "$judge_dir/answer.md"
     cp "$truth" "$judge_dir/truth.md"
     write_truth_judge_prompt "$judge_dir/prompt.txt"
-    if ! backend_run "$judge_dir" "$judge_dir/prompt.txt" exec \
-           > "$judge_dir/raw.txt" 2>"$judge_dir/err.txt"; then
-      echo "[$id] 裁决调用失败：$(tail -n 3 "$judge_dir/err.txt" | tr '\n' ' ')" >&2
+    # 判分同样可能遇 429 请求过频；复用 solve 路径的退避重试逻辑，
+    # 避免已成功的 solve 调用因判分瞬时限流而被白白丢弃。
+    local judge_ok=0 j_attempt
+    for j_attempt in 1 2 3 4 5; do
+      if backend_run "$judge_dir" "$judge_dir/prompt.txt" exec \
+             > "$judge_dir/raw.txt" 2>"$judge_dir/err.txt"; then
+        judge_ok=1; break
+      fi
+      if grep -q 'too frequent' "$judge_dir/raw.txt" 2>/dev/null || grep -q 'too frequent' "$judge_dir/err.txt" 2>/dev/null; then
+        echo "[$id] 判分 429 请求过频，退避 $((j_attempt*10))s 后重试 ($j_attempt/5)" >&2
+        sleep $((j_attempt * 10))
+      else
+        echo "[$id] 裁决调用失败：$(tail -n 3 "$judge_dir/err.txt" | tr '\n' ' ') | stdout=$(tail -c 300 "$judge_dir/raw.txt" | tr '\n' ' ')" >&2
+        exit 5
+      fi
+    done
+    if [ "$judge_ok" -ne 1 ]; then
+      echo "[$id] 裁决调用失败（请求过频退避 5 次仍 429）：$(tail -c 200 "$judge_dir/raw.txt" | tr '\n' ' ')" >&2
       exit 5
     fi
     local tj
