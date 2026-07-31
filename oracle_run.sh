@@ -257,7 +257,8 @@ main() {
            > "$solve_dir/raw.txt" 2>"$solve_dir/err.txt"; then
       solve_ok=1; break
     fi
-    if grep -q 'too frequent' "$solve_dir/raw.txt" 2>/dev/null || grep -q 'too frequent' "$solve_dir/err.txt" 2>/dev/null; then
+    if grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$solve_dir/raw.txt" 2>/dev/null || \
+       grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$solve_dir/err.txt" 2>/dev/null; then
       echo "[$id] backend 429 请求过频，退避 $((attempt*10))s 后重试 ($attempt/5)" >&2
       sleep $((attempt * 10))
     else
@@ -314,7 +315,8 @@ main() {
              > "$judge_dir/raw.txt" 2>"$judge_dir/err.txt"; then
         judge_ok=1; break
       fi
-      if grep -q 'too frequent' "$judge_dir/raw.txt" 2>/dev/null || grep -q 'too frequent' "$judge_dir/err.txt" 2>/dev/null; then
+      if grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$judge_dir/raw.txt" 2>/dev/null || \
+         grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$judge_dir/err.txt" 2>/dev/null; then
         echo "[$id] 判分 429 请求过频，退避 $((j_attempt*10))s 后重试 ($j_attempt/5)" >&2
         sleep $((j_attempt * 10))
       else
