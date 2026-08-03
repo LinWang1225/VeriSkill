@@ -255,6 +255,13 @@ main() {
   for attempt in 1 2 3 4 5; do
     if backend_run "$solve_dir" "$solve_dir/prompt.txt" exec \
            > "$solve_dir/raw.txt" 2>"$solve_dir/err.txt"; then
+      # rc=0 不代表输出可用：claude -p 偶尔把后端错误（如 "Execution error"）
+      # 打到 stdout 仍退 0，直送 JSON 解析会判 env_fail 丢掉这道题且不重试。
+      # 命中错误标记则当瞬时故障退避重试。
+      if grep -qE 'Execution error|Internal server error|overloaded|Service unavailable' "$solve_dir/raw.txt" 2>/dev/null; then
+        echo "[$id] 后端 rc=0 但 stdout 报错：$(tail -c 200 "$solve_dir/raw.txt" | tr '\n' ' ')，退避 $((attempt*10))s 重试 ($attempt/5)" >&2
+        sleep $((attempt * 10)); continue
+      fi
       solve_ok=1; break
     fi
     if grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$solve_dir/raw.txt" 2>/dev/null || \
@@ -313,6 +320,11 @@ main() {
     for j_attempt in 1 2 3 4 5; do
       if backend_run "$judge_dir" "$judge_dir/prompt.txt" exec \
              > "$judge_dir/raw.txt" 2>"$judge_dir/err.txt"; then
+        # 同 solve 路径：rc=0 但 stdout 是后端错误（"Execution error" 等）时退避重试
+        if grep -qE 'Execution error|Internal server error|overloaded|Service unavailable' "$judge_dir/raw.txt" 2>/dev/null; then
+          echo "[$id] 判分后端 rc=0 但 stdout 报错：$(tail -c 200 "$judge_dir/raw.txt" | tr '\n' ' ')，退避 $((j_attempt*10))s 重试 ($j_attempt/5)" >&2
+          sleep $((j_attempt * 10)); continue
+        fi
         judge_ok=1; break
       fi
       if grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$judge_dir/raw.txt" 2>/dev/null || \

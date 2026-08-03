@@ -37,6 +37,14 @@ for i in $(seq 1 12); do
   prev=$R
   if [ "$stall" -ge 2 ]; then echo "[watchdog] 连续 2 次无进展（ledger.round 停在 $R），停止"; break; fi
   echo "[watchdog] rc=$rc 未跑满，续跑（prev=$prev stall=$stall）"
-  sleep 15
+  # 清孤儿：编排者死后 eval/oracle/inner-claude 子进程可能仍在烧后端配额，
+  # 不杀掉则下一次 attempt 一上来就被 429 顶死（attempt 2/3 的死法）。
+  pkill -9 -f "oracle_run.sh" 2>/dev/null || true
+  pkill -9 -f "eval_test.sh" 2>/dev/null || true
+  pkill -9 -f "eval_final_same_sample.sh" 2>/dev/null || true
+  pkill -9 -f "claude -p --output-format" 2>/dev/null || true
+  # 退避 30s：让 deepseek-v4-flash 的 1 req/s 和 60k TPM 限流窗口过期再续跑。
+  echo "[watchdog] 已清孤儿进程，退避 30s 等限流窗口过期"
+  sleep 30
 done' > "$LOG" 2>&1 &
 echo "PID=$! LOG=$VS/$LOG"
