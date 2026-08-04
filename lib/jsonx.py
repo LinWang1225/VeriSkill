@@ -82,88 +82,57 @@ def as_list(v):
 
 
 def build_verdict(obj, item, threshold):
-    model_verdict = str(obj.get("verdict", "")).strip().lower()
-    if model_verdict not in ("pass", "fail"):
+    verdict = str(obj.get("verdict", "")).strip().lower()
+    if verdict not in ("pass", "fail"):
         raise ValueError(f"verdict 非法：{obj.get('verdict')!r}")
+
     rules = as_list(obj.get("rules_hit"))
     scores = obj.get("rubric_scores")
     if not isinstance(scores, dict):
         scores = {}
+
+    # 标准化分数：模型给了就用，没给就按 sum/(2×项数) 自己算
     norm = obj.get("normalized_score")
-    if norm is None and scores:
-        vals = []
-        for value in scores.values():
+    if norm is None:
+        if scores:
             try:
-                vals.append(float(value))
+                norm = sum(float(v) for v in scores.values()) / (2.0 * len(scores))
             except Exception:
-                pass
-        if vals:
-            norm = sum(vals) / (2.0 * len(vals))
-    if norm is not None:
-        try:
-            norm = float(norm)
-        except Exception:
-            norm = None
+                norm = None
     norm = clamp01(norm) if norm is not None else None
 
-    # hard 只认模型显式字段。旧逻辑把“无 rubric 的 fail”自动视为 hard，
-    # 会把独立核查中的软失败变成高置信误杀。
-    hard_hit = bool(obj.get("hard_rule_hit"))
-    critic_verdict = str(obj.get("critic_verdict", "")).strip().lower()
-    independent_verdict = str(obj.get("independent_verdict", "")).strip().lower()
-    if critic_verdict not in ("pass", "fail", "not_applicable"):
-        critic_verdict = "not_applicable" if not scores and not rules else model_verdict
-    if independent_verdict not in ("pass", "fail"):
-        independent_verdict = model_verdict
-    coverage = clamp01(obj.get("evidence_coverage", 0.5 if norm is None else 1.0))
-    direct_error = bool(obj.get("independent_direct_error"))
+    # confidence：采信模型自报的主观把握（D 对"这次判决有多大信心"的实质
+    # 判断），而不是标准化分数离阈值的机械换算——机械换算会把 pass 挤到
+    # 大片 1.0，抹掉中间地带，让审计无从挑"D 不确定的"、G 拿不到分级信号。
+    # 模型没给或非法时，回退到旧的机械换算兜底。
+    hard_hit = bool(obj.get("hard_rule_hit")) or (verdict == "fail" and not scores)
+    mc = obj.get("confidence")
+    try:
+        confidence = round(clamp01(float(mc)), 2) if mc is not None else None
+    except Exception:
+        confidence = None
+    if confidence is None:  # 兜底：旧机械换算
+        if norm is None:
+            confidence = 0.9 if hard_hit else 0.5
+        else:
+            confidence = round(min(1.0, abs(norm - threshold) / 0.2), 2)
 
-    # 最终聚合由代码执行，避免模型给出与两个子判决不一致的 verdict。
-    if hard_hit:
-        verdict = "fail"
-    elif critic_verdict == "fail" and independent_verdict == "fail":
-        verdict = "fail"
-    elif independent_verdict == "fail" and direct_error and coverage >= 0.8:
-        verdict = "fail"
-    else:
-        verdict = "pass"
-    disagreement = bool(obj.get("disagreement")) or (
-        critic_verdict in ("pass", "fail") and critic_verdict != independent_verdict
-    ) or verdict != model_verdict
-
-    # confidence 由可校准信号推导，不采信模型自报。无 rubric 时最多 0.5；
-    # 两条路径分歧时封顶 0.35，以便优先进入审计。
-    if norm is None:
-        confidence = round(0.5 * coverage, 2)
-    else:
-        margin = min(1.0, abs(norm - threshold) / 0.2)
-        confidence = round(margin * (0.5 + 0.5 * coverage), 2)
-    if hard_hit:
-        confidence = max(confidence, 0.9)
-    if disagreement and not hard_hit:
-        confidence = min(confidence, 0.35)
+    # D 标注的存疑点（即使判 pass 也可指出弱步骤），供 G 从"次优"学
+    concerns = as_list(obj.get("concerns"))
 
     reason = str(obj.get("reason", ""))[:600]
+
     return {
         "item": item,
         "verdict": verdict,
-        "model_verdict": model_verdict,
-        "verdict_corrected": verdict != model_verdict,
-        "hard_rule_hit": hard_hit,
         "rules_hit": rules,
         "rubric_scores": scores,
         "normalized_score": norm,
-        "critic_verdict": critic_verdict,
-        "independent_verdict": independent_verdict,
-        "independent_direct_error": direct_error,
-        "disagreement": disagreement,
-        "evidence_coverage": coverage,
-        "applicable_critics": as_list(obj.get("applicable_critics")),
         "confidence": confidence,
+        "concerns": concerns,
         "reason": reason,
     }
 
-# VERISKILL_CALIBRATION_V5_163DCD8
 
 class EnvFailure(Exception):
     """模型自报环境故障：没验成，不是验出了 fail。"""

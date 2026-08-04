@@ -11,6 +11,8 @@ pool/traj/*
 !pool/traj/.gitkeep
 pool/checkers/*
 !pool/checkers/.gitkeep
+# 框架代码（非每轮生成）：SciBench-stat 确定性判分核心
+!pool/checkers/checker_core_stat.py
 pool/meta.json
 pool/gate_allowlist.txt
 # Runtime result artifacts are version-controlled (rounds/, history/,
