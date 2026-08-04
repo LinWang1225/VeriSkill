@@ -96,8 +96,8 @@ backend_stub() {
   fi
 }
 
-backend_run() {
-  local dir="$1" prompt="$2" mode="${3:-readonly}"
+_backend_dispatch() {
+  local dir="$1" prompt="$2" mode="$3"
   case "$BACKEND" in
     claude) backend_claude "$dir" "$prompt" "$mode" ;;
     codex)  backend_codex  "$dir" "$prompt" "$mode" ;;
@@ -105,6 +105,27 @@ backend_run() {
     stub)   backend_stub   "$dir" "$prompt" "$mode" ;;
     *) echo "未知后端：${BACKEND}（可选 claude|codex|custom|stub）" >&2; return 91 ;;
   esac
+}
+
+# 供应商并发限制很紧（MaaS 实测只容 1 路）：编排器与子 agent 同时在线时
+# 子调用会撞 429，claude CLI 只吐一句 "Execution error"（stderr 为空）。
+# 这里统一重试：输出为空或形如 Execution error 时退避重试。
+backend_run() {
+  local dir="$1" prompt="$2" mode="${3:-readonly}"
+  local tries="${VERISKILL_BACKEND_RETRIES:-4}" wait="${VERISKILL_BACKEND_BACKOFF:-25}"
+  local i out rc
+  for (( i=1; i<=tries; i++ )); do
+    out="$(_backend_dispatch "$dir" "$prompt" "$mode")"; rc=$?
+    if [ $rc -eq 0 ] && [ -n "${out//[[:space:]]/}" ] \
+       && ! printf '%s' "$out" | head -c 200 | grep -qiE '^[[:space:]]*(Execution error|Failed to authenticate|API Error)'; then
+      printf '%s' "$out"; return 0
+    fi
+    if [ $i -lt $tries ]; then
+      echo "[backend] 第 $i 次失败(rc=$rc, out='$(printf '%s' "$out" | head -c 40)')，${wait}s 后重试" >&2
+      sleep "$wait"; wait=$(( wait * 2 ))
+    fi
+  done
+  printf '%s' "$out"; return ${rc:-1}
 }
 
 # 检查后端是否可用，不消耗模型调用

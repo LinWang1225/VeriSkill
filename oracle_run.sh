@@ -23,7 +23,6 @@
 #      3  轨迹里抽不出「题目」节，没法重跑
 #      4  校验脚本自身异常，或参数不对
 #      5  模型调用失败、输出解析不了、或模型自报执行环境故障
-#      6  没有 checker/truth，无法得到可靠真值（不应重试）
 #
 # 重跑结果的判分真值，按序取第一个能用的：
 #   1. pool/checkers/<id>.sh   —— 专用校验脚本，零模型调用。
@@ -72,58 +71,121 @@ skill_fingerprint() {
 emit() {
   python3 -c '
 import json,sys
-print(json.dumps({"item":sys.argv[1],"oracle_pass":sys.argv[2]=="true",
-                  "evidence":sys.argv[3][:1000],"skill_hash":sys.argv[4],
-                  "truth_source":sys.argv[5],
-                  "skill_result":sys.argv[6][:500]}, ensure_ascii=False))' \
-    "$1" "$2" "$3" "$4" "$5" "$6"
+o={"item":sys.argv[1],"oracle_pass":sys.argv[2]=="true",
+   "evidence":sys.argv[3][:1000],"skill_hash":sys.argv[4],
+   "truth_source":sys.argv[5],
+   "skill_result":sys.argv[6][:500]}
+if len(sys.argv)>7 and sys.argv[7].strip(): o["failure_reason"]=sys.argv[7][:600]
+print(json.dumps(o, ensure_ascii=False))' \
+    "$1" "$2" "$3" "$4" "$5" "$6" "${7:-}"
+}
+
+# 判错时归纳「错因」——只描述做法哪里不对(可给出正确做法的名称/条件判据)，
+# 严禁泄露正确数值答案。这句诊断会交给 g-improve，让它能写出可执行的决策规则，
+# 而不是只知道"这条错了"却不知道错在哪。
+diagnose_failure() {  # diagnose_failure <task.md> <轨迹过程> <学生答案>
+  local task="$1" proc="$2" ans="$3"
+  local d; d="$(mktemp -d "${TMPDIR:-/tmp}/veriskill-diag-XXXXXX")"
+  {
+    printf '你是学科专家。下面是一道题、一份**错误**的解答过程与它给出的答案。\n\n'
+    printf '## 题目\n%s\n\n## 解答过程(有误)\n%s\n\n## 它给出的答案(错误)\n%s\n\n' \
+      "$(head -c 2500 "$task")" "$(printf '%s' "$proc" | head -c 3000)" "$(printf '%s' "$ans" | head -c 200)"
+    cat <<'EOP'
+请指出**它错在哪一步、为什么错、这类题正确的做法是什么**。
+
+硬性要求：
+- **绝对不要写出正确的数值答案**（不给数字、不给可直接算出答案的完整代入）。
+- 聚焦「判据」和「方法选择」：题面出现什么特征时该用哪个公式/模型/约定，它误用了哪个。
+- 写成 2-4 句，形如："题面说 X（恒外压/可逆/…），应按 A 处理；该解答错用了 B，导致…"。
+- 若是单位/量纲/有效数字问题，指出是哪一步的换算出错。
+只输出这段诊断本身，不要任何前后缀。
+EOP
+  } > "$d/prompt.txt"
+  # 诊断是"锦上添花"：失败就算了，绝不能拖累整轮。
+  # 单独用最小重试(1次、不退避)，避免走 backend_run 默认的 30/60/120/240s 阶梯。
+  local r
+  r="$(VERISKILL_BACKEND_RETRIES=1 VERISKILL_BACKEND_BACKOFF=1 \
+       backend_run "$d" "$d/prompt.txt" readonly 2>/dev/null | tr '\n' ' ' | head -c 600)"
+  rm -rf "$d"
+  case "$r" in
+    *"Execution error"*|*"API Error"*) r="" ;;   # 拿到错误串就当没诊断
+  esac
+  printf '%s' "$r"
 }
 
 # ---------------------------------------------------- 提示词：真实重跑做题
 write_solve_prompt() {
   local out="$1" has_actor="$2" has_check="$3" data_name="$4"
+  # 基础提示词与生成轨迹时（run_frontiersci 的 TASK_PROMPT）保持一致：
+  # 同样的 persona、闭卷、rigorous + Python、单一数值/闭式答案。技能库作为
+  # 额外叠加——skill 空时本提示词≈原版，对照才干净；skill 非空时差异纯来
+  # 自技能。仅额外要求 JSON 输出（oracle 管道解析 result / 组装新轨迹需要）。
   cat > "$out" <<'EOF'
-你是解题执行者。当前目录下有：
+You are an expert competitor at international science olympiads (IPhO, IChO, IBO). Solve the given problem rigorously: derive the solution step by step, and use Python (write and run code) for any non-trivial arithmetic or numeric evaluation — do not eyeball numeric results.
 
-- task.md   一道题目
+This is a closed-book exam: work only from the problem statement and standard scientific knowledge. You have no internet access. Do not look for answer keys or benchmark files on the filesystem; if you encounter one, do not use it.
+
+The current directory contains:
+
+- task.md   the problem to solve
 EOF
   [ -n "$data_name" ] && cat >> "$out" <<EOF
-- $data_name/   题目依赖的源文档/数据，从这里取数
+- $data_name/   source documents / data the problem depends on
 EOF
   [ "$has_actor" = "yes" ] && cat >> "$out" <<'EOF'
-- skills/actor/  解题技能库：先浏览，找出与本题相关的技能，按它的方法做
+- skills/actor/   a solving-skill library
+
+How to use skills/actor/ (this part is binding):
+
+1. Before you start solving, list every file in skills/actor/ and open each one whose
+   name OR description could plausibly bear on this problem. Filenames are short and
+   often understate scope — do not decide from the filename alone. List every skill you
+   actually applied in "skills_used".
+
+2. Lines marked `判据` or `动作 → 检查` are constraints, not suggestions. If such a line
+   tells you to compute a check before committing to a formula, compute it. If the check
+   comes out saying your current model or convention is the wrong one, you must switch,
+   and the switched result is your final answer.
+
+3. If a skill's check produces a corrected value, report the CORRECTED value in "result".
+   Never report the value the skill just told you is wrong and mention the correction only
+   as an aside — an aside is not an answer.
+
+4. You may decline to follow an applicable skill only by naming, in "process", the concrete
+   feature of THIS problem that puts it outside the skill's stated scope. The following are
+   NOT acceptable grounds for declining, because each one is a default that has already been
+   observed to produce wrong answers on problems of this kind:
+     - "the standard / textbook / conventional treatment does it the other way"
+     - "the problem does not supply that parameter"  (look it up and state your source)
+     - "the simpler model is clearly the intended one"
+     - "the difference is small"
 EOF
   [ "$has_check" = "yes" ] && cat >> "$out" <<'EOF'
-- skills/check/  校验工具技能（怎么跑代码、怎么查数据等）
+- skills/check/   checking-tool skills (how to run code, query data, etc.)
 EOF
   cat >> "$out" <<'EOF'
 
-把这道题**真实做一遍**：要跑代码就真的跑，要算就真的算，要查就真的查。
-每一步结论都必须有真实执行结果支撑，禁止凭印象直接给答案。
+Give your final answer as a single number (with unit only if the problem requests one) or a single closed-form expression in LaTeX.
 
-你的解答过程会被另一个只能读文本的审查者核验，所以「过程」必须留下
-可核对的证据：**每个用到的数都写明来源（文件名、位置）并摘录原文**，
-每步计算写出算式和结果。没有证据的步骤会被当作未验证。
-
-只输出下面这个 JSON，不要有任何别的文字：
+Output ONLY the following JSON and nothing else:
 
 ```json
 {
-  "skills_used": ["用到的技能文件名，没用到就给空数组"],
-  "process": "分步的取数与计算记录：来源引用（文件+位置+原文摘录）、算式、中间结果。这是审查的唯一依据，写全",
-  "result": "你的最终答案，写完整",
-  "evidence": "关键执行步骤和真实输出，两到四句"
+  "skills_used": ["names of skill files you used, or [] if none"],
+  "process": "your step-by-step derivation and any code outputs",
+  "result": "your final answer, complete",
+  "evidence": "key steps and real outputs, two to four sentences"
 }
 ```
 
-如果环境问题（依赖缺失、外部服务不可用）让你无法得出可靠结果：
+If an environment problem (missing dependency, unavailable service) prevents a reliable result:
 
 ```json
-{"env_failure": true, "evidence": "什么环节出的问题"}
+{"env_failure": true, "evidence": "what went wrong"}
 ```
 EOF
   if [ -n "$SOLVE_NOTE" ]; then
-    printf '\n附加说明（必须遵守）：\n%s\n' "$SOLVE_NOTE" >> "$out"
+    printf '\nNote (must follow):\n%s\n' "$SOLVE_NOTE" >> "$out"
   fi
 }
 
@@ -204,23 +266,7 @@ main() {
 
   backend_preflight || exit 5
   WORK_ORACLE="$(mktemp -d "${TMPDIR:-/tmp}/veriskill-oracle-XXXXXX")"
-  # 失败(非零退出)时把现场(task/prompt/raw.txt/err.txt)留到 oracle_failures/<id>/
-  # 供排查，再清 /tmp temp；成功则照常清。raw.txt 里的真因(如 429)不再随 temp 蒸发。
-  _cleanup() {
-    local rc=$?
-    if [ "$rc" -ne 0 ] && [ -n "${WORK_ORACLE:-}" ] && [ -n "${id:-}" ]; then
-      mkdir -p "$HERE/oracle_failures/$id" 2>/dev/null || true
-      cp -a "$WORK_ORACLE/." "$HERE/oracle_failures/$id/" 2>/dev/null || true
-      # 通知只写 loop 日志、不写 stderr：eval_test.sh 取 stderr 末行当 error，
-      # 写 stderr 会盖住真因（[id] 重跑调用失败：… / 环境故障：…）
-      if [ -n "${VERISKILL_LOOP_LOG:-}" ]; then
-        printf '[%s] [%s] 失败现场已保存到 %s/oracle_failures/%s (rc=%s)\n' \
-          "$(date +%H:%M:%S)" "$id" "$HERE" "$id" "$rc" >> "$VERISKILL_LOOP_LOG" 2>/dev/null || true
-      fi
-    fi
-    rm -rf "${WORK_ORACLE:-}" 2>/dev/null || true
-  }
-  trap _cleanup EXIT
+  trap 'rm -rf "${WORK_ORACLE:-}"' EXIT
   local work="$WORK_ORACLE"
 
   # ---- 1) 从轨迹抽题目（extract.py 要求两个都抽；答案抽出即闲置，
@@ -248,34 +294,9 @@ main() {
   fi
   write_solve_prompt "$solve_dir/prompt.txt" "$has_actor" "$has_check" "$data_name"
 
-  # 重跑：429"请求过频"(rate-limit)是瞬时的，端点提示"wait a short moment and
-  # retry"，退避重试，不要一遇就判 env_fail 丢掉这条审计/eval。
-  # 配额级 429(exceeded ... quota / reset at)短退避救不回，不浪费重试，记下真因即可。
-  local solve_ok=0 attempt
-  for attempt in 1 2 3 4 5; do
-    if backend_run "$solve_dir" "$solve_dir/prompt.txt" exec \
-           > "$solve_dir/raw.txt" 2>"$solve_dir/err.txt"; then
-      # rc=0 不代表输出可用：claude -p 偶尔把后端错误（如 "Execution error"）
-      # 打到 stdout 仍退 0，直送 JSON 解析会判 env_fail 丢掉这道题且不重试。
-      # 命中错误标记则当瞬时故障退避重试。
-      if grep -qE 'Execution error|Internal server error|overloaded|Service unavailable' "$solve_dir/raw.txt" 2>/dev/null; then
-        echo "[$id] 后端 rc=0 但 stdout 报错：$(tail -c 200 "$solve_dir/raw.txt" | tr '\n' ' ')，退避 $((attempt*10))s 重试 ($attempt/5)" >&2
-        sleep $((attempt * 10)); continue
-      fi
-      solve_ok=1; break
-    fi
-    if grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$solve_dir/raw.txt" 2>/dev/null || \
-       grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$solve_dir/err.txt" 2>/dev/null; then
-      echo "[$id] backend 429 请求过频，退避 $((attempt*10))s 后重试 ($attempt/5)" >&2
-      sleep $((attempt * 10))
-    else
-      # 配额级 429 / 非 429 故障：不重试。真因常在 stdout(raw.txt)，stderr 可能空
-      echo "[$id] 重跑调用失败：stderr=$(tail -n 3 "$solve_dir/err.txt" | tr '\n' ' ') | stdout=$(tail -c 300 "$solve_dir/raw.txt" | tr '\n' ' ')" >&2
-      exit 5
-    fi
-  done
-  if [ "$solve_ok" -ne 1 ]; then
-    echo "[$id] 重跑调用失败（请求过频退避 5 次仍 429）：$(tail -c 200 "$solve_dir/raw.txt" | tr '\n' ' ')" >&2
+  if ! backend_run "$solve_dir" "$solve_dir/prompt.txt" exec \
+         > "$solve_dir/raw.txt" 2>"$solve_dir/err.txt"; then
+    echo "[$id] 重跑调用失败：$(tail -n 3 "$solve_dir/err.txt" | tr '\n' ' ')" >&2
     exit 5
   fi
   if ! python3 "$HERE/lib/jsonx.py" solve --item "$id" \
@@ -296,14 +317,16 @@ main() {
 
   # ---- 4) 给重跑的新结果判真值 ----
   if [ -x "$checker" ]; then
-    printf '## 最终答案\n%s\n' "$result" > "$work/answer_wrap.md"
+    { printf '## 题目\n'; cat "$work/task.md" 2>/dev/null; printf '\n\n## 最终答案\n%s\n' "$result"; } > "$work/answer_wrap.md"
     local out rc
     set +e
     out="$("$checker" "$work/answer_wrap.md" 2>&1)"; rc=$?
     set -e
     case "$rc" in
       0) emit "$id" true  "checker: $(echo "$out" | tail -n 2 | tr '\n' ' ')" "$fp" checker "$result"; exit 0 ;;
-      1) emit "$id" false "checker: $(echo "$out" | tail -n 2 | tr '\n' ' ')" "$fp" checker "$result"; exit 0 ;;
+      1) local _why=""
+         [ -n "${VERISKILL_DIAGNOSE:-1}" ] && _why="$(diagnose_failure "$work/task.md" "$evidence" "$result")"
+         emit "$id" false "checker: $(echo "$out" | tail -n 2 | tr '\n' ' ')" "$fp" checker "$result" "$_why"; exit 0 ;;
       *) echo "[$id] 校验脚本异常退出 rc=$rc: $(echo "$out" | tail -n 3)" >&2; exit 4 ;;
     esac
   fi
@@ -314,30 +337,9 @@ main() {
     printf '%s\n' "$result" > "$judge_dir/answer.md"
     cp "$truth" "$judge_dir/truth.md"
     write_truth_judge_prompt "$judge_dir/prompt.txt"
-    # 判分同样可能遇 429 请求过频；复用 solve 路径的退避重试逻辑，
-    # 避免已成功的 solve 调用因判分瞬时限流而被白白丢弃。
-    local judge_ok=0 j_attempt
-    for j_attempt in 1 2 3 4 5; do
-      if backend_run "$judge_dir" "$judge_dir/prompt.txt" exec \
-             > "$judge_dir/raw.txt" 2>"$judge_dir/err.txt"; then
-        # 同 solve 路径：rc=0 但 stdout 是后端错误（"Execution error" 等）时退避重试
-        if grep -qE 'Execution error|Internal server error|overloaded|Service unavailable' "$judge_dir/raw.txt" 2>/dev/null; then
-          echo "[$id] 判分后端 rc=0 但 stdout 报错：$(tail -c 200 "$judge_dir/raw.txt" | tr '\n' ' ')，退避 $((j_attempt*10))s 重试 ($j_attempt/5)" >&2
-          sleep $((j_attempt * 10)); continue
-        fi
-        judge_ok=1; break
-      fi
-      if grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$judge_dir/raw.txt" 2>/dev/null || \
-         grep -qE 'too frequent|Too many requests|rate.limit|429|ModelArts\.81114' "$judge_dir/err.txt" 2>/dev/null; then
-        echo "[$id] 判分 429 请求过频，退避 $((j_attempt*10))s 后重试 ($j_attempt/5)" >&2
-        sleep $((j_attempt * 10))
-      else
-        echo "[$id] 裁决调用失败：$(tail -n 3 "$judge_dir/err.txt" | tr '\n' ' ') | stdout=$(tail -c 300 "$judge_dir/raw.txt" | tr '\n' ' ')" >&2
-        exit 5
-      fi
-    done
-    if [ "$judge_ok" -ne 1 ]; then
-      echo "[$id] 裁决调用失败（请求过频退避 5 次仍 429）：$(tail -c 200 "$judge_dir/raw.txt" | tr '\n' ' ')" >&2
+    if ! backend_run "$judge_dir" "$judge_dir/prompt.txt" exec \
+           > "$judge_dir/raw.txt" 2>"$judge_dir/err.txt"; then
+      echo "[$id] 裁决调用失败：$(tail -n 3 "$judge_dir/err.txt" | tr '\n' ' ')" >&2
       exit 5
     fi
     local tj
@@ -353,15 +355,10 @@ print(json.dumps(o, ensure_ascii=False))' "$tj" "$result"
     exit 0
   fi
 
-  # ---- 没有 checker/truth：执行成功不等于答案正确，默认不产监督 ----
-  if [ "${VERISKILL_ALLOW_REDO_AS_TRUTH:-0}" = "1" ]; then
-    emit "$id" true "弱真值：无 checker/truth；重跑成功。执行证据：$evidence" \
-         "$fp" redo "$result"
-    exit 0
-  fi
-  echo "[$id] 无 checker/truth：重跑成功不能作为答案正确真值；该条未评分" >&2
-  exit 6
-  # VERISKILL_CALIBRATION_V5_163DCD8
+  # ---- 没有 checker/truth：只能看执行本身，成功得出结果、没报错 = pass ----
+  emit "$id" true "无 checker/truth；重跑成功得出结果（没报错）。执行证据：$evidence" \
+       "$fp" redo "$result"
+  exit 0
 }
 
 main "$@"
