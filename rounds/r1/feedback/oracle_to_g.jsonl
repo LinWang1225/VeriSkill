@@ -1,0 +1,1 @@
+{"item": "q048", "kind": "regression", "candidate_pass": false, "candidate_evidence": "checker: score_answer(tol=0): pred='0.377' gold='0.388' -> fail ", "candidate_result": "0.377", "feedback_scope": "train_only"}

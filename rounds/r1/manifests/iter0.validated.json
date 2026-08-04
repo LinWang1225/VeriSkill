@@ -1,0 +1,295 @@
+{
+  "candidate_version": "r1-i0",
+  "base_fingerprint": "e3b0c44298fc",
+  "trajectory_clusters": [
+    {
+      "cluster_id": "C01",
+      "items": [
+        "q000",
+        "q003",
+        "q014",
+        "q020",
+        "q076",
+        "q095",
+        "q100",
+        "q127"
+      ],
+      "common_pattern": "Map a target calendar/fiscal period to the correct Treasury Bulletin file(s) accounting for publication lag (M-month bulletin carries data through M-1 or M-2), then assemble values across multiple bulletins when a range is requested.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-locate-source"
+      ],
+      "evidence": "Trajectories show repeated date-to-bulletin reasoning: q000 uses 1941_01 for CY1940 data; q003 uses 1954_02 for 1953 and 1941_01 for 1940; q014 uses 1943_01 and 1947_01 for revised figures; q076 assembles Sept 2002 and Sept 2012 from March bulletins of the following year; q095 pulls each Sept 2005-2009 from the September bulletin; q100 reads 1956_08/1956_07 for back-figures; q127 uses 1982_01 for the Dec-31-1981 snapshot."
+    },
+    {
+      "cluster_id": "C02",
+      "items": [
+        "q001",
+        "q003",
+        "q010",
+        "q014",
+        "q015",
+        "q017",
+        "q020",
+        "q030",
+        "q034",
+        "q039",
+        "q041",
+        "q048",
+        "q058",
+        "q059",
+        "q067",
+        "q069",
+        "q072",
+        "q079",
+        "q087",
+        "q091",
+        "q095",
+        "q097",
+        "q100",
+        "q108",
+        "q113",
+        "q123",
+        "q127"
+      ],
+      "common_pattern": "Inside a bulletin, locate a numbered table, parse multi-level column headers whose positions shift across eras, verify column mapping via sum/cross-bulletin/subtotal/footnote checks, extract values handling units and r/p/-/nan markers, cross-verify across bulletins, then compute a statistic and round/format the answer.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-extract-verify"
+      ],
+      "evidence": "Column-mapping ambiguity is pervasive: q015/q017 decode the AY-1 4-year column blocks via the May 1970 bulletin labels; q014 resolves a misaligned 1946_09 Table 3 by using the 1947_01 revision; q030 verifies customs columns by summing months to the annual total; q041 confirms FFO-2 column positions across four bulletins; q127 confirms PDO-1 column 2 is the nominal maturity total via a 15178+79990 subtotal check. Computation variety includes geometric mean (q010, q072, q097), CAGR/continuous growth (q048, q113), OLS forecast (q100), R-squared (q041), arc elasticity (q087), centered moving average (q034), population std dev (q039), percent-share change (q058, q067, q108), inflation correction (q003). Rounding/format details differ per question (hundredths/thousandths/tenths/whole/significant digits, bracketed lists, signed numbers, percent-vs-decimal)."
+    },
+    {
+      "cluster_id": "C03",
+      "items": [
+        "q000",
+        "q030",
+        "q059",
+        "q067",
+        "q069",
+        "q079",
+        "q091",
+        "q113"
+      ],
+      "common_pattern": "Cross-bulletin verification: re-extract the same value from a later bulletin that reproduces back-figures, or confirm a single value across two overlapping bulletins before trusting it.",
+      "diagnosis": "capability_gap",
+      "skill_changes": [
+        "g-officeqa-extract-verify"
+      ],
+      "evidence": "q000 cross-checks 1940 defense figures between 1941_01 and 1940_12; q014 confirms 1946 Public works=407 in both 1946_09 and 1947_01; q069 verifies 2002/2012 liabilities across the Dec and Mar bulletins; q095 confirms each FY total in two bulletins; q113 confirms 1945 seigniorage in 1946_02 and 1946_03."
+    }
+  ],
+  "changes": [
+    {
+      "skill": "g-officeqa-locate-source",
+      "type": "new_skill",
+      "support_items": [
+        "q000",
+        "q003",
+        "q014",
+        "q020",
+        "q076",
+        "q095",
+        "q100",
+        "q127"
+      ],
+      "summary": "New skill mapping target calendar/fiscal periods to treasury_bulletin_YYYY_MM.txt files with publication-lag rules and multi-bulletin assembly fallback."
+    },
+    {
+      "skill": "g-officeqa-extract-verify",
+      "type": "new_skill",
+      "support_items": [
+        "q001",
+        "q003",
+        "q010",
+        "q014",
+        "q015",
+        "q017",
+        "q020",
+        "q030",
+        "q034",
+        "q039",
+        "q041",
+        "q048",
+        "q058",
+        "q059",
+        "q067",
+        "q069",
+        "q072",
+        "q079",
+        "q087",
+        "q091",
+        "q095",
+        "q097",
+        "q100",
+        "q108",
+        "q113",
+        "q123",
+        "q127"
+      ],
+      "summary": "New skill covering table location, multi-level column parsing, mapping verification, value extraction with unit/marker handling, cross-bulletin verification, computation, rounding, and output formatting."
+    }
+  ],
+  "expected_coverage": {
+    "q000": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#cross-verify"
+    ],
+    "q001": [
+      "g-officeqa-extract-verify#locate-table",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute",
+      "g-officeqa-extract-verify#round-format"
+    ],
+    "q003": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q004": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q010": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#parse-column-layout",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q014": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#verify-column-mapping",
+      "g-officeqa-extract-verify#cross-verify"
+    ],
+    "q015": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#parse-column-layout",
+      "g-officeqa-extract-verify#verify-column-mapping",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q017": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#parse-column-layout",
+      "g-officeqa-extract-verify#verify-column-mapping",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q020": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q030": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#verify-column-mapping",
+      "g-officeqa-extract-verify#extract-values"
+    ],
+    "q034": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q039": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q041": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q048": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q058": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q059": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#cross-verify"
+    ],
+    "q067": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q069": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#cross-verify"
+    ],
+    "q072": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q076": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q079": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q087": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q091": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#cross-verify"
+    ],
+    "q095": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#cross-verify"
+    ],
+    "q097": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q100": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#parse-column-layout",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q108": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q113": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#cross-verify"
+    ],
+    "q123": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#extract-values",
+      "g-officeqa-extract-verify#compute"
+    ],
+    "q127": [
+      "g-officeqa-locate-source#map-target-period",
+      "g-officeqa-extract-verify#verify-column-mapping",
+      "g-officeqa-extract-verify#extract-values"
+    ]
+  },
+  "uncovered": [],
+  "response_to_d": [],
+  "oracle_memory_used": [],
+  "skipped": [],
+  "needs_human": false,
+  "candidate_fingerprint": "6c0e96b2490c",
+  "batch_size": 30
+}

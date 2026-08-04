@@ -1,1 +1,1 @@
-输出里找不到合法 JSON 对象
+环境故障：Page 5 of the September 1990 Treasury Bulletin (OCR file treasury_bulletin_1990_09.txt, page-number markers '3'@line336, '4'@line370, '5'@line406, '6'@line461) spans lines 406-460 and contains Exhibit 1 ('GROSS SAVING AND REAL GROWTH, 1960 to 1988') and Exhibit 2 ('U.S. GROSS SAVING RATIO, 1898-1990'). The OCR preserves only titles, axis labels ('Percent 20 15 10 5 0', years '1900...1990'), and a few annotations ('1898-1928 Private Saving 16.7% Average', 'Depression of 1930s and World War II', '

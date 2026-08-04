@@ -1,12 +1,12 @@
 {
  "round": 0,
  "g_version": 0,
- "skill_hash": "8b8d8e9422f9",
+ "skill_hash": "5cd337198ead",
  "n_sampled": 20,
- "n_judged": 16,
- "n_pass": 8,
- "n_env_fail": 4,
- "success_rate": 0.5,
+ "n_judged": 18,
+ "n_pass": 7,
+ "n_env_fail": 2,
+ "success_rate": 0.3888888888888889,
  "sample": [
   "q002",
   "q018",

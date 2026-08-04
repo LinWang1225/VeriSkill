@@ -1,0 +1,314 @@
+{
+  "candidate_version": "r2-i0",
+  "base_fingerprint": "e3b0c44298fc",
+  "trajectory_clusters": [
+    {
+      "cluster_id": "C01",
+      "items": [
+        "q004",
+        "q025",
+        "q068",
+        "q094",
+        "q111",
+        "q124",
+        "q127"
+      ],
+      "common_pattern": "Extract values from a Treasury Bulletin table and apply simple aggregation: sum with exclusions, arithmetic mean, list extraction, or direct difference. No complex formula needed beyond basic arithmetic.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-locate-source",
+        "g-officeqa-extract-compute"
+      ],
+      "evidence": "All 7 trajectories locate a specific bulletin table (FFO-3, FD-1, CM-I-2, PDO-1, Summary of Receipts), extract values with column mapping, cross-validate, and compute a simple sum/mean/list/difference."
+    },
+    {
+      "cluster_id": "C02",
+      "items": [
+        "q013",
+        "q032",
+        "q054",
+        "q055"
+      ],
+      "common_pattern": "Extract a series of values and compute a statistical measure: geometric mean, population standard deviation, mean absolute deviation, or Hazen percentile. Each requires a distinct formula with specific divisor (N vs N-1) or plotting position.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-extract-compute"
+      ],
+      "evidence": "q013 computes geometric mean of 80 monthly values via log-sum-exp; q032 computes population std dev (divide by N) of TIPS prices; q054 computes MAD of excise taxes; q055 computes Hazen 85th percentile with P_i=(i-0.5)/N."
+    },
+    {
+      "cluster_id": "C03",
+      "items": [
+        "q009",
+        "q039",
+        "q058",
+        "q060",
+        "q087",
+        "q106"
+      ],
+      "common_pattern": "Extract time-series or paired data and fit a regression or compute correlation: OLS linear regression for prediction, Zipf exponent via log-log OLS, Pearson correlation and R-squared. Each uses explicit regression/correlation formulas with independent verification.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-extract-compute"
+      ],
+      "evidence": "q009 and q106 use OLS slope/intercept formulas for prediction; q039 fits log(size) on log(rank) for Zipf exponent; q058 computes R-squared from Pearson r; q087 computes absolute difference of Pearson r between two years; q060 fits linear regression but finds actual value unavailable (discontinued table)."
+    },
+    {
+      "cluster_id": "C04",
+      "items": [
+        "q005",
+        "q041",
+        "q048",
+        "q067",
+        "q097",
+        "q119"
+      ],
+      "common_pattern": "Extract values and apply a specific rate/transform formula: Box-Cox transform, CAGR/geometric annual rate, centered moving average, arc elasticity, realized variance, or annualized volatility. Each formula is mathematically distinct and must not be merged with others.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-extract-compute"
+      ],
+      "evidence": "q005 applies Box-Cox(y,lambda=0.75) then takes difference; q041 computes (end/start)^(1/n)-1; q048 computes 3-period centered moving average of duty rates (Oracle regression: r1 candidate merged this into generic compute and got wrong answer); q067 uses arc elasticity midpoint formula; q097 computes squared log return; q119 computes sqrt(52)*|log return|."
+    },
+    {
+      "cluster_id": "C05",
+      "items": [
+        "q012",
+        "q047",
+        "q071",
+        "q080",
+        "q115"
+      ],
+      "common_pattern": "Extract values and compute ratio, percentage, or weighted average: weighted average denomination, percent contribution change, share change with absolute change, weighted average with custom weights, absolute percent difference.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-extract-compute"
+      ],
+      "evidence": "q012 computes total value / total bills for weighted avg denomination; q047 computes (part/total*100) change between years; q071 computes share change in percentage points plus absolute change; q080 computes (v1*1+v2*2)/3; q115 computes |a-b|/base*100."
+    },
+    {
+      "cluster_id": "C06",
+      "items": [
+        "q024",
+        "q081"
+      ],
+      "common_pattern": "Extract values in foreign currency units and convert using exchange rates from FCP tables, then compute a difference or risk measure. Requires careful handling of conversion direction and unit scale (billions vs millions).",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-extract-compute"
+      ],
+      "evidence": "q024 converts JPY and GBP positions to USD using exchange rates from FCP-II-1 and FCP-IV-1, then takes absolute difference; q081 extracts mutual fund holdings, computes parametric VaR (mu - z*sigma), then converts USD loss to JPY using exchange rate."
+    }
+  ],
+  "changes": [
+    {
+      "skill": "g-officeqa-locate-source",
+      "type": "new_skill",
+      "support_items": [
+        "q004",
+        "q005",
+        "q009",
+        "q012",
+        "q013",
+        "q024",
+        "q025",
+        "q032",
+        "q039",
+        "q041",
+        "q047",
+        "q048",
+        "q054",
+        "q055",
+        "q058",
+        "q060",
+        "q067",
+        "q068",
+        "q071",
+        "q080",
+        "q081",
+        "q087",
+        "q094",
+        "q097",
+        "q106",
+        "q111",
+        "q115",
+        "q119",
+        "q124",
+        "q127"
+      ],
+      "summary": "New skill for Treasury Bulletin source location: publication lag rules, file naming convention, fiscal-year mapping, and table catalog routing."
+    },
+    {
+      "skill": "g-officeqa-extract-compute",
+      "type": "new_skill",
+      "support_items": [
+        "q004",
+        "q005",
+        "q009",
+        "q012",
+        "q013",
+        "q024",
+        "q025",
+        "q032",
+        "q039",
+        "q041",
+        "q047",
+        "q048",
+        "q054",
+        "q055",
+        "q058",
+        "q060",
+        "q067",
+        "q068",
+        "q071",
+        "q080",
+        "q081",
+        "q087",
+        "q094",
+        "q097",
+        "q106",
+        "q111",
+        "q115",
+        "q119",
+        "q124",
+        "q127"
+      ],
+      "summary": "New skill for data extraction, cross-validation, and computation. Contains 20+ distinct named computation procedures (geometric_mean, centered_moving_average, population_std_dev, box_cox_transform, etc.), each with its own formula and precision check. Addresses Oracle regression by keeping each computation type separate."
+    }
+  ],
+  "expected_coverage": {
+    "q004": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#simple_sum"
+    ],
+    "q005": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#box_cox_transform"
+    ],
+    "q009": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#linear_regression_ols"
+    ],
+    "q012": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#weighted_average"
+    ],
+    "q013": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#geometric_mean"
+    ],
+    "q024": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#currency_conversion"
+    ],
+    "q025": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#list_extraction"
+    ],
+    "q032": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#population_std_dev"
+    ],
+    "q039": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#zipf_exponent"
+    ],
+    "q041": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#cagr_geometric_rate"
+    ],
+    "q047": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#percent_contribution"
+    ],
+    "q048": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#centered_moving_average"
+    ],
+    "q054": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#mean_absolute_deviation"
+    ],
+    "q055": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#hazen_percentile"
+    ],
+    "q058": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#pearson_correlation"
+    ],
+    "q060": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#linear_regression_ols"
+    ],
+    "q067": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#arc_elasticity"
+    ],
+    "q068": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#arithmetic_mean"
+    ],
+    "q071": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#percent_contribution"
+    ],
+    "q080": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#weighted_average"
+    ],
+    "q081": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#parametric_var"
+    ],
+    "q087": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#pearson_correlation"
+    ],
+    "q094": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#arithmetic_mean"
+    ],
+    "q097": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#realized_variance"
+    ],
+    "q106": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#linear_regression_ols"
+    ],
+    "q111": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#arithmetic_mean"
+    ],
+    "q115": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#percent_difference"
+    ],
+    "q119": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#annualized_volatility"
+    ],
+    "q124": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#list_extraction"
+    ],
+    "q127": [
+      "g-officeqa-locate-source#Steps",
+      "g-officeqa-extract-compute#simple_difference"
+    ]
+  },
+  "uncovered": [],
+  "response_to_d": [],
+  "oracle_memory_used": [
+    {
+      "item": "q048",
+      "kind": "regression",
+      "action": "Created separate centered_moving_average procedure with explicit 3-period formula and centering-position check, distinct from all other computation types. Avoided the r1 anti-pattern of merging CAGR, geometric mean, OLS, centered moving average, and std dev into one generic compute step."
+    }
+  ],
+  "skipped": [],
+  "needs_human": false,
+  "candidate_fingerprint": "7102f2911662",
+  "batch_size": 30
+}

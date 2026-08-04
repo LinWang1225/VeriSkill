@@ -1,0 +1,6 @@
+{"item": "q127", "review_status": "covered", "truth_source": "checker", "reason": "candidate_gate", "review_verdict": "PASS"}
+{"item": "q087", "review_status": "covered", "truth_source": "checker", "reason": "candidate_gate", "review_verdict": "PASS"}
+{"item": "q081", "review_status": "covered", "truth_source": "checker", "reason": "candidate_gate", "review_verdict": "PASS"}
+{"item": "q009", "review_status": "covered", "truth_source": "checker", "reason": "candidate_gate", "review_verdict": "PASS"}
+{"item": "q012", "review_status": "covered", "truth_source": "checker", "reason": "candidate_gate", "review_verdict": "PASS"}
+{"item": "q048", "review_status": "covered", "truth_source": "checker", "reason": "candidate_gate", "review_verdict": "PASS"}

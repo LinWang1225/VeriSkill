@@ -1,0 +1,384 @@
+{
+  "mode": "review_candidate",
+  "candidate_version": "r3-i0",
+  "candidate_fingerprint": "be3961d34de4",
+  "verdict": "REVISE",
+  "confidence": 0.35,
+  "coverage": [
+    {
+      "item": "q001",
+      "status": "unjudgeable",
+      "required_pattern": "Single-bulletin table identification, column-to-month mapping, unit conversion (thousands to millions), and monthly sum with rounding",
+      "candidate_evidence": [
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4",
+        "g-officeqa-extract-verify#Step-8"
+      ],
+      "feedback": "Skill has mandatory column mapping and format steps, but behavioral impact of CHECKPOINT markers on LLM execution cannot be verified statically (R-coverage-006)."
+    },
+    {
+      "item": "q011",
+      "status": "partial",
+      "required_pattern": "Multi-period enumeration across 13 bulletin issues with data-lag rule, geometric mean of 39 values, rounding to thousandths",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-locate-source#Step-3",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Geometric mean has per-formula verification in Step 7 (exp(mean(log)) vs product-based). But behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q013",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration with data-lag, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-3",
+        "g-officeqa-extract-verify#Step-6"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type required by this item (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q020",
+      "status": "unjudgeable",
+      "required_pattern": "Multi-period source enumeration with data-lag rule across 1940-1941 bulletins, column mapping verification, sum and absolute difference",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-5"
+      ],
+      "feedback": "Skill covers source enumeration and column mapping structurally. Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q024",
+      "status": "unjudgeable",
+      "required_pattern": "Table identification, column-to-month mapping, internal consistency check via summing monthly to annual",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Skill has mandatory column mapping verification (Step 3). Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q029",
+      "status": "partial",
+      "required_pattern": "Source verification, statistical calculation with Python and independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q035",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q038",
+      "status": "unjudgeable",
+      "required_pattern": "Table identification, column mapping, cross-validation across issues",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Skill has mandatory cross-validation (Step 5). Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q043",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q063",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q066",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, Pearson correlation coefficient computation with thousandths rounding",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-5",
+        "g-officeqa-extract-verify#Step-6"
+      ],
+      "feedback": "Step 7 gives per-formula verification for OLS/geometric-mean/CAGR only; Pearson correlation has no specific independent verification method (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q068",
+      "status": "unjudgeable",
+      "required_pattern": "Table identification, column mapping, cross-validation",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Skill has mandatory column mapping and cross-validation. Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q082",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q092",
+      "status": "unjudgeable",
+      "required_pattern": "Table identification, column mapping, cross-validation",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Skill has mandatory column mapping and cross-validation. Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q096",
+      "status": "unjudgeable",
+      "required_pattern": "Multi-period source enumeration, column mapping with multi-row header reconstruction",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-5",
+        "g-officeqa-extract-verify#Step-6"
+      ],
+      "feedback": "Skill has multi-row header handling (Step 2). Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q100",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, OLS linear regression with forecast, three-decimal rounding",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "OLS has per-formula verification in Step 7 (manual formula vs numpy.polyfit). But behavioral impact unjudgeable (R-coverage-006). Numeric precision unjudgeable (R-computation-001)."
+    },
+    {
+      "item": "q106",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q107",
+      "status": "unjudgeable",
+      "required_pattern": "Source verification, statistical calculation and format with specific rounding",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-8"
+      ],
+      "feedback": "Skill has mandatory format checkpoint (Step 8). Behavioral impact unjudgeable (R-coverage-006). Numeric precision unjudgeable (R-computation-001)."
+    },
+    {
+      "item": "q108",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q109",
+      "status": "unjudgeable",
+      "required_pattern": "Table identification, column mapping, cross-validation",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Skill has mandatory column mapping and cross-validation. Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q111",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q114",
+      "status": "unjudgeable",
+      "required_pattern": "Source verification, statistical calculation (CAGR ratio) with format and rounding to tenths",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-8"
+      ],
+      "feedback": "CAGR has per-formula verification in Step 7. But item is not in any cluster. Behavioral impact unjudgeable (R-coverage-006). Numeric precision unjudgeable (R-computation-001)."
+    },
+    {
+      "item": "q115",
+      "status": "unjudgeable",
+      "required_pattern": "Table identification, column mapping, cross-validation",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Skill has mandatory column mapping and cross-validation. Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q117",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q118",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, statistical calculation with independent verification",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-7"
+      ],
+      "feedback": "Step 7 lacks per-formula verification for the specific computation type (R-coverage-001). Behavioral impact unjudgeable."
+    },
+    {
+      "item": "q119",
+      "status": "unjudgeable",
+      "required_pattern": "Table identification, column mapping, cross-validation",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Skill has mandatory column mapping and cross-validation. Behavioral impact unjudgeable (R-coverage-006)."
+    },
+    {
+      "item": "q120",
+      "status": "unjudgeable",
+      "required_pattern": "Source verification, statistical calculation and format with specific rounding",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-8"
+      ],
+      "feedback": "Skill has mandatory format checkpoint (Step 8). Behavioral impact unjudgeable (R-coverage-006). Numeric precision unjudgeable (R-computation-001)."
+    },
+    {
+      "item": "q123",
+      "status": "unjudgeable",
+      "required_pattern": "Source verification, table identification, column mapping, unit conversion (USD to INR via exchange rate)",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-2",
+        "g-officeqa-extract-verify#Step-4"
+      ],
+      "feedback": "Item not in any cluster. Skill has column mapping and unit conversion handling. Behavioral impact unjudgeable (R-coverage-006). Numeric precision unjudgeable (R-computation-001)."
+    },
+    {
+      "item": "q124",
+      "status": "unjudgeable",
+      "required_pattern": "Source verification, statistical calculation and format with specific rounding",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-4",
+        "g-officeqa-extract-verify#Step-6",
+        "g-officeqa-extract-verify#Step-8"
+      ],
+      "feedback": "Skill has mandatory format checkpoint (Step 8). Behavioral impact unjudgeable (R-coverage-006). Numeric precision unjudgeable (R-computation-001)."
+    },
+    {
+      "item": "q128",
+      "status": "partial",
+      "required_pattern": "Multi-period source enumeration, Macaulay duration under continuous compounding, 4-decimal reporting",
+      "candidate_evidence": [
+        "g-officeqa-locate-source#Step-2",
+        "g-officeqa-extract-verify#Step-5",
+        "g-officeqa-extract-verify#Step-6"
+      ],
+      "feedback": "Step 7 gives per-formula verification for OLS/geometric-mean/CAGR only; Macaulay duration has no specific independent verification method (R-coverage-001). Behavioral impact unjudgeable."
+    }
+  ],
+  "hard_defects": [
+    {
+      "feedback_id": "F01",
+      "skill": "g-officeqa-extract-verify",
+      "defect": "Step 7 (Independently verify the calculation) provides per-formula independent verification examples for only 3 computation types: OLS regression (manual formula vs numpy.polyfit/scipy.stats.linregress), geometric mean (exp(mean(log)) vs product-based), and CAGR (back-computation). However, cluster C03 encompasses 8+ distinct computation types including expected shortfall, Pearson correlation, realized volatility, Macaulay duration, and quadratic regression. Per R-coverage-001, a single generic compute step (Step 6) covering >4 distinct formulas without per-formula verification for each type is a coverage gap. Items requiring the unverified computation types (e.g., q066 Pearson, q128 Macaulay duration) cannot be marked covered.",
+      "required_change": "Add specific independent verification methods in Step 7 for each computation type in C03 that currently lacks one. For Pearson correlation: verify with both manual covariance/variance formula and numpy.corrcoef or scipy.stats.pearsonr. For Macaulay duration: verify by back-computing the price relationship. For expected shortfall: verify by checking the result falls within the tail of the data distribution and matches the historical portfolio return approach definition. For realized volatility: verify with both sqrt(sum(squared_returns)/n) and an alternative formulation. For quadratic regression: verify with both manual normal equations and numpy.polyfit(degree=2).",
+      "completion_check": "Step 7 lists a concrete, distinct independent verification method for every computation type named in C03's common_pattern (OLS, quadratic regression, geometric mean, CAGR, expected shortfall, Pearson correlation, realized volatility, Macaulay duration), each keyed to the specific formula."
+    }
+  ],
+  "soft_concerns": [
+    {
+      "concern": "R-coverage-006 [abstain]: The candidate adds CHECKPOINT markers, mandatory step ordering, and failure/fallback paths — a genuine structural improvement over r2's passive reference catalog. However, structural completeness does not prove behavioral impact. The r2 candidate also had well-structured separate procedures but Oracle showed 0 improvement and identical results to baseline. Whether CHECKPOINT markers and 'Do not skip steps' instructions actually change LLM execution behavior versus having no skill at all cannot be determined from skill text alone. This is the central question that requires Oracle to answer.",
+      "rule": "R-officeqa-coverage-006"
+    },
+    {
+      "concern": "R-computation-005 [soft]: The candidate addresses r2's D criticism (passive reference catalog) by adding enforceable structure (mandatory ordering, CHECKPOINTs). This is the right direction, but per the r2 lesson, structural fixes that respond to D feedback do not by themselves prove behavioral change. Confidence should remain below the PASS threshold until Oracle confirms improvement.",
+      "rule": "R-officeqa-computation-005"
+    },
+    {
+      "concern": "R-computation-001 [abstain] / R-coverage-002 [abstain]: Numeric computation precision (formula selection, rounding boundary, floating-point intermediate) is not verifiable from skill text. Step 6 covers multiple formulas in a single compute step without a per-formula selection rule keyed to question wording. Items requiring exact numeric answers with tol=0 should be unjudgeable.",
+      "rule": "R-officeqa-computation-001, R-officeqa-coverage-002"
+    },
+    {
+      "concern": "R-coverage-003 [soft]: C02 covers 14 items and C03 covers 14 items in single clusters. While the skills do have distinct sub-steps (column mapping, cross-validation, calculation, formatting), the breadth risk remains: a single misread value or incorrect formula selection would propagate across many items.",
+      "rule": "R-officeqa-coverage-003"
+    }
+  ],
+  "feedback_to_g": [
+    {
+      "feedback_id": "F01",
+      "priority": "high",
+      "message": "Step 7 of g-officeqa-extract-verify provides per-formula independent verification for only 3 computation types (OLS, geometric mean, CAGR), but C03 includes 8+ types. Add specific independent verification methods for Pearson correlation (manual formula vs numpy.corrcoef/scipy.stats.pearsonr), Macaulay duration (back-compute price relationship), expected shortfall (verify within tail distribution range), realized volatility (alternative formulation), and quadratic regression (manual normal equations vs numpy.polyfit degree=2). Each verification method must be concrete and keyed to the specific formula, not a generic 'use a different library where possible'."
+    },
+    {
+      "feedback_id": "F02",
+      "priority": "medium",
+      "message": "The CHECKPOINT markers and mandatory step ordering are a structural improvement over r2's passive reference catalog. However, consider whether the activation trigger in the description is specific enough to reliably fire. The description says 'Activate whenever a question asks about data reported in... the U.S. Treasury Bulletin' — ensure this trigger covers all question phrasings in current_batch (e.g., questions that reference 'federal receipts', 'public debt', 'bond yields' without explicitly naming 'Treasury Bulletin'). The 'When to use' section does list these, which is good."
+    },
+    {
+      "feedback_id": "F03",
+      "priority": "low",
+      "message": "Step 6 says 'Execute the calculation using Python (via Bash tool) for any non-trivial arithmetic' but does not give a per-formula selection rule keyed to question wording. Consider adding a routing sub-step that maps question phrasing to the specific formula (e.g., 'geometric mean' -> exp(mean(log(values))), 'Pearson correlation' -> covariance/std products), so the actor selects the correct formula deterministically rather than relying on its own interpretation."
+    }
+  ]
+}

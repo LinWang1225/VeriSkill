@@ -25,7 +25,7 @@ prev=-1; stall=0
 for i in $(seq 1 12); do
   echo "[watchdog] attempt $i start $(date "+%F %T")"
   claude -p "$PROMPT" \
-    --model deepseek-v4-flash \
+    --model glm-5.2 \
     --dangerously-skip-permissions \
     --verbose
   rc=$?
@@ -43,7 +43,7 @@ for i in $(seq 1 12); do
   pkill -9 -f "eval_test.sh" 2>/dev/null || true
   pkill -9 -f "eval_final_same_sample.sh" 2>/dev/null || true
   pkill -9 -f "claude -p --output-format" 2>/dev/null || true
-  # 退避 30s：让 deepseek-v4-flash 的 1 req/s 和 60k TPM 限流窗口过期再续跑。
+  # 退避 30s：让 glm-5.2 的限流窗口过期再续跑。
   echo "[watchdog] 已清孤儿进程，退避 30s 等限流窗口过期"
   sleep 30
 done' > "$LOG" 2>&1 &

@@ -1,0 +1,88 @@
+{
+  "candidate_version": "r3-i0",
+  "base_fingerprint": "e3b0c44298fc",
+  "trajectory_clusters": [
+    {
+      "cluster_id": "C01",
+      "items": ["q011", "q013", "q020", "q035", "q043", "q063", "q066", "q082", "q100", "q106", "q108", "q111", "q117", "q118"],
+      "common_pattern": "Data spans multiple periods requiring enumeration of multiple Treasury Bulletin issues; the bulletin-data-lag rule (bulletin M contains data through M-1) is critical to select correct files",
+      "diagnosis": "new_family",
+      "skill_changes": ["g-officeqa-locate-source"],
+      "evidence": "Trajectories show repeated pattern of identifying multiple bulletin files across years/months, applying the data-lag rule to pick the right issue, and sometimes falling back to later issues when the preferred one lacks the data"
+    },
+    {
+      "cluster_id": "C02",
+      "items": ["q001", "q024", "q029", "q038", "q068", "q092", "q096", "q107", "q109", "q115", "q119", "q120", "q124", "q128"],
+      "common_pattern": "Complex table identification and column mapping within a single or few bulletins; requires header parsing, column-to-month/agency mapping, internal consistency checks, and cross-validation across issues",
+      "diagnosis": "new_family",
+      "skill_changes": ["g-officeqa-extract-verify"],
+      "evidence": "Trajectories show repeated pattern of grep for table names, reading multi-row headers, verifying column mapping by summing monthly to annual, handling OCR errors, and cross-validating values across bulletin issues"
+    },
+    {
+      "cluster_id": "C03",
+      "items": ["q011", "q013", "q035", "q043", "q063", "q066", "q082", "q100", "q106", "q108", "q111", "q117", "q118", "q128"],
+      "common_pattern": "Multi-step statistical or financial calculation (OLS/quadratic regression, geometric mean, CAGR, expected shortfall, Pearson correlation, realized volatility, Macaulay duration) requiring Python execution and independent verification before formatting",
+      "diagnosis": "new_family",
+      "skill_changes": ["g-officeqa-extract-verify"],
+      "evidence": "Trajectories show repeated pattern of computing via Python, independently verifying with a second method (numpy polyfit vs manual formula, back-computation), and applying specific rounding/format requirements"
+    }
+  ],
+  "changes": [
+    {
+      "skill": "g-officeqa-locate-source",
+      "type": "new_skill",
+      "support_items": ["q011", "q013", "q020", "q035", "q043", "q063", "q066", "q082", "q100", "q106", "q108", "q111", "q117", "q118"],
+      "summary": "New skill enforcing the bulletin-data-lag rule and mandatory source-file enumeration with checkpoints before extraction"
+    },
+    {
+      "skill": "g-officeqa-extract-verify",
+      "type": "new_skill",
+      "support_items": ["q001", "q011", "q013", "q020", "q024", "q029", "q035", "q038", "q043", "q063", "q066", "q068", "q082", "q092", "q096", "q100", "q106", "q107", "q108", "q109", "q111", "q115", "q117", "q118", "q119", "q120", "q124", "q128"],
+      "summary": "New skill enforcing mandatory table extraction, column-mapping verification, cross-validation, Python calculation with independent verification, and format-checkpoint before reporting"
+    }
+  ],
+  "expected_coverage": {
+    "q001": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-4", "g-officeqa-extract-verify#step-8"],
+    "q011": ["g-officeqa-locate-source#step-2", "g-officeqa-locate-source#step-3", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q013": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-3", "g-officeqa-extract-verify#step-6"],
+    "q020": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-5"],
+    "q024": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q029": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q035": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q038": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q043": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q063": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q066": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-5", "g-officeqa-extract-verify#step-6"],
+    "q068": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q082": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q092": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q096": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-5", "g-officeqa-extract-verify#step-6"],
+    "q100": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q106": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q107": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-8"],
+    "q108": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q109": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q111": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q114": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-8"],
+    "q115": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q117": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q118": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-7"],
+    "q119": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q120": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-8"],
+    "q123": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-2", "g-officeqa-extract-verify#step-4"],
+    "q124": ["g-officeqa-locate-source#step-4", "g-officeqa-extract-verify#step-6", "g-officeqa-extract-verify#step-8"],
+    "q128": ["g-officeqa-locate-source#step-2", "g-officeqa-extract-verify#step-5", "g-officeqa-extract-verify#step-6"]
+  },
+  "uncovered": [],
+  "response_to_d": [],
+  "oracle_memory_used": [
+    {
+      "source": "r2",
+      "lesson": "Candidate skills that are passive reference catalogs do not change LLM behavior; skills must have mandatory enforceable steps with checkpoints",
+      "applied_to": ["g-officeqa-locate-source", "g-officeqa-extract-verify"],
+      "action": "Designed both skills with explicit CHECKPOINT markers, mandatory step ordering, and failure/fallback paths to force behavioral compliance rather than passive reference"
+    }
+  ],
+  "skipped": [],
+  "needs_human": false
+}

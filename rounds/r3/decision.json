@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "round": 3,
+  "candidate_version": "r3-i1",
+  "gd_revisions": 1,
+  "review_verdict": "ABSTAIN",
+  "review_calibration": "useful_abstain",
+  "baseline_fingerprint": "e3b0c44298fc",
+  "candidate_fingerprint": "e2a2b926ff58",
+  "baseline_oracle_skill_hashes": [
+    "5cd337198ead"
+  ],
+  "candidate_oracle_skill_hashes": [
+    "2493f68645be"
+  ],
+  "scored_pairs": 5,
+  "counts": {
+    "improvement": 0,
+    "regression": 1,
+    "retained_pass": 2,
+    "unresolved_fail": 2
+  },
+  "excluded": {
+    "unreliable_truth": 1,
+    "mismatched_truth_source": 0,
+    "missing_pair": 0
+  },
+  "baseline_pass_rate": 0.6,
+  "candidate_pass_rate": 0.4,
+  "net_gain": -1,
+  "accepted": false,
+  "decision_reasons": [
+    "improvements 0 < min_improvements 1",
+    "regressions 1 > max_regressions 0",
+    "net_gain -1 must be positive",
+    "candidate pass count is below baseline on paired items"
+  ]
+}

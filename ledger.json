@@ -1,11 +1,11 @@
 {
   "flow_version": 6,
-  "round": 11,
-  "g_version": 4,
-  "d_version": 9,
-  "candidate_attempts": 11,
-  "accepted_candidates": 9,
-  "rejected_candidates": 2,
-  "oracle_attempts": 55,
+  "round": 3,
+  "g_version": 0,
+  "d_version": 3,
+  "candidate_attempts": 3,
+  "accepted_candidates": 0,
+  "rejected_candidates": 3,
+  "oracle_attempts": 36,
   "oracle_failures": 1
 }

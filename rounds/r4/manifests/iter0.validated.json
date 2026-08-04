@@ -1,0 +1,262 @@
+{
+  "candidate_version": "r4-i0",
+  "base_fingerprint": "e3b0c44298fc",
+  "trajectory_clusters": [
+    {
+      "cluster_id": "C01",
+      "items": [
+        "q005",
+        "q007",
+        "q011",
+        "q012",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q024",
+        "q025",
+        "q026",
+        "q029",
+        "q035",
+        "q038",
+        "q042",
+        "q046",
+        "q049",
+        "q051",
+        "q052",
+        "q064",
+        "q070",
+        "q071",
+        "q088",
+        "q095",
+        "q102",
+        "q106",
+        "q109",
+        "q117",
+        "q124",
+        "q128"
+      ],
+      "common_pattern": "Every question requires selecting the correct Treasury Bulletin edition for a target reporting period before extracting table data. The bulletin timing rule (bulletin in month M contains data through M-1) is the key routing knowledge.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-locate-bulletin"
+      ],
+      "evidence": "Trajectories consistently show a source-location step: identifying the correct bulletin file by applying the timing rule (e.g., data for month X appears in bulletin X+1 or X+2, fiscal year data in December or next March edition). Many trajectories explicitly state this rule. Some trajectories (q026, q046) show the model testing multiple editions before finding the right one, indicating the verification step adds value."
+    },
+    {
+      "cluster_id": "C02",
+      "items": [
+        "q005",
+        "q012",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q024",
+        "q035",
+        "q046",
+        "q049",
+        "q051",
+        "q071",
+        "q095",
+        "q102",
+        "q117",
+        "q128"
+      ],
+      "common_pattern": "After locating the table, the model must map columns correctly (especially tables with .1/.2/.3 suffix columns for different time periods), cross-validate values against a second source, and confirm units match the question. Errors in column selection or unit interpretation are observed failure modes.",
+      "diagnosis": "new_family",
+      "skill_changes": [
+        "g-officeqa-verify-extraction"
+      ],
+      "evidence": "Multiple trajectories show column-mapping ambiguity: yield tables with .1/.2/.3 suffixes require cross-referencing with an adjacent bulletin for explicit year labels (q014, q016, q017). Oracle memory shows q012 failed with wrong values/units (pred 1821.27 vs gold 1169.41) and q035 failed with wrong reporting structure (pred 6758 vs gold 6244), both consistent with extraction verification gaps. Several trajectories show footnotes affecting data scope (q015 excludes fractional notes, q035 reporting structure)."
+    }
+  ],
+  "changes": [
+    {
+      "skill": "g-officeqa-locate-bulletin",
+      "type": "new_skill",
+      "support_items": [
+        "q005",
+        "q007",
+        "q011",
+        "q012",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q024",
+        "q025",
+        "q026",
+        "q029",
+        "q035",
+        "q038",
+        "q042",
+        "q046",
+        "q049",
+        "q051",
+        "q052",
+        "q064",
+        "q070",
+        "q071",
+        "q088",
+        "q095",
+        "q102",
+        "q106",
+        "q109",
+        "q117",
+        "q124",
+        "q128"
+      ],
+      "summary": "New skill encoding the Treasury Bulletin timing rule (bulletin in month M contains data through M-1) with a mandatory grep verification step to confirm the selected edition contains the target period before extraction."
+    },
+    {
+      "skill": "g-officeqa-verify-extraction",
+      "type": "new_skill",
+      "support_items": [
+        "q005",
+        "q012",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q024",
+        "q035",
+        "q046",
+        "q049",
+        "q051",
+        "q071",
+        "q095",
+        "q102",
+        "q117",
+        "q128"
+      ],
+      "summary": "New skill for verifying extracted table values: column mapping confirmation (especially for suffixed columns), cross-validation against a second source, unit confirmation, and data-series scope matching. Focuses on data correctness, not computation method, to avoid regression."
+    }
+  ],
+  "expected_coverage": {
+    "q005": [
+      "g-officeqa-locate-bulletin#mandatory-verification",
+      "g-officeqa-verify-extraction#confirm-units"
+    ],
+    "q007": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q011": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q012": [
+      "g-officeqa-locate-bulletin#mandatory-verification",
+      "g-officeqa-verify-extraction#confirm-units",
+      "g-officeqa-verify-extraction#cross-validate-the-value"
+    ],
+    "q014": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-column-mapping"
+    ],
+    "q015": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#verify-the-data-series-matches-the-question"
+    ],
+    "q016": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-column-mapping"
+    ],
+    "q017": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-column-mapping"
+    ],
+    "q024": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#cross-validate-the-value"
+    ],
+    "q025": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q026": [
+      "g-officeqa-locate-bulletin#mandatory-verification",
+      "g-officeqa-verify-extraction#confirm-column-mapping"
+    ],
+    "q029": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q035": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#verify-the-data-series-matches-the-question",
+      "g-officeqa-verify-extraction#confirm-column-mapping"
+    ],
+    "q038": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q042": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q046": [
+      "g-officeqa-locate-bulletin#mandatory-verification",
+      "g-officeqa-verify-extraction#cross-validate-the-value"
+    ],
+    "q049": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-units"
+    ],
+    "q051": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-column-mapping",
+      "g-officeqa-verify-extraction#confirm-units"
+    ],
+    "q052": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q064": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q070": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q071": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#cross-validate-the-value"
+    ],
+    "q088": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q095": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-units"
+    ],
+    "q102": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#verify-the-data-series-matches-the-question"
+    ],
+    "q106": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q109": [
+      "g-officeqa-locate-bulletin#timing-rule"
+    ],
+    "q117": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-column-mapping"
+    ],
+    "q124": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#confirm-units"
+    ],
+    "q128": [
+      "g-officeqa-locate-bulletin#timing-rule",
+      "g-officeqa-verify-extraction#cross-validate-the-value"
+    ]
+  },
+  "uncovered": [],
+  "response_to_d": [],
+  "oracle_memory_used": [
+    "r1/q048 regression: generic compute steps caused precision loss — both new skills deliberately avoid prescribing computation methods to prevent this",
+    "r2/0 improvement 0 regression: skills did not change LLM behavior — new skills include mandatory verification steps (grep-to-confirm, cross-validate, unit-check) that are enforceable actions rather than passive descriptions",
+    "r2/q012 unresolved_fail: wrong values/units (pred 1821.27 vs gold 1169.41) — g-officeqa-verify-extraction adds unit confirmation and cross-validation steps targeting this failure class",
+    "r3/q100 regression: skill interfered with correct reasoning — new skills focus exclusively on data location and extraction verification, not computation, to avoid interfering with correct reasoning",
+    "r3/q035 unresolved_fail: wrong reporting structure (pred 6758 vs gold 6244) — g-officeqa-verify-extraction step 4 verifies the data series matches the question's specified scope"
+  ],
+  "skipped": [],
+  "needs_human": false,
+  "candidate_fingerprint": "409e0490c538",
+  "batch_size": 30
+}

@@ -252,6 +252,7 @@ chmod -R a-w "$R/current_batch"
 
 ```bash
 touch "$R/sample.done"
+echo "[$(date +%H:%M:%S)] r$r: sample done ($(wc -l < "$R/current_batch.list" 2>/dev/null || echo 0) items)" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
 ```
 
 ## 2. 准备 baseline 与候选 iter0
@@ -295,6 +296,7 @@ python3 lib/candidate_flow.py validate-manifest \
 
 ```bash
 touch "$R/g_iter$k.done"
+echo "[$(date +%H:%M:%S)] r$r: G iter$k done" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
 ```
 
 ## 4. D 审查候选，必要时打回 G
@@ -361,6 +363,8 @@ python3 lib/candidate_flow.py clone-iteration \
 
 ```bash
 touch "$R/review_iter$k.done"
+_dv=$(python3 -c "import json;print(json.load(open('$R/reviews/iter$k.validated.json')).get('verdict','?'))" 2>/dev/null || echo "?")
+echo "[$(date +%H:%M:%S)] r$r: D review iter$k = $_dv" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
 ```
 
 ## 5. 构建 Oracle 队列
@@ -419,6 +423,12 @@ stdout 分别逐行写：
 - `$R/oracle/baseline.jsonl`
 - `$R/oracle/candidate.jsonl`
 
+每跑完一个 item 的 baseline+candidate 两侧，往 loop 日志记一行：
+
+```bash
+echo "[$(date +%H:%M:%S)] r$r: Oracle $id done" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
+```
+
 规则：
 
 - 每次调用最多原样重试一次；
@@ -430,6 +440,7 @@ stdout 分别逐行写：
 
 ```bash
 touch "$R/oracle.done"
+echo "[$(date +%H:%M:%S)] r$r: Oracle done" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
 ```
 
 ## 7. 配对比较与候选门控
@@ -508,6 +519,7 @@ D 的规则更新不影响本轮已经冻结的 candidate decision。
 
 ```bash
 touch "$R/d_learn.done"
+echo "[$(date +%H:%M:%S)] r$r: D learn done" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
 ```
 
 ## 9. Oracle 反馈给 G
@@ -550,6 +562,8 @@ python3 lib/candidate_flow.py commit \
 
 ```bash
 touch "$R/commit.done"
+_acc=$(python3 -c "import json;d=json.load(open('$R/decision.json'));print('accept' if d.get('accepted') else 'reject')" 2>/dev/null || echo "?")
+echo "[$(date +%H:%M:%S)] r$r: commit done ($_acc)" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
 ```
 
 ## 11. checkpoint 与记账
@@ -580,6 +594,7 @@ checkpoint eval 完成且 ledger 原子写回后：
 
 ```bash
 touch "$R/round.done"
+echo "[$(date +%H:%M:%S)] r$r: round done" >> "${VERISKILL_LOOP_LOG:-/dev/null}"
 ```
 
 只有 `round.done` 存在时，ledger.round 才推进到 `r`。resume 时若 `commit.done` 存在但 `round.done` 不存在，必须补跑 checkpoint eval 再写 `round.done`。

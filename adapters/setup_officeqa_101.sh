@@ -52,7 +52,7 @@ with open("env.sh", "w") as f:
     f.write(f"export ANTHROPIC_BASE_URL='{base}'\n")
     f.write("export IS_SANDBOX=1\n")
     f.write("export VERISKILL_BACKEND=claude\n")
-    f.write("export VERISKILL_MODEL=deepseek-v4-flash\n")
+    f.write("export VERISKILL_MODEL=glm-5.2\n")
     f.write("export VERISKILL_RUBRIC_THRESHOLD=0.6\n")
     f.write("export VERISKILL_JOBS=4\n")
     f.write("export VERISKILL_TIMEOUT=1500\n")  # hard 题重跑常超 10 分钟，默认 600 会大批误杀

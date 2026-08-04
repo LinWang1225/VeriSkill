@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "baseline_dir": "/root/data/veriskill/rounds/r4/baseline_skills",
+  "baseline_fingerprint": "e3b0c44298fc",
+  "current_iteration": 0,
+  "candidate_dir": "/root/data/veriskill/rounds/r4/candidate/iter0",
+  "candidate_fingerprint": "e3b0c44298fc",
+  "status": "prepared"
+}

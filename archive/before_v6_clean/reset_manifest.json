@@ -1,0 +1,27 @@
+{
+  "root": "/root/data/veriskill",
+  "archive": "/root/data/veriskill/archive/before_v6_clean",
+  "plan": {
+    "move_to_archive": [
+      "rounds",
+      "stats",
+      "history",
+      "experience",
+      "report.md",
+      "ledger.json"
+    ],
+    "archive_and_clear_skills": [
+      "workspace/actor_skills",
+      "workspace/critics"
+    ],
+    "reset_meta": "pool/meta.json",
+    "restore_trajectory_snapshot": null,
+    "create_flow_version": 6
+  },
+  "applied": true,
+  "train": 101,
+  "test": 20,
+  "preserved_actor": false,
+  "preserved_critics": false,
+  "restored_trajectory_snapshot": null
+}

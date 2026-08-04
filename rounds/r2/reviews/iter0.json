@@ -1,0 +1,329 @@
+{
+  "mode": "review_candidate",
+  "candidate_version": "r2-i0",
+  "candidate_fingerprint": "7102f2911662",
+  "verdict": "PASS",
+  "confidence": 0.72,
+  "coverage": [
+    {
+      "item": "q004",
+      "status": "covered",
+      "required_pattern": "从 Treasury Bulletin 表中提取数值并求和（含排除项）",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#simple_sum"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q005",
+      "status": "covered",
+      "required_pattern": "提取序列值，应用 Box-Cox 变换后取差",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#box_cox_transform"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q009",
+      "status": "covered",
+      "required_pattern": "提取时间序列，OLS 线性回归预测并求绝对差",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#linear_regression_ols"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q012",
+      "status": "covered",
+      "required_pattern": "提取数值，计算加权平均（总价值/总张数）",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#weighted_average"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q013",
+      "status": "covered",
+      "required_pattern": "提取 80 个月度值，计算几何平均（log-sum-exp）",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#geometric_mean"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q024",
+      "status": "covered",
+      "required_pattern": "外币头寸按汇率换算为 USD 后取绝对差，注意换算方向与单位",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#currency_conversion"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q025",
+      "status": "covered",
+      "required_pattern": "提取值并按指定顺序格式化为列表",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#list_extraction"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q032",
+      "status": "covered",
+      "required_pattern": "提取 TIPS 价格序列，计算总体标准差（除以 N）",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#population_std_dev"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q039",
+      "status": "covered",
+      "required_pattern": "提取 size-rank 数据，log-log OLS 拟合 Zipf 指数",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#zipf_exponent"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q041",
+      "status": "covered",
+      "required_pattern": "提取起止值，计算复合年增长率 (end/start)^(1/n)-1",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#cagr_geometric_rate"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q047",
+      "status": "covered",
+      "required_pattern": "计算占比 (part/total*100) 及年度间占比变化",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#percent_contribution"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q048",
+      "status": "covered",
+      "required_pattern": "提取三年关税税率，计算 3 期中心移动平均（r1 回归项）",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#centered_moving_average"
+      ],
+      "feedback": "centered_moving_average 程序有显式 3 期公式和中心位置检查，与 r1 的通用 compute 步骤不同。数值精度仍需 Oracle 验证。"
+    },
+    {
+      "item": "q054",
+      "status": "covered",
+      "required_pattern": "提取序列，计算平均绝对偏差 MAD",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#mean_absolute_deviation"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q055",
+      "status": "covered",
+      "required_pattern": "提取序列，计算 Hazen 85th 百分位 P_i=(i-0.5)/N",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#hazen_percentile"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q058",
+      "status": "covered",
+      "required_pattern": "提取配对数据，计算 Pearson 相关系数及 R-squared",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#pearson_correlation"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q060",
+      "status": "covered",
+      "required_pattern": "提取月度序列，OLS 线性回归预测；发现数据已停发需报告不可用",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#linear_regression_ols",
+        "g-officeqa-extract-compute.md#Fallback"
+      ],
+      "feedback": "Fallback 包含 'If the question asks for data that was discontinued or never published, report that the data is unavailable' 覆盖此题的停发场景。"
+    },
+    {
+      "item": "q067",
+      "status": "covered",
+      "required_pattern": "提取起止值，计算弧弹性（中点公式）",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#arc_elasticity"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q068",
+      "status": "covered",
+      "required_pattern": "提取序列，计算算术平均",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#arithmetic_mean"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q071",
+      "status": "covered",
+      "required_pattern": "计算份额变化（百分点）及绝对变化",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#percent_contribution"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q080",
+      "status": "covered",
+      "required_pattern": "按自定义权重计算加权平均 (v1*1+v2*2)/3",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#weighted_average"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q081",
+      "status": "covered",
+      "required_pattern": "提取基金持仓，计算参数 VaR (mu-z*sigma) 并换算为 JPY",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#parametric_var",
+        "g-officeqa-extract-compute.md#currency_conversion"
+      ],
+      "feedback": "涉及 parametric_var 和 currency_conversion 两个程序，技能中两者均有独立公式和检查。"
+    },
+    {
+      "item": "q087",
+      "status": "covered",
+      "required_pattern": "计算两年各自的 Pearson 相关系数并取绝对差",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#pearson_correlation"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q094",
+      "status": "covered",
+      "required_pattern": "提取序列，计算算术平均",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#arithmetic_mean"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q097",
+      "status": "covered",
+      "required_pattern": "计算已实现方差 = 平方对数收益率",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#realized_variance"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q106",
+      "status": "covered",
+      "required_pattern": "提取时间序列，OLS 线性回归预测",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#linear_regression_ols"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q111",
+      "status": "covered",
+      "required_pattern": "提取序列，计算算术平均",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#arithmetic_mean"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q115",
+      "status": "covered",
+      "required_pattern": "计算绝对百分比差 |a-b|/base*100",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#percent_difference"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q119",
+      "status": "covered",
+      "required_pattern": "计算年化波动率 sqrt(52)*|log return|",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#annualized_volatility"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q124",
+      "status": "covered",
+      "required_pattern": "提取值并按指定顺序格式化为列表",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#list_extraction"
+      ],
+      "feedback": ""
+    },
+    {
+      "item": "q127",
+      "status": "covered",
+      "required_pattern": "提取两个值并计算简单差，注意顺序",
+      "candidate_evidence": [
+        "g-officeqa-locate-source.md#Steps",
+        "g-officeqa-extract-compute.md#simple_difference"
+      ],
+      "feedback": ""
+    }
+  ],
+  "hard_defects": [],
+  "soft_concerns": [
+    "过程选择规则 'Identify the computation type from the question wording' 未给出显式关键词到程序名的映射表，依赖 actor 判断。20+ 个程序名称语义清晰，风险较低，但选错程序只有 Oracle 能检出。",
+    "数值精度（浮点中间值、舍入边界）无法从技能文本静态验证。技能已为每个程序 pin 了具体公式和独立 Python 检查方法，比 r1 显著改善，但最终精度仍需 Oracle 判定。",
+    "q081 需同时使用 parametric_var 和 currency_conversion 两个程序，技能未显式描述多程序组合的执行顺序，依赖 actor 自行编排。"
+  ],
+  "feedback_to_g": [
+    {
+      "feedback_id": "F01",
+      "priority": "low",
+      "message": "考虑在 Phase 2 开头增加一个简短的关键词到程序名映射表（如 'geometric mean' -> geometric_mean, 'moving average' -> centered_moving_average），使过程选择规则更可机械执行，减少 actor 选错程序的风险。"
+    },
+    {
+      "feedback_id": "F02",
+      "priority": "low",
+      "message": "对于需要组合多个程序的项目（如 q081 先 parametric_var 再 currency_conversion），可增加一个简短的组合执行说明或示例，明确多程序时的执行顺序和数据传递。"
+    }
+  ]
+}
