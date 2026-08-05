@@ -115,6 +115,8 @@ $ARGUMENTS
 - `eval_test.sh`
 - `lib/pool.py`
 - `lib/candidate_flow.py`
+- `lib/fingerprint.py`
+- `lib/sanitize_feedback.py`
 - `tools/start_v6_experiment.py`
 - `.claude/agents/g-improve.md`
 - `.claude/agents/d-improve.md`
@@ -144,7 +146,9 @@ mkdir -p workspace/actor_skills workspace/critics rounds history stats \
 检查：
 
 ```bash
-python3 -m py_compile lib/candidate_flow.py
+python3 -m py_compile \
+  lib/candidate_flow.py lib/fingerprint.py lib/sanitize_feedback.py \
+  adapters/make_checkers.py
 bash -n oracle_run.sh
 bash oracle_run.sh --fingerprint
 python3 lib/extract.py --check pool/traj
@@ -289,6 +293,7 @@ python3 lib/candidate_flow.py validate-manifest \
   --batch "$R/current_batch.list" \
   --candidate-dir "$R/candidate/iter0" \
   --base-fingerprint "<baseline_fingerprint>" \
+  --state "$R/candidate_state.json" \
   --out "$R/manifests/iter0.validated.json"
 ```
 
@@ -353,7 +358,8 @@ python3 lib/candidate_flow.py clone-iteration \
 - `d_feedback=$R/reviews/iter$k.validated.json`
 - 新 candidate 目录、manifest 路径和 candidate_version。
 
-验证新 manifest，再让 D review。最多修订 `max_gd_revisions` 次。
+验证新 manifest 时同样传 `--state "$R/candidate_state.json"`，确保 state 中的
+candidate fingerprint 与实际 iterK、manifest 同步，再让 D review。最多修订 `max_gd_revisions` 次。
 
 ### 防止无效争论
 
@@ -405,6 +411,8 @@ python3 lib/candidate_flow.py build-oracle-queue \
 baseline：
 
 ```bash
+VERISKILL_ORACLE_RUN_LABEL="r$r-i$k" \
+VERISKILL_ORACLE_SIDE="baseline" \
 VERISKILL_ACTOR_SKILLS="$R/baseline_skills" \
   bash oracle_run.sh "pool/traj/$id.md" \
   --new-traj-out "$R/oracle/baseline/$id.md"
@@ -413,6 +421,8 @@ VERISKILL_ACTOR_SKILLS="$R/baseline_skills" \
 candidate：
 
 ```bash
+VERISKILL_ORACLE_RUN_LABEL="r$r-i$k" \
+VERISKILL_ORACLE_SIDE="candidate" \
 VERISKILL_ACTOR_SKILLS="$R/candidate/iter$k" \
   bash oracle_run.sh "pool/traj/$id.md" \
   --new-traj-out "$R/oracle/candidate/$id.md"
@@ -435,7 +445,8 @@ echo "[$(date +%H:%M:%S)] r$r: Oracle $id done" >> "${VERISKILL_LOOP_LOG:-/dev/n
 - baseline/candidate 任一环境失败，该 item 不形成配对；
 - 不覆盖 `pool/traj`；
 - 新轨迹只保存在本轮 Oracle 目录；
-- Oracle 前后重新计算 candidate 目录内容指纹，必须保持不变；同一批 candidate Oracle 结果中的 `skill_hash` 必须唯一。该 `skill_hash` 是原脚本运行指纹，不要求与 `candidate_flow.py` 的内容指纹字符串相等；
+- Oracle 前后重新计算 candidate 目录内容指纹，必须保持不变；baseline/candidate 每条
+  Oracle 结果的 `skill_hash` 必须分别等于 `candidate_flow.py fingerprint` 对对应目录的结果；
 - Oracle 不加载 critics。
 
 ```bash
@@ -462,8 +473,12 @@ python3 lib/candidate_flow.py compare \
   --out-decision "$R/decision.json" \
   --out-to-d "$R/feedback/oracle_to_d.jsonl" \
   --out-to-g "$R/feedback/oracle_to_g.jsonl" \
+  --out-to-d-raw "$R/feedback/oracle_to_d.raw.jsonl" \
+  --out-to-g-raw "$R/feedback/oracle_to_g.raw.jsonl" \
   --metrics stats/candidate_eval.jsonl
 ```
+
+`*.raw.jsonl` 仅留在本轮目录供人工调试；G/D 和跨轮 experience 只能读取不含题目 ID、答案、gold/pred 文本的非 raw 文件。
 
 四种 paired outcome：
 
@@ -485,7 +500,8 @@ python3 lib/candidate_flow.py compare \
 
 ## 8. Oracle 反馈给 D 更新规则库
 
-只要有可靠配对，就派发 `d-improve mode=learn_from_oracle`，给出：
+只有 `decision.json.decision_status=scored` 且有可靠配对时，才派发
+`d-improve mode=learn_from_oracle`，给出：
 
 - review、manifest、冻结 candidate；
 - `$R/feedback/oracle_to_d.jsonl`；
@@ -510,7 +526,15 @@ D 返回保存为 `$R/d-learn-result.json`。检查：
 - 单文件改动不超过 40%；
 - 旧的明显反例仍不会被新规则误杀。
 
-失败则整体回滚 critics。通过则：
+失败则整体回滚 critics。通过则先执行：
+
+```bash
+python3 lib/sanitize_feedback.py lint-tree \
+  --root workspace/critics \
+  --meta pool/meta.json
+```
+
+该检查失败也必须整体回滚 critics，不得仅删除命中的一行后继续。
 
 - `d_version += 1`；
 - 复制 `$R/feedback/oracle_to_d.jsonl` 到 `experience/oracle_to_d/r$r.jsonl`。
@@ -530,7 +554,8 @@ echo "[$(date +%H:%M:%S)] r$r: D learn done" >> "${VERISKILL_LOOP_LOG:-/dev/null
 experience/oracle_to_g/r<r>.jsonl
 ```
 
-该文件只来自 train 条目，只保存 regression 与 unresolved failure。下一轮 G 可读取；本轮不在 Oracle 后再次无限修订，避免重复烧预算和选择性过拟合。
+该文件只来自 train 条目，保存匿名化的 improvement、regression 与 unresolved failure，
+用于保留已验证有效机制并避免重复回归。下一轮 G 可读取；本轮不在 Oracle 后再次无限修订，避免重复烧预算和选择性过拟合。
 
 ## 10. 提交或拒绝候选
 

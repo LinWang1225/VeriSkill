@@ -4,6 +4,7 @@
   "baseline_fingerprint": "e3b0c44298fc",
   "current_iteration": 0,
   "candidate_dir": "/root/data/veriskill/rounds/r1/candidate/iter0",
-  "candidate_fingerprint": "e3b0c44298fc",
-  "status": "prepared"
+  "candidate_fingerprint": "3cafba7cb5a3",
+  "status": "g_validated",
+  "manifest_hash": "dc49cb0e99f9"
 }

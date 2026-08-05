@@ -55,17 +55,18 @@ TASK_DATA="${VERISKILL_TASK_DATA:-}"
 # 附加做题说明：逐字进提示词。可选
 SOLVE_NOTE="${VERISKILL_SOLVE_NOTE:-}"
 
-_hash_dir() {
-  [ -d "$1" ] || return 0
-  find "$1" -type f -print0 | LC_ALL=C sort -z | xargs -0 shasum -a 1 2>/dev/null
+_safe_component() {
+  printf '%s' "$1" | LC_ALL=C tr -c 'A-Za-z0-9._-' '_'
 }
 
+ORACLE_SIDE="$(_safe_component "${VERISKILL_ORACLE_SIDE:-standalone}")"
+ORACLE_RUN_LABEL="$(_safe_component "${VERISKILL_ORACLE_RUN_LABEL:-manual}")"
+
 skill_fingerprint() {
-  if [ ! -d "$ACTOR_SKILLS" ] && { [ -z "$CHECK_SKILLS" ] || [ ! -d "$CHECK_SKILLS" ]; }; then
+  if [ ! -d "$ACTOR_SKILLS" ]; then
     echo "none"; return 0
   fi
-  { _hash_dir "$ACTOR_SKILLS"; _hash_dir "$CHECK_SKILLS"; } \
-    | shasum -a 1 | cut -d' ' -f1 | cut -c1-12
+  python3 "$HERE/lib/fingerprint.py" "$ACTOR_SKILLS"
 }
 
 # emit <id> <true|false> <evidence> <skill_hash> <truth_source> <skill_result>
@@ -204,18 +205,21 @@ main() {
 
   backend_preflight || exit 5
   WORK_ORACLE="$(mktemp -d "${TMPDIR:-/tmp}/veriskill-oracle-XXXXXX")"
-  # 失败(非零退出)时把现场(task/prompt/raw.txt/err.txt)留到 oracle_failures/<id>/
+  # 失败(非零退出)时按 run/side/item/attempt 隔离现场，避免 baseline/candidate 互相覆盖。
   # 供排查，再清 /tmp temp；成功则照常清。raw.txt 里的真因(如 429)不再随 temp 蒸发。
   _cleanup() {
     local rc=$?
     if [ "$rc" -ne 0 ] && [ -n "${WORK_ORACLE:-}" ] && [ -n "${id:-}" ]; then
-      mkdir -p "$HERE/oracle_failures/$id" 2>/dev/null || true
-      cp -a "$WORK_ORACLE/." "$HERE/oracle_failures/$id/" 2>/dev/null || true
+      local safe_id failure_dir
+      safe_id="$(_safe_component "$id")"
+      failure_dir="$HERE/oracle_failures/$ORACLE_RUN_LABEL/$ORACLE_SIDE/$safe_id/attempt-$(date +%Y%m%dT%H%M%S)-$$"
+      mkdir -p "$failure_dir" 2>/dev/null || true
+      cp -a "$WORK_ORACLE/." "$failure_dir/" 2>/dev/null || true
       # 通知只写 loop 日志、不写 stderr：eval_test.sh 取 stderr 末行当 error，
       # 写 stderr 会盖住真因（[id] 重跑调用失败：… / 环境故障：…）
       if [ -n "${VERISKILL_LOOP_LOG:-}" ]; then
-        printf '[%s] [%s] 失败现场已保存到 %s/oracle_failures/%s (rc=%s)\n' \
-          "$(date +%H:%M:%S)" "$id" "$HERE" "$id" "$rc" >> "$VERISKILL_LOOP_LOG" 2>/dev/null || true
+        printf '[%s] [%s] 失败现场已保存到 %s (rc=%s)\n' \
+          "$(date +%H:%M:%S)" "$id" "$failure_dir" "$rc" >> "$VERISKILL_LOOP_LOG" 2>/dev/null || true
       fi
     fi
     rm -rf "${WORK_ORACLE:-}" 2>/dev/null || true

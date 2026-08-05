@@ -2,6 +2,4 @@
 
 | round | candidate | D verdict | revisions | scored | improvement | regression | net | accepted | g_version | d_version |
 |---:|---|---|---:|---:|---:|---:|---:|---|---:|---:|
-r1 | r1-i0 | PASS | 0 | 6 | 1 | 1 | 4 | 0 | 0 | False | 0 | 1 | 0
-r2 | r2-i0 | PASS | 0 | 6 | 0 | 0 | 2 | 4 | 0 | False | 0 | 2 | 0
-r3 | r3-i1 | ABSTAIN | 1 | 5 | 0 | 1 | 2 | 2 | -1 | False | 0 | 3 | 1
+round=1 | candidate=r1-i0 | D=PASS | gd_rev=0 | scored=1 | imp=0 | reg=0 | retained=1 | unres=0 | net=0 | accepted=no | g_v=0 | d_v=1 | oracle_fail=3

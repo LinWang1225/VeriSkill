@@ -6,6 +6,9 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from fingerprint import hash_dir  # noqa: E402
+
 SCRIPT = ROOT / "lib" / "candidate_flow.py"
 
 
@@ -162,13 +165,15 @@ class CandidateFlowTests(unittest.TestCase):
         self.write_json(review, {"verdict": verdict})
         baseline = self.root / "baseline.jsonl"
         candidate = self.root / "candidate.jsonl"
+        baseline_hash = hash_dir(baseline_dir)
+        candidate_hash = hash_dir(candidate_dir)
         self.write_jsonl(baseline, [
-            {"item": "q1", "oracle_pass": False, "truth_source": "checker", "skill_hash": "basehash"},
-            {"item": "q2", "oracle_pass": True, "truth_source": "checker", "skill_hash": "basehash"},
+            {"item": "q1", "oracle_pass": False, "truth_source": "checker", "skill_hash": baseline_hash},
+            {"item": "q2", "oracle_pass": True, "truth_source": "checker", "skill_hash": baseline_hash},
         ])
         self.write_jsonl(candidate, [
-            {"item": "q1", "oracle_pass": True, "truth_source": "checker", "skill_hash": "candhash"},
-            {"item": "q2", "oracle_pass": candidate_second, "truth_source": "checker", "skill_hash": "candhash"},
+            {"item": "q1", "oracle_pass": True, "truth_source": "checker", "skill_hash": candidate_hash},
+            {"item": "q2", "oracle_pass": candidate_second, "truth_source": "checker", "skill_hash": candidate_hash},
         ])
         return review, baseline, candidate, baseline_dir, candidate_dir
 

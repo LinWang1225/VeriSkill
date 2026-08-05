@@ -5,32 +5,34 @@
   "gd_revisions": 0,
   "review_verdict": "PASS",
   "review_calibration": "false_accept",
+  "decision_status": "scored",
   "baseline_fingerprint": "e3b0c44298fc",
-  "candidate_fingerprint": "6c0e96b2490c",
+  "candidate_fingerprint": "3cafba7cb5a3",
   "baseline_oracle_skill_hashes": [
-    "5cd337198ead"
+    "e3b0c44298fc"
   ],
   "candidate_oracle_skill_hashes": [
-    "079d3a391a1c"
+    "3cafba7cb5a3"
   ],
-  "scored_pairs": 6,
+  "scored_pairs": 1,
   "counts": {
-    "improvement": 1,
-    "regression": 1,
-    "retained_pass": 4,
+    "improvement": 0,
+    "regression": 0,
+    "retained_pass": 1,
     "unresolved_fail": 0
   },
   "excluded": {
     "unreliable_truth": 0,
     "mismatched_truth_source": 0,
-    "missing_pair": 0
+    "missing_pair": 3
   },
-  "baseline_pass_rate": 0.833333,
-  "candidate_pass_rate": 0.833333,
+  "baseline_pass_rate": 1.0,
+  "candidate_pass_rate": 1.0,
   "net_gain": 0,
   "accepted": false,
   "decision_reasons": [
-    "regressions 1 > max_regressions 0",
+    "scored_pairs 1 < min_scored 2",
+    "improvements 0 < min_improvements 1",
     "net_gain 0 must be positive"
   ]
 }

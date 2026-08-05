@@ -1,99 +1,73 @@
 ---
 name: g-officeqa-extract-verify
-description: Within a located Treasury Bulletin file, find the target table, parse its multi-level column headers, extract and cross-verify numeric values, then compute the requested statistic and round/format the answer. Activate after the source bulletin file(s) are identified (g-officeqa-locate-source) and whenever a Treasury Bulletin table must be read for a numeric answer. Covers table location, column-mapping verification, value extraction with unit/marker handling, cross-bulletin verification, computation, rounding, and output formatting.
+description: Extract numeric values from a located Treasury Bulletin table, verify column/header mapping and unit scale, compute the requested aggregate, cross-validate, round per the question spec, and format the final answer. Use after the source issue and table have been identified by g-officeqa-locate-source.
 tags:
   - officeqa
   - treasury-bulletin
-  - table-extraction
+  - data-extraction
   - column-mapping
-  - cross-verification
   - computation
+  - cross-validation
   - rounding
-  - output-format
+  - output-formatting
 ---
 
-# Extract, verify, compute, and format from a Treasury Bulletin table
+# Extract, verify, compute, and format Treasury Bulletin answers
 
-## When to use
+## When to activate
+- The source bulletin file and table have been identified (by g-officeqa-locate-source or equivalent).
+- The question requires reading specific numeric cells, mapping columns to periods or categories, computing an aggregate, and returning a rounded, formatted answer.
 
-The source bulletin file(s) are identified and you must pull specific numeric values from a table, possibly compute a statistic, and produce a rounded, formatted answer.
+## Step 1 — Read and lock the table structure
+- Read the table header rows (column labels and any multi-row super-headers) and the unit declaration line (e.g., "in thousands of dollars", "In millions of dollars").
+- Record the unit scale stated in the table. Do not assume a unit; mismatched units are a top error source.
+- For multi-block tables where several years share one row block distinguished by column groups (suffixes like `.1`, `.2`, `.3`), build an explicit year-to-column-group map. Confirm the map by reading a nearby legend or by checking that a known year's label aligns with its column group.
 
-## Steps
+## Step 2 — Verify column mapping before extracting
+- When the table has monthly columns, confirm the mapping by summing all monthly columns for one row and checking the sum equals the stated annual total column. If they match, the column order is confirmed; if not, re-examine the header.
+- When columns are grouped by year across blocks, pick one row whose value you can independently identify and confirm it lands in the expected column group.
+- Record the verification arithmetic as evidence.
 
-### 1. Locate the table inside the bulletin
+## Step 3 — Extract the target cells
+- For each requested row (identified by its row label, e.g., a commodity name, a security series, a liability type) and each requested column, read the exact numeric value from the located line.
+- Record file, line number, row label, and the raw value as evidence for every cell.
+- If a value is marked `nan` or missing, note it explicitly and determine whether the question expects it to be treated as zero or excluded.
 
-- Tables are identified by a number/title string (e.g., "Table AY-1", "TABLE FFO-2", "Table PDO-1", "TABLE IFS-1", "Table SBN-2", "Table CM-I-1", "Table OFS-1", "Table 5.- Federal Old-Age...").
-- Grep the file for the table identifier and the section heading. Use `-n` to get line numbers.
-- Read the header rows with `Read(offset, limit)` starting just before the match line. Capture the full multi-level header row and the unit line (e.g., "(In millions of dollars)", "(in thousands of dollars)").
+## Step 4 — Unit conversion
+- Convert all extracted values to the unit the question requests before computing.
+- Common conversions: thousands to millions (divide by 1000), millions to nominal dollars (multiply by 1,000,000). Keep the conversion factor recorded with the work.
+- Never mix units inside one computation.
 
-### 2. Parse the column layout
+## Step 5 — Compute the requested aggregate
+Apply the operation the question specifies. Common operations and their precise definitions:
+- **Sum / absolute difference**: straightforward; preserve sign only if asked.
+- **Percentage / ratio**: compute `part / total * 100`; confirm which value is the denominator from the question wording.
+- **Geometric mean**: use the product raised to `1/n` (or the log-sum-exp method for numerical stability); verify with an independent method (e.g., `statistics.geometric_mean` and a manual log method).
+- **Logarithmic growth rate**: `ln(end / start)`, then convert to a percentage per the question's format instruction.
+- **Population standard deviation**: divide squared deviations by `n` (not `n-1`); confirm the question says "population".
+- **Average spread / average of differences**: compute the per-period difference first, then average, unless the question equivalently asks for the difference of averages.
+- Use a calculator or Python for non-trivial arithmetic; do not rely on mental math.
 
-- Headers are pandas-style multi-level: `Parent > Child` separated by ` > `, with suffix annotations like `.1`, `.2`, `.3` for repeated column groups.
-- Map each column index to its meaning from the header. **Do not assume a fixed column position** — column order shifts across eras (e.g., "Total expenditures" is col8 in 1942-1947, col11 in Jan-May 1948, col8 again in Table 2 from June 1948).
-- Some tables pack several years into one row-block with repeated column groups (e.g., Average Yields table AY-1 packs 4 years per block with `.1/.2/.3` suffixes). Decode the year-to-column-group mapping by cross-referencing a bulletin that carries explicit year labels, or by matching a known value.
+## Step 6 — Cross-validation
+- Where the table provides a published total for the selected rows, compare your computed sum to it; a small difference (rounding of individual cells) is acceptable, record both.
+- Where an independent bulletin issue contains the same snapshot, repeat the extraction there and confirm the result matches.
+- If the two sources disagree by more than rounding, prefer the issue whose "as of" date exactly matches the requested period and flag the discrepancy.
 
-### 3. Verify the column mapping before extracting
+## Step 7 — Rounding
+- Apply the rounding instruction exactly: "nearest hundredths" = 2 decimal places; "6 decimal places" = 6; "5 significant digits" = 5 sig figs (not decimal places).
+- When the question defines a percent format (e.g., "0.1234 → 12.34"), multiply by 100 and round to the stated decimal places of the percent value.
+- Round only the final reported value, not intermediate inputs, unless the question says otherwise.
 
-Confirm the mapping with at least one of:
-- **Sum check**: monthly values sum to the annual/total column.
-- **Cross-bulletin label check**: a different bulletin (often the adjacent month) shows explicit year/period labels that disambiguate the same table layout.
-- **Subtotal check**: subitem columns sum to the published subtotal column.
-- **Footnote check**: read the footnote definitions (e.g., "Public works 2/") to confirm a column's definition matches the question's wording (inclusive/exclusive scope).
+## Step 8 — Output formatting
+- If the question asks for comma-separated values in enclosed brackets, output `[value1,value2]` in the requested order, with no units inside the brackets unless explicitly required.
+- If the question says "only report the value with no percent sign", omit the `%` symbol.
+- If units are requested (e.g., "in millions of dollars"), include them only if the question asks for them in the answer text.
+- Return the final answer via the structured output tool.
 
-If the mapping cannot be confirmed, do not guess — fall back.
+## Failure fallback
+- If column verification fails (monthly sum ≠ annual total), re-read the header super-rows and rebuild the column map; do not extract values against an unverified map.
+- If a required row label is not found by grep, try case-insensitive search and partial-label match; if still absent, confirm the table is the right one via g-officeqa-locate-source before concluding the data is missing.
+- If cross-validation disagrees by more than rounding, re-check unit conversion first, then column mapping, then the chosen source issue, in that order.
 
-### 4. Extract the values
-
-- Locate the data row by matching the period label (month abbreviation, fiscal year integer, calendar year).
-- Read the numeric token at the confirmed column index. Strip markers: `r` (revised), `p` (preliminary), `*` (less than $500K), `-` (no transactions), `nan`/blank (not available). Keep a note of revised vs preliminary if the question restricts to a specific vintage.
-- Respect the table's stated unit. Convert if the question asks for a different unit (e.g., table in thousands of dollars, question in millions: divide by 1000).
-- If the question restricts to "reported values for all individual calendar months", extract each month separately and sum them; do not substitute a pre-published annual total even if it differs only by rounding.
-
-### 5. Cross-verify the extracted values
-
-- Re-extract the same value from a different bulletin that reproduces the back-figure (later bulletins carry earlier months). The two must match.
-- For multi-bulletin assembly, confirm each month's value is stable across the bulletins that overlap.
-- If a discrepancy appears, prefer the bulletin that is internally consistent (subitems sum to subtotal) and matches the question's required definition/vintage.
-
-### 6. Compute the requested statistic
-
-Use Python/Bash for arithmetic to avoid manual errors. Common operations seen in this domain:
-- Sum, absolute difference, absolute change.
-- Geometric mean: use the log method `exp(mean(log(values)))` or `statistics.geometric_mean` to avoid overflow.
-- Compound annual growth rate: `(Vt/V0)^(1/t) - 1`.
-- Continuously compounded growth: `ln(Vt/V0) / t`.
-- Percent contribution / share: `part/total * 100`; change in share = difference of two shares in percentage points.
-- Arc elasticity: `(dY/avg(Y)) / (dX/avg(X))`.
-- OLS linear regression: compute slope/intercept, then forecast.
-- R-squared: square the Pearson correlation.
-- Centered moving average, population standard deviation.
-- Inflation correction via external CPI (e.g., BLS CPI-U from Minneapolis Fed): multiply by `CPI_base/CPI_target`.
-
-### 7. Round and format the answer
-
-- Apply the question's rounding instruction exactly: hundredths (2 dp), thousandths (3 dp), tenths (1 dp), whole number, or N significant digits.
-- Distinguish "percent value" (decimal 0.1234 reported as 12.34) from "decimal value" (reported as 0.1234). If the question says "report as a percent value", multiply by 100.
-- Match the output container: single number, bracketed comma-separated list `[v1, v2]`, signed number (preserve negative sign), with or without units, with or without a percent sign.
-- If the question encodes the answer as a derived integer (e.g., month*100 + year), apply that encoding.
-
-## Checks
-
-- Column mapping confirmed by an independent check (sum, cross-bulletin, subtotal, or footnote).
-- Each extracted value traced to a file + table + row + column.
-- Computation reproduced via Python (not purely mental arithmetic).
-- Rounding matches the question's stated precision and unit convention.
-- Output format matches the question's container exactly.
-
-## Fallback
-
-- If the target table is not found in the identified bulletin: search adjacent bulletins for the same table number; the table may have moved or the bulletin may be the wrong month.
-- If column mapping is ambiguous and no disambiguating label exists: extract both candidate interpretations and use the sum/subtotal check to pick the consistent one.
-- If a value is missing (nan/-) in the primary source: check a later bulletin that may have revised the figure, or an earlier one with a different vintage.
-- If the computed result fails a sanity check (wrong sign, implausible magnitude): re-verify the column mapping and units before submitting.
-
-## Notes
-
-- Never read an entire bulletin file in one call (most exceed 256KB). Always Grep then Read with offset/limit.
-- When a question spans many months/years, build a small script that iterates over the per-month bulletins rather than reading each by hand.
-- Preserve the distinction between "calendar year" and "fiscal year" rows; they are different rows in the same table.
-- "Revised" figures (footnoted) may differ from originally published figures; follow the question's wording about which vintage to use.
+## Completion condition
+- Every extracted cell has recorded evidence (file, line, value); column mapping is verified; the computation uses a single consistent unit; the result is cross-validated; rounding matches the question spec; and the final answer is returned in the requested format.

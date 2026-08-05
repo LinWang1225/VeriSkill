@@ -152,7 +152,8 @@ Oracle 是候选技能真实执行反馈，不再使用旧的“D 判旧轨迹�
 - `review.json`：Oracle 前的 review_candidate 输出；
 - `candidate_manifest.json`；
 - `candidate_skills/`，只读；
-- `oracle_to_d.jsonl`：同一 candidate fingerprint 的配对结果；
+- `oracle_to_d.jsonl`：同一 candidate fingerprint 的匿名化配对结果，案例仅以 `case_id` 表示，
+  不含题目 ID、具体答案或 gold/pred 文本；
 - Oracle 产生的 baseline/candidate 新轨迹路径；
 - `workspace/critics/`：唯一允许修改的目录；
 - 历史 D 校准记忆和编辑预算。
@@ -198,7 +199,8 @@ critics 应描述**如何审查候选 skill**，而不是如何判断单条答�
 1. **先修 false_accept**：找出 D 为什么放过无效或退化候选，收窄 PASS 条件或增加可执行检查。
 2. **再修 false_reject**：找出哪个规则过严，把它收窄、降级为 soft/abstain，避免 G 被迫迎合 D。
 3. **学习 abstain 边界**：Oracle 才能判断的效果写成 `[abstain]`，不要伪装成 hard 规则。
-4. 不为单条 item 写规则，不引用具体答案、题面或 ID；`依据:` 可写轮次和证据类型，不写 gold。
+4. 不为单条 item/case 写规则，不把 `case_id` 写进 critics，不引用具体答案、题面或 ID；
+   `依据:` 只写轮次和证据类型，不写 gold/pred。
 5. 同一规则累计造成 2 次 false reject 时必须收窄或降级；不能继续保持 hard。
 6. 任一文件本轮改动不超过原文件 40%，单文件不超过 250 行，每轮新建 critic 最多 2 个。
 

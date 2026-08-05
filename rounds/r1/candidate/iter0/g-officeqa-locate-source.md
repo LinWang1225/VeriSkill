@@ -1,69 +1,52 @@
 ---
 name: g-officeqa-locate-source
-description: For U.S. Treasury Bulletin questions, determine which bulletin file(s) contain the data for the requested calendar/fiscal period. Activate when a question asks about Treasury Bulletin data (receipts, expenditures, yields, debt, ownership, savings bonds, customs, reserve assets, TIPS, exchange rates, silver, seigniorage, etc.) and the source bulletin is not already identified. Maps target dates to treasury_bulletin_YYYY_MM.txt files accounting for publication lag.
+description: Locate the correct U.S. Treasury Bulletin issue file and table for an OfficeQA question by reasoning about publication lag, fiscal/calendar year-end conventions, and maturity-driven snapshots. Use when the question references a Treasury Bulletin table by date, month, fiscal year, calendar year, or security maturity and the source issue is not directly named.
 tags:
   - officeqa
   - treasury-bulletin
   - source-location
-  - date-mapping
+  - publication-lag
+  - table-identification
 ---
 
-# Locate Treasury Bulletin source file(s)
+# Locate Treasury Bulletin source and table
 
-## When to use
+## When to activate
+- The question asks about data published in the U.S. Treasury Bulletin (bulletin files named `treasury_bulletin_YYYY_MM.txt`).
+- The target issue is identified by a calendar month, calendar year, fiscal year, or security maturity date rather than by an explicit filename.
+- You need to map a requested reporting period to the single bulletin issue that contains the complete, authoritative snapshot for that period.
 
-A question references data published in the U.S. Treasury Bulletin (monthly statistical publication). You must identify the exact file(s) under `data/treasury_bulletins/` that contain the values for the requested period before extracting anything.
+## Step 1 — Parse the requested reporting period
+Identify from the question:
+- The kind of period: calendar month, calendar year, fiscal year (Oct 1–Sep 30), or security maturity date.
+- The "as of" date (end of period) the data must reflect.
+- Whether the question names a specific bulletin publication month; if so, use that directly and skip Step 2.
 
-## Inputs
+## Step 2 — Map reporting period to bulletin issue via publication lag
+Treasury Bulletin monthly issues publish with a lag, and each issue carries data "as of" a recent past date. Use these conventions to pick the issue:
 
-- The target calendar month(s)/year(s) or fiscal year(s) the question asks about.
-- Any explicit bulletin citation in the question (e.g., "Use the bulletin published in June 1970").
-- The data directory: `data/treasury_bulletins/` (resolve the absolute workspace path at runtime; files are named `treasury_bulletin_YYYY_MM.txt`).
+- **Monthly data for calendar month M**: appears in the issue published roughly M+1 or M+2. July month-end data is typically in the September issue. When unsure, grep across the few candidate issues and confirm the month label appears in the target table.
+- **Fiscal year-end (September 30)**: use the September issue of that same calendar year (it carries the end-of-fiscal-year snapshot).
+- **Calendar year-end (December 31), preliminary**: the final December-column figure is first reported as preliminary in the March issue of the following year. For a December 2002 value, use the March 2003 issue; for December 2012, use March 2013.
+- **Full-year maturity schedule for calendar year Y**: use the January issue of year Y (its tables are "as of December 31, Y-1"), which contains the complete list of securities maturing in Y. Later issues in year Y only show remaining maturities and are incomplete for a full-year total.
+- **Multi-year range**: locate one issue per year following the same rule; do not assume a single issue covers the whole range.
 
-## Steps
+## Step 3 — Identify the table by code and title
+- Match the table code referenced or implied by the question (e.g., PDO-1, PDO-2, PDO-3, AY-1, IFS-1, CM-I-1, OFS-1).
+- Read the table title line to confirm it matches the question's subject (e.g., "Maturity Schedule of Interest-Bearing Marketable Public Debt Securities Other than Regular Weekly and 52-Week Treasury Bills" confirms exclusion of 52-week bills).
+- Confirm the "as of" date in the table title matches the requested snapshot date.
 
-### 1. Identify the target period and whether a specific bulletin is named
+## Step 4 — Confirm with a grep and record evidence
+- Grep the chosen file for the table code and a distinctive row label from the question.
+- Record the file name, line number of the table title, and the "as of" date as evidence before extracting values.
 
-- If the question names a bulletin month/year (e.g., "March 1941 bulletin", "June 1970"), use that exact file: `treasury_bulletin_YYYY_MM.txt`. Do not substitute.
-- Otherwise, derive the target data period from the question (calendar month/year, calendar year end, fiscal year end, a range of months).
+## Step 5 — Cross-bulletin confirmation (when available)
+- The same snapshot often reappears in a later bulletin's historical column. When a later issue is readily available, grep it for the same row label and confirm the value matches.
+- If the primary issue is missing or ambiguous, fall back to the later issue's historical column, but record that you did so.
 
-### 2. Map the target data period to a bulletin publication month
+## Failure fallback
+- If grep finds no matching table in the chosen issue, re-derive the publication lag: try the adjacent issue (M+2 instead of M+1, or the December issue instead of September) and re-grep.
+- If two issues contain conflicting values for the same period, prefer the issue whose table title "as of" date exactly equals the requested period, and note the discrepancy.
 
-The Treasury Bulletin is a monthly publication with a reporting lag: a bulletin published in month M contains data through roughly M-1 (1939-1944 era) or M-2 (1945 onward era). Rules:
-
-- **A specific calendar month T**: look at the bulletin published in T+1 first; if the row for month T is absent, try T+2. Verify by finding a row labeled with month T's abbreviation inside the candidate file.
-- **Calendar year end (Dec 31 of year Y)**: use the January (Y+1) bulletin, or the March (Y+1) bulletin which often reproduces the December back-figure. For international/position tables (CM-I-1, IFS-1) the March bulletin of Y+1 typically holds the December-Y preliminary column.
-- **Fiscal year end (Sept 30 of year Y)**: use the September or October bulletin of calendar year Y (FY ends Sept 30); later bulletins reproduce the back-figure.
-- **A range of months**: assemble per-month values from the corresponding per-month bulletins (each month from its own T+1/T+2 bulletin). Prefer the earliest bulletin that first reported each month, but if cross-consistency matters, pull all months from one late bulletin that reproduces the full range as back-figures (e.g., a December bulletin often contains Jan-Nov of that year).
-- **Fiscal year annual row**: a single September bulletin usually lists the fiscal year row directly.
-
-### 3. List available files
-
-Use Glob with pattern `treasury_bulletin_YYYY_*` (or a broader pattern) to confirm which months exist for the target year. Not every month is present; do not assume all 12 exist.
-
-### 4. Confirm the candidate file contains the target period
-
-Grep the candidate file for the target month label (e.g., `"Oct."`, `"July"`, `"1946"`) in the relevant section. If the row is present, the file is confirmed. If absent, fall back.
-
-### 5. Record the source
-
-For each value needed, record: file name, table identifier, and the row label. This record feeds the extraction skill.
-
-## Checks
-
-- The candidate file exists (Glob returned it).
-- The target period row/column label is present in the candidate file (Grep confirmed).
-- When two different periods are needed, each is mapped to its own file(s); do not assume one file covers both.
-
-## Fallback
-
-- If the expected bulletin file is missing: try the adjacent month (T+2 or T+3) which usually reproduces the earlier month as a back-figure.
-- If the target month row is absent in the first candidate: try the next month's bulletin.
-- If no single bulletin covers the full requested range: assemble from multiple bulletins, one per month, and note each value's source.
-- If the question involves a series over many months/years and per-month lookup is impractical: find one late bulletin that reproduces the entire range as back-figures (common for yield tables and ownership surveys).
-
-## Notes
-
-- Publication lag changed over time; always verify by inspecting the file rather than assuming a fixed offset.
-- Some questions deliberately restrict the source (e.g., "using only the reported values for all individual calendar months"). Respect that restriction when choosing sources — do not substitute a pre-aggregated annual total for a required month-by-month sum.
-- Never read the whole bulletin file in one call; they routinely exceed 256KB. Use Grep to locate, then Read with offset/limit.
+## Completion condition
+- Exactly one bulletin file and one table are selected, with the table title and "as of" date recorded as evidence, and (when available) a cross-bulletin confirmation noted.

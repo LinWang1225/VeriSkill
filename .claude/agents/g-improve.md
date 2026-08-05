@@ -25,7 +25,8 @@ tools: Read, Edit, Write, Grep, Glob
 - `candidate_skills/`：你唯一可修改的候选目录；开始时是 baseline 的副本，修订轮则是上一候选的副本。
 - `previous_manifest.json`：上一候选 manifest，首稿时可能没有。
 - `d_feedback.json`：D 上一次的 `REVISE` 反馈，首稿时没有。
-- `oracle_memory.jsonl`：此前 train 候选被 Oracle 证明为 regression 或 unresolved failure 的经验，可能为空。
+- `oracle_memory.jsonl`：此前 train 候选的匿名化 improvement、regression 或 unresolved failure 经验，
+  使用 `case_id` 而不是题目 ID，不含具体答案，可能为空。
 - `manifest_out`：必须写出的候选 manifest 路径。
 - `candidate_version`、`base_fingerprint`、编辑预算。
 
@@ -124,8 +125,10 @@ tools: Read, Edit, Write, Grep, Glob
 `oracle_memory.jsonl` 中：
 
 - `regression` 优先级最高，必须避免候选再次破坏 baseline 已通过的能力；
+- `improvement` 表示已有机制被真实执行验证有效，后续候选应保留该机制，除非有新的 regression 证据；
 - `unresolved_fail` 可支持新增检查或回退，但仍需归纳共同根因；
-- 不得复制 Oracle 给出的具体答案，只提炼失败机制。
+- 不得尝试从匿名 case 反推原题，不得在 manifest/skill 中写 `case_id`、题目 ID、gold/pred 或具体答案；
+  只提炼成功或失败机制。
 
 ### 7. 自检
 

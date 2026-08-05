@@ -8,7 +8,6 @@ and atomic promotion of an accepted candidate skill library.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import random
@@ -17,6 +16,9 @@ import sys
 import tempfile
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Sequence
+
+from fingerprint import hash_dir as canonical_hash_dir, hash_file
+from sanitize_feedback import sanitize_records
 
 RELIABLE_TRUTH = {"checker", "truth"}
 REVIEW_VERDICTS = {"PASS", "REVISE", "ABSTAIN"}
@@ -88,25 +90,10 @@ def read_batch(path: Path) -> List[str]:
 
 
 def hash_dir(path: Path) -> str:
-    """Hash relative file names, modes and bytes; ignore transient files."""
-    if not path.exists():
-        return "none"
-    if not path.is_dir():
-        raise FlowError(f"not a directory: {path}")
-    h = hashlib.sha256()
-    files = sorted(
-        p for p in path.rglob("*")
-        if p.is_file() and not p.name.endswith((".tmp", ".swp")) and p.name != ".DS_Store"
-    )
-    for file_path in files:
-        rel = file_path.relative_to(path).as_posix().encode("utf-8")
-        h.update(len(rel).to_bytes(8, "big"))
-        h.update(rel)
-        h.update((file_path.stat().st_mode & 0o777).to_bytes(4, "big"))
-        data = file_path.read_bytes()
-        h.update(len(data).to_bytes(8, "big"))
-        h.update(data)
-    return h.hexdigest()[:12]
+    try:
+        return canonical_hash_dir(path)
+    except ValueError as exc:
+        raise FlowError(str(exc)) from exc
 
 
 def copytree_clean(src: Path, dst: Path) -> None:
@@ -239,10 +226,25 @@ def cmd_validate_manifest(args: argparse.Namespace) -> None:
     for item, refs in manifest["expected_coverage"].items():
         _as_string_list(refs, f"expected_coverage[{item}]")
     normalized = dict(manifest)
-    normalized["candidate_fingerprint"] = hash_dir(candidate_dir)
+    candidate_fingerprint = hash_dir(candidate_dir)
+    normalized["candidate_fingerprint"] = candidate_fingerprint
     normalized["batch_size"] = len(batch)
     if args.out:
         dump_json(Path(args.out), normalized)
+    if args.state:
+        state_path = Path(args.state)
+        state = load_json(state_path)
+        if not isinstance(state, dict):
+            raise FlowError("candidate state must be a JSON object")
+        if args.base_fingerprint and state.get("baseline_fingerprint") != args.base_fingerprint:
+            raise FlowError("candidate state baseline_fingerprint does not match the manifest")
+        state.update({
+            "candidate_dir": str(candidate_dir.resolve()),
+            "candidate_fingerprint": candidate_fingerprint,
+            "manifest_hash": hash_file(manifest_path),
+            "status": "g_validated",
+        })
+        dump_json(state_path, state)
     print(json.dumps(normalized, ensure_ascii=False))
 
 
@@ -375,6 +377,11 @@ def cmd_compare(args: argparse.Namespace) -> None:
     review_verdict = str(review.get("verdict", "")).upper()
     if review_verdict not in REVIEW_VERDICTS:
         raise FlowError(f"invalid review verdict: {review_verdict}")
+    review_coverage = {
+        str(row.get("item")): row
+        for row in review.get("coverage", [])
+        if isinstance(row, dict) and isinstance(row.get("item"), str)
+    }
     baseline_rows = load_jsonl(Path(args.baseline))
     candidate_rows = load_jsonl(Path(args.candidate))
     baseline = _index_oracle(baseline_rows, "baseline")
@@ -409,9 +416,12 @@ def cmd_compare(args: argparse.Namespace) -> None:
         else:
             kind = "unresolved_fail"
         counts[kind] += 1
+        review_row = review_coverage.get(item, {})
         comparisons.append({
             "item": item,
             "kind": kind,
+            "review_status": review_row.get("status"),
+            "skill_refs": review_row.get("candidate_evidence", []),
             "baseline_pass": bp,
             "candidate_pass": cp,
             "truth_source": b_source,
@@ -428,8 +438,24 @@ def cmd_compare(args: argparse.Namespace) -> None:
     net_gain = counts["improvement"] - counts["regression"]
     baseline_fp = hash_dir(Path(args.baseline_dir))
     candidate_fp = hash_dir(Path(args.candidate_dir))
-    reasons: List[str] = []
-    accepted = True
+    baseline_oracle_hashes = sorted({
+        str(row.get("skill_hash")) for row in baseline_rows if row.get("skill_hash")
+    })
+    candidate_oracle_hashes = sorted({
+        str(row.get("skill_hash")) for row in candidate_rows if row.get("skill_hash")
+    })
+    fingerprint_issues: List[str] = []
+    if baseline_oracle_hashes != [baseline_fp]:
+        fingerprint_issues.append(
+            f"baseline Oracle skill_hash {baseline_oracle_hashes} != expected {baseline_fp}"
+        )
+    if candidate_oracle_hashes != [candidate_fp]:
+        fingerprint_issues.append(
+            f"candidate Oracle skill_hash {candidate_oracle_hashes} != expected {candidate_fp}"
+        )
+    decision_status = "inconclusive" if fingerprint_issues else "scored"
+    reasons: List[str] = list(fingerprint_issues)
+    accepted = not fingerprint_issues
     if review_verdict == "REVISE":
         accepted = False
         reasons.append("D_REVISE candidates are calibration-only and cannot be promoted")
@@ -454,16 +480,10 @@ def cmd_compare(args: argparse.Namespace) -> None:
         reasons.append("candidate pass count is below baseline on paired items")
     if accepted:
         reasons.append("candidate improves at least one paired item with no disallowed regression")
-    baseline_oracle_hashes = sorted({str(row.get("skill_hash")) for row in baseline_rows if row.get("skill_hash")})
-    candidate_oracle_hashes = sorted({str(row.get("skill_hash")) for row in candidate_rows if row.get("skill_hash")})
-    if len(baseline_oracle_hashes) > 1:
-        accepted = False
-        reasons.append("baseline Oracle results contain multiple skill_hash values")
-    if len(candidate_oracle_hashes) > 1:
-        accepted = False
-        reasons.append("candidate Oracle results contain multiple skill_hash values")
     review_calibration = "not_scored"
-    if review_verdict == "PASS":
+    if decision_status == "inconclusive":
+        review_calibration = "not_scored"
+    elif review_verdict == "PASS":
         review_calibration = "correct_accept" if accepted else "false_accept"
     elif review_verdict == "REVISE":
         review_calibration = "false_reject_evidence" if counts["improvement"] > 0 else "supported_revise"
@@ -476,6 +496,7 @@ def cmd_compare(args: argparse.Namespace) -> None:
         "gd_revisions": args.gd_revisions,
         "review_verdict": review_verdict,
         "review_calibration": review_calibration,
+        "decision_status": decision_status,
         "baseline_fingerprint": baseline_fp,
         "candidate_fingerprint": candidate_fp,
         "baseline_oracle_skill_hashes": baseline_oracle_hashes,
@@ -491,21 +512,33 @@ def cmd_compare(args: argparse.Namespace) -> None:
     }
     dump_jsonl(Path(args.out_comparison), comparisons)
     dump_json(Path(args.out_decision), summary)
-    to_d: List[Mapping[str, Any]] = [{"record_type": "candidate_summary", **summary}]
-    to_d.extend({"record_type": "item", **row} for row in comparisons)
-    dump_jsonl(Path(args.out_to_d), to_d)
-    to_g = []
+    raw_to_d: List[Mapping[str, Any]] = [{"record_type": "candidate_summary", **summary}]
+    raw_to_d.extend({"record_type": "item", **row} for row in comparisons)
+    raw_to_g = []
     for row in comparisons:
-        if row["kind"] in {"regression", "unresolved_fail"}:
-            to_g.append({
+        if row["kind"] in {"improvement", "regression", "unresolved_fail"}:
+            raw_to_g.append({
+                "record_type": "item",
                 "item": row["item"],
                 "kind": row["kind"],
+                "baseline_pass": row["baseline_pass"],
                 "candidate_pass": row["candidate_pass"],
+                "truth_source": row["truth_source"],
+                "review_status": row.get("review_status"),
+                "skill_refs": row.get("skill_refs", []),
                 "candidate_evidence": row["candidate_evidence"],
                 "candidate_result": row["candidate_result"],
                 "feedback_scope": "train_only",
             })
-    dump_jsonl(Path(args.out_to_g), to_g)
+    if args.out_to_d_raw:
+        dump_jsonl(Path(args.out_to_d_raw), raw_to_d)
+    if args.out_to_g_raw:
+        dump_jsonl(Path(args.out_to_g_raw), raw_to_g)
+    if decision_status == "inconclusive":
+        raw_to_d = [{"record_type": "candidate_summary", **summary}]
+        raw_to_g = []
+    dump_jsonl(Path(args.out_to_d), sanitize_records([dict(row) for row in raw_to_d], "d"))
+    dump_jsonl(Path(args.out_to_g), sanitize_records([dict(row) for row in raw_to_g], "g"))
     if args.metrics:
         metrics_path = Path(args.metrics)
         existing = load_jsonl(metrics_path) if metrics_path.exists() else []
@@ -694,6 +727,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--candidate-dir", required=True)
     p.add_argument("--base-fingerprint")
     p.add_argument("--out")
+    p.add_argument("--state")
     p.set_defaults(func=cmd_validate_manifest)
 
     p = sub.add_parser("validate-review")
@@ -730,6 +764,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--out-decision", required=True)
     p.add_argument("--out-to-d", required=True)
     p.add_argument("--out-to-g", required=True)
+    p.add_argument("--out-to-d-raw")
+    p.add_argument("--out-to-g-raw")
     p.add_argument("--metrics")
     p.set_defaults(func=cmd_compare)
 

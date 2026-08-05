@@ -1,0 +1,1023 @@
+diff --git a/.claude/agents/d-improve.md b/.claude/agents/d-improve.md
+--- a/.claude/agents/d-improve.md
++++ b/.claude/agents/d-improve.md
+@@ -151,7 +151,8 @@
+ - `review.json`：Oracle 前的 review_candidate 输出；
+ - `candidate_manifest.json`；
+ - `candidate_skills/`，只读；
+-- `oracle_to_d.jsonl`：同一 candidate fingerprint 的配对结果；
++- `oracle_to_d.jsonl`：同一 candidate fingerprint 的匿名化配对结果，案例仅以 `case_id` 表示，
++  不含题目 ID、具体答案或 gold/pred 文本；
+ - Oracle 产生的 baseline/candidate 新轨迹路径；
+ - `workspace/critics/`：唯一允许修改的目录；
+ - 历史 D 校准记忆和编辑预算。
+@@ -208,6 +209,7 @@
+ 1. **先修 false_accept**：找出 D 为什么放过无效或退化候选，收窄 PASS 条件或增加可执行检查。
+ 2. **再修 false_reject**：找出哪个规则过严，把它收窄、降级为 soft/abstain，避免 G 被迫迎合 D。
+ 3. **学习 abstain 边界**：Oracle 才能判断的效果写成 `[abstain]`，不要伪装成 hard 规则。
+-4. 不为单条 item 写规则，不引用具体答案、题面或 ID；`依据:` 可写轮次和证据类型，不写 gold。
++4. 不为单条 item/case 写规则，不把 `case_id` 写进 critics，不引用具体答案、题面或 ID；
++   `依据:` 只写轮次和证据类型，不写 gold/pred。
+ 5. 同一规则累计造成 2 次 false reject 时必须收窄或降级；不能继续保持 hard。
+ 6. 任一文件本轮改动不超过原文件 40%，单文件不超过 250 行，每轮新建 critic 最多 2 个。
+diff --git a/adapters/make_checkers.py b/adapters/make_checkers.py
+--- a/adapters/make_checkers.py
++++ b/adapters/make_checkers.py
+@@ -14,8 +14,56 @@ import stat
+ 
+ CORE = '''#!/usr/bin/env python3
+ import json, os, re, sys
++from decimal import Decimal, InvalidOperation
+ sys.path.insert(0, "/root/data/EvoSkill")
+ sys.path.insert(0, "/root/data/officeqa_run")
++
++NUMBER_RE = re.compile(r"[-+−]?\\d[\\d,]*(?:\\.\\d+)?(?:[eE][-+]?\\d+)?")
++SCALAR_RE = re.compile(r"^\\s*[-+−]?\\d[\\d,]*(?:\\.\\d+)?(?:[eE][-+]?\\d+)?\\s*%?\\s*$")
++BRACKET_RE = re.compile(r"\\[([^\\]]+)\\]")
++
++
++def _decimal(token):
++    try:
++        return Decimal(token.replace(",", "").replace("−", "-"))
++    except InvalidOperation:
++        return None
++
++
++def _numbers(text):
++    values = []
++    for token in NUMBER_RE.findall(text):
++        value = _decimal(token)
++        if value is not None:
++            values.append(value)
++    return values
++
++
++def _numeric_fallback(gold, pred):
++    """Only normalize clearly numeric scalar/list answers; never guess prose semantics."""
++    gold_text = str(gold).strip()
++    pred_text = str(pred).strip()
++
++    gold_list = BRACKET_RE.fullmatch(gold_text)
++    if gold_list:
++        pred_list = BRACKET_RE.search(pred_text)
++        if not pred_list:
++            return False, "numeric-list:no bracketed prediction"
++        gold_values = _numbers(gold_list.group(1))
++        pred_values = _numbers(pred_list.group(1))
++        ok = bool(gold_values) and gold_values == pred_values
++        return ok, f"numeric-list:{pred_values!s} vs {gold_values!s}"
++
++    if SCALAR_RE.fullmatch(gold_text):
++        gold_values = _numbers(gold_text)
++        pred_match = NUMBER_RE.match(pred_text)
++        pred_value = _decimal(pred_match.group(0)) if pred_match else None
++        ok = bool(gold_values) and pred_value == gold_values[0]
++        return ok, f"numeric-scalar:{pred_value!s} vs {gold_values[:1]!s}"
++
++    return False, "numeric-fallback:not-applicable"
++
++
+ def main():
+     tid, traj_path = sys.argv[1], sys.argv[2]
+     here = os.path.dirname(os.path.abspath(__file__))
+@@ -38,8 +86,14 @@ def main():
+     except Exception as e:
+         print(f"score_answer 导入失败: {e}"); return 4
+     gold = golds[tid]
+-    ok = score_answer(gold, pred) >= 0.5   # 官方口径 (gt, pred), tol=0
+-    print(f"score_answer(tol=0): pred={pred[:60]!r} gold={gold[:40]!r} -> {'pass' if ok else 'fail'}")
++    official_ok = score_answer(gold, pred) >= 0.5   # 官方口径 (gt, pred), tol=0
++    fallback_ok, fallback_evidence = _numeric_fallback(gold, pred)
++    ok = official_ok or fallback_ok
++    route = "official" if official_ok else ("numeric-fallback" if fallback_ok else "fail")
++    print(
++        f"score_answer(tol=0): pred={pred[:60]!r} gold={str(gold)[:40]!r} "
++        f"-> {'pass' if ok else 'fail'} route={route} {fallback_evidence}"
++    )
+     return 0 if ok else 1
+ if __name__ == "__main__":
+     sys.exit(main())
+diff --git a/lib/candidate_flow.py b/lib/candidate_flow.py
+--- a/lib/candidate_flow.py
++++ b/lib/candidate_flow.py
+@@ -8,7 +8,6 @@ and atomic promotion of an accepted candidate skill library.
+ from __future__ import annotations
+ 
+ import argparse
+-import hashlib
+ import json
+ import os
+ import random
+@@ -18,6 +17,9 @@ import tempfile
+ from pathlib import Path
+ from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Sequence
+ 
++from fingerprint import hash_dir as canonical_hash_dir, hash_file
++from sanitize_feedback import sanitize_records
++
+ RELIABLE_TRUTH = {"checker", "truth"}
+ REVIEW_VERDICTS = {"PASS", "REVISE", "ABSTAIN"}
+ COVERAGE_STATES = {"covered", "partial", "uncovered", "unjudgeable"}
+@@ -89,25 +91,10 @@ COVERAGE_STATES = {"covered", "partial", "uncovered", "unjudgeable"}
+ 
+ 
+ def hash_dir(path: Path) -> str:
+-    """Hash relative file names, modes and bytes; ignore transient files."""
+-    if not path.exists():
+-        return "none"
+-    if not path.is_dir():
+-        raise FlowError(f"not a directory: {path}")
+-    h = hashlib.sha256()
+-    files = sorted(
+-        p for p in path.rglob("*")
+-        if p.is_file() and not p.name.endswith((".tmp", ".swp")) and p.name != ".DS_Store"
+-    )
+-    for file_path in files:
+-        rel = file_path.relative_to(path).as_posix().encode("utf-8")
+-        h.update(len(rel).to_bytes(8, "big"))
+-        h.update(rel)
+-        h.update((file_path.stat().st_mode & 0o777).to_bytes(4, "big"))
+-        data = file_path.read_bytes()
+-        h.update(len(data).to_bytes(8, "big"))
+-        h.update(data)
+-    return h.hexdigest()[:12]
++    try:
++        return canonical_hash_dir(path)
++    except ValueError as exc:
++        raise FlowError(str(exc)) from exc
+ 
+ 
+ def copytree_clean(src: Path, dst: Path) -> None:
+@@ -234,10 +221,25 @@ def copytree_clean(src: Path, dst: Path) -> None:
+     for item, refs in manifest["expected_coverage"].items():
+         _as_string_list(refs, f"expected_coverage[{item}]")
+     normalized = dict(manifest)
+-    normalized["candidate_fingerprint"] = hash_dir(candidate_dir)
++    candidate_fingerprint = hash_dir(candidate_dir)
++    normalized["candidate_fingerprint"] = candidate_fingerprint
+     normalized["batch_size"] = len(batch)
+     if args.out:
+         dump_json(Path(args.out), normalized)
++    if args.state:
++        state_path = Path(args.state)
++        state = load_json(state_path)
++        if not isinstance(state, dict):
++            raise FlowError("candidate state must be a JSON object")
++        if args.base_fingerprint and state.get("baseline_fingerprint") != args.base_fingerprint:
++            raise FlowError("candidate state baseline_fingerprint does not match the manifest")
++        state.update({
++            "candidate_dir": str(candidate_dir.resolve()),
++            "candidate_fingerprint": candidate_fingerprint,
++            "manifest_hash": hash_file(manifest_path),
++            "status": "g_validated",
++        })
++        dump_json(state_path, state)
+     print(json.dumps(normalized, ensure_ascii=False))
+ 
+ 
+@@ -373,6 +375,11 @@ def cmd_compare(args: argparse.Namespace) -> None:
+     review_verdict = str(review.get("verdict", "")).upper()
+     if review_verdict not in REVIEW_VERDICTS:
+         raise FlowError(f"invalid review verdict: {review_verdict}")
++    review_coverage = {
++        str(row.get("item")): row
++        for row in review.get("coverage", [])
++        if isinstance(row, dict) and isinstance(row.get("item"), str)
++    }
+     baseline_rows = load_jsonl(Path(args.baseline))
+     candidate_rows = load_jsonl(Path(args.candidate))
+     baseline = _index_oracle(baseline_rows, "baseline")
+@@ -390,9 +397,12 @@ def cmd_compare(args: argparse.Namespace) -> None:
+         else:
+             kind = "unresolved_fail"
+         counts[kind] += 1
++        review_row = review_coverage.get(item, {})
+         comparisons.append({
+             "item": item,
+             "kind": kind,
++            "review_status": review_row.get("status"),
++            "skill_refs": review_row.get("candidate_evidence", []),
+             "baseline_pass": bp,
+             "candidate_pass": cp,
+             "truth_source": b_source,
+@@ -409,8 +419,24 @@ def cmd_compare(args: argparse.Namespace) -> None:
+     net_gain = counts["improvement"] - counts["regression"]
+     baseline_fp = hash_dir(Path(args.baseline_dir))
+     candidate_fp = hash_dir(Path(args.candidate_dir))
+-    reasons: List[str] = []
+-    accepted = True
++    baseline_oracle_hashes = sorted({
++        str(row.get("skill_hash")) for row in baseline_rows if row.get("skill_hash")
++    })
++    candidate_oracle_hashes = sorted({
++        str(row.get("skill_hash")) for row in candidate_rows if row.get("skill_hash")
++    })
++    fingerprint_issues: List[str] = []
++    if baseline_oracle_hashes != [baseline_fp]:
++        fingerprint_issues.append(
++            f"baseline Oracle skill_hash {baseline_oracle_hashes} != expected {baseline_fp}"
++        )
++    if candidate_oracle_hashes != [candidate_fp]:
++        fingerprint_issues.append(
++            f"candidate Oracle skill_hash {candidate_oracle_hashes} != expected {candidate_fp}"
++        )
++    decision_status = "inconclusive" if fingerprint_issues else "scored"
++    reasons: List[str] = list(fingerprint_issues)
++    accepted = not fingerprint_issues
+     if review_verdict == "REVISE":
+         accepted = False
+         reasons.append("D_REVISE candidates are calibration-only and cannot be promoted")
+@@ -435,16 +461,10 @@ def cmd_compare(args: argparse.Namespace) -> None:
+         reasons.append("candidate pass count is below baseline on paired items")
+     if accepted:
+         reasons.append("candidate improves at least one paired item with no disallowed regression")
+-    baseline_oracle_hashes = sorted({str(row.get("skill_hash")) for row in baseline_rows if row.get("skill_hash")})
+-    candidate_oracle_hashes = sorted({str(row.get("skill_hash")) for row in candidate_rows if row.get("skill_hash")})
+-    if len(baseline_oracle_hashes) > 1:
+-        accepted = False
+-        reasons.append("baseline Oracle results contain multiple skill_hash values")
+-    if len(candidate_oracle_hashes) > 1:
+-        accepted = False
+-        reasons.append("candidate Oracle results contain multiple skill_hash values")
+     review_calibration = "not_scored"
+-    if review_verdict == "PASS":
++    if decision_status == "inconclusive":
++        review_calibration = "not_scored"
++    elif review_verdict == "PASS":
+         review_calibration = "correct_accept" if accepted else "false_accept"
+     elif review_verdict == "REVISE":
+         review_calibration = "false_reject_evidence" if counts["improvement"] > 0 else "supported_revise"
+@@ -457,6 +477,7 @@ def cmd_compare(args: argparse.Namespace) -> None:
+         "gd_revisions": args.gd_revisions,
+         "review_verdict": review_verdict,
+         "review_calibration": review_calibration,
++        "decision_status": decision_status,
+         "baseline_fingerprint": baseline_fp,
+         "candidate_fingerprint": candidate_fp,
+         "baseline_oracle_skill_hashes": baseline_oracle_hashes,
+@@ -472,21 +493,33 @@ def cmd_compare(args: argparse.Namespace) -> None:
+     }
+     dump_jsonl(Path(args.out_comparison), comparisons)
+     dump_json(Path(args.out_decision), summary)
+-    to_d: List[Mapping[str, Any]] = [{"record_type": "candidate_summary", **summary}]
+-    to_d.extend({"record_type": "item", **row} for row in comparisons)
+-    dump_jsonl(Path(args.out_to_d), to_d)
+-    to_g = []
++    raw_to_d: List[Mapping[str, Any]] = [{"record_type": "candidate_summary", **summary}]
++    raw_to_d.extend({"record_type": "item", **row} for row in comparisons)
++    raw_to_g = []
+     for row in comparisons:
+-        if row["kind"] in {"regression", "unresolved_fail"}:
+-            to_g.append({
++        if row["kind"] in {"improvement", "regression", "unresolved_fail"}:
++            raw_to_g.append({
++                "record_type": "item",
+                 "item": row["item"],
+                 "kind": row["kind"],
++                "baseline_pass": row["baseline_pass"],
+                 "candidate_pass": row["candidate_pass"],
++                "truth_source": row["truth_source"],
++                "review_status": row.get("review_status"),
++                "skill_refs": row.get("skill_refs", []),
+                 "candidate_evidence": row["candidate_evidence"],
+                 "candidate_result": row["candidate_result"],
+                 "feedback_scope": "train_only",
+             })
+-    dump_jsonl(Path(args.out_to_g), to_g)
++    if args.out_to_d_raw:
++        dump_jsonl(Path(args.out_to_d_raw), raw_to_d)
++    if args.out_to_g_raw:
++        dump_jsonl(Path(args.out_to_g_raw), raw_to_g)
++    if decision_status == "inconclusive":
++        raw_to_d = [{"record_type": "candidate_summary", **summary}]
++        raw_to_g = []
++    dump_jsonl(Path(args.out_to_d), sanitize_records([dict(row) for row in raw_to_d], "d"))
++    dump_jsonl(Path(args.out_to_g), sanitize_records([dict(row) for row in raw_to_g], "g"))
+     if args.metrics:
+         metrics_path = Path(args.metrics)
+         existing = load_jsonl(metrics_path) if metrics_path.exists() else []
+@@ -693,6 +726,7 @@ def cmd_compare(args: argparse.Namespace) -> None:
+     p.add_argument("--candidate-dir", required=True)
+     p.add_argument("--base-fingerprint")
+     p.add_argument("--out")
++    p.add_argument("--state")
+     p.set_defaults(func=cmd_validate_manifest)
+ 
+     p = sub.add_parser("validate-review")
+@@ -710,6 +744,8 @@ def cmd_compare(args: argparse.Namespace) -> None:
+     p.add_argument("--out-decision", required=True)
+     p.add_argument("--out-to-d", required=True)
+     p.add_argument("--out-to-g", required=True)
++    p.add_argument("--out-to-d-raw")
++    p.add_argument("--out-to-g-raw")
+     p.add_argument("--metrics")
+     p.set_defaults(func=cmd_compare)
+ 
+diff --git a/lib/fingerprint.py b/lib/fingerprint.py
+new file mode 100644
+--- /dev/null
++++ b/lib/fingerprint.py
+@@ -0,0 +1,68 @@
++#!/usr/bin/env python3
++"""Canonical, location-independent fingerprints for VeriSkill directories."""
++from __future__ import annotations
++
++import argparse
++import hashlib
++from pathlib import Path
++from typing import Iterable
++
++IGNORED_NAMES = {".DS_Store"}
++IGNORED_SUFFIXES = (".tmp", ".swp")
++
++
++def _iter_files(root: Path) -> Iterable[Path]:
++    return sorted(
++        path
++        for path in root.rglob("*")
++        if path.is_file()
++        and path.name not in IGNORED_NAMES
++        and not path.name.endswith(IGNORED_SUFFIXES)
++    )
++
++
++def hash_dir(path: Path | str, *, length: int = 12) -> str:
++    """Hash relative names, executable mode bits and bytes, never absolute paths."""
++    root = Path(path)
++    if not root.exists():
++        return "none"
++    if not root.is_dir():
++        raise ValueError(f"not a directory: {root}")
++    if length < 1 or length > 64:
++        raise ValueError("length must be in [1, 64]")
++
++    digest = hashlib.sha256()
++    for file_path in _iter_files(root):
++        relative = file_path.relative_to(root).as_posix().encode("utf-8")
++        digest.update(len(relative).to_bytes(8, "big"))
++        digest.update(relative)
++        digest.update((file_path.stat().st_mode & 0o777).to_bytes(4, "big"))
++        data = file_path.read_bytes()
++        digest.update(len(data).to_bytes(8, "big"))
++        digest.update(data)
++    return digest.hexdigest()[:length]
++
++
++def hash_file(path: Path | str, *, length: int = 12) -> str:
++    file_path = Path(path)
++    if not file_path.is_file():
++        raise ValueError(f"not a file: {file_path}")
++    if length < 1 or length > 64:
++        raise ValueError("length must be in [1, 64]")
++    return hashlib.sha256(file_path.read_bytes()).hexdigest()[:length]
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("directory")
++    parser.add_argument("--length", type=int, default=12)
++    args = parser.parse_args()
++    try:
++        print(hash_dir(args.directory, length=args.length))
++    except (OSError, ValueError) as exc:
++        parser.error(str(exc))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/lib/sanitize_feedback.py b/lib/sanitize_feedback.py
+new file mode 100644
+--- /dev/null
++++ b/lib/sanitize_feedback.py
+@@ -0,0 +1,196 @@
++#!/usr/bin/env python3
++"""Sanitize Oracle feedback before it becomes cross-round G/D memory."""
++from __future__ import annotations
++
++import argparse
++import json
++import re
++import sys
++from pathlib import Path
++from typing import Any, Iterable, Mapping
++
++SENSITIVE_KEYS = {
++    "item",
++    "baseline_evidence",
++    "candidate_evidence",
++    "baseline_result",
++    "candidate_result",
++    "skill_result",
++    "gold",
++    "prediction",
++    "pred",
++}
++G_ALLOWED_ITEM_KINDS = {"improvement", "regression", "unresolved_fail"}
++GOLD_PRED_RE = re.compile(r"\b(?:gold|pred(?:iction)?)\s*[=:]", re.IGNORECASE)
++
++
++def load_jsonl(path: Path) -> list[dict[str, Any]]:
++    rows: list[dict[str, Any]] = []
++    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
++        if not line.strip():
++            continue
++        value = json.loads(line)
++        if not isinstance(value, dict):
++            raise ValueError(f"{path}:{line_number}: JSONL row must be an object")
++        rows.append(value)
++    return rows
++
++
++def dump_jsonl(path: Path, rows: Iterable[Mapping[str, Any]]) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    tmp = path.with_name(path.name + ".tmp")
++    with tmp.open("w", encoding="utf-8") as handle:
++        for row in rows:
++            handle.write(json.dumps(dict(row), ensure_ascii=False) + "\n")
++    tmp.replace(path)
++
++
++def _case_tokens(rows: Iterable[Mapping[str, Any]]) -> dict[str, str]:
++    item_ids = sorted(
++        {
++            str(row["item"])
++            for row in rows
++            if isinstance(row.get("item"), str) and row.get("item")
++        }
++    )
++    return {item_id: f"case-{index:03d}" for index, item_id in enumerate(item_ids, 1)}
++
++
++def _sanitize_summary(row: Mapping[str, Any]) -> dict[str, Any]:
++    allowed = {
++        "record_type",
++        "schema_version",
++        "round",
++        "candidate_version",
++        "gd_revisions",
++        "review_verdict",
++        "review_calibration",
++        "scored_pairs",
++        "counts",
++        "excluded",
++        "baseline_pass_rate",
++        "candidate_pass_rate",
++        "net_gain",
++        "accepted",
++        "decision_status",
++        "decision_reasons",
++    }
++    return {key: row[key] for key in allowed if key in row}
++
++
++def _diagnostic_label(row: Mapping[str, Any]) -> str:
++    evidence = " ".join(
++        str(row.get(key, ""))
++        for key in ("baseline_evidence", "candidate_evidence")
++    ).lower()
++    if "numeric-list" in evidence:
++        return "structured_numeric_list_check"
++    if "numeric-scalar" in evidence:
++        return "numeric_scalar_check"
++    if "format" in evidence:
++        return "format_check"
++    if "score_answer" in evidence:
++        return "semantic_answer_check"
++    return "oracle_outcome_only"
++
++
++def _sanitize_item(row: Mapping[str, Any], case_id: str, channel: str) -> dict[str, Any] | None:
++    kind = str(row.get("kind", ""))
++    if channel == "g" and kind not in G_ALLOWED_ITEM_KINDS:
++        return None
++    clean: dict[str, Any] = {
++        "record_type": "case",
++        "case_id": case_id,
++        "kind": kind,
++        "truth_source": row.get("truth_source"),
++        "baseline_pass": row.get("baseline_pass"),
++        "candidate_pass": row.get("candidate_pass"),
++        "diagnostic": _diagnostic_label(row),
++        "feedback_scope": "train_only",
++    }
++    # Preserve only non-answer diagnostic labels explicitly emitted by future checkers.
++    for key in (
++        "failure_type", "format_pass", "semantic_pass", "change_group",
++        "review_status", "skill_refs",
++    ):
++        if key in row:
++            clean[key] = row[key]
++    return clean
++
++
++def sanitize_records(rows: list[dict[str, Any]], channel: str) -> list[dict[str, Any]]:
++    if channel not in {"g", "d"}:
++        raise ValueError("channel must be g or d")
++    tokens = _case_tokens(rows)
++    sanitized: list[dict[str, Any]] = []
++    for row in rows:
++        if row.get("record_type") == "candidate_summary":
++            sanitized.append(_sanitize_summary(row))
++            continue
++        item = row.get("item")
++        if not isinstance(item, str) or item not in tokens:
++            continue
++        clean = _sanitize_item(row, tokens[item], channel)
++        if clean is not None:
++            sanitized.append(clean)
++    return sanitized
++
++
++def _load_ids(meta_path: Path) -> list[str]:
++    meta = json.loads(meta_path.read_text(encoding="utf-8"))
++    items = meta.get("items")
++    if not isinstance(items, list):
++        raise ValueError("meta.json must contain items")
++    return sorted(
++        str(row["id"])
++        for row in items
++        if isinstance(row, dict) and isinstance(row.get("id"), str) and row.get("id")
++    )
++
++
++def lint_tree(root: Path, meta_path: Path) -> list[str]:
++    ids = _load_ids(meta_path)
++    violations: list[str] = []
++    for file_path in sorted(root.rglob("*")):
++        if not file_path.is_file() or file_path.suffix not in {".md", ".json", ".jsonl", ".txt"}:
++            continue
++        text = file_path.read_text(encoding="utf-8", errors="replace")
++        for item_id in ids:
++            if re.search(rf"(?<![A-Za-z0-9_]){re.escape(item_id)}(?![A-Za-z0-9_])", text):
++                violations.append(f"{file_path}: contains item id {item_id}")
++        if GOLD_PRED_RE.search(text):
++            violations.append(f"{file_path}: contains gold/pred answer material")
++    return violations
++
++
++def main(argv: list[str] | None = None) -> int:
++    parser = argparse.ArgumentParser(description=__doc__)
++    sub = parser.add_subparsers(dest="command", required=True)
++
++    sanitize = sub.add_parser("sanitize")
++    sanitize.add_argument("--input", required=True)
++    sanitize.add_argument("--output", required=True)
++    sanitize.add_argument("--channel", choices=("g", "d"), required=True)
++
++    lint = sub.add_parser("lint-tree")
++    lint.add_argument("--root", required=True)
++    lint.add_argument("--meta", required=True)
++
++    args = parser.parse_args(argv)
++    try:
++        if args.command == "sanitize":
++            rows = load_jsonl(Path(args.input))
++            dump_jsonl(Path(args.output), sanitize_records(rows, args.channel))
++            return 0
++        violations = lint_tree(Path(args.root), Path(args.meta))
++        if violations:
++            print("\n".join(violations), file=sys.stderr)
++            return 2
++        return 0
++    except (OSError, ValueError, json.JSONDecodeError) as exc:
++        print(f"sanitize_feedback: {exc}", file=sys.stderr)
++        return 2
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/oracle_run.sh b/oracle_run.sh
+--- a/oracle_run.sh
++++ b/oracle_run.sh
+@@ -51,17 +51,18 @@ TASK_DATA="${VERISKILL_TASK_DATA:-}"
+ # 附加做题说明：逐字进提示词。可选
+ SOLVE_NOTE="${VERISKILL_SOLVE_NOTE:-}"
+ 
+-_hash_dir() {
+-  [ -d "$1" ] || return 0
+-  find "$1" -type f -print0 | LC_ALL=C sort -z | xargs -0 shasum -a 1 2>/dev/null
++_safe_component() {
++  printf '%s' "$1" | LC_ALL=C tr -c 'A-Za-z0-9._-' '_'
+ }
+ 
++ORACLE_SIDE="$(_safe_component "${VERISKILL_ORACLE_SIDE:-standalone}")"
++ORACLE_RUN_LABEL="$(_safe_component "${VERISKILL_ORACLE_RUN_LABEL:-manual}")"
++
+ skill_fingerprint() {
+-  if [ ! -d "$ACTOR_SKILLS" ] && { [ -z "$CHECK_SKILLS" ] || [ ! -d "$CHECK_SKILLS" ]; }; then
++  if [ ! -d "$ACTOR_SKILLS" ]; then
+     echo "none"; return 0
+   fi
+-  { _hash_dir "$ACTOR_SKILLS"; _hash_dir "$CHECK_SKILLS"; } \
+-    | shasum -a 1 | cut -d' ' -f1 | cut -c1-12
++  python3 "$HERE/lib/fingerprint.py" "$ACTOR_SKILLS"
+ }
+ 
+ # emit <id> <true|false> <evidence> <skill_hash> <truth_source> <skill_result>
+@@ -77,18 +78,21 @@ emit() {
+ 
+   backend_preflight || exit 5
+   WORK_ORACLE="$(mktemp -d "${TMPDIR:-/tmp}/veriskill-oracle-XXXXXX")"
+-  # 失败(非零退出)时把现场(task/prompt/raw.txt/err.txt)留到 oracle_failures/<id>/
++  # 失败(非零退出)时按 run/side/item/attempt 隔离现场，避免 baseline/candidate 互相覆盖。
+   # 供排查，再清 /tmp temp；成功则照常清。raw.txt 里的真因(如 429)不再随 temp 蒸发。
+   _cleanup() {
+     local rc=$?
+     if [ "$rc" -ne 0 ] && [ -n "${WORK_ORACLE:-}" ] && [ -n "${id:-}" ]; then
+-      mkdir -p "$HERE/oracle_failures/$id" 2>/dev/null || true
+-      cp -a "$WORK_ORACLE/." "$HERE/oracle_failures/$id/" 2>/dev/null || true
++      local safe_id failure_dir
++      safe_id="$(_safe_component "$id")"
++      failure_dir="$HERE/oracle_failures/$ORACLE_RUN_LABEL/$ORACLE_SIDE/$safe_id/attempt-$(date +%Y%m%dT%H%M%S)-$$"
++      mkdir -p "$failure_dir" 2>/dev/null || true
++      cp -a "$WORK_ORACLE/." "$failure_dir/" 2>/dev/null || true
+       # 通知只写 loop 日志、不写 stderr：eval_test.sh 取 stderr 末行当 error，
+       # 写 stderr 会盖住真因（[id] 重跑调用失败：… / 环境故障：…）
+       if [ -n "${VERISKILL_LOOP_LOG:-}" ]; then
+-        printf '[%s] [%s] 失败现场已保存到 %s/oracle_failures/%s (rc=%s)\n' \
+-          "$(date +%H:%M:%S)" "$id" "$HERE" "$id" "$rc" >> "$VERISKILL_LOOP_LOG" 2>/dev/null || true
++        printf '[%s] [%s] 失败现场已保存到 %s (rc=%s)\n' \
++          "$(date +%H:%M:%S)" "$id" "$failure_dir" "$rc" >> "$VERISKILL_LOOP_LOG" 2>/dev/null || true
+       fi
+     fi
+     rm -rf "${WORK_ORACLE:-}" 2>/dev/null || true
+diff --git a/tests/test_candidate_flow.py b/tests/test_candidate_flow.py
+--- a/tests/test_candidate_flow.py
++++ b/tests/test_candidate_flow.py
+@@ -6,6 +6,9 @@ import unittest
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / "lib"))
++from fingerprint import hash_dir  # noqa: E402
++
+ SCRIPT = ROOT / "lib" / "candidate_flow.py"
+ 
+ 
+@@ -31,13 +34,15 @@ class CandidateFlowTests(unittest.TestCase):
+         self.write_json(review, {"verdict": verdict})
+         baseline = self.root / "baseline.jsonl"
+         candidate = self.root / "candidate.jsonl"
++        baseline_hash = hash_dir(baseline_dir)
++        candidate_hash = hash_dir(candidate_dir)
+         self.write_jsonl(baseline, [
+-            {"item": "q1", "oracle_pass": False, "truth_source": "checker", "skill_hash": "basehash"},
+-            {"item": "q2", "oracle_pass": True, "truth_source": "checker", "skill_hash": "basehash"},
++            {"item": "q1", "oracle_pass": False, "truth_source": "checker", "skill_hash": baseline_hash},
++            {"item": "q2", "oracle_pass": True, "truth_source": "checker", "skill_hash": baseline_hash},
+         ])
+         self.write_jsonl(candidate, [
+-            {"item": "q1", "oracle_pass": True, "truth_source": "checker", "skill_hash": "candhash"},
+-            {"item": "q2", "oracle_pass": candidate_second, "truth_source": "checker", "skill_hash": "candhash"},
++            {"item": "q1", "oracle_pass": True, "truth_source": "checker", "skill_hash": candidate_hash},
++            {"item": "q2", "oracle_pass": candidate_second, "truth_source": "checker", "skill_hash": candidate_hash},
+         ])
+         return review, baseline, candidate, baseline_dir, candidate_dir
+ 
+diff --git a/tests/test_candidate_flow_integrity.py b/tests/test_candidate_flow_integrity.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_candidate_flow_integrity.py
+@@ -0,0 +1,174 @@
++import json
++import subprocess
++import sys
++import tempfile
++import unittest
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++SCRIPT = ROOT / "lib" / "candidate_flow.py"
++sys.path.insert(0, str(ROOT / "lib"))
++from fingerprint import hash_dir  # noqa: E402
++
++
++class CandidateFlowIntegrityTests(unittest.TestCase):
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory()
++        self.root = Path(self.tmp.name)
++
++    def tearDown(self):
++        self.tmp.cleanup()
++
++    def run_cli(self, *args, check=True):
++        proc = subprocess.run(
++            [sys.executable, str(SCRIPT), *map(str, args)],
++            text=True,
++            stdout=subprocess.PIPE,
++            stderr=subprocess.PIPE,
++            check=False,
++        )
++        if check and proc.returncode != 0:
++            self.fail(f"command failed ({proc.returncode}): {proc.stderr}\n{proc.stdout}")
++        return proc
++
++    @staticmethod
++    def write_json(path, value):
++        path.parent.mkdir(parents=True, exist_ok=True)
++        path.write_text(json.dumps(value, ensure_ascii=False), encoding="utf-8")
++
++    @staticmethod
++    def write_jsonl(path, rows):
++        path.parent.mkdir(parents=True, exist_ok=True)
++        path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
++
++    def test_validate_manifest_refreshes_candidate_state(self):
++        round_dir = self.root / "rounds" / "r1"
++        candidate = round_dir / "candidate" / "iter0"
++        candidate.mkdir(parents=True)
++        (candidate / "g-demo.md").write_text("candidate\n", encoding="utf-8")
++        state = round_dir / "candidate_state.json"
++        self.write_json(state, {
++            "baseline_fingerprint": "base",
++            "candidate_fingerprint": "stale",
++            "candidate_dir": str(candidate),
++            "status": "prepared",
++        })
++        batch = round_dir / "current_batch.list"
++        batch.write_text("q1\n", encoding="utf-8")
++        manifest = round_dir / "manifests" / "iter0.json"
++        self.write_json(manifest, {
++            "candidate_version": "r1-i0",
++            "base_fingerprint": "base",
++            "trajectory_clusters": [],
++            "changes": [],
++            "expected_coverage": {"q1": ["g-demo#step"]},
++            "uncovered": [],
++            "response_to_d": [],
++        })
++        self.run_cli(
++            "validate-manifest",
++            "--manifest", manifest,
++            "--batch", batch,
++            "--candidate-dir", candidate,
++            "--base-fingerprint", "base",
++            "--state", state,
++        )
++        updated = json.loads(state.read_text())
++        self.assertEqual(updated["candidate_fingerprint"], hash_dir(candidate))
++        self.assertEqual(updated["status"], "g_validated")
++        self.assertTrue(updated["manifest_hash"])
++
++    def test_compare_marks_wrong_oracle_fingerprint_inconclusive(self):
++        baseline_dir = self.root / "baseline"
++        candidate_dir = self.root / "candidate"
++        baseline_dir.mkdir()
++        candidate_dir.mkdir()
++        (baseline_dir / "skill.md").write_text("base\n", encoding="utf-8")
++        (candidate_dir / "skill.md").write_text("candidate\n", encoding="utf-8")
++        review = self.root / "review.json"
++        self.write_json(review, {"verdict": "PASS"})
++        baseline = self.root / "baseline.jsonl"
++        candidate = self.root / "candidate.jsonl"
++        self.write_jsonl(baseline, [{
++            "item": "q1", "oracle_pass": False, "truth_source": "checker", "skill_hash": "wrong"
++        }])
++        self.write_jsonl(candidate, [{
++            "item": "q1", "oracle_pass": True, "truth_source": "checker", "skill_hash": hash_dir(candidate_dir)
++        }])
++        decision = self.root / "decision.json"
++        to_d = self.root / "to_d.jsonl"
++        to_g = self.root / "to_g.jsonl"
++        self.run_cli(
++            "compare",
++            "--review", review,
++            "--baseline", baseline,
++            "--candidate", candidate,
++            "--baseline-dir", baseline_dir,
++            "--candidate-dir", candidate_dir,
++            "--round", 1,
++            "--candidate-version", "r1-i0",
++            "--min-scored", 1,
++            "--min-improvements", 1,
++            "--max-regressions", 0,
++            "--out-comparison", self.root / "comparison.jsonl",
++            "--out-decision", decision,
++            "--out-to-d", to_d,
++            "--out-to-g", to_g,
++        )
++        result = json.loads(decision.read_text())
++        self.assertEqual(result["decision_status"], "inconclusive")
++        self.assertFalse(result["accepted"])
++        self.assertEqual(to_g.read_text(), "")
++
++    def test_compare_writes_sanitized_feedback_and_optional_raw_files(self):
++        baseline_dir = self.root / "baseline"
++        candidate_dir = self.root / "candidate"
++        baseline_dir.mkdir()
++        candidate_dir.mkdir()
++        (baseline_dir / "skill.md").write_text("base\n", encoding="utf-8")
++        (candidate_dir / "skill.md").write_text("candidate\n", encoding="utf-8")
++        review = self.root / "review.json"
++        self.write_json(review, {"verdict": "PASS"})
++        baseline = self.root / "baseline.jsonl"
++        candidate = self.root / "candidate.jsonl"
++        self.write_jsonl(baseline, [{
++            "item": "q063", "oracle_pass": False, "truth_source": "checker",
++            "skill_hash": hash_dir(baseline_dir), "skill_result": "wrong"
++        }])
++        self.write_jsonl(candidate, [{
++            "item": "q063", "oracle_pass": True, "truth_source": "checker",
++            "skill_hash": hash_dir(candidate_dir), "skill_result": "gold=44.00"
++        }])
++        to_d = self.root / "to_d.jsonl"
++        to_g = self.root / "to_g.jsonl"
++        raw_d = self.root / "to_d.raw.jsonl"
++        raw_g = self.root / "to_g.raw.jsonl"
++        self.run_cli(
++            "compare",
++            "--review", review,
++            "--baseline", baseline,
++            "--candidate", candidate,
++            "--baseline-dir", baseline_dir,
++            "--candidate-dir", candidate_dir,
++            "--round", 1,
++            "--candidate-version", "r1-i0",
++            "--min-scored", 1,
++            "--min-improvements", 1,
++            "--max-regressions", 0,
++            "--out-comparison", self.root / "comparison.jsonl",
++            "--out-decision", self.root / "decision.json",
++            "--out-to-d", to_d,
++            "--out-to-g", to_g,
++            "--out-to-d-raw", raw_d,
++            "--out-to-g-raw", raw_g,
++        )
++        sanitized = to_d.read_text()
++        self.assertIn("case-001", sanitized)
++        self.assertNotIn("q063", sanitized)
++        self.assertNotIn("44.00", sanitized)
++        self.assertIn("q063", raw_d.read_text())
++        self.assertIn("q063", raw_g.read_text())
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/tests/test_patch_a.py b/tests/test_patch_a.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_patch_a.py
+@@ -0,0 +1,162 @@
++import importlib.util
++import json
++import os
++import stat
++import subprocess
++import sys
++import tempfile
++import unittest
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / "lib"))
++
++from fingerprint import hash_dir  # noqa: E402
++from sanitize_feedback import lint_tree, sanitize_records  # noqa: E402
++
++
++def load_make_checkers():
++    path = ROOT / "adapters" / "make_checkers.py"
++    spec = importlib.util.spec_from_file_location("make_checkers", path)
++    module = importlib.util.module_from_spec(spec)
++    assert spec.loader is not None
++    spec.loader.exec_module(module)
++    return module
++
++
++class FingerprintTests(unittest.TestCase):
++    def test_same_contents_different_absolute_paths_match(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            root = Path(tmp)
++            left = root / "left"
++            right = root / "nested" / "right"
++            for directory in (left, right):
++                (directory / "sub").mkdir(parents=True)
++                (directory / "sub" / "skill.md").write_text("same\n", encoding="utf-8")
++            self.assertEqual(hash_dir(left), hash_dir(right))
++
++    def test_relative_name_and_mode_are_part_of_fingerprint(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            root = Path(tmp)
++            first = root / "first"
++            second = root / "second"
++            first.mkdir()
++            second.mkdir()
++            (first / "a.md").write_text("same\n", encoding="utf-8")
++            (second / "b.md").write_text("same\n", encoding="utf-8")
++            self.assertNotEqual(hash_dir(first), hash_dir(second))
++            (second / "b.md").rename(second / "a.md")
++            self.assertEqual(hash_dir(first), hash_dir(second))
++            os.chmod(second / "a.md", os.stat(second / "a.md").st_mode | stat.S_IXUSR)
++            self.assertNotEqual(hash_dir(first), hash_dir(second))
++
++    def test_transient_files_are_ignored(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            root = Path(tmp)
++            (root / "skill.md").write_text("content\n", encoding="utf-8")
++            before = hash_dir(root)
++            (root / "scratch.tmp").write_text("noise\n", encoding="utf-8")
++            (root / ".DS_Store").write_text("noise\n", encoding="utf-8")
++            self.assertEqual(before, hash_dir(root))
++
++
++class SanitizerTests(unittest.TestCase):
++    def test_feedback_replaces_item_ids_and_drops_answers(self):
++        rows = [
++            {
++                "record_type": "candidate_summary",
++                "round": 3,
++                "candidate_version": "r3-i1",
++                "counts": {"regression": 1},
++                "accepted": False,
++            },
++            {
++                "record_type": "item",
++                "item": "q063",
++                "kind": "unresolved_fail",
++                "baseline_pass": False,
++                "candidate_pass": False,
++                "truth_source": "checker",
++                "baseline_result": "[41.74, 239.09]",
++                "candidate_result": "[44.00, 231.52]",
++                "candidate_evidence": "checker: score_answer pred=[44.00,231.52] gold=[44.00,231.52]",
++            },
++        ]
++        sanitized = sanitize_records(rows, "g")
++        encoded = json.dumps(sanitized, ensure_ascii=False)
++        self.assertIn("case-001", encoded)
++        self.assertNotIn("q063", encoded)
++        self.assertNotIn("44.00", encoded)
++        self.assertNotIn("gold", encoded.lower())
++        self.assertIn("semantic_answer_check", encoded)
++
++    def test_g_memory_keeps_improvement_regression_and_unresolved_only(self):
++        rows = [
++            {"record_type": "item", "item": "q1", "kind": "retained_pass"},
++            {"record_type": "item", "item": "q2", "kind": "improvement"},
++            {"record_type": "item", "item": "q3", "kind": "regression"},
++        ]
++        sanitized = sanitize_records(rows, "g")
++        self.assertEqual([row["kind"] for row in sanitized], ["improvement", "regression"])
++
++    def test_lint_tree_rejects_ids_and_gold_pred_material(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            root = Path(tmp)
++            critics = root / "critics"
++            critics.mkdir()
++            meta = root / "meta.json"
++            meta.write_text(json.dumps({"items": [{"id": "q063"}]}), encoding="utf-8")
++            (critics / "rule.md").write_text("针对 q063，gold=44.00。\n", encoding="utf-8")
++            violations = lint_tree(critics, meta)
++            self.assertTrue(any("q063" in violation for violation in violations))
++            self.assertTrue(any("gold/pred" in violation for violation in violations))
++
++
++class GeneratedCheckerTests(unittest.TestCase):
++    def run_checker(self, gold, pred, official_score=0.0):
++        module = load_make_checkers()
++        with tempfile.TemporaryDirectory() as tmp:
++            root = Path(tmp)
++            (root / "golds.json").write_text(json.dumps({"q": gold}), encoding="utf-8")
++            (root / "run_officeqa.py").write_text(
++                f"def score_answer(gold, pred):\n    return {official_score!r}\n",
++                encoding="utf-8",
++            )
++            checker = root / "checker_core.py"
++            checker.write_text(module.CORE, encoding="utf-8")
++            traj = root / "traj.md"
++            traj.write_text(f"## 题目\nX\n\n## 最终答案\n{pred}\n", encoding="utf-8")
++            return subprocess.run(
++                [sys.executable, str(checker), "q", str(traj)],
++                cwd=root,
++                text=True,
++                stdout=subprocess.PIPE,
++                stderr=subprocess.PIPE,
++                check=False,
++            )
++
++    def test_numeric_list_spacing_is_semantically_equal(self):
++        proc = self.run_checker("[44.00,231.52]", "[44.00, 231.52]")
++        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
++        self.assertIn("route=numeric-fallback", proc.stdout)
++
++    def test_numeric_scalar_can_have_explanation(self):
++        proc = self.run_checker("11.60", "11.60 million dollars")
++        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
++
++    def test_different_numeric_list_still_fails(self):
++        proc = self.run_checker("[44.00,231.52]", "[44.00, 231.53]")
++        self.assertEqual(proc.returncode, 1, proc.stdout + proc.stderr)
++
++    def test_scalar_fallback_does_not_scan_explanatory_numbers(self):
++        proc = self.run_checker("1945", "In 1945 the computed answer is 11.60")
++        self.assertEqual(proc.returncode, 1, proc.stdout + proc.stderr)
++
++    def test_official_score_remains_authoritative_for_non_numeric_answers(self):
++        proc = self.run_checker("yes", "equivalent prose", official_score=1.0)
++        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
++        self.assertIn("route=official", proc.stdout)
++
++
++if __name__ == "__main__":
++    unittest.main()
