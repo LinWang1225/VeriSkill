@@ -1,0 +1,11 @@
+{
+ "tid": "m196",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 12-9",
+ "question_text": "Unusual combinations of properties can be obtained by producing a steel with a microstructure containing $50 \\%$ ferrite and $50 \\%$ martensite. The martensite provides strength, and the ferrite provides ductility and toughness. Design a heat treatment to produce a dual phase steel in which the composition of the martensite is $0.60 \\% \\mathrm{C}$.\n\n**Give your answer as a tuple: (steel_carbon_content, heat_treatment_temperature).**The units of each required answer are (%, °C), respectively.",
+ "response": "**Solution summary:**\n\n- **Intercritical temperature:** Using the A₃ line equation (A₃ = 910 − 203√C), the temperature at which austenite has 0.60% C in equilibrium with ferrite is **≈ 753°C ≈ 750°C**.\n\n- **Steel carbon content (lever rule):** For 50% austenite (→ martensite) and 50% ferrite:\n  $$f_\\gamma = \\frac{C_0 - C_\\alpha}{C_\\gamma - C_\\alpha} = 0.50$$\n  Since ferrite's carbon solubility is very small (C_α ≈ 0.02%), this gives C₀ ≈ 0.50 × 0.60 ≈ **0.30% C**.\n\nThe heat treatment: austenitize the 0.30% C steel at ~750°C (in the intercritical α+γ region) to establish 50% ferrite + 50% austenite (with the austenite enriched to 0.60% C), then quench rapidly to transform the austenite to martensite.\n\n$$\\boxed{(0.30, 750)}$$",
+ "final_answer": "(0.30, 750)",
+ "correct_answer": "(0.31, 750)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(%, °C)"
+}

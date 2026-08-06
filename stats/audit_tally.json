@@ -1,24 +1,24 @@
 {
- "recent": [
-  "TP",
-  "FN",
-  "TN",
-  "FN",
-  "TP",
-  "TP",
-  "FP",
-  "FN",
-  "FP",
-  "TN",
-  "FP",
-  "TP",
-  "FP",
-  "TP",
-  "FP",
-  "TN",
-  "TN",
-  "FN",
-  "TP",
-  "TN"
- ]
+  "recent": [
+    "FN",
+    "TN",
+    "TP",
+    "TP",
+    "TN",
+    "FN",
+    "TP",
+    "TP",
+    "TN",
+    "TN",
+    "TP",
+    "FP",
+    "FN",
+    "TN",
+    "TP",
+    "TP",
+    "TN",
+    "FN",
+    "FP",
+    "TP"
+  ]
 }

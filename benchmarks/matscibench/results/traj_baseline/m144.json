@@ -1,0 +1,11 @@
+{
+ "tid": "m144",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 16.13",
+ "question_text": "(a) Demonstrate that the CPR is related to the corrosion current density $i\\left(A / \\mathrm{cm}^{2}\\right)$ through the expression\n\n$$\n\\mathrm{CPR}=\\frac{K A i}{n \\rho}\n$$\n\nwhere $K$ is a constant, $A$ is the atomic weight of the metal experiencing corrosion, $n$ is the number of electrons associated with the ionization of each metal atom, and $\\rho$ is the density of the metal.\n(b) Calculate the value of the constant $K$ for the CPR in mpy and $i$ in $\\mu A / \\mathrm{cm}^{2}\\left(10^{-6} \\mathrm{~A} / \\mathrm{cm}^{2}\\right)$.",
+ "response": "The conversion proceeds as:\n\n$$\\text{CPR (mpy)} = \\frac{i'\\cdot 10^{-6}\\cdot A}{nF\\rho}\\times\\frac{31{,}536{,}000\\;\\text{s/yr}}{0.00254\\;\\text{cm/mil}} = \\frac{A\\,i'}{n\\rho}\\underbrace{\\left(\\frac{10^{-6}\\times 31{,}536{,}000}{96{,}485\\times 0.00254}\\right)}_{K}$$\n\n$$K = \\frac{31.536}{245.07} \\approx 0.1287 \\approx 0.129$$\n\nThis is the well-known Callister constant.\n\n$$\\boxed{0.129}\n$$",
+ "final_answer": "0.129",
+ "correct_answer": "0.129",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

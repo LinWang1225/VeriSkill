@@ -1,0 +1,11 @@
+{
+ "tid": "e007",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 5.7",
+ "question_text": "A 5-mm-thick sheet of palladium with a cross-sectional area of $0.2 \\mathrm{~m}^{2}$ is used as a steady-state diffusional membrane for purifying hydrogen. If the hydrogen concentration on the high-pressure (impure gas) side of the sheet is $0.3 \\mathrm{~kg} / \\mathrm{m}^{3}$ and the diffusion coefficient for hydrogen in Pd is $1.0 \\times 10^{-8} \\mathrm{~m}^{2} / \\mathrm{s}$, calculate the mass of hydrogen being purified per hour. Assume the hydrogen concentration on the low-pressure side is maintained at 0 kg/m³ (e.g. by vacuum).The unit of the answer is kg/h.",
+ "response": "Using Fick's first law at steady state, the diffusion flux is:\n\n$$J = -D\\frac{\\Delta C}{\\Delta x} = D\\frac{C_1 - C_2}{\\Delta x} = (1.0\\times10^{-8})\\frac{0.3 - 0}{5\\times10^{-3}} = 6\\times10^{-7}\\ \\mathrm{kg/(m^2\\cdot s)}$$\n\nThe mass rate through area $A = 0.2\\ \\mathrm{m^2}$:\n\n$$\\dot{m} = J A = (6\\times10^{-7})(0.2) = 1.2\\times10^{-7}\\ \\mathrm{kg/s}$$\n\nConverting to per hour: $\\dot{m} = 1.2\\times10^{-7}\\times 3600 = 4.32\\times10^{-4}\\ \\mathrm{kg/h}$\n\n$$\\boxed{4.32 \\times 10^{-4}}$$",
+ "final_answer": "4.32 \\times 10^{-4}",
+ "correct_answer": "4.32E-04",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg/h"
+}

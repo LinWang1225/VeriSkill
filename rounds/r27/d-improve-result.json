@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "critic": "d-matsci-model-selection",
+      "type": "add_rule",
+      "rule_id": "R-d-matsci-model-selection-001",
+      "evidence_items": ["#m176"],
+      "summary": "在方法库新增子情形：Hosford 非二次屈服函数中 R 应乘差应力项 |σ_x−σ_y|^a 而非正应力项；错放 R 使 α 与正确值互补偏移。附 a=2 退化核验与 R>1 方向核验。依据追加 r27#m176。"
+    }
+  ],
+  "fp_seen": 0,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["m176"],
+  "unjudgeable": [],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

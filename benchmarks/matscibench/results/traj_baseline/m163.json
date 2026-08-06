@@ -1,0 +1,11 @@
+{
+ "tid": "m163",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 2.7",
+ "question_text": "A cylindrical pressure vessel has an internal diameter of 45 cm and a wall thickness of 20 mm and operates at $800^{\\circ} \\mathrm{C}$. When operating at the design pressure, the vessel diameter is expected to reach its maximum allowable increase in diameter of 5 mm in 4 years. As a result of increasing demand, it was decided to increase the operating pressure by $25 \\%$. Calculate the expected decrease in life of the vessel as a result of this action. Give your answer as the value of expected_life_years.The unit of the answer is years.",
+ "response": "**Results:**\n\n- At design pressure: life = 4 years (to reach 5 mm increase)\n- At 1.25× pressure: $\\dot{\\varepsilon}$ increases by $(1.25)^3 = 1.953125$\n- New life: $t_2 = \\dfrac{4}{1.953125} = 2.048$ years\n- **Decrease in life**: $4 - 2.048 = 1.952$ years\n\nThe expected decrease in life of the vessel due to the 25% pressure increase is:\n\n$$\\boxed{1.952}$$",
+ "final_answer": "1.952",
+ "correct_answer": "2.1",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "years"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m117",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.17",
+ "question_text": "Consider a single crystal of some hypothetical metal that has the BCC crystal structure and is oriented such that a tensile stress is applied along a [121] direction. If slip occurs on a (101) plane and in a [ $\\overline{1} 11]$ direction, compute the stress at which the crystal yields if its critical resolved shear stress is 2.4 MPa .The unit of the answer is MPa.",
+ "response": "Using **Schmid's law**, the resolved shear stress is:\n\n$$\\tau_R = \\sigma \\cos\\phi \\cos\\lambda$$\n\nwhere $\\phi$ is the angle between the tensile axis $[121]$ and the slip-plane normal $[101]$, and $\\lambda$ is the angle between $[121]$ and the slip direction $[\\bar{1}11]$.\n\n**Cos φ:**\n$$\\cos\\phi = \\frac{[121]\\cdot[101]}{|[121]||[101]|} = \\frac{1+0+1}{\\sqrt6\\sqrt2} = \\frac{2}{\\sqrt{12}} = \\frac{1}{\\sqrt3}$$\n\n**Cos λ:**\n$$\\cos\\lambda = \\frac{[121]\\cdot[\\bar{1}11]}{|[121]||[\\bar{1}11]|} = \\frac{-1+2+1}{\\sqrt6\\sqrt3} = \\frac{2}{\\sqrt{18}} = \\frac{2}{3\\sqrt2}$$\n\n**Schmid factor:**\n$$\\cos\\phi\\cos\\lambda = \\frac{1}{\\sqrt3}\\cdot\\frac{2}{3\\sqrt2} = \\frac{2}{3\\sqrt6}$$\n\n**Yield stress:**\n$$\\sigma_y = \\frac{\\tau_c}{\\cos\\phi\\cos\\lambda} = \\frac{2.4}{2/(3\\sqrt6)} = 2.4\\cdot\\frac{3\\sqrt6}{2} = 3.6\\sqrt6 \\approx 8.82 \\text{ MPa}$$\n\n$$\\boxed{8.82}$$",
+ "final_answer": "8.82",
+ "correct_answer": "8.82",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "MPa"
+}

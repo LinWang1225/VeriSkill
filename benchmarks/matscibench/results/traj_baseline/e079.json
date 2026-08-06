@@ -1,0 +1,11 @@
+{
+ "tid": "e079",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.23",
+ "question_text": "What is the minimum cation-to-anion radius ratio for a coordination number of 4?",
+ "response": "## Reasoning\n\nFor **coordination number 4**, the anions sit at the vertices of a **tetrahedron** surrounding the cation at its center. The critical (minimum) radius ratio is found when the cation just touches all four anions while the anions just touch each other along the tetrahedron edges.\n\n**Geometry of a regular tetrahedron** with edge length $a$:\n- Anion radius: $r_- = a/2$ (anions touch along the edge)\n- Distance from center to a vertex: $R = a\\sqrt{6}/4$\n- Cation radius: $r_+ = R - r_- = a\\sqrt{6}/4 - a/2$\n\n**Radius ratio:**\n\n$$\\frac{r_+}{r_-} = \\frac{a\\sqrt{6}/4 - a/2}{a/2} = \\frac{\\sqrt{6}}{2} - 1 \\approx 0.2247$$\n\nThis is the standard critical value for tetrahedral coordination.\n\n$$\\boxed{\\dfrac{\\sqrt{6}-2}{2} \\approx 0.225}$$",
+ "final_answer": "\\dfrac{\\sqrt{6}-2}{2} \\approx 0.225",
+ "correct_answer": "0.225",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

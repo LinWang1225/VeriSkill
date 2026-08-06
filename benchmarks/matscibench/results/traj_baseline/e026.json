@@ -1,0 +1,11 @@
+{
+ "tid": "e026",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 6.7",
+ "question_text": "(a) Calculate the center-to-center separation distance of two Fe atoms along the $\\langle 100\\rangle$ direction in unstressed $\\alpha$-iron (b) Calculate the separation distance along that direction under a tensile stress of $1,000 \\mathrm{MPa}$. Give your answer as a tuple: (separation_distance_unstressed, separation_distance_stressed).The units of each required answer are (nm, nm), respectively.",
+ "response": "## Reasoning\n\n**Crystal structure:** α-iron (ferrite) is **BCC** with lattice parameter $a_0 \\approx 0.2866\\ \\text{nm}$.\n\n**(a) Unstressed separation along ⟨100⟩:**\nIn BCC, atoms sit at corners $(0,0,0)$ and body centers $(\\tfrac12,\\tfrac12,\\tfrac12)$. A line in the $[100]$ direction through a corner atom passes through successive corner atoms at spacing $a_0$; the body-center atom (offset by $a/2$ in $y$ and $z$) does **not** lie on that line. Hence the nearest Fe–Fe separation along $\\langle 100\\rangle$ is simply the lattice parameter:\n\n$$d_0 = a_0 = 0.2866\\ \\text{nm}$$\n\n**(b) Under 1000 MPa tension along $[100]$:**\nFor a cubic crystal under uniaxial stress $\\sigma_{xx}=\\sigma$ along $[100]$ (all other stress components zero), the axial strain is\n\n$$\\varepsilon_{xx} = S_{11}\\,\\sigma, \\qquad \nS_{11} = \\frac{C_{11}+C_{12}}{(C_{11}-C_{12})(C_{11}+2C_{12})}$$\n\nUsing the elastic stiffnesses of α-Fe ($C_{11}=243,\\ C_{12}=146,\\ C_{44}=116$ GPa):\n\n$$S_{11} = \\frac{389}{(97)(535)} = 7.496\\times10^{-3}\\ \\text{GPa}^{-1}$$\n\nWith $\\sigma = 1000\\ \\text{MPa} = 1\\ \\text{GPa}$:\n\n$$\\varepsilon_{xx} = 7.496\\times10^{-3}$$\n\n$$d = a_0(1+\\varepsilon_{xx}) = 0.2866\\times1.007496 = 0.2887\\ \\text{nm}$$\n\nThe transverse strains ($S_{12}\\sigma$) don't affect the $[100]$ spacing.\n\n## Result\n\n$$\\boxed{(0.2866,\\ 0.2887)}$$",
+ "final_answer": "(0.2866,\\ 0.2887)",
+ "correct_answer": "(0.2864, 0.2887)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(nm, nm)"
+}

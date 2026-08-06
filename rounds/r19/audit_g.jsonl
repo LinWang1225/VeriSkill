@@ -1,0 +1,1 @@
+{"item": "m205", "segment": "随机", "d_verdict": "pass", "oracle_pass": true, "kind": "TN", "skill_hash": "0370cde370c4", "truth_source": "checker", "rules_hit": [], "normalized_score": 1.0, "adjusted_score": 0.85, "flipped_by": null, "confidence": 0.95, "oracle_evidence": "checker: candidate=(1.28,3.33) matches reference", "skill_result": "(1.28, 3.33)"}

@@ -1,0 +1,11 @@
+{
+ "tid": "m048",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_14.35",
+ "question_text": "(a) Calculate the magnetic moment of a unit cell of manganese ferrite. (b) Calculate the corresponding saturation magnetization, given a lattice parameter of 0.850 nm . Give your answer as a tuple: (magnetic_moment, saturation_magnetization).The units of each required answer are (\\mu_{\\mathrm{B}}, A/m), respectively.",
+ "response": "## Reasoning\n\n**Manganese ferrite (MnFe₂O₄)** is a **normal spinel**:\n- **Mn²⁺** (d⁵, high spin) sits on tetrahedral **A sites**: 5 μ_B each (1 per formula unit)\n- **Fe³⁺** (d⁵, high spin) sits on octahedral **B sites**: 5 μ_B each (2 per formula unit)\n\nThe A and B sublattices align **antiparallel** (ferrimagnetic ordering), so the net moment per formula unit is:\n\n$$n_B = 2(5) - 5 = 5 \\,\\mu_B \\text{ per formula unit}$$\n\n### (a) Magnetic moment per unit cell\n\nA spinel unit cell contains **8 formula units**:\n\n$$\\mu_{\\text{cell}} = 8 \\times 5 = 40 \\,\\mu_B$$\n\n### (b) Saturation magnetization\n\n$$M_s = \\frac{n_B^{\\text{cell}} \\cdot \\mu_B}{a^3} = \\frac{40 \\times 9.274\\times10^{-24}}{(0.850\\times10^{-9})^3}$$\n\n$$M_s \\approx 6.04 \\times 10^5 \\,\\text{A/m} \\approx 604{,}046 \\,\\text{A/m}$$\n\n$$\\boxed{(40,\\; 6.04\\times10^{5})}$$",
+ "final_answer": "(40,\\; 6.04\\times10^{5})",
+ "correct_answer": "(40, 6.04e5)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(\\mu_{\\mathrm{B}}, A/m)"
+}

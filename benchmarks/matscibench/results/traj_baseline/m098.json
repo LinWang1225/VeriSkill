@@ -1,0 +1,11 @@
+{
+ "tid": "m098",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.38",
+ "question_text": "Consider the diffusion of some hypothetical metal $Y$ into another hypothetical metal $Z$ at $950^{\\circ} \\mathrm{C}$; after 10 h the concentration at the 0.5 mm position (in metal $Z$ ) is $2.0 \\mathrm{wt} \\% Y$. At what position will the concentration also be $2.0 \\mathrm{wt} \\% Y$ after a 17.5 h heat treatment again at $950^{\\circ} \\mathrm{C}$ ? Assume preexponential and activation energy values of 4.3 $\\times 10^{-4} \\mathrm{~m}^{2} / \\mathrm{s}$ and $180,000 \\mathrm{~J} / \\mathrm{mol}$, respectively, for this diffusion system.The unit of the answer is mm.",
+ "response": "## Result\n\n$$x_2 = 0.5 \\times \\sqrt{1.75} \\approx 0.6614 \\text{ mm}$$\n\nThe concentration of 2.0 wt% Y shifts deeper into metal Z as $\\sqrt{t}$, consistent with the parabolic penetration law of diffusion.\n\n$$\\boxed{0.66}$$",
+ "final_answer": "0.66",
+ "correct_answer": "0.66",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

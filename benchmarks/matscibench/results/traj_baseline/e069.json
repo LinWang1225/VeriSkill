@@ -1,0 +1,11 @@
+{
+ "tid": "e069",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 8.3",
+ "question_text": "Relative permittivity of water at $10^{8} \\mathrm{~Hz}$ and $10^{11} \\mathrm{~Hz}$ is $\\sim 90$ and $\\sim 6$, respectively. Estimate the relative contribution of dipolar polarization, ionic polarization, and electronic polarization to the permittivity of water. The refractive index of water is 1.33 at room temperature. Give your answer as a tuple (dipolar polarization, ionic polarization, electronic polarization).",
+ "response": "## Reasoning\n\nThe three polarization mechanisms respond at different frequency ranges, so we can dissect the permittivity by looking at the values measured at different frequencies.\n\n**Electronic polarization** — responds up to optical frequencies (~10¹⁴–10¹⁵ Hz). At optical frequencies only electronic polarization survives, and the refractive index gives:\n$$\\varepsilon_{\\text{electronic}} = n^2 = (1.33)^2 \\approx 1.77$$\n\n**Ionic polarization** — responds up to infrared frequencies (~10¹²–10¹³ Hz). Water's dipolar (orientational) relaxation frequency is ~10¹⁰ Hz (relaxation time τ ≈ 8 ps). At 10¹¹ Hz the dipolar contribution has frozen out, so:\n$$\\varepsilon(10^{11}\\,\\text{Hz}) \\approx 6 = \\varepsilon_{\\text{ionic}} + \\varepsilon_{\\text{electronic}}$$\n$$\\varepsilon_{\\text{ionic}} = 6 - 1.77 \\approx 4.23$$\n\n**Dipolar polarization** — responds only below ~10¹⁰ Hz. At 10⁸ Hz (well below the relaxation frequency) all three mechanisms are fully active:\n$$\\varepsilon(10^{8}\\,\\text{Hz}) \\approx 90 = \\varepsilon_{\\text{dipolar}} + \\varepsilon_{\\text{ionic}} + \\varepsilon_{\\text{electronic}}$$\n$$\\varepsilon_{\\text{dipolar}} = 90 - 6 = 84$$\n\nCheck: 84 + 4.23 + 1.77 = 90 ✓\n\n$$\\boxed{(84,\\ 4.23,\\ 1.77)}$$",
+ "final_answer": "(84,\\ 4.23,\\ 1.77)",
+ "correct_answer": "(84, 4.2, 1.8)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m258",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 23-14",
+ "question_text": "A corrosion cell is composed of a $300 \\mathrm{~cm}^2$ copper sheet and a $20 \\mathrm{~cm}^2$ iron sheet, with a current density of $0.6 \\mathrm{~A} / \\mathrm{cm}^2$ applied to the copper. What is the rate of loss of metal from the anode per hour?The unit of the answer is g/h.",
+ "response": "## Reasoning\n\nIn a Cu–Fe galvanic cell, **iron is the anode** (Fe is more active than Cu) and copper is the cathode. The same current flows through both electrodes.\n\n**1. Total current in the cell**\n\nThe current density is given on the copper:\n$$I = i_{\\text{Cu}} \\times A_{\\text{Cu}} = 0.6\\;\\text{A/cm}^2 \\times 300\\;\\text{cm}^2 = 180\\;\\text{A}$$\n\n**2. Mass loss at the iron anode (Faraday's law)**\n\nIron dissolves as $\\text{Fe} \\rightarrow \\text{Fe}^{2+} + 2e^-$, so $n = 2$, $M_{\\text{Fe}} = 55.845\\;\\text{g/mol}$, $F = 96485\\;\\text{C/mol}$.\n\n$$\\dot{m} = \\frac{I \\cdot M}{nF}\\;\\text{g/s}$$\n\nPer hour ($t = 3600$ s):\n$$m = \\frac{I \\cdot M \\cdot t}{nF} = \\frac{180 \\times 55.845 \\times 3600}{2 \\times 96485} \\approx 187.53\\;\\text{g/h}$$\n\n$$\\boxed{187.53}$$",
+ "final_answer": "187.53",
+ "correct_answer": "187.5",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "g/h"
+}

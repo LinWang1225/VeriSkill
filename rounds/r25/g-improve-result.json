@@ -1,0 +1,11 @@
+{
+  "edits": [
+    {"skill": "g-matsci-tuple-magnitude-direction-split", "type": "new_skill", "cluster": "R-d-matsci-sign-convention-001 (tuple magnitude/direction)", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "新建技能：答案为 (数值, 方向标签) tuple 时数值字段取正幅值、方向由标签承载，禁止重复编码符号"},
+    {"skill": "g-sci-named-force-magnitude-report", "type": "patch", "cluster": "R-d-matsci-sign-convention-001 (force equation sign)", "support": 1, "audited_support": 0, "attribution": "能力缺陷", "summary": "把编号方程例外提升为首要判定：题面引用带符号约定的编号方程时按方程约定保留符号"},
+    {"skill": "g-sci-missing-input-no-fabrication", "type": "patch", "cluster": "R-d-sci-underdetermined-claim-001", "support": 1, "audited_support": 0, "attribution": "能力缺陷", "summary": "compute/derive/express 速率类措辞下含自变量的符号式即完整答案，严禁附加欠定/拒答标注"}
+  ],
+  "clusters_seen": 7,
+  "clusters_fixed": 3,
+  "skipped": ["e056","m030","m193","m245"],
+  "needs_human": false
+}

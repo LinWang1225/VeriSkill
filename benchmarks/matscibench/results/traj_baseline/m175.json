@@ -1,0 +1,11 @@
+{
+ "tid": "m175",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 5.9",
+ "question_text": "The strains measured on the surface of a piece of sheet metal after deformation are $\\varepsilon_1 = 0.182$, $\\varepsilon_2 = -0.035$. The stress-strain curve in tension can be approximated by $\\sigma = 30 + 40\\varepsilon$. Assume the von Mises criterion, and assume that the loading was such that the ratio of $\\varepsilon_2 / \\varepsilon_1$ was constant. Calculate the levels of $\\varepsilon_1$ and $\\varepsilon_2$ reached before unloading. Give your answer as an ordered tuple ($\\varepsilon_1$, $\\varepsilon_2$).",
+ "response": "## Solution\n\n**Flow rule (plane stress, σ₃ = 0):** Plastic strains are proportional to deviatoric stresses, so with the constant-ratio (proportional loading) assumption,\n\n$$\\frac{\\varepsilon_2^p}{\\varepsilon_1^p}=\\frac{2\\sigma_2-\\sigma_1}{2\\sigma_1-\\sigma_2}=\\frac{-0.035}{0.182}\\;\\Rightarrow\\;r\\equiv\\frac{\\sigma_2}{\\sigma_1}=\\frac{112}{329}\\approx 0.3404$$\n\n**Effective plastic strain** (von Mises, plane stress):\n\n$$\\bar\\varepsilon^p=\\frac{2}{\\sqrt3}\\sqrt{(\\varepsilon_1^p)^2+\\varepsilon_1^p\\varepsilon_2^p+(\\varepsilon_2^p)^2}= 0.1931$$\n\n**Effective stress** from the hardening curve σ̄ = 30 + 40 ε̄ᵖ:\n\n$$\\bar\\sigma = 30+40(0.1931)=37.73\\;\\text{ksi}$$\n\n$$\\sigma_1=\\frac{\\bar\\sigma}{\\sqrt{1-r+r^2}}=42.84\\;\\text{ksi},\\qquad \\sigma_2=r\\sigma_1=14.58\\;\\text{ksi}$$\n\n**Elastic recovery** (plane-stress Hooke's law; σ in ksi ⇒ low-strength steel, E = 30,000 ksi, ν = 0.3):\n\n$$\\varepsilon_1^e=\\frac{\\sigma_1-\\nu\\sigma_2}{E}=0.001282,\\qquad \\varepsilon_2^e=\\frac{\\sigma_2-\\nu\\sigma_1}{E}=0.0000577$$\n\n**Total strains before unloading** = plastic + elastic:\n\n$$\\varepsilon_1 = 0.182+0.001282 = 0.183282$$\n$$\\varepsilon_2 = -0.035+0.0000577 = -0.034942$$\n\nThe elastic springback slightly raises ε₁ and makes ε₂ marginally less negative, as expected for removal of a tensile biaxial stress state.\n\n$$\\boxed{(0.1833,\\,-0.0349)}$$",
+ "final_answer": "(0.1833,\\,-0.0349)",
+ "correct_answer": "(1.252, 0.330)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": ""
+}

@@ -1,0 +1,1 @@
+回归门失败：历史 TP m255（r22 确认 fail）用改后 critics 重跑翻成 pass（adjusted=0.8，独立核查判 pass）。d-improve 本轮在 d-matsci-model-selection 新增 Hosford R 位置子情形，但该改动使 m255 不再被判 fail。整库回滚到 r27 D before 快照。G 侧编辑不受影响（verify 只读 critics）。

@@ -1,0 +1,11 @@
+{
+ "tid": "m057",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 2.12",
+ "question_text": "What is the resistivity of an Au alloy containing 1.5 weight $\\% \\mathrm{Cu}$? Assume that Nordheim's coefficient (C) for Cu dissolved in Au is $450 \\mathrm{n} \\Omega \\cdot \\mathrm{m}$.\n\nReference: The resistivity of Au is $2.35 \\mu \\Omega \\cdot \\mathrm{~cm}$ or $23.5 \\mathrm{n} \\Omega \\cdot \\mathrm{m}$. $M_{\\mathrm{Au}}=197 \\mathrm{~g} / \\mathrm{mol}, M_{\\mathrm{Cu}}=63.5 \\mathrm{~g} / \\mathrm{mol}$.The unit of the answer is nΩ·m.",
+ "response": "## Solution\n\n**Nordheim's rule** for the resistivity of a binary solid-solution alloy:\n\n$$\\rho = \\rho_0 + C\\,x(1-x)$$\n\nwhere $\\rho_0$ is the resistivity of the pure solvent (Au) and $x$ is the **atomic fraction** of the solute (Cu).\n\n### Step 1 — Convert weight % to atomic fraction\n\nTake 100 g of alloy → 1.5 g Cu, 98.5 g Au.\n\n$$n_{\\mathrm{Cu}} = \\frac{1.5}{63.5} = 0.02362\\;\\text{mol}, \\qquad n_{\\mathrm{Au}} = \\frac{98.5}{197} = 0.500\\;\\text{mol}$$\n\n$$x = \\frac{n_{\\mathrm{Cu}}}{n_{\\mathrm{Cu}}+n_{\\mathrm{Au}}} = \\frac{0.02362}{0.52362} \\approx 0.04511$$\n\n### Step 2 — Apply Nordheim's rule\n\n$$\\rho = 23.5 + 450\\,(0.04511)(1-0.04511)$$\n$$= 23.5 + 450\\,(0.04511)(0.95489)$$\n$$= 23.5 + 19.38 \\approx 42.88\\;\\mathrm{n\\Omega\\cdot m}$$\n\n$$\\boxed{42.88}$$",
+ "final_answer": "42.88",
+ "correct_answer": "40.69",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "nΩ·m"
+}

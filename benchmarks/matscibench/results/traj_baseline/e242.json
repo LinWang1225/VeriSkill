@@ -1,0 +1,11 @@
+{
+ "tid": "e242",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 11-23",
+ "question_text": "A Pb-Sn alloy contains $23 \\%$ primary $\\alpha$ and $77 \\%$ eutectic microconstituent immediately after the eutectic reaction has been completed. Determine the composition of the alloy. Give your answer as the value of alloy_composition_percent_Sn.The unit of the answer is %.",
+ "response": "## Solution\n\nFor the Pb-Sn system, the relevant phase diagram values at the eutectic temperature (183°C) are:\n- Eutectic composition: $C_E = 61.9$ wt% Sn\n- Maximum solubility of Sn in α (Pb-rich solid): $C_\\alpha = 18.3$ wt% Sn\n\nThe fraction of **primary α** is found using the lever rule applied just below the eutectic temperature, treating the primary α and the eutectic microconstituent as the two phases of the tie line between $C_\\alpha$ and $C_E$:\n\n$$f_{\\text{primary }\\alpha} = \\frac{C_E - C_0}{C_E - C_\\alpha}$$\n\nSolving for the alloy composition $C_0$:\n\n$$C_0 = C_E - f_{\\text{primary }\\alpha}\\,(C_E - C_\\alpha)$$\n\n$$C_0 = 61.9 - 0.23\\,(61.9 - 18.3) = 61.9 - 0.23 \\times 43.6 = 61.9 - 10.028 = 51.872$$\n\n$$\\boxed{51.87}$$",
+ "final_answer": "51.87",
+ "correct_answer": "52",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

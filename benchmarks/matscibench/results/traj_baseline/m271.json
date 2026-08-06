@@ -1,0 +1,11 @@
+{
+ "tid": "m271",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 12.4",
+ "question_text": "Calculate the number of Schottky defects per cubic meter in potassium chloride at 500℃. The energy required to form each Schottky defect is 2.6 eV, whereas the density for KCl (at 500℃) is 1.955 g/cm³. The unit of the answer is defects/m³.",
+ "response": "## Solution\n\n**Step 1: Number of lattice sites per m³**\n\nFor KCl (molar mass = 39.10 + 35.45 = 74.55 g/mol), the number of cation–anion pair sites per unit volume:\n\n$$N = \\frac{\\rho}{M_{\\text{KCl}}} N_A = \\frac{1.955}{74.55}\\times 6.022\\times10^{23} \\times 10^6 \\approx 1.579\\times10^{28}\\ \\text{m}^{-3}$$\n\n**Step 2: Schottky defect concentration**\n\nWith $T = 500 + 273 = 773\\ \\text{K}$, $E_s = 2.6\\ \\text{eV}$, $k = 8.617\\times10^{-5}\\ \\text{eV/K}$:\n\n$$N_s = N\\exp\\!\\left(-\\frac{E_s}{2kT}\\right) = 1.579\\times10^{28}\\exp\\!\\left(-\\frac{2.6}{2(8.617\\times10^{-5})(773)}\\right)$$\n\n$$N_s \\approx 1.579\\times10^{28}\\times e^{-1.950} \\approx 5.28\\times10^{19}\\ \\text{defects/m}^3$$\n\n$$\\boxed{5.28 \\times 10^{19}}$$",
+ "final_answer": "5.28 \\times 10^{19}",
+ "correct_answer": "5.31e+19",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "defects/m³"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e218",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 19-3",
+ "question_text": "Calculate the electrical conductivity of pure copper at (a) 400 °C and (b) –100 °C.  The resistivity of copper at 25 °C is 1.67×10⁻⁶ Ω·cm, and its temperature‐resistivity coefficient is α=0.0043 /°C. \n\n\n Give your answers in S/cm as (σ₄₀₀, σ₋₁₀₀).The units of each required answer are (ohm^-1 \\cdot cm^-1, ohm^-1 \\cdot cm^-1), respectively.",
+ "response": "Using the linear resistivity–temperature relation\n\n$$\\rho(T)=\\rho_{25}\\bigl[1+\\alpha(T-25)\\bigr],\\qquad \\sigma=\\frac{1}{\\rho}$$\n\nwith $\\rho_{25}=1.67\\times10^{-6}\\ \\Omega\\cdot\\text{cm}$ and $\\alpha=0.0043\\ /^\\circ\\text{C}$:\n\n**(a) At 400 °C**\n$$\\rho_{400}=1.67\\times10^{-6}[1+0.0043(400-25)]=4.363\\times10^{-6}\\ \\Omega\\cdot\\text{cm}$$\n$$\\sigma_{400}=\\frac{1}{4.363\\times10^{-6}}\\approx2.29\\times10^{5}\\ \\text{S/cm}$$\n\n**(b) At –100 °C**\n$$\\rho_{-100}=1.67\\times10^{-6}[1+0.0043(-100-25)]=7.724\\times10^{-7}\\ \\Omega\\cdot\\text{cm}$$\n$$\\sigma_{-100}=\\frac{1}{7.724\\times10^{-7}}\\approx1.29\\times10^{6}\\ \\text{S/cm}$$\n\n$$\\boxed{(2.29\\times10^{5},\\ 1.29\\times10^{6})}$$",
+ "final_answer": "(2.29\\times10^{5},\\ 1.29\\times10^{6})",
+ "correct_answer": "(229000.0, 1290000.0)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(ohm^-1 \\cdot cm^-1, ohm^-1 \\cdot cm^-1)"
+}

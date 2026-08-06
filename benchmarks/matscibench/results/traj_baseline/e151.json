@@ -1,0 +1,11 @@
+{
+ "tid": "e151",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.41",
+ "question_text": "Assume parabolic grain growth so that d² – d₀² = K t. The average grain diameter for a brass material was measured as a function of time at $650^{\\circ} \\mathrm{C}$, which is shown in the following table at two different times:\n\n| Time (min) | Grain Diameter (mm) |\n| :--: | :--: |\n| 40 | $5.6 \\times 10^{-2}$ |\n| 100 | $8.0 \\times 10^{-2}$ |\n\n(a) What was the original grain diameter?\n(b) What grain diameter would you predict after 200 min at $650^{\\circ} \\mathrm{C}$?\n\nGive your answer as a tuple (the original grain diameter, grain diameter after 200 min).The units of each required answer are (mm, mm), respectively.",
+ "response": "## Solution\n\nUsing parabolic grain growth, $d^2 - d_0^2 = Kt$:\n\n**From the two data points:**\n\n$$K = \\frac{d_2^2 - d_1^2}{t_2 - t_1} = \\frac{(0.080)^2 - (0.056)^2}{100 - 40} = \\frac{6.4\\times10^{-3} - 3.136\\times10^{-3}}{60} = 5.44\\times10^{-5}\\ \\text{mm}^2/\\text{min}$$\n\n**(a) Original grain diameter:**\n\n$$d_0^2 = d_1^2 - Kt_1 = (0.056)^2 - (5.44\\times10^{-5})(40) = 3.136\\times10^{-3} - 2.176\\times10^{-3} = 9.6\\times10^{-4}$$\n\n$$d_0 = \\sqrt{9.6\\times10^{-4}} \\approx 0.031\\ \\text{mm}$$\n\n**(b) Grain diameter after 200 min:**\n\n$$d_{200}^2 = d_0^2 + K(200) = 9.6\\times10^{-4} + (5.44\\times10^{-5})(200) = 1.184\\times10^{-2}$$\n\n$$d_{200} = \\sqrt{1.184\\times10^{-2}} \\approx 0.109\\ \\text{mm}$$\n\n$$\\boxed{(0.031,\\ 0.109)}$$",
+ "final_answer": "(0.031,\\ 0.109)",
+ "correct_answer": "(0.031, 0.109)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(mm, mm)"
+}

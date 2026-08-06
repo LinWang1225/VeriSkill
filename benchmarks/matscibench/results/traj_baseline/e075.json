@@ -1,0 +1,11 @@
+{
+ "tid": "e075",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 2.26",
+ "question_text": "Calculate \\%IC of the interatomic bonds for the intermetallic compound $A l_6 M n$. The electronegativities for Al and Mn are both 1.5.The unit of the answer is %.",
+ "response": "## Result\n\nThe computation confirms that with identical electronegativities ($\\Delta\\chi = 0$), the percent ionic character is exactly zero. This is consistent with the physical interpretation: Al₆Mn is an intermetallic compound where bonding is predominantly metallic, with no ionic contribution.\n\n$$\\boxed{0}$$",
+ "final_answer": "0",
+ "correct_answer": "0",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e267",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 6.4",
+ "question_text": "A cylindrical specimen of steel having an original diameter of 12.8 mm (0.505 in.) is tensile-tested to fracture and found to have an engineering fracture strength σf of 460 MPa (67,000 psi). If its cross-sectional diameter at fracture is 10.7 mm (0.422 in.), determine (a) The ductility in terms of percentage reduction in area (b) The true stress at fracture. Give your answer as a tuple (percentage reduction in area, true stress at fracture).The units of each required answer are (%, MPa), respectively.",
+ "response": "## Solution\n\n**(a) Percentage reduction in area (%RA)**\n\nThe reduction in area is based on the original and fracture cross-sectional areas:\n\n$$\\%RA = \\frac{A_0 - A_f}{A_0}\\times 100 = \\frac{d_0^2 - d_f^2}{d_0^2}\\times 100$$\n\n$$\\%RA = \\frac{(12.8)^2 - (10.7)^2}{(12.8)^2}\\times 100 = \\frac{163.84 - 114.49}{163.84}\\times 100 \\approx 30.1\\%$$\n\n**(b) True stress at fracture**\n\nThe engineering fracture strength is based on the original area, while true stress uses the instantaneous (fracture) area:\n\n$$\\sigma_T = \\sigma_f \\cdot \\frac{A_0}{A_f} = \\sigma_f \\cdot \\frac{d_0^2}{d_f^2}$$\n\n$$\\sigma_T = 460 \\times \\frac{(12.8)^2}{(10.7)^2} = 460 \\times \\frac{163.84}{114.49} \\approx 658 \\text{ MPa}$$\n\n$$\\boxed{(30.1,\\ 658)}$$",
+ "final_answer": "(30.1,\\ 658)",
+ "correct_answer": "(30, 660)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(%, MPa)"
+}

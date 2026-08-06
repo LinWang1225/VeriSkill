@@ -1,0 +1,11 @@
+{
+ "tid": "m038",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_11.3",
+ "question_text": "A prototype $\\mathrm{Al}-\\mathrm{Li}$ alloy is being considered for replacement of a 7075 alloy in a commercial aircraft. The compositions are compared in the following table. (a) Assuming that the same volume of material is used, what percentage reduction in density would occur by this material substitution? (b) If a total mass of $70,000 \\mathrm{~kg}$ of 7075 alloy is currently used on the aircraft, what net mass reduction would result from the substitution of the $\\mathrm{Al}-\\mathrm{Li}$ alloy? \nGive your answer as a tuple: (density_reduction_percentage, mass_reduction_kg).\n\n\\begin{tabular}{llccccc}\n\\hline & \\multicolumn{6}{c}{ Primary alloying elements (wt \\%) } \\\\\n\\cline { 2 - 7 } Alloy & $\\mathbf{L i}$ & $\\mathbf{Z n}$ & $\\mathbf{C u}$ & $\\mathbf{M g}$ & $\\mathbf{C r}$ & $\\mathbf{Z r}$ \\\\\n\\hline Al-Li & 2.0 & & 3.0 & & & 0.12 \\\\\n7075 & & 5.6 & 1.6 & 2.5 & 0.23 & \\\\\n\\hline\n\\end{tabular}The units of each required answer are (%, kg), respectively.",
+ "response": "Using the inverse rule of mixtures (since compositions are in wt%),\n\n$$\\frac{1}{\\rho}=\\sum_i \\frac{w_i}{\\rho_i}$$\n\nwith element densities (g/cm³): Al 2.70, Li 0.534, Zn 7.13, Cu 8.93, Mg 1.74, Cr 7.19, Zr 6.52.\n\n**Al-Li alloy** (Al balance = 94.88 wt%): ρ ≈ 2.548 g/cm³\n**7075** (Al balance = 90.07 wt%): ρ ≈ 2.794 g/cm³\n\n(a) Density reduction:\n\n$$\\frac{\\rho_{7075}-\\rho_{\\text{Al-Li}}}{\\rho_{7075}}\\times100 \\approx 8.79\\%$$\n\n(b) Same volume ⇒ mass scales with density:\n\n$$\\Delta m = 70000\\left(1-\\frac{\\rho_{\\text{Al-Li}}}{\\rho_{7075}}\\right)\\approx 6150\\ \\text{kg}$$\n\n$$\\boxed{(8.79,\\ 6150)}$$",
+ "final_answer": "(8.79,\\ 6150)",
+ "correct_answer": "(5.94, 4158)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(%, kg)"
+}

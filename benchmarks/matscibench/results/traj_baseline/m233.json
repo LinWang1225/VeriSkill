@@ -1,0 +1,11 @@
+{
+ "tid": "m233",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-57",
+ "question_text": "A steel is heated until $40 \\%$ austenite, with a carbon content of $0.5 \\%$, forms. Estimate the temperature and the overall carbon content of the steel. Give your answer as a tuple: (temperature, overall_carbon_content).The units of each required answer are (°C, %), respectively.",
+ "response": "## Solution\n\n**Identify the phase region:** The austenite contains 0.5% C, which is below the eutectoid composition (0.77% C). Therefore this is a **hypoeutectoid steel** being heated into the **α + γ (ferrite + austenite) intercritical region**. The austenite composition lies on the **A₃ (GS) line** of the Fe–Fe₃C diagram.\n\n**Find the temperature (from the GS line):**\nThe GS line runs from G (912 °C, 0% C) to S (727 °C, 0.77% C). Linearly interpolating for $C_\\gamma = 0.5\\%$:\n\n$$T = 912 - \\frac{912-727}{0.77}\\times 0.5 \\approx 912 - 120 \\approx 792\\,°C \\;\\approx\\; 790\\,°C$$\n\n**Find the overall carbon content (lever rule):**\nAt this temperature the ferrite carbon content (from the GP line) is only ~0.014%, which is negligible. Applying the lever rule with $f_\\gamma = 0.40$:\n\n$$f_\\gamma = \\frac{C_0 - C_\\alpha}{C_\\gamma - C_\\alpha} \\approx \\frac{C_0}{0.5} = 0.40 \\;\\Longrightarrow\\; C_0 \\approx 0.40 \\times 0.5 = 0.20\\%$$\n\n(Including the small ferrite carbon gives 0.21%, essentially the same estimate.)\n\nSo the steel is a ~0.20% C steel heated to ~790 °C.\n\n$$\\boxed{(790,\\ 0.20)}$$",
+ "final_answer": "(790,\\ 0.20)",
+ "correct_answer": "(760, 0.212)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(°C, %)"
+}

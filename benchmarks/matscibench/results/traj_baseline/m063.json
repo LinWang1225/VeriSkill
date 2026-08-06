@@ -1,0 +1,11 @@
+{
+ "tid": "m063",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 2.17",
+ "question_text": "The force of attraction between a divalent cation and a divalent anion is $1.67 \\times 10^{-8} \\mathrm{~N}$. If the ionic radius of the cation is 0.080 nm , what is the anion radius?The unit of the answer is nm.",
+ "response": "## Solution\n\nFor a **divalent cation** (Z₁ = +2) and **divalent anion** (Z₂ = −2), the attractive force is given by Coulomb's law:\n\n$$F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{|Z_1 Z_2|\\,e^2}{r^2} = \\frac{k \\cdot 4e^2}{r^2}$$\n\nwhere the interionic separation is \\(r = r_{\\text{cation}} + r_{\\text{anion}}\\).\n\n**Solving for r:**\n\n$$r = \\sqrt{\\frac{4ke^2}{F}}$$\n\nUsing \\(k = 8.988\\times10^{9}\\ \\mathrm{N\\,m^2/C^2}\\), \\(e = 1.602\\times10^{-19}\\ \\mathrm{C}\\), \\(F = 1.67\\times10^{-8}\\ \\mathrm{N}\\):\n\n$$r = \\sqrt{\\frac{4(8.988\\times10^{9})(1.602\\times10^{-19})^2}{1.67\\times10^{-8}}} \\approx 2.35\\times10^{-10}\\ \\mathrm{m} = 0.235\\ \\mathrm{nm}$$\n\n**Finding the anion radius:**\n\n$$r_{\\text{anion}} = r - r_{\\text{cation}} = 0.235 - 0.080 = 0.155\\ \\mathrm{nm}$$\n\n$$\\boxed{0.155}$$",
+ "final_answer": "0.155",
+ "correct_answer": "0.155",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "nm"
+}

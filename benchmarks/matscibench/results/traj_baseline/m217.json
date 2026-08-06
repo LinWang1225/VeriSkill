@@ -1,0 +1,11 @@
+{
+ "tid": "m217",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 5-30",
+ "question_text": "Determine the maximum allowable temperature that will produce a flux of less than 2000 H atoms $/\\left(\\mathrm{cm}^2 \\cdot \\mathrm{~s}\\right)$ through a BCC iron foil when the concentration gradient is $-5 \\times 10^{16} \\frac{\\text { atoms }}{\\mathrm{cm}^3 \\mathrm{~cm}}$. (Note the negative sign for the flux.)The unit of the answer is °C.",
+ "response": "## Solution\n\n**Step 1: Find the limiting diffusion coefficient from Fick's first law**\n\n$$J = -D\\frac{dC}{dx}$$\n\nWith $\\frac{dC}{dx} = -5\\times10^{16}\\ \\text{atoms/cm}^4$ and $J < 2000\\ \\text{atoms/(cm}^2\\cdot\\text{s)}$:\n\n$$J = -D(-5\\times10^{16}) = 5\\times10^{16}D < 2000$$\n\n$$D < \\frac{2000}{5\\times10^{16}} = 4\\times10^{-14}\\ \\text{cm}^2/\\text{s} = 4\\times10^{-18}\\ \\text{m}^2/\\text{s}$$\n\n**Step 2: Apply the Arrhenius equation for H in BCC iron**\n\nFrom Callister Table 5.2, for hydrogen diffusing in BCC iron:\n- $D_0 = 1.4\\times10^{-3}\\ \\text{m}^2/\\text{s}$\n- $Q_d = 13{,}400\\ \\text{J/mol}$\n\n(Physical check: at 1000 °C this gives $D\\approx 4\\times10^{-4}\\ \\text{m}^2/\\text{s}$, consistent with literature for H in α-Fe.)\n\n$$D = D_0\\exp\\!\\left(-\\frac{Q_d}{RT}\\right)$$\n\n**Step 3: Solve for temperature**\n\nSetting $D = 4\\times10^{-18}\\ \\text{m}^2/\\text{s}$:\n\n$$\\ln\\!\\left(\\frac{D}{D_0}\\right) = -\\frac{Q_d}{RT} \\implies T = -\\frac{Q_d}{R\\ln(D/D_0)}$$\n\n$$\\frac{D}{D_0} = \\frac{4\\times10^{-18}}{1.4\\times10^{-3}} = 2.857\\times10^{-15}$$\n\n$$\\ln(2.857\\times10^{-15}) = -33.49$$\n\n$$T = -\\frac{13{,}400}{8.31\\times(-33.49)} = \\frac{13{,}400}{278.3} = 48.2\\ \\text{K}$$\n\n$$T(°C) = 48.2 - 273.15 = -225\\ °C$$\n\nThe enormous concentration gradient ($5\\times10^{16}$) combined with hydrogen's very low activation energy in BCC iron (13,400 J/mol — H is a tiny, fast interstitial diffuser) means the diffusivity must be driven down to $\\sim10^{-18}\\ \\text{m}^2/\\text{s}$, which requires a cryogenic temperature. Above this temperature the flux exceeds 2000 atoms/(cm²·s).\n\n$$\\boxed{-225}$$",
+ "final_answer": "-225",
+ "correct_answer": "-198",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "°C"
+}

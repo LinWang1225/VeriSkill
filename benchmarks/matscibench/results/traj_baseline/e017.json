@@ -1,0 +1,11 @@
+{
+ "tid": "e017",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 12.11",
+ "question_text": "The tensile strength of pure Al is 175 MPa and its density is 2.70 Mg/m³.  A dispersion-strengthened Al (10 vol% Al₂O₃) has tensile strength 350 MPa and density 2.83 Mg/m³.  Compute the specific strength (tensile strength divided by density) of each material.\n\nAssume that in the specific strength calculation, the conversion from MPa and density units to the final unit of mm uses a factor equivalent to multiplying the tensile strength in MPa by $1.02 \\times 10^{-1} \\mathrm{~kg} / \\mathrm{mm}^2 / \\mathrm{MPa}$ before dividing by the density in $\\mathrm{kg} / \\mathrm{mm}^3$.\n\nGive your answer as a tuple (specific strength of pure aluminum, specific strength of dispersion-strengthened aluminum).The units of each required answer are (mm, mm), respectively.",
+ "response": "## Reasoning\n\n**Specific strength** = tensile strength ÷ density, with the prescribed unit conversion:\n\n1. Convert tensile strength: $\\sigma\\;(\\text{MPa})\\times 1.02\\times10^{-1}\\rightarrow \\text{kg/mm}^2$\n2. Convert density: $\\rho\\;(\\text{Mg/m}^3)\\times 10^{-6}\\rightarrow \\text{kg/mm}^3$\n3. Specific strength $=\\dfrac{\\text{strength (kg/mm}^2)}{\\text{density (kg/mm}^3)}\\rightarrow \\text{mm}$\n\n**Pure Al:**\n- Strength: $175\\times0.102 = 17.85\\;\\text{kg/mm}^2$\n- Density: $2.70\\times10^{-6}\\;\\text{kg/mm}^3$\n- Specific strength: $\\dfrac{17.85}{2.70\\times10^{-6}} = 6.611\\times10^{6}\\;\\text{mm}$\n\n**Dispersion-strengthened Al (10 vol% Al₂O₃):**\n- Strength: $350\\times0.102 = 35.7\\;\\text{kg/mm}^2$\n- Density: $2.83\\times10^{-6}\\;\\text{kg/mm}^3$\n- Specific strength: $\\dfrac{35.7}{2.83\\times10^{-6}} = 1.261\\times10^{7}\\;\\text{mm}$\n\nThe dispersion-strengthened alloy has nearly double the specific strength of pure Al, showing that the Al₂O₃ dispersion boosts load-bearing capacity per unit mass.\n\n$$\\boxed{(6.611\\times10^{6},\\;1.261\\times10^{7})}$$",
+ "final_answer": "(6.611\\times10^{6},\\;1.261\\times10^{7})",
+ "correct_answer": "(6.61 \\times 10^6, 12.6 \\times 10^6)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(mm, mm)"
+}

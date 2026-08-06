@@ -1,0 +1,11 @@
+{
+ "tid": "e244",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-53",
+ "question_text": "A steel contains $18 \\%$ pearlite and $82 \\%$ primary ferrite at room temperature. Estimate the carbon content of the steel.The unit of the answer is %.",
+ "response": "Using the lever rule on the Fe–Fe₃C phase diagram:\n\nThe pearlite fraction equals the mass fraction of austenite just above the eutectoid that transformed. With the eutectoid composition $C_{\\text{eut}} \\approx 0.76\\%$ C and the ferrite composition at the eutectoid $C_\\alpha \\approx 0.022\\%$ C:\n\n$$f_{\\text{pearlite}} = \\frac{C_0 - C_\\alpha}{C_{\\text{eut}} - C_\\alpha}$$\n\n$$0.18 = \\frac{C_0 - 0.022}{0.76 - 0.022}$$\n\n$$C_0 = 0.022 + 0.18(0.738) \\approx 0.155\\%$$\n\n$$\\boxed{0.155}$$",
+ "final_answer": "0.155",
+ "correct_answer": "0.156",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m168",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 7.3",
+ "question_text": "An AISI 1020 steel angle of dimensions $150 \\mathrm{~mm} \\times 150 \\mathrm{~mm} \\times 12 \\mathrm{~mm}(6 \\mathrm{in} . \\times 4 \\mathrm{in} . \\times$ $1 / 2 \\mathrm{in}$.) is to be welded to a steel plate by fillet welds along the edges of the 150 mm leg. The angle should support a load of $270 \\mathrm{kN}(60,000 \\mathrm{lb})$ acting along its length. Determine the lengths of the welds to be specified. The welding electrode used is AWS-AISI E6012 with a tensile strength of $414 \\mathrm{MPa}(60 \\mathrm{ksi})$. Give your answer as the value of weld_length.The unit of the answer is mm.",
+ "response": "## Solution\n\n**Geometry & centroid.** For the equal-leg angle L150×150×12, placing the root (heel) corner at the origin, the centroid is at\n$$\\bar{x}_c=\\frac{(150)(12)(75)+(138)(12)(6)}{3456}=41.94\\text{ mm from the heel}$$\n\nThe 270 kN load acts axially through this centroid. The two fillet welds run along the length at the heel (x=0) and toe (x=150).\n\n**Centroid alignment (no torsion).** To keep the welds in pure direct shear, the weld-group centroid must coincide with the load line:\n$$\\frac{150\\,l_1}{l_1+l_2}=41.94\\;\\Rightarrow\\;\\frac{l_1}{l_2}=\\frac{41.94}{108.06}=0.388$$\n\n**Strength.** With weld leg size = thickness = 12 mm and allowable throat shear for E6012 (AISC ASD):\n$$\\tau_{\\text{allow}}=0.3\\,S_u=0.3(414)=124.2\\text{ MPa}$$\n$$F/\\ell = 0.707\\,h\\,\\tau_{\\text{allow}}=0.707(12)(124.2)=1053.7\\text{ N/mm}$$\n\n$$L_{\\text{total}}=\\frac{270\\,000}{1053.7}=256.2\\text{ mm}$$\n\n**Distribution:**\n- $l_1$ (toe) = 71.6 mm\n- $l_2$ (heel) = 184.6 mm\n\nThe total weld length to be specified is 256.2 mm.\n\n$$\\boxed{256.2}$$",
+ "final_answer": "256.2",
+ "correct_answer": "128",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

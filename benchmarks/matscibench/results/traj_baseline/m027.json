@@ -1,0 +1,11 @@
+{
+ "tid": "m027",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_4.21",
+ "question_text": "The energy necessary to generate a dislocation is proportional to the square of the length of the Burgers vector, $|\\mathbf{b}|^2$. This relationship means that the most stable (lowest energy) dislocations have the minimum length, $|\\mathbf{b}|$. For the bcc metal structure, calculate (relative to $E_{\\mathrm{b}}=[111]$ ) the dislocation energies for (a) $E_{\\mathrm{b}}=[110]$ and (b) $E_{\\mathrm{b}}=[100]$. Give your answer as a tuple: (dislocation_energy_110, dislocation_energy_100).",
+ "response": "## Reasoning\n\nThe dislocation energy scales as $E \\propto |\\mathbf{b}|^2$. For a BCC metal, the Burgers vector is written as $\\mathbf{b} = \\frac{a}{2}\\langle uvw\\rangle$, but the common prefactor $\\frac{a}{2}$ cancels when we take ratios. Thus we only need the squared magnitudes of the direction indices:\n\n$$\n|\\mathbf{b}_{[111]}|^2 = 1^2+1^2+1^2 = 3\n$$\n$$\n|\\mathbf{b}_{[110]}|^2 = 1^2+1^2+0^2 = 2\n$$\n$$\n|\\mathbf{b}_{[100]}|^2 = 1^2+0^2+0^2 = 1\n$$\n\nNormalizing relative to $E_{[111]}$:\n\n**(a)** $E_{[110]}/E_{[111]} = 2/3 \\approx 0.667$\n\n**(b)** $E_{[100]}/E_{[111]} = 1/3 \\approx 0.333$\n\nThis confirms that $\\frac{a}{2}\\langle 111\\rangle$ is the lowest-energy (most stable) dislocation in BCC, since both [110] and [100] have higher relative energy — consistent with the fact that $\\frac{a}{2}\\langle 111\\rangle$ is the shortest lattice translation vector in the BCC structure.\n\n$$\n\\boxed{(0.667,\\ 0.333)}\n$$",
+ "final_answer": "(0.667,\\ 0.333)",
+ "correct_answer": "(2.67, 1.33)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": ""
+}

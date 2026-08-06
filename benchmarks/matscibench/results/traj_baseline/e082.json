@@ -1,0 +1,11 @@
+{
+ "tid": "e082",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.88",
+ "question_text": "Iron titanate, $\\mathrm{FeTiO}{3}$, forms in the ilmenite crystal structure that consists of an HCP arrangement of $\\mathrm{O}^{2-}$ ions.\n(a) What fraction of the total tetrahedral sites will be occupied?\n(b) What fraction of the total octahedral sites will be occupied?\n\nGive your answer as a tuple (fraction of the total tetrahedral sites be occupied,  fraction of the total octahedral sites be occupied).",
+ "response": "Looking at this problem, I need to analyze the ilmenite crystal structure of FeTiO₃.\n\n## Reasoning\n\n**Oxygen sublattice:** FeTiO₃ has an HCP arrangement of O²⁻ ions. For an HCP lattice with *N* anions per unit cell:\n- Tetrahedral sites = 2*N*\n- Octahedral sites = *N*\n\n**Ilmenite structure:** Ilmenite (FeTiO₃) is structurally related to corundum (Al₂O₃). In corundum, the Al³⁺ cations occupy **2/3 of the octahedral sites** in the HCP oxygen lattice. Ilmenite has the same oxygen framework, but instead of one cation species, there are two ordered cations — Fe²⁺ and Ti⁴⁺ — that *each* occupy 1/3 of the octahedral sites (ordered alternately in layers), giving a total of:\n\n$$\\frac{1}{3}(\\text{Fe}) + \\frac{1}{3}(\\text{Ti}) = \\frac{2}{3}$$\n\nof the octahedral sites occupied.\n\n**Tetrahedral sites:** In the ilmenite structure, both Fe²⁺ and Ti⁴⁺ are in **octahedral** coordination with oxygen. No cations occupy tetrahedral sites.\n\n## Answers\n\n(a) Fraction of tetrahedral sites occupied = **0**\n\n(b) Fraction of octahedral sites occupied = **2/3**\n\n$$\\boxed{\\left(0,\\ \\dfrac{2}{3}\\right)}$$",
+ "final_answer": "\\left(0,\\ \\dfrac{2}{3}\\right)",
+ "correct_answer": "(0, 2/3)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

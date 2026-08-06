@@ -1,0 +1,11 @@
+{
+ "tid": "e215",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 11-5_2",
+ "question_text": "Determine the amounts and compositions of each microconstituent in a $\\mathrm{Pb}-30 \\%$ Sn alloy immediately after the eutectic reaction has been completed. Give your answer as a tuple: (amount_primary_alpha, amount_eutectic)The units of each required answer are (%, %), respectively.",
+ "response": "For a hypoeutectic Pb–30% Sn alloy, at the eutectic temperature the compositions are: α = 19.2% Sn, liquid → eutectic = 61.9% Sn. Applying the lever rule:\n\n$$W_{\\alpha_p} = \\frac{61.9-30}{61.9-19.2}=74.7\\%,\\quad W_{\\text{eut}}=\\frac{30-19.2}{61.9-19.2}=25.3\\%$$\n\n$$\\boxed{(74.7,\\ 25.3)}$$",
+ "final_answer": "(74.7,\\ 25.3)",
+ "correct_answer": "(74, 26)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(%, %)"
+}

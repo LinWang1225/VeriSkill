@@ -1,0 +1,11 @@
+{
+ "tid": "e214",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 6-4",
+ "question_text": "The aluminum alloy in has a final length after failure of 2.195 in. and a final diameter of 0.398 in at the fractured surface. Original gauge length l₀ = 2.000 in. and original diameter d₀ = 0.505 in. Calculate the ductility of this alloy. The ductility can be measured by the percent elongation and the percent reduction in area, as defined by the equations:\n\n$$\\% \\text { Elongation }=\\frac{l_{f}-l_{0}}{l_{0}} \\times 100$$\n\n$$\\% \\text { Reduction in area }=\\frac{A_{0}-A_{f}}{A_{0}} \\times 100$$\n\nwhere $l_{f}$ is the final length after failure, $l_{0}$ is the original length, $A_{f}$ is the final cross-sectional area at the fracture surface, and $A_{0}$ is the original cross-sectional area. Give your answer as a tuple (percent elongation, percent reduction in area).The units of each required answer are (%, %), respectively.",
+ "response": "## Step-by-Step Reasoning\n\n**Percent Elongation:**\n\n$$\\% \\text{Elongation} = \\frac{l_f - l_0}{l_0}\\times 100 = \\frac{2.195 - 2.000}{2.000}\\times 100 = \\frac{0.195}{2.000}\\times 100 = 9.75\\%$$\n\n**Percent Reduction in Area:**\n\nThe cross-sectional areas (circular) are $A = \\frac{\\pi d^2}{4}$, so the $\\pi/4$ cancels:\n\n$$A_0 = \\frac{\\pi(0.505)^2}{4} = 0.2003\\ \\text{in}^2, \\quad A_f = \\frac{\\pi(0.398)^2}{4} = 0.1244\\ \\text{in}^2$$\n\n$$\\% \\text{RA} = \\frac{A_0 - A_f}{A_0}\\times 100 = \\frac{0.2003 - 0.1244}{0.2003}\\times 100 = 37.9\\%$$\n\n$$\\boxed{(9.75,\\ 37.9)}$$",
+ "final_answer": "(9.75,\\ 37.9)",
+ "correct_answer": "(9.75, 37.9)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(%, %)"
+}

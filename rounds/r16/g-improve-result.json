@@ -1,0 +1,9 @@
+{
+  "edits": [
+    {"skill": "g-sci-model-validity-range", "type": "patch", "cluster": "extrapolate-validity", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "明确教材惯例非T<Θ_D沿用线性律的有效辩护；电阻律有效边界是德拜温度非居里温度"},
+    {"skill": "g-matsci-sigfig-rounding", "type": "patch", "cluster": "加法结构误按乘法sigfig", "support": 1, "audited_support": 0, "attribution": "能力缺陷", "summary": "新增加减按小数位、乘除按有效数字位数判据"},
+    {"skill": "g-matsci-chart-lookup-read", "type": "patch", "cluster": "读图精度", "support": 1, "audited_support": 0, "attribution": "能力缺陷", "summary": "补注读数须刻度线插值定坐标；扩展覆盖电阻率–成分图"},
+    {"skill": "g-matsci-permeation-steady-state", "type": "new_skill", "cluster": "稳态渗透丢弃总通量", "support": 1, "audited_support": 0, "attribution": "能力缺陷", "summary": "新建技能：稳态渗透须联立通量比与总通量守恒，原子/分子换算因子带入求和式"}
+  ],
+  "clusters_seen": 4, "clusters_fixed": 4, "skipped": [], "needs_human": false
+}

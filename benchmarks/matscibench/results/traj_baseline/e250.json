@@ -1,0 +1,11 @@
+{
+ "tid": "e250",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 19-1",
+ "question_text": "A current of 10 A is passed through a $1-\\mathrm{mm}$ diameter wire 1000 m long. Calculate the power loss if the wire is made from (a) aluminum (Conductivity $\\left(\\mathrm{ohm}^{-1} \\cdot \\mathrm{~cm}^{-1}\\right)$ = $3.77 \\times 10^5$) and (b) silicon (Conductivity $\\left(\\mathrm{ohm}^{-1} \\cdot \\mathrm{~cm}^{-1}\\right)$ = $4 \\times 10^{-6}$). Give your answer as a tuple: (power_loss_aluminum_W, power_loss_silicon_W).The units of each required answer are (W, W), respectively.",
+ "response": "## Step-by-Step Solution\n\n**Given:**\n- Current $I = 10\\,\\text{A}$\n- Diameter $d = 1\\,\\text{mm} = 10^{-3}\\,\\text{m}$\n- Length $L = 1000\\,\\text{m}$\n- $\\sigma_{\\text{Al}} = 3.77\\times10^{5}\\,\\Omega^{-1}\\text{cm}^{-1}$\n- $\\sigma_{\\text{Si}} = 4\\times10^{-6}\\,\\Omega^{-1}\\text{cm}^{-1}$\n\n**Cross-sectional area:**\n$$A = \\pi\\left(\\frac{d}{2}\\right)^2 = \\pi(5\\times10^{-4})^2 = 7.854\\times10^{-7}\\,\\text{m}^2$$\n\n**Convert conductivity to SI** ($1\\,\\Omega^{-1}\\text{cm}^{-1} = 100\\,\\text{S/m}$):\n- $\\sigma_{\\text{Al}} = 3.77\\times10^{7}\\,\\text{S/m}$\n- $\\sigma_{\\text{Si}} = 4\\times10^{-4}\\,\\text{S/m}$\n\n**Resistance** $R = \\dfrac{L}{\\sigma A}$, **Power loss** $P = I^2 R$:\n\n**(a) Aluminum:**\n$$R_{\\text{Al}} = \\frac{1000}{(3.77\\times10^{7})(7.854\\times10^{-7})} = 33.77\\,\\Omega$$\n$$P_{\\text{Al}} = (10)^2(33.77) \\approx 3377\\,\\text{W}$$\n\n**(b) Silicon:**\n$$R_{\\text{Si}} = \\frac{1000}{(4\\times10^{-4})(7.854\\times10^{-7})} = 3.183\\times10^{12}\\,\\Omega$$\n$$P_{\\text{Si}} = (10)^2(3.183\\times10^{12}) \\approx 3.18\\times10^{14}\\,\\text{W}$$\n\n$$\\boxed{(3377.29,\\ 3.183099\\times10^{14})}$$",
+ "final_answer": "(3377.29,\\ 3.183099\\times10^{14})",
+ "correct_answer": "(3377, 318300000000000.0)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(W, W)"
+}

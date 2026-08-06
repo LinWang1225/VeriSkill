@@ -1,0 +1,11 @@
+{
+ "tid": "m263",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 7.3",
+ "question_text": "When a hypothetical metal having a grain diameter of \\(8.2 \\times 10^{-3} \\mathrm{~mm}\\) is heated to \\(500^{\\circ} \\mathrm{C}\\) for 12.5 min , the grain diameter increases to \\(2.7 \\times 10^{-2} \\mathrm{~mm}\\). Compute the grain diameter when a specimen of the original material is heated at \\(500^{\\circ} \\mathrm{C}\\) for 100 min . Assume the grain diameter exponent \\(n\\) has a value of 2.The unit of the answer is mm.",
+ "response": "Using the grain-growth law \\(d^n - d_0^n = Kt\\) with \\(n=2\\):\n\n\\[\nd_0 = 8.2\\times10^{-3}\\,\\text{mm},\\quad d_1 = 2.7\\times10^{-2}\\,\\text{mm},\\quad t_1=12.5\\,\\text{min}\n\\]\n\n\\[\nK = \\frac{d_1^2 - d_0^2}{t_1}\n\\]\n\nFor \\(t_2 = 100\\) min:\n\n\\[\nd_2^2 = d_0^2 + Kt_2 = d_0^2 + (d_1^2-d_0^2)\\frac{t_2}{t_1}\n\\]\n\n\\[\nd_2 = \\sqrt{(8.2\\times10^{-3})^2 + \\left[(2.7\\times10^{-2})^2-(8.2\\times10^{-3})^2\\right]\\frac{100}{12.5}} \\approx 0.0732\\,\\text{mm}\n\\]\n\n\\[\n\\boxed{0.0732}\n\\]",
+ "final_answer": "0.0732",
+ "correct_answer": "0.0732",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

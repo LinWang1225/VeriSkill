@@ -1,0 +1,11 @@
+{
+ "tid": "e121",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.33",
+ "question_text": "The steady-state diffusion flux through a metal plate is $7.8 \\times 10^{-8} \\mathrm{~kg} / \\mathrm{m}^{2} \\cdot \\mathrm{~s}$ at a temperature of $1200^{\\circ} \\mathrm{C}(1473$ K) and when the concentration gradient is $-500 \\mathrm{~kg} / \\mathrm{m}^{4}$. Calculate the diffusion flux at $1000^{\\circ} \\mathrm{C}(1273 \\mathrm{~K})$ for the same concentration gradient and assuming an activation energy for diffusion of $145,000 \\mathrm{~J} / \\mathrm{mol}$.The unit of the answer is kg/m^2s.",
+ "response": "## Step-by-Step Solution\n\n**Fick's first law:** $J = -D \\dfrac{dC}{dx}$\n\n**Step 1 — Find $D_1$ at 1473 K:**\n\n$$D_1 = -\\frac{J_1}{dC/dx} = -\\frac{7.8\\times10^{-8}}{-500} = 1.56\\times10^{-10}\\ \\text{m}^2/\\text{s}$$\n\n**Step 2 — Use the Arrhenius relation** $D = D_0 e^{-Q/RT}$. Since the concentration gradient is unchanged, the flux scales with $D$:\n\n$$\\frac{J_2}{J_1} = \\frac{D_2}{D_1} = \\exp\\!\\left[-\\frac{Q}{R}\\left(\\frac{1}{T_2}-\\frac{1}{T_1}\\right)\\right]$$\n\n**Step 3 — Substitute values** ($Q=145000$, $R=8.31$, $T_1=1473$, $T_2=1273$):\n\n$$\\frac{J_2}{J_1} = \\exp\\!\\left[-\\frac{145000}{8.31}\\left(\\frac{1}{1273}-\\frac{1}{1473}\\right)\\right] \\approx 0.1555$$\n\n**Step 4 — Compute $J_2$:**\n\n$$J_2 = 7.8\\times10^{-8} \\times 0.1555 \\approx 1.21\\times10^{-8}\\ \\text{kg/m}^2\\!\\cdot\\!\\text{s}$$\n\n$$\\boxed{1.21 \\times 10^{-8}}$$",
+ "final_answer": "1.21 \\times 10^{-8}",
+ "correct_answer": "1.21E-08",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg/m^2s"
+}

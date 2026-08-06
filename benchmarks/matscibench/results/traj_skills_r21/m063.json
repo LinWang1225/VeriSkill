@@ -1,0 +1,11 @@
+{
+ "tid": "m063",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 2.17",
+ "question_text": "The force of attraction between a divalent cation and a divalent anion is $1.67 \\times 10^{-8} \\mathrm{~N}$. If the ionic radius of the cation is 0.080 nm , what is the anion radius?The unit of the answer is nm.",
+ "response": "Let me verify the reasoning and check the force-magnitude reporting skill (the force is given as a magnitude, so we use |F|).\n\n**Physics:** For a divalent cation (charge +2e) and divalent anion (charge −2e) in contact, the Coulomb attraction magnitude is\n\n$$F = \\frac{1}{4\\pi\\varepsilon_0}\\frac{(2e)(2e)}{r^2}, \\qquad r = r_{\\text{cation}} + r_{\\text{anion}}$$\n\nSolving for the center-to-center separation $r$ and subtracting the cation radius gives the anion radius.\n\n**Computation** (using $k=8.99\\times10^{9}\\,\\text{N·m}^2/\\text{C}^2$, $e=1.602\\times10^{-19}\\,\\text{C}$, $F=1.67\\times10^{-8}\\,\\text{N}$):\n\n$$r = \\sqrt{\\frac{k(2e)(2e)}{F}} = 2.351\\times10^{-10}\\,\\text{m} = 0.235\\,\\text{nm}$$\n\n$$r_{\\text{anion}} = 0.235 - 0.080 = 0.155\\,\\text{nm}$$\n\n**Significant figures (binding skill):** Inputs have $F = 1.67$ (3 sig figs) and $r_{\\text{cation}} = 0.080$ (2 sig figs — the trailing 0 after the decimal counts). The weakest input has 2 sig figs, so the final answer is rounded to 2 sig figs: $0.155 \\to 0.16$.\n\n$$\\boxed{0.16}$$",
+ "final_answer": "0.16",
+ "correct_answer": "0.155",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "nm"
+}

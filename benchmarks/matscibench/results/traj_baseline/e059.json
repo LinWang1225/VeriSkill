@@ -1,0 +1,11 @@
+{
+ "tid": "e059",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_14.47",
+ "question_text": "The hysteresis loss for soft magnets is generally given in units of $\\mathrm{W} / \\mathrm{m}^3$. Calculate the loss in these units for the $\\mathrm{Fe}-\\mathrm{B}$ amorphous metal in Table at a frequency of 60 Hz . Give your answer as the value of hysteresis_loss.\n(Table:\n\\begin{tabular}{|c|c|c|c|}\n\\hline \\multicolumn{4}{|l|}{Typical Magnetic Properties of Various Soft Magnetic Metals} \\\\\n\\hline Material & Initial relative permeability ( $\\mu_r$ at $B \\sim 0$ ) & $$\n\\begin{gathered}\n\\text { Hysteresis } \\\\\n\\text { loss } \\\\\n\\left(\\mathbf{J} / \\mathrm{m}^3 \\text { per cycle }\\right)\n\\end{gathered}\n$$ & Saturation induction ( $\\mathrm{Wb} / \\mathrm{m}^2$ ) \\\\\n\\hline Commercial iron ingot & 250 & 500 & 2.16 \\\\\n\\hline $\\mathrm{Fe}-4 \\% \\mathrm{Si}$, random & 500 & 50-150 & 1.95 \\\\\n\\hline $\\mathrm{Fe}-3 \\% \\mathrm{Si}$, oriented & 15,000 & 35-140 & 2.00 \\\\\n\\hline 45 Permalloy\n$$\n(45 \\% \\mathrm{Ni}-55 \\% \\mathrm{Fe})\n$$ & 2,700 & 120 & 1.60 \\\\\n\\hline $$\n\\begin{aligned}\n& \\text { Mumetal ( } 75 \\% \\mathrm{Ni}-5 \\% \\mathrm{Cu}- \\\\\n& 2 \\% \\mathrm{Cr}-18 \\% \\mathrm{Fe} \\text { ) }\n\\end{aligned}\n$$ & 30,000 & 20 & 0.80 \\\\\n\\hline Supermalloy (79\\% Ni$15 \\% \\mathrm{Fe}-5 \\% \\mathrm{Mo}$ ) & 100,000 & 2 & 0.79 \\\\\n\\hline Amorphous ferrous alloys\n$$\n(80 \\% \\mathrm{Fe}-20 \\% \\mathrm{~B})\n$$ & - & 25 & $$\n1.56\n$$ \\\\\n\\hline (82\\% Fe-10\\% B-8\\% Si) & - & 15 & 1.63 \\\\\n\\hline\n\\end{tabular}\n)The unit of the answer is kW/m^3.",
+ "response": "The hysteresis loss per cycle for the Fe-B amorphous metal (80% Fe–20% B) is **25 J/m³ per cycle**.\n\nTo convert to power loss per unit volume (W/m³), multiply by the frequency (cycles per second):\n\n$$P = 25 \\,\\mathrm{\\frac{J}{m^3 \\cdot cycle}} \\times 60 \\,\\mathrm{\\frac{cycles}{s}} = 1500 \\,\\mathrm{\\frac{W}{m^3}} = 1.5 \\,\\mathrm{\\frac{kW}{m^3}}$$\n\n$$\\boxed{1.5}$$",
+ "final_answer": "1.5",
+ "correct_answer": "1.50",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kW/m^3"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e087",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.95",
+ "question_text": "The metal rhodium (Rh) has an FCC crystal structure. If the angle of diffraction for the (311) set of planes occurs at $36.12^{\\circ}$ (first-order reflection) when monochromatic $x$-radiation having a wavelength of 0.0711 nm is used, compute the following: (a) the interplanar spacing for this set of planes and (b) the atomic radius for a Rh atom.\n\nGive your answer as a tuple (the interplanar spacing, the atomic radius)The units of each required answer are (nm, nm), respectively.",
+ "response": "## Step-by-step Solution\n\n**Given:**\n- FCC crystal structure (Rh)\n- (311) planes, first-order reflection → $n = 1$\n- Diffraction angle $\\theta = 36.12°$\n- Wavelength $\\lambda = 0.0711$ nm\n\n### (a) Interplanar spacing $d_{311}$\n\nBragg's law: $n\\lambda = 2d\\sin\\theta$\n\n$$d = \\frac{n\\lambda}{2\\sin\\theta} = \\frac{0.0711}{2\\sin(36.12°)} \\approx 0.0603 \\text{ nm}$$\n\n### (b) Atomic radius $R$\n\nFor cubic crystals: $d_{hkl} = \\frac{a}{\\sqrt{h^2+k^2+l^2}}$\n\n$$a = d\\sqrt{3^2+1^2+1^2} = d\\sqrt{11}$$\n\nFor FCC: $R = \\frac{a\\sqrt{2}}{4}$\n\n$$R = \\frac{d\\sqrt{11}\\cdot\\sqrt{2}}{4} \\approx 0.0707 \\text{ nm}$$\n\n$$\\boxed{(0.0603,\\ 0.0707)}$$",
+ "final_answer": "(0.0603,\\ 0.0707)",
+ "correct_answer": "(0.1147, 0.1345)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(nm, nm)"
+}

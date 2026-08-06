@@ -1,7 +1,4 @@
-队列：随机 4 + 误杀 2（预算 6，剔除已审 0 条）
-{"item": "q040", "segment": "随机"}
-{"item": "q100", "segment": "随机"}
-{"item": "q097", "segment": "随机"}
-{"item": "q028", "segment": "随机"}
-{"item": "q019", "segment": "误杀"}
-{"item": "q128", "segment": "误杀"}
+{"item": "e252", "segment": "随机"}
+{"item": "m194", "segment": "随机"}
+{"item": "e023", "segment": "误杀"}
+{"item": "m128", "segment": "误杀"}

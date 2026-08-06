@@ -1,0 +1,11 @@
+{
+ "tid": "m268",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 7.1",
+ "question_text": "Consider a single crystal of BCC iron oriented such that a tensile stress is applied along a [010] direction. (a) Compute the resolved shear stress along a (110) plane and in a [111] direction when a tensile stress of 52 MPa (7500 psi) is applied. (b) If slip occurs on a (110) plane and in a [111] direction, and the critical resolved shear stress is 30 MPa (4350 psi), calculate the magnitude of the applied tensile stress necessary to initiate yielding. Give your answer as a tuple (resolved shear stress in part (a), applied tensile stress in part (b)).The units of each required answer are (MPa, MPa), respectively.",
+ "response": "## Solution\n\n**Schmid's Law:** $\\tau_R = \\sigma \\cos\\phi \\cos\\lambda$\n\nwhere $\\phi$ is the angle between the tensile axis and the slip-plane normal, and $\\lambda$ is the angle between the tensile axis and the slip direction.\n\n**Given:**\n- Tensile axis: $[010]$\n- Slip plane $(110)$ → normal direction $[110]$\n- Slip direction: $[111]$\n\n**Compute the direction cosines:**\n\n$$\\cos\\phi = \\frac{[010]\\cdot[110]}{|[010]|\\,|[110]|} = \\frac{0+1+0}{1\\cdot\\sqrt{2}} = \\frac{1}{\\sqrt{2}}$$\n\n$$\\cos\\lambda = \\frac{[010]\\cdot[111]}{|[010]|\\,|[111]|} = \\frac{0+1+0}{1\\cdot\\sqrt{3}} = \\frac{1}{\\sqrt{3}}$$\n\n### (a) Resolved shear stress\n\n$$\\tau_R = 52 \\cdot \\frac{1}{\\sqrt{2}} \\cdot \\frac{1}{\\sqrt{3}} = \\frac{52}{\\sqrt{6}} \\approx 21.23 \\text{ MPa}$$\n\n### (b) Applied tensile stress to initiate yielding\n\n$$\\sigma = \\frac{\\tau_{\\text{crss}}}{\\cos\\phi\\cos\\lambda} = \\frac{30}{1/\\sqrt{6}} = 30\\sqrt{6} \\approx 73.48 \\text{ MPa}$$\n\n$$\\boxed{(21.23,\\ 73.48)}$$",
+ "final_answer": "(21.23,\\ 73.48)",
+ "correct_answer": "(21.3, 73.4)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(MPa, MPa)"
+}

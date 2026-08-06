@@ -1,0 +1,11 @@
+{
+ "tid": "e008",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 6.7",
+ "question_text": "In the absence of stress, the center-to-center atomic separation distance of two Fe atoms is 0.2480 nm (along a $\\langle 111\\rangle$ direction). Under a tensile stress of $1,000 \\mathrm{MPa}$ along this direction, the atomic separation distance increases to 0.2489 nm . Calculate the modulus of elasticity along the $\\langle 111\\rangle$ directions.The unit of the answer is GPa.",
+ "response": "The strain along the ⟨111⟩ direction is\n\n$$\\varepsilon = \\frac{\\Delta r}{r_0} = \\frac{0.2489 - 0.2480}{0.2480} = \\frac{0.0009}{0.2480} \\approx 0.003629$$\n\nThe modulus of elasticity is\n\n$$E = \\frac{\\sigma}{\\varepsilon} = \\frac{1000\\ \\text{MPa}}{0.003629} \\approx 275{,}555\\ \\text{MPa} \\approx 275.6\\ \\text{GPa}$$\n\n$$\\boxed{275.6}$$",
+ "final_answer": "275.6",
+ "correct_answer": "280",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "GPa"
+}

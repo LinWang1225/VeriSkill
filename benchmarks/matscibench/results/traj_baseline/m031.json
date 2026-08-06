@@ -1,0 +1,11 @@
+{
+ "tid": "m031",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_7.3",
+ "question_text": "A house designed for passive solar heating has a substantial amount of brickwork in its interior to serve as a heat absorber. Each brick weighs 2.0 kg and has a specific heat of $850 \\mathrm{~J} / \\mathrm{kg} \\cdot \\mathrm{K}$. How many bricks are needed to absorb $5.0 \\times 10^4 \\mathrm{~kJ}$ of heat by a temperature increase of $10^{\\circ} \\mathrm{C}$ ? Give your answer as the value of number_of_bricks.",
+ "response": "## Solution\n\n**Given:**\n- Total heat to absorb: $Q = 5.0 \\times 10^4\\ \\text{kJ} = 5.0 \\times 10^7\\ \\text{J}$\n- Mass per brick: $m = 2.0\\ \\text{kg}$\n- Specific heat: $c = 850\\ \\text{J/(kg·K)}$\n- Temperature increase: $\\Delta T = 10\\ \\text{K}$\n\n**Heat absorbed by one brick:**\n\n$$Q_{\\text{brick}} = m \\cdot c \\cdot \\Delta T = 2.0 \\times 850 \\times 10 = 17{,}000\\ \\text{J}$$\n\n**Number of bricks:**\n\n$$N = \\frac{Q}{Q_{\\text{brick}}} = \\frac{5.0 \\times 10^7}{17{,}000} \\approx 2941.18$$\n\nRounding to the appropriate number of significant figures (2 sig figs from the given data):\n\n$$\\boxed{2900}$$",
+ "final_answer": "2900",
+ "correct_answer": "2940",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

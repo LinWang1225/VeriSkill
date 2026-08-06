@@ -1,0 +1,11 @@
+{
+ "tid": "m265",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 8.4",
+ "question_text": "Steady-state creep rate data are given in the following table for aluminum at 260℃(533K):\n\n\\begin{tabular}{cc}\n\\hline$\\dot{\\boldsymbol{\\varepsilon}}_{\\boldsymbol{s}}\\left(\\boldsymbol{h}^{\\mathbf{- 1}}\\right)$ & $\\boldsymbol{\\sigma} \\mathbf{( M P a})$ \\\\\n\\hline $2.0 \\times 10^{-4}$ & 3 \\\\\n3.65 & 25 \\\\\n\\hline\n\\end{tabular}\n\nCompute the steady-state creep rate at a stress of 10 MPa and 260℃.The unit of the answer is $h^{-1}$.",
+ "response": "## Solution\n\nThe steady-state creep rate follows a power-law relationship:\n\n$$\\dot{\\varepsilon}_s = K\\sigma^n$$\n\nTaking the logarithm of both sides:\n\n$$\\log \\dot{\\varepsilon}_s = \\log K + n\\log\\sigma$$\n\n**Step 1 — Find the stress exponent $n$** using the two data points:\n\n$$n = \\frac{\\log(\\dot{\\varepsilon}_{s,2}/\\dot{\\varepsilon}_{s,1})}{\\log(\\sigma_2/\\sigma_1)} = \\frac{\\log(3.65 / 2.0\\times10^{-4})}{\\log(25/3)} = \\frac{\\log(1.825\\times10^{4})}{\\log(8.333)} \\approx 4.628$$\n\n**Step 2 — Find $K$:**\n\n$$K = \\frac{\\dot{\\varepsilon}_{s,1}}{\\sigma_1^n} = \\frac{2.0\\times10^{-4}}{3^{4.628}} \\approx 1.239\\times10^{-6}$$\n\n**Step 3 — Compute the creep rate at $\\sigma = 10$ MPa:**\n\n$$\\dot{\\varepsilon}_s = K\\sigma^n = (1.239\\times10^{-6})(10)^{4.628} \\approx 5.26\\times10^{-2}\\ \\text{h}^{-1}$$\n\n$$\\boxed{5.26 \\times 10^{-2}}$$",
+ "final_answer": "5.26 \\times 10^{-2}",
+ "correct_answer": "0.053",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "$h^{-1}$"
+}

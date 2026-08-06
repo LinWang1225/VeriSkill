@@ -1,0 +1,11 @@
+{
+ "tid": "e210",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 4-7",
+ "question_text": "Calculate the length of the Burgers vector in copper. The lattice parameter of copper $(\\mathrm{Cu})$ is 0.36151 nm . The close-packed directions.The unit of the answer is nm.",
+ "response": "Copper has an **FCC** crystal structure. In FCC, the Burgers vector lies along the close-packed direction $\\langle 110 \\rangle$, with magnitude\n\n$$b = \\frac{a}{\\sqrt{2}}$$\n\nWith $a = 0.36151\\ \\text{nm}$:\n\n$$b = \\frac{0.36151}{\\sqrt{2}} \\approx 0.25563\\ \\text{nm}$$\n\n$$\\boxed{0.25563}$$",
+ "final_answer": "0.25563",
+ "correct_answer": "0.25563",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "nm"
+}

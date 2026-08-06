@@ -1,0 +1,11 @@
+{
+ "tid": "e224",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 22-1",
+ "question_text": "How much heat must be supplied to 250 g of tungsten to raise its temperature from $25^{\\circ} \\mathrm{C}$ to $650^{\\circ} \\mathrm{C}$? The specific heat of tungsten is $0.032 \\frac{\\mathrm{cal}}{\\mathrm{g} \\cdot \\mathrm{K}}$.The unit of the answer is cal.",
+ "response": "Using the heat equation $Q = mc\\Delta T$:\n\n- $m = 250\\ \\text{g}$\n- $c = 0.032\\ \\frac{\\text{cal}}{\\text{g}\\cdot\\text{K}}$\n- $\\Delta T = 650 - 25 = 625\\ \\text{K}$\n\n$$Q = (250)(0.032)(625) = 5000\\ \\text{cal}$$\n\n$$\\boxed{5000}$$",
+ "final_answer": "5000",
+ "correct_answer": "5000",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "cal"
+}

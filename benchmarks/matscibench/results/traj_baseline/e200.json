@@ -1,0 +1,11 @@
+{
+ "tid": "e200",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 14.6",
+ "question_text": "A medium carbon steel has a yield strength of 250 MPa and a fracture toughness of 80 MPa $\\sqrt{\\text{m}}$. How thick would a compact tensile specimen have to be for valid plane-strain fracture testing?The unit of the answer is m.",
+ "response": "For valid plane-strain fracture toughness testing, the ASTM standard requires the specimen thickness to satisfy:\n\n$$B \\geq 2.5\\left(\\frac{K_{IC}}{\\sigma_y}\\right)^2$$\n\n**Given:**\n- Yield strength, $\\sigma_y = 250$ MPa\n- Fracture toughness, $K_{IC} = 80\\ \\text{MPa}\\sqrt{\\text{m}}$\n\n**Calculation:**\n\n$$B = 2.5\\left(\\frac{80}{250}\\right)^2 = 2.5 \\times (0.32)^2 = 2.5 \\times 0.1024 = 0.256\\ \\text{m}$$\n\nThis requirement ensures that the plastic zone size is small relative to the specimen dimensions, so that plane-strain conditions dominate at the crack tip and the measured toughness is a valid $K_{IC}$.\n\n$$\\boxed{0.256}$$",
+ "final_answer": "0.256",
+ "correct_answer": "0.26",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m"
+}

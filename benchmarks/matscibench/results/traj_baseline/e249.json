@@ -1,0 +1,11 @@
+{
+ "tid": "e249",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 14-25",
+ "question_text": "Determine the specific strength of the strongest $\\mathrm{Al}, \\mathrm{Mg}, \\mathrm{Cu}, \\mathrm{Ti}$, and Ni alloys. Use the densities of the pure metals, in $\\mathrm{lb} / \\mathrm{in} .^3$, in your calculations. Give your answer as a tuple: (specific_strength_Al, specific_strength_Cu, specific_strength_Ni).The units of each required answer are (in, in, in), respectively.",
+ "response": "The specific strength is the alloy strength divided by the pure-metal density:\n\n- **Al (7075-T6):** \\(73{,}000\\ \\text{psi}/0.0975\\ \\text{lb/in}^3 \\approx 7.49\\times10^5\\ \\text{in}\\)\n- **Cu (beryllium copper):** \\(172{,}000\\ \\text{psi}/0.324\\ \\text{lb/in}^3 \\approx 5.31\\times10^5\\ \\text{in}\\)\n- **Ni (strongest Ni alloy):** \\(106{,}000\\ \\text{psi}/0.322\\ \\text{lb/in}^3 \\approx 3.29\\times10^5\\ \\text{in}\\)\n\nRounded to the precision expected:\n\n\\[\n\\boxed{(750000.0,\\ 530000.0,\\ 330000.0)}\n\\]",
+ "final_answer": "(750000.0,\\ 530000.0,\\ 330000.0)",
+ "correct_answer": "(750000.0, 530000.0, 330000.0)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(in, in, in)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m078",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.2",
+ "question_text": "For some hypothetical metal, the equilibrium number of vacancies at $900^{\\circ} \\mathrm{C}$ is $2.3 \\times 10^{25} \\mathrm{~m}^{-3}$. If the density and atomic weight of this metal are $7.40 \\mathrm{~g} / \\mathrm{cm}^{3}$ and $85.5 \\mathrm{~g} / \\mathrm{mol}$, respectively, calculate the fraction of vacancies for this metal at $900^{\\circ} \\mathrm{C}$.",
+ "response": "## Solution\n\nThe fraction of vacancies is the ratio of the equilibrium vacancy concentration to the total number of atomic sites per unit volume:\n\n$$\\frac{N_v}{N}$$\n\n**Step 1: Compute the number of atomic sites per unit volume, $N$.**\n\n$$N = \\frac{\\rho N_A}{A}$$\n\nwhere:\n- $\\rho = 7.40 \\text{ g/cm}^3 = 7.40 \\times 10^6 \\text{ g/m}^3$\n- $N_A = 6.022 \\times 10^{23} \\text{ atoms/mol}$\n- $A = 85.5 \\text{ g/mol}$\n\n$$N = \\frac{(7.40 \\times 10^6)(6.022 \\times 10^{23})}{85.5} = 5.21 \\times 10^{28} \\text{ m}^{-3}$$\n\n**Step 2: Compute the vacancy fraction.**\n\n$$\\frac{N_v}{N} = \\frac{2.3 \\times 10^{25}}{5.21 \\times 10^{28}} \\approx 4.41 \\times 10^{-4}$$\n\n$$\\boxed{4.41 \\times 10^{-4}}$$",
+ "final_answer": "4.41 \\times 10^{-4}",
+ "correct_answer": "4.41E-04",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

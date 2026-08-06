@@ -1,0 +1,11 @@
+{
+ "tid": "e127",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.8",
+ "question_text": "A cylindrical rod of steel ( $E=207 \\mathrm{GPa}, 30 \\times 10^{6} \\mathrm{psi}$ ) having a yield strength of 310 MPa (45,000 psi) is to be subjected to a load of $11,100 \\mathrm{~N}$ (2500 lb). If the length of the rod is 500 mm (20.0 in.), what must be the diameter to allow an elongation of $0.38 \\mathrm{~mm}(0.015 \\mathrm{in}$.)?The unit of the answer is mm.",
+ "response": "## Step-by-Step Solution\n\n**Given:**\n- $E = 207 \\text{ GPa} = 207 \\times 10^3 \\text{ MPa}$\n- $F = 11{,}100 \\text{ N}$\n- $L_0 = 500 \\text{ mm}$\n- $\\Delta L = 0.38 \\text{ mm}$\n\n**Step 1: Relate elongation to area**\n\nFor elastic deformation:\n$$\\Delta L = \\frac{F L_0}{A E}$$\n\nSolving for cross-sectional area $A$:\n$$A = \\frac{F L_0}{E \\, \\Delta L} = \\frac{(11100)(500)}{(207\\times10^3)(0.38)} = 70.53 \\text{ mm}^2$$\n\n**Step 2: Find diameter**\n\nWith $A = \\frac{\\pi d^2}{4}$:\n$$d = \\sqrt{\\frac{4A}{\\pi}} = \\sqrt{\\frac{4(70.53)}{\\pi}} \\approx 9.48 \\text{ mm}$$\n\n**Step 3: Verify elastic behavior**\n\n$$\\sigma = \\frac{F}{A} = \\frac{11100}{70.53} \\approx 157 \\text{ MPa} < 310 \\text{ MPa (yield strength)} \\checkmark$$\n\nThe stress is well below the yield strength, so the elastic assumption is valid.\n\n$$\\boxed{9.48}$$",
+ "final_answer": "9.48",
+ "correct_answer": "9.5",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"critic":"d-matsci-scope-misread","type":"rubric","rule_id":"R-d-matsci-scope-misread-001","evidence_items":["#e023"],"summary":"新增晶胞物量vs式量单元物量子情形与豁免"},
+    {"critic":"d-sci-unit-dimension","type":"add_rule","rule_id":"R-d-sci-unit-dimension-001","evidence_items":["#m025"],"summary":"新建量纲一致性critic，soft起步"}
+  ],
+  "fp_seen":1,"fp_resolved":1,"fn_clusters_seen":1,"fn_resolved":["m025"],
+  "unjudgeable":[],"unresolved":[],"skipped":[],"needs_human":false
+}

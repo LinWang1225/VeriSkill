@@ -1,0 +1,3 @@
+{"item": "e058", "failure_reason": "coercive field 作为带符号量(单位 A/m,下降支把 B 降回零所需的反向场)应保留负号;该解答取绝对值(magnitude),把带符号截距当成无符号 coercivity 标量,丢掉下降支 demagnetizing 所要求的负号"}
+{"item": "m243", "failure_reason": "数据选取步骤错误:未核验六个条目是否全部属于 commercially pure + annealed 基线 + 同一冷加工量,至少一个条目混入非纯牌号/不同%CW,比较基准不一致;应从同一张表的同一 commercially pure 行取退火态基线、同一%CW 终态"}
+{"item": "e272", "failure_reason": "题面密度 2.7 mg/m^3 应按 SI 换算(1 mg=1e-6 kg)后代入 Stefan 关系;该解答把 mg 擅改为 Mg(放大 1e9 倍)凑成 2700 kg/m^3,是篡改题给数据量级而非单位换算;若怀疑笔误应单独标注,不能直接改数进入计算"}

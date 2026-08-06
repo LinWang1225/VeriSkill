@@ -1,0 +1,11 @@
+{
+ "tid": "m124",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.28",
+ "question_text": "The fatigue data for a steel alloy are given as follows:\n\n| Stress Amplitude [MPa (ksi)] | Cycles to Failure |\n| :--: | :--: |\n| $470(68.0)$ | $10^{4}$ |\n| $440(63.4)$ | $3 \\times 10^{4}$ |\n| $390(56.2)$ | $10^{5}$ |\n| $350(51.0)$ | $3 \\times 10^{5}$ |\n| $310(45.3)$ | $10^{6}$ |\n| $290(42.2)$ | $3 \\times 10^{6}$ |\n| $290(42.2)$ | $10^{7}$ |\n| $290(42.2)$ | $10^{8}$ |\n\n(a) What is the fatigue limit for this alloy?\n(b) Determine fatigue lifetimes at stress amplitudes of 415 MPa (60,000 psi).\n(c) Estimate fatigue strengths at $2 \\times 10^{4}$ and $6 \\times 10^{5}$ cycles.\\\n\nGive your answer as a tuple (fatigue limit, fatigue lifetimes of 415 MPa, fatigue strengths at $2 \\times 10^{4}$ cycles, fatigue strengths at $6 \\times 10^{5}$ cycles).The units of each required answer are (MPa, cycles, MPa, MPa), respectively.",
+ "response": "## Reasoning\n\n**(a) Fatigue limit:** The S-N curve becomes horizontal at **290 MPa** — the alloy survives to 3×10⁶, 10⁷, and 10⁸ cycles without failing at this stress. This is the fatigue limit.\n\n**(b) Fatigue lifetime at 415 MPa:** Using linear interpolation on the S–log N plot, 415 MPa lies between the data points (440 MPa, 3×10⁴) and (390 MPa, 10⁵):\n\n$$\\log N = 4.477 + \\frac{415-440}{390-440}(5.0-4.477) \\approx 4.739$$\n\n$$N \\approx 10^{4.739} \\approx 5.5\\times10^{4}\\ \\text{cycles}$$\n\n**(c) Fatigue strengths:**\n\n- At 2×10⁴ cycles (between 10⁴ and 3×10⁴): interpolating between (470, 10⁴) and (440, 3×10⁴) gives **≈ 451 MPa**.\n- At 6×10⁵ cycles (between 3×10⁵ and 10⁶): interpolating between (350, 3×10⁵) and (310, 10⁶) gives **≈ 327 MPa**.\n\n## Final Answer\n\n$$\\boxed{(290,\\ 5.5\\times10^{4},\\ 451,\\ 327)}$$",
+ "final_answer": "(290,\\ 5.5\\times10^{4},\\ 451,\\ 327)",
+ "correct_answer": "(290, 50000, 440, 325)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(MPa, cycles, MPa, MPa)"
+}

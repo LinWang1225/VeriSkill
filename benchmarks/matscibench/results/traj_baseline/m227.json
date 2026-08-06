@@ -1,0 +1,11 @@
+{
+ "tid": "m227",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 9-13",
+ "question_text": "Suppose that solid nickel was able to nucleate homogeneously with an undercooling of only $22^{\\circ} \\mathrm{C}$. How many atoms would have to group together spontaneously for this occur? Assume that the lattice parameter of the solid FCC nickel is 0.356 nm. Give your answer as the value of number_of_atoms.",
+ "response": "## Solution\n\nFor **homogeneous nucleation**, the critical radius is\n\n$$r^* = \\frac{2\\gamma T_m}{\\Delta H_f \\,\\Delta T}$$\n\nand the number of atoms in a critical-sized (spherical) nucleus is the nucleus volume divided by the volume per atom:\n\n$$n = \\frac{\\tfrac{4}{3}\\pi (r^*)^3}{a^3/4}$$\n\n(FCC has 4 atoms per unit cell, so $V_{\\text{atom}} = a^3/4$.)\n\n**Nickel properties** (standard Callister values):\n- $\\gamma = 0.255\\ \\mathrm{J/m^2}$ (solid–liquid interfacial energy)\n- $T_m = 1455 + 273 = 1728\\ \\mathrm{K}$\n- $\\Delta H_f = 2.56\\times10^{9}\\ \\mathrm{J/m^3}$\n- $\\Delta T = 22\\ \\mathrm{K}$, $a = 0.356\\ \\mathrm{nm}$\n\n**Critical radius:**\n\n$$r^* = \\frac{2(0.255)(1728)}{(2.56\\times10^{9})(22)} = 1.56\\times10^{-8}\\ \\mathrm{m} \\approx 15.6\\ \\mathrm{nm}$$\n\n**Number of atoms:**\n\n$$V_{\\text{nuc}} = \\tfrac{4}{3}\\pi(1.565\\times10^{-8})^3 = 1.60\\times10^{-23}\\ \\mathrm{m^3}$$\n\n$$V_{\\text{atom}} = \\frac{(0.356\\times10^{-9})^3}{4} = 1.128\\times10^{-29}\\ \\mathrm{m^3}$$\n\n$$n = \\frac{1.60\\times10^{-23}}{1.128\\times10^{-29}} \\approx 1.42\\times10^{6}$$\n\nA mere $22^\\circ\\mathrm{C}$ undercooling is far too small for realistic homogeneous nucleation, so an enormous cluster of atoms would have to come together spontaneously — consistent with the large result.\n\n$$\\boxed{1.42\\times10^{6}}$$",
+ "final_answer": "1.42\\times10^{6}",
+ "correct_answer": "1.136E+06",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

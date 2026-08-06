@@ -1,0 +1,11 @@
+{
+ "tid": "m270",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 12.5",
+ "question_text": "If electroneutrality is to be preserved, there is a point defects possible in NaCl when a Ca2+ substitutes for an Na+ ion. How many of these defects exist for every Ca2+ ion?",
+ "response": "## Reasoning\n\nWhen a **Ca²⁺** ion substitutes for an **Na⁺** ion in the NaCl lattice>lattice, there is a charge mismatch:\n\n- Na⁺ contributes **+1** charge.\n- Ca²⁺ contributes **+2** charge.\n\nThe substitution therefore introduces **one excess positive charge** (+1) at the cation site.\n\nTo preserve **electroneutrality**, this excess positive charge must be compensated. The mechanism in an ionic crystal like NaCl is the creation of a **cation (Na⁺) vacancy**. Each Na⁺ vacancy removes a **+1** charge from the lattice, exactly balancing the extra +1 introduced by the Ca²⁺ substitution.\n\nThus, for **every one Ca²⁺ ion** incorporated, **one Na⁺ vacancy** must form.\n\n$$\\text{Ca}^{2+} \\xrightarrow{\\text{substitutes Na}^+} \\text{Ca}_{\\text{Na}}^{\\bullet} + V_{\\text{Na}}^{\\prime}$$\n\nThe number of these (cation vacancy) defects per Ca²⁺ ion is:\n\n$$\\boxed{1}$$",
+ "final_answer": "1",
+ "correct_answer": "1",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

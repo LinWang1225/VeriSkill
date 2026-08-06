@@ -1,0 +1,11 @@
+{
+ "tid": "e184",
+ "qid": "Fundamentals_of_Ceramics_Barsoum_Example 14.1",
+ "question_text": "The relative dielectric constant of 1 mole of Ar gas was measured at $0^{\\circ} \\mathrm{C}$ and 1 atm pressure to be 1.00056. (a) Calculate the polarizability of Ar. (b) Calculate the relative dielectric constant if the pressure is increased to 2 atm. (c) Estimate the radius of an Ar atom and compare to that of tabulated data. \n\nGive your answer as a tuple (polarizability of Ar, relative dielectric constant at 2 atm, radius of an Ar atom).The units of each required answer are (F·m², , m), respectively.",
+ "response": "## Solution\n\n**(a) Polarizability of Ar**\n\nUsing the Clausius-Mossotti relation for a non-polar gas, which simplifies (since ε_r ≈ 1) to:\n\n$$\\varepsilon_r - 1 = \\frac{N\\alpha}{\\varepsilon_0}$$\n\nThe number density from the ideal gas law: $N = \\frac{N_A P}{RT} = 2.687 \\times 10^{25}\\ \\text{m}^{-3}$\n\n$$\\alpha = \\frac{(\\varepsilon_r - 1)\\varepsilon_0}{N} = \\frac{0.00056 \\times 8.854\\times10^{-12}}{2.687\\times10^{25}} \\approx 1.85 \\times 10^{-40}\\ \\text{F·m}^2$$\n\n**(b) Relative dielectric constant at 2 atm**\n\nAt constant temperature, doubling the pressure doubles N, so (ε_r − 1) doubles:\n\n$$\\varepsilon_r' = 1 + 2(0.00056) = 1.00112$$\n\n**(c) Estimated radius of Ar atom**\n\nTreating the atom as a conducting sphere: $\\alpha = 4\\pi\\varepsilon_0 r^3$\n\n$$r = \\left(\\frac{\\alpha}{4\\pi\\varepsilon_0}\\right)^{1/3} = \\left(\\frac{1.85\\times10^{-40}}{4\\pi \\times 8.854\\times10^{-12}}\\right)^{1/3} \\approx 1.18 \\times 10^{-10}\\ \\text{m} = 1.18\\ \\text{Å}$$\n\n**Comparison:** The estimated radius (1.18 Å) falls between the tabulated covalent radius (~0.71 Å) and the van der Waals radius (~1.88 Å) of Ar. The conducting-sphere model gives a reasonable order-of-magnitude estimate, somewhat smaller than the van der Waals radius but larger than the covalent radius — sensible for a noble-gas atom interacting via induced dipoles.\n\n$$\\boxed{\\left(1.85 \\times 10^{-40},\\ 1.00112,\\ 1.18 \\times 10^{-10}\\right)}$$",
+ "final_answer": "\\left(1.85 \\times 10^{-40},\\ 1.00112,\\ 1.18 \\times 10^{-10}\\right)",
+ "correct_answer": "($1.84 \\times 10^{-40}$, 0.0011, $1.2 \\times 10^{-10}$)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(F·m², , m)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m060",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 8.4",
+ "question_text": "Estimate the plasma frequency \\(\\left(v_{p}\\right)\\) of lithium metal using the atomic density of lithium metal.\nThe unit of the answer is Hz.",
+ "response": "## Reasoning\n\nThe plasma frequency (angular) is\n\n$$\\omega_p = \\sqrt{\\frac{n e^2}{m_e \\varepsilon_0}}$$\n\nand the ordinary frequency is $\\nu_p = \\omega_p/(2\\pi)$.\n\nFor lithium (a monovalent metal), the conduction electron density equals the atomic density:\n\n$$n = \\frac{\\rho N_A}{M}$$\n\nUsing lithium's density $\\rho = 0.534\\ \\text{g/cm}^3 = 534\\ \\text{kg/m}^3$, molar mass $M = 6.941\\ \\text{g/mol}$, and $N_A = 6.022\\times10^{23}\\ \\text{mol}^{-1}$:\n\n$$n = \\frac{534 \\times 6.022\\times10^{23}}{6.941\\times10^{-3}} \\approx 4.63\\times10^{28}\\ \\text{m}^{-3}$$\n\nThen\n\n$$\\omega_p = \\sqrt{\\frac{(4.63\\times10^{28})(1.602\\times10^{-19})^2}{(9.109\\times10^{-31})(8.854\\times10^{-12})}} \\approx 1.21\\times10^{16}\\ \\text{rad/s}$$\n\n$$\\nu_p = \\frac{\\omega_p}{2\\pi} \\approx 1.93\\times10^{15}\\ \\text{Hz}$$\n\n$$\\boxed{1.93\\times10^{15}}$$",
+ "final_answer": "1.93\\times10^{15}",
+ "correct_answer": "1.22E+16",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "Hz"
+}

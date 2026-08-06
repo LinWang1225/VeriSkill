@@ -1,0 +1,11 @@
+{
+ "tid": "e051",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_13.7",
+ "question_text": "A structural design involves a steel wire 2 mm in diameter that will carry an electrical current. If the resistance of the wire must be less than $25 \\Omega$, calculate the maximum length of the wire, given the data in Table. Give your answer as the value of maximum_length.\n(Table:\n\\begin{tabular}{llc}\n\\hline Electrical Conductivities of Some Materials at Room Temperature \\\\\n\\hline Conducting range & Material & Conductivity, $\\boldsymbol{\\sigma}\\left(\\boldsymbol{\\Omega}^{\\mathbf{- 1}} \\cdot \\mathbf{m}^{\\mathbf{- 1}} \\mathbf{)}\\right.$ \\\\\n\\hline Conductors & Aluminum (annealed) & $35.36 \\times 10^6$ \\\\\n& Copper (annealed standard) & $58.00 \\times 10^6$ \\\\\n& Iron (99.99 + \\%) & $10.30 \\times 10^6$ \\\\\nSemiconductors & Steel (wire) & $5.71-9.35 \\times 10^6$ \\\\\n& Germanium (high purity) & 2.0 \\\\\n& Silicon (high purity) & $0.40 \\times 10^{-3}$ \\\\\nInsulators & Lead sulfide (high purity) & 38.4 \\\\\n& Aluminum oxide & $10^{-10}-10^{-12}$ \\\\\n& Borosilicate glass & $10^{-13}$ \\\\\n& Polyethylene & $10^{-13}-10^{-15}$ \\\\\n& Nylon 66 & $10^{-12}-10^{-13}$ \\\\\n\\hline\n\\end{tabular}\n)The unit of the answer is m.",
+ "response": "## Solution\n\nThe resistance of a wire is given by:\n\n$$R = \\frac{L}{\\sigma A}$$\n\nwhere:\n- $L$ = length of the wire\n- $\\sigma$ = electrical conductivity\n- $A$ = cross-sectional area\n\n**Given data:**\n- Diameter $d = 2\\text{ mm} \\Rightarrow r = 1\\times10^{-3}\\text{ m}$\n- Cross-sectional area: $A = \\pi r^2 = \\pi(1\\times10^{-3})^2 = \\pi\\times10^{-6}\\text{ m}^2$\n- Steel (wire) conductivity: $\\sigma = 5.71\\text{–}9.35 \\times 10^{6}\\ \\Omega^{-1}\\cdot\\text{m}^{-1}$\n- Resistance constraint: $R < 25\\ \\Omega$\n\n**Finding maximum length:**\n\n$$L = R\\,\\sigma\\,A$$\n\nTo obtain the *maximum* length, we use the **maximum** conductivity value, $\\sigma = 9.35\\times10^{6}\\ \\Omega^{-1}\\cdot\\text{m}^{-1}$, and the resistance limit $R = 25\\ \\Omega$:\n\n$$L_{\\max} = (25)(9.35\\times10^{6})(\\pi\\times10^{-6})$$\n\n$$L_{\\max} = 25 \\times 9.35 \\times \\pi = 734.35\\text{ m}$$\n\n$$\\boxed{734.35}$$",
+ "final_answer": "734.35",
+ "correct_answer": "734",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m"
+}

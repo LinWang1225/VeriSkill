@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"critic":"d-matsci-scope-misread","type":"add_rule","rule_id":"R-d-matsci-scope-misread-001","evidence_items":["#m029"],"summary":"新增子情形：实测物性时误将牌号规格下限当实测值"},
+    {"critic":"d-matsci-model-selection","type":"narrow_rule","rule_id":"R-d-matsci-model-selection-001","evidence_items":["#m124"],"summary":"修正多问 S-N 疲劳子情形：正确方法从 log-log Basquin 回归改为 S-log N 半对数图解"},
+    {"critic":"d-matsci-sign-convention","type":"add_rule","rule_id":"R-d-matsci-sign-convention-001","evidence_items":["#e264"],"summary":"新增子情形：题目显式引用含符号约定的编号方程组时不得丢弃方程固有负号"}
+  ],
+  "fp_seen":0,"fp_resolved":0,"fn_clusters_seen":3,"fn_resolved":["m029","m124","e264"],"unjudgeable":[],"unresolved":[],"skipped":[],"needs_human":false
+}

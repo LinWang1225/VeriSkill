@@ -1,0 +1,11 @@
+{
+ "tid": "e195",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 6.1",
+ "question_text": "The strain rate dependence of a zinc alloy can be represented by equation $\\sigma = C \\dot{\\varepsilon}^m$ with $m=0.07$. What is the ratio of the flow stress, $\\sigma_2 / \\sigma_1$, at $\\varepsilon=0.10$ for a strain rate of $10^{3} \\, \\text{s}^{-1}$ to that at $\\varepsilon=0.10$ for a strain rate of $10^{-3} \\, \\text{s}^{-1}$? Repeat for a low-carbon steel with $m=0.01$. Give your answer as an ordered tuple ($\\sigma_2 / \\sigma_1$ for zinc, $\\sigma_2 / \\sigma_1$ for steel).",
+ "response": "The flow stress follows $\\sigma = C\\dot{\\varepsilon}^m$, so the ratio is\n\n$$\\frac{\\sigma_2}{\\sigma_1} = \\left(\\frac{\\dot{\\varepsilon}_2}{\\dot{\\varepsilon}_1}\\right)^m = \\left(\\frac{10^3}{10^{-3}}\\right)^m = (10^6)^m.$$\n\n- **Zinc** ($m=0.07$): $(10^6)^{0.07} = 10^{0.42} \\approx 2.63$\n- **Steel** ($m=0.01$): $(10^6)^{0.01} = 10^{0.06} \\approx 1.15$\n\nThe higher strain-rate sensitivity of zinc gives a much larger stress increase over the six-decade strain-rate span, while the low-carbon steel is nearly rate-insensitive.\n\n$$\\boxed{(2.63,\\ 1.15)}$$",
+ "final_answer": "(2.63,\\ 1.15)",
+ "correct_answer": "(2.63, 1.15)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

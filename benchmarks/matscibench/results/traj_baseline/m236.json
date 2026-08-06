@@ -1,0 +1,11 @@
+{
+ "tid": "m236",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-75",
+ "question_text": "A eutectoid steel has been heated to $800^{\\circ} \\mathrm{C}$, quenched to $300^{\\circ} \\mathrm{C}$ and held for 10 s , and finally quenched to room temperature. What is the hardness?The unit of the answer is HRC.",
+ "response": "# Determining the Hardness of Heat-Treated Eutectoid Steel\n\n## Step 1: Austenitization\nThe eutectoid steel (0.76 wt% C) is heated to **800°C**, which is above the eutectoid temperature (727°C). The steel fully transforms to **austenite (γ)**.\n\n## Step 2: Isothermal Hold at 300°C for 10 s\nThe steel is quenched to **300°C** and held for **10 s**. I need to consult the TTT (Time-Temperature-Transformation) diagram for eutectoid steel.\n\nKey features of the standard TTT diagram:\n- **Ms (martensite start)** ≈ 220°C\n- 300°C is **above Ms**, placing it in the **bainite region** of the TTT diagram\n- At 300°C, the **bainite transformation start time** ≈ **100 s** (10² s)\n- The 50% transformation line ≈ 10³ s, and finish ≈ 10⁴ s\n\nSince the hold time (**10 s**) is **less than** the transformation start time (~100 s) at 300°C:\n\n$$t_{\\text{hold}} = 10\\,\\text{s} < t_{\\text{start}} \\approx 100\\,\\text{s}$$\n\n**No diffusional transformation occurs** during the hold. The steel remains as **supersaturated austenite**.\n\n## Step 3: Final Quench to Room Temperature\nOn quenching to room temperature (~25°C), the steel cools rapidly through the Ms line (~220°C) without intersecting any transformation curve on the TTT diagram. The retained austenite transforms to **martensite** (a diffusionless, shear transformation).\n\nThe final microstructure is essentially **100% martensite**.\n\n## Step 4: Hardness of Martensite\nThe hardness of martensite depends on carbon content. For eutectoid steel (0.76 wt% C), from the standard hardness-vs-carbon-content chart for fully martensitic structure:\n\n| Carbon (wt%) | Hardness (HRC) |\n|:---:|:---:|\n| 0.4 | ~55 |\n| 0.6 | ~60 |\n| 0.76 (eutectoid) | **~65** |\n| 0.8 | ~65 |\n\n$$\\boxed{65}$$",
+ "final_answer": "65",
+ "correct_answer": "66",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "HRC"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m237",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-88",
+ "question_text": "A steel containing $0.8 \\% \\mathrm{C}$ is quenched to produce all martensite. Estimate the volume change that occurs, assuming that the lattice parameter of the austenite is $3.6 \\AA$.  What is the volume change percent?The unit of the answer is %.",
+ "response": "## Solution\n\n**Austenite (FCC):** With $a_\\gamma = 3.6$ Å and 4 atoms per cell:\n$$V_\\gamma = a_\\gamma^3 = (3.6)^3 = 46.656 \\text{ Å}^3$$\n\n**Martensite (BCT):** The lattice parameters depend on carbon content (Roberts 1953):\n$$a_m = 2.861 - 0.013(0.8) = 2.8506 \\text{ Å}$$\n$$c_m = 2.861 + 0.116(0.8) = 2.9538 \\text{ Å}$$\n$$c/a = 1.036 \\quad (\\text{consistent with } c/a \\approx 1 + 0.045\\,\\text{wt\\%C})$$\n\nThe BCT martensite cell holds 2 atoms, so 2 cells hold 4 atoms (matching the FCC cell):\n$$V_m = a_m^2\\,c_m = (2.8506)^2(2.9538) = 24.002 \\text{ Å}^3$$\n$$2V_m = 48.005 \\text{ Å}^3$$\n\n**Volume change:**\n$$\\frac{\\Delta V}{V} = \\frac{2V_m - V_\\gamma}{V_\\gamma} = \\frac{48.005 - 46.656}{46.656} = 0.0289$$\n\nThe martensitic transformation produces a volume expansion of about **2.9%**, which is the origin of the quench cracking risk in steels — the expansion creates significant internal stresses.\n\n$$\\boxed{2.9}$$",
+ "final_answer": "2.9",
+ "correct_answer": "3",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "%"
+}

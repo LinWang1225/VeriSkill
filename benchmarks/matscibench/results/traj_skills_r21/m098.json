@@ -1,0 +1,11 @@
+{
+ "tid": "m098",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.38",
+ "question_text": "Consider the diffusion of some hypothetical metal $Y$ into another hypothetical metal $Z$ at $950^{\\circ} \\mathrm{C}$; after 10 h the concentration at the 0.5 mm position (in metal $Z$ ) is $2.0 \\mathrm{wt} \\% Y$. At what position will the concentration also be $2.0 \\mathrm{wt} \\% Y$ after a 17.5 h heat treatment again at $950^{\\circ} \\mathrm{C}$ ? Assume preexponential and activation energy values of 4.3 $\\times 10^{-4} \\mathrm{~m}^{2} / \\mathrm{s}$ and $180,000 \\mathrm{~J} / \\mathrm{mol}$, respectively, for this diffusion system.The unit of the answer is mm.",
+ "response": "## Reasoning\n\nThis is a **non-steady-state diffusion** problem. For diffusion into a semi-infinite solid with constant surface concentration $C_s$ and initial concentration $C_0$, the concentration profile is\n\n$$\\frac{C_x - C_0}{C_s - C_0} = 1 - \\operatorname{erf}\\!\\left(\\frac{x}{2\\sqrt{Dt}}\\right).$$\n\n**Skill check (g-matsci-arrhenius-paired-d0-q):** $D_0 = 4.3\\times10^{-4}\\,\\text{m}^2/\\text{s}$ and $Q = 180{,}000\\,\\text{J/mol}$ are given together in the problem statement as a paired set for this single Y-in-Z diffusion system — no cross-table mixing, no phase ambiguity. Constraint satisfied.\n\n**Key observation:** Both heat treatments are at the **same temperature** $950^\\circ\\text{C}$, so $D = D_0 e^{-Q/RT}$ is identical in both cases and cancels. The given $D_0$ and $Q$ are therefore not needed numerically (they would only be needed if the two temperatures differed).\n\nSince the concentration $C_x = 2.0\\,\\text{wt\\%}\\,Y$ is the same in both cases, the left-hand side is the same, so the erf argument must be the same:\n\n$$\\frac{x_1}{2\\sqrt{D\\,t_1}} = \\frac{x_2}{2\\sqrt{D\\,t_2}} \\;\\Longrightarrow\\; \\frac{x_1}{\\sqrt{t_1}} = \\frac{x_2}{\\sqrt{t_2}}.$$\n\nThus\n\n$$x_2 = x_1\\sqrt{\\frac{t_2}{t_1}} = 0.5\\,\\text{mm}\\times\\sqrt{\\frac{17.5}{10}} = 0.5\\times\\sqrt{1.75} = 0.6614\\,\\text{mm}.$$\n\n**Sigfig (g-matsci-sigfig-rounding):** weakest inputs are 2 sf ($2.0$, $10$, $17.5$ is 3 sf, $0.5$). Report 2 sf → $0.66$ mm.\n\n$$\\boxed{0.66}$$",
+ "final_answer": "0.66",
+ "correct_answer": "0.66",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

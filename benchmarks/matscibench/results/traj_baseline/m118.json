@@ -1,0 +1,11 @@
+{
+ "tid": "m118",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.40",
+ "question_text": "A hypothetical metal alloy has a grain diameter of $1.7 \\times 10^{-2} \\mathrm{~mm}$. After a heat treatment at $450^{\\circ} \\mathrm{C}$ for 250 min the grain diameter has increased to $4.5 \\times 10^{-2} \\mathrm{~mm}$. Compute the time required for a specimen of this same material (i.e., $d{0}=1.7 \\times 10^{-2} \\mathrm{~mm}$ ) to achieve a grain diameter of $8.7 \\times 10^{-2} \\mathrm{~mm}$ while being heated at $450^{\\circ} \\mathrm{C}$. Assume the $n$ grain diameter exponent has a value of 2.1.The unit of the answer is min.",
+ "response": "The grain-growth law is $d^n - d_0^n = Kt$. Using the first heat treatment to find $K$, then solving for the time to reach $d = 8.7\\times10^{-2}$ mm:\n\n$$t_2 = \\frac{d_2^n - d_0^n}{d_1^n - d_0^n}\\,t_1 \\approx 1109.4 \\text{ min}$$\n\n$$\\boxed{1109.4}$$",
+ "final_answer": "1109.4",
+ "correct_answer": "1110",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "min"
+}

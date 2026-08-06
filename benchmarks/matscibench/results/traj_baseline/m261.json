@@ -1,0 +1,11 @@
+{
+ "tid": "m261",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 4.1",
+ "question_text": "Calculate the equilibrium number of vacancies per cubic meter for copper at 1000℃. The energy for vacancy formation is 0.9 eV/atom; the atomic weight and density (at 1000℃) for copper are 63.5 g/mol and 8.4 g/cm³ respectively.The unit of the answer is vacancies/m³.",
+ "response": "## Solution\n\nThe equilibrium number of vacancies is given by:\n\n$$N_v = N \\exp\\!\\left(-\\frac{Q_v}{kT}\\right)$$\n\n**Step 1 — Number of atomic sites per m³:**\n\n$$N = \\frac{N_A \\rho}{A} = \\frac{(6.022\\times10^{23})(8.4\\times10^{6})}{63.5} \\approx 7.966\\times10^{28}\\ \\text{atoms/m}^3$$\n\n**Step 2 — Exponential factor** (with $T = 1000^\\circ\\text{C} = 1273\\ \\text{K}$, $k = 8.617\\times10^{-5}\\ \\text{eV/K}$):\n\n$$\\exp\\!\\left(-\\frac{0.9}{(8.617\\times10^{-5})(1273)}\\right) = \\exp(-8.202) \\approx 2.733\\times10^{-4}$$\n\n**Step 3 — Vacancy concentration:**\n\n$$N_v = (7.966\\times10^{28})(2.733\\times10^{-4}) \\approx 2.18\\times10^{25}\\ \\text{vacancies/m}^3$$\n\n$$\\boxed{2.18 \\times 10^{25}}$$",
+ "final_answer": "2.18 \\times 10^{25}",
+ "correct_answer": "2.2e+25",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "vacancies/m³"
+}

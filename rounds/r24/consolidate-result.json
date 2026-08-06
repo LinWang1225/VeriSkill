@@ -1,0 +1,18 @@
+{
+  "merged": [],
+  "rolled_up": [],
+  "pruned": [],
+  "merges": [],
+  "skipped": [
+    "g-matsci-zone-refining-multi-pass: 已是 placeholder（tags:[merged]，description 标注已并入 g-sci-process-step-qualifier 的区熔精炼专项节），无删除工具可再删；全库无其它文件引用该名，保留现状",
+    "d-matsci-comparison-basis: 已是 placeholder（tags:[merged]，已并入 d-matsci-ratio-basis），无删除工具可再删；全库无其它文件引用该名，保留现状",
+    "4 个 sign-convention actor skills（regular-solution/Hall/thermal-expansion/named-force）未合并：同族不同域，各匹配 d-matsci-sign-convention 的独立子情形，合并会丢域专属指引而 critic 仍判 fail → 行为不保持",
+    "4 个 parameter-lookup actor skills（explicit-assumptions/param-lookup-consistent-source/table-cell-row-column-attribution/arrhenius-paired-d0-q）未合并：失败模式不同（标任意来源 vs 跨材料同源 vs 行列归属 vs D0/Q 配套+相匹配），可一个对一个错",
+    "percent-basis-reference vs comparison-controlled-variable 未合并：单比率分母 vs 跨实体受控变量，操作不同；d-matsci-ratio-basis 已统一检测",
+    "permeation-steady-state 未上卷进 missing-input-no-fabrication：含独特的双原子换算因子在求和式不约去陷阱，上卷会丢该检测力"
+  ],
+  "actor_skills_before_after": [32, 32],
+  "critics_rules_before_after": [12, 12],
+  "needs_human": false,
+  "note": "noop round. 两个 placeholder 已在前序轮次完成裁剪且无悬挂引用；其余条目经核验均非近重/被支配，按'拿不准就不合并'保留原样。未改任何文件。"
+}

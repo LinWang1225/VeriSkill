@@ -1,0 +1,11 @@
+{
+ "tid": "e085",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.93",
+ "question_text": "Determine the expected diffraction angle for the first-order reflection from the (310) set of planes for BCC chromium (Cr) when monochromatic radiation of wavelength 0.0711 nm is used.The unit of the answer is ${\\circ}$.",
+ "response": "Using Bragg's law for BCC chromium:\n\n**Selection rule check:** For BCC, reflection allowed when h+k+l is even. For (310): 3+1+0 = 4 (even) ✓ — reflection permitted.\n\n**Lattice parameter:** For BCC, $a = \\frac{4R}{\\sqrt{3}}$. Using the atomic radius of Cr, $R = 0.125$ nm:\n$$a = \\frac{4(0.125)}{\\sqrt{3}} = 0.2887 \\text{ nm}$$\n\n**Interplanar spacing:**\n$$d_{310} = \\frac{a}{\\sqrt{h^2+k^2+l^2}} = \\frac{0.2887}{\\sqrt{9+1+0}} = \\frac{0.2887}{\\sqrt{10}} = 0.09129 \\text{ nm}$$\n\n**Bragg's law** (n = 1):\n$$\\sin\\theta = \\frac{\\lambda}{2d} = \\frac{0.0711}{2(0.09129)} = 0.3894$$\n\n$$\\theta = \\arcsin(0.3894) \\approx 22.92°$$\n\n$$\\boxed{22.92}$$",
+ "final_answer": "22.92",
+ "correct_answer": "45.88",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "${\\circ}$"
+}

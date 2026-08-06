@@ -1,0 +1,11 @@
+{
+ "tid": "e197",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 8.2",
+ "question_text": "Calculate the distance from the core of a screw dislocation at which the energy per volume equals the heat of vaporization, $H_v$, and express this distance in terms of $r/b$. Evaluate this critical value of $r/b$ for copper. $\\rho=8.93 \\text{ Mg/m}^3$, $G=77 \\text{ GPa}$, $b=0.255 \\text{ nm}$, $H_v=4.73 \\text{ MJ/kg}$.",
+ "response": "## Solution\n\nThe elastic strain energy density of a screw dislocation at distance $r$ from the core is:\n\n$$u = \\frac{\\tau^2}{2G} = \\frac{1}{2G}\\left(\\frac{Gb}{2\\pi r}\\right)^2 = \\frac{Gb^2}{8\\pi^2 r^2}$$\n\nSetting this equal to the heat of vaporization per unit volume, $\\rho H_v$:\n\n$$\\frac{Gb^2}{8\\pi^2 r^2} = \\rho H_v \\quad\\Longrightarrow\\quad \\frac{r}{b} = \\sqrt{\\frac{G}{8\\pi^2\\,\\rho H_v}}$$\n\n**For copper:**\n\n| Quantity | Value |\n|---|---|\n| $G$ | $77\\times10^9$ Pa |\n| $\\rho H_v$ | $(8.93\\times10^3)(4.73\\times10^6) = 4.224\\times10^{10}$ Pa |\n| $8\\pi^2 \\rho H_v$ | $3.335\\times10^{12}$ Pa |\n| $G/(8\\pi^2\\rho H_v)$ | $0.02309$ |\n\n$$\\frac{r}{b} = \\sqrt{0.02309} \\approx 0.152$$\n\nThis result (~0.15) is physically significant: it lies **inside** the core radius of the dislocation (typically $r/b \\sim 0.5$–$1$), confirming that the elastic continuum description breaks down well before the energy density reaches the heat of vaporization — the core region cannot be treated elastically.\n\n$$\\boxed{0.152}$$",
+ "final_answer": "0.152",
+ "correct_answer": "0.16",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e120",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.26",
+ "question_text": "The activation energy for the diffusion of copper in silver is 193,000 J/mol. Calculate the diffusion coefficient at $1200 \\mathrm{~K}\\left(927^{\\circ} \\mathrm{C}\\right)$, given that $D$ at $1000 \\mathrm{~K}\\left(727^{\\circ} \\mathrm{C}\\right)$ is $1.0 \\times 10^{-14} \\mathrm{~m}^{2} / \\mathrm{s}$.The unit of the answer is m^2/s.",
+ "response": "Using the Arrhenius relation in ratio form,\n\n$$\\frac{D_2}{D_1}=\\exp\\!\\left[-\\frac{Q_d}{R}\\left(\\frac{1}{T_2}-\\frac{1}{T_1}\\right)\\right]$$\n\nwith $Q_d=193000\\ \\text{J/mol}$, $R=8.31\\ \\text{J/mol·K}$, $T_1=1000\\ \\text{K}$, $T_2=1200\\ \\text{K}$, and $D_1=1.0\\times10^{-14}\\ \\text{m}^2/\\text{s}$:\n\n$$D_2 = 1.0\\times10^{-14}\\exp\\!\\left[-\\frac{193000}{8.31}\\left(\\frac{1}{1200}-\\frac{1}{1000}\\right)\\right]\\approx 4.8\\times10^{-13}\\ \\text{m}^2/\\text{s}$$\n\n$$\\boxed{4.8\\times10^{-13}}$$",
+ "final_answer": "4.8\\times10^{-13}",
+ "correct_answer": "4.8E-13",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m^2/s"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m156",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 18.13",
+ "question_text": "The chemical formula for copper ferrite may be written as $\\left(\\mathrm{CuFe}{2} \\mathrm{O}{4}\\right){8}$ because there are eight formula units per unit cell. If this material has a saturation magnetization of $1.35 \\times 10^{5} \\mathrm{~A} / \\mathrm{m}$ and a density of $5.40 \\mathrm{~g} / \\mathrm{cm}^{3}$. estimate the number of Bohr magnetons associated with each $\\mathrm{Cu}^{2+}$ ion.The unit of the answer is Bohr magnetons $/ \\mathrm{Cu}^{2+}$ ion.",
+ "response": "## Step-by-Step Reasoning\n\n**1. Molar mass of CuFe₂O₄:**\n$$M = 63.55 + 2(55.845) + 4(16.00) = 239.24 \\text{ g/mol}$$\n\n**2. Volume of the unit cell:**\n\nWith 8 formula units per unit cell, the mass of one unit cell is:\n$$m_{\\text{cell}} = \\frac{8 \\times 239.24}{N_A} \\text{ g}$$\n\n$$V_{\\text{cell}} = \\frac{m_{\\text{cell}}}{\\rho} = \\frac{8 \\times 239.24}{6.022\\times10^{23} \\times 5.40} = 5.89\\times10^{-22} \\text{ cm}^3 = 5.89\\times10^{-28} \\text{ m}^3$$\n\n**3. Total magnetic moment per unit cell:**\n\nSaturation magnetization is magnetic moment per unit volume:\n$$\\mu_{\\text{cell}} = M_s \\times V_{\\text{cell}} = (1.35\\times10^{5})(5.89\\times10^{-28}) = 7.95\\times10^{-23} \\text{ A·m}^2$$\n\n**4. Convert to Bohr magnetons:**\n\nUsing $\\mu_B = 9.27\\times10^{-24}$ A·m²:\n$$n_B^{\\text{cell}} = \\frac{7.95\\times10^{-23}}{9.27\\times10^{-24}} \\approx 8.57 \\text{ μ}_B\\text{/unit cell}$$\n\n**5. Per Cu²⁺ ion (8 per unit cell):**\n$$n_B = \\frac{8.57}{8} \\approx 1.07 \\text{ μ}_B\\text{/Cu}^{2+}$$\n\n$$\\boxed{1.07}$$",
+ "final_answer": "1.07",
+ "correct_answer": "1.07",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "Bohr magnetons $/ \\mathrm{Cu}^{2+}$ ion"
+}

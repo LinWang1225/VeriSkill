@@ -1,0 +1,44 @@
+{
+  "edits": [
+    {
+      "skill": "g-sci-given-unit-faithful-conversion",
+      "type": "new_skill",
+      "cluster": "题给数据量级篡改",
+      "support": 1,
+      "audited_support": 1,
+      "attribution": "能力缺陷",
+      "summary": "新建技能：题面带前缀单位的数据须按前缀定义忠实换算，不得因数值不合理静默改前缀篡改量级；疑笔误单独标注但仍按原单位算"
+    },
+    {
+      "skill": "g-matsci-comparison-controlled-variable",
+      "type": "patch",
+      "cluster": "查表数据选取基准不一致",
+      "support": 1,
+      "audited_support": 1,
+      "attribution": "激活缺陷|能力缺陷",
+      "summary": "强化 description/tags 触发屈服强度百分增量比较；新增第 0 步核验各条目牌号纯度与参考态 temper 一致，自查补纯度检查"
+    },
+    {
+      "skill": "g-matsci-wear-two-body-archard",
+      "type": "patch",
+      "cluster": "比较对象偷换",
+      "support": 1,
+      "audited_support": 0,
+      "attribution": "能力缺陷",
+      "summary": "新增两场景比较子情形：仅 sleeve 材质变、shaft 不变时比的是 sleeve 单面磨损，shaft 项相消，不套两体总磨损致因子 2 压偏比值"
+    },
+    {
+      "skill": "g-matsci-weld-group-control-point",
+      "type": "patch",
+      "cluster": "答非所问+几何误判",
+      "support": 1,
+      "audited_support": 0,
+      "attribution": "能力缺陷",
+      "summary": "强化肢宽≠焊缝长度上限的判据（焊缝沿构件长度方向）；新增第 8 步答非所问门控：报出前逐字比对题面所问量名与最终报出量名"
+    }
+  ],
+  "clusters_seen": 4,
+  "clusters_fixed": 4,
+  "skipped": [],
+  "needs_human": false
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m193",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 9-4",
+ "question_text": "A 4-in.-diameter aluminum bar solidifies to a depth of 0.5 in. beneath the surface in 5 minutes. After 20 minutes, the bar has solidified to a depth of 1.5 in. How much time is required for the bar to solidify completely?The unit of the answer is min.",
+ "response": "## Solving\n\nFrom the two data points:\n$$0.25 = 5a + b,\\qquad 2.25 = 20a + b$$\n\nSubtracting: $2.0 = 15a \\Rightarrow a = \\tfrac{2}{15}$, and $b = \\tfrac{1}{4} - 5\\!\\cdot\\!\\tfrac{2}{15} = -\\tfrac{5}{12}$.\n\nSo the solidification law is:\n$$d^2 = \\tfrac{2}{15}t - \\tfrac{5}{12}$$\n\n## Complete solidification\n\nThe 4-in.-diameter bar is fully solid when the solidification fronts meet at the center, i.e., when the depth reaches the radius, $d = 2$ in:\n\n$$4 = \\tfrac{2}{15}t - \\tfrac{5}{12}$$\n\n$$\\tfrac{2}{15}t = 4 + \\tfrac{5}{12} = \\tfrac{53}{12}$$\n\n$$t = \\tfrac{53}{12}\\cdot\\tfrac{15}{2} = \\tfrac{795}{24} = 33.125 \\text{ min}$$\n\n$$\\boxed{33.125}$$",
+ "final_answer": "33.125",
+ "correct_answer": "31.25",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "min"
+}

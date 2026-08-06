@@ -1,0 +1,46 @@
+{
+  "edits": [
+    {
+      "skill": "g-sci-model-validity-range",
+      "type": "patch",
+      "cluster": "R-d-matsci-extrapolate-validity-001",
+      "support": 1,
+      "audited_support": 1,
+      "attribution": "能力缺陷",
+      "summary": "在执行步骤最前加硬门控：T_target<Θ_D 时线性电阻率公式禁止使用，明确'结果为正/有限'检查在门控失败后作废，封死 e252 的'承认但回避'合理化路径"
+    },
+    {
+      "skill": "g-sci-missing-input-no-fabrication",
+      "type": "patch",
+      "cluster": "R-d-sci-underdetermined-claim-001",
+      "support": 1,
+      "audited_support": 0,
+      "attribution": "能力缺陷",
+      "summary": "明确题面要表达式/速率函数时含变量表达式即终答，不得附加'欠定/no single numerical value'拒答标注；该标注会把正确表达式误标欠定触发 critic——修 m128 over-cautious 反向误判"
+    },
+    {
+      "skill": "g-matsci-weld-group-control-point",
+      "type": "patch",
+      "cluster": "R-d-matsci-model-selection-001",
+      "support": 1,
+      "audited_support": 1,
+      "attribution": "能力缺陷",
+      "summary": "在执行步骤最前加两个硬门控：0a 焊缝长度边界门控（截面肢宽不得作焊缝长度上限）、0b 所问量门控（weld_length≠焊脚 h，落笔前逐字比对）——修 m168 把肢宽当长度上限+答非所问"
+    },
+    {
+      "skill": "g-matsci-param-lookup-consistent-source",
+      "type": "new_skill",
+      "cluster": "route-miss",
+      "support": 1,
+      "audited_support": 0,
+      "attribution": "激活缺陷",
+      "summary": "新建多材料参数取自同一数据源的技能：同题多材料时晶格常数/原子半径等须同源，代入前列表逐个核对来源一致——修 e230 BCC-Li 取非标准晶格常数与 Ni 数据源不自洽"
+    }
+  ],
+  "clusters_seen": 4,
+  "clusters_fixed": 4,
+  "skipped": [
+    {"item": "m022", "reason": "audited:false，独立重解与 G 答案数值/量级/单位均一致，被 concern-penalty 翻转，疑似误杀；chart 读图精度+Matthiessen 假设均为标准做法，不构成可泛化的真错因，不动手"}
+  ],
+  "needs_human": false
+}

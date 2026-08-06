@@ -1,0 +1,11 @@
+{
+ "tid": "m210",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-4",
+ "question_text": "The density of a sample of FCC palladium is $11.98 \\mathrm{~g} / \\mathrm{cm}^3$, and its lattice parameter is $3.8902 \\AA$. Calculate(a) the fraction of the lattice points that contain vacancies; and(b) the total number of vacancies in a cubic centimeter of Pd. Give your answer as a tuple: (vacancy_fraction, vacancies_per_cm3).The units of each required answer are (, vacancies/cm3), respectively.",
+ "response": "## Reasoning\n\nFor an FCC metal, the theoretical density with full occupancy is:\n\n$$\\rho = \\frac{n A}{V_c N_A}$$\n\nwhere $n=4$ (atoms per unit cell for FCC), $A=106.42$ g/mol (Pd), $V_c = a^3$, and $N_A = 6.022\\times10^{23}$.\n\nWith vacancies, the actual atoms per cell $n' < 4$, and the **measured** density gives:\n\n$$n' = \\frac{\\rho_{\\text{meas}}\\, V_c\\, N_A}{A}$$\n\n**(a) Vacancy fraction:**\n\n$$\\text{fraction} = \\frac{4 - n'}{4} = 1 - \\frac{n'}{4}$$\n\n**(b) Vacancies per cm³:** Number of lattice sites per cm³ is $4/V_c$ (4 sites per FCC cell), times the vacancy fraction.\n\n**Computation:**\n- $V_c = (3.8902\\times10^{-8})^3 = 5.884\\times10^{-23}$ cm³\n- $n' = \\dfrac{11.98 \\times 5.884\\times10^{-23} \\times 6.022\\times10^{23}}{106.42} \\approx 3.9911$\n- Vacancy fraction $= (4-3.9911)/4 \\approx 0.00223$\n- Vacancies/cm³ $= 0.00223 \\times \\dfrac{4}{5.884\\times10^{-23}} \\approx 1.52\\times10^{20}$\n\n$$\\boxed{(0.00223,\\ 1.52\\times10^{20})}$$",
+ "final_answer": "(0.00223,\\ 1.52\\times10^{20})",
+ "correct_answer": "(0.00204, 1.39e+20)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(, vacancies/cm3)"
+}

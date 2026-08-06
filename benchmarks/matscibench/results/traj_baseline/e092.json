@@ -1,0 +1,11 @@
+{
+ "tid": "e092",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.4",
+ "question_text": "Calculate the number of vacancies per cubic meter in gold (Au) at $900^{\\circ} \\mathrm{C}$. The energy for vacancy formation is 0.98 eV/atom. Furthermore, the density and atomic weight for Au are $18.63 \\mathrm{~g} / \\mathrm{cm}^{3}$ (at $900^{\\circ} \\mathrm{C}$ ) and 196.9 $\\mathrm{g} / \\mathrm{mol}$, respectively.The unit of the answer is m^-3.",
+ "response": "## Step-by-Step Solution\n\nThe equilibrium number of vacancies is given by:\n\n$$N_v = N \\exp\\!\\left(-\\frac{Q_v}{kT}\\right)$$\n\n**1. Number of atomic sites per unit volume, $N$:**\n\n$$N = \\frac{\\rho N_A}{A} = \\frac{(18.63\\;\\text{g/cm}^3)(6.022\\times10^{23}\\;\\text{atoms/mol})}{196.9\\;\\text{g/mol}}$$\n\n$$N = 5.698\\times10^{22}\\;\\text{atoms/cm}^3 = 5.698\\times10^{28}\\;\\text{atoms/m}^3$$\n\n**2. Temperature:**\n\n$$T = 900 + 273 = 1173\\;\\text{K}$$\n\n**3. Boltzmann factor:**\n\n$$\\exp\\!\\left(-\\frac{Q_v}{kT}\\right) = \\exp\\!\\left(-\\frac{0.98}{(8.617\\times10^{-5})(1173)}\\right) = \\exp(-9.695) = 6.156\\times10^{-5}$$\n\n**4. Vacancy concentration:**\n\n$$N_v = (5.698\\times10^{28})(6.156\\times10^{-5}) = 3.51\\times10^{24}\\;\\text{m}^{-3}$$\n\n$$\\boxed{3.51\\times10^{24}}$$",
+ "final_answer": "3.51\\times10^{24}",
+ "correct_answer": "3.52E+24",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m^-3"
+}

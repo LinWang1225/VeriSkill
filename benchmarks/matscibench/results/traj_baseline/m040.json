@@ -1,0 +1,11 @@
+{
+ "tid": "m040",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_11.27",
+ "question_text": "A bar of annealed $85 \\mathrm{Cu}-15 \\mathrm{Zn}$ (12-mm diameter) is cold-drawn through a die with a diameter of 10 mm . What are (a) the tensile strength and (b) the ductility of the resulting bar? Give your answer as a tuple: (tensile_strength, ductility).The units of each required answer are (MPa, %), respectively.",
+ "response": "## Step 2: Read Properties from the Cold-Work Curves\n\nUsing the standard tensile-strength and ductility versus percent-cold-work curves for annealed 85Cu-15Zn brass (from Callister, Figure 7.19):\n\n**At %CW ≈ 30.6%:**\n\n**(a) Tensile strength:** The TS curve rises steeply from the annealed value (~260 MPa) and reaches approximately **460 MPa** at 30.6% cold work.\n\n**(b) Ductility:** The %EL curve drops from the annealed value (~47%) and reaches approximately **18%** at 30.6% cold work.\n\n## Summary\n\n| Quantity | Value |\n|---|---|\n| % Cold Work | 30.6% |\n| (a) Tensile strength | ≈ 460 MPa |\n| (b) Ductility (%EL) | ≈ 18% |\n\n$$\\boxed{(460,\\ 18)}$$",
+ "final_answer": "(460,\\ 18)",
+ "correct_answer": "(450, 8)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(MPa, %)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m075",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.41",
+ "question_text": "Compute the theoretical density of ZnS , given that the $\\mathrm{Zn}-\\mathrm{S}$ distance and bond angle are 0.234 nm and $109.5^{\\circ}$, respectively.The unit of the answer is g/cm^3.",
+ "response": "## Reasoning\n\nZnS adopts the **zinc blende structure** (the tetrahedral bond angle of 109.5° confirms this). In zinc blende:\n\n**1. Relate the Zn–S distance to the lattice parameter.**\n\nThe nearest-neighbor Zn–S distance in the zinc blende unit cell is\n\n$$d_{\\text{Zn-S}} = \\frac{\\sqrt{3}}{4}\\,a \\quad\\Longrightarrow\\quad a = \\frac{4d}{\\sqrt{3}}$$\n\nWith $d = 0.234\\ \\text{nm}$:\n\n$$a = \\frac{4(0.234)}{\\sqrt{3}} = 0.5404\\ \\text{nm}$$\n\n**2. Count atoms in the conventional cubic cell.**\n\nThe zinc blende conventional cell contains **4 Zn atoms and 4 S atoms** = 4 formula units of ZnS.\n\n**3. Compute the density.**\n\n$$\\rho = \\frac{4(M_{\\text{Zn}} + M_{\\text{S}})/N_A}{a^3}$$\n\nUsing $M_{\\text{Zn}} = 65.38$, $M_{\\text{S}} = 32.06$, $N_A = 6.022\\times10^{23}$, and $a = 0.5404\\times10^{-7}\\ \\text{cm}$:\n\n$$\\rho = \\frac{4(97.44)/6.022\\times10^{23}}{(0.5404\\times10^{-7})^3} \\approx 4.10\\ \\text{g/cm}^3$$\n\n$$\\boxed{4.10}$$",
+ "final_answer": "4.10",
+ "correct_answer": "4.11",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "g/cm^3"
+}

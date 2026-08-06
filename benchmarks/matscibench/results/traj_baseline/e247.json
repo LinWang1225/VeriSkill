@@ -1,0 +1,11 @@
+{
+ "tid": "e247",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 13-49",
+ "question_text": "You would like to produce a gray iron casting that freezes with no primary austenite or graphite. If the carbon content in the iron is $3.5 \\%$, what percentage of silicon must you add? Give your answer as the value of percentage_silicon.The unit of the answer is %.",
+ "response": "Solving:\n\n$$\\frac{\\%Si}{3} = 4.3 - 3.5 = 0.8$$\n\n$$\\%Si = 2.4$$\n\nWith 2.4% silicon, the carbon equivalent equals 4.3%, placing the alloy exactly at the eutectic composition. The entire freezing then occurs at the eutectic point, producing the eutectic mixture (austenite + graphite) directly — with **no primary austenite** and **no primary graphite** forming beforehand.\n\n$$\\boxed{2.4}$$",
+ "final_answer": "2.4",
+ "correct_answer": "2.4",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

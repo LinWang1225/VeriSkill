@@ -1,0 +1,11 @@
+{
+ "tid": "e099",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.27",
+ "question_text": "What is the composition, in atom percent, of an alloy that contains 33 g of copper and 47 g of zinc?\n\\begin{aligned}\n& A_{\\mathrm{Cu}}=63.55 \\mathrm{~g} / \\mathrm{mol} \\\\\n& A_{\\mathrm{Zn}}=65.41 \\mathrm{~g} / \\mathrm{mol}\n\\end{aligned}\nGive your answer as a tuple (the atom percent of Cu, the atom percent of Zn)The units of each required answer are (at%, at%), respectively.",
+ "response": "The mole fractions are computed from the masses divided by atomic weights, then normalized.\n\n- $n_{\\mathrm{Cu}} = 33/63.55 = 0.5193$ mol\n- $n_{\\mathrm{Zn}} = 47/65.41 = 0.7185$ mol\n- Total $= 1.2378$ mol\n\n$$C_{\\mathrm{Cu}} = \\frac{0.5193}{1.2378}\\times 100 \\approx 41.95\\%, \\quad C_{\\mathrm{Zn}} \\approx 58.05\\%$$\n\n$$\\boxed{(41.95,\\ 58.05)}$$",
+ "final_answer": "(41.95,\\ 58.05)",
+ "correct_answer": "(41.9, 58.1)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(at%, at%)"
+}

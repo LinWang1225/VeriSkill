@@ -1,0 +1,11 @@
+{
+ "tid": "e269",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 20.1",
+ "question_text": "Nickel has density ρ = 8.90 g/cm³ and each Ni atom carries a magnetic moment of 0.60 μB.  (Bohr magneton μB = 9.274×10⁻²⁴ A·m², Ni atomic weight A = 58.71 g/mol, NA = 6.022×10²³ mol⁻¹.)  Calculate:  \n(a) the saturation magnetization Ms (in A/m),  \n(b) the saturation flux density Bs = μ₀Ms (in T).\n\nGive your answer as a tuple (saturation magnetization, saturation flux density).The units of each required answer are (A/m, tesla), respectively.",
+ "response": "## Reasoning\n\n**Step 1 — Number density of Ni atoms**\n\nConverting density to SI: $\\rho = 8.90\\ \\text{g/cm}^3 = 8.90\\times10^6\\ \\text{g/m}^3$.\n\n$$n = \\frac{\\rho N_A}{A} = \\frac{(8.90\\times10^6)(6.022\\times10^{23})}{58.71} \\approx 9.13\\times10^{28}\\ \\text{atoms/m}^3$$\n\n**Step 2 — Saturation magnetization**\n\nEach atom contributes $0.60\\,\\mu_B$, so\n\n$$M_s = n\\cdot(0.60\\,\\mu_B) \\approx (9.13\\times10^{28})(0.60)(9.274\\times10^{-24}) \\approx 5.08\\times10^5\\ \\text{A/m}$$\n\n**Step 3 — Saturation flux density**\n\n$$B_s = \\mu_0 M_s = (4\\pi\\times10^{-7})(5.08\\times10^5) \\approx 0.638\\ \\text{T}$$\n\nThese match the known values for nickel ($M_s\\approx5.1\\times10^5$ A/m, $B_s\\approx0.61$ T).\n\n$$\\boxed{(5.08\\times10^{5},\\ 0.638)}$$",
+ "final_answer": "(5.08\\times10^{5},\\ 0.638)",
+ "correct_answer": "(5.1e5, 0.64)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(A/m, tesla)"
+}

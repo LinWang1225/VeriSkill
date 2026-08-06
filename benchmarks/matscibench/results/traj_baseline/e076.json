@@ -1,0 +1,11 @@
+{
+ "tid": "e076",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.7",
+ "question_text": "Molybdenum (Mo) has a BCC crystal structure, an atomic radius of 0.1363 nm , and an atomic weight of $95.94 \\mathrm{~g} / \\mathrm{mol}$. Compute its theoretical density.The unit of the answer is g/cm^3.",
+ "response": "For a BCC crystal, the unit cell contains $n=2$ atoms and the lattice parameter is $a=\\frac{4R}{\\sqrt{3}}$.\n\nWith $R=0.1363\\,\\text{nm}=1.363\\times10^{-8}\\,\\text{cm}$:\n\n$$a=\\frac{4R}{\\sqrt{3}},\\quad V_c=a^3$$\n\n$$\\rho=\\frac{nA}{V_c N_A}=\\frac{2(95.94)}{\\left(\\frac{4(1.363\\times10^{-8})}{\\sqrt{3}}\\right)^3(6.022\\times10^{23})}\\approx 10.22\\,\\text{g/cm}^3$$\n\n$$\\boxed{10.22}$$",
+ "final_answer": "10.22",
+ "correct_answer": "10.22",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g/cm^3"
+}

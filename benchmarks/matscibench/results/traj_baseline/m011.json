@@ -1,0 +1,11 @@
+{
+ "tid": "m011",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 8.6",
+ "question_text": "Calculate the fraction of x-ray beam intensity transmitted through a 10 -mm-thick plate of low-carbon steel. Take the beam energy to be 100 keV . Because of the small amount of carbon and its inherently low absorption of x-rays, the steel can be approximated as elemental iron.\n\nRefer to Table:\n\\begin{tabular}{|l|l|l|}\n\\hline \\multicolumn{3}{|l|}{Linear Absorption Coefficient of Various Elements for an X-Ray Beam with Energy $=100 \\mathrm{keV}(=0.1 \\mathrm{MeV})$} \\\\\n\\hline Element & Atomic number & $\\mu\\left(\\mathrm{mm}^{-1}\\right)$ \\\\\n\\hline Aluminum & 13 & 0.0459 \\\\\n\\hline Titanium & 22 & 0.124 \\\\\n\\hline Iron & 26 & 0.293 \\\\\n\\hline Nickel & 28 & 0.396 \\\\\n\\hline Copper & 29 & 0.410 \\\\\n\\hline Zinc & 30 & 0.356 \\\\\n\\hline Tungsten & 74 & 8.15a \\\\\n\\hline Lead & 82 & 6.20 \\\\\n\\hline\n\\end{tabular}",
+ "response": "The transmitted intensity follows the Beer–Lambert law:\n\n$$\\frac{I}{I_0} = e^{-\\mu x}$$\n\nWith $\\mu = 0.293\\ \\mathrm{mm^{-1}}$ (iron, 100 keV) and $x = 10\\ \\mathrm{mm}$:\n\n$$\\mu x = 0.293 \\times 10 = 2.93$$\n\n$$\\frac{I}{I_0} = e^{-2.93} \\approx 0.0534$$\n\n$$\\boxed{0.0534}$$",
+ "final_answer": "0.0534",
+ "correct_answer": "0.0534",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

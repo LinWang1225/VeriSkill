@@ -1,0 +1,11 @@
+{
+ "tid": "e002",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 3.14",
+ "question_text": "Given $r_{W atom}=0.137nm$ and $r_{AI atom} = 0.143 nm$, calculate the linear density of atoms along the [111] direction in (a) bcc W and (b) fcc Al. \n\nGive your answer as a tuple (linear density of bcc tungsten, linear density of fcc aluminum).The units of each required answer are (atoms/nm, atoms/nm), respectively.",
+ "response": "## Step-by-step Reasoning\n\n### (a) BCC W along [111]\n\nIn BCC, the lattice parameter relates to atomic radius by $4r = a\\sqrt{3}$, so $a = \\tfrac{4r}{\\sqrt{3}}$.\n\nThe [111] direction is the body diagonal, length $= a\\sqrt{3} = 4r$.\n\nAtoms whose centers lie on the [111] line within one body diagonal:\n- 2 corner atoms (each shared → $2 \\times \\tfrac{1}{2} = 1$ effective)\n- 1 body-center atom (fully inside)\n\n$$\\text{Linear density} = \\frac{2}{a\\sqrt{3}} = \\frac{2}{4r} = \\frac{1}{2r} = \\frac{1}{2(0.137)} = 3.650\\ \\text{atoms/nm}$$\n\n### (b) FCC Al along [111]\n\nIn FCC, $a = 2r\\sqrt{2}$.\n\nThe [111] body diagonal length $= a\\sqrt{3} = 2r\\sqrt{6}$.\n\nAtoms on the [111] line: only the 2 corner atoms (face-center atoms are *not* on the body diagonal), giving $2 \\times \\tfrac{1}{2} = 1$ effective atom.\n\n$$\\text{Linear density} = \\frac{1}{a\\sqrt{3}} = \\frac{1}{2r\\sqrt{6}} = \\frac{1}{2(0.143)\\sqrt{6}} = 1.427\\ \\text{atoms/nm}$$\n\n$$\\boxed{(3.650,\\ 1.427)}$$",
+ "final_answer": "(3.650,\\ 1.427)",
+ "correct_answer": "(3.65, 1.43)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(atoms/nm, atoms/nm)"
+}

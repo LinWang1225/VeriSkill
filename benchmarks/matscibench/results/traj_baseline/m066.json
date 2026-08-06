@@ -1,0 +1,11 @@
+{
+ "tid": "m066",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.10",
+ "question_text": "Calculate the radius of a tantalum (Ta) atom, given that Ta has a BCC crystal structure, a density of 16.6 $\\mathrm{g} / \\mathrm{cm}^{3}$, and an atomic weight of $180.9 \\mathrm{~g} / \\mathrm{mol}$.The unit of the answer is nm.",
+ "response": "For a BCC structure, the density relation is:\n\n$$\\rho = \\frac{nA}{a^3 N_A}, \\quad n=2$$\n\nSolving for the lattice parameter:\n\n$$a = \\left(\\frac{nA}{\\rho N_A}\\right)^{1/3}$$\n\nFor BCC, atoms touch along the body diagonal: $4R = a\\sqrt{3}$, so $R = \\dfrac{a\\sqrt{3}}{4}$.\n\nUsing $\\rho=16.6\\ \\mathrm{g/cm^3}$, $A=180.9\\ \\mathrm{g/mol}$, $N_A=6.022\\times10^{23}$:\n\n- $a \\approx 3.308\\times10^{-8}\\ \\mathrm{cm} = 0.3308\\ \\mathrm{nm}$\n- $R = \\dfrac{0.3308\\sqrt{3}}{4} \\approx 0.143\\ \\mathrm{nm}$\n\n$$\\boxed{0.143}$$",
+ "final_answer": "0.143",
+ "correct_answer": "0.143",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "nm"
+}

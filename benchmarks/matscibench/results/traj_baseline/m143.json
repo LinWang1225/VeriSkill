@@ -1,0 +1,11 @@
+{
+ "tid": "m143",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 16.12",
+ "question_text": "A thick steel sheet of area 100 in. ${ }^{2}$ is exposed to air near the ocean. After a one-year period it was found to experience a weight loss of 485 g due to corrosion. To what rate of corrosion, in both mpy and $\\mathrm{mm} / \\mathrm{yr}$, does this correspond? The density of steel is $7.9 \\mathrm{~g} / \\mathrm{cm}^3$.\n\nGive your answer as a tuple (the rate of corrosion in mpy, the rate of corrosion in mm/yr).The units of each required answer are (mpy, mm/yr), respectively.",
+ "response": "Looking at this problem, I need to find the corrosion penetration rate from the weight loss data.\n\n## Step-by-step solution\n\n**Given:**\n- Weight loss: $W = 485\\text{ g}$ over $t = 1\\text{ yr}$\n- Area: $A = 100\\text{ in}^2$\n- Density: $\\rho = 7.9\\text{ g/cm}^3$\n\n**Step 1 — Volume of metal lost:**\n$$V = \\frac{W}{\\rho} = \\frac{485}{7.9} = 61.39\\text{ cm}^3$$\n\n**Step 2 — Convert area to cm²:**\n$$A = 100\\times(2.54)^2 = 645.16\\text{ cm}^2$$\n\n**Step 3 — Penetration depth (corrosion rate) in cm/yr:**\n$$d = \\frac{V}{A} = \\frac{61.39}{645.16} = 0.09516\\text{ cm/yr}$$\n\n**Step 4 — Convert to mm/yr:**\n$$0.09516\\times 10 = 0.9516\\text{ mm/yr}$$\n\n**Step 5 — Convert to mpy (mils per year), where $1\\text{ mil} = 0.00254\\text{ cm}$:**\n$$\\frac{0.09516}{0.00254} = 37.46\\text{ mpy}$$\n\n**Verification** with the standard formula $r = KW/(DAt)$ using $K=534$ (mpy) and $K=87.6$ (mm/yr), $W$ in mg, $t=8760$ hr:\n- mpy: $534\\times485000/(7.9\\times100\\times8760) = 37.42$ ✓\n- mm/yr: $87.6\\times485000/(7.9\\times645.16\\times8760) = 0.9516$ ✓\n\nBoth methods agree.\n\n$$\\boxed{(37.4,\\ 0.95)}$$",
+ "final_answer": "(37.4,\\ 0.95)",
+ "correct_answer": "(37.4, 0.952)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(mpy, mm/yr)"
+}

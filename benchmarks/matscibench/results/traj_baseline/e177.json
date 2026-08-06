@@ -1,0 +1,11 @@
+{
+ "tid": "e177",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 19.7",
+ "question_text": "Compute the velocity of light in diamond, which has a dielectric constant $\\varepsilon{r}$ of 5.5 (at frequencies within the visible range) and a magnetic susceptibility of $-2.17 \\times 10^{-5}$.The unit of the answer is m/s.",
+ "response": "The velocity of light in a medium is\n\n$$v = \\frac{c}{n}, \\qquad n = \\sqrt{\\varepsilon_r \\mu_r}, \\qquad \\mu_r = 1 + \\chi_m$$\n\nWith $\\varepsilon_r = 5.5$ and $\\chi_m = -2.17\\times10^{-5}$:\n\n- $\\mu_r = 1 - 2.17\\times10^{-5} = 0.9999783$\n- $n = \\sqrt{5.5 \\times 0.9999783} \\approx 2.3452$\n- $v = \\dfrac{3.0\\times10^{8}}{2.3452} \\approx 1.279\\times10^{8}\\ \\text{m/s}$\n\n$$\\boxed{1.28 \\times 10^{8}}$$",
+ "final_answer": "1.28 \\times 10^{8}",
+ "correct_answer": "1.28E+08",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m/s"
+}

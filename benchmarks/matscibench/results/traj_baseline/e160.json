@@ -1,0 +1,11 @@
+{
+ "tid": "e160",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 12.2",
+ "question_text": "An aluminum wire 10 m long must experience a voltage drop of less than 1.0 V when a current of 5 A passes through it. Using the data in  table 12.1 , compute the minimum diameter of the wire.\n\nReference:\n\"Table 12.1\nRoom-Temperature Electrical Conductivities for Nine Common Metals and Alloys\n\\begin{tabular}{|l|l|}\n\\hline Metal & Electrical Conductivity [ $(\\Omega \\cdot \\boldsymbol{m})^{-1}$ ] \\\\\n\\hline Silver & $6.8 \\times 10^7$ \\\\\n\\hline Copper & $6.0 \\times 10^7$ \\\\\n\\hline Gold & $4.3 \\times 10^7$ \\\\\n\\hline Aluminum & $3.8 \\times 10^7$ \\\\\n\\hline Brass ( $70 \\mathrm{Cu}-30 \\mathrm{Zn}$ ) & $1.6 \\times 10^7$ \\\\\n\\hline Iron & $1.0 \\times 10^7$ \\\\\n\\hline Platinum & $0.94 \\times 10^7$ \\\\\n\\hline Plain carbon steel & $0.6 \\times 10^7$ \\\\\n\\hline Stainless steel & $0.2 \\times 10^7$ \\\\\n\\hline\n\\end{tabular}\"The unit of the answer is mm.",
+ "response": "## Solution\n\n**Given:**\n- Length $L = 10\\ \\text{m}$\n- Voltage drop $V < 1.0\\ \\text{V}$ (use $V = 1.0\\ \\text{V}$ for the minimum diameter)\n- Current $I = 5\\ \\text{A}$\n- Aluminum conductivity $\\sigma = 3.8 \\times 10^{7}\\ (\\Omega\\cdot\\text{m})^{-1}$\n\n**Step 1: Relate resistance to voltage and current**\n\n$$R = \\frac{V}{I} = \\frac{1.0}{5} = 0.20\\ \\Omega$$\n\n**Step 2: Relate resistance to geometry**\n\n$$R = \\frac{\\rho L}{A} = \\frac{L}{\\sigma A} \\implies A = \\frac{L}{\\sigma R}$$\n\n**Step 3: Compute cross-sectional area**\n\n$$A = \\frac{10}{(3.8\\times10^{7})(0.20)} = 1.3158\\times10^{-6}\\ \\text{m}^2$$\n\n**Step 4: Solve for diameter** ($A = \\frac{\\pi d^2}{4}$)\n\n$$d = \\sqrt{\\frac{4A}{\\pi}} = \\sqrt{\\frac{4(1.3158\\times10^{-6})}{\\pi}} = 1.294\\times10^{-3}\\ \\text{m} \\approx 1.29\\ \\text{mm}$$\n\n$$\\boxed{1.29}$$",
+ "final_answer": "1.29",
+ "correct_answer": "1.29",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

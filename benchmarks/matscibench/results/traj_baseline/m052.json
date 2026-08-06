@@ -1,0 +1,11 @@
+{
+ "tid": "m052",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_15.27",
+ "question_text": "In an ionic-concentration corrosion cell involving chromium, which forms a trivalent ion $\\left(\\mathrm{Cr}^{3+}\\right)$, an electrical current of 10 mA is measured. How many atoms per second are oxidized at the anode? Give your answer as the value of atoms_per_second.The unit of the answer is s^-1.",
+ "response": "The current is $I = 10\\,\\text{mA} = 0.010\\,\\text{A} = 0.010\\,\\text{C/s}$.\n\nEach Cr atom oxidized releases 3 electrons ($\\mathrm{Cr} \\to \\mathrm{Cr}^{3+} + 3e^-$), so the charge per atom is $3e$.\n\n$$\\text{atoms/s} = \\frac{I}{3e} = \\frac{0.010}{3(1.602\\times10^{-19})} \\approx 2.08\\times10^{16}$$\n\n$$\\boxed{2.08\\times10^{16}}$$",
+ "final_answer": "2.08\\times10^{16}",
+ "correct_answer": "2.08E+16",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "s^-1"
+}

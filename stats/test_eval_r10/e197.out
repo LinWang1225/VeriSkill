@@ -1,0 +1,1 @@
+{"item": "e197", "oracle_pass": false, "evidence": "checker: Rule judge for NUM with 5% relative tolerance: number of parsed values differs. Model=[8.0, 0.15], reference=[0.16]. ", "skill_hash": "8d3999cbef62", "truth_source": "checker", "skill_result": "\\dfrac{r}{b}=\\sqrt{\\dfrac{G}{8\\pi^{2}\\rho H_v}}\\approx 0.15"}

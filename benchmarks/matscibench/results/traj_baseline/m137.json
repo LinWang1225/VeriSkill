@@ -1,0 +1,11 @@
+{
+ "tid": "m137",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 12.51",
+ "question_text": "Consider a parallel-plate capacitor having an area of $3225 \\mathrm{~mm}^{2}$ (5 in. ${ }^{2}$ ), a plate separation of 1 mm (0.04 in.), and a material having a dielectric constant of 3.5 positioned between the plates.\n(a) What is the capacitance of this capacitor?\n(b) Compute the electric field that must be applied for $2 \\times 10^{-8} \\mathrm{C}$ to be stored on each plate.\n\nGive your answer as a tuple (capacitance of this capacitor in (a), electric field in (b)).The units of each required answer are (F, V/m), respectively.",
+ "response": "## Solution\n\n**Given:**\n- Area $A = 3225\\ \\mathrm{mm^2} = 3.225\\times10^{-3}\\ \\mathrm{m^2}$\n- Plate separation $d = 1\\ \\mathrm{mm} = 10^{-3}\\ \\mathrm{m}$\n- Dielectric constant $\\varepsilon_r = 3.5$\n- $\\varepsilon_0 = 8.85\\times10^{-12}\\ \\mathrm{F/m}$\n\n### (a) Capacitance\n\n$$C = \\frac{\\varepsilon_0 \\varepsilon_r A}{d} = \\frac{(8.85\\times10^{-12})(3.5)(3.225\\times10^{-3})}{10^{-3}}$$\n\n$$C \\approx 9.99\\times10^{-11}\\ \\mathrm{F} \\approx 1.0\\times10^{-10}\\ \\mathrm{F}$$\n\n### (b) Electric field\n\nThe charge stored is $Q = CV$, so the voltage is:\n\n$$V = \\frac{Q}{C} = \\frac{2\\times10^{-8}}{9.99\\times10^{-11}} \\approx 200.2\\ \\mathrm{V}$$\n\nThe electric field is:\n\n$$E = \\frac{V}{d} = \\frac{200.2}{10^{-3}} \\approx 2.0\\times10^{5}\\ \\mathrm{V/m}$$\n\n$$\\boxed{(1.0\\times10^{-10},\\ 2.0\\times10^{5})}$$",
+ "final_answer": "(1.0\\times10^{-10},\\ 2.0\\times10^{5})",
+ "correct_answer": "(1e-10, 2.0e5)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(F, V/m)"
+}

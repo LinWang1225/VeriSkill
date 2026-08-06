@@ -1,0 +1,11 @@
+{
+ "tid": "m027",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_4.21",
+ "question_text": "The energy necessary to generate a dislocation is proportional to the square of the length of the Burgers vector, $|\\mathbf{b}|^2$. This relationship means that the most stable (lowest energy) dislocations have the minimum length, $|\\mathbf{b}|$. For the bcc metal structure, calculate (relative to $E_{\\mathrm{b}}=[111]$ ) the dislocation energies for (a) $E_{\\mathrm{b}}=[110]$ and (b) $E_{\\mathrm{b}}=[100]$. Give your answer as a tuple: (dislocation_energy_110, dislocation_energy_100).",
+ "response": "## Reasoning\n\nFor a BCC crystal, the **valid Burgers vectors** (shortest lattice translation along each direction) are:\n\n| Direction | Burgers vector | $\\|\\mathbf{b}\\|^2$ |\n|-----------|----------------|--------------------|\n| $[111]$ | $\\frac{a}{2}[111]$ | $\\dfrac{3a^{2}}{4}$ |\n| $[110]$ | $a[110]$ | $2a^{2}$ |\n| $[100]$ | $a[100]$ | $a^{2}$ |\n\nKey point: in BCC, $\\frac{a}{2}[110]$ and $\\frac{a}{2}[100]$ are **not** lattice translations (they don't connect BCC lattice points, which require all indices integer or all half-integer). The shortest valid vectors along $[110]$ and $[100]$ are therefore $a[110]$ and $a[100]$, while along $[111]$ the shortest is $\\frac{a}{2}[111]$.\n\nSince $E \\propto \\|\\mathbf{b}\\|^{2}$, the ratios relative to $E_{[111]}$ are:\n\n$$\\frac{E_{[110]}}{E_{[111]}} = \\frac{2a^{2}}{3a^{2}/4} = \\frac{8}{3} \\approx 2.67$$\n\n$$\\frac{E_{[100]}}{E_{[111]}} = \\frac{a^{2}}{3a^{2}/4} = \\frac{4}{3} \\approx 1.33$$\n\nThe $[111]$ dislocation is the lowest energy (most stable), consistent with it being the observed slip direction in BCC metals.\n\n$$\\boxed{\\left(\\dfrac{8}{3},\\ \\dfrac{4}{3}\\right)}$$",
+ "final_answer": "\\left(\\dfrac{8}{3},\\ \\dfrac{4}{3}\\right)",
+ "correct_answer": "(2.67, 1.33)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": ""
+}

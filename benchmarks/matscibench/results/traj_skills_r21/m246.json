@@ -1,0 +1,11 @@
+{
+ "tid": "m246",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 17-17",
+ "question_text": "An electrical contact material is produced by infiltrating copper into a porous tungsten carbide (WC) compact. The density of the final composite is $12.3 \\mathrm{~g} / \\mathrm{cm}^3$. Assuming that all of the pores are filled with copper, calculate (a) the volume fraction of copper in the composite, (b) the volume fraction of pores in the WC compact prior to infiltration, and (c) the original density of the WC compact before infiltration. Give your answer as a tuple: (volume_fraction_copper, volume_fraction_pores, original_density_WC).The units of each required answer are (, , g/cm³), respectively.",
+ "response": "## Solution\n\n**Setup.** The final composite consists of a fully dense WC skeleton plus Cu filling all the former pores. Let $V_{Cu}$ and $V_{WC}=1-V_{Cu}$ be the volume fractions in the composite. With volume fractions, density is exact arithmetic mixing (mass conservation): $\\rho_c = V_{WC}\\rho_{WC} + V_{Cu}\\rho_{Cu}$.\n\n**Parameter sourcing** (both from Callister Appendix B, same source):\n- $\\rho_{WC} = 15.77\\ \\mathrm{g/cm^3}$\n- $\\rho_{Cu} = 8.93\\ \\mathrm{g/cm^3}$\n\n**(a) Volume fraction of copper.** Solve $12.3 = (1-V_{Cu})(15.77) + V_{Cu}(8.93)$:\n\n$$V_{Cu} = \\frac{15.77 - 12.3}{15.77 - 8.93} = \\frac{3.47}{6.84} = 0.507$$\n\n**(b) Volume fraction of pores in the WC compact.** Since every pore is filled by copper, the pore volume fraction equals the copper volume fraction:\n\n$$V_{\\text{pores}} = V_{Cu} = 0.507$$\n\n**(c) Original density of the WC compact.** The compact's mass is just the WC skeleton mass over the total compact volume:\n\n$$\\rho_{\\text{compact}} = V_{WC}\\,\\rho_{WC} = (1-0.507)(15.77) = 7.77\\ \\mathrm{g/cm^3}$$\n\n**Consistency check:** $V_{WC}\\rho_{WC}+V_{Cu}\\rho_{Cu}=0.493(15.77)+0.507(8.93)=12.3$ ✓, and the result lies within the Reuss–Voigt bounds $[11.36,\\,12.3]$.\n\n$$\\boxed{(0.507,\\ 0.507,\\ 7.77)}$$",
+ "final_answer": "(0.507,\\ 0.507,\\ 7.77)",
+ "correct_answer": "(0.507, 0.507, 7.77)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(, , g/cm³)"
+}

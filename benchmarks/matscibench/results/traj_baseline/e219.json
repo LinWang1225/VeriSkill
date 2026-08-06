@@ -1,0 +1,11 @@
+{
+ "tid": "e219",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 19-7",
+ "question_text": "Suppose that the average displacement of the electrons relative to the nucleus in a copper atom is $10^{-8} \\AA$ when an electric field is imposed on a copper plate. Calculate the electronic polarization. The atomic number of copper is 29, so there are 29 electrons in each copper atom. The lattice parameter of copper is $3.6151 \\AA$.The unit of the answer is C/m^2.",
+ "response": "## Reasoning\n\n**Electronic polarization** is the dipole moment per unit volume.\n\n**Step 1 — Dipole moment per atom.** When the electron cloud shifts by $d$ relative to the nucleus, each atom acquires a dipole moment:\n$$p = Z e d$$\nwhere $Z = 29$, $e = 1.602\\times10^{-19}\\,\\text{C}$, and $d = 10^{-8}\\,\\text{Å} = 10^{-18}\\,\\text{m}$.\n\n**Step 2 — Number density of atoms.** Copper is FCC, so there are 4 atoms per unit cell. With lattice parameter $a = 3.6151\\,\\text{Å} = 3.6151\\times10^{-10}\\,\\text{m}$:\n$$n = \\frac{4}{a^3}$$\n\n**Step 3 — Polarization.**\n$$P = n \\cdot p = \\frac{4\\,Z\\,e\\,d}{a^3}$$\n\n**Step 4 — Numerics.**\n$$P = \\frac{4 \\times 29 \\times (1.602\\times10^{-19})\\times(10^{-18})}{(3.6151\\times10^{-10})^3} \\approx 3.93\\times10^{-7}\\,\\text{C/m}^2$$\n\n$$\\boxed{3.93 \\times 10^{-7}}$$",
+ "final_answer": "3.93 \\times 10^{-7}",
+ "correct_answer": "3.93E-07",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "C/m^2"
+}

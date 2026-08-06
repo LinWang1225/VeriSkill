@@ -1,0 +1,11 @@
+{
+ "tid": "e011",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 7.2",
+ "question_text": "A $0.1-\\mathrm{m}$-long $\\mathrm{Al}_{2} \\mathrm{O}_{3}$ furnace tube is heated from room temperature $\\left(25^{\\circ} \\mathrm{C}\\right)$ to $1,000^{\\circ} \\mathrm{C}$. Assuming the tube is not mechanically constrained, calculate the increase in length produced by this heating. Given the thermal-expansion coefficient for $\\mathrm{Al}_{2} \\mathrm{O}_{3}$ as $8.8 \\times 10^{-6} \\mathrm{~mm} /\\left(\\mathrm{mm} \\cdot{ }^{\\circ} \\mathrm{C}\\right)$.The unit of the answer is mm.",
+ "response": "$$\\Delta L = 0.858\\ \\text{mm}$$\n\nThe tube is unconstrained, so the full free thermal expansion is realized (no mechanical constraint to resist it).\n\n$$\\boxed{0.858}$$",
+ "final_answer": "0.858",
+ "correct_answer": "0.858",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

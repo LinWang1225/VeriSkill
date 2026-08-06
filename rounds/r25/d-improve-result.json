@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "critic": "d-sci-construct-verify",
+      "type": "add_rule",
+      "rule_id": "R-d-sci-construct-verify-001",
+      "evidence_items": ["#m188"],
+      "summary": "新建 d-sci-construct-verify 家族，新增 soft 判据抓循环论证式自检：轨迹用同一约定算出值匹配题目给定值来验证约定，给定值本身由同一约定导出，匹配自洽不具独立验证力"
+    }
+  ],
+  "fp_seen": 0,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["m188"],
+  "unjudgeable": [],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e143",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.12",
+ "question_text": "Consider a metal single crystal oriented such that the normal to the slip plane and the slip direction are at angles of $60^{\\circ}$ and $35^{\\circ}$, respectively, with the tensile axis. If the critical resolved shear stress is 6.2 MPa ( 900 psi ), will an applied stress of 12 MPa ( 1750 psi ) cause the single crystal to yield? If not, what stress will be necessary?The unit of the answer is MPa.",
+ "response": "The resolved shear stress is given by Schmid's law:\n\n$$\\tau_R = \\sigma \\cos\\phi \\cos\\lambda$$\n\nWith $\\phi = 60°$ (normal to slip plane) and $\\lambda = 35°$ (slip direction):\n\n$$\\cos 60° \\cos 35° = 0.5 \\times 0.8192 \\approx 0.4096$$\n\nAt the applied stress of 12 MPa:\n\n$$\\tau_R = 12 \\times 0.4096 \\approx 4.91 \\text{ MPa}$$\n\nSince $4.91 \\text{ MPa} < 6.2 \\text{ MPa}$ (the CRSS), the crystal **will not yield**.\n\nThe stress required for yielding:\n\n$$\\sigma_y = \\frac{\\tau_c}{\\cos\\phi\\cos\\lambda} = \\frac{6.2}{0.4096} \\approx 15.14 \\text{ MPa}$$\n\n$$\\boxed{15.14}$$",
+ "final_answer": "15.14",
+ "correct_answer": "15.1",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e115",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.19",
+ "question_text": "For a steel alloy it has been determined that a carburizing heat treatment of 15 h duration will raise the carbon concentration to $0.35 \\mathrm{wt} \\%$ at a point 2.0 mm from the surface. Estimate the time necessary to achieve the same concentration at a $6.0-\\mathrm{mm}$ position for an identical steel and at the same carburizing temperature.The unit of the answer is h.",
+ "response": "$$\\boxed{135}$$",
+ "final_answer": "135",
+ "correct_answer": "135",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "h"
+}

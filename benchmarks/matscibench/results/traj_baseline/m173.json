@@ -1,0 +1,11 @@
+{
+ "tid": "m173",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 4.1",
+ "question_text": "Two points on a true stress-strain curve are $\\sigma = 222$ MPa at $\\varepsilon = 0.05$ and $\\sigma = 303$ MPa at $\\varepsilon = 0.15$.\nA. Find the values of $K$ and $n$ in equation $\\sigma=K\\varepsilon^n$ that best fit the data. Then using these values of $K$ and $n$, predict the true stress at a strain of $\\varepsilon = 0.30$.\nB. Find the values of $\\sigma_0$ and $A$ in equation $\\sigma = \\sigma_0[1-\\exp(-A\\varepsilon)]$ that best fit the data. Then using these values of $\\sigma_0$ and $A$, predict the true stress at a strain of $\\varepsilon = 0.30$.\nGive your answer as an order tuple (true stress  in question A, true stress in question B)The units of each required answer are (MPa, MPa), respectively.",
+ "response": "## Solution\n\n### Part A: Power-law fit $\\sigma = K\\varepsilon^n$\n\nTaking logarithms: $\\ln\\sigma = \\ln K + n\\ln\\varepsilon$.\n\nSubtracting the two point equations eliminates $\\ln K$:\n\n$$n = \\frac{\\ln(303/222)}{\\ln(0.15/0.05)} = \\frac{\\ln(303/222)}{\\ln 3} \\approx 0.2831$$\n\n$$\\ln K = \\ln 222 - n\\ln(0.05) \\;\\Rightarrow\\; K \\approx 518.5\\ \\text{MPa}$$\n\nPrediction at $\\varepsilon = 0.30$:\n\n$$\\sigma_A = K(0.30)^n \\approx 518.5\\,(0.30)^{0.2831} \\approx 368.70\\ \\text{MPa}$$\n\n### Part B: Saturation fit $\\sigma = \\sigma_0[1-\\exp(-A\\varepsilon)]$\n\nDividing the two equations and letting $x = e^{-0.05A}$ (so $e^{-0.15A}=x^3$):\n\n$$\\frac{222}{303} = \\frac{1-x}{1-x^3} = \\frac{1}{1+x+x^2} \\;\\Rightarrow\\; x^2 + x + 1 - \\frac{303}{222} = 0$$\n\nSolving the quadratic (taking the physical root $0<x<1$):\n\n$$x \\approx 0.2841,\\quad A = -\\frac{\\ln x}{0.05} \\approx 25.17,\\quad \\sigma_0 = \\frac{222}{1-x} \\approx 310.11\\ \\text{MPa}$$\n\nPrediction at $\\varepsilon = 0.30$:\n\n$$\\sigma_B = \\sigma_0[1-\\exp(-A\\cdot 0.30)] \\approx 309.95\\ \\text{MPa}$$\n\nThe saturation form is nearly at its asymptote $\\sigma_0$ by $\\varepsilon=0.30$, so it predicts a much lower stress than the power law, which continues to rise.\n\n$$\\boxed{(368.70,\\ 309.95)}$$",
+ "final_answer": "(368.70,\\ 309.95)",
+ "correct_answer": "(368.8, 309.9)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(MPa, MPa)"
+}

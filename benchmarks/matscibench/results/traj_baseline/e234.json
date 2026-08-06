@@ -1,0 +1,11 @@
+{
+ "tid": "e234",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 5-42",
+ "question_text": "Compare the rate at which oxygen ions diffuse in alumina $\\left(\\mathrm{Al}_2 \\mathrm{O}_3\\right)$ with the rate at which aluminum ions diffuse in $\\mathrm{Al}_2 \\mathrm{O}_3$ at $1500^{\\circ} \\mathrm{C}$. Explain the difference. Give your answer as a tuple: (oxygen_diffusion_rate, aluminum_diffusion_rate).The units of each required answer are (cm²/s, cm²/s), respectively.",
+ "response": "## Reasoning\n\nFor self-diffusion in α-Al₂O₃ (corundum), I use the established Arrhenius data $D = D_0\\exp(-Q/RT)$ with $R=1.987\\;\\text{cal/(mol·K)}$ and $T=1500+273=1773\\;\\text{K}$:\n\n| Species | $D_0$ (cm²/s) | $Q$ (cal/mol) | Source |\n|---|---|---|---|\n| O²⁻ in Al₂O₃ | $2.0\\times10^{-3}$ | $110{,}000$ | Oishi & Kingery |\n| Al³⁺ in Al₂O₃ | $2.8\\times10^{5}$ | $138{,}000$ | Paladino & Kingery |\n\n$$D_{\\mathrm O}=2.0\\times10^{-3}\\,e^{-110000/(1.987\\cdot1773)}\\approx 5.5\\times10^{-17}\\;\\text{cm}^2/\\text{s}$$\n\n$$D_{\\mathrm{Al}}=2.8\\times10^{5}\\,e^{-138000/(1.987\\cdot1773)}\\approx 2.7\\times10^{-12}\\;\\text{cm}^2/\\text{s}$$\n\nSo $D_{\\mathrm{Al}}/D_{\\mathrm O}\\approx 5\\times10^{4}$ — **aluminum ions diffuse roughly $50{,}000\\times$ faster than oxygen ions** at 1500 °C.\n\n**Why the difference:** The corundum structure consists of a nearly hexagonal close‑packed array of large O²⁻ anions, with the smaller Al³⁺ cations occupying two‑thirds of the octahedral interstices. Moving an O²⁻ ion requires forcing a large ion through a densely packed anion sublattice — a very high activation barrier. The much smaller Al³⁺ ions move through the more open cation sublattice (via cation vacancies) with a far lower barrier, so they are the mobile species. This is why Al³⁺ is the faster (rate‑controlling) diffuser in alumina.\n\n$$\\boxed{(5.5\\times10^{-17},\\;2.7\\times10^{-12})}$$",
+ "final_answer": "(5.5\\times10^{-17},\\;2.7\\times10^{-12})",
+ "correct_answer": "(3.47e-16, 2.48e-13)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(cm²/s, cm²/s)"
+}

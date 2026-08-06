@@ -1,0 +1,11 @@
+{
+ "tid": "m272",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 10.1",
+ "question_text": "Computation of Critical Nucleus Radius and Activation Free Energy\\n\\n(a) For the solidification of pure gold, calculate the critical radius \\(r^{*}\\) and the activation free energy \\(\\Delta G^{*}\\) if nucleation is homogeneous. Values for the latent heat of fusion and surface free energy are \\(-1.16 \\times 10^{9} \\mathrm{~J} / \\mathrm{m}^{3}\\) and \\(0.132 \\mathrm{~J} / \\mathrm{m}^{2}\\), respectively. Use the supercooling value in Table 10.1.\\n(b) Now, calculate the number of atoms found in a nucleus of critical size. Assume a lattice parameter of 0.413 nm for solid gold at its melting temperature.\\nGive your answer as a tuple (critical radius, activation free energy, number of atoms).The units of each required answer are (nm, J, ), respectively.",
+ "response": "## Step-by-Step Solution\n\n### Part (a): Critical Radius and Activation Free Energy\n\n**Given data:**\n- Volumetric latent heat of fusion: $|\\Delta H_f| = 1.16 \\times 10^9$ J/m³\n- Surface free energy: $\\gamma = 0.132$ J/m²\n- Melting temperature of gold: $T_m = 1064 + 273 = 1337$ K\n- Supercooling (Table 10.1, Callister): $\\Delta T = 230$ K\n\n**Critical radius:**\n$$r^* = \\frac{2\\gamma T_m}{|\\Delta H_f|\\Delta T} = \\frac{2(0.132)(1337)}{(1.16\\times10^9)(230)} = 1.32 \\text{ nm}$$\n\n**Activation free energy:**\n$$\\Delta G^* = \\frac{16\\pi\\gamma^3 T_m^2}{3(\\Delta H_f)^2(\\Delta T)^2} = \\frac{16\\pi(0.132)^3(1337)^2}{3(1.16\\times10^9)^2(230)^2} = 9.68\\times10^{-19} \\text{ J}$$\n\n### Part (b): Number of Atoms in a Critical Nucleus\n\nGold is FCC (4 atoms/unit cell) with lattice parameter $a = 0.413$ nm.\n\n$$V_{\\text{nucleus}} = \\frac{4}{3}\\pi(r^*)^3 = 9.70\\times10^{-27} \\text{ m}^3$$\n\n$$V_{\\text{cell}} = a^3 = (0.413\\times10^{-9})^3 = 7.04\\times10^{-29} \\text{ m}^3$$\n\n$$N = \\frac{V_{\\text{nucleus}}}{V_{\\text{cell}}} \\times 4 = 137.7 \\times 4 \\approx 551 \\text{ atoms}$$\n\n$$\\boxed{(1.32,\\ 9.68\\times10^{-19},\\ 551)}$$",
+ "final_answer": "(1.32,\\ 9.68\\times10^{-19},\\ 551)",
+ "correct_answer": "(1.32, 9.64e-19, 548)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(nm, J, )"
+}

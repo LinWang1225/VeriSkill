@@ -1,0 +1,11 @@
+{
+ "tid": "m126",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.47",
+ "question_text": "Steady-state creep rate data are given in the following table for some alloy taken at $200^{\\circ} \\mathrm{C}(473 \\mathrm{~K})$ :\n\n| $\\dot{\\varepsilon}{s}\\left(\\mathrm{~h}^{-1}\\right)$ | $\\sigma[\\mathrm{MPa}(p s i)]$ |\n| :-- | :-- |\n| $2.5 \\times 10^{-3}$ | $55(8000)$ |\n| $2.4 \\times 10^{-2}$ | $69(10,000)$ |\n\nIf it is known that the activation energy for creep is $140,000 \\mathrm{~J} / \\mathrm{mol}$, compute the steady-state creep rate at a temperature of $250^{\\circ} \\mathrm{C}(523 \\mathrm{~K})$ and a stress level of $48 \\mathrm{MPa}(7000 \\mathrm{psi})$.The unit of the answer is h^-1.",
+ "response": "## Solution\n\nThe steady-state creep rate follows the power-law (Norton) relation:\n\n$$\\dot{\\varepsilon}_s = K\\,\\sigma^{\\,n}\\,e^{-Q/(RT)}$$\n\n**Step 1 — Stress exponent $n$.** Both data points are at $T_1 = 473\\ \\text{K}$, so the exponential term cancels in the ratio:\n\n$$\\frac{\\dot{\\varepsilon}_{s2}}{\\dot{\\varepsilon}_{s1}}=\\left(\\frac{\\sigma_2}{\\sigma_1}\\right)^{n}\n\\;\\Rightarrow\\;\n\\frac{2.4\\times10^{-2}}{2.5\\times10^{-3}}=\\left(\\frac{69}{55}\\right)^{n}\n\\;\\Rightarrow\\;\nn=\\frac{\\ln(9.6)}{\\ln(1.2545)}\\approx 9.97\\approx 10$$\n\n**Step 2 — Constant $K$.** Using point 1 with $Q=140{,}000\\ \\text{J/mol}$ and $R=8.314\\ \\text{J/(mol·K)}$:\n\n$$K=\\frac{\\dot{\\varepsilon}_{s1}}{\\sigma_1^{\\,n}\\,e^{-Q/(RT_1)}}\\approx 3.23\\times10^{-5}$$\n\n**Step 3 — Creep rate at $T_2=523\\ \\text{K}$, $\\sigma=48\\ \\text{MPa}$:**\n\n$$\\dot{\\varepsilon}_s = K\\,(48)^{n}\\,e^{-140000/(8.314\\cdot523)}\\approx 1.93\\times10^{-2}\\ \\text{h}^{-1}$$\n\nThe temperature increase (473 → 523 K) raises the rate by a factor of ~34, while the lower stress (55 → 48 MPa) reduces it by a factor of ~0.27, giving a net increase of roughly an order of magnitude.\n\n$$\\boxed{1.93\\times10^{-2}}$$",
+ "final_answer": "1.93\\times10^{-2}",
+ "correct_answer": "1.94E-02",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "h^-1"
+}

@@ -1,19 +1,35 @@
 {
   "edits": [
     {
-      "skill": "g-officeqa-extract-verify",
-      "type": "distill",
-      "cluster": "tn",
-      "support": 4,
+      "skill": "g-matsci-chart-lookup-read",
+      "type": "new_skill",
+      "cluster": "m241-chart-lookup-circular",
+      "support": 1,
+      "audited_support": 1,
+      "attribution": "能力缺陷",
+      "summary": "查图/查表题必须直接读真实出版图线，禁止自造锚点拟合再当独立复核（同组锚点拟合必过锚点属循环自证），参数 H 须取定值不留区间"
+    },
+    {
+      "skill": "g-sci-process-step-qualifier",
+      "type": "new_skill",
+      "cluster": "e055-step-qualifier-misread",
+      "support": 1,
       "audited_support": 0,
       "attribution": "能力缺陷",
-      "summary": "Added Step 7 to verify final answer format matches question's output specification (distilled from 4 TN trajectories: q055, q097, q072, q113)"
+      "summary": "题目用 previous/next/initial/final/nth 限定词指定非当前阶段时须递推到该阶段，显式标注步数，不要停在当前阶段"
+    },
+    {
+      "skill": "g-sci-explicit-assumptions",
+      "type": "new_skill",
+      "cluster": "soft-concerns-assumptions-units",
+      "support": 5,
+      "audited_support": 0,
+      "attribution": "能力缺陷",
+      "summary": "软信号聚类(m244/m194/m212/e183/e192等)：引用外部标准值须注来源、近似须量化误差、答案单位须与题面对齐"
     }
   ],
-  "clusters_seen": 0,
-  "clusters_fixed": 0,
-  "skipped": [
-    "q032 (R-officeqa-answer-format-001): singleton, support=1 < 2"
-  ],
+  "clusters_seen": 3,
+  "clusters_fixed": 3,
+  "skipped": [],
   "needs_human": false
 }

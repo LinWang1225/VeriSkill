@@ -1,0 +1,4 @@
+{"item": "e254", "failure_reason": "把 Moseley 定律（K 发射线规律）误当 K 吸收边公式套 13.6(Z-1)^2，应直接查 Ni 的 K-edge 实验值（最小电压=K 壳层结合能）。"}
+{"item": "e211", "failure_reason": "误把 Hall-Petch (sigma=sigma0+k/sqrt(d)) 当过原点正比例，用 sigma 中点直接推 1/sqrt(d) 中点；应用两组数据解 sigma0、k 再反求 d3。"}
+{"item": "m041", "failure_reason": "题面未给 E_m/E_f；该解先代入 E_f=400 GPa 再用 isostrain 上界事后合理化，误用 ROM>=E_纵向 判据反推纤维模量。纤维等级是给定属性，不应由实验值倒推。"}
+{"item": "m122", "failure_reason": "LEFM 中 a 是半裂纹长，NDT 分辨率极限 3.0 mm 针对全长 2a；该解把 a_c 当缺陷尺寸与 3.0 mm 比较，差因子 2。应以 2a_c 与分辨率极限比较。"}

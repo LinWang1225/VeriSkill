@@ -1,0 +1,11 @@
+{
+ "tid": "m274",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 18.4",
+ "question_text": "The electrical conductivity and electron mobility for aluminum are $3.8 \\times 10^{7}(\\Omega \\cdot \\mathrm{~m})^{-1}$ and $0.0012 \\mathrm{~m}^{2} / \\mathrm{V} \\cdot \\mathrm{s}$, respectively. Calculate the Hall voltage for an aluminum specimen that is 15 mm thick for a current of 25 A and a magnetic field of 0.6 tesla (imposed in a direction perpendicular to the current).The unit of the answer is V.",
+ "response": "## Solution\n\nThe Hall voltage is given by:\n\n$$V_H = \\frac{IB}{n\\,e\\,d}$$\n\nwhere $n$ is the electron concentration, $e$ the electron charge, and $d$ the thickness. Since the conductivity relates to mobility by $\\sigma = n e \\mu_e$, we have $n e = \\sigma/\\mu_e$. Substituting:\n\n$$V_H = \\frac{I B \\mu_e}{\\sigma d}$$\n\n**Given values:**\n- $\\sigma = 3.8\\times10^{7}\\,(\\Omega\\cdot\\mathrm{m})^{-1}$\n- $\\mu_e = 0.0012\\,\\mathrm{m^2/V\\cdot s}$\n- $I = 25\\,\\mathrm{A}$\n- $B = 0.6\\,\\mathrm{T}$\n- $d = 15\\,\\mathrm{mm} = 0.015\\,\\mathrm{m}$\n\n**Calculation:**\n\n$$V_H = \\frac{(25)(0.6)(0.0012)}{(3.8\\times10^{7})(0.015)} = \\frac{0.018}{5.7\\times10^{5}} \\approx 3.16\\times10^{-8}\\,\\mathrm{V}$$\n\n$$\\boxed{3.16\\times10^{-8}}$$",
+ "final_answer": "3.16\\times10^{-8}",
+ "correct_answer": "-3.16e-08",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "V"
+}

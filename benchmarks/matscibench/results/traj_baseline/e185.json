@@ -1,0 +1,11 @@
+{
+ "tid": "e185",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 2.2",
+ "question_text": "Ti-6Al-4V $\\left(K_{\\mathrm{IC}}=60 \\mathrm{MPa}(\\mathrm{m})^{1 / 2}\\right)$ and aluminum AA7075 alloy $\\left(K_{\\mathrm{IC}}=24 \\mathrm{MPa}\\right.$ $(\\mathrm{m})^{1 / 2}$ ) are widely used in making lightweight structures. If the available nondestructive testing (NDT) equipment can only detect flaws larger than 4 mm in length, can we safely use either of these alloys for designing a component that will be subjected to a stress of 400 MPa ? \n\nGive your answer as a tuple: (critical_crack_length_Ti6Al4V, critical_crack_length_AA7075).The units of each required answer are (mm, mm), respectively.",
+ "response": "## Reasoning\n\nThe fracture criterion is $K_{IC} = Y\\sigma\\sqrt{\\pi a_c}$. Taking the standard geometry factor $Y = 1$ (through‑thickness/internal crack, the convention used when only $K_{IC}$, $\\sigma$, and flaw size are given):\n\n$$a_c = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{\\sigma}\\right)^2$$\n\n**Ti‑6Al‑4V:**\n$$a_c = \\frac{1}{\\pi}\\left(\\frac{60}{400}\\right)^2 = \\frac{0.0225}{\\pi}\\,\\text{m} = 7.16\\ \\text{mm}$$\n\n**AA7075:**\n$$a_c = \\frac{1}{\\pi}\\left(\\frac{24}{400}\\right)^2 = \\frac{0.0036}{\\pi}\\,\\text{m} = 1.15\\ \\text{mm}$$\n\n**Safety assessment:** The NDT equipment detects flaws only larger than 4 mm.\n- Ti‑6Al‑4V: $a_c = 7.16\\ \\text{mm} > 4\\ \\text{mm}$ → a crack is detectable well before it reaches critical size → **safe**.\n- AA7075: $a_c = 1.15\\ \\text{mm} < 4\\ \\text{mm}$ → the crack can grow to critical length while remaining undetectable → **unsafe**.\n\nSo only Ti‑6Al‑4V can be safely used under these conditions.\n\n$$\\boxed{(7.16,\\ 1.15)}$$",
+ "final_answer": "(7.16,\\ 1.15)",
+ "correct_answer": "(14, 2.3)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(mm, mm)"
+}

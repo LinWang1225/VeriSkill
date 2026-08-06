@@ -1,0 +1,11 @@
+{
+ "tid": "m068",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.19",
+ "question_text": "Beryllium (Be) has an HCP unit cell for which the ratio of the lattice parameters c/a is 1.568. If the radius of the Be atom is 0.1143 nm , (a) determine the unit cell volume, and (b) calculate the theoretical density of Be and compare it with the literature value.\n\nGive your answer as a tuple (the unit cell volume,  the theoretical density)The units of each required answer are (cm^3/unit cell, g/cm^3), respectively.",
+ "response": "## Solution\n\n**Step 1: Lattice parameter *a***\n\nIn HCP, atoms touch along the *a* edge, so $a = 2R$:\n$$a = 2(0.1143\\,\\text{nm}) = 0.2286\\,\\text{nm} = 2.286\\times10^{-8}\\,\\text{cm}$$\n\n**Step 2: Lattice parameter *c***\n$$c = 1.568\\,a = 1.568(0.2286) = 0.3584\\,\\text{nm} = 3.584\\times10^{-8}\\,\\text{cm}$$\n\n**Step 3: Unit cell volume (a)**\n\nThe HCP conventional (hexagonal prism) unit cell has volume\n$$V = \\frac{3\\sqrt{3}}{2}\\,a^{2}c$$\n$$V = \\frac{3\\sqrt{3}}{2}(2.286\\times10^{-8})^{2}(3.584\\times10^{-8}) \\approx 4.87\\times10^{-23}\\,\\text{cm}^{3}\\!/\\text{unit cell}$$\n\n**Step 4: Theoretical density (b)**\n\nHCP has $n = 6$ atoms/unit cell; Be atomic weight $A = 9.01$ g/mol:\n$$\\rho = \\frac{nA}{V\\,N_{A}} = \\frac{6(9.01)}{(4.87\\times10^{-23})(6.022\\times10^{23})} \\approx 1.845\\,\\text{g/cm}^{3}$$\n\n**Comparison:** The literature value for Be is **1.85 g/cm³**, so the computed value (1.845 g/cm³) is in excellent agreement (within ~0.3%).\n\n$$\\boxed{(4.87\\times10^{-23},\\ 1.845)}$$",
+ "final_answer": "(4.87\\times10^{-23},\\ 1.845)",
+ "correct_answer": "(4.87e-23, 1.84)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(cm^3/unit cell, g/cm^3)"
+}

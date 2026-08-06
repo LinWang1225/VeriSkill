@@ -1,0 +1,11 @@
+{
+ "tid": "m080",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.8",
+ "question_text": "Calculate the number of Frenkel defects per cubic meter in silver chloride at $350^{\\circ} \\mathrm{C}$. The energy for defect formation is 1.1 eV , whereas the density for AgCl is $5.50 \\mathrm{~g} / \\mathrm{cm}^{3}$ at $350^{\\circ} \\mathrm{C}$.The unit of the answer is defects/m^3.",
+ "response": "## Step-by-Step Solution\n\n**Frenkel defect formula:**\n\n$$N_{Fr} = N \\exp\\!\\left(-\\frac{Q_{Fr}}{2kT}\\right)$$\n\nThe factor of 2 arises because a Frenkel defect produces a vacancy–interstitial pair, and the equilibrium condition involves the product of the two concentrations.\n\n**1. Number of lattice sites per m³**\n\nMolar mass of AgCl: $M = 107.87 + 35.45 = 143.32\\ \\text{g/mol}$\n\n$$N = \\frac{\\rho\\, N_A}{M} = \\frac{5.50 \\times 6.022\\times10^{23}}{143.32}\\ \\text{cm}^{-3} = 2.31\\times10^{22}\\ \\text{cm}^{-3} = 2.31\\times10^{28}\\ \\text{m}^{-3}$$\n\n**2. Evaluate the exponential**\n\nTemperature: $T = 350 + 273 = 623\\ \\text{K}$\n\n$$-\\frac{Q_{Fr}}{2kT} = -\\frac{1.1}{2(8.617\\times10^{-5})(623)} = -10.25$$\n\n**3. Number of Frenkel defects**\n\n$$N_{Fr} = (2.31\\times10^{28})\\,\\exp(-10.25) \\approx 8.21\\times10^{23}\\ \\text{m}^{-3}$$\n\n$$\\boxed{8.21\\times10^{23}}$$",
+ "final_answer": "8.21\\times10^{23}",
+ "correct_answer": "8.24E+23",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "defects/m^3"
+}

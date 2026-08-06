@@ -1,0 +1,11 @@
+{
+ "tid": "e196",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 6.2",
+ "question_text": "The tensile stress in one region of an HSLA steel sheet ($m = 0.005$) is 1% greater than in another region. What is the ratio of the strain rates in the two regions? Neglect strain hardening. What would be the ratio of the strain rates in the two regions for a titanium alloy ($m = 0.02$)? Give your answer as a tuple (the ratio for HALA steel sheet, the ratio for titanium alloy).",
+ "response": "## Reasoning\n\nThe constitutive relation for strain-rate sensitivity (neglecting strain hardening) is:\n\n$$\\sigma = K\\,\\dot{\\varepsilon}^{\\,m}$$\n\nTaking the ratio of the two regions:\n\n$$\\frac{\\sigma_1}{\\sigma_2} = \\left(\\frac{\\dot{\\varepsilon}_1}{\\dot{\\varepsilon}_2}\\right)^{m}$$\n\nGiven that the tensile stress in region 1 is 1% greater than in region 2, $\\sigma_1/\\sigma_2 = 1.01$. Solving for the strain-rate ratio:\n\n$$\\frac{\\dot{\\varepsilon}_1}{\\dot{\\varepsilon}_2} = \\left(\\frac{\\sigma_1}{\\sigma_2}\\right)^{1/m} = 1.01^{\\,1/m}$$\n\n**HSLA steel** ($m = 0.005$):\n$$1.01^{1/0.005} = 1.01^{200} \\approx 7.32$$\n\n**Titanium alloy** ($m = 0.02$):\n$$1.01^{1/0.02} = 1.01^{50} \\approx 1.64$$\n\nA small stress difference produces a much larger strain-rate difference in the HSLA steel because of its very low strain-rate sensitivity — this is why low-$m$ materials are prone to necking/instability.\n\n$$\\boxed{(7.32,\\ 1.64)}$$",
+ "final_answer": "(7.32,\\ 1.64)",
+ "correct_answer": "(7.3, 1.64)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

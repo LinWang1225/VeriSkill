@@ -1,0 +1,11 @@
+{
+ "tid": "m071",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.28",
+ "question_text": "Compute the atomic packing factor for the rock salt crystal structure in which $r{C} / r{A}=0.414$.",
+ "response": "## Reasoning\n\n**Rock salt (NaCl) structure:** The anions (A) form an FCC lattice, and the cations (C) fill all the octahedral interstitial sites. The conventional cubic unit cell contains **4 anions + 4 cations = 8 atoms** (4 formula units).\n\n**Lattice parameter:** Along a cube edge, the anions and cations touch, giving\n\n$$a = 2r_A + 2r_C = 2(r_A + r_C).$$\n\n**Atomic packing factor:**\n\n$$\\text{APF} = \\frac{4\\!\\left(\\tfrac{4}{3}\\pi r_A^3\\right) + 4\\!\\left(\\tfrac{4}{3}\\pi r_C^3\\right)}{a^3}.$$\n\nSetting $r_A = 1$ and $r_C = 0.414$, so $a = 2(1.414) = 2.828$:\n\n$$\\text{APF} = \\frac{\\tfrac{16}{3}\\pi(1^3 + 0.414^3)}{(2.828)^3} \\approx 0.793.$$\n\n$$\\boxed{0.793}$$",
+ "final_answer": "0.793",
+ "correct_answer": "0.793",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

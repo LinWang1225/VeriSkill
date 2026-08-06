@@ -1,0 +1,11 @@
+{
+ "tid": "m051",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_15.25",
+ "question_text": "In an ionic-concentration corrosion cell involving nickel (forming $\\mathrm{Ni}^{2+}$ ), an electrical current of 5 mA is measured. How many Ni atoms per second are oxidized at the anode? Give your answer as the value of Ni_atoms_per_second.The unit of the answer is s^-1.",
+ "response": "The current $I = 5\\,\\text{mA} = 0.005\\,\\text{A}$ corresponds to a charge flow of $0.005\\,\\text{C/s}$. Each Ni atom oxidized to $\\mathrm{Ni}^{2+}$ releases 2 electrons, so:\n\n$$\\text{Ni atoms/s} = \\frac{I}{2e} = \\frac{0.005}{2(1.602\\times10^{-19})} \\approx 1.56\\times10^{16}\\,\\text{s}^{-1}$$\n\n$$\\boxed{1.56\\times10^{16}}$$",
+ "final_answer": "1.56\\times10^{16}",
+ "correct_answer": "1.56E+16",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "s^-1"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e000",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 2.1",
+ "question_text": "Chemical analysis in materials science laboratories is frequently done by means of the scanning electron microscope. In this instrument, an electron beam generates characteristic x-rays that can be used to identify chemical elements. This instrument samples a roughly cylindrical volume at the surface of a solid material. Calculate the number of atoms sampled in a $1-\\mu \\mathrm{m}$-diameter by $1-\\mu \\mathrm{m}$-deep cylinder in the surface of solid copper. Assuming $\\text { density of copper }=8.93 \\mathrm{~g} / \\mathrm{cm}^{3}$ and $\\text { atomic mass of copper }=63.55 \\mathrm{amu}$.The unit of the answer is atoms.",
+ "response": "## Reasoning\n\nThe SEM samples a cylindrical volume: diameter = 1 μm, depth = 1 μm, so radius $r = 0.5\\;\\mu\\text{m}$.\n\n**1. Volume of the cylinder**\n\n$$V = \\pi r^{2} h = \\pi(0.5\\;\\mu\\text{m})^{2}(1\\;\\mu\\text{m}) = 0.25\\pi\\;\\mu\\text{m}^{3}$$\n\nConverting to cm³ ($1\\;\\mu\\text{m} = 10^{-4}\\,\\text{cm}$, so $1\\;\\mu\\text{m}^{3}=10^{-12}\\,\\text{cm}^{3}$):\n\n$$V = 0.25\\pi \\times 10^{-12}\\;\\text{cm}^{3} \\approx 7.854\\times10^{-13}\\;\\text{cm}^{3}$$\n\n**2. Mass of copper in that volume**\n\n$$m = \\rho V = 8.93 \\times 7.854\\times10^{-13} \\approx 7.01\\times10^{-12}\\;\\text{g}$$\n\n**3. Number of atoms**\n\n$$N = \\frac{m\\,N_{A}}{M} = \\frac{(7.01\\times10^{-12})(6.022\\times10^{23})}{63.55} \\approx 6.65\\times10^{10}$$\n\n$$\\boxed{6.65\\times10^{10}}$$",
+ "final_answer": "6.65\\times10^{10}",
+ "correct_answer": "6.64E+10",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "atoms"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e039",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_6.23",
+ "question_text": "The maximum modulus of elasticity for a copper crystal is 195 GPa . What tensile stress is required along the corresponding crystallographic direction in order to increase the interatomic separation distance by $0.05 \\%$ ? Give your answer as the value of tensile_stress.The unit of the answer is MPa.",
+ "response": "Using Hooke's law in the elastic regime, the tensile stress is:\n\n$$\\sigma = E \\cdot \\varepsilon = 195\\ \\text{GPa} \\times 0.0005 = 97.5\\ \\text{MPa}$$\n\nwhere the strain $\\varepsilon = 0.05\\% = 0.0005$.\n\n$$\\boxed{97.5}$$",
+ "final_answer": "97.5",
+ "correct_answer": "97.5",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

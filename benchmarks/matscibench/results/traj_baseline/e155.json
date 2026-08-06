@@ -1,0 +1,11 @@
+{
+ "tid": "e155",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.9",
+ "question_text": "A large plate is fabricated from a steel alloy that has a plane strain fracture toughness of $82.4 \\mathrm{MPa} \\sqrt{\\mathrm{m}}$ ( $75.0 \\mathrm{ksi} \\sqrt{\\mathrm{in}}$.). If the plate is exposed to a tensile stress of 345 MPa (50,000 psi) during service use, determine the minimum length of a surface crack that will lead to fracture. Assume a value of 1.0 for $Y$.The unit of the answer is mm.",
+ "response": "For a surface crack under tension, the fracture condition is:\n\n$$K_{Ic} = Y\\sigma\\sqrt{\\pi a}$$\n\nSolving for the critical crack length $a$:\n\n$$a = \\frac{1}{\\pi}\\left(\\frac{K_{Ic}}{Y\\sigma}\\right)^2 = \\frac{1}{\\pi}\\left(\\frac{82.4}{1.0\\times 345}\\right)^2$$\n\n$$a = \\frac{1}{\\pi}(0.23884)^2 = \\frac{0.05704}{\\pi} \\approx 0.01816\\ \\text{m} = 18.16\\ \\text{mm}$$\n\n$$\\boxed{18.16}$$",
+ "final_answer": "18.16",
+ "correct_answer": "18.2",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

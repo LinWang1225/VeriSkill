@@ -1,0 +1,11 @@
+{
+ "tid": "e136",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.40",
+ "question_text": "A steel alloy to be used for a spring application must have a modulus of resilience of at least 2.07 MPa (300 psi).  If the Young’s modulus of the steel is 207 GPa, what minimum yield strength must it have?The unit of the answer is MPa.",
+ "response": "## Solution\n\n**Given:**\n- Modulus of resilience: $U_r = 2.07 \\text{ MPa}$\n- Young's modulus: $E = 207 \\text{ GPa} = 207{,}000 \\text{ MPa}$\n\n**Relationship:** The modulus of resilience equals the strain energy per unit volume absorbed up to the elastic limit (yield point):\n\n$$U_r = \\frac{\\sigma_y^2}{2E}$$\n\n**Solving for yield strength:**\n\n$$\\sigma_y = \\sqrt{2 E U_r} = \\sqrt{2 \\times 207{,}000 \\times 2.07}$$\n\n$$\\sigma_y \\approx 925.7 \\text{ MPa}$$\n\nThis result makes physical sense: a spring steel typically has a high yield strength on the order of ~900 MPa, consistent with high-carbon spring steels (e.g., AISI 1070–1095).\n\n$$\\boxed{925.7}$$",
+ "final_answer": "925.7",
+ "correct_answer": "926",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e048",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_11.35",
+ "question_text": "How many grams of $\\mathrm{N}_2$ gas are consumed in forming 100 g of TiN by SHS? Give your answer as the value of grams_of_N2.The unit of the answer is g.",
+ "response": "The SHS (Self-propagating High-temperature Synthesis) reaction for forming titanium nitride is:\n\n$$\\mathrm{Ti} + \\tfrac{1}{2}\\,\\mathrm{N}_2 \\rightarrow \\mathrm{TiN}$$\n\n**Step 1: Molar masses**\n- $M_{\\mathrm{Ti}} = 47.867\\ \\mathrm{g/mol}$\n- $M_{\\mathrm{N}} = 14.007\\ \\mathrm{g/mol}$\n- $M_{\\mathrm{TiN}} = 47.867 + 14.007 = 61.874\\ \\mathrm{g/mol}$\n- $M_{\\mathrm{N}_2} = 28.014\\ \\mathrm{g/mol}$\n\n**Step 2: Moles of TiN formed**\n$$n_{\\mathrm{TiN}} = \\frac{100\\ \\mathrm{g}}{61.874\\ \\mathrm{g/mol}} = 1.6161\\ \\mathrm{mol}$$\n\n**Step 3: Moles of N₂ consumed** (1 mol TiN : ½ mol N₂)\n$$n_{\\mathrm{N}_2} = \\tfrac{1}{2}\\,n_{\\mathrm{TiN}} = 0.8081\\ \\mathrm{mol}$$\n\n**Step 4: Mass of N₂**\n$$m_{\\mathrm{N}_2} = 0.8081 \\times 28.014 = 22.64\\ \\mathrm{g}$$\n\n$$\\boxed{22.64}$$",
+ "final_answer": "22.64",
+ "correct_answer": "22.6",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g"
+}

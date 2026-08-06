@@ -1,0 +1,11 @@
+{
+ "tid": "e015",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 11.1",
+ "question_text": "In redesigning an automobile for a new model year, 25 kg of conventional steel parts are replaced by aluminum alloys of the same dimensions. Calculate the resulting mass savings for the new model, approximating the alloy densities by those for pure Fe and Al , respectively. Using $\\rho_{\\mathrm{Fe}}=7.87 \\mathrm{Mg} / \\mathrm{m}^{3}$ and $\\rho_{\\mathrm{Al}}=2.70 \\mathrm{Mg} / \\mathrm{m}^{3}$.The unit of the answer is kg.",
+ "response": "The steel parts have mass $m_{\\text{Fe}}=25$ kg, so their volume is $V = 25/\\rho_{\\text{Fe}}$. The replacement aluminum parts (same dimensions, hence same volume) have mass $m_{\\text{Al}} = V\\rho_{\\text{Al}} = 25\\,\\dfrac{\\rho_{\\text{Al}}}{\\rho_{\\text{Fe}}}$.\n\n$$\\Delta m = 25\\left(1 - \\frac{2.70}{7.87}\\right) \\approx 16.4\\ \\text{kg}$$\n\n$$\\boxed{16.4}$$",
+ "final_answer": "16.4",
+ "correct_answer": "16.3",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg"
+}

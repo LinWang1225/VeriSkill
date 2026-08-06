@@ -1,0 +1,11 @@
+{
+ "tid": "e061",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_15.37",
+ "question_text": "In designing the hull of a new fishing vessel to ensure corrosion protection, you find that a sacrificial anode of zinc provides an average corrosion current of 2 A over the period of 1 year. What mass of zinc is required to give this protection?The unit of the answer is kg.",
+ "response": "Using Faraday's law of electrolysis, $m = \\frac{M I t}{n F}$:\n\n- $M_{\\text{Zn}} = 65.38\\ \\text{g/mol}$, $n = 2$ (Zn → Zn²⁺ + 2e⁻), $F = 96485\\ \\text{C/mol}$\n- $I = 2\\ \\text{A}$, $t = 1\\ \\text{yr} = 365\\times24\\times3600 = 3.1536\\times10^{7}\\ \\text{s}$\n- Total charge $Q = It = 6.3072\\times10^{7}\\ \\text{C}$\n- $m = \\frac{65.38 \\times 6.3072\\times10^{7}}{2 \\times 96485} \\approx 21369\\ \\text{g} \\approx 21.37\\ \\text{kg}$\n\n$$\\boxed{21.37}$$",
+ "final_answer": "21.37",
+ "correct_answer": "21.8",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg"
+}

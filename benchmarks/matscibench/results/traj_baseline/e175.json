@@ -1,0 +1,11 @@
+{
+ "tid": "e175",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 18.6",
+ "question_text": "The magnetization within a bar of some metal alloy is $1.2 \\times 10^{6} \\mathrm{~A} / \\mathrm{m}$ at an H field of $200 \\mathrm{~A} / \\mathrm{m}$. Compute the following: (a) the magnetic susceptibility, (b) the permeability, and (c) the magnetic flux density within this material. \n\nGive your answer as a tuple (the magnetic susceptibility, the permeability, the magnetic flux density).The units of each required answer are (, H/m, tesla), respectively.",
+ "response": "## Solution\n\n**Given:** $M = 1.2\\times10^{6}\\,\\text{A/m}$, $H = 200\\,\\text{A/m}$, $\\mu_0 = 4\\pi\\times10^{-7}\\,\\text{H/m}$\n\n**(a) Magnetic susceptibility:**\n$$\\chi_m = \\frac{M}{H} = \\frac{1.2\\times10^{6}}{200} = 6000$$\n\n**(b) Permeability:**\n$$\\mu = \\mu_0(1+\\chi_m) = 4\\pi\\times10^{-7}\\times(6001) \\approx 7.54\\times10^{-3}\\,\\text{H/m}$$\n\n**(c) Magnetic flux density:**\n$$B = \\mu H = \\mu_0(H+M) \\approx 1.508\\,\\text{T}$$\n\n$$\\boxed{(6000,\\ 0.00754,\\ 1.508)}$$",
+ "final_answer": "(6000,\\ 0.00754,\\ 1.508)",
+ "correct_answer": "(6000, 7.54e-3, 1.51)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(, H/m, tesla)"
+}

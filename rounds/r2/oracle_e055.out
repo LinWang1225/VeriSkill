@@ -1,0 +1,2 @@
+{"item": "e055", "oracle_pass": false, "evidence": "checker: Rule judge for NUM with 5% relative tolerance: parsed model=[0.5], reference=[2.76]; mismatches: #1: 0.5 != 2.76 (relative error 0.8188) ", "skill_hash": "0062912b9690", "truth_source": "checker", "skill_result": "0.5 ppm", "failure_reason": "题面提到\"pass\"（zone refining 的区熔行程）并问\"previous pass\"液体的浓度，应按区熔逐 pass 递推处理：纯净端每经过一道 pass 固体浓度乘以 k₀，从当前 1 ppb 固体反推\"上一道 pass\"的液体需跨越两步分凝关系——先反推上一道 pass 的固体浓度，再反推该 pass 对应的液体浓度。该解答只代了一次 C_s = k₀·C_l，得到的其实是产生 1 ppb 固体的那道 pass（当前 pass）的液体浓度，而非\"上一道 pass\"的液体浓度，少除了一次 k₀。"}
+EXIT=0

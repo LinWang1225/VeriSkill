@@ -1,0 +1,11 @@
+{
+ "tid": "m082",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.41",
+ "question_text": "For a BCC iron-carbon alloy that contains $0.1 \\mathrm{wt} \\% C$, calculate the fraction of unit cells that contain carbon atoms.\n$A_{\\mathrm{C}}=12.011 \\mathrm{~g} / \\mathrm{mol}$\n$A_{\\mathrm{Fe}}=55.85 \\mathrm{~g} / \\mathrm{mol}$\n$\\varrho_{\\mathrm{C}}=2.25 \\mathrm{~g} / \\mathrm{cm}^3$ \n$\\varrho_{\\mathrm{Fe}}=7.87 \\mathrm{~g} / \\mathrm{cm}^3$The unit of the answer is atoms/unit cell.",
+ "response": "## Reasoning\n\nFor a BCC iron-carbon alloy with 0.1 wt% C, I determine the number of carbon atoms per unit cell. At this low carbon concentration, the fraction of unit cells containing a carbon atom equals the number of carbon atoms per unit cell (each carbon occupies an interstitial site in one unit cell).\n\n**Step 1 — Basis: 100 g of alloy**\n- Mass of C = 0.1 g, Mass of Fe = 99.9 g\n\n**Step 2 — Number of atoms**\n$$N_C = \\frac{m_C}{A_C}N_A = \\frac{0.1}{12.011}N_A, \\quad N_{Fe} = \\frac{99.9}{55.85}N_A$$\n\n**Step 3 — Volume of alloy** (using partial molar volumes from the given densities)\n$$V = \\frac{m_C}{\\rho_C} + \\frac{m_{Fe}}{\\rho_{Fe}} = \\frac{0.1}{2.25} + \\frac{99.9}{7.87} = 12.738\\ \\text{cm}^3$$\n\n**Step 4 — Atom densities**\n$$n_C = \\frac{N_C}{V}, \\quad n_{Fe} = \\frac{N_{Fe}}{V}$$\n\n**Step 5 — Unit cells per cm³** (BCC has 2 Fe atoms per unit cell)\n$$N_{\\text{cells}} = \\frac{n_{Fe}}{2}$$\n\n**Step 6 — Carbon atoms per unit cell**\n$$\\frac{n_C}{N_{\\text{cells}}} = \\frac{2\\,n_C}{n_{Fe}} = \\frac{2\\cdot(0.1/12.011)}{99.9/55.85} \\approx 9.31\\times10^{-3}$$\n\nSince the concentration is dilute, this equals the fraction of unit cells that contain a carbon atom.\n\n$$\\boxed{9.3 \\times 10^{-3}}$$",
+ "final_answer": "9.3 \\times 10^{-3}",
+ "correct_answer": "9.31E-03",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "atoms/unit cell"
+}

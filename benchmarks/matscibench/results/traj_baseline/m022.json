@@ -1,0 +1,11 @@
+{
+ "tid": "m022",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 13.8",
+ "question_text": "Estimate the resistivity of a copper $-0.06 \\mathrm{wt} \\%$ phosphorus alloy at $200^{\\circ} \\mathrm{C}$. Give your answer as the value of resistivity.The unit of the answer is Ω·m.",
+ "response": "## Solution\n\n**Approach: Matthiessen's Rule**\n\nFor a dilute alloy, the total resistivity separates into a temperature-dependent (thermal) part and a temperature-independent (impurity) part:\n\n$$\\rho_{\\text{total}}(T) = \\rho_{\\text{thermal}}(T) + \\rho_{\\text{impurity}}$$\n\n### Step 1 — Thermal contribution (pure Cu at 200°C)\n\nUsing pure copper properties (Callister Table 12.1):\n- $\\rho_{\\text{Cu}}(20°\\text{C}) = 1.7 \\times 10^{-8}\\ \\Omega\\cdot\\text{m}$\n- $\\alpha = 3.9 \\times 10^{-3}\\ (°\\text{C})^{-1}$\n\n$$\\rho_{\\text{thermal}}(200°\\text{C}) = 1.7\\times10^{-8}\\big[1 + 0.0039\\times(200-20)\\big] = 1.7\\times10^{-8}\\times 1.702 = 2.89\\times10^{-8}\\ \\Omega\\cdot\\text{m}$$\n\n### Step 2 — Impurity contribution (phosphorus, temperature-independent)\n\nFrom the resistivity-increment table for solutes in Cu, phosphorus contributes $0.134\\ \\mu\\Omega\\cdot\\text{m}$ per wt%:\n\n$$\\rho_{\\text{impurity}} = 0.134\\times10^{-6}\\ \\frac{\\Omega\\cdot\\text{m}}{\\text{wt\\%}} \\times 0.06\\ \\text{wt\\%} = 8.04\\times10^{-9}\\ \\Omega\\cdot\\text{m}$$\n\n### Step 3 — Total resistivity\n\n$$\\rho_{\\text{total}} = 2.89\\times10^{-8} + 0.80\\times10^{-8} \\approx 3.7\\times10^{-8}\\ \\Omega\\cdot\\text{m}$$\n\n**Sanity check:** At 20°C this alloy has $\\rho \\approx 2.5\\times10^{-8}\\ \\Omega\\cdot\\text{m}$, i.e., ~69% IACS — consistent with phosphorus-deoxidized copper at this P level.\n\n$$\\boxed{3.7 \\times 10^{-8}}$$",
+ "final_answer": "3.7 \\times 10^{-8}",
+ "correct_answer": "4.32E-08",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "Ω·m"
+}

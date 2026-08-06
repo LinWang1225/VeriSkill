@@ -1,0 +1,11 @@
+{
+ "tid": "e277",
+ "qid": "Physical_Metallurgy_Hosford_Example 8.1",
+ "question_text": "Equation $w=\\frac{\\mathrm{G} \\gamma^2}{2}=\\left(\\frac{1}{2}\\right) \\frac{\\mathrm{Gb}^2}{(2 \\pi r)^2}$ gives the energy/volume as a function of $r$. Calculate the distance from the core of a screw dislocation at which the energy/volume equals the heat of vaporization, $H_v$, and express this distance in terms of $r / \\mathrm{b}$. Evaluate this critical value of $r / \\mathrm{b}$ for copper. $\\rho=8.93 \\mathrm{mg} / \\mathrm{cm}^3, G=77 \\mathrm{GPa}, \\mathrm{b}=0.255 \\mathrm{~nm}, H_{\\mathrm{v}}=4.73 \\mathrm{MJ} / \\mathrm{kg}$.\n\nGive your answer as a tuple: (critical $r/b$, critical r of copper).The units of each required answer are (, nm), respectively.",
+ "response": "## Step-by-step solution\n\nThe energy per volume is:\n$$w = \\frac{1}{2}\\frac{Gb^2}{(2\\pi r)^2} = \\frac{Gb^2}{8\\pi^2 r^2}$$\n\nSetting $w = H_v$ (volumetric heat of vaporization) and solving for $r$:\n\n$$H_v = \\frac{Gb^2}{8\\pi^2 r^2} \\;\\Rightarrow\\; r^2 = \\frac{Gb^2}{8\\pi^2 H_v} \\;\\Rightarrow\\; \\frac{r}{b} = \\frac{1}{2\\pi}\\sqrt{\\frac{G}{2H_v}}$$\n\n**Unit conversion:** The given $H_v = 4.73$ MJ/kg is per unit mass, so the volumetric form is $H_v^{(vol)} = H_v \\cdot \\rho$:\n- $\\rho = 8.93\\;\\text{g/cm}^3 = 8930\\;\\text{kg/m}^3$\n- $H_v^{(vol)} = 4.73\\times10^6 \\times 8930 = 4.224\\times10^{10}\\;\\text{J/m}^3$\n- $G = 77\\times10^9\\;\\text{J/m}^3$\n\n**Evaluation:**\n$$\\frac{r}{b} = \\frac{1}{2\\pi}\\sqrt{\\frac{77\\times10^9}{2\\times 4.224\\times10^{10}}} = \\frac{1}{2\\pi}\\sqrt{0.9115} \\approx 0.152$$\n\n$$r = 0.152 \\times 0.255\\;\\text{nm} \\approx 0.0387\\;\\text{nm}$$\n\n$$\\boxed{(0.152,\\; 0.0387)}$$",
+ "final_answer": "(0.152,\\; 0.0387)",
+ "correct_answer": "(0.15, 0.04)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(, nm)"
+}

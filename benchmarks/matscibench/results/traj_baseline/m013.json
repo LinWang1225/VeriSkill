@@ -1,0 +1,11 @@
+{
+ "tid": "m013",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 10.1",
+ "question_text": "At $900^{\\circ} \\mathrm{C}$, growth rate, $\\dot{G}$, is a dominant term in the crystallization of a copper alloy. By dropping the system temperature to $400^{\\circ} \\mathrm{C}$, the growth rate drops six orders of magnitude and effectively reduces the crystallization rate to zero. Calculate the activation energy for selfdiffusion in this alloy system.The unit of the answer is kJ/mol.",
+ "response": "## Result\n\nPlugging in the values:\n\n$$Q = \\frac{6 \\times \\ln(10) \\times 8.314}{\\dfrac{1}{673} - \\dfrac{1}{1173}} = \\frac{6 \\times 2.3026 \\times 8.314}{0.001486 - 0.000853} \\approx 181{,}351 \\text{ J/mol}$$\n\n$$\\boxed{181}$$",
+ "final_answer": "181",
+ "correct_answer": "181",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "kJ/mol"
+}

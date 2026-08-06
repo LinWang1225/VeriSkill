@@ -1,0 +1,11 @@
+{
+ "tid": "e145",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.14",
+ "question_text": "Consider a single crystal of nickel oriented such that a tensile stress is applied along a [001] direction. If slip occurs on a (111) plane and in a [ $\\overline{1} 01]$ direction and is initiated at an applied tensile stress of 13.9 MPa (2020 psi), compute the critical resolved shear stress.The unit of the answer is MPa.",
+ "response": "## Solution\n\nThis is a **Schmid's law** problem. The critical resolved shear stress is:\n\n$$\\tau_{\\text{CRSS}} = \\sigma \\cos\\phi \\cos\\lambda$$\n\nwhere:\n- $\\sigma = 13.9$ MPa (applied tensile stress)\n- $\\phi$ = angle between the tensile axis $[001]$ and the slip-plane normal $(111)$\n- $\\lambda$ = angle between the tensile axis $[001]$ and the slip direction $[\\bar{1}01]$\n\n**Compute $\\cos\\phi$:**\n\n$$\\cos\\phi = \\frac{[001]\\cdot[111]}{|[001]|\\,|[111]|} = \\frac{0+0+1}{(1)(\\sqrt{3})} = \\frac{1}{\\sqrt{3}}$$\n\n**Compute $\\cos\\lambda$:**\n\n$$\\cos\\lambda = \\frac{[001]\\cdot[\\bar{1}01]}{|[001]|\\,|[\\bar{1}01]|} = \\frac{0+0+1}{(1)(\\sqrt{2})} = \\frac{1}{\\sqrt{2}}$$\n\n**Apply Schmid's law:**\n\n$$\\tau_{\\text{CRSS}} = 13.9 \\times \\frac{1}{\\sqrt{3}} \\times \\frac{1}{\\sqrt{2}} = \\frac{13.9}{\\sqrt{6}} \\approx 5.67 \\text{ MPa}$$\n\n$$\\boxed{5.67}$$",
+ "final_answer": "5.67",
+ "correct_answer": "5.68",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e033",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_2.1",
+ "question_text": "A gold O-ring is used to form a gastight seal in a high-vacuum chamber. The ring is formed from a $100-\\mathrm{mm}$ length of $1.5-\\mathrm{mm}$-diameter wire. Calculate the number of gold atoms in the O-ring. Give your answer as the value of number_of_gold_atoms.The unit of the answer is atoms.",
+ "response": "## Reasoning\n\n**1. Geometry — volume of the wire**\n\nThe O-ring is a length of cylindrical wire:\n- Length $L = 100\\ \\text{mm} = 10\\ \\text{cm}$\n- Diameter $d = 1.5\\ \\text{mm}$, so radius $r = 0.75\\ \\text{mm} = 0.075\\ \\text{cm}$\n\n$$V = \\pi r^2 L = \\pi(0.075\\ \\text{cm})^2(10\\ \\text{cm}) = 0.1767\\ \\text{cm}^3$$\n\n**2. Mass of gold**\n\nUsing the density of gold, $\\rho = 19.32\\ \\text{g/cm}^3$:\n\n$$m = \\rho V = 19.32 \\times 0.1767 = 3.414\\ \\text{g}$$\n\n**3. Moles of gold**\n\nMolar mass of Au $= 196.97\\ \\text{g/mol}$:\n\n$$n = \\frac{3.414}{196.97} = 0.01733\\ \\text{mol}$$\n\n**4. Number of atoms**\n\n$$N = n \\times N_A = 0.01733 \\times 6.022\\times10^{23} \\approx 1.04\\times10^{22}\\ \\text{atoms}$$\n\n$$\\boxed{1.04\\times10^{22}}$$",
+ "final_answer": "1.04\\times10^{22}",
+ "correct_answer": "1.04E+22",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "atoms"
+}

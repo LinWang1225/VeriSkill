@@ -1,0 +1,11 @@
+{
+ "tid": "e176",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 18.20",
+ "question_text": "An iron bar magnet having a coercivity of $7000 \\mathrm{~A} / \\mathrm{m}$ is to be demagnetized. If the bar is inserted within a cylindrical wire coil 0.25 m long and having 150 turns, what electric current is required to generate the necessary magnetic field?The unit of the answer is A.",
+ "response": "The magnetic field intensity \\(H\\) inside a long solenoid is \\(H = \\frac{NI}{L}\\). To demagnetize the bar, \\(H\\) must equal the coercivity \\(H_c = 7000\\ \\mathrm{A/m}\\).\n\n\\[\nI = \\frac{H_c L}{N} = \\frac{7000 \\times 0.25}{150} = \\frac{1750}{150} \\approx 11.67\\ \\mathrm{A}\n\\]\n\n\\[\n\\boxed{11.67}\n\\]",
+ "final_answer": "11.67",
+ "correct_answer": "11.7",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "A"
+}

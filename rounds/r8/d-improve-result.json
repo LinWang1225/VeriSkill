@@ -1,0 +1,11 @@
+{
+  "edits": [
+    {"file": "workspace/critics/d-matsci-ratio-basis.md", "action": "add_rule", "rule_id": "R-d-matsci-ratio-basis-001",
+     "summary": "新建 ratio-basis 家族：判别百分比/收缩率等量的分母是否选对。首条子情形覆盖凝固收缩率——正确分母是 V_solid=m/ρ 而非 V_nominal。"}
+  ],
+  "narrow_rule": [],
+  "fn_resolved": ["e239"],
+  "unjudgeable": [],
+  "needs_human": false,
+  "summary": "唯一 FN e239：凝固收缩率错用 V_nominal 作分母。新建 critic d-matsci-ratio-basis，soft 起步挂 r8#e239。"
+}

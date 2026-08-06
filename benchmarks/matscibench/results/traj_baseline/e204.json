@@ -1,0 +1,11 @@
+{
+ "tid": "e204",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 2-1",
+ "question_text": "Calculate the number of atoms in 100 g of silver (Ag). The atomic mass of silver is $107.868 \\mathrm{~g} / \\mathrm{mol}$ and the Avogadro constant is $6.022 \\times 10^{23} \\mathrm{atoms} / \\mathrm{mol}$.",
+ "response": "The number of atoms is found from:\n\n$$N = \\frac{m}{M}\\,N_A = \\frac{100\\ \\mathrm{g}}{107.868\\ \\mathrm{g/mol}}\\times 6.022\\times10^{23}\\ \\mathrm{atoms/mol} \\approx 5.58\\times10^{23}\\ \\mathrm{atoms}$$\n\n$$\\boxed{5.58 \\times 10^{23}}$$",
+ "final_answer": "5.58 \\times 10^{23}",
+ "correct_answer": "5.58E+23",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

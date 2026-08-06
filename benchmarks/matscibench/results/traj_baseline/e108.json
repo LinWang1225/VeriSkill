@@ -1,0 +1,11 @@
+{
+ "tid": "e108",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.59",
+ "question_text": "Determine the ASTM grain size number if 25 grains per square inch are measured at a magnification of $75 \\times$.",
+ "response": "## Solution\n\nThe ASTM grain size number $G$ is defined by the relation measured at **100× magnification**:\n\n$$N_{100} = 2^{G-1}$$\n\nwhere $N_{100}$ is the number of grains per square inch at 100×.\n\n**Step 1: Convert the measured grain count to 100× magnification.**\n\nSince the grains-per-area scales with the square of magnification:\n\n$$N_{100} = N_M \\left(\\frac{M}{100}\\right)^2 = 25\\left(\\frac{75}{100}\\right)^2 = 25(0.5625) = 14.0625$$\n\n**Step 2: Solve for $G$.**\n\n$$G = \\log_2 N_{100} + 1 = \\log_2(14.0625) + 1 \\approx 3.814 + 1 = 4.81$$\n\n$$\\boxed{4.81}$$",
+ "final_answer": "4.81",
+ "correct_answer": "4.8",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

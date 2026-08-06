@@ -1,0 +1,11 @@
+{
+ "tid": "e111",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.66",
+ "question_text": "What is the composition, in weight percent, of an alloy that consists of 94.1 at $\\% \\mathrm{Ag}$ and 5.9 at $\\% \\mathrm{Cu}$ ? The atomic weights for Ag and Cu are $107.87 \\mathrm{~g} / \\mathrm{mol}$ and $63.55 \\mathrm{~g} / \\mathrm{mol}$, respectively.\n\nGive your answer as a tuple (the wight percent of Ag, the weight percent of Cu).The units of each required answer are (wt%, wt%), respectively.",
+ "response": "Converting from atomic percent to weight percent:\n\nFor a basis of 100 atoms: 94.1 atoms of Ag and 5.9 atoms of Cu.\n\n- Mass of Ag = 94.1 × 107.87 = 10,150.27 g\n- Mass of Cu = 5.9 × 63.55 = 374.95 g\n- Total mass = 10,525.22 g\n\n$$w_{\\text{Ag}} = \\frac{10150.27}{10525.22}\\times 100 \\approx 96.44\\%$$\n$$w_{\\text{Cu}} = \\frac{374.95}{10525.22}\\times 100 \\approx 3.56\\%$$\n\n$$\\boxed{(96.44,\\ 3.56)}$$",
+ "final_answer": "(96.44,\\ 3.56)",
+ "correct_answer": "(96.4, 3.6)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(wt%, wt%)"
+}

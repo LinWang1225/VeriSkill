@@ -1,0 +1,11 @@
+{
+ "tid": "e029",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 9.1",
+ "question_text": "Calculate the degrees of freedom at a constant pressure of 1 atm for (a) a single-phase solid solution of Sn dissolved in the solvent Pb , (b) pure Pb below its melting point, and (c) pure Pb at its melting point. Give your answer as a tuple: (degrees_of_freedom_solid_solution, degrees_of_freedom_pure_Pb_below_melting, degrees_of_freedom_pure_Pb_at_melting).",
+ "response": "## Reasoning\n\nWe use the **Gibbs phase rule** at constant pressure:\n\n$$F = C - P + 1$$\n\nwhere $F$ = degrees of freedom, $C$ = number of components, $P$ = number of phases. (The \"+1\" rather than \"+2\" accounts for fixing the pressure at 1 atm.)\n\n### (a) Single-phase solid solution of Sn dissolved in Pb\n- Components: **2** (Sn and Pb)\n- Phases: **1** (single solid solution)\n- $F = 2 - 1 + 1 = \\mathbf{2}$\n\n### (b) Pure Pb below its melting point\n- Components: **1** (pure Pb)\n- Phases: **1** (solid only)\n- $F = 1 - 1 + 1 = \\mathbf{1}$\n\n### (c) Pure Pb at its melting point\n- Components: **1** (pure Pb)\n- Phases: **2** (solid and liquid coexist in equilibrium)\n- $F = 1 - 2 + 1 = \\mathbf{0}$\n\nAt the melting point, the temperature is fixed (invariant point), consistent with zero degrees of freedom.\n\n$$\\boxed{(2,\\, 1,\\, 0)}$$",
+ "final_answer": "(2,\\, 1,\\, 0)",
+ "correct_answer": "(2, 1, 0)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

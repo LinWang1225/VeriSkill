@@ -1,0 +1,11 @@
+{
+ "tid": "e173",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 17.26",
+ "question_text": "A steel wire is stretched so that it carries a tensile stress of 70 MPa at 20 °C. If the length of the wire is then held fixed and the temperature is raised, what temperature must be reached to reduce the tensile stress to 17 MPa?  Use E = 207 GPa and α = 12.0×10⁻⁶ °C⁻¹ for the steel.The unit of the answer is C.",
+ "response": "## Reasoning\n\nWhen the wire's length is held fixed while temperature rises, the natural thermal expansion is suppressed. This generates a compressive thermal stress that reduces the existing tensile stress.\n\n**Strain balance (total strain = 0 since length is fixed):**\n\n$$\\frac{\\Delta\\sigma}{E} + \\alpha\\,\\Delta T = 0$$\n\nThe stress *reduction* is therefore:\n\n$$\\Delta\\sigma = E\\,\\alpha\\,\\Delta T$$\n\n**Given:**\n- Initial tensile stress = 70 MPa, final = 17 MPa → reduction = 53 MPa\n- $E = 207\\ \\text{GPa}$, $\\alpha = 12.0\\times10^{-6}\\ ^\\circ\\text{C}^{-1}$\n\n**Solve for ΔT:**\n\n$$\\Delta T = \\frac{53\\times10^{6}}{(207\\times10^{9})(12\\times10^{-6})} = \\frac{53\\times10^{6}}{2.484\\times10^{6}} \\approx 21.34\\ ^\\circ\\text{C}$$\n\n**Final temperature:**\n\n$$T = 20 + 21.34 \\approx 41.34\\ ^\\circ\\text{C}$$\n\n$$\\boxed{41.3}$$",
+ "final_answer": "41.3",
+ "correct_answer": "41.3",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "C"
+}

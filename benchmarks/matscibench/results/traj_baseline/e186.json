@@ -1,0 +1,11 @@
+{
+ "tid": "e186",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 3.1",
+ "question_text": "The rate of corrosion of a steel tank is measured regularly and is approximately constant, 50 mg/dm²·day.  Assuming the density of steel is 7.8 g/cm³, what is the useful life of the tank if the initial thickness is 10 mm and the minimum safe thickness is 6 mm?  \n\nGive your answer as a tuple (thickness loss per day, useful life days).The units of each required answer are (mm/day, days), respectively.",
+ "response": "## Reasoning\n\n**Step 1 — Convert corrosion rate to a thickness-loss rate**\n\nThe corrosion rate is a mass loss per unit area per unit time: $50\\ \\text{mg/dm}^2\\cdot\\text{day}$.\n\nConvert to consistent units (g, cm²):\n$$\\frac{50\\ \\text{mg}}{\\text{dm}^2\\cdot\\text{day}} = \\frac{0.050\\ \\text{g}}{100\\ \\text{cm}^2\\cdot\\text{day}} = 5\\times10^{-4}\\ \\text{g/cm}^2\\cdot\\text{day}$$\n\nThickness loss = (mass loss per area) ÷ density:\n$$\\Delta h = \\frac{5\\times10^{-4}\\ \\text{g/cm}^2\\cdot\\text{day}}{7.8\\ \\text{g/cm}^3} = 6.410\\times10^{-5}\\ \\text{cm/day}$$\n\nConvert cm → mm (×10):\n$$\\boxed{\\text{thickness loss} = 6.41\\times10^{-4}\\ \\text{mm/day} \\approx 0.000641\\ \\text{mm/day}}$$\n\n**Step 2 — Useful life**\n\nAllowable thickness loss:\n$$\\Delta t = 10\\ \\text{mm} - 6\\ \\text{mm} = 4\\ \\text{mm}$$\n\n$$t_{\\text{life}} = \\frac{4\\ \\text{mm}}{6.410\\times10^{-4}\\ \\text{mm/day}} = 6240\\ \\text{days}$$\n\n(Exact: $\\frac{4}{5/7800} = \\frac{4\\times7800}{5} = 6240$.)\n\n## Final Answer\n\n$$\\boxed{(0.000641,\\ 6240)}$$",
+ "final_answer": "(0.000641,\\ 6240)",
+ "correct_answer": "(6.41e-4, 6.24e3)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(mm/day, days)"
+}

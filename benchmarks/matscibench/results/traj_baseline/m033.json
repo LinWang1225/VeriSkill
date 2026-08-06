@@ -1,0 +1,11 @@
+{
+ "tid": "m033",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_8.33",
+ "question_text": "In doing x-radiography of steel, assume the film can detect a variation in radiation intensity represented by $\\Delta I / I_0=0.001$. What thickness variation could be detected using this system for the inspection of a $12.5-\\mathrm{mm}$-thick plate of steel using a $100-\\mathrm{keV}$ beam? Give your answer as a tuple: (thickness_variation_positive, thickness_variation_negative).The units of each required answer are (mm, mm), respectively.",
+ "response": "## Solution\n\n**Governing law (Beer–Lambert):** The transmitted intensity through thickness $x$ is\n\n$$I = I_0\\, e^{-\\mu x}$$\n\nwhere $I_0$ is the incident intensity and $\\mu$ is the linear attenuation coefficient.\n\n**Thickness variation → intensity variation.** For a small thickness change $\\Delta x$ about the nominal thickness $x=12.5\\text{ mm}$,\n\n$$\\Delta I = I_0 e^{-\\mu x}\\!\\left(e^{-\\mu\\Delta x}-1\\right) \\approx -I_0\\, e^{-\\mu x}\\,\\mu\\,\\Delta x$$\n\n$$\\frac{\\Delta I}{I_0} = -\\mu\\,\\Delta x\\, e^{-\\mu x}$$\n\n**Attenuation coefficient for steel (~iron) at 100 keV.** From NIST data, the mass attenuation coefficient of Fe at 0.1 MeV is $\\mu/\\rho = 0.372\\text{ cm}^2/\\text{g}$. With $\\rho = 7.87\\text{ g/cm}^3$,\n\n$$\\mu = 0.372 \\times 7.87 = 2.928\\text{ cm}^{-1} = 0.2928\\text{ mm}^{-1}$$\n\n**Solve for $\\Delta x$** with $|\\Delta I/I_0| = 0.001$:\n\n$$|\\Delta x| = \\frac{0.001}{\\mu\\, e^{-\\mu x}} = \\frac{0.001}{0.2928 \\times e^{-0.2928\\times 12.5}} = \\frac{0.001}{0.2928 \\times 0.0257} \\approx 0.133\\text{ mm}$$\n\nThe detectable thickness variation is symmetric (a thicker region reduces transmitted intensity, a thinner region increases it), giving both signs.\n\n$$\\boxed{(0.133,\\,-0.133)}$$",
+ "final_answer": "(0.133,\\,-0.133)",
+ "correct_answer": "(0.14, -0.13)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(mm, mm)"
+}

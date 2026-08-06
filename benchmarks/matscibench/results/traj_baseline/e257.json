@@ -1,0 +1,11 @@
+{
+ "tid": "e257",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 23-6",
+ "question_text": "Suppose 10 g of $\\mathrm{Sn}^{2+}$ are dissolved in 1000 ml of water to produce an electrolyte. Calculate the electrode potential of the tin half-cell.The unit of the answer is V.",
+ "response": "## Reasoning\n\nThe tin half-cell reaction is:\n\n$$\\mathrm{Sn^{2+} + 2e^- \\rightarrow Sn(s)}, \\qquad E^\\circ = -0.14\\ \\mathrm{V}$$\n\n**1. Molar concentration of Sn²⁺**\n\nMolar mass of Sn ≈ 118.71 g/mol.\n\n$$n_{\\mathrm{Sn^{2+}}} = \\frac{10\\ \\mathrm{g}}{118.71\\ \\mathrm{g/mol}} = 0.08424\\ \\mathrm{mol}$$\n\nDissolved in 1000 mL = 1 L, so\n\n$$[\\mathrm{Sn^{2+}}] = 0.08424\\ \\mathrm{M}$$\n\n**2. Nernst equation**\n\nFor the reduction half-reaction (solid Sn has activity 1, n = 2):\n\n$$E = E^\\circ + \\frac{0.0592}{n}\\log[\\mathrm{Sn^{2+}}]$$\n\n$$E = -0.14 + \\frac{0.0592}{2}\\log(0.08424)$$\n\n$$\\log(0.08424) = -1.0746$$\n\n$$E = -0.14 + 0.0296(-1.0746) = -0.14 - 0.0318 = -0.1718\\ \\mathrm{V}$$\n\n$$\\boxed{-0.172}$$",
+ "final_answer": "-0.172",
+ "correct_answer": "-0.172",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "V"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m009",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 6.9",
+ "question_text": "A Brinell hardness measurement is made on a ductile iron (100-70-03, air-quenched) using a 10-mm-diameter sphere of tungsten carbide. A load of $3,000 \\mathrm{~kg}$ produces a $3.91-\\mathrm{mm}$-diameter impression in the iron surface. Calculate the BHN of this alloy. (The correct units for the Brinell equation of Table are kilograms for load and millimeters for diameters.)\n\nRefer to Table:\n\\begin{tabular}{|c|c|c|}\n\\hline \\multicolumn{3}{|l|}{Common Hardness Tests} \\\\\n\\hline Test & Indenter & Hardness formula \\\\\n\\hline \\multirow[t]{3}{*}{Brinell} & \\multirow[t]{3}{*}{Steel or tungsten carbide sphere} & $$\n\\mathrm{BHN}=\\frac{2 P}{\\pi D\\left[D-\\sqrt{D^2-d^2}\\right]}\n$$ \\\\\n\\hline & & where $P=$ load \\\\\n\\hline & & $$\n\\begin{aligned}\n& D=\\text { sphere diameter }=10 \\mathrm{~mm} \\\\\n& d=\\text { indent diameter (in } \\mathrm{mm} \\text { ) }\n\\end{aligned}\n$$ \\\\\n\\hline \\multicolumn{3}{|l|}{Rockwell type} \\\\\n\\hline A & Diamond cone under 60 kg load & $R_A=100-500 t$ \\\\\n\\hline B & $1 / 16 \\mathrm{in}$. dia. steel sphere under 100 kg load & $R_B=130-500 t$ \\\\\n\\hline C & Diamond cone under 150 kg load & $R_C=100-500 t$ \\\\\n\\hline D & Diamond cone under 100 kg load & $R_D=100-500 t$ \\\\\n\\hline E & $1 / 8 \\mathrm{in}$. dia. steel sphere under 100 kg load & $R_E=130-500 t$ \\\\\n\\hline F & $1 / 16 \\mathrm{in}$. dia. steel sphere under 60 kg load & $R_F=130-500 t$ \\\\\n\\hline G & $1 / 16 \\mathrm{in}$. dia. steel sphere under 150 kg load & $R_G=130-500 t$ \\\\\n\\hline \\multicolumn{3}{|l|}{with, in all cases, $t=$ depth of indentation (in mm )} \\\\\n\\hline\n\\end{tabular}",
+ "response": "Using the Brinell formula:\n\n$$\\mathrm{BHN}=\\frac{2P}{\\pi D\\left[D-\\sqrt{D^2-d^2}\\right]}$$\n\nwith $P=3000$ kg, $D=10$ mm, and $d=3.91$ mm:\n\n$$\\mathrm{BHN}=\\frac{2(3000)}{\\pi(10)\\left[10-\\sqrt{10^2-3.91^2}\\right]}=\\frac{6000}{\\pi(10)\\left[10-\\sqrt{100-15.2881}\\right]}$$\n\n$$=\\frac{6000}{\\pi(10)\\left[10-\\sqrt{84.7119}\\right]}=\\frac{6000}{\\pi(10)(10-9.2039)}\\approx 239.9$$\n\n$$\\boxed{240}$$",
+ "final_answer": "240",
+ "correct_answer": "240",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

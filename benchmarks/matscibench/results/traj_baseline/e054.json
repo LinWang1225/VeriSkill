@@ -1,0 +1,11 @@
+{
+ "tid": "e054",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_13.27",
+ "question_text": "If progress in increasing $T_c$ for superconductors had continued at the linear rate followed through 1975, by what year would a $T_c$ of 95 K be achieved? Give your answer as the value of year.",
+ "response": "Based on my analysis, this is a classic materials science problem that requires fitting a linear trend to the historical superconductor $T_c$ record data up to 1975 and extrapolating to find when $T_c = 95$ K would be reached.\n\n## Approach\n\nThe historical record-high $T_c$ values through 1975 are:\n\n| Year | Material | $T_c$ (K) |\n|------|----------|-----------|\n| 1911 | Hg | 4.2 |\n| 1913 | Pb | 7.2 |\n| 1929 | Nb | 9.2 |\n| 1941 | NbN | 15.0 |\n| 1953 | V₃Si | 17.1 |\n| 1954 | Nb₃Sn | 18.1 |\n| 1962 | — | 18.5 |\n| 1968 | — | 20.8 |\n| 1973 | Nb₃Ge | 23.2 |\n\n**Step 1: Fit a linear trend** $T_c = a + b \\cdot \\text{year}$ using least-squares regression through these data points.\n\n**Step 2: Solve for the year when $T_c = 95$ K.**\n\n## Calculation\n\nThe linear regression yields:\n- Slope: $b \\approx 0.2802$ K/year  \n- Intercept: $a \\approx -530.18$\n\nSetting $T_c = 95$ K:\n\n$$95 = -530.18 + 0.2802 \\times \\text{year}$$\n\n$$\\text{year} = \\frac{95 + 530.18}{0.2802} \\approx 2231$$\n\nThis result makes physical sense: the pre-1975 rate of progress was only ~0.28 K/year, so reaching 95 K would have taken until well beyond the 22nd century. The actual discovery of 95 K superconductors (YBCO, 1987) represented a dramatic acceleration far exceeding this historical linear trend — precisely the point of the problem.\n\n$$\\boxed{2231}$$",
+ "final_answer": "2231",
+ "correct_answer": "2210",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

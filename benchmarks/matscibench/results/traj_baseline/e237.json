@@ -1,0 +1,11 @@
+{
+ "tid": "e237",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 6-50",
+ "question_text": "A Brinell hardness measurement, using a $10-\\mathrm{mm}$-diameter indenter and a 500 kg load, produces an indentation of 4.5 mm on an aluminum plate. Determine the Brinell hardness number $(\\mathrm{HB})$ of the metal. Give your answer as the value of Brinell_hardness_number.The unit of the answer is kg/mm².",
+ "response": "The Brinell hardness number is given by:\n\n$$\\mathrm{HB} = \\frac{2P}{\\pi D\\left(D - \\sqrt{D^2 - d^2}\\right)}$$\n\nwith $P = 500$ kg, $D = 10$ mm, $d = 4.5$ mm:\n\n$$\\mathrm{HB} = \\frac{2(500)}{\\pi(10)\\left(10 - \\sqrt{10^2 - 4.5^2}\\right)} \\approx 29.76$$\n\n$$\\boxed{29.76}$$",
+ "final_answer": "29.76",
+ "correct_answer": "29.8",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg/mm²"
+}

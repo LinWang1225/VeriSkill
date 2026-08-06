@@ -1,0 +1,11 @@
+{
+ "tid": "e213",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 6-1",
+ "question_text": "Convert the change in length data in Table to engineering stress and strain for the 1000-lb load. Give your answer as a tuple (Stress (psi), Strain (in./in.)).\n\nRefer to Table:\n\\begin{tabular}{|l|l|l|l|}\n\\hline \\multicolumn{4}{|l|}{TABLE 6-1 The results of a tensile test of a 0.505-in. diameter aluminum alloy test bar, initial length $\\left(l_0\\right)=2 \\mathrm{in}$.} \\\\\n\\hline \\multirow[b]{2}{*}{Load (lb)} & \\multirow[b]{2}{*}{Change in Length (in.)} & \\multicolumn{2}{|c|}{Calculated} \\\\\n\\hline & & Stress (psi) & Strain (in./in.) \\\\\n\\hline 0 & 0.000 & 0 & 0 \\\\\n\\hline 1000 & 0.001 & 4,993 & 0.0005 \\\\\n\\hline 3000 & 0.003 & 14,978 & 0.0015 \\\\\n\\hline 5000 & 0.005 & 24,963 & 0.0025 \\\\\n\\hline 7000 & 0.007 & 34,948 & 0.0035 \\\\\n\\hline 7500 & 0.030 & 37,445 & 0.0150 \\\\\n\\hline 7900 & 0.080 & 39,442 & 0.0400 \\\\\n\\hline 8000 (maximum load) & 0.120 & 39,941 & 0.0600 \\\\\n\\hline 7950 & 0.160 & 39,691 & 0.0800 \\\\\n\\hline 7600 (fracture) & 0.205 & 37,944 & 0.1025 \\\\\n\\hline\n\\end{tabular}The units of each required answer are (psi, in./in), respectively.",
+ "response": "Stress = Load / Area, with area $A = \\pi(d/2)^2 = \\pi(0.2525)^2 \\approx 0.2003\\ \\text{in}^2$, giving $\\sigma = 1000/A \\approx 4993$ psi. Strain = $\\Delta l / l_0 = 0.001/2 = 0.0005$ in./in.\n\n$$\\boxed{(4993,\\ 0.0005)}$$",
+ "final_answer": "(4993,\\ 0.0005)",
+ "correct_answer": "(4993, 0.0005)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(psi, in./in)"
+}

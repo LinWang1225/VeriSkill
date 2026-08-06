@@ -1,0 +1,11 @@
+{
+ "tid": "e260",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 3.4",
+ "question_text": "Copper has an atomic radius of 0.128 nm, an FCC crystal structure, and an atomic weight of 63.5 g/mol. Compute its theoretical density.The unit of the answer is g/cm^3.",
+ "response": "For an FCC crystal, the unit cell contains $n=4$ atoms and the lattice parameter is $a=2R\\sqrt{2}$. Using\n\n$$\\rho=\\frac{nA}{V_c N_A}=\\frac{4\\cdot 63.5}{(2R\\sqrt{2})^3\\cdot 6.022\\times10^{23}}$$\n\nwith $R=0.128\\,\\text{nm}=1.28\\times10^{-8}\\,\\text{cm}$:\n\n$$\\boxed{8.89}$$",
+ "final_answer": "8.89",
+ "correct_answer": "8.89",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g/cm^3"
+}

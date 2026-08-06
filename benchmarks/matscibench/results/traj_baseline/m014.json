@@ -1,0 +1,11 @@
+{
+ "tid": "m014",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 14.12",
+ "question_text": "In the text, the calculated magnetic moment of a unit cell of magnetite $\\left(32 \\mu_{B}\\right)$ was found to be close to the measured value of $32.8 \\mu_{B}$. Make a similar calculation for nickel ferrite, which has a measured value of $18.4 \\mu_{B}$.\n\nRefer to Table:\n\\begin{tabular}{|l|l|}\n\\hline \\multicolumn{2}{|c|}{Magnetic Moment of Various Transition Metal Ions} \\\\\n\\hline Ion & Moment ( $\\left.\\mu_B\\right)^{\\text {a }}$ \\\\\n\\hline $\\mathrm{Mn}^{2+}$ & 5 \\\\\n\\hline $\\mathrm{Fe}^{2+}$ & 4 \\\\\n\\hline $\\mathrm{Fe}^{3+}$ & 5 \\\\\n\\hline $\\mathrm{Co}^{2+}$ & 3 \\\\\n\\hline $\\mathrm{Ni}^{2+}$ & 2 \\\\\n\\hline $\\mathrm{Cu}^{2+}$ & 1 \\\\\n\\hline\n\\end{tabular}The unit of the answer is \\mu_{B}.",
+ "response": "## Reasoning\n\n**Nickel ferrite** has the formula **NiFe₂O₄** and, like magnetite, adopts an **inverse spinel** structure. A unit cell contains 8 formula units, giving 8 Ni²⁺ ions and 16 Fe³⁺ ions.\n\nIn the inverse spinel arrangement:\n- **Tetrahedral (A) sites:** 8 Fe³⁺ ions, each with moment 5 μ_B → aligned in one direction\n- **Octahedral (B) sites:** 8 Ni²⁺ ions (2 μ_B each) + 8 Fe³⁺ ions (5 μ_B each) → aligned in the opposite direction\n\nThe two sublattices are antiparallel (Néel coupling), so the net moment is:\n\n$$M_{\\text{net}} = M_B - M_A = (8\\times 2 + 8\\times 5) - (8\\times 5) = (16 + 40) - 40 = 16\\;\\mu_B$$\n\nThis is close to the measured value of 18.4 μ_B, just as the calculated 32 μ_B for magnetite was close to its measured 32.8 μ_B.\n\n$$\\boxed{16}$$",
+ "final_answer": "16",
+ "correct_answer": "16",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "\\mu_{B}"
+}

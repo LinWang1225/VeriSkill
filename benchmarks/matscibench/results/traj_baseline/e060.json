@@ -1,0 +1,11 @@
+{
+ "tid": "e060",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_15.29",
+ "question_text": "In a simple galvanic cell consisting of Co and Cr electrodes immersed in 1-molar ionic solutions, calculate the cell potential.The unit of the answer is V.",
+ "response": "## Reasoning\n\nFor a galvanic cell, the species with the more negative reduction potential is oxidized (anode), and the species with the less negative (more positive) reduction potential is reduced (cathode).\n\n**Standard reduction potentials:**\n- Co²⁺ + 2e⁻ → Co,  E° = −0.28 V\n- Cr³⁺ + 3e⁻ → Cr,  E° = −0.74 V\n\nSince Cr has the more negative reduction potential, Cr is the anode (oxidized) and Co is the cathode (reduced).\n\n**Cell potential (standard, since 1 M):**\n\n$$E^\\circ_{\\text{cell}} = E^\\circ_{\\text{cathode}} - E^\\circ_{\\text{anode}} = (-0.28) - (-0.74) = 0.46 \\text{ V}$$\n\nWith all species at 1 M, the reaction quotient Q = 1, so the Nernst correction is zero and E_cell = E°_cell.\n\n$$\\boxed{0.46}$$",
+ "final_answer": "0.46",
+ "correct_answer": "0.467",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "V"
+}

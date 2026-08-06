@@ -1,0 +1,11 @@
+{
+ "tid": "e057",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_14.27",
+ "question_text": "The following data are obtained for a metal subjected to a magnetic field: \n\\begin{tabular}{cc} \\hline $\\boldsymbol{H}($ amperes $/ \\mathbf{m})$ & $\\boldsymbol{B}\\left(\\right.$ weber $\\left./ \\mathbf{m}^{\\mathbf{2}}\\right)$ \\\\ \\hline 0 & 0 \\\\ $4 \\times 10^5$ & 0.50263 \\\\ \\hline \\end{tabular} \nCalculate the relative permeability for this metal.",
+ "response": "The relationship between magnetic flux density \\(B\\), magnetic field strength \\(H\\), and permeability is:\n\n\\[\nB = \\mu H = \\mu_0 \\mu_r H\n\\]\n\nSolving for relative permeability:\n\n\\[\n\\mu_r = \\frac{B}{\\mu_0 H}\n\\]\n\nWith \\(\\mu_0 = 4\\pi\\times10^{-7}\\ \\text{H/m}\\), \\(H = 4\\times10^5\\ \\text{A/m}\\), and \\(B = 0.50263\\ \\text{Wb/m}^2\\):\n\n\\[\n\\mu_r = \\frac{0.50263}{(4\\pi\\times10^{-7})(4\\times10^5)} = \\frac{0.50263}{0.16\\pi} \\approx 0.99995 \\approx 1.0\n\\]\n\nThe metal behaves essentially like free space (it is non-magnetic).\n\n\\[\n\\boxed{0.99995}\n\\]",
+ "final_answer": "0.99995",
+ "correct_answer": "0.99995",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

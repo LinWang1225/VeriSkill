@@ -1,0 +1,11 @@
+{
+ "tid": "m073",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.34",
+ "question_text": "Using the ionic radii in  table 3.4 , compute the theoretical density of CsCl. (Hint: Use a modification of $$\na=\\frac{4 R}{\\sqrt{3}}\n$$.)\n\nRefer to  table 3.4 :\n table 3.4 \nIonic Radii for Several Cations and Anions for a Coordination Number of 6\n\\begin{tabular}{|l|l|l|l|}\n\\hline Cation & Ionic Radius (nm) & Anion & Ionic Radius (nm) \\\\\n\\hline $\\mathrm{Al}^{3+}$ & 0.053 & $\\mathrm{Br}^{-}$ & 0.196 \\\\\n\\hline $\\mathrm{Ba}^{2+}$ & 0.136 & $\\mathrm{Cl}^{-}$ & 0.181 \\\\\n\\hline $\\mathrm{Ca}^{2+}$ & 0.100 & $\\mathrm{F}^{-}$ & 0.133 \\\\\n\\hline $\\mathrm{Cs}^{+}$ & 0.170 & $\\mathrm{I}^{-}$ & 0.220 \\\\\n\\hline $\\mathrm{Fe}^{2+}$ & 0.077 & $\\mathrm{O}^{2-}$ & 0.140 \\\\\n\\hline $\\mathrm{Fe}^{3+}$ & 0.069 & $\\mathrm{S}^{2-}$ & 0.184 \\\\\n\\hline $\\mathrm{K}^{+}$ & 0.138 & & \\\\\n\\hline $\\mathrm{Mg}^{2+}$ & 0.072 & & \\\\\n\\hline $\\mathrm{Mn}^{2+}$ & 0.067 & & \\\\\n\\hline $\\mathrm{Na}^{+}$ & 0.102 & & \\\\\n\\hline $\\mathrm{Ni}^{2+}$ & 0.069 & & \\\\\n\\hline $\\mathrm{Si}^{4+}$ & 0.040 & & \\\\\n\\hline $\\mathrm{Ti}^{4+}$ & 0.061 & & \\\\\n\\hline\n\\end{tabular}The unit of the answer is g/cm^3.",
+ "response": "## Solution\n\n**Step 1 — Lattice parameter:**\n\nThe CsCl structure has ions touching along the body diagonal. From corner to body center ($\\tfrac{a\\sqrt{3}}{2}$), the two ions touch:\n\n$$a = \\frac{2(R_{\\text{Cs}^+} + R_{\\text{Cl}^-})}{\\sqrt{3}} = \\frac{2(0.170 + 0.181)}{\\sqrt{3}} = \\frac{0.702}{\\sqrt{3}} = 0.4053 \\text{ nm}$$\n\n**Step 2 — Unit cell volume:**\n\n$$V_c = a^3 = (0.4053 \\times 10^{-7} \\text{ cm})^3 = 6.658 \\times 10^{-23} \\text{ cm}^3$$\n\n**Step 3 — Theoretical density:**\n\nThe CsCl unit cell contains $n = 1$ formula unit (1 Cs⁺ at 8 corners × ⅛, plus 1 Cl⁻ at body center). With $A_{\\text{CsCl}} = 132.91 + 35.45 = 168.36$ g/mol:\n\n$$\\rho = \\frac{n A}{V_c N_A} = \\frac{(1)(168.36)}{(6.658 \\times 10^{-23})(6.022 \\times 10^{23})} = 4.20 \\text{ g/cm}^3$$\n\n$$\\boxed{4.20}$$",
+ "final_answer": "4.20",
+ "correct_answer": "4.21",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "g/cm^3"
+}

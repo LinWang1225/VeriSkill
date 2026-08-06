@@ -1,0 +1,33 @@
+{
+  "edits": [
+    {
+      "critic": "d-matsci-model-selection",
+      "type": "rubric",
+      "rule_id": "R-d-matsci-model-selection-001",
+      "evidence_items": ["#e023"],
+      "summary": "添加尖晶石 unit cell Z=8 放大约定的方法库子情形，防止 D 以教材约定歧义为由对正确轨迹扣分翻 fail"
+    },
+    {
+      "critic": "d-matsci-model-selection",
+      "type": "rubric",
+      "rule_id": "R-d-matsci-model-selection-001",
+      "evidence_items": ["#e190"],
+      "summary": "添加 Soderberg 准则方法库子情形：题目未给 Sy 时用 Su 作静态强度是合法做法，D 不应自假设 Sy 重算后判 fail"
+    },
+    {
+      "critic": "d-matsci-param-lookup",
+      "type": "narrow_rule",
+      "rule_id": "R-d-matsci-param-lookup-001",
+      "evidence_items": ["#e230"],
+      "summary": "添加间隙位点半径方法库子情形：晶格参数须取公认标准值且多材料间数据源一致，非标准 a 值导致间隙半径偏差即命中；依据追加 r21#e230"
+    }
+  ],
+  "fp_seen": 2,
+  "fp_resolved": 2,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["e230"],
+  "unjudgeable": [],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

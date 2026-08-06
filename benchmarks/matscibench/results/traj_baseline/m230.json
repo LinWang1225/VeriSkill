@@ -1,0 +1,11 @@
+{
+ "tid": "m230",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 9-35",
+ "question_text": "A 5 -cm-diameter sphere solidifies in 1050 s . Calculate the solidification time for a 0.3 cm $\\times 10 \\mathrm{~cm} \\times 20 \\mathrm{~cm}$ plate cast under the same conditions. Assume that $n=2$. Give your answer as the value of solidification_time_s.The unit of the answer is s.",
+ "response": "Using Chvorinov's rule, \\(t = B\\left(\\frac{V}{A}\\right)^n\\) with \\(n=2\\):\n\n**Sphere** (diameter 5 cm, \\(r=2.5\\) cm):\n- \\(V_s = \\frac{4}{3}\\pi r^3 = 65.45\\ \\text{cm}^3\\)\n- \\(A_s = 4\\pi r^2 = 78.54\\ \\text{cm}^2\\)\n- \\(V_s/A_s = 0.8333\\) cm\n\n**Plate** (\\(0.3\\times10\\times20\\) cm):\n- \\(V_p = 60\\ \\text{cm}^3\\)\n- \\(A_p = 2(3+6+200) = 418\\ \\text{cm}^2\\)\n- \\(V_p/A_p = 0.1435\\) cm\n\nSince conditions are the same, \\(B\\) is constant:\n\n\\[\nt_p = t_s\\left(\\frac{(V/A)_p}{(V/A)_s}\\right)^2\n= 1050\\left(\\frac{0.1435}{0.8333}\\right)^2 \\approx 31.15\\ \\text{s}\n\\]\n\n\\(\\boxed{31.15}\\)",
+ "final_answer": "31.15",
+ "correct_answer": "31.15",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "s"
+}

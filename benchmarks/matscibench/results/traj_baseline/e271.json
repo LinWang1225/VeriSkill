@@ -1,0 +1,11 @@
+{
+ "tid": "e271",
+ "qid": "Physical_Metallurgy_Hosford_Example 2.2",
+ "question_text": "Suppose a melt is somehow undercooled by $0.18 T_{\\mathrm{m}}$ before nucleation occurs and that as freezing occurs, release of the latent heat raises the temperature of the melt without heat transfer to the surroundings. Calculate the fraction, $f$, of the melt that freezes before the temperature of the liquid raises back to $T_{\\mathrm{m}}$. Assume a typical value for heat capacity, $C=25 \\mathrm{~J} / \\mathrm{mol}$ and that $\\Delta H_{\\mathrm{f}}=T_{\\mathrm{m}} \\Delta S_{\\mathrm{i}}$, where $\\Delta S_{\\mathrm{f}}=10 \\mathrm{~J} / \\mathrm{mol} \\mathrm{K}$. \nGive your answer as the value of f.",
+ "response": "## Reasoning\n\nThe melt is undercooled by $0.18\\,T_m$, so it starts at $T = 0.82\\,T_m$ and must be heated back up by\n\n$$\\Delta T = 0.18\\,T_m.$$\n\nWith no heat exchange with the surroundings, the latent heat released by the solidifying fraction $f$ goes entirely into reheating the melt:\n\n$$f\\,\\Delta H_f = C\\,\\Delta T.$$\n\nUsing $\\Delta H_f = T_m\\,\\Delta S_f$ with $\\Delta S_f = 10\\;\\mathrm{J\\,mol^{-1}K^{-1}}$ and $C = 25\\;\\mathrm{J\\,mol^{-1}K^{-1}}$:\n\n$$f\\,(T_m\\cdot 10) = 25\\,(0.18\\,T_m).$$\n\nThe $T_m$ cancels:\n\n$$f = \\frac{25 \\times 0.18}{10} = \\frac{4.5}{10} = 0.45.$$\n\n$$\\boxed{0.45}$$",
+ "final_answer": "0.45",
+ "correct_answer": "0.45",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

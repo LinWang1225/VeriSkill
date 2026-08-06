@@ -1,0 +1,11 @@
+{
+ "tid": "e064",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 3.4",
+ "question_text": "Equation is given by:\n\n$$\\frac{m_{0} q^{4}}{2\\left(4 \\pi \\varepsilon_{0}\\right)^{2} \\hbar^{2}}$$\n\nwhere $m_{0}=9.11 \\times 10^{-31} \\mathrm{~kg}$ is the mass of an electron, $q=1.6 \\times 10^{-19} \\mathrm{C}$ is the charge of an electron, $\\varepsilon_{0}=8.85 \\times 10^{-12} \\mathrm{~F} / \\mathrm{m}$ is the permittivity of free space, and $\\hbar=1.05 \\times 10^{-34} \\mathrm{~J} \\cdot \\mathrm{~s}$ is the reduced Planck constant. \n\nCalculate the its value.The unit of the answer is eV.",
+ "response": "The expression is the Rydberg energy. Substituting the given values:\n\n$$E=\\frac{m_0 q^4}{2(4\\pi\\varepsilon_0)^2\\hbar^2}\\approx 2.19\\times10^{-18}\\,\\text{J}$$\n\nConverting to electron-volts using $1\\,\\text{eV}=1.6\\times10^{-19}\\,\\text{J}$:\n\n$$E \\approx \\frac{2.189\\times10^{-18}}{1.6\\times10^{-19}}\\approx 13.68\\,\\text{eV}$$\n\nThis is the ionization energy of hydrogen (Rydberg energy), consistent with the well-known value of $13.6\\,\\text{eV}$.\n\n$$\\boxed{13.68}$$",
+ "final_answer": "13.68",
+ "correct_answer": "13.6",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "eV"
+}

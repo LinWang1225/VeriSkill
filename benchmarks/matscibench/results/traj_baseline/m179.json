@@ -1,0 +1,11 @@
+{
+ "tid": "m179",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 7.4",
+ "question_text": "The number of independent slip systems is the same as the number of the strain components, $\\varepsilon_1$, $\\varepsilon_2$, $\\gamma_{23}$, $\\gamma_{31}$, $\\gamma_{12}$, that can be accommodated by slip. Find the number of independent slip systems in crystals of the NaCl structure that deform by $\\langle 110 \\rangle \\{1 \\overline{1} 0\\}$ slip.",
+ "response": "## Reasoning\n\n**Step 1 — Enumerate the slip systems.**  \nIn the NaCl (rocksalt) structure, slip is of type $\\langle 110\\rangle\\{1\\bar{1}0\\}$. The $\\{110\\}$ family has 6 planes, and each $(110)$-type plane contains exactly **one** $\\langle 110\\rangle$ direction (the one orthogonal to its normal). This gives **6 slip systems**:\n\n| Plane normal $\\mathbf{n}$ | Slip direction $\\mathbf{b}$ |\n|---|---|\n| $(1,1,0)$ | $[1,\\bar{1},0]$ |\n| $(1,\\bar{1},0)$ | $[1,1,0]$ |\n| $(1,0,1)$ | $[1,0,\\bar{1}]$ |\n| $(1,0,\\bar{1})$ | $[1,0,1]$ |\n| $(0,1,1)$ | $[0,1,\\bar{1}]$ |\n| $(0,1,\\bar{1})$ | $[0,1,1]$ |\n\n**Step 2 — Construct the strain tensor for each.**  \nEach slip system contributes a strain $\\varepsilon = \\tfrac12(\\mathbf{b}\\otimes\\mathbf{n}+\\mathbf{n}\\otimes\\mathbf{b})$. Computing these (shown above), every strain tensor is **purely diagonal** — all shear components $\\gamma_{23},\\gamma_{31},\\gamma_{12}$ are zero. The only nonzero components are normal strains of the form\n$$\\varepsilon_{xx}=-\\varepsilon_{yy},\\quad \\varepsilon_{xx}=-\\varepsilon_{zz},\\quad \\varepsilon_{yy}=-\\varepsilon_{zz}.$$\n\n**Step 3 — Find the rank.**  \nThe six strain tensors span only a **2-dimensional** subspace of the 5-dimensional deviatoric strain space (verified numerically: rank = 2). Equivalently, among the five strain components $\\varepsilon_1,\\varepsilon_2,\\gamma_{23},\\gamma_{31},\\gamma_{12}$, only **two** independent normal-strain combinations can be accommodated; none of the three shears can be produced.\n\nThis is the classic result explaining why NaCl is brittle at low temperatures: 2 independent slip systems falls far short of the 5 required by the von Mises criterion.\n\n$$\\boxed{2}$$",
+ "final_answer": "2",
+ "correct_answer": "2",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

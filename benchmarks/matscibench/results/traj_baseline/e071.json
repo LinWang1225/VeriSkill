@@ -1,0 +1,11 @@
+{
+ "tid": "e071",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 11.2",
+ "question_text": "From the magnetic moments of the ferrous ($\\mathrm{Fe}^{2+}$) and ferric ($\\mathrm{Fe}^{3+}$) ions, calculate the net magnetic moment per formula unit in ferrimagnetic iron oxide ($\\mathrm{Fe}_{3} \\mathrm{O}_{4}$).The unit of the answer is \\mu_{\\mathrm{B}}.",
+ "response": "## Reasoning\n\n$\\mathrm{Fe_3O_4}$ (magnetite) is an **inverse spinel**. Per formula unit it contains one $\\mathrm{Fe}^{2+}$ and two $\\mathrm{Fe}^{3+}$ ions, distributed as\n\n$$(\\mathrm{Fe}^{3+})_{A}\\,[\\mathrm{Fe}^{2+}\\mathrm{Fe}^{3+}]_{B}\\,\\mathrm{O_4}$$\n\nThe tetrahedral ($A$) and octahedral ($B$) sublattice moments are **antiparallel** (ferrimagnetic ordering).\n\n**Spin-only magnetic moments** $\\mu = \\sqrt{n(n+2)}\\,\\mu_{\\mathrm B}$:\n\n- $\\mathrm{Fe}^{2+}$ ($d^6$, $n=4$): $\\mu = \\sqrt{4\\cdot6}=\\sqrt{24}\\approx 4.90\\,\\mu_{\\mathrm B}$\n- $\\mathrm{Fe}^{3+}$ ($d^5$, $n=5$): $\\mu = \\sqrt{5\\cdot7}=\\sqrt{35}\\approx 5.92\\,\\mu_{\\mathrm B}$\n\n**Net moment per formula unit** (B sublattice minus A sublattice):\n\n$$\\mu_{\\text{net}} = \\big[\\mu(\\mathrm{Fe}^{2+})+\\mu(\\mathrm{Fe}^{3+})\\big]_{B} - \\big[\\mu(\\mathrm{Fe}^{3+})\\big]_{A} = \\sqrt{24} \\approx 4.90\\,\\mu_{\\mathrm B}$$\n\nThe two $\\mathrm{Fe}^{3+}$ contributions cancel, leaving only the $\\mathrm{Fe}^{2+}$ moment.\n\n$$\\boxed{4.90}$$",
+ "final_answer": "4.90",
+ "correct_answer": "4",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "\\mu_{\\mathrm{B}}"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e024",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 2.3",
+ "question_text": "Calculate the dimensions of (a) a cube containing 1 mol of copper and (b) a cube containing 1 mol of lead. Give your answer as a tuple: (cube_dimension_copper, cube_dimension_lead).The units of each required answer are (mm, mm), respectively.",
+ "response": "## Reasoning\n\nFor a cube containing 1 mol of a material, the edge length comes from the molar volume:\n\n$$V_m = \\frac{M}{\\rho}, \\qquad a = V_m^{1/3}$$\n\nwhere \\(M\\) is the molar mass and \\(\\rho\\) is the density.\n\n### (a) Copper\n- \\(M_{\\text{Cu}} = 63.546\\ \\text{g/mol}\\)\n- \\(\\rho_{\\text{Cu}} = 8.96\\ \\text{g/cm}^3\\)\n- \\(V_m = 63.546/8.96 = 7.092\\ \\text{cm}^3\\)\n- \\(a = (7.092)^{1/3} = 1.921\\ \\text{cm} = 19.2\\ \\text{mm}\\)\n\n### (b) Lead\n- \\(M_{\\text{Pb}} = 207.2\\ \\text{g/mol}\\)\n- \\(\\rho_{\\text{Pb}} = 11.34\\ \\text{g/cm}^3\\)\n- \\(V_m = 207.2/11.34 = 18.27\\ \\text{cm}^3\\)\n- \\(a = (18.27)^{1/3} = 2.634\\ \\text{cm} = 26.3\\ \\text{mm}\\)\n\n$$\\boxed{(19.2,\\ 26.3)}$$",
+ "final_answer": "(19.2,\\ 26.3)",
+ "correct_answer": "(19.23, 26.34)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(mm, mm)"
+}

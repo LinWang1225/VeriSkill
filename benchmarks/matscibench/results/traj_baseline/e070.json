@@ -1,0 +1,11 @@
+{
+ "tid": "e070",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 10.5",
+ "question_text": "A commercially available poled PVDF film, electroded using silver metallic ink, is $110 \\mu \\mathrm{~m}$ thick. A stress of $20,000 \\mathrm{~Pa}$ is applied to this film over a 1 - in. ${ }^2$ area.\n1. Assuming that the film has a rigid backing and deforms only in the thickness direction, what will be the open-circuit voltage generated?\n2. If the film is now subjected to the same level of force as in part (a) but the film has a compliant backing, with a force acting on the cross section of the film such that the film stretches in the length direction, what will be the voltage generated across the thickness of the film? Assume that $g_{33}=350 \\times 10^{-3}$ and $g_{31}$ $=220 \\times 10^{-3} \\mathrm{~V} \\cdot \\mathrm{~m} / \\mathrm{N}$.\n\nGive your answer as a tuple (voltage generated in part 1, voltage generated in part 2)The units of each required answer are (V, V), respectively.",
+ "response": "**Results:**\n\n**Part 1:** With rigid backing, the film deforms only in the thickness direction (direction 3). The stress of 20,000 Pa acts in direction 3, and the voltage across the thickness is:\n$$V_1 = g_{33} \\cdot \\sigma \\cdot t = (350 \\times 10^{-3})(20{,}000)(110 \\times 10^{-6}) = 0.77 \\text{ V}$$\n\n**Part 2:** With compliant backing, the same stress level acts in the length direction (direction 1), stretching the film. The voltage is still measured across the thickness, so we use $g_{31}$:\n$$V_2 = g_{31} \\cdot \\sigma \\cdot t = (220 \\times 10^{-3})(20{,}000)(110 \\times 10^{-6}) = 0.484 \\text{ V}$$\n\nThe $g_{31}$ coefficient is smaller than $g_{33}$ because the coupling between length-direction stress and thickness-direction voltage is weaker than the direct thickness-mode coupling.\n\n$$\\boxed{(0.77,\\ 0.484)}$$",
+ "final_answer": "(0.77,\\ 0.484)",
+ "correct_answer": "(0.77,  112.2)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(V, V)"
+}

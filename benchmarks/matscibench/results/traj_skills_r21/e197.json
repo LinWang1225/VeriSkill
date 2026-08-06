@@ -1,0 +1,11 @@
+{
+ "tid": "e197",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 8.2",
+ "question_text": "Calculate the distance from the core of a screw dislocation at which the energy per volume equals the heat of vaporization, $H_v$, and express this distance in terms of $r/b$. Evaluate this critical value of $r/b$ for copper. $\\rho=8.93 \\text{ Mg/m}^3$, $G=77 \\text{ GPa}$, $b=0.255 \\text{ nm}$, $H_v=4.73 \\text{ MJ/kg}$.",
+ "response": "## Derivation\n\nFor a **screw dislocation**, the shear strain at distance $r$ from the core is\n\n$$\\gamma = \\frac{b}{2\\pi r}$$\n\nThe elastic strain energy **per unit volume** is\n\n$$u = \\tfrac{1}{2}G\\gamma^{2} = \\frac{Gb^{2}}{8\\pi^{2}r^{2}}$$\n\nThe heat of vaporization is given **per unit mass** ($H_v = 4.73\\ \\text{MJ/kg}$), so the energy per unit volume is $\\rho H_v$. Setting the elastic energy density equal to the vaporization energy density:\n\n$$\\frac{Gb^{2}}{8\\pi^{2}r^{2}} = \\rho H_v$$\n\nSolving for $r/b$ (note $b$ cancels):\n\n$$\\left(\\frac{r}{b}\\right)^{2} = \\frac{G}{8\\pi^{2}\\rho H_v}\n\\quad\\Longrightarrow\\quad\n\\frac{r}{b} = \\sqrt{\\frac{G}{8\\pi^{2}\\rho H_v}}$$\n\n## Numerical evaluation (copper)\n\nConverting faithfully to SI:\n- $G = 77\\times10^{9}\\ \\text{Pa}$\n- $\\rho = 8.93\\times10^{3}\\ \\text{kg/m}^{3}$\n- $H_v = 4.73\\times10^{6}\\ \\text{J/kg}$\n\n$$\\rho H_v = (8.93\\times10^{3})(4.73\\times10^{6}) = 4.224\\times10^{10}\\ \\text{J/m}^{3}$$\n\n$$8\\pi^{2}\\rho H_v = 78.957 \\times 4.224\\times10^{10} = 3.334\\times10^{12}\\ \\text{Pa}$$\n\n$$\\frac{r}{b} = \\sqrt{\\frac{77\\times10^{9}}{3.334\\times10^{12}}} = \\sqrt{0.02309} = 0.1519$$\n\nThe least-precise input is $G=77$ (2 sig figs), so reporting to 2 sig figs:\n\n$$\\boxed{0.15}$$",
+ "final_answer": "0.15",
+ "correct_answer": "0.16",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

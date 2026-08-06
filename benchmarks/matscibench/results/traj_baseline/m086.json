@@ -1,0 +1,11 @@
+{
+ "tid": "m086",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.64",
+ "question_text": "Calculate the number of vacancies per cubic meter at $1000^{\\circ} \\mathrm{C}$ for a metal that has an energy for vacancy formation of $1.22 \\mathrm{eV} /$ atom, a density of $6.25 \\mathrm{~g} / \\mathrm{cm}^{3}$, and an atomic weight of $37.4 \\mathrm{~g} / \\mathrm{mol}$.The unit of the answer is m^-3.",
+ "response": "## Solution\n\nThe number of vacancies is given by:\n\n$$N_v = N \\exp\\!\\left(-\\frac{Q_v}{kT}\\right)$$\n\n**Step 1 — Number of atomic sites per m³:**\n\n$$N = \\frac{\\rho N_A}{A} = \\frac{(6.25\\times10^{6}\\,\\text{g/m}^3)(6.022\\times10^{23}\\,\\text{atoms/mol})}{37.4\\,\\text{g/mol}} \\approx 1.006\\times10^{29}\\,\\text{m}^{-3}$$\n\n**Step 2 — Exponential factor** with $Q_v = 1.22$ eV, $k = 8.617\\times10^{-5}$ eV/K, $T = 1273$ K:\n\n$$\\exp\\!\\left(-\\frac{1.22}{(8.617\\times10^{-5})(1273)}\\right) = \\exp(-11.12) \\approx 1.48\\times10^{-5}$$\n\n**Step 3 — Vacancy concentration:**\n\n$$N_v = (1.006\\times10^{29})(1.48\\times10^{-5}) \\approx 1.49\\times10^{24}\\,\\text{m}^{-3}$$\n\n$$\\boxed{1.49 \\times 10^{24}}$$",
+ "final_answer": "1.49 \\times 10^{24}",
+ "correct_answer": "1.49E+24",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "m^-3"
+}

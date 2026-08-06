@@ -1,0 +1,11 @@
+{
+ "tid": "e022",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 14.5",
+ "question_text": "Calculate the range of magnitude of energy transitions that are involved in the absorption of visible light by transition metal ions. Give your answer as a tuple (minimum energy, maximum energy). The wavelength range of visible light is 400 to 700 nm.The units of each required answer are (J, J), respectively.",
+ "response": "## Reasoning\n\nThe energy of a photon is related to its wavelength by:\n\n$$E = \\frac{hc}{\\lambda}$$\n\nwhere:\n- $h = 6.626 \\times 10^{-34}$ J·s (Planck's constant)\n- $c = 3.0 \\times 10^{8}$ m/s (speed of light)\n\nSince energy is **inversely proportional** to wavelength:\n- The **minimum** energy corresponds to the **longest** wavelength (700 nm)\n- The **maximum** energy corresponds to the **shortest** wavelength (400 nm)\n\n**Minimum energy** (λ = 700 nm):\n$$E_{\\min} = \\frac{(6.626\\times10^{-34})(3.0\\times10^{8})}{700\\times10^{-9}} \\approx 2.84 \\times 10^{-19}\\ \\text{J}$$\n\n**Maximum energy** (λ = 400 nm):\n$$E_{\\max} = \\frac{(6.626\\times10^{-34})(3.0\\times10^{8})}{400\\times10^{-9}} \\approx 4.97 \\times 10^{-19}\\ \\text{J}$$\n\nThese are the d–d electronic transitions (crystal field splitting) in transition metal ions that fall within the visible spectrum.\n\n$$\\boxed{(2.84\\times10^{-19},\\ 4.97\\times10^{-19})}$$",
+ "final_answer": "(2.84\\times10^{-19},\\ 4.97\\times10^{-19})",
+ "correct_answer": "(2.84 \\times 10^{-19}, 4.97 \\times 10^{-19})",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(J, J)"
+}

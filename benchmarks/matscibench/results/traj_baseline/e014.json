@@ -1,0 +1,11 @@
+{
+ "tid": "e014",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 9.3",
+ "question_text": "An alloy of overall composition x = 50 wt% B is slowly cooled to temperature T₁, at which the liquid‐solution composition is 18 wt% B and the solid‐solution composition is 66 wt% B (see the revised phase diagram).  If you start with 1 kg of this alloy and equilibrate at T₁, calculate the masses of the liquid and solid phases present.\n\nGive your answer as a tuple (amount of liquid phase, amount of solid phase).The units of each required answer are (g, g), respectively.",
+ "response": "Applying the lever rule at T₁ with overall composition x₀ = 50 wt% B, liquid composition x_L = 18 wt% B, and solid composition x_S = 66 wt% B:\n\n$$f_L = \\frac{x_S - x_0}{x_S - x_L} = \\frac{66-50}{66-18} = \\frac{16}{48} = \\frac{1}{3}$$\n\n$$f_S = \\frac{x_0 - x_L}{x_S - x_L} = \\frac{50-18}{66-18} = \\frac{32}{48} = \\frac{2}{3}$$\n\nWith 1 kg = 1000 g of alloy:\n\n- Liquid: $1000 \\times \\tfrac{1}{3} \\approx 333.33$ g\n- Solid: $1000 \\times \\tfrac{2}{3} \\approx 666.67$ g\n\n$$\\boxed{(333.33,\\ 666.67)}$$",
+ "final_answer": "(333.33,\\ 666.67)",
+ "correct_answer": "(333, 667)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(g, g)"
+}

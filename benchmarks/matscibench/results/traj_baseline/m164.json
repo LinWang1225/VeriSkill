@@ -1,0 +1,11 @@
+{
+ "tid": "m164",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 3.6",
+ "question_text": "A rotating steel shaft is supported by a sleeve bearing. Compare the rate of wear when the sleeve is (a) made of the same steel and (b) made of copper. Give your answer as the value of relative_volume_loss_ratio.The unit of the answer is 20.",
+ "response": "The relative volume loss ratio is:\n\n$$\\frac{\\dot{V}_b}{\\dot{V}_a} = 2 \\times \\frac{H_{\\text{steel}}}{H_{\\text{cu}}} = 2 \\times 10 = 20$$\n\nThe copper sleeve wears **20 times faster** than the steel sleeve — both because copper is ~10× softer (wear ∝ 1/H) **and** because in the steel-on-steel case the wear is shared equally between two surfaces (factor of 2), whereas with steel-on-copper the softer copper takes essentially all the wear.\n\n$$\\boxed{20}$$",
+ "final_answer": "20",
+ "correct_answer": "",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "20"
+}

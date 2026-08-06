@@ -1,0 +1,11 @@
+{
+ "tid": "m180",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 11.2",
+ "question_text": "A high-strength, low-alloy steel is strengthened by precipitates of VC. If the diameter of the particles is 50 nm, what volume percent particles would be required to increase the strength by 100 MPa? For iron, $G = 80$ GPa, and the atomic diameter is 0.248 nm.The unit of the answer is %.",
+ "response": "## Step-by-step Solution\n\n**1. Burgers vector for BCC iron**\n\nFor BCC, the Burgers vector is $b = \\frac{a\\sqrt{3}}{2}$. Since $a = \\frac{4R}{\\sqrt{3}}$ and the atomic diameter $= 2R$:\n\n$$b = \\frac{a\\sqrt{3}}{2} = 2R = d_{\\text{atomic}} = 0.248\\text{ nm}$$\n\n**2. Orowan strengthening equation**\n\nFor non-shearable particles, the strength increase is:\n\n$$\\Delta\\tau = \\frac{Gb}{L}$$\n\nwhere $L$ is the edge-to-edge interparticle spacing. Solving for $L$:\n\n$$L = \\frac{Gb}{\\Delta\\tau} = \\frac{(80\\times10^9)(0.248\\times10^{-9})}{100\\times10^6} = 198.4\\text{ nm}$$\n\n**3. Center-to-center spacing**\n\n$$l = L + d = 198.4 + 50 = 248.4\\text{ nm}$$\n\n**4. Relate spacing to volume fraction**\n\nThe number density of particles: $N = \\frac{1}{l^3}$\n\nThe volume fraction:\n\n$$f = N\\cdot\\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi\\left(\\frac{r}{l}\\right)^3 = \\frac{4}{3}\\pi\\left(\\frac{25}{248.4}\\right)^3$$\n\n**5. Compute**\n\n$$f = \\frac{4}{3}\\pi(0.10064)^3 = 0.00427$$\n\n$$\\text{volume percent} = f \\times 100 = 0.427\\%$$\n\n$$\\boxed{0.427}$$",
+ "final_answer": "0.427",
+ "correct_answer": "0.099",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "%"
+}

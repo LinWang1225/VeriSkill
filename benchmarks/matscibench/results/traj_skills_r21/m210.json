@@ -1,0 +1,11 @@
+{
+ "tid": "m210",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-4",
+ "question_text": "The density of a sample of FCC palladium is $11.98 \\mathrm{~g} / \\mathrm{cm}^3$, and its lattice parameter is $3.8902 \\AA$. Calculate(a) the fraction of the lattice points that contain vacancies; and(b) the total number of vacancies in a cubic centimeter of Pd. Give your answer as a tuple: (vacancy_fraction, vacancies_per_cm3).The units of each required answer are (, vacancies/cm3), respectively.",
+ "response": "## Solution\n\nThis is a vacancy-concentration problem for FCC Pd. I checked the relevant skills (`unitcell-formula-unit-scaling`: FCC has Z=4 sites per cell; `sigfig-rounding`; `given-unit-faithful-conversion`; `missing-input-no-fabrication`: the atomic weight of Pd is a recognized constant, 106.42 g/mol).\n\n**Setup (FCC, 4 lattice sites per unit cell):**\n\n- $a = 3.8902\\ \\text{Å} = 3.8902\\times10^{-8}\\ \\text{cm}$\n- Unit-cell volume $V = a^{3}$\n- Lattice sites per cm³ (full occupancy): $N_{\\text{sites}} = \\dfrac{4}{a^{3}}$\n- Actual atoms per cm³ from measured density: $N_{\\text{atoms}} = \\dfrac{\\rho N_{A}}{A_{\\text{Pd}}}$\n\n**(a) Vacancy fraction**\n\n$$\\text{vacancy fraction} = 1 - \\frac{N_{\\text{atoms}}}{N_{\\text{sites}}} = 1 - \\frac{\\rho N_{A} a^{3}}{4 A_{\\text{Pd}}}$$\n\nEquivalently, compute the theoretical density of fully occupied FCC Pd, $\\rho_{\\text{th}} = \\dfrac{4 A_{\\text{Pd}}}{N_{A} a^{3}} = 12.0065\\ \\text{g/cm}^3$, then vacancy fraction $= 1 - \\rho/\\rho_{\\text{th}}$.\n\n**(b) Vacancies per cm³**\n\n$$N_{v} = N_{\\text{sites}} - N_{\\text{atoms}}$$\n\n**Independent verification** (second path, density-ratio instead of site-minus-atom count):\n- $1 - \\rho/\\rho_{\\text{th}} = 1 - 11.98/12.0065 = 2.207\\times10^{-3}$ ✓\n- $N_v = (\\text{vacancy fraction})\\times N_{\\text{sites}} = 2.207\\times10^{-3}\\times 6.794\\times10^{22} = 1.50\\times10^{20}$ ✓\n\nBoth paths agree. With $n_{\\min}=4$ sig figs (limited by $\\rho = 11.98$):\n\n$$\\boxed{(2.207\\times10^{-3},\\ 1.50\\times10^{20})}$$",
+ "final_answer": "(2.207\\times10^{-3},\\ 1.50\\times10^{20})",
+ "correct_answer": "(0.00204, 1.39e+20)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(, vacancies/cm3)"
+}

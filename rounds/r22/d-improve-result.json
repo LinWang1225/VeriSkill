@@ -1,0 +1,6 @@
+{
+  "edits": [
+    {"critic":"d-sci-answer-format","type":"narrow_rule","rule_id":"R-d-sci-answer-format-001","evidence_items":["#e079"],"summary":"拓宽 R-001 触发条件以覆盖 'What is the value/ratio of X' 类措辞，新增方法库子情形（符号表达式含中间常数被 checker 解析为多值），追加 r22#e079 为依据"}
+  ],
+  "fp_seen":0,"fp_resolved":0,"fn_clusters_seen":1,"fn_resolved":["e079"],"unjudgeable":[],"unresolved":[],"skipped":[],"needs_human":false
+}

@@ -1,0 +1,9 @@
+{
+  "edits": [
+    {"skill":"g-matsci-unitcell-formula-unit-scaling","type":"patch","cluster":"R-d-matsci-param-lookup-001","support":1,"audited_support":0,"attribution":"能力缺陷","summary":"修正技能自身 HCP 体积公式 bug：常规六方胞 V=(3√3/2)a²c 配 Z=6，原胞 (√3/2)a²c 配 Z=2；原技能把 Z=6 配了 √3/2·a²c（漏前导因子 3），补 √3→√2 误写检查与 c/a 回代自洽"},
+    {"skill":"g-matsci-column-yield-buckling-dual-check","type":"new_skill","cluster":"missing-check","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"新建受压柱双判据：细长压杆同时校核屈服 σ=F/A≤σ_y 与 Euler 屈曲 P_cr=π²EI/L_e²，取直径较大者；覆盖有效长度、Euler/Johnson 切换、低 E 材料屈曲敏感、独立回代自查"}
+  ],
+  "clusters_seen":2,"clusters_fixed":2,
+  "skipped":[{"item":"e272","reason":"D 自身 reason 称独立重解确认结果对，concerns 指向 independent-check 循环论证但 g-sci-independent-verify 已覆盖；判疑似误杀不动"}],
+  "needs_human":false
+}

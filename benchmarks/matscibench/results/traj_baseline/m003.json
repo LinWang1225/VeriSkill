@@ -1,0 +1,11 @@
+{
+ "tid": "m003",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 3.15",
+ "question_text": "Given rW = 0.137 nm for bcc W and rAl = 0.143 nm for fcc Al, calculate the planar density of atoms in the (111) plane of (a) bcc tungsten and (b) fcc aluminum.  \n\nGive your answer as a tuple: (bcc_tungsten_planar_density, fcc_aluminum_planar_density).The units of each required answer are (atoms/nm², atoms/nm²), respectively.",
+ "response": "## Solution\n\n### (a) BCC Tungsten — (111) plane\n\nThe (111) plane contains only **3 corner atoms** (the body-center atom at $(a/2,a/2,a/2)$ does not satisfy $x+y+z=a$, so it's excluded). Each corner is shared by 6 triangles:\n\n$$N = 3 \\times \\tfrac{1}{6} = 0.5 \\text{ atoms}, \\quad A = \\frac{\\sqrt{3}\\,a^2}{2}$$\n\n$$PD_{W} = \\frac{0.5}{\\sqrt{3}\\,a^2/2} = \\frac{1}{\\sqrt{3}\\,a^2} = \\frac{\\sqrt{3}}{16\\,r_W^2} = \\frac{\\sqrt{3}}{16(0.137)^2} \\approx 5.77 \\text{ atoms/nm}^2$$\n\n### (b) FCC Aluminum — (111) plane\n\nThe (111) close-packed plane contains **3 corner atoms** (×1/6) + **3 face-center atoms** (×1/2):\n\n$$N = 3\\times\\tfrac{1}{6} + 3\\times\\tfrac{1}{2} = 2 \\text{ atoms}, \\quad A = \\frac{\\sqrt{3}\\,a^2}{2}$$\n\n$$PD_{Al} = \\frac{2}{\\sqrt{3}\\,a^2/2} = \\frac{4}{\\sqrt{3}\\,a^2} = \\frac{1}{2\\sqrt{3}\\,r_{Al}^2} = \\frac{1}{2\\sqrt{3}(0.143)^2} \\approx 14.12 \\text{ atoms/nm}^2$$\n\n$$\\boxed{(5.77,\\ 14.12)}$$",
+ "final_answer": "(5.77,\\ 14.12)",
+ "correct_answer": "(5.77, 14.1)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(atoms/nm², atoms/nm²)"
+}

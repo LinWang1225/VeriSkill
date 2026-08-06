@@ -1,0 +1,11 @@
+{
+  "edits": [
+    {"file": "workspace/critics/d-matsci-sign-convention.md", "action": "add_rule", "rule_id": "R-d-matsci-sign-convention-001", "summary": "方法库新增子情形：电化学电池电势书写方向 vs 自发方向"},
+    {"file": "workspace/critics/d-matsci-sign-convention.md", "action": "narrow_rule", "rule_id": "R-d-matsci-sign-convention-001", "summary": "R 判据触发条件扩展至电化学电池电势方向；依据追加 r26#m275"}
+  ],
+  "fn_resolved": ["m275"],
+  "narrow_rule": ["R-d-matsci-sign-convention-001"],
+  "unjudgeable": [],
+  "needs_human": false,
+  "notes": "m275 FN 根因：电池书写方向 vs 自发方向符号约定，sign-convention 判据未覆盖电化学电池电势。已扩展。"
+}

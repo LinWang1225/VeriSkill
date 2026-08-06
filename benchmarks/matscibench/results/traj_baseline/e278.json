@@ -1,0 +1,11 @@
+{
+ "tid": "e278",
+ "qid": "Physical_Metallurgy_Hosford_Example 16.2",
+ "question_text": "Calculate the eutectoid temperature and composition for a 4140 steel, containing $0.40 \\% \\mathrm{C}, 0.83 \\% \\mathrm{Mn}, 0.30 \\% \\mathrm{Si}, 1.0 \\% \\mathrm{Ni}$, and $0.20 \\% \\mathrm{Mo}$. For plain carbon steel, the eutectoid temperature is approximately $723^{\\circ} \\mathrm{C}$ and the eutectoid composition is $0.77 \\% \\mathrm{C}$. The approximate change in eutectoid temperature ( ${ }^{\\circ} \\mathrm{C}$ ) per $1 \\mathrm{wt} \\%$ of alloying element is: Mn: $-15, \\mathrm{Si}:+25, \\mathrm{Ni}:-14, \\mathrm{Mo}:+92$. The approximate change in eutectoid composition (\\% C) per 1 wt\\% of alloying element is: Mn: -0.054, Si: -0.108, Ni: -0.03, Mo: -0.337. Give your answer as a tuple: (eutectoid_temperature, eutectoid_composition)The units of each required answer are (C, %), respectively.",
+ "response": "## Step-by-Step Calculation\n\n**Eutectoid temperature:**\n\n$$T = 723 + 0.83(-15) + 0.30(+25) + 1.0(-14) + 0.20(+92)$$\n\n$$= 723 - 12.45 + 7.5 - 14 + 18.4 = 722.45\\ ^\\circ\\mathrm{C}$$\n\n**Eutectoid composition:**\n\n$$C = 0.77 + 0.83(-0.054) + 0.30(-0.108) + 1.0(-0.03) + 0.20(-0.337)$$\n\n$$= 0.77 - 0.04482 - 0.0324 - 0.03 - 0.0674 = 0.595\\ \\%\\mathrm{C}$$\n\n$$\\boxed{(722.45,\\ 0.595)}$$",
+ "final_answer": "(722.45,\\ 0.595)",
+ "correct_answer": "(717, 0.60)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(C, %)"
+}

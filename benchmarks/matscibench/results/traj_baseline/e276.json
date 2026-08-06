@@ -1,0 +1,11 @@
+{
+ "tid": "e276",
+ "qid": "Physical_Metallurgy_Hosford_Example 5.1",
+ "question_text": "Calculate the electron-to-atom ratio in a copper-base alloy containing $15 \\%$ zinc and $3 \\%$ silicon. Give your answer as the value of electron_to_atom_ratio.",
+ "response": "## Reasoning\n\nThe **electron-to-atom ratio** (e/a) is a Hume–Rothery electron concentration, computed from atomic fractions and valence electron contributions:\n\n$$\\frac{e}{a} = \\sum_i x_i v_i$$\n\nwhere $x_i$ is the atomic fraction and $v_i$ the valence (Cu = 1, Zn = 2, Si = 4).\n\n**Step 1 — Composition.** The copper-base alloy is 82% Cu, 15% Zn, 3% Si by weight.\n\n**Step 2 — Convert weight % to atomic fractions** using atomic weights (Cu = 63.55, Zn = 65.38, Si = 28.09):\n\n| Element | wt% | $n_i = w_i/A_i$ | $x_i$ |\n|---------|-----|------------------|-------|\n| Cu | 82 | 1.2903 | 0.7933 |\n| Zn | 15 | 0.2294 | 0.1411 |\n| Si | 3  | 0.1068 | 0.0657 |\n\nTotal moles = 1.6265, so atomic fractions are $x_{\\rm Cu}=0.7933$, $x_{\\rm Zn}=0.1411$, $x_{\\rm Si}=0.0657$.\n\n**Step 3 — Electron concentration:**\n\n$$\\frac{e}{a} = (0.7933)(1) + (0.1411)(2) + (0.0657)(4) = 0.7933 + 0.2822 + 0.2628 = 1.338$$\n\nThis value (≈ 1.34) sits just below the α/β phase boundary at e/a = 1.36, consistent with a single-phase FCC α solid solution.\n\n$$\\boxed{1.338}$$",
+ "final_answer": "1.338",
+ "correct_answer": "1.34",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

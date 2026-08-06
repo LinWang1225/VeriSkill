@@ -1,0 +1,11 @@
+{
+ "tid": "e072",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 11.3",
+ "question_text": "The applied magnetic field $(H)$ for a toroidal solenoid is given by $N \\times I$, where $N$ is the number of turns per meter and $I$ is the current in amperes. (a) What is the flux density (B) created for a current of 0.5 A if the toroidal solenoid has an air core? (b) What is the flux density (B) if the core is filled with iron? Assume that the relative magnetic permeability of iron is 900 for the field generated using 0.5 A. The average circumference of the solenoid is 75 cm, and there are 1000 turns. Give your answer as a tuple (flux density with air core, flux density with iron core).The units of each required answer are (T, T), respectively.",
+ "response": "## Solution\n\n**Given:**\n- Current $I = 0.5$ A\n- Average circumference $= 75\\text{ cm} = 0.75$ m\n- Number of turns $= 1000$\n- Turns per meter: $N = \\dfrac{1000}{0.75} = 1333.33\\ \\text{turns/m}$\n- $\\mu_0 = 4\\pi \\times 10^{-7}\\ \\text{T·m/A}$\n\n**Applied field:**\n$$H = N \\times I = \\frac{1000}{0.75} \\times 0.5 = 666.67\\ \\text{A/m}$$\n\n**(a) Air core** ($\\mu_r = 1$):\n$$B = \\mu_0 H = (4\\pi \\times 10^{-7})(666.67) = 8.3776 \\times 10^{-4}\\ \\text{T}$$\n\n**(b) Iron core** ($\\mu_r = 900$):\n$$B = \\mu_0 \\mu_r H = 900 \\times 8.3776 \\times 10^{-4} = 0.7540\\ \\text{T}$$\n\n$$\\boxed{(8.3776 \\times 10^{-4},\\ 0.7540)}$$",
+ "final_answer": "(8.3776 \\times 10^{-4},\\ 0.7540)",
+ "correct_answer": "(8.38 \\times 10^{-4}, 0.838)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(T, T)"
+}

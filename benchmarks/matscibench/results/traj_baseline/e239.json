@@ -1,0 +1,11 @@
+{
+ "tid": "e239",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 9-64",
+ "question_text": "A $2 \\mathrm{~cm} \\times 4 \\mathrm{~cm} \\times 6 \\mathrm{~cm}$ magnesium casting is produced. After cooling to room temperature, the casting is found to weigh 80 g. Determine (a) the volume of the shrinkage cavity at the center of the casting and (b) the percent shrinkage that must have occurred during solidification. Give your answer as a tuple: (shrinkage_cavity_volume_cm3, percent_shrinkage).The units of each required answer are (cm³, %), respectively.",
+ "response": "## Solution\n\n**Given:**\n- Casting dimensions: 2 cm × 4 cm × 6 cm\n- Actual weight after cooling: 80 g\n- Density of magnesium: ρ = 1.74 g/cm³\n\n**Step 1 — Theoretical (mold) volume:**\n$$V_{\\text{mold}} = 2 \\times 4 \\times 6 = 48 \\text{ cm}^3$$\n\n**Step 2 — Theoretical weight (if fully dense):**\n$$W_{\\text{theoretical}} = 48 \\times 1.74 = 83.52 \\text{ g}$$\n\n**Step 3 — Volume of actual solid magnesium:**\n$$V_{\\text{solid}} = \\frac{80}{1.74} = 45.98 \\text{ cm}^3$$\n\n**Step 4 (a) — Shrinkage cavity volume:**\n$$V_{\\text{cavity}} = 48 - \\frac{80}{1.74} = 2.02 \\text{ cm}^3$$\n\n**Step 5 (b) — Percent shrinkage during solidification:**\n$$\\% \\text{shrinkage} = \\frac{V_{\\text{cavity}}}{V_{\\text{mold}}}\\times 100 = \\frac{2.02}{48}\\times 100 = 4.21\\%$$\n\n$$\\boxed{(2.02,\\ 4.21)}$$",
+ "final_answer": "(2.02,\\ 4.21)",
+ "correct_answer": "(46, 4.1)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(cm³, %)"
+}

@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"critic":"d-matsci-param-lookup","type":"rubric","rule_id":null,"evidence_items":["#m245"],"summary":"description 加豁免：题目指明材料名未给标准物性值时查表取公认标准值是教材惯例，不触发"},
+    {"critic":"d-matsci-param-lookup","type":"narrow_rule","rule_id":"R-d-matsci-param-lookup-001","evidence_items":["#m245"],"summary":"R 规则触发前先查豁免：轨迹查表取指定材料公认标准参考物性且值一致则不触发"},
+    {"critic":"d-sci-answer-format","type":"rubric","rule_id":null,"evidence_items":["#m245"],"summary":"sigfig 子情形加豁免：输入有效数字位数少是题目精度设定非解答者错误，答案匹配参考值时不应仅因输入 sigfig 少扣分"}
+  ],
+  "fp_seen":1,"fp_resolved":1,"fn_clusters_seen":0,"fn_resolved":[],"unjudgeable":[],"unresolved":[],"skipped":[],"needs_human":false
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e255",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 22-4",
+ "question_text": "Calculate the heat (in calories and joules) required to raise the temperature of 1 kg of the following materials by $50^{\\circ} \\mathrm{C}$ : (a) lead, (b) $\\mathrm{Si}_3 \\mathrm{~N}_4$\n\nGive your answer as a tuple: (lead_heat_cal, Si3N4_heat_cal).The units of each required answer are (cal, cal), respectively.",
+ "response": "Using the specific heat capacities from Callister's standard table (Table 17.1):\n\n- **Lead:** $c = 0.128\\ \\mathrm{J/(g\\cdot °C)}$\n- **Si₃N₄:** $c = 0.71\\ \\mathrm{J/(g\\cdot °C)}$\n\nWith $Q = mc\\Delta T$, $m = 1000\\ \\mathrm{g}$, $\\Delta T = 50^{\\circ}\\mathrm{C}$, and $1\\ \\mathrm{cal} = 4.184\\ \\mathrm{J}$:\n\n**Lead:**\n$$Q = (1000)(0.128)(50) = 6400\\ \\mathrm{J} = \\frac{6400}{4.184} \\approx 1530\\ \\mathrm{cal}$$\n\n**Si₃N₄:**\n$$Q = (1000)(0.71)(50) = 35{,}500\\ \\mathrm{J} = \\frac{35{,}500}{4.184} \\approx 8485\\ \\mathrm{cal}$$\n\n$$\\boxed{(1530,\\ 8485)}$$",
+ "final_answer": "(1530,\\ 8485)",
+ "correct_answer": "(1900,8500)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(cal, cal)"
+}

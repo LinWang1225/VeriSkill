@@ -1,0 +1,11 @@
+{
+ "tid": "m211",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-9",
+ "question_text": "A niobium alloy is produced by introducing tungsten substitutional atoms into the BCC structure; eventually an alloy is produced that has a lattice parameter of 0.32554 nm and a density of $11.95 \\mathrm{~g} / \\mathrm{cm}^3$. Calculate the fraction of the atoms in the alloy that are tungsten. Give your answer as as the value of number_of tungsten_fraction.",
+ "response": "## Step-by-step Reasoning\n\nFor a BCC unit cell, there are **n = 2 atoms per unit cell**.\n\n**Given:**\n- Lattice parameter: $a = 0.32554\\ \\text{nm} = 3.2554\\times10^{-8}\\ \\text{cm}$\n- Density: $\\rho = 11.95\\ \\text{g/cm}^3$\n- Atomic weights: $A_{\\text{Nb}} = 92.906\\ \\text{g/mol}$, $A_{\\text{W}} = 183.84\\ \\text{g/mol}$\n\n**Density equation:**\n\n$$\\rho = \\frac{n \\cdot A_{\\text{avg}}}{N_A \\cdot a^3}$$\n\nSolving for the average atomic weight:\n\n$$A_{\\text{avg}} = \\frac{\\rho \\cdot N_A \\cdot a^3}{n} = \\frac{11.95 \\times 6.022\\times10^{23} \\times (3.2554\\times10^{-8})^3}{2} = 124.13\\ \\text{g/mol}$$\n\n**Mixture relation** (let $x$ = tungsten fraction):\n\n$$A_{\\text{avg}} = x\\,A_{\\text{W}} + (1-x)\\,A_{\\text{Nb}}$$\n\n$$x = \\frac{A_{\\text{avg}} - A_{\\text{Nb}}}{A_{\\text{W}} - A_{\\text{Nb}}} = \\frac{124.13 - 92.906}{183.84 - 92.906} = 0.3434$$\n\n$$\\boxed{0.343}$$",
+ "final_answer": "0.343",
+ "correct_answer": "0.344",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

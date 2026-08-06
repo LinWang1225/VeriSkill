@@ -1,0 +1,11 @@
+{
+ "tid": "e265",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 4.4",
+ "question_text": "Composition Conversion-From Weight Percent to Atom Percent. Determine the composition, in atom percent, of an alloy that consists of 97 wt% aluminum and 3 wt% copper. Give your answer as a tuple (aluminum atom percent, copper atom percent)The units of each required answer are (at%, at%), respectively.",
+ "response": "Using a 100 g basis with atomic weights Al = 26.98 g/mol and Cu = 63.55 g/mol:\n\n- Moles Al = 97 / 26.98 = 3.595\n- Moles Cu = 3 / 63.55 = 0.0472\n- Total moles = 3.642\n\n$$C_{\\text{Al}} = \\frac{3.595}{3.642}\\times 100 \\approx 98.70\\text{ at\\%}$$\n\n$$C_{\\text{Cu}} = \\frac{0.0472}{3.642}\\times 100 \\approx 1.30\\text{ at\\%}$$\n\n$$\\boxed{(98.70,\\ 1.30)}$$",
+ "final_answer": "(98.70,\\ 1.30)",
+ "correct_answer": "(98.7, 1.30)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(at%, at%)"
+}

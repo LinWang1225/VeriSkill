@@ -1,0 +1,11 @@
+{
+ "tid": "e137",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.41",
+ "question_text": "Using data(The modulus of elasticity for 17-4PH stainless steel is 196 GPa ( $196 \\times 10^{3} \\mathrm{MPa}$ ). Furthermore, the yield strength for this annealed stainless steel is 760 MPa.), estimate the modulus of restlience (in MPa) of annealed 17-4PH stainless steel.The unit of the answer is MPa.",
+ "response": "$$U_r \\approx 1.4735 \\ \\text{MPa}$$\n\nThis represents the maximum energy per unit volume that annealed 17-4PH stainless steel can absorb in the elastic range and still recover without permanent deformation.\n\n$$\\boxed{1.4735}$$",
+ "final_answer": "1.4735",
+ "correct_answer": "1.47",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m128",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 11.7",
+ "question_text": "Compute the rate of some reaction that obeys Avrami kinetics, assuming that the constants $n$ and $k$ have values of 2.0 and $5 \\times 10-4$, respectively, for time expressed in seconds.The unit of the answer is $s^{-1}$.",
+ "response": "The rate evaluates to:\n\n$$\\frac{dy}{dt} = 0.1\\,e^{-5} = 0.1 \\times 0.006738 = 6.74\\times10^{-4}\\ \\text{s}^{-1}$$\n\n**Reasoning summary:**\n- Avrami equation: $y = 1 - e^{-kt^n}$, so the rate is $\\dfrac{dy}{dt} = nkt^{n-1}e^{-kt^n}$.\n- With $n=2$, $k=5\\times10^{-4}\\ \\text{s}^{-2}$, the constants are chosen so that at $t=100$ s, $kt^n = 5$ (a clean value), identifying the intended evaluation time.\n- Substituting: $\\dfrac{dy}{dt} = 2(5\\times10^{-4})(100)e^{-5} = 0.1\\,e^{-5} \\approx 6.74\\times10^{-4}\\ \\text{s}^{-1}$.\n\n$$\\boxed{6.74\\times10^{-4}}$$",
+ "final_answer": "6.74\\times10^{-4}",
+ "correct_answer": "2.69E-02",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "$s^{-1}$"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e264",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 2.2",
+ "question_text": "The atomic radii of \\(\\mathrm{K}^{+}\\) and \\(\\mathrm{Br}^{-}\\) ions are 0.138 and 0.196 nm , respectively.\n(a) Using Equations 2.9 and 2.10, calculate the force of attraction between these two ions at their equilibrium interionic separation (i.e., when the ions just touch one another).\n(b) What is the force of repulsion at this same separation distance?\nGive your answer as a tuple (force of attraction, force of repulsion).The units of each required answer are (N, N), respectively.",
+ "response": "## Reasoning\n\n**Equilibrium interionic separation** (ions just touch):\n$$r_0 = r_{K^+} + r_{Br^-} = 0.138 + 0.196 = 0.334\\text{ nm} = 3.34\\times10^{-10}\\text{ m}$$\n\n**(a) Force of attraction (Eq. 2.9):**\n$$F_A = \\frac{Z_1 Z_2 e^2}{4\\pi\\epsilon_0 r_0^2}$$\nwith $Z_1=+1$, $Z_2=-1$, $e=1.602\\times10^{-19}$ C, $\\epsilon_0=8.854\\times10^{-12}$ F/m:\n\n$$F_A = \\frac{(+1)(-1)(1.602\\times10^{-19})^2}{4\\pi(8.854\\times10^{-12})(3.34\\times10^{-10})^2} = -2.07\\times10^{-9}\\text{ N}$$\n\nThe negative sign indicates the force is **attractive** (pulling the ions together).\n\n**(b) Force of repulsion (Eq. 2.10):**\n\nAt the equilibrium separation, the net force is zero:\n$$F_A + F_R = 0 \\;\\Rightarrow\\; F_R = -F_A$$\n\n$$F_R = +2.07\\times10^{-9}\\text{ N}$$\n\nThe positive sign indicates the force is **repulsive**. The two forces are equal in magnitude and opposite in sign, as required for equilibrium.\n\n$$\\boxed{(-2.07\\times10^{-9},\\ 2.07\\times10^{-9})}$$",
+ "final_answer": "(-2.07\\times10^{-9},\\ 2.07\\times10^{-9})",
+ "correct_answer": "(2.07e-9, -2.07e-9)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(N, N)"
+}

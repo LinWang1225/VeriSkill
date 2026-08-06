@@ -1,0 +1,11 @@
+{
+ "tid": "e149",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.29",
+ "question_text": "Two previously undeformed cylindrical specimens of an alloy are to be strain hardened by reducing their cross-sectional areas (while maintaining their circular cross sections). For one specimen, the initial and deformed radii are 15 and 12 mm , respectively. The second specimen, with an initial radius of 11 mm , must have the same deformed hardness as the first specimen; compute the second specimen's radius after deformation.The unit of the answer is mm.",
+ "response": "Verified numerically: $r_d = 8.8$ mm.\n\n$$\\boxed{8.8}$$",
+ "final_answer": "8.8",
+ "correct_answer": "8.80",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

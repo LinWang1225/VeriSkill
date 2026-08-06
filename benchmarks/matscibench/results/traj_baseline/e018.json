@@ -1,0 +1,11 @@
+{
+ "tid": "e018",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 13.2",
+ "question_text": "Assuming that the conductivity for copper in Table is entirely due to free electrons [with a mobility of $3.5 \\times 10^{-3} \\mathrm{~m}^{2} /(\\mathrm{V} \\cdot \\mathrm{s})$ ], calculate the density of free electrons in copper at room temperature. \n\nRefer to Table:\n\\begin{tabular}{|l|l|l|}\n\\hline \\multicolumn{3}{|c|}{Electrical Conductivities of Some Materials at Room Temperature} \\\\\n\\hline Conducting range & Material & Conductivity, $\\sigma\\left(\\Omega^{-1} \\cdot \\mathbf{m}^{-1}\\right)$ \\\\\n\\hline \\multirow[t]{4}{*}{Conductors} & Aluminum (annealed) & $35.36 \\times 10^6$ \\\\\n\\hline & Copper (annealed standard) & $58.00 \\times 10^6$ \\\\\n\\hline & Iron (99.99 + \\%) & $10.30 \\times 10^6$ \\\\\n\\hline & Steel (wire) & $5.71-9.35 \\times 10^6$ \\\\\n\\hline \\multirow[t]{3}{*}{Semiconductors} & Germanium (high purity) & 2.0 \\\\\n\\hline & Silicon (high purity) & $0.40 \\times 10^{-3}$ \\\\\n\\hline & Lead sulfide (high purity) & 38.4 \\\\\n\\hline \\multirow[t]{4}{*}{Insulators} & Aluminum oxide & $10^{-10}-10^{-12}$ \\\\\n\\hline & Borosilicate glass & $10^{-13}$ \\\\\n\\hline & Polyethylene & $10^{-13}-10^{-15}$ \\\\\n\\hline & Nylon 66 & $10^{-12}-10^{-13}$ \\\\\n\\hline\n\\end{tabular}The unit of the answer is mathrm{~m}^{-3}.",
+ "response": "$$n = \\frac{58.00 \\times 10^{6}}{5.6 \\times 10^{-22}} \\approx 1.036 \\times 10^{29}\\ \\mathrm{m}^{-3}$$\n\n$\\boxed{1.036 \\times 10^{29}}$",
+ "final_answer": "1.036 \\times 10^{29}",
+ "correct_answer": "1.04E+29",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mathrm{~m}^{-3}"
+}

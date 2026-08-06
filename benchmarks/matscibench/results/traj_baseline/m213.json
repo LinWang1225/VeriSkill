@@ -1,0 +1,11 @@
+{
+ "tid": "m213",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-15",
+ "question_text": "ZnS has the zinc blende structure. If the density is $3.02 \\mathrm{~g} / \\mathrm{cm}^3$ and the lattice parameter is 0.59583 nm , determine the number of Schottky defects (a) per unit cell; and (b) per cubic centimeter. (d) $\\mathrm{Fe}^{2+}$ ions replace sodium ions in NaCl . Give your answer as a tuple: (defects_per_unit_cell, defects_per_cubic_centimeter).The units of each required answer are (defects/unit cell, defects/cm³), respectively.",
+ "response": "## Reasoning\n\n**Zinc blende ZnS** has **4 formula units per unit cell** (4 Zn²⁺ + 4 S²⁻). A Schottky defect removes one cation–anion pair (one ZnS formula unit) to preserve charge neutrality.\n\n**Step 1 — Ideal density** (perfect crystal, no defects):\n\n$$\\rho_{\\text{ideal}} = \\frac{n \\cdot M_{\\text{ZnS}}}{N_A \\cdot a^3}, \\quad n=4,\\; M_{\\text{ZnS}} = 65.38 + 32.06 = 97.44\\;\\text{g/mol}$$\n\nWith $a = 0.59583\\;\\text{nm} = 5.9583\\times10^{-8}\\;\\text{cm}$:\n\n$$\\rho_{\\text{ideal}} = \\frac{4 \\times 97.44}{6.022\\times10^{23}\\times(5.9583\\times10^{-8})^3} \\approx 3.060\\;\\text{g/cm}^3$$\n\n**Step 2 — Schottky defects per unit cell.** If $n_s$ Schottky defects exist per unit cell, the remaining mass is $(4 - n_s)$ formula units:\n\n$$\\frac{\\rho_{\\text{actual}}}{\\rho_{\\text{ideal}}} = \\frac{4 - n_s}{4} \\;\\Rightarrow\\; n_s = 4\\!\\left(1 - \\frac{\\rho_{\\text{actual}}}{\\rho_{\\text{ideal}}}\\right) = 4\\!\\left(1 - \\frac{3.02}{3.060}\\right) \\approx 5.20\\times10^{-2}$$\n\n**Step 3 — Defects per cm³:**\n\n$$\\frac{n_s}{a^3} = \\frac{5.20\\times10^{-2}}{2.115\\times10^{-22}} \\approx 2.46\\times10^{20}\\;\\text{cm}^{-3}$$\n\nThe \"(d) Fe²⁺ in NaCl\" clause belongs to a separate part of the original problem set and does not affect this ZnS Schottky-defect calculation.\n\n$$\\boxed{\\left(5.20\\times10^{-2},\\; 2.46\\times10^{20}\\right)}$$",
+ "final_answer": "\\left(5.20\\times10^{-2},\\; 2.46\\times10^{20}\\right)",
+ "correct_answer": "(0.0522, 2.47e+20)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(defects/unit cell, defects/cm³)"
+}

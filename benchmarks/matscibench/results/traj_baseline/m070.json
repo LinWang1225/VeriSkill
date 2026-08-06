@@ -1,0 +1,11 @@
+{
+ "tid": "m070",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.25",
+ "question_text": "Calculate the minimum cation-to-anion radius ratio for a coordination number of 8.",
+ "response": "For coordination number 8, the anions sit at the corners of a cube surrounding the cation at the body center. The anions touch along the cube edge, so the edge length is $2r_A$. The body diagonal is $2r_A\\sqrt{3}$, and the center-to-corner distance is half of that:\n\n$$r_C + r_A = r_A\\sqrt{3}$$\n\n$$\\frac{r_C}{r_A} = \\sqrt{3} - 1 \\approx 0.732$$\n\n$$\\boxed{0.732}$$",
+ "final_answer": "0.732",
+ "correct_answer": "0.732",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

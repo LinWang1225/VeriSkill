@@ -1,0 +1,11 @@
+{
+ "tid": "m254",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 20-16",
+ "question_text": "An $\\mathrm{Fe}-49 \\% \\mathrm{Ni}$ alloy has a maximum permeability of 64,000 when a magnetic field of 0.125 oersted is applied. What inductance is obtained and what current is needed to obtain this inductance in a 200-turn, 3-cm-long coil? Give your answer as a tuple: (inductance_G, current_mA).The units of each required answer are (G, mA), respectively.",
+ "response": "## Solution\n\n**Step 1: Magnetic flux density (induction) B**\n\nUsing the definition of permeability in CGS units (μ = B/H):\n\n$$B = \\mu_{\\max} \\cdot H = 64{,}000 \\times 0.125 = 8{,}000 \\text{ G}$$\n\n**Step 2: Current required**\n\nFor a solenoid in CGS units, the field produced by the coil is:\n\n$$H = \\frac{4\\pi}{10}\\frac{NI}{l}$$\n\nSolving for current I (with H = 0.125 Oe, N = 200, l = 3 cm):\n\n$$I = \\frac{H \\cdot l}{0.4\\pi \\cdot N} = \\frac{0.125 \\times 3}{0.4\\pi \\times 200} = \\frac{0.375}{251.33} \\approx 0.001492 \\text{ A} \\approx 1.492 \\text{ mA}$$\n\nThe flux density of **8,000 G** is obtained, requiring a current of **~1.492 mA**.\n\n$$\\boxed{(8000,\\ 1.492)}$$",
+ "final_answer": "(8000,\\ 1.492)",
+ "correct_answer": "(8000, 1.49)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(G, mA)"
+}

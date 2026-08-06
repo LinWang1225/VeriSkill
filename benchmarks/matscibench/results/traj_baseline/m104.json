@@ -1,0 +1,11 @@
+{
+ "tid": "m104",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.7",
+ "question_text": "For a brass alloy, the stress at which plastic deformation begins is 345 MPa (50,000 psi), and the modulus of elasticity is $103 \\mathrm{GPa}\\left(15.0 \\times 10^{6} \\mathrm{psi}\\right)$.\n(a) What is the maximum load that can be applied to a specimen with a cross-sectional area of $130 \\mathrm{~mm}^{2}$ (0.2 in. ${ }^{2}$ ) without plastic deformation?\n(b) If the original specimen length is 76 mm (3.0 in.), what is the maximum length to which it can be stretched without causing plastic deformation?\n\nGive your answer as a tuple: (answer to (a), answer to (b)).The units of each required answer are (N, mm), respectively.",
+ "response": "## Solution\n\n**Given:**\n- Yield stress: $\\sigma = 345$ MPa\n- Elastic modulus: $E = 103$ GPa\n- Cross-sectional area: $A_0 = 130$ mm²\n- Original length: $L_0 = 76$ mm\n\n### (a) Maximum load without plastic deformation\n\nAt the threshold of plastic deformation, the stress equals the yield stress:\n\n$$F = \\sigma \\cdot A_0 = 345\\;\\text{MPa} \\times 130\\;\\text{mm}^2 = 345\\;\\text{N/mm}^2 \\times 130\\;\\text{mm}^2 = 44{,}850\\;\\text{N}$$\n\n### (b) Maximum length without plastic deformation\n\nThe strain at the onset of yielding (elastic limit):\n\n$$\\epsilon = \\frac{\\sigma}{E} = \\frac{345\\;\\text{MPa}}{103{,}000\\;\\text{MPa}} = 0.0033495$$\n\nThe maximum length (elastic deformation only):\n\n$$L_{\\max} = L_0(1 + \\epsilon) = 76\\;\\text{mm}\\times(1 + 0.0033495) = 76.255\\;\\text{mm}$$\n\n$$\\boxed{(44850, 76.255)}$$",
+ "final_answer": "(44850, 76.255)",
+ "correct_answer": "(44850, 76.25)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(N, mm)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m083",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.44",
+ "question_text": "Gold (Au) forms a substitutional solid solution with silver (Ag). Compute the weight percent of gold that must be added to silver to yield an alloy that contains $5.5 \\times 10^{21} \\mathrm{Au}$ atoms per cubic centimeter. The densities of pure Au and Ag are 19.32 and $10.49 \\mathrm{~g} / \\mathrm{cm}^{3}$, respectively.The unit of the answer is wt%.",
+ "response": "## Solution\n\nFor a **substitutional solid solution**, the number of Au atoms per unit volume in the alloy is:\n\n$$N_{Au} = \\frac{\\rho_{\\text{alloy}} \\cdot C_{Au} \\cdot N_A}{A_{Au}}$$\n\nwhere $C_{Au}$ is the **mass fraction** of Au, and the alloy density follows the inverse rule of mixtures:\n\n$$\\frac{1}{\\rho_{\\text{alloy}}} = \\frac{C_{Au}}{\\rho_{Au}} + \\frac{1 - C_{Au}}{\\rho_{Ag}}$$\n\n**Setting up the equation:**\n\n$$N_{Au} = \\frac{C_{Au} \\cdot N_A / A_{Au}}{C_{Au}/\\rho_{Au} + (1-C_{Au})/\\rho_{Ag}}$$\n\n**Given values:**\n- $N_{Au} = 5.5 \\times 10^{21}$ atoms/cm³\n- $N_A = 6.022 \\times 10^{23}$ atoms/mol\n- $A_{Au} = 196.97$ g/mol, $A_{Ag} = 107.87$ g/mol\n- $\\rho_{Au} = 19.32$ g/cm³, $\\rho_{Ag} = 10.49$ g/cm³\n\n**Solving numerically** for $C_{Au}$:\n\n$$C_{Au} \\approx 0.1590 \\quad \\Longrightarrow \\quad \\text{wt\\%} = C_{Au} \\times 100 \\approx 15.9\\%$$\n\n**Verification:** With $C_{Au} = 0.1590$, the alloy density is $\\rho_{\\text{alloy}} \\approx 11.43$ g/cm³, giving $N_{Au} = 5.50 \\times 10^{21}$ atoms/cm³ ✓\n\n$$\\boxed{15.9}$$",
+ "final_answer": "15.9",
+ "correct_answer": "15.9",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "wt%"
+}

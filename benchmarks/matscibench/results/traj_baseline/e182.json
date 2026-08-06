@@ -1,0 +1,11 @@
+{
+ "tid": "e182",
+ "qid": "Fundamentals_of_Ceramics_Barsoum_Example 6.1",
+ "question_text": "Estimate the number of Frenkel defects in $\\mathrm{AgBr}$ (NaCl structure) at $500^{\\circ} \\mathrm{C}$. The enthalpy of formation of the defect is $110 \\mathrm{~kJ} / \\mathrm{mol}$, and the entropy of formation is $6.6 R$. The density and molecular weights are $6.5 \\mathrm{~g} / \\mathrm{cm}^{3}$ and $187.8 \\mathrm{~g} / \\mathrm{mol}$, respectively.  Assume the Frenkel disorder occurs on the cation sublattice and that the silver ions occupy tetrahedral interstitial sites.The unit of the answer is $\\text{defects} / \\mathrm{cm}^{3}$.",
+ "response": "## Solution\n\n**Step 1: Number of cation lattice sites per cm³**\n\nIn the NaCl structure there is one cation site per formula unit, so:\n\n$$N = \\frac{\\rho N_A}{M} = \\frac{(6.5)(6.022\\times10^{23})}{187.8} = 2.084\\times10^{22}\\ \\text{cm}^{-3}$$\n\n**Step 2: Number of interstitial sites per cm³**\n\nIn the NaCl (rock-salt) structure the anions form an FCC lattice. An FCC unit cell contains **8 tetrahedral interstitial sites** and **4 formula units** (4 cation sites). Hence the ratio of tetrahedral interstitial sites to cation sites is $8/4 = 2$:\n\n$$N_i = 2N = 4.169\\times10^{22}\\ \\text{cm}^{-3}$$\n\n**Step 3: Frenkel defect concentration**\n\nFor Frenkel disorder (vacancy–interstitial pair on the cation sublattice), the equilibrium number of defects is\n\n$$n = \\sqrt{N\\,N_i}\\;\\exp\\!\\left(\\frac{\\Delta S_f}{2R}\\right)\\exp\\!\\left(-\\frac{\\Delta H_f}{2RT}\\right)$$\n\nwith $T = 500 + 273.15 = 773.15\\ \\text{K}$, $\\Delta H_f = 110\\ \\text{kJ/mol}$, $\\Delta S_f = 6.6R$.\n\nEvaluating each factor:\n\n- $\\sqrt{N N_i} = \\sqrt{(2.084\\times10^{22})(4.169\\times10^{22})} = 2.948\\times10^{22}$\n- $\\exp(\\Delta S_f/2R) = \\exp(3.3) = 27.11$\n- $\\exp\\!\\left(-\\dfrac{\\Delta H_f}{2RT}\\right) = \\exp\\!\\left(-\\dfrac{110000}{2(8.314)(773.15)}\\right) = \\exp(-8.559) = 1.92\\times10^{-4}$\n\n**Step 4: Result**\n\n$$n = (2.948\\times10^{22})(27.11)(1.92\\times10^{-4}) \\approx 1.54\\times10^{20}\\ \\text{defects/cm}^{3}$$\n\n$$\\boxed{1.54\\times10^{20}}$$",
+ "final_answer": "1.54\\times10^{20}",
+ "correct_answer": "$1.5 \\times 10^{20}$",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "$\\text{defects} / \\mathrm{cm}^{3}$"
+}

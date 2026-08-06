@@ -1,0 +1,11 @@
+{
+ "tid": "m185",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 3-13",
+ "question_text": "For potassium chloride $(\\mathrm{KCl})$, (a) calculate the radius ratio of $\\mathrm{K}^{+}$ to $\\mathrm{Cl}^{-}$ and (b) calculate the packing factor for the compound. The ionic radii are $r_{\\mathrm{K}^{+}}=0.133 \\mathrm{~nm}$ and $r_{\\mathrm{Cl}^{-}}=0.181 \\mathrm{~nm}$. Give your answer as a tuple (radius ratio, packing factor).The units of each required answer are (, ), respectively.",
+ "response": "## Reasoning\n\n**(a) Radius ratio**\n\nThe radius ratio is the cation radius divided by the anion radius:\n\n$$\\text{radius ratio} = \\frac{r_{\\mathrm{K}^+}}{r_{\\mathrm{Cl}^-}} = \\frac{0.133}{0.181} \\approx 0.735$$\n\n**(b) Packing factor**\n\nKCl crystallizes in the **NaCl (rock salt)** structure. Each cubic unit cell contains 4 K⁺ ions and 4 Cl⁻ ions, and the lattice parameter is\n\n$$a = 2\\,(r_{\\mathrm{K}^+} + r_{\\mathrm{Cl}^-}) = 2(0.133 + 0.181) = 0.628\\ \\text{nm}.$$\n\nThe atomic packing factor is the total ion volume in the cell divided by the cell volume:\n\n$$\\text{PF} = \\frac{4\\!\\left(\\tfrac{4}{3}\\pi r_{\\mathrm{K}^+}^3\\right) + 4\\!\\left(\\tfrac{4}{3}\\pi r_{\\mathrm{Cl}^-}^3\\right)}{a^3} \\approx 0.560$$\n\n$$\\boxed{(0.735,\\ 0.560)}$$",
+ "final_answer": "(0.735,\\ 0.560)",
+ "correct_answer": "(0.735, 0.73)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(, )"
+}

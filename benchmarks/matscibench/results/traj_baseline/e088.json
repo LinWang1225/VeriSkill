@@ -1,0 +1,11 @@
+{
+ "tid": "e088",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.96",
+ "question_text": "The metal niobium ( Nb ) has a BCC crystal structure. If the angle of diffraction for the (211) set of planes occurs at $75.99^{\\circ}$ (first-order reflection) when monochromatic $x$-radiation having a wavelength of 0.1659 nm is used, compute the following: (a) the interplanar spacing for this set of planes and (b) the atomic radius for the Nb atom.\n\nGive your answer as a tuple (the interplanar spacing, the atomic radius)The units of each required answer are (nm, nm), respectively.",
+ "response": "Using Bragg's law with the diffraction angle $2\\theta = 75.99°$, so $\\theta = 37.995°$:\n\n**(a)** $d = \\frac{n\\lambda}{2\\sin\\theta} = \\frac{0.1659}{2\\sin(37.995°)} = 0.1347$ nm\n\n**(b)** For BCC, $d_{hkl} = \\frac{a}{\\sqrt{h^2+k^2+l^2}} \\Rightarrow a = d\\sqrt{6} = 0.3301$ nm, and $R = \\frac{a\\sqrt{3}}{4} = 0.1429$ nm\n\n$$\\boxed{(0.1347,\\ 0.1429)}$$",
+ "final_answer": "(0.1347,\\ 0.1429)",
+ "correct_answer": "(0.1348, 0.1429)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(nm, nm)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m223",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 5-53",
+ "question_text": "During freezing of a $\\mathrm{Cu}-\\mathrm{Zn}$ alloy, we find that the composition is nonuniform. By heating the alloy to $600^{\\circ} \\mathrm{C}$ for 3 h , diffusion of zinc helps to make the composition more uniform. What temperature would be required if we wished to perform this homogenization treatment in 30 minutes?The unit of the answer is °C.",
+ "response": "## Solution\n\n**Principle:** For the same degree of homogenization, the diffusion distance must be the same. Since diffusion distance scales with $\\sqrt{Dt}$, we require the product $D \\cdot t$ to be constant:\n\n$$D_1 t_1 = D_2 t_2$$\n\n**Diffusion data for Zn in Cu (interdiffusion):**\n- $D_0 = 2.78 \\times 10^{-5}\\ \\mathrm{m^2/s}$\n- $Q = 189\\ \\mathrm{kJ/mol} = 189{,}000\\ \\mathrm{J/mol}$\n- $D = D_0 \\exp\\!\\left(-\\dfrac{Q}{RT}\\right)$\n\n**Given:**\n- $T_1 = 600^{\\circ}\\mathrm{C} = 873\\ \\mathrm{K}$, $t_1 = 3\\ \\mathrm{h} = 10{,}800\\ \\mathrm{s}$\n- $t_2 = 30\\ \\mathrm{min} = 1{,}800\\ \\mathrm{s}$, $T_2 = ?$\n\n**Setting up the ratio:**\n\n$$\\frac{D_2}{D_1} = \\frac{t_1}{t_2} = \\frac{10{,}800}{1{,}800} = 6$$\n\n$$\\exp\\!\\left(-\\frac{Q}{RT_2}\\right) = 6\\,\\exp\\!\\left(-\\frac{Q}{RT_1}\\right)$$\n\nTaking ln and solving for $T_2$:\n\n$$\\frac{1}{T_2} = \\frac{1}{T_1} - \\frac{R}{Q}\\ln 6$$\n\n$$\\frac{1}{T_2} = \\frac{1}{873} - \\frac{8.31}{189{,}000}(1.7918) = 0.0011455 - 0.0000788 = 0.001067$$\n\n$$T_2 = 937\\ \\mathrm{K} \\approx 664^{\\circ}\\mathrm{C}$$\n\n$$\\boxed{664}$$",
+ "final_answer": "664",
+ "correct_answer": "667",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "°C"
+}

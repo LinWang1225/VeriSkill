@@ -1,0 +1,11 @@
+{
+ "tid": "m010",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 7.3",
+ "question_text": "Calculate the steady-state heat transfer rate (in $\\mathrm{J} / \\mathrm{m}^{2} \\cdot \\mathrm{~s}$ ) through a sheet of copper 10 mm thick if there is a $50^{\\circ} \\mathrm{C}$ temperature drop (from $50^{\\circ} \\mathrm{C}$ to $0^{\\circ} \\mathrm{C}$ ) across the sheet. Given the thermal conductivity for copper at 300 K as $398 \\mathrm{~J} / \\mathrm{s} \\cdot \\mathrm{m} \\cdot \\mathrm{K}$The unit of the answer is \\mathrm{J} / \\mathrm{m}^{2} \\cdot \\mathrm{s}.",
+ "response": "Using Fourier's law of heat conduction for steady-state one-dimensional heat transfer:\n\n$$q = \\frac{k \\,\\Delta T}{L}$$\n\nwhere:\n- $k = 398 \\ \\mathrm{J/(s \\cdot m \\cdot K)}$ (thermal conductivity of copper)\n- $\\Delta T = 50 \\ \\mathrm{K}$ (temperature drop)\n- $L = 10 \\ \\mathrm{mm} = 0.01 \\ \\mathrm{m}$ (thickness)\n\n$$q = \\frac{398 \\times 50}{0.01} = \\frac{19900}{0.01} = 1{,}990{,}000 \\ \\mathrm{J/(m^2 \\cdot s)}$$\n\n$$\\boxed{1990000}$$",
+ "final_answer": "1990000",
+ "correct_answer": "1.99 \\times 10^{6}",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "\\mathrm{J} / \\mathrm{m}^{2} \\cdot \\mathrm{s}"
+}

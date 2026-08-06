@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"critic": "d-matsci-model-selection", "type": "narrow_rule", "rule_id": "R-d-matsci-model-selection-001", "evidence_items": ["#e254"], "summary": "新增子情形：Moseley 发射公式误用为 K 吸收边电离阈能；正确=查实验 K-edge。依据追加 r18#e254。"},
+    {"critic": "d-sci-answer-format", "type": "narrow_rule", "rule_id": "R-d-sci-answer-format-001", "evidence_items": ["#e211"], "summary": "新增子情形：同一量单位换算副本致 checker 解析多值；正确=只保留单一数值。依据追加 r18#e211。"}
+  ],
+  "fp_seen": 0, "fp_resolved": 0, "fn_clusters_seen": 2,
+  "fn_resolved": ["e254","e211"], "unjudgeable": [], "unresolved": [], "skipped": [], "needs_human": false
+}

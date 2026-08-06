@@ -1,0 +1,11 @@
+{
+ "tid": "m026",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_2.49",
+ "question_text": "The secondary bonding of gas molecules to a solid surface is a common mechanism for measuring the surface area of porous materials. By lowering the temperature of a solid well below room temperature, a measured volume of gas will condense to form a monolayer coating of molecules on the porous surface. For a 100-g sample of fused copper catalyst, a volume of $9 \\times 10^3 \\mathrm{~mm}^3$ of nitrogen (measured at standard temperature and pressure, $0^{\\circ} \\mathrm{C}$ and 1 atm ) is required to form a monolayer upon condensation. Calculate the surface area of the catalyst in units of $\\mathrm{m}^2 / \\mathrm{kg}$. (Take the area covered by a nitrogen molecule as $0.162 \\mathrm{~nm}^2$ and recall that, for an ideal gas, $p V=n R T$, where $n$ is the number of moles of the gas.) Give your answer as the value of surface_area.The unit of the answer is m^2/kg.",
+ "response": "## Step-by-Step Solution\n\n**1. Convert the gas volume to m³:**\n$$V = 9\\times10^3\\ \\text{mm}^3 = 9\\times10^3\\times10^{-9}\\ \\text{m}^3 = 9\\times10^{-6}\\ \\text{m}^3$$\n\n**2. Find moles of N₂ using the ideal gas law** ($p=101325$ Pa, $T=273$ K, $R=8.314$ J/(mol·K)):\n$$n = \\frac{pV}{RT} = \\frac{(101325)(9\\times10^{-6})}{(8.314)(273)} \\approx 4.018\\times10^{-4}\\ \\text{mol}$$\n\n**3. Find the number of N₂ molecules** ($N_A = 6.022\\times10^{23}$):\n$$N = nN_A \\approx (4.018\\times10^{-4})(6.022\\times10^{23}) \\approx 2.419\\times10^{20}\\ \\text{molecules}$$\n\n**4. Compute total surface area** (each molecule covers $0.162\\ \\text{nm}^2 = 0.162\\times10^{-18}\\ \\text{m}^2$):\n$$A = N(0.162\\times10^{-18}) \\approx 39.2\\ \\text{m}^2$$\n\n**5. Normalize per kg of catalyst** (100 g = 0.1 kg):\n$$\\text{Surface area} = \\frac{39.2}{0.1} \\approx 392\\ \\text{m}^2/\\text{kg}$$\n\n$$\\boxed{391.96}$$",
+ "final_answer": "391.96",
+ "correct_answer": "392",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "m^2/kg"
+}

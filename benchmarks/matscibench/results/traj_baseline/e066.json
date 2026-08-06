@@ -1,0 +1,11 @@
+{
+ "tid": "e066",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 7.9",
+ "question_text": "The static dielectric constant $(\\varepsilon_{\\mathrm{s}})$ of $\\mathrm{H}_{2} \\mathrm{O}$ is 78.4 at 298.15 K (Fernandez et al. 1995). It decreases to about $\\varepsilon_{\\mathrm{r}}(\\omega)=$ 20 at a frequency of $f=40 \\mathrm{GHz}$. If the high-frequency (optical) dielectric constant $(\\varepsilon_{\\infty})$ is 5, what is the relaxation time $\\tau$ for $\\mathrm{H}_{2} \\mathrm{O}$ molecule dipoles?The unit of the answer is picoseconds.",
+ "response": "Using the Debye relaxation model, the real part of the dielectric function is:\n\n$$\\varepsilon'(\\omega) = \\varepsilon_{\\infty} + \\frac{\\varepsilon_s - \\varepsilon_\\infty}{1+(\\omega\\tau)^2}$$\n\nSolving for $\\tau$:\n\n$$1+(\\omega\\tau)^2 = \\frac{\\varepsilon_s - \\varepsilon_\\infty}{\\varepsilon' - \\varepsilon_\\infty} = \\frac{78.4-5}{20-5} = \\frac{73.4}{15} \\approx 4.893$$\n\n$$(\\omega\\tau)^2 = 3.893,\\quad \\omega\\tau \\approx 1.973$$\n\nWith $\\omega = 2\\pi f = 2\\pi(40\\times10^9) \\approx 2.513\\times10^{11}\\,\\text{rad/s}$:\n\n$$\\tau = \\frac{1.973}{2.513\\times10^{11}} \\approx 7.85\\times10^{-12}\\,\\text{s} = 7.85\\,\\text{ps}$$\n\n$$\\boxed{7.85}$$",
+ "final_answer": "7.85",
+ "correct_answer": "7.85",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "picoseconds"
+}

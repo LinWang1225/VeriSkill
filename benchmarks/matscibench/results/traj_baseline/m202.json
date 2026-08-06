@@ -1,0 +1,11 @@
+{
+ "tid": "m202",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 23-3_1",
+ "question_text": "An iron container $10 \\mathrm{~cm} \\times 10 \\mathrm{~cm}$ at its base is filled to a height of 20 cm with a corrosive liquid. A current is produced as a result of an electrolytic cell, and after four weeks, the container has decreased in weight by 70 g . Calculate (a) the current and (b) the current density involved in the corrosion of the iron.\n\n**Give your answer as a tuple: (current, current_density).**The units of each required answer are (A, A/cm^2), respectively.",
+ "response": "## Solution\n\n**Corrosion reaction:** Fe → Fe²⁺ + 2e⁻, so $n = 2$ electrons per atom, $M_{\\text{Fe}} = 55.845\\ \\text{g/mol}$.\n\n**Faraday's law:** $m = \\dfrac{M I t}{n F}$ → $I = \\dfrac{m n F}{M t}$\n\n**Time:** $t = 4\\ \\text{weeks} = 4 \\times 7 \\times 24 \\times 3600 = 2{,}419{,}200\\ \\text{s}$\n\n$$I = \\frac{70 \\times 2 \\times 96485}{55.845 \\times 2{,}419{,}200} \\approx 0.10\\ \\text{A}$$\n\n**Wetted area** (bottom + four walls in contact with liquid):\n$$A = (10\\times10) + 4\\times(10\\times20) = 100 + 800 = 900\\ \\text{cm}^2$$\n\n**Current density:**\n$$J = \\frac{I}{A} = \\frac{0.10}{900} \\approx 1.11\\times10^{-4}\\ \\text{A/cm}^2$$\n\n$$\\boxed{(0.10,\\ 1.11\\times10^{-4})}$$",
+ "final_answer": "(0.10,\\ 1.11\\times10^{-4})",
+ "correct_answer": "(0.1, 0.000111)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(A, A/cm^2)"
+}

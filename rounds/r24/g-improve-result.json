@@ -1,0 +1,9 @@
+{
+  "edits": [
+    {"skill":"g-matsci-unitcell-formula-unit-scaling","type":"patch","cluster":"m069-hcp-vz-mismatch","summary":"新增HCP密度反求晶格参数双配对交叉核验"},
+    {"skill":"g-matsci-unitcell-formula-unit-scaling","type":"description","cluster":"m069-hcp-vz-mismatch","summary":"拓宽description/tags覆盖密度反求晶格参数"},
+    {"skill":"g-sci-independent-verify","type":"patch","cluster":"circular-verify-soft","summary":"强化pattern2/pattern3交叉核对子情形"},
+    {"skill":"g-sci-independent-verify","type":"description","cluster":"circular-verify-soft","summary":"拓宽description触发条件+cross-check标签"}
+  ],
+  "clusters_seen":2,"clusters_fixed":2,"needs_human":false
+}

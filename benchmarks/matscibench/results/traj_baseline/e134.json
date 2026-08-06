@@ -1,0 +1,11 @@
+{
+ "tid": "e134",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.37",
+ "question_text": "A cylindrical metal specimen having an original diameter of 12.8 mm ( 0.505 in.) and gauge length of 50.80 mm (2.000 in.) is pulled in tension until fracture occurs. The diameter at the point of fracture is 8.13 mm ( 0.320 in.), and the fractured gauge length is 74.17 mm (2.920 in.). Calculate the ductility in terms of percent reduction in area and percent elongation. Give your answer as a tuple: (percent reduction, percent elongation).The units of each required answer are (%, %), respectively.",
+ "response": "## Step-by-step Reasoning\n\n**Percent reduction in area (%RA):**\n\n$$\\%RA = \\frac{A_0 - A_f}{A_0}\\times 100 = \\left[1 - \\left(\\frac{d_f}{d_0}\\right)^2\\right]\\times 100$$\n\n$$= \\left[1 - \\left(\\frac{8.13}{12.8}\\right)^2\\right]\\times 100 = (1 - 0.4034)\\times 100 \\approx 59.66\\%$$\n\n**Percent elongation (%EL):**\n\n$$\\%EL = \\frac{l_f - l_0}{l_0}\\times 100 = \\frac{74.17 - 50.80}{50.80}\\times 100 = \\frac{23.37}{50.80}\\times 100 \\approx 46.00\\%$$\n\n$$\\boxed{(59.66,\\ 46.00)}$$",
+ "final_answer": "(59.66,\\ 46.00)",
+ "correct_answer": "(60, 46)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(%, %)"
+}

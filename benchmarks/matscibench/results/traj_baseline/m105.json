@@ -1,0 +1,11 @@
+{
+ "tid": "m105",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.24",
+ "question_text": "A cylindrical rod 120 mm long and having a diameter of 15.0 mm is to be deformed using a tensile load of $35,000 \\mathrm{~N}$. It must not experience either plastic deformation or a diameter reduction of more than $1.2 \\times 10^{-2} \\mathrm{~mm}$. Calculate the change in diameter of the candidate materials.\n\n| Material | Modulus of Elasticity (GPa) | Yield Strength (MPa) | Poisson's Ratio |\n| :-- | :--: | :--: | :--: |\n| Aluminum alloy | 70 | 250 | 0.33 |\n| Titanium alloy | 105 | 850 | 0.36 |\n| Steel alloy | 205 | 550 | 0.27 |\n\nGive your answer as a tuple (Aluminum alloy,  Steel alloy, Titanium alloy).The units of each required answer are (mm, mm, mm), respectively.",
+ "response": "## Solution\n\n**1. Compute the tensile stress** (uniform, same for all materials):\n\n$$A_0 = \\pi\\left(\\frac{d_0}{2}\\right)^2 = \\pi(7.5)^2 = 56.25\\pi\\ \\text{mm}^2$$\n\n$$\\sigma = \\frac{F}{A_0} = \\frac{35000}{56.25\\pi} \\approx 198.06\\ \\text{MPa}$$\n\n**2. Check plastic deformation** (σ must be < yield strength):\n\n| Material | σ (MPa) | Yield (MPa) | Plastic? |\n|---|---|---|---|\n| Aluminum | 198.06 | 250 | No |\n| Titanium | 198.06 | 850 | No |\n| Steel | 198.06 | 550 | No |\n\nAll remain elastic, so $\\varepsilon = \\sigma/E$ (Hooke's law) applies.\n\n**3. Diameter change** from Poisson contraction:\n\n$$\\varepsilon_{\\text{lat}} = -\\nu\\,\\varepsilon = -\\nu\\frac{\\sigma}{E}, \\qquad \\Delta d = \\varepsilon_{\\text{lat}}\\,d_0 = -\\nu\\frac{\\sigma}{E}d_0$$\n\n| Material | E (GPa) | ν | Δd (mm) |\n|---|---|---|---|\n| Aluminum | 70 | 0.33 | −0.0140 |\n| Steel | 205 | 0.27 | −0.00391 |\n| Titanium | 105 | 0.36 | −0.0102 |\n\n(Note: Aluminum's reduction 0.0140 mm exceeds the 0.012 mm limit, so it would be disqualified on the diameter-reduction criterion — but the question asks only for the calculated change in diameter.)\n\n$$\\boxed{(-0.0140,\\ -0.00391,\\ -0.0102)}$$",
+ "final_answer": "(-0.0140,\\ -0.00391,\\ -0.0102)",
+ "correct_answer": "(-1.41e-3, -0.40e-2, -1.0e-2)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(mm, mm, mm)"
+}

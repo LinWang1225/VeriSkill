@@ -1,0 +1,11 @@
+{
+ "tid": "e209",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 4-2",
+ "question_text": "Calculate the theoretical density of iron, and then determine the number of vacancies needed for a BCC iron crystal to have a density of $7.874 \\mathrm{~g} / \\mathrm{cm}^{3}$. The lattice parameter of iron is $2.866 \\times 10^{-8} \\mathrm{~cm}$. Assumes that there are no imperfections in the crystal. Give your answer as a tuple: (theoretical density, number of vacancies).The units of each required answer are (g/cm^3, ), respectively.",
+ "response": "## Step-by-Step Solution\n\n**1. Theoretical density of BCC iron**\n\nFor a BCC crystal, there are $n = 2$ atoms per unit cell. The theoretical density is:\n\n$$\\rho = \\frac{n \\cdot A}{V \\cdot N_A} = \\frac{n \\cdot A}{a^3 \\cdot N_A}$$\n\nUsing $A = 55.845\\ \\mathrm{g/mol}$, $N_A = 6.022 \\times 10^{23}\\ \\mathrm{atoms/mol}$, and $a = 2.866 \\times 10^{-8}\\ \\mathrm{cm}$:\n\n$$\\rho_{\\text{theoretical}} = \\frac{2 \\times 55.845}{(2.866\\times10^{-8})^3 \\times 6.022\\times10^{23}} \\approx 7.878\\ \\mathrm{g/cm^3}$$\n\n**2. Number of vacancies for $\\rho = 7.874\\ \\mathrm{g/cm^3}$**\n\nWith vacancies, the effective number of atoms per unit cell becomes $n' = 2 - n_v$. Solving for $n'$:\n\n$$n' = \\frac{\\rho_{\\text{actual}} \\cdot a^3 \\cdot N_A}{A} = \\frac{7.874 \\times (2.866\\times10^{-8})^3 \\times 6.022\\times10^{23}}{55.845} \\approx 1.99885$$\n\nThe number of vacancies per unit cell:\n\n$$n_v = 2 - n' \\approx 2 - 1.99885 \\approx 0.00115$$\n\n$$\\boxed{(7.878,\\ 0.00115)}$$",
+ "final_answer": "(7.878,\\ 0.00115)",
+ "correct_answer": "(7.874, 5.18e+19)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(g/cm^3, )"
+}

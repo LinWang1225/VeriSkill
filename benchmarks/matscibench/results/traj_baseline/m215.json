@@ -1,0 +1,11 @@
+{
+ "tid": "m215",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 5-16",
+ "question_text": "Compare the diffusion coefficients for hydrogen and nitrogen in FCC iron at $1000^{\\circ} \\mathrm{C}$ and explain the difference. Give your answer as a tuple: (diffusion_coefficient_H, diffusion_coefficient_N).The units of each required answer are (cm²/s, cm²/s), respectively.",
+ "response": "Using the standard interstitial diffusion data for FCC iron (austenite), $D = D_0\\exp(-Q_d/RT)$, with $T = 1000^{\\circ}\\mathrm{C}=1273\\ \\mathrm{K}$:\n\n- **H in FCC Fe:** $D_0 = 6.0\\times10^{-7}\\ \\mathrm{m^2/s}$, $Q_d = 43{,}100\\ \\mathrm{J/mol}$\n- **N in FCC Fe:** $D_0 = 3.0\\times10^{-7}\\ \\mathrm{m^2/s}$, $Q_d = 144{,}900\\ \\mathrm{J/mol}$\n\n$$D_H = 6.0\\times10^{-7}e^{-43100/(8.31\\cdot1273)} \\approx 1.02\\times10^{-8}\\ \\mathrm{m^2/s} = 1.02\\times10^{-4}\\ \\mathrm{cm^2/s}$$\n\n$$D_N = 3.0\\times10^{-7}e^{-144900/(8.31\\cdot1273)} \\approx 3.38\\times10^{-13}\\ \\mathrm{m^2/s} = 3.38\\times10^{-9}\\ \\mathrm{cm^2/s}$$\n\n**Explanation of the difference:** Hydrogen diffuses roughly $10^5$ times faster than nitrogen in FCC iron. This is because hydrogen is a much smaller atom, so it fits through the interstitial channels of the FCC lattice far more easily and has a much lower activation energy for jumping between interstitial sites ($Q_d \\approx 43$ kJ/mol for H versus $\\approx 145$ kJ/mol for N). The smaller the interstitial solute, the lower the lattice distortion required for each jump and the higher the diffusion coefficient.\n\n$$\\boxed{(1.02\\times10^{-4},\\ 3.38\\times10^{-9})}$$",
+ "final_answer": "(1.02\\times10^{-4},\\ 3.38\\times10^{-9})",
+ "correct_answer": "(0.000107, 3.9e-09)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(cm²/s, cm²/s)"
+}

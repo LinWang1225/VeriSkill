@@ -1,0 +1,11 @@
+{
+ "tid": "m076",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.43",
+ "question_text": "Iron (Fe) undergoes an allotropic transformation at $912^{\\circ} \\mathrm{C}$ : upon heating from a $B C C$ ( $\\alpha$ phase) to an FCC ( $\\gamma$ phase). Accompanying this transformation is a change in the atomic radius of Fe -from $R{B C C}=0.12584$ nm to $R{F C C}=0.12894 \\mathrm{~nm}$-and, in addition a change in density (and volume). Compute the percent volume change associated with this reaction.The unit of the answer is %.",
+ "response": "For the BCC → FCC transformation, I compare the volume **per atom** in each phase.\n\n**BCC (α):** 2 atoms/unit cell, $a = \\dfrac{4R}{\\sqrt{3}}$\n$$V_{\\text{BCC, per atom}} = \\frac{1}{2}\\left(\\frac{4R_{\\text{BCC}}}{\\sqrt{3}}\\right)^3$$\n\n**FCC (γ):** 4 atoms/unit cell, $a = 2R\\sqrt{2}$\n$$V_{\\text{FCC, per atom}} = \\frac{1}{4}\\left(2R_{\\text{FCC}}\\sqrt{2}\\right)^3$$\n\n**Percent volume change:**\n$$\\frac{\\Delta V}{V}\\times 100 = \\frac{V_{\\text{FCC}} - V_{\\text{BCC}}}{V_{\\text{BCC}}}\\times 100$$\n\nSubstituting $R_{\\text{BCC}}=0.12584$ nm and $R_{\\text{FCC}}=0.12894$ nm gives $\\approx -1.19\\%$.\n\nThe negative sign indicates a **volume decrease** upon heating (BCC → FCC), which is the well-known anomalous contraction of iron at the $\\alpha \\rightarrow \\gamma$ transformation.\n\n$$\\boxed{-1.19}$$",
+ "final_answer": "-1.19",
+ "correct_answer": "1.19",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "%"
+}

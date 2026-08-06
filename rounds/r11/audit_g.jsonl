@@ -1,1 +1,0 @@
-{"item": "q049", "segment": "随机", "d_verdict": "pass", "oracle_pass": true, "kind": "TN", "skill_hash": "173477d8ed9e", "truth_source": "checker", "rules_hit": [], "normalized_score": 1.0, "oracle_evidence": "checker: score_answer(tol=0): pred='[8.124, 12.852]' gold='[8.124, 12.852]' -> pass", "skill_result": "[8.124, 12.852]"}

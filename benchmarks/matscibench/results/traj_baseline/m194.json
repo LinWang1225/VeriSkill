@@ -1,0 +1,11 @@
+{
+ "tid": "m194",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 12-5",
+ "question_text": "Given that at the eutectoid temperature the ferrite phase contains 0.0218 %C and the cementite phase (Fe₃C) contains 6.67 %C,  use the lever rule to calculate the weight fractions of ferrite and cementite in pearlite, which has an overall composition of 0.77 %C. \n\nGive your answer as (ferrite_fraction, cementite_fraction).The units of each required answer are (%, %), respectively.",
+ "response": "Using the lever rule with the overall composition $C_0 = 0.77\\%$C, ferrite $C_\\alpha = 0.0218\\%$C, and cementite $C_{\\theta} = 6.67\\%$C:\n\n$$W_\\alpha = \\frac{C_\\theta - C_0}{C_\\theta - C_\\alpha} = \\frac{6.67 - 0.77}{6.67 - 0.0218} \\approx 0.8875$$\n\n$$W_\\theta = \\frac{C_0 - C_\\alpha}{C_\\theta - C_\\alpha} = \\frac{0.77 - 0.0218}{6.67 - 0.0218} \\approx 0.1125$$\n\n$$\\boxed{(0.8875,\\ 0.1125)}$$",
+ "final_answer": "(0.8875,\\ 0.1125)",
+ "correct_answer": "(88.7, 11.3)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(%, %)"
+}

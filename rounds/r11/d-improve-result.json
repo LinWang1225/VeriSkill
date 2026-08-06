@@ -1,0 +1,15 @@
+{
+  "edits": [
+    {"critic": "d-matsci-model-selection", "type": "narrow_rule", "rule_id": "R-d-matsci-model-selection-001", "evidence_items": ["#m124"], "summary": "将现有 S-N 子情形收窄为单问情形，新增多问统一 Basquin 拟合子情形，依据追加 r11#m124"},
+    {"critic": "d-matsci-model-selection", "type": "add_rule", "rule_id": "R-d-matsci-model-selection-001", "evidence_items": ["#m124"], "summary": "方法库新增多问 S-N 统一 Basquin 最小二乘拟合子情形，覆盖 m124 漏放"},
+    {"critic": "d-sci-underdetermined-claim", "type": "add_rule", "rule_id": "R-d-sci-underdetermined-claim-001", "evidence_items": ["#m128"], "summary": "新建 critic 覆盖将可解问题误判为欠定并返回符号函数的漏放模式，soft 起步"}
+  ],
+  "fp_seen": 0,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 2,
+  "fn_resolved": ["m128", "m124"],
+  "unjudgeable": [],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

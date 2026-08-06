@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"skill":"g-matsci-sigfig-rounding","type":"patch","cluster":"m212-catastrophic-cancellation","summary":"增补'相近大数相减(catastrophic cancellation)'子情形"},
+    {"skill":"g-sci-model-validity-range","type":"patch","cluster":"e184-model-mix-across-subparts","summary":"增补'同一题多问全程同一模型同一近似层次'子情形"},
+    {"skill":"g-matsci-sn-fatigue-slogn-graphical","type":"description","cluster":"m123-route-miss","summary":"拓宽 description 并增补 tags 使旋转弯曲 S-N 题能路由到本技能"}
+  ],
+  "needs_human": false
+}

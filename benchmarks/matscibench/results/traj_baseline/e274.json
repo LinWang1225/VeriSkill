@@ -1,0 +1,11 @@
+{
+ "tid": "e274",
+ "qid": "Physical_Metallurgy_Hosford_Example 3.1",
+ "question_text": "Given the activation energy  Qgb=110.9 kJ/mol and pre‐exponential factor for grain‐boundary diffusion R=8.314 J/mol·K for Ag.\nA. If the grain size of silver were doubled, by what factor would the net diffusion by grain boundary diffusivity change?\nB. At what temperature would the net transport by grain boundary diffusion be the same as the grain boundary diffusional transport with the original grain size at 1000 K ?\n\nGive your answer as a tuple: (diffusion change factor, temperature K).The units of each required answer are (, K), respectively.",
+ "response": "## Reasoning\n\n**Setup:** The grain boundary diffusivity follows an Arrhenius relation:\n$$D_{gb} = D_0 \\exp\\!\\left(-\\frac{Q_{gb}}{RT}\\right)$$\n\nThe **net transport** by grain boundary diffusion through a polycrystalline solid depends on the fraction of material occupied by grain boundaries, which scales as δ/d (boundary width δ over grain size d):\n\n$$D_{net,gb} = \\frac{\\delta}{d}\\,D_{gb}$$\n\n**Part A — Doubling grain size (d → 2d):**\n\n$$\\frac{D_{net,new}}{D_{net,old}} = \\frac{(\\delta/2d)\\,D_{gb}}{(\\delta/d)\\,D_{gb}} = \\frac{1}{2}$$\n\nThe net grain-boundary transport is halved → factor = **0.5**.\n\n**Part B — Find T so that doubled-grain-size transport at T equals original-grain-size transport at 1000 K:**\n\n$$\\frac{\\delta}{2d}D_0 e^{-Q/(RT)} = \\frac{\\delta}{d}D_0 e^{-Q/(R\\cdot1000)}$$\n\n$$e^{-Q/(RT)} = 2\\,e^{-Q/(R\\cdot1000)}$$\n\n$$\\frac{1}{T} = \\frac{1}{1000} - \\frac{R\\ln 2}{Q_{gb}}$$\n\nSubstituting Q_gb = 110900 J/mol, R = 8.314 J/mol·K:\n\n$$\\frac{1}{T} = 0.001 - \\frac{8.314 \\times 0.6931}{110900} = 0.0009480$$\n\n$$T \\approx 1054.81 \\text{ K}$$\n\nThis makes physical sense: doubling the grain size halves the boundary area fraction, so we must raise the temperature to boost D_gb by a factor of 2 to compensate.\n\n$$\\boxed{(0.5,\\ 1054.81)}$$",
+ "final_answer": "(0.5,\\ 1054.81)",
+ "correct_answer": "(0.5, 950)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(, K)"
+}

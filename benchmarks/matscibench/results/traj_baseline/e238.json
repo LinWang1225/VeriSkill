@@ -1,0 +1,11 @@
+{
+ "tid": "e238",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 8-22",
+ "question_text": "A 0.25 -in.-diameter copper bar is to be cold worked $63 \\%$ in tension. Find the final diameter. Give your answer as the value of final_diameter_in.The unit of the answer is in.",
+ "response": "## Reasoning\n\nCold work in tension (drawing) is defined by the **reduction in cross-sectional area**:\n\n$$\\%CW = \\frac{A_0 - A_f}{A_0} \\times 100$$\n\nSince area scales with diameter squared ($A = \\pi d^2/4$):\n\n$$\\%CW = 1 - \\left(\\frac{d_f}{d_0}\\right)^2$$\n\n**Given:** $d_0 = 0.25$ in., $\\%CW = 0.63$\n\n$$0.63 = 1 - \\left(\\frac{d_f}{0.25}\\right)^2$$\n\n$$\\left(\\frac{d_f}{0.25}\\right)^2 = 1 - 0.63 = 0.37$$\n\n$$d_f = 0.25 \\times \\sqrt{0.37} = 0.25 \\times 0.6083 \\approx 0.152 \\text{ in.}$$\n\n$$\\boxed{0.152}$$",
+ "final_answer": "0.152",
+ "correct_answer": "0.152",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "in"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e159",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 11.6",
+ "question_text": "For some transformation having kinetics that obey the Avrami equation (equation (y=1-\\exp \\left(-k t^n\\right))), the parameter $n$ is known to have a value of 1.5. If the reaction is $25 \\%$ complete after 125 s , how long (total time) will it take the transformation to go to $90 \\%$ completion?The unit of the answer is s.",
+ "response": "Using the Avrami equation $y = 1 - \\exp(-k t^n)$ with $n=1.5$:\n\nAt 25% ($t=125$ s): $0.25 = 1 - e^{-k(125)^{1.5}} \\Rightarrow k(125)^{1.5} = -\\ln(0.75)$\n\nAt 90%: $0.90 = 1 - e^{-k t^{1.5}} \\Rightarrow k t^{1.5} = -\\ln(0.10)$\n\nDividing:\n$$\\frac{t^{1.5}}{(125)^{1.5}} = \\frac{\\ln(0.10)}{\\ln(0.75)} \\approx 8.004$$\n\n$$t = \\left[8.004 \\times (125)^{1.5}\\right]^{2/3} \\approx 500.2\\ \\text{s}$$\n\n$$\\boxed{500}$$",
+ "final_answer": "500",
+ "correct_answer": "500",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "s"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m061",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 11.5",
+ "question_text": "(a) Calculate the saturation magnetization ($\\mu_{0} M_{\\mathrm{s}}$) for $\\mathrm{Fe}_{3} \\mathrm{O}_{4}$ if the lattice constant ($a_{0}$) of the larger unit cell, which consists of eight smaller unit cells, is $8.37 \\AA$.The unit of the answer is T.",
+ "response": "## Reasoning\n\n**Structure of Fe₃O₄ (magnetite):** Inverse spinel. The conventional cubic unit cell (the \"larger unit cell\" = 8 small cells) contains **8 formula units** of Fe₃O₄, giving:\n- **8 Fe³⁺** on tetrahedral (A) sites\n- **8 Fe²⁺ + 8 Fe³⁺** on octahedral (B) sites\n\n**Magnetic moments (spin-only):**\n- Fe³⁺ (3d⁵): 5 μ_B\n- Fe²⁺ (3d⁶): 4 μ_B\n\n**Net moment:** The A-site Fe³⁺ moments (antiparallel to B sites) cancel with the B-site Fe³⁺ moments. Only the 8 Fe²⁺ contribute:\n\n$$M_{\\text{net}} = 8 \\times 4\\,\\mu_B = 32\\,\\mu_B$$\n\n**Saturation magnetization:**\n\n$$\\mu_0 M_s = \\mu_0 \\frac{M_{\\text{net}}}{a_0^3} = \\mu_0 \\frac{32\\,\\mu_B}{a_0^3}$$\n\nWith $a_0 = 8.37\\times10^{-10}$ m, $\\mu_B = 9.274\\times10^{-24}$ A·m², $\\mu_0 = 4\\pi\\times10^{-7}$ T·m/A:\n\n$$\\mu_0 M_s = \\frac{(4\\pi\\times10^{-7})(32)(9.274\\times10^{-24})}{(8.37\\times10^{-10})^3} \\approx 0.636 \\text{ T}$$\n\n$$\\boxed{0.636}$$",
+ "final_answer": "0.636",
+ "correct_answer": "0.64",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "T"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m039",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_11.7",
+ "question_text": "Estimate the density of a cobalt-chrome alloy used for artificial-hip joints as a weighted average of the densities of constituent elements: $50 \\mathrm{wt} \\% \\mathrm{Co}$, $20 \\mathrm{wt} \\% \\mathrm{Cr}, 15 \\mathrm{wt} \\% \\mathrm{~W}$, and $15 \\mathrm{wt} \\% \\mathrm{Ni}$. Give your answer as the value of density.The unit of the answer is Mg/m^3.",
+ "response": "For a weight-fraction mixture, the alloy density is the harmonic weighted average:\n\n$$\\frac{1}{\\rho} = \\sum_i \\frac{w_i}{\\rho_i}$$\n\nUsing $\\rho_{\\rm Co}=8.90$, $\\rho_{\\rm Cr}=7.19$, $\\rho_{\\rm W}=19.25$, $\\rho_{\\rm Ni}=8.90$ (all in g/cm³ = Mg/m³):\n\n$$\\frac{1}{\\rho} = \\frac{0.50}{8.90}+\\frac{0.20}{7.19}+\\frac{0.15}{19.25}+\\frac{0.15}{8.90} \\approx 0.10864$$\n\n$$\\rho \\approx 9.20\\ \\mathrm{Mg/m^3}$$\n\n$$\\boxed{9.2}$$",
+ "final_answer": "9.2",
+ "correct_answer": "10.1",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "Mg/m^3"
+}

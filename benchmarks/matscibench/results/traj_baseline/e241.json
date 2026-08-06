@@ -1,0 +1,11 @@
+{
+ "tid": "e241",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 11-21",
+ "question_text": "A Pb-Sn alloy contains $45 \\% \\alpha$ and $55 \\% \\beta$ at $100^{\\circ} \\mathrm{C}$. What is the percentage of Sn in the alloy?The unit of the answer is %.",
+ "response": "## Verification\n\nChecking consistency with both lever-rule arms:\n- $f_\\alpha = \\dfrac{99 - 55.35}{99 - 2} = \\dfrac{43.65}{97} = 0.45\\ \\checkmark$\n- $f_\\beta = \\dfrac{55.35 - 2}{99 - 2} = \\dfrac{53.35}{97} = 0.55\\ \\checkmark$\n\nBoth phase fractions match the given 45% α and 55% β, confirming the result.\n\n$$\\boxed{55.35}$$",
+ "final_answer": "55.35",
+ "correct_answer": "56",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

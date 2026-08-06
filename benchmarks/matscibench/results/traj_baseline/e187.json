@@ -1,0 +1,11 @@
+{
+ "tid": "e187",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 3.5",
+ "question_text": "A steel ship hull is protected by a magnesium sacrificial anode weighing 3 kg . The current produced by the anode was found to be 2 A . Estimate the expected life of the Mg anode. Give your answer as a tuple: (expected_life_seconds, expected_life_months).The units of each required answer are (s, months), respectively.",
+ "response": "Using Faraday's law of electrolysis for the theoretical life of a sacrificial anode:\n\n$$t = \\frac{m \\cdot n \\cdot F}{M \\cdot I}$$\n\nwhere:\n- $m = 3000\\ \\text{g}$ (mass of Mg)\n- $n = 2$ (valence of Mg)\n- $F = 96485\\ \\text{C/mol}$\n- $M = 24.305\\ \\text{g/mol}$ (atomic mass of Mg)\n- $I = 2\\ \\text{A}$\n\n$$t = \\frac{3000 \\times 2 \\times 96485}{24.305 \\times 2} \\approx 1.19\\times10^{7}\\ \\text{s}$$\n\nConverting to months ($1\\ \\text{month} = \\frac{365.25}{12}\\ \\text{days} = 2{,}629{,}800\\ \\text{s}$):\n\n$$t \\approx \\frac{1.19\\times10^{7}}{2.6298\\times10^{6}} \\approx 4.53\\ \\text{months}$$\n\n\\boxed{(11909278,\\ 4.53)}",
+ "final_answer": "(11909278,\\ 4.53)",
+ "correct_answer": "(11.9e6, 4.6)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(s, months)"
+}

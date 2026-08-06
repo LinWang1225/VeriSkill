@@ -1,0 +1,11 @@
+{
+ "tid": "m157",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 18.14",
+ "question_text": "“Samarium iron garnet has the formula Sm₃Fe₅O₁₂ which can be written Sm₃ᶜ Fe₂ᵃ Fe₃ᵈ O₁₂, where the subscripts ᵃ, ᶜ, and ᵈ denote the crystallographic a, c, and d sites.  The 2 Fe³⁺ ions on the a‐sites have their spins aligned parallel to those of the 3 Sm³⁺ ions on the c‐sites, and these are antiparallel to the 3 Fe³⁺ ions on the d‐sites.  Given that (1) each cubic unit cell (edge 1.2529 nm) contains eight Sm₃Fe₅O₁₂ formula units, (2) the saturation magnetization Mₛ=1.35×10⁵ A/m, and (3) each Fe³⁺ carries 5 μ_B, compute the number of Bohr magnetons μ_Sm carried by each Sm³⁺ ion.”The unit of the answer is BM.",
+ "response": "The net moment per formula unit is 3μ_Sm − 5 ≈ 3.58 μ_B, giving each Sm³⁺ a moment of ≈ 2.86 μ_B.\n\n$$\\boxed{2.86}$$",
+ "final_answer": "2.86",
+ "correct_answer": "2.86",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "BM"
+}

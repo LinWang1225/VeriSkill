@@ -1,0 +1,11 @@
+{
+ "tid": "e230",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 3-66",
+ "question_text": "Determine the minimum radius of an atom that will just fit into(a) the tetrahedral interstitial site in FCC nickel; and(b) the octahedral interstitial site in BCC lithium. Give your answer as a tuple: (tetrahedral_site_radius_FCC_Ni, octahedral_site_radius_BCC_Li).The units of each required answer are (Å, Å), respectively.",
+ "response": "## Reasoning\n\n**Part (a): Tetrahedral interstitial site in FCC nickel**\n\nIn FCC, atoms touch along the face diagonal: $4R = a\\sqrt{2}$, so $R = a\\sqrt{2}/4$.\n\nThe tetrahedral site is at position $(\\tfrac{1}{4}, \\tfrac{1}{4}, \\tfrac{1}{4})$. Its distance to the nearest corner atom (origin) is $d = a\\sqrt{3}/4$.\n\n$$r = d - R = \\frac{a(\\sqrt{3}-\\sqrt{2})}{4} \\implies \\frac{r}{R} = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{2}} \\approx 0.225$$\n\nFor FCC nickel, $R = 0.125\\text{ nm} = 1.25\\text{ Å}$:\n$$r = 0.225 \\times 1.25 \\approx 0.281\\text{ Å}$$\n\n**Part (b): Octahedral interstitial site in BCC lithium**\n\nIn BCC, atoms touch along the body diagonal: $4R = a\\sqrt{3}$, so $R = a\\sqrt{3}/4$.\n\nThe octahedral sites in BCC are at face-center positions like $(\\tfrac{1}{2}, \\tfrac{1}{2}, 0)$. The nearest atoms are the two body-center atoms at distance $a/2$.\n\n$$r = \\frac{a}{2} - R = \\frac{a(2-\\sqrt{3})}{4} \\implies \\frac{r}{R} = \\frac{2-\\sqrt{3}}{\\sqrt{3}} \\approx 0.155$$\n\nFor BCC lithium, $R = 0.152\\text{ nm} = 1.52\\text{ Å}$:\n$$r = 0.155 \\times 1.52 \\approx 0.236\\text{ Å}$$\n\n$$\\boxed{(0.281,\\ 0.236)}$$",
+ "final_answer": "(0.281,\\ 0.236)",
+ "correct_answer": "(0.2978, 0.629)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(Å, Å)"
+}

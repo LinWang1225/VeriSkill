@@ -1,0 +1,11 @@
+{
+ "tid": "e268",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 8.3",
+ "question_text": "A cylindrical 70Cu-30Zn brass bar is subjected to axial tension-compression stress testing with reversed-cycling. If the load amplitude is 10,000 N, compute the minimum allowable bar diameter to ensure that fatigue failure will not occur at 10<sup>7</sup> cycles. Assume a factor of safety of 2.5, data in  were taken for reversed axial tension-compression tests, and that S is stress amplitude.The unit of the answer is mm.",
+ "response": "## Solution\n\n**Step 1 — Fatigue strength at 10⁷ cycles**\n\nFrom the S–N curve for 70Cu-30Zn brass under reversed axial tension–compression (Callister Figure 8.24), the stress amplitude at \\(N = 10^{7}\\) cycles is read off as\n\n\\[\nS \\approx 120\\ \\text{MPa}\n\\]\n\n**Step 2 — Allowable stress amplitude (apply factor of safety)**\n\n\\[\n\\sigma_{\\text{allow}}=\\frac{S}{N_{fs}}=\\frac{120\\ \\text{MPa}}{2.5}=48\\ \\text{MPa}=48\\times10^{6}\\ \\text{Pa}\n\\]\n\n**Step 3 — Relate stress amplitude to load amplitude and diameter**\n\nFor reversed cycling, the stress amplitude is\n\n\\[\n\\sigma_a=\\frac{F}{A}=\\frac{F}{\\pi d^{2}/4}=\\frac{4F}{\\pi d^{2}}\n\\]\n\nSetting \\(\\sigma_a = \\sigma_{\\text{allow}}\\) and solving for \\(d\\):\n\n\\[\nd=\\sqrt{\\frac{4F}{\\pi\\,\\sigma_{\\text{allow}}}}\n   =\\sqrt{\\frac{4(10\\,000)}{\\pi(48\\times10^{6})}}\n\\]\n\n**Step 4 — Compute**\n\n\\[\nd=\\sqrt{2.653\\times10^{-4}}=1.629\\times10^{-2}\\ \\text{m}=16.3\\ \\text{mm}\n\\]\n\n\\[\n\\boxed{16.3}\n\\]",
+ "final_answer": "16.3",
+ "correct_answer": "16.6",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e047",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_11.13",
+ "question_text": "The primary reason for introducing ceramic components in automotive engine designs is the possibility of higher operating temperatures and, therefore, improved efficiencies. A by-product of this substitution, however, is mass reduction. For the case of 1.5 kg of cast iron (density $=7.15 \\mathrm{Mg} / \\mathrm{m}^3$ ) being replaced by an equivalent volume of PSZ (density $=5.50 \\mathrm{Mg} / \\mathrm{m}^3$ ), calculate the mass reduction. Give your answer as the value of mass_reduction.The unit of the answer is kg.",
+ "response": "The cast iron occupies a volume $V = m/\\rho = 1.5/7.15$. Replacing it with PSZ of the same volume gives a PSZ mass of $1.5 \\times 5.50/7.15$. The mass reduction is $1.5(1 - 5.50/7.15) = 1.5 \\times 1.65/7.15 \\approx 0.346$ kg.\n\n$$\\boxed{0.346}$$",
+ "final_answer": "0.346",
+ "correct_answer": "0.346",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg"
+}

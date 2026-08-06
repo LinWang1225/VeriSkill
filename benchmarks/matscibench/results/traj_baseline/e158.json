@@ -1,0 +1,11 @@
+{
+ "tid": "e158",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.20",
+ "question_text": "A fatigue test was conducted in which the mean stress was 70 MPa (10,000 psi), and the stress amplitude was 210 MPa (30,000 psi).\n(a) Compute the maximum and minimum stress levels.\n(b) Compute the stress ratio.\n(c) Compute the magnitude of the stress range.\n\nGive your answer as a tuple (the maximum stress level, the minimum stress level, the stress ratio, the magnitude of the stress range).The units of each required answer are (MPa, MPa, , MPa), respectively.",
+ "response": "## Solution\n\n**Given:**\n- Mean stress: $\\sigma_{\\text{mean}} = 70$ MPa\n- Stress amplitude: $\\sigma_a = 210$ MPa\n\n**(a) Maximum and minimum stress levels**\n\n$$\\sigma_{\\max} = \\sigma_{\\text{mean}} + \\sigma_a = 70 + 210 = 280 \\text{ MPa}$$\n\n$$\\sigma_{\\min} = \\sigma_{\\text{mean}} - \\sigma_a = 70 - 210 = -140 \\text{ MPa}$$\n\n**(b) Stress ratio**\n\n$$R = \\frac{\\sigma_{\\min}}{\\sigma_{\\max}} = \\frac{-140}{280} = -0.5$$\n\n**(c) Magnitude of the stress range**\n\n$$\\Delta\\sigma = \\sigma_{\\max} - \\sigma_{\\min} = 280 - (-140) = 420 \\text{ MPa}$$\n\n$$\\boxed{(280,\\ -140,\\ -0.5,\\ 420)}$$",
+ "final_answer": "(280,\\ -140,\\ -0.5,\\ 420)",
+ "correct_answer": "(280, -140, -0.50, 420)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(MPa, MPa, , MPa)"
+}

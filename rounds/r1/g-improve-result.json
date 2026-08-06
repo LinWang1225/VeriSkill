@@ -1,26 +1,8 @@
 {
   "edits": [
-    {
-      "skill": "g-officeqa-locate-source",
-      "type": "new_skill",
-      "cluster": "tn",
-      "support": 3,
-      "audited_support": 3,
-      "attribution": "能力缺陷",
-      "summary": "新建技能：指导如何根据目标时间定位正确的 Treasury Bulletin 版本，考虑出版滞后（M月公报含M-1月数据），蒸馏自 q072/q113/q097 三条好轨迹的共同做法"
-    },
-    {
-      "skill": "g-officeqa-extract-verify",
-      "type": "new_skill",
-      "cluster": "tn",
-      "support": 3,
-      "audited_support": 3,
-      "attribution": "能力缺陷",
-      "summary": "新建技能：指导从 Treasury Bulletin 表格中提取数据、验证列头与行标签、交叉验证多个来源的一致性，蒸馏自 q072/q113/q097 三条好轨迹的共同做法"
-    }
+    {"skill": "g-matsci-mixing-rule-select", "type": "new_skill", "cluster": "mixing-rule-series-vs-parallel", "support": 2, "audited_support": 1, "attribution": "能力缺陷", "summary": "复合/合金有效性质先判场几何(串/并联)再决定对性质还是其倒数做体积加权"},
+    {"skill": "g-matsci-sigfig-rounding", "type": "new_skill", "cluster": "sigfig-rounding", "support": 3, "audited_support": 0, "attribution": "能力缺陷", "summary": "答案位数<=最弱输入位数、标准四舍五入不单向偏置"},
+    {"skill": "g-sci-independent-verify", "type": "new_skill", "cluster": "circular-verification", "support": 2, "audited_support": 0, "attribution": "能力缺陷", "summary": "验证须用独立第二路径重算，禁止循环论证"}
   ],
-  "clusters_seen": 0,
-  "clusters_fixed": 0,
-  "skipped": ["q127: 单例失败轨迹（audited: true），仅1条不足以归纳规律，跳过"],
-  "needs_human": false
+  "clusters_seen": 3, "clusters_fixed": 3, "needs_human": false
 }

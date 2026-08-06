@@ -1,0 +1,11 @@
+{
+ "tid": "e140",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.48",
+ "question_text": "For a brass alloy, the following engineering stresses produce the corresponding plastic engineering strains prior to necking:\n\n| Engineering Stress (MPa) | Engineering Strain |\n| :--: | :--: |\n| 315 | 0.105 |\n| 340 | 0.220 |\n\nOn the basis of this information, compute the engineering stress necessary to produce an engineering strain of 0.28 .The unit of the answer is MPa.",
+ "response": "## Reasoning\n\nThis is a strain-hardening problem. Before necking, deformation is uniform, so we can convert engineering stress/strain to true stress/strain and fit the Hollomon equation:\n\n$$\\sigma_T = K\\,\\varepsilon_T^{\\,n}$$\n\n**Step 1 — Convert to true stress and true strain** using $\\sigma_T = \\sigma_E(1+\\varepsilon_E)$ and $\\varepsilon_T = \\ln(1+\\varepsilon_E)$:\n\n| Point | $\\sigma_T$ (MPa) | $\\varepsilon_T$ |\n|---|---|---|\n| 1 | $315(1.105)=348.075$ | $\\ln(1.105)=0.0998$ |\n| 2 | $340(1.220)=414.800$ | $\\ln(1.220)=0.1989$ |\n\n**Step 2 — Solve for $n$ and $K$** from $\\ln\\sigma_T = \\ln K + n\\ln\\varepsilon_T$:\n\n$$n = \\frac{\\ln\\sigma_{T2}-\\ln\\sigma_{T1}}{\\ln\\varepsilon_{T2}-\\ln\\varepsilon_{T1}} \\approx 0.2546, \\qquad K = \\frac{\\sigma_{T1}}{\\varepsilon_{T1}^{\\,n}} \\approx 625.8\\text{ MPa}$$\n\n**Step 3 — Evaluate at $\\varepsilon_E = 0.28$:**\n\n$$\\varepsilon_T = \\ln(1.28) = 0.2469$$\n$$\\sigma_T = K\\varepsilon_T^{\\,n} \\approx 625.8\\,(0.2469)^{0.2546} \\approx 438.3\\text{ MPa}$$\n$$\\sigma_E = \\frac{\\sigma_T}{1+\\varepsilon_E} = \\frac{438.3}{1.28} \\approx 342.4\\text{ MPa}$$\n\n$$\\boxed{342.4}$$",
+ "final_answer": "342.4",
+ "correct_answer": "343",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

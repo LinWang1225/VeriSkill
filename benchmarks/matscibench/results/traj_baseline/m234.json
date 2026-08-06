@@ -1,0 +1,11 @@
+{
+ "tid": "m234",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-71",
+ "question_text": "An isothermally transformed eutectoid steel is found to have a yield strength of 410 MPa. Estimate (a) the transformation temperature and (b) the interlamellar spacing in the pearlite. Give your answer as a tuple: (transformation_temperature_C, interlamellar_spacing_cm).The units of each required answer are (°C, cm), respectively.",
+ "response": "## Reasoning\n\nThis is a classic Callister problem using two empirical relationships for pearlite formed by isothermal transformation of eutectoid steel:\n\n**Equation 1 — Yield strength vs. interlamellar spacing:**\n$$\\sigma_y \\text{ (MPa)} = 139 + \\frac{46.0}{S}$$\nwhere $S$ is in μm. This 1/S (Orowan-type) dependence arises because dislocations must bow between cementite lamellae — finer spacing means stronger barriers.\n\n**Equation 2 — Interlamellar spacing vs. undercooling:**\n$$S \\text{ (μm)} = \\frac{8.02}{\\Delta T} = \\frac{8.02}{T_{\\text{eutectoid}} - T}$$\nThe eutectoid temperature for the Fe–Fe₃C system is $T_{\\text{eutectoid}} = 727°\\text{C}$.\n\n### (b) Interlamellar spacing\n$$410 = 139 + \\frac{46.0}{S} \\implies S = \\frac{46.0}{410 - 139} = \\frac{46.0}{271} = 0.1697 \\;\\mu\\text{m}$$\n\nConverting to cm ($1\\;\\mu\\text{m} = 10^{-4}$ cm):\n$$S = 1.697 \\times 10^{-5} \\text{ cm}$$\n\n### (a) Transformation temperature\n$$\\Delta T = \\frac{8.02}{S} = \\frac{8.02}{0.1697} = 47.25 \\text{ K}$$\n$$T = 727 - 47.25 \\approx 680°\\text{C}$$\n\nThis is physically sensible: a moderate undercooling (~47°C below the eutectoid) produces moderately fine pearlite with moderate strength (410 MPa).\n\n$$\\boxed{(680,\\ 1.70\\times10^{-5})}$$",
+ "final_answer": "(680,\\ 1.70\\times10^{-5})",
+ "correct_answer": "(615, 1.67e-05)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(°C, cm)"
+}

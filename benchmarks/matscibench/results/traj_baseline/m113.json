@@ -1,0 +1,11 @@
+{
+ "tid": "m113",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.57",
+ "question_text": "A three-point transverse bending test is conducted on a cylindrical specimen of aluminum oxide having a reported flexural strength of 300 MPa (43,500 psi). If the specimen radius is 5.0 mm ( 0.20 in .) and the support point separation distance is 15.0 mm ( 0.61 in .), would you expect the specimen to fracture when a load of 7500 N (1690 lb) is applied? Justify your answer.The unit of the answer is MPa.",
+ "response": "## Solution\n\nFor a **three-point bending test on a cylindrical specimen**, the maximum flexural (bending) stress at the outer surface at midspan is:\n\n$$\\sigma = \\frac{F L}{\\pi R^{3}}$$\n\nwhere:\n- $F = 7500\\ \\text{N}$ (applied load)\n- $L = 15.0\\ \\text{mm}$ (support separation)\n- $R = 5.0\\ \\text{mm}$ (specimen radius)\n\n### Calculation\n\n$$\\sigma = \\frac{(7500)(15.0)}{\\pi (5.0)^{3}} = \\frac{112500}{\\pi (125)} \\approx 286.5\\ \\text{MPa}$$\n\n### Comparison with flexural strength\n\n| Quantity | Value |\n|----------|-------|\n| Computed stress | ≈ 286.5 MPa |\n| Reported flexural strength | 300 MPa |\n\nSince the computed stress (≈ **286.5 MPa**) is **less than** the reported flexural strength of **300 MPa**, the specimen would **not** be expected to fracture under the 7500 N load.\n\n$$\\boxed{286.5}$$",
+ "final_answer": "286.5",
+ "correct_answer": "286.5",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "MPa"
+}

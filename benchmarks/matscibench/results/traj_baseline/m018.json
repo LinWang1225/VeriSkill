@@ -1,0 +1,11 @@
+{
+ "tid": "m018",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 3.17",
+ "question_text": "Calculate the planar density of atoms in the (111) plane of (a) bcc iron and (b) fcc nickel. Give your answer as a tuple: (planar_density_bcc_iron, planar_density_fcc_nickel).The units of each required answer are (atoms/nm^2, atoms/nm^2), respectively.",
+ "response": "## Solution\n\n**Planar density** = (atoms centered on the plane) / (area of the plane)\n\nThe (111) plane intercepts the axes at (a,0,0), (0,a,0), (0,0,a), forming an equilateral triangle:\n- Edge length = a√2\n- Area = (√3/2)a²\n\n### (a) BCC Iron, a = 0.2866 nm\n- **Corner atoms:** 3 vertices × (1/6 share) = 1/2 atom\n- **Body-center atom** at (a/2, a/2, a/2): x+y+z = 3a/2 ≠ a → **not on the plane**\n- Total = 1/2 atom\n\n$$PD = \\frac{0.5}{(\\sqrt{3}/2)\\,a^2} = \\frac{1}{\\sqrt{3}\\,a^2} = 7.03 \\text{ atoms/nm}^2$$\n\n### (b) FCC Nickel, a = 0.3524 nm\n- **Corner atoms:** 3 × (1/6) = 1/2 atom\n- **Face-center atoms** at (a/2,a/2,0), (a/2,0,a/2), (0,a/2,a/2): all satisfy x+y+z = a → 3 × (1/2 share) = 3/2 atoms\n- Total = 2 atoms\n\n$$PD = \\frac{2}{(\\sqrt{3}/2)\\,a^2} = \\frac{4}{\\sqrt{3}\\,a^2} = 18.60 \\text{ atoms/nm}^2$$\n\n$$\\boxed{(7.03,\\ 18.60)}$$",
+ "final_answer": "(7.03,\\ 18.60)",
+ "correct_answer": "(7.04, 18.5)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(atoms/nm^2, atoms/nm^2)"
+}

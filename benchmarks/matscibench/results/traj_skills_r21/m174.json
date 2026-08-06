@@ -1,0 +1,11 @@
+{
+ "tid": "m174",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 5.6",
+ "question_text": "Circles were printed on the surface of a part before it was deformed. Examination after deformation revealed that the principal strains in the sheet are $\\varepsilon_1 = 0.18$ and $\\varepsilon_2 = 0.078$. Assume that the tools did not touch the surface of concern and that the ratio of stresses remained constant during the deformation. Using the von Mises criterion, find the ratio of the principal stresses $\\alpha = \\sigma_2/\\sigma_1$.",
+ "response": "## Reasoning\n\n**Setup.** Circles were printed on the sheet surface, and the tools did not touch that surface, so the surface is stress-free in the through-thickness direction: **plane stress, $\\sigma_3 = 0$**. The stress ratio stayed constant during deformation ⇒ **proportional loading**, so the ratio of total strains equals the ratio of strain increments.\n\n**Levy–Mises flow rule** (associated flow with von Mises): plastic strain increments are proportional to deviatoric stresses $s_i = \\sigma_i - \\sigma_m$, with $\\sigma_m = (\\sigma_1+\\sigma_2+\\sigma_3)/3$.\n\nWith $\\sigma_3 = 0$:\n$$\\sigma_m = \\frac{\\sigma_1+\\sigma_2}{3},\\quad s_1 = \\frac{2\\sigma_1-\\sigma_2}{3},\\quad s_2 = \\frac{2\\sigma_2-\\sigma_1}{3}$$\n\nHence\n$$\\frac{\\varepsilon_2}{\\varepsilon_1} = \\frac{2\\sigma_2-\\sigma_1}{2\\sigma_1-\\sigma_2}.$$\n\nLet $\\alpha = \\sigma_2/\\sigma_1$:\n$$\\frac{\\varepsilon_2}{\\varepsilon_1} = \\frac{2\\alpha-1}{2-\\alpha}\\;\\Longrightarrow\\; \\alpha = \\frac{2r+1}{2+r},\\quad r=\\frac{\\varepsilon_2}{\\varepsilon_1}.$$\n\n**Compute.** $r = 0.078/0.18 = 13/30 = 0.4\\overline{3}$, so\n$$\\alpha = \\frac{2(13/30)+1}{2+13/30} = \\frac{56/30}{73/30} = \\frac{56}{73} = 0.76712\\ldots$$\n\n**Independent check.** Setting $\\sigma_1=1,\\sigma_2=56/73,\\sigma_3=0$ and recomputing $s_2/s_1$ directly from the deviator definition reproduces $r=13/30$ exactly — confirms the algebra by a separate path.\n\n**Sig figs.** Inputs $0.18$ and $0.078$ each carry 2 significant figures, so the result is reported to 2 sig figs: $0.7671\\ldots \\to 0.77$.\n\n$$\\boxed{0.77}$$",
+ "final_answer": "0.77",
+ "correct_answer": "0.7671",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

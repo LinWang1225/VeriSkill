@@ -1,0 +1,11 @@
+{
+ "tid": "e067",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 7.11",
+ "question_text": "A $10-\\mathrm{V}$ variable-frequency AC supply is connected to a $200-\\mu \\mathrm{F}$ capacitor. What is the value of capacitive reactance for frequencies of (a) 0 Hz, (b) 60 Hz, and (c) 1 kHz? What is the value of the current (I) flowing through the circuit for each frequency? Give your answer as a tuple (capacitive reactance at 0 Hz, capacitive reactance at 60 Hz, capacitive reactance at 1 kHz, current at 0 Hz, current at 60 Hz, current at 1 kHz).The units of each required answer are (\\Omega, \\Omega, \\Omega, A, A, A), respectively.",
+ "response": "## Step-by-Step Solution\n\n**Given:**\n- Supply voltage: $V = 10\\ \\text{V}$\n- Capacitance: $C = 200\\ \\mu\\text{F} = 200\\times10^{-6}\\ \\text{F}$\n\n**Formulas:**\n- Capacitive reactance: $X_C = \\dfrac{1}{2\\pi f C}$\n- Current: $I = \\dfrac{V}{X_C} = V\\cdot 2\\pi f C$\n\n### (a) $f = 0\\ \\text{Hz}$\n$$X_C = \\frac{1}{2\\pi(0)(200\\times10^{-6})} = \\infty\\ \\Omega$$\n$$I = \\frac{10}{\\infty} = 0\\ \\text{A}$$\n\nAt DC (0 Hz), a capacitor acts as an open circuit — infinite reactance, zero current.\n\n### (b) $f = 60\\ \\text{Hz}$\n$$X_C = \\frac{1}{2\\pi(60)(200\\times10^{-6})} \\approx 13.26\\ \\Omega$$\n$$I = \\frac{10}{13.26} \\approx 0.754\\ \\text{A}$$\n\n### (c) $f = 1\\ \\text{kHz} = 1000\\ \\text{Hz}$\n$$X_C = \\frac{1}{2\\pi(1000)(200\\times10^{-6})} \\approx 0.796\\ \\Omega$$\n$$I = \\frac{10}{0.796} \\approx 12.57\\ \\text{A}$$\n\nAs frequency increases, capacitive reactance decreases and current increases — consistent with a capacitor passing higher-frequency signals more readily.\n\n$$\\boxed{(\\infty,\\ 13.26,\\ 0.796,\\ 0,\\ 0.754,\\ 12.57)}$$",
+ "final_answer": "(\\infty,\\ 13.26,\\ 0.796,\\ 0,\\ 0.754,\\ 12.57)",
+ "correct_answer": "(\\infty, 13.26, 0.796, 0, 0.754, 12.56)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(\\Omega, \\Omega, \\Omega, A, A, A)"
+}

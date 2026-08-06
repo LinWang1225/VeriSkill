@@ -1,0 +1,11 @@
+{
+ "tid": "e245",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-55",
+ "question_text": "A steel contains $55 \\% \\alpha$ and $45 \\% \\gamma$ at $750^{\\circ} \\mathrm{C}$. Estimate the carbon content of the steel. Give your answer as the value of carbon_content_percent.The unit of the answer is %.",
+ "response": "## Reasoning\n\nAt 750°C, the steel lies in the **α + γ (ferrite + austenite) two-phase region** of the Fe–C diagram. I apply the **lever rule** using the phase-boundary compositions at that temperature.\n\n**Phase boundaries at 750°C** (estimated from the Fe–C diagram):\n\n| Boundary | Endpoints | Composition at 750°C |\n|---|---|---|\n| Ferrite solvus (α side) | (912°C, 0%) – (727°C, 0.022%) | C_α ≈ 0.017% |\n| A₃ line (γ side) | (912°C, 0%) – (727°C, 0.77%) | C_γ ≈ 0.59% |\n\n(Using a √C relation calibrated to the eutectoid point, which matches the curvature of the A₃ line better than a linear fit.)\n\n**Lever rule:**\n\n$$f_\\alpha = \\frac{C_\\gamma - C_0}{C_\\gamma - C_\\alpha} = 0.55, \\qquad f_\\gamma = \\frac{C_0 - C_\\alpha}{C_\\gamma - C_\\alpha} = 0.45$$\n\nSolving for the overall carbon content:\n\n$$C_0 = f_\\alpha\\, C_\\alpha + f_\\gamma\\, C_\\gamma = 0.55(0.017) + 0.45(0.590) \\approx 0.275\\;\\text{wt\\% C}$$\n\nVerification: with C₀ = 0.275, the fractions reproduce 55% α / 45% γ exactly.\n\n$$\\boxed{0.27}$$",
+ "final_answer": "0.27",
+ "correct_answer": "0.281",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

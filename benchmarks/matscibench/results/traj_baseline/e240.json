@@ -1,0 +1,11 @@
+{
+ "tid": "e240",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 9-69",
+ "question_text": "Liquid magnesium is poured into a 2 cm $\\times 2 \\mathrm{~cm} \\times 24 \\mathrm{~cm}$ mold and, as a result of directional solidification, all of the solidification shrinkage occurs along the 24 cm length of the casting. Determine the length of the casting immediately after solidification is completed. Give your answer as the value of final_length_cm.The unit of the answer is cm.",
+ "response": "## Reasoning\n\n**Given:** Liquid Mg poured into a 2 cm × 2 cm × 24 cm mold. Directional solidification forces **all** solidification shrinkage to occur along the 24 cm length (the 2×2 cross-section stays fixed).\n\n**Key property:** The volumetric solidification contraction for magnesium is **4.2%** (standard tabulated value, e.g., Callister).\n\n**Volume balance:**\n\nInitial volume:\n$$V_0 = 2 \\times 2 \\times 24 = 96\\ \\text{cm}^3$$\n\nAfter solidification the volume shrinks by 4.2%:\n$$V_f = V_0(1 - 0.042) = 96 \\times 0.958$$\n\nSince the cross-sectional area $A = 2\\times 2 = 4\\ \\text{cm}^2$ is unchanged and all shrinkage is along the length:\n$$V_f = A \\cdot L_f \\;\\Rightarrow\\; L_f = \\frac{V_f}{A} = \\frac{96 \\times 0.958}{4} = 24 \\times 0.958$$\n\n$$L_f = 22.992\\ \\text{cm}$$\n\n$$\\boxed{22.992}$$",
+ "final_answer": "22.992",
+ "correct_answer": "23.04",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "cm"
+}

@@ -1,0 +1,2 @@
+{"item": "e210", "verdict": "pass", "rules_hit": [], "rubric_scores": {}, "normalized_score": 1.0, "confidence": 0.95, "concerns": [], "reason": "无适用 critic 命中；独立核查：FCC Burgers vector b=a/√2=0.36151/√2=0.255626≈0.25563 nm，与 G 一致，模型/量纲/答案格式均正确。"}
+{"item": "e023", "verdict": "pass", "rules_hit": [], "rubric_scores": {}, "normalized_score": 1.0, "confidence": 0.93, "concerns": ["50:50 混合磁矩取两纯构型磁矩的线性平均，题目未显式定义混合规则，但鉴于两纯构型磁矩恰好相同(均为5)，此假设不影响结果"], "reason": "无适用 critic，独立核查：独立重解三种尖晶石构型磁矩均得 5 μB，与 G 的 (5,5,5) 一致；尖晶石阳离子分布、亚铁磁 |M_oct−M_tet| 耦合、量纲与 tuple 格式均站得住。"}

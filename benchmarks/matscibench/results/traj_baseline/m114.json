@@ -1,0 +1,11 @@
+{
+ "tid": "m114",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.78",
+ "question_text": "The following table gives a number of Rockwell G hardness values that were measured on a single steel specimen. Compute average and standard deviation hardness values. Give your answer a tuple: (average, standard deviation).\n\n| 47.3 | 48.7 | 47.1 |\n| :-- | :-- | :-- |\n| 52.1 | 50.0 | 50.4 |\n| 45.6 | 46.2 | 45.9 |\n| 49.9 | 48.3 | 46.4 |\n| 47.6 | 51.1 | 48.5 |\n| 50.4 | 46.7 | 49.7 |",
+ "response": "The 18 measurements yield:\n\n- **Average (mean):** 48.44\n- **Standard deviation (sample, n−1):** 1.95\n\n$$\\boxed{(48.44,\\ 1.95)}$$",
+ "final_answer": "(48.44,\\ 1.95)",
+ "correct_answer": "(48.4, 1.95)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": ""
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m077",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.104",
+ "question_text": "A hypothetical metal has the BCC crystal structure, a density of $7.24 \\mathrm{~g} / \\mathrm{cm}^{3}$, and an atomic weight of 48.9 $\\mathrm{g} / \\mathrm{mol}$. What is the atomic radius of this metal?The unit of the answer is nm.",
+ "response": "For a BCC metal, the lattice parameter–radius relationship is $a = \\dfrac{4R}{\\sqrt{3}}$, and density is\n\n$$\\rho = \\frac{nA}{a^3 N_A},\\qquad n=2\\ \\text{(BCC)}$$\n\nSolving for $a$:\n\n$$a = \\left(\\frac{nA}{\\rho N_A}\\right)^{1/3} = \\left(\\frac{2(48.9)}{7.24 \\times 6.022\\times10^{23}}\\right)^{1/3} = 2.82\\times10^{-8}\\ \\text{cm}$$\n\nThen\n\n$$R = \\frac{a\\sqrt{3}}{4} = \\frac{(2.82\\times10^{-8})(1.732)}{4} = 1.22\\times10^{-8}\\ \\text{cm} = 0.122\\ \\text{nm}$$\n\n$$\\boxed{0.122}$$",
+ "final_answer": "0.122",
+ "correct_answer": "0.122",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "nm"
+}

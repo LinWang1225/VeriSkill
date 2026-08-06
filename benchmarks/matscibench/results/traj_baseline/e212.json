@@ -1,0 +1,11 @@
+{
+ "tid": "e212",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 4-13",
+ "question_text": "Suppose we count 16 grains per square inch in a photomicrograph taken at a magnification of 250. What is the ASTM grain size number?",
+ "response": "## Step-by-step Reasoning\n\nThe ASTM grain size number $G$ is defined by:\n\n$$N_{100} = 2^{G-1}$$\n\nwhere $N_{100}$ is the number of grains per square inch at a magnification of **100×**.\n\n**Step 1: Convert the grain count to 100× magnification.**\n\nThe given count is $N_M = 16$ grains/in² at $M = 250×$. Since grain count per unit area scales with the square of the magnification ratio:\n\n$$N_{100} = N_M \\left(\\frac{M}{100}\\right)^2 = 16\\left(\\frac{250}{100}\\right)^2 = 16 \\times 6.25 = 100$$\n\n**Step 2: Solve for G.**\n\n$$100 = 2^{G-1} \\implies G - 1 = \\log_2(100) = \\frac{\\ln 100}{\\ln 2} \\approx 6.6439$$\n\n$$G \\approx 7.64$$\n\n$$\\boxed{7.64}$$",
+ "final_answer": "7.64",
+ "correct_answer": "7.64",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

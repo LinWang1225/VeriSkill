@@ -1,0 +1,11 @@
+{
+ "tid": "e133",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.19",
+ "question_text": "Consider a cylindrical specimen of some hypothetical metal alloy that has a diameter of 10.0 mm (0.39 in.). A tensile force of $1500 \\mathrm{~N}(340 \\mathrm{lb})$ produces an elastic reduction in diameter of $6.7 \\times 10^{-4} \\mathrm{~mm}(2.64 \\times$ $10^{-5}$ in.). Compute the elastic modulus of this alloy, given that Poisson's ratio is 0.35 .The unit of the answer is GPa.",
+ "response": "## Step-by-Step Solution\n\n**Given:**\n- Diameter $d_0 = 10.0 \\text{ mm}$\n- Tensile force $F = 1500 \\text{ N}$\n- Elastic reduction in diameter $\\Delta d = 6.7 \\times 10^{-4} \\text{ mm}$\n- Poisson's ratio $\\nu = 0.35$\n\n**Step 1 — Lateral (transverse) strain:**\n$$\\varepsilon_{\\text{lat}} = \\frac{\\Delta d}{d_0} = \\frac{6.7 \\times 10^{-4}}{10.0} = 6.7 \\times 10^{-5}$$\n\n**Step 2 — Axial strain via Poisson's ratio** ($\\nu = -\\varepsilon_{\\text{lat}}/\\varepsilon_{\\text{ax}}$):\n$$\\varepsilon_{\\text{ax}} = \\frac{\\varepsilon_{\\text{lat}}}{\\nu} = \\frac{6.7 \\times 10^{-5}}{0.35} = 1.914 \\times 10^{-4}$$\n\n**Step 3 — Engineering stress:**\n$$A_0 = \\pi\\left(\\frac{d_0}{2}\\right)^2 = \\pi(5.0)^2 = 78.54 \\text{ mm}^2 = 7.854 \\times 10^{-5} \\text{ m}^2$$\n$$\\sigma = \\frac{F}{A_0} = \\frac{1500}{7.854 \\times 10^{-5}} = 1.910 \\times 10^{7} \\text{ Pa}$$\n\n**Step 4 — Elastic modulus** ($E = \\sigma / \\varepsilon_{\\text{ax}}$):\n$$E = \\frac{1.910 \\times 10^{7}}{1.914 \\times 10^{-4}} \\approx 9.98 \\times 10^{10} \\text{ Pa} \\approx 100 \\text{ GPa}$$\n\n$$\\boxed{100}$$",
+ "final_answer": "100",
+ "correct_answer": "100",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "GPa"
+}

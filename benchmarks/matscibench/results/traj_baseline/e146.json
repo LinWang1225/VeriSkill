@@ -1,0 +1,11 @@
+{
+ "tid": "e146",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.18",
+ "question_text": "Consider a single crystal of some hypothetical metal that has the FCC crystal structure and is oriented such that a tensile stress is applied along a [112] direction. If slip occurs on a (111) plane and in a [011] direction, and the crystal yields at a stress of 5.12 MPa compute the critical resolved shear stress.The unit of the answer is MPa.",
+ "response": "By **Schmid's law**, the critical resolved shear stress is:\n\n$$\\tau_c = \\sigma \\cos\\phi \\cos\\lambda$$\n\nwhere $\\phi$ is the angle between the tensile axis $[112]$ and the slip-plane normal $[111]$, and $\\lambda$ is the angle between $[112]$ and the slip direction $[011]$.\n\n$$\\cos\\phi = \\frac{[112]\\cdot[111]}{|[112]||[111]|} = \\frac{4}{\\sqrt{6}\\sqrt{3}} = \\frac{2\\sqrt{2}}{3}$$\n\n$$\\cos\\lambda = \\frac{[112]\\cdot[011]}{|[112]||[011]|} = \\frac{3}{\\sqrt{6}\\sqrt{2}} = \\frac{\\sqrt{3}}{2}$$\n\n$$\\tau_c = 5.12 \\times \\frac{2\\sqrt{2}}{3} \\times \\frac{\\sqrt{3}}{2} = 5.12 \\times \\frac{\\sqrt{6}}{3} \\approx 4.18 \\text{ MPa}$$\n\n$$\\boxed{4.18}$$",
+ "final_answer": "4.18",
+ "correct_answer": "4.18",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

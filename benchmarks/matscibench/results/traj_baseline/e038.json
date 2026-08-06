@@ -1,0 +1,11 @@
+{
+ "tid": "e038",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_6.1",
+ "question_text": "The following three $\\sigma-\\epsilon$ data points are provided for a titanium alloy for aerospace applications: $\\epsilon=0.002778$ (at $\\sigma=300 \\mathrm{MPa}), 0.005556(600 \\mathrm{MPa})$, and $0.009897(900 \\mathrm{MPa})$. Calculate $E$ for this alloy. Give your answer as the value of $E$.The unit of the answer is GPa.",
+ "response": "The first two points give an identical ratio σ/ε ≈ 108 GPa, confirming they lie in the linear elastic regime. The third point (900 MPa) gives a lower apparent ratio because plastic deformation has set in beyond the yield point, so it should not be used for E.\n\n$$E = \\frac{\\sigma}{\\epsilon} = \\frac{300\\,\\text{MPa}}{0.002778} = \\frac{600\\,\\text{MPa}}{0.005556} \\approx 108{,}000\\,\\text{MPa} = 108\\,\\text{GPa}$$\n\n$$\\boxed{108}$$",
+ "final_answer": "108",
+ "correct_answer": "108",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "GPa"
+}

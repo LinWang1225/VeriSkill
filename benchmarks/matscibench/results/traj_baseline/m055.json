@@ -1,0 +1,11 @@
+{
+ "tid": "m055",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 2.6",
+ "question_text": "Calculate the concentration of conduction electrons in (a) Al and (b) Si. Assume that the densities of Al and Si are $2.7 \\mathrm{~g} / \\mathrm{cm}^{3}$ and $2.33 \\mathrm{~g} / \\mathrm{cm}^{3}$, respectively. The atomic masses for Al and Si are $\\sim 27$ and $28$, respectively. Assuming that the electron mobility values are similar, what will be the expected concentration of electrons in terms of the values of conductivity of Al and Si? \n\nGive your answer as a tuple (concentration in Al, concentration in Si).The units of each required answer are (electrons/cm^3, electrons/cm^3), respectively.",
+ "response": "## Reasoning\n\nFor a material where each atom contributes its valence electrons as conduction electrons:\n\n$$n = \\frac{\\rho \\, N_A \\, v}{M}$$\n\nwhere $\\rho$ = density, $N_A = 6.022\\times10^{23}$ atoms/mol, $v$ = valence, $M$ = atomic mass.\n\n**(a) Aluminum** — metal, valence $v = 3$:\n$$n_{\\text{Al}} = \\frac{2.7}{27}\\times 6.022\\times10^{23}\\times 3 = 0.1 \\times 6.022\\times10^{23}\\times 3 \\approx 1.81\\times10^{23}\\ \\text{electrons/cm}^3$$\n\n**(b) Silicon** — valence $v = 4$:\n$$n_{\\text{Si}} = \\frac{2.33}{28}\\times 6.022\\times10^{23}\\times 4 \\approx 2.00\\times10^{23}\\ \\text{electrons/cm}^3$$\n\n**Conductivity comparison:** Since $\\sigma = n|e|\\mu$, if electron mobilities are similar, then $\\sigma_{\\text{Al}}/\\sigma_{\\text{Si}} \\approx n_{\\text{Al}}/n_{\\text{Si}} \\approx 0.9$, i.e., the two conductivities would be nearly equal. In reality Al's conductivity is orders of magnitude larger than Si's — this discrepancy reveals that **not all valence electrons in Si are conduction electrons**; Si is a semiconductor whose intrinsic carrier concentration ($\\sim10^{10}$/cm³) is vastly smaller than the $2\\times10^{23}$/cm³ estimate, whereas in Al all valence electrons do participate in conduction.\n\n$$\\boxed{(1.81\\times10^{23},\\ 2.00\\times10^{23})}$$",
+ "final_answer": "(1.81\\times10^{23},\\ 2.00\\times10^{23})",
+ "correct_answer": "(1.807e23, 2.0e23)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(electrons/cm^3, electrons/cm^3)"
+}

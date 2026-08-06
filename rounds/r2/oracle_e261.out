@@ -1,0 +1,2 @@
+{"item": "e261", "oracle_pass": true, "evidence": "checker: Rule judge for NUM with leading/boxed answer extraction and 5% relative tolerance: candidate='(0.1013 nm, 124.1°)', parsed model=[0.1013, 124.1], reference=[0.1013, 124.26]; all values match. ", "skill_hash": "0062912b9690", "truth_source": "checker", "skill_result": "(0.1013 nm, 124.1°)"}
+EXIT=0

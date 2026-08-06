@@ -1,0 +1,11 @@
+{
+ "tid": "e192",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_3.6",
+ "question_text": "The wall thickness of a steel tank is measured monthly, and the loss in thickness is approximately the same each month, $50 \\mathrm{mg} / \\mathrm{dm}^2 / \\mathrm{day}$. What is the useful life of the tank, if the initial thickness is 10 mm and the minimum safe thickness is 6 mm ?The unit of the answer is years.",
+ "response": "## Step-by-Step Reasoning\n\n**1. Identify the allowable thickness loss**\n\n$$\\Delta t = 10\\ \\text{mm} - 6\\ \\text{mm} = 4\\ \\text{mm}$$\n\n**2. Convert the corrosion rate from mass-loss form to a penetration rate**\n\nThe rate is given as $50\\ \\mathrm{mg/dm^2/day}$ (a *mass loss per unit area per unit time*). To turn this into a thickness-loss rate, divide by the density of steel:\n\n$$\\rho_{\\text{steel}} \\approx 7.87\\ \\mathrm{g/cm^3}$$\n\nUnit conversion of the rate:\n$$50\\ \\frac{\\mathrm{mg}}{\\mathrm{dm^2\\cdot day}} = \\frac{0.05\\ \\mathrm{g}}{100\\ \\mathrm{cm^2\\cdot day}} = 5\\times10^{-4}\\ \\frac{\\mathrm{g}}{\\mathrm{cm^2\\cdot day}}$$\n\nPenetration rate:\n$$v = \\frac{5\\times10^{-4}}{7.87}\\ \\frac{\\mathrm{cm}}{\\mathrm{day}} = 6.35\\times10^{-5}\\ \\frac{\\mathrm{cm}}{\\mathrm{day}}$$\n\nConvert to mm/year:\n$$v = 6.35\\times10^{-5}\\ \\frac{\\mathrm{cm}}{\\mathrm{day}} \\times 10\\ \\frac{\\mathrm{mm}}{\\mathrm{cm}} \\times 365\\ \\frac{\\mathrm{day}}{\\mathrm{year}} \\approx 0.2319\\ \\frac{\\mathrm{mm}}{\\mathrm{year}}$$\n\n(Equivalently, the standard shortcut: $\\mathrm{mm/yr} = \\dfrac{\\mathrm{mdd}\\times 0.0365}{\\rho} = \\dfrac{50\\times0.0365}{7.87} = 0.2319$.)\n\n**3. Compute the useful life**\n\n$$t = \\frac{\\Delta t}{v} = \\frac{4\\ \\mathrm{mm}}{0.2319\\ \\mathrm{mm/yr}} \\approx 17.25\\ \\mathrm{years}$$\n\n$$\\boxed{17.25}$$",
+ "final_answer": "17.25",
+ "correct_answer": "17",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "years"
+}

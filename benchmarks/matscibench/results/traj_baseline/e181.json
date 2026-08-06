@@ -1,0 +1,11 @@
+{
+ "tid": "e181",
+ "qid": "Fundamentals_of_Ceramics_Barsoum_Example 5.4",
+ "question_text": "Calculate the chemical stability domains for the phases in the $\\mathrm{Fe}-\\mathrm{O}$ system at 1000 K, given the following standard free energies of formation:\n\n$$\n\\begin{aligned}\n\\Delta G_{\\mathrm{FeO}} \\text { at } 1000 \\mathrm{~K} & = -206.95 \\mathrm{~kJ} \\mathrm{~mol}^{-1} \\\\\n\\Delta G_{\\mathrm{Fe}_{3} \\mathrm{O}_{4}} & = -792.6 \\mathrm{~kJ} \\mathrm{~mol}^{-1} \\\\\n\\Delta G_{\\mathrm{Fe}_{2} \\mathrm{O}_{3}} & = -561.8 \\mathrm{~kJ} \\mathrm{~mol}^{-1}\n\\end{aligned}\n$$\n\nSuppose below pressure a, Fe is the stable phase; between an and b, FeO is stable; between b and c, Fe3O4 is stable; above c, Fw2O3 is stable. \n\n\nGive your answer as a tuple (pressure a, pressure b, pressure c)The units of each required answer are (atm, atm, atm), respectively.",
+ "response": "## Reasoning\n\nAt each boundary, two adjacent phases coexist, so I set ΔG = 0 for the reaction converting one phase to the other (consuming ½O₂). With O₂ at pressure *p*, the reaction free energy is ΔG = ΔG° − ½RT ln(p), giving **ln(p) = 2ΔG°/(RT)**.\n\n**Boundary a — Fe/FeO:** Fe + ½O₂ → FeO\n$$\\ln p_a = \\frac{2\\Delta G^\\circ_{\\text{FeO}}}{RT} = \\frac{2(-206.95\\times10^3)}{8.314\\times1000} = -49.78$$\n\n**Boundary b — FeO/Fe₃O₄:** 3FeO + ½O₂ → Fe₃O₄\n$$\\Delta G^\\circ = \\Delta G^\\circ_{\\text{Fe}_3\\text{O}_4} - 3\\Delta G^\\circ_{\\text{FeO}} = -792.6 + 620.85 = -171.75\\text{ kJ}$$\n$$\\ln p_b = \\frac{2(-171.75\\times10^3)}{RT} = -41.32$$\n\n**Boundary c — Fe₃O₄/Fe₂O₃:** 2Fe₃O₄ + ½O₂ → 3Fe₂O₃\n$$\\Delta G^\\circ = 3\\Delta G^\\circ_{\\text{Fe}_2\\text{O}_3} - 2\\Delta G^\\circ_{\\text{Fe}_3\\text{O}_4} = -1685.4 + 1585.2 = -100.2\\text{ kJ}$$\n$$\\ln p_c = \\frac{2(-100.2\\times10^3)}{RT} = -24.11$$\n\nThe computed pressures satisfy the expected ordering $p_a < p_b < p_c$, confirming the stability sequence Fe → FeO → Fe₃O₄ → Fe₂O₃ with increasing oxygen pressure.\n\n$$\n\\boxed{(2.39\\times10^{-22},\\ 1.14\\times10^{-18},\\ 3.40\\times10^{-11})}\n$$",
+ "final_answer": "(2.39\\times10^{-22},\\ 1.14\\times10^{-18},\\ 3.40\\times10^{-11})",
+ "correct_answer": "(2.4 \\times 10^{-22}, 1.14 \\times 10^{-18}, 3.4 \\times 10^{-11})",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(atm, atm, atm)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e102",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.31",
+ "question_text": "Given that chromium has a density of 7.19 g/cm³ and an atomic mass of 52.00 g/mol, calculate the number of Cr atoms per cubic meter.The unit of the answer is atoms/m^3.",
+ "response": "## Solution\n\nTo find the number of Cr atoms per cubic meter, I use the relationship between density, atomic mass, and Avogadro's number:\n\n$$n = \\frac{\\rho}{M} \\cdot N_A$$\n\n**Step 1: Atoms per cm³**\n\n$$\\frac{7.19 \\text{ g/cm}^3}{52.00 \\text{ g/mol}} \\times 6.022 \\times 10^{23} \\text{ atoms/mol} = 8.3266 \\times 10^{22} \\text{ atoms/cm}^3$$\n\n**Step 2: Convert to atoms/m³**\n\nSince $1 \\text{ m}^3 = 10^6 \\text{ cm}^3$:\n\n$$8.3266 \\times 10^{22} \\times 10^6 = 8.3266 \\times 10^{28} \\text{ atoms/m}^3$$\n\n$$\\boxed{8.3266 \\times 10^{28}}$$",
+ "final_answer": "8.3266 \\times 10^{28}",
+ "correct_answer": "8.33E+28",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "atoms/m^3"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e058",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_14.29",
+ "question_text": "The following data are obtained for an armco iron alloy during the generation of steady-state ferromagnetic hysteresis loop: \\begin{tabular}{cc} \\hline $\\boldsymbol{H}($ amperes $/ \\mathrm{m})$ & $\\boldsymbol{B}\\left(\\right.$ weber $\\left./ \\mathrm{m}^{\\mathbf{2}}\\right)$ \\\\ \\hline 56 & 0.50 \\\\ 30 & 0.46 \\\\ 10 & 0.40 \\\\ 0 & 0.36 \\\\ -10 & 0.28 \\\\ -20 & 0.12 \\\\ -25 & 0 \\\\ -40 & -0.28 \\\\ -56 & -0.50 \\\\ \\hline \\end{tabular} (a) Plot the data. (b) What is the remanent induction? (c) What is the coercive field? Give your answer as a tuple: (remanent_induction, coercive_field).The units of each required answer are (Wb/m^2, A/m), respectively.",
+ "response": "The plot confirms the two intersection points:\n- **Remanent induction**: where the loop crosses the B-axis (H = 0) → B = 0.36 Wb/m²\n- **Coercive field**: where the loop crosses the H-axis (B = 0) → H = −25 A/m, magnitude = 25 A/m\n\n## Final Answer\n\nThe remanent induction is the flux density remaining when H = 0, which is **0.36 Wb/m²**. The coercive field is the demagnetizing field needed to bring B back to zero, which occurs at H = −25 A/m, reported as a magnitude of **25 A/m**.\n\n$$\\boxed{(0.36,\\ 25)}$$",
+ "final_answer": "(0.36,\\ 25)",
+ "correct_answer": "(0.36, -25)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(Wb/m^2, A/m)"
+}

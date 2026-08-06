@@ -1,0 +1,11 @@
+{
+ "tid": "e161",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 12.3",
+ "question_text": "A plain carbon steel wire 3 mm in diameter is to offer a resistance of no more than $20 \\Omega$. Using the data in  table 12.1 , compute the maximum wire length.\n\nReference:\n\"Table 12.1\nRoom-Temperature Electrical Conductivities for Nine Common Metals and Alloys\n\\begin{tabular}{|l|l|}\n\\hline Metal & Electrical Conductivity [ $(\\Omega \\cdot \\boldsymbol{m})^{-1}$ ] \\\\\n\\hline Silver & $6.8 \\times 10^7$ \\\\\n\\hline Copper & $6.0 \\times 10^7$ \\\\\n\\hline Gold & $4.3 \\times 10^7$ \\\\\n\\hline Aluminum & $3.8 \\times 10^7$ \\\\\n\\hline Brass ( $70 \\mathrm{Cu}-30 \\mathrm{Zn}$ ) & $1.6 \\times 10^7$ \\\\\n\\hline Iron & $1.0 \\times 10^7$ \\\\\n\\hline Platinum & $0.94 \\times 10^7$ \\\\\n\\hline Plain carbon steel & $0.6 \\times 10^7$ \\\\\n\\hline Stainless steel & $0.2 \\times 10^7$ \\\\\n\\hline\n\\end{tabular}\"The unit of the answer is m.",
+ "response": "The resistance of a wire is $R = \\rho \\dfrac{L}{A} = \\dfrac{L}{\\sigma A}$, so the maximum length is $L = R\\,\\sigma\\,A$.\n\n**Given data:**\n- Diameter $d = 3\\;\\text{mm} = 3\\times10^{-3}\\;\\text{m}$, so $A = \\pi(d/2)^2 = \\pi(1.5\\times10^{-3})^2$\n- $R_{\\max} = 20\\;\\Omega$\n- Plain carbon steel conductivity $\\sigma = 0.6\\times10^{7}\\;(\\Omega\\cdot\\text{m})^{-1}$\n\n**Calculation:**\n\n$$A = \\pi(1.5\\times10^{-3})^2 = 7.069\\times10^{-6}\\;\\text{m}^2$$\n\n$$L = R\\,\\sigma\\,A = (20)(0.6\\times10^{7})(7.069\\times10^{-6}) \\approx 848\\;\\text{m}$$\n\n$$\\boxed{848}$$",
+ "final_answer": "848",
+ "correct_answer": "848",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m"
+}

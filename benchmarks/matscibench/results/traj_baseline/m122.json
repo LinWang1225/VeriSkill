@@ -1,0 +1,11 @@
+{
+ "tid": "m122",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.11",
+ "question_text": "A structural component in the form of a wide plate is to be fabricated from a steel alloy that has a planestrain fracture toughness of $98.9 \\mathrm{MPa} \\sqrt{\\mathrm{~m}}(90 \\mathrm{ksi} \\sqrt{\\text { in. }})$ and a yield strength of 860 MPa (125,000 psi). The flaw size resolution limit of the flaw detection apparatus is 3.0 mm ( 0.12 in .). If the design stress is one-half the yield strength and the value of $Y$ is 1.0, determine whether a critical flaw for this plate is subject to detection.The unit of the answer is mm.",
+ "response": "## Solution\n\n**Step 1: Design stress**\n$$\\sigma = \\frac{1}{2}\\sigma_y = \\frac{1}{2}(860) = 430 \\text{ MPa}$$\n\n**Step 2: Critical flaw size** from $K_{Ic} = Y\\sigma\\sqrt{\\pi a_c}$:\n\n$$a_c = \\frac{1}{\\pi}\\left(\\frac{K_{Ic}}{Y\\sigma}\\right)^2 = \\frac{1}{\\pi}\\left(\\frac{98.9}{1.0 \\times 430}\\right)^2$$\n\n$$a_c = \\frac{1}{\\pi}(0.22977)^2 = \\frac{0.05279}{\\pi} = 0.01684 \\text{ m} = 16.84 \\text{ mm}$$\n\n**Step 3: Compare with detection limit**\n\nThe critical flaw size $a_c = 16.84$ mm is **much larger** than the flaw detection resolution limit of 3.0 mm. Therefore, a critical flaw for this plate **is subject to detection** — the apparatus can detect flaws well below the critical size, so the component is safe from undetected critical flaws.\n\n$$\\boxed{16.84}$$",
+ "final_answer": "16.84",
+ "correct_answer": "16.8",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

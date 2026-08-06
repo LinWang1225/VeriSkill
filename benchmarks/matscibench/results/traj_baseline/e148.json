@@ -1,0 +1,11 @@
+{
+ "tid": "e148",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.25",
+ "question_text": "The lower yield point for an iron that has an average grain diameter of $1 \\times 10^{-2} \\mathrm{~mm}$ is 230 MPa (33,000 psi). At a grain diameter of $6 \\times 10^{-3} \\mathrm{~mm}$, the yield point increases to 275 MPa (40,000 psi). At what grain diameter will the lower yield point be 310 MPa (45,000 psi)?The unit of the answer is mm.",
+ "response": "Using the **Hall–Petch** relationship:\n\n$$\\sigma_y = \\sigma_0 + \\frac{k_y}{\\sqrt{d}}$$\n\nWith the two given data points:\n- $d_1 = 1\\times10^{-2}$ mm, $\\sigma_1 = 230$ MPa → $\\sqrt{d_1}=0.1$\n- $d_2 = 6\\times10^{-3}$ mm, $\\sigma_2 = 275$ MPa → $\\sqrt{d_2}\\approx 0.07746$\n\nSubtracting the two equations:\n$$k_y = \\frac{275-230}{1/\\sqrt{d_2}-1/\\sqrt{d_1}} \\approx 15.46 \\text{ MPa}\\cdot\\sqrt{\\text{mm}}$$\n$$\\sigma_0 = 230 - k_y/0.1 \\approx 75.36 \\text{ MPa}$$\n\nFor $\\sigma_y = 310$ MPa:\n$$\\frac{1}{\\sqrt{d}} = \\frac{310-75.36}{15.46} \\approx 15.17 \\implies d = \\frac{1}{(15.17)^2} \\approx 4.34\\times10^{-3} \\text{ mm}$$\n\n$$\\boxed{4.34\\times10^{-3}}$$",
+ "final_answer": "4.34\\times10^{-3}",
+ "correct_answer": "4.34E-03",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

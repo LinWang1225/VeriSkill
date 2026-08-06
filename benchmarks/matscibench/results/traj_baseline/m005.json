@@ -1,0 +1,11 @@
+{
+ "tid": "m005",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 3.19",
+ "question_text": "Given r silicon = 0.117 nm, calculate the planar density of atoms in the (111) plane of silicon.The unit of the answer is $\\frac{\\text{ atoms }}{\\mathrm{nm}^{2}}$.",
+ "response": "With $r = 0.117$ nm, $a = 0.5404$ nm, giving:\n\n$$\\text{PD}_{(111)} = \\frac{3}{16\\sqrt{3}\\,(0.117)^2} \\approx 7.908 \\ \\frac{\\text{atoms}}{\\text{nm}^2}$$\n\n$\\boxed{7.908}$",
+ "final_answer": "7.908",
+ "correct_answer": "7.91",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "$\\frac{\\text{ atoms }}{\\mathrm{nm}^{2}}$"
+}

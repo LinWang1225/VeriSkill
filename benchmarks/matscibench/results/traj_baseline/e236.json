@@ -1,0 +1,11 @@
+{
+ "tid": "e236",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 6-26",
+ "question_text": "A steel cable 1.25 in . in diameter and 50 ft long is to lift a 20 ton load. What is the length of the cable during lifting? The modulus of elasticity of the steel is $30 \\times 10^6 \\mathrm{psi}$. Give your answer as the value of length_during_lifting_ft.The unit of the answer is ft.",
+ "response": "## Solution\n\n**Given:**\n- Cable diameter $d = 1.25$ in, original length $L = 50$ ft\n- Load $P = 20$ ton $= 20 \\times 2000 = 40{,}000$ lb (short ton)\n- Modulus of elasticity $E = 30 \\times 10^6$ psi\n\n**Cross-sectional area:**\n$$A = \\frac{\\pi}{4}d^2 = \\frac{\\pi}{4}(1.25)^2 = 1.2272 \\text{ in}^2$$\n\n**Stress:**\n$$\\sigma = \\frac{P}{A} = \\frac{40{,}000}{1.2272} = 32{,}595 \\text{ psi}$$\n\n**Strain:**\n$$\\varepsilon = \\frac{\\sigma}{E} = \\frac{32{,}595}{30 \\times 10^6} = 1.0865 \\times 10^{-3}$$\n\n**Elongation:**\n$$\\delta = \\varepsilon \\cdot L = (1.0865 \\times 10^{-3})(50) = 0.05432 \\text{ ft}$$\n\n**Length during lifting:**\n$$L' = L + \\delta = 50 + 0.05432 = 50.0543 \\text{ ft}$$\n\n$$\\boxed{50.0543}$$",
+ "final_answer": "50.0543",
+ "correct_answer": "50.0543",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "ft"
+}

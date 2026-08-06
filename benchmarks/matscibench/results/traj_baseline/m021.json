@@ -1,0 +1,11 @@
+{
+ "tid": "m021",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 13.7",
+ "question_text": "Calculate the conductivity at $200^{\\circ} \\mathrm{C}$ of (a) copper (annealed standard) and (b) tungsten. Give your answer as a tuple: (copper_conductivity, tungsten_conductivity).The units of each required answer are (Ω^-1·m^-1, Ω^-1·m^-1), respectively.",
+ "response": "## Reasoning\n\nFor metals, resistivity varies approximately linearly with temperature:\n\n$$\\rho(T) = \\rho_{20}\\bigl[1 + \\alpha\\,(T - 20)\\bigr]$$\n\nSince conductivity is the reciprocal of resistivity, $\\sigma = 1/\\rho$:\n\n$$\\sigma(T) = \\frac{\\sigma_{20}}{1 + \\alpha\\,(T - 20)}$$\n\nUsing standard room-temperature (20 °C) values (Callister):\n\n| Metal | $\\sigma_{20}$ (Ω⁻¹·m⁻¹) | $\\alpha$ (°C⁻¹) |\n|---|---|---|\n| Copper (annealed) | $6.0\\times10^{7}$ | $0.0039$ |\n| Tungsten | $1.8\\times10^{7}$ | $0.0045$ |\n\nWith $T = 200\\,°\\text{C}$, so $\\Delta T = 180\\,°\\text{C}$:\n\n**(a) Copper**\n$$\\sigma_{\\text{Cu}} = \\frac{6.0\\times10^{7}}{1 + 0.0039(180)} = \\frac{6.0\\times10^{7}}{1.702} \\approx 3.53\\times10^{7}\\;\\Omega^{-1}\\text{·m}^{-1}$$\n\n**(b) Tungsten**\n$$\\sigma_{\\text{W}} = \\frac{1.8\\times10^{7}}{1 + 0.0045(180)} = \\frac{1.8\\times10^{7}}{1.81} \\approx 9.94\\times10^{6}\\;\\Omega^{-1}\\text{·m}^{-1}$$\n\n$$\\boxed{(3.53\\times10^{7},\\; 9.94\\times10^{6})}$$",
+ "final_answer": "(3.53\\times10^{7},\\; 9.94\\times10^{6})",
+ "correct_answer": "(34.0e6, 10.0e6)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(Ω^-1·m^-1, Ω^-1·m^-1)"
+}

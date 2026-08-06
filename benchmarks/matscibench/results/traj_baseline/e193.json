@@ -1,0 +1,11 @@
+{
+ "tid": "e193",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 4.3",
+ "question_text": "To ensure that the neck in a tensile bar would occur at the middle of the gauge section, the machinist made the bar with a 0.500 in. diameter in the middle of the gauge section and machined the rest of it to a diameter of 0.505 in. After testing, the diameter away from the neck was 0.470 in. Assume that the stress-strain relation follows the power law, $\\sigma = K \\epsilon^n$. What was the value of $n$?",
+ "response": "## Reasoning\n\n**Setup:** The neck is designed to form at the middle of the gauge section, where the initial diameter is smallest (0.500 in). The rest of the gauge section has diameter 0.505 in. After testing, the diameter away from the neck is 0.470 in.\n\n**Key principles:**\n\n1. **Considère criterion (instability):** At the instant of necking, the load is maximum. For a power-law material $\\sigma = K\\epsilon^n$, the instability condition $d\\sigma/d\\epsilon = \\sigma$ gives\n$$\\epsilon_{\\text{neck}} = n$$\n\n2. **Uniform load at maximum load:** At the instability instant, the axial load $P = \\sigma A$ is the same everywhere in the gauge section. Using volume conservation ($A = A_0 e^{-\\epsilon}$ for true strain):\n$$P = K\\epsilon^n \\cdot A_0 e^{-\\epsilon}$$\n\n**Applying to the two regions:**\n\n- **Neck region (1):** $d_{01} = 0.500$, $\\epsilon_1 = n$\n- **Away-from-neck region (2):** $d_{02} = 0.505$, final $d_2 = 0.470$\n\nThe true strain in region 2:\n$$\\epsilon_2 = 2\\ln\\!\\left(\\frac{d_{02}}{d_2}\\right) = 2\\ln\\!\\left(\\frac{0.505}{0.470}\\right) = 0.1437$$\n\n**Load equality** $P_1 = P_2$ at maximum load:\n$$n^n e^{-n} A_{01} = \\epsilon_2^n e^{-\\epsilon_2} A_{02}$$\n\nWith $A_{02}/A_{01} = (0.505/0.500)^2 = 1.0201$, taking logarithms:\n\n$$n\\ln n - n = n\\ln\\epsilon_2 - \\epsilon_2 + \\ln(1.0201)$$\n\n**Solving numerically** yields two roots (0.075 and 0.226). The physical root requires $n > \\epsilon_2 = 0.1437$ (the smaller-diameter neck region must strain *more* than the thicker region), selecting:\n\n$$\\boxed{0.226}$$",
+ "final_answer": "0.226",
+ "correct_answer": "0.1473",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

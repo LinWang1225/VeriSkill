@@ -1,0 +1,11 @@
+{
+ "tid": "m110",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.49",
+ "question_text": "Find the toughness (or energy to cause fracture) for a metal that experiences both elastic and plastic deformation. Assume equation (\\sigma=E \\varepsilon) for elastic deformation, that the modulus of elasticity is 103 GPa ( $15 \\times 10^{6} \\mathrm{psi}$ ), and that elastic deformation terminates at a strain of 0.007 . For plastic deformation, assume that the relationship between stress and strain is described by equation (\\sigma_T=K \\varepsilon_T^n), in which the values for $K$ and $n$ are 1520 MPa (221,000 psi) and 0.15 , respectively. Furthermore, plastic deformation occurs between strain values of 0.007 and 0.60 , at which point fracture occurs.The unit of the answer is J/m^3.",
+ "response": "## Reasoning\n\nThe toughness is the total energy absorbed per unit volume up to fracture — the area under the stress–strain curve:\n\n$$U = \\int_0^{\\varepsilon_f} \\sigma\\, d\\varepsilon = U_{\\text{el}} + U_{\\text{pl}}$$\n\n### Elastic contribution (0 → 0.007)\nWith $\\sigma = E\\varepsilon$:\n$$U_{\\text{el}} = \\int_0^{0.007} E\\varepsilon\\, d\\varepsilon = \\frac{E}{2}(0.007)^2 = \\frac{103\\times10^9}{2}(0.007)^2 \\approx 2.52\\times10^6\\ \\text{J/m}^3$$\n\n### Plastic contribution (0.007 → 0.60)\nWith $\\sigma_T = K\\varepsilon_T^{\\,n}$:\n$$U_{\\text{pl}} = \\int_{0.007}^{0.60} K\\varepsilon^n\\, d\\varepsilon = \\frac{K}{n+1}\\left[\\varepsilon^{n+1}\\right]_{0.007}^{0.60}$$\n$$= \\frac{1520\\times10^6}{1.15}\\left(0.60^{1.15} - 0.007^{1.15}\\right) \\approx 7.30\\times10^8\\ \\text{J/m}^3$$\n\n### Total\n$$U \\approx 2.52\\times10^6 + 7.30\\times10^8 \\approx 7.33\\times10^8\\ \\text{J/m}^3$$\n\n$$\\boxed{7.33\\times10^{8}}$$",
+ "final_answer": "7.33\\times10^{8}",
+ "correct_answer": "7.33E+08",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "J/m^3"
+}

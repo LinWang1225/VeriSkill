@@ -1,0 +1,24 @@
+{
+  "edits": [
+    {
+      "critic": "d-matsci-model-selection",
+      "type": "add_rule",
+      "rule_id": "R-d-matsci-model-selection-001",
+      "evidence_items": ["#m276"],
+      "summary": "在方法库中新增 regular-solution 稀溶液溶解度子情形：Ω<0 时用 |Ω| 替换有符号 Ω 伪造 miscibility gap 根，正确做法是直接用稀溶液公式 x_B=exp(Ω/RT)；R 判据 依据 追加 r13#m276，保持 [soft]"
+    }
+  ],
+  "fp_seen": 1,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["m276"],
+  "unjudgeable": [],
+  "unresolved": [
+    {
+      "item": "m245",
+      "reason": "评分路径误杀：rules_hit 为空、normalized_score=0.0、真值 pass。轨迹答案 2.48 与 reference 一致、过程正确（合理查表 ρ_W）。无法从审计信息定位具体打零分的评分细则项，疑为阈值问题或 verify 对查表参数的过度惩罚。交还编排者阈值自校准处理。"
+    }
+  ],
+  "skipped": [],
+  "needs_human": false
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m273",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 17.2",
+ "question_text": "Zinc undergoes corrosion in an acidic solution according to the reaction:\n\\[\n\\mathrm{Zn} + 2\\mathrm{H}^{+} \\longrightarrow \\mathrm{Zn}^{2+} + \\mathrm{H}_{2}\n\\]\n\nThe rates of both oxidation and reduction half-reactions are controlled by activation polarization.\n\n(a) Compute the rate of oxidation of Zn (in $\\mathrm{mol/cm^{2}\\cdot s}$), given the following activation polarization data:\n\n\\[\n\\begin{array}{|c|c|}\n    \\hline\n    \\textbf{For Zn} & \\textbf{For Hydrogen} \\\\\n    \\hline\n    V_{\\left(\\mathrm{Zn}/\\mathrm{Zn}^{2+}\\right)} = -0.763\\,\\mathrm{V} & V_{\\left(\\mathrm{H}^{+}/\\mathrm{H}_{2}\\right)} = 0\\,\\mathrm{V} \\\\\n    \\hline\n    i_{0} = 10^{-7}\\,\\mathrm{A/cm^{2}} & i_{0} = 10^{-10}\\,\\mathrm{A/cm^{2}} \\\\\n    \\hline\n    \\beta = +0.09 & \\beta = -0.08 \\\\\n    \\hline\n\\end{array}\n\\]\n\n\n(b) Compute the value of the corrosion potential.\n\nGive your answer as a tuple (rate of oxidation in (a), the value of the corrosion potential in (b)).\nThe units of each required answer are (mol/(cm${}^{2}$s), V), respectively.",
+ "response": "## Solution\n\n**Mixed-potential theory:** At the corrosion potential, the anodic (Zn oxidation) and cathodic (H⁺ reduction) current densities are equal to $i_{corr}$.\n\n**Activation polarization (Tafel) equations:**\n\n$$V_{corr} = V_{Zn} + \\beta_{Zn}\\log_{10}\\!\\left(\\frac{i_{corr}}{i_{0,Zn}}\\right) = V_{H} + \\beta_{H}\\log_{10}\\!\\left(\\frac{i_{corr}}{i_{0,H}}\\right)$$\n\n**(a)** Solving the equality gives $i_{corr} \\approx 1.19\\times10^{-4}\\,\\text{A/cm}^2$. The oxidation rate is\n\n$$r = \\frac{i_{corr}}{nF} = \\frac{1.19\\times10^{-4}}{2\\times 96485} \\approx 6.18\\times10^{-10}\\,\\text{mol/cm}^2\\!\\cdot\\!\\text{s}$$\n\n**(b)** Substituting $i_{corr}$ back:\n\n$$V_{corr} = -0.763 + 0.09\\log_{10}\\!\\left(\\frac{1.19\\times10^{-4}}{10^{-7}}\\right) \\approx -0.486\\,\\text{V}$$\n\n$$\\boxed{(6.18\\times10^{-10},\\ -0.486)}$$",
+ "final_answer": "(6.18\\times10^{-10},\\ -0.486)",
+ "correct_answer": "(6.17e-10, -0.486)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(mol/(cm${}^{2}$s), V)"
+}

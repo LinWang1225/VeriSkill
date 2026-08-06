@@ -1,0 +1,11 @@
+{
+ "tid": "m259",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 23-32",
+ "question_text": "A current density of $0.1 \\mathrm{~A} / \\mathrm{cm}^2$ is applied to the iron in an iron-zinc corrosion cell. Calculate the weight loss of zinc per hour (a) if the zinc has a surface area of $10 \\mathrm{~cm}^2$ and the iron has a surface area of $100 \\mathrm{~cm}^2$ and (b) if the zinc has a surface area of $100 \\mathrm{~cm}^2$ and the iron has a surface area of $10 \\mathrm{~cm}^2$. \n\nGive your answer as a tuple: (weight loss zinc per hour in (a), weight loss zinc  per hour in (b)).The units of each required answer are (g/h, g/h), respectively.",
+ "response": "## Reasoning\n\n**Electrochemical setup:**\n- Zinc is the **anode** (sacrificial — Zn is more active than Fe): Zn → Zn²⁺ + 2e⁻\n- Iron is the **cathode** where the given current density (0.1 A/cm²) is applied.\n- By charge conservation, the total current is set by the cathode: $I = i_{\\text{Fe}} \\times A_{\\text{Fe}}$. This same current drives zinc dissolution regardless of zinc's area.\n\n**Faraday's law:** $m = \\dfrac{I \\cdot t \\cdot M_{\\text{Zn}}}{n \\cdot F}$, with $M_{\\text{Zn}} = 65.38$ g/mol, $n=2$, $F = 96485$ C/mol, $t = 3600$ s.\n\n| Case | $A_{\\text{Fe}}$ | $I = 0.1 \\times A_{\\text{Fe}}$ | Mass loss of Zn |\n|------|----------------|------------------------------|-----------------|\n| (a)  | 100 cm² | 10 A | $\\frac{10 \\times 3600 \\times 65.38}{2 \\times 96485} \\approx 12.20$ g/h |\n| (b)  | 10 cm²  | 1 A  | $\\frac{1 \\times 3600 \\times 65.38}{2 \\times 96485} \\approx 1.22$ g/h |\n\nThe zinc surface area affects the zinc's *current density* but not the total mass loss, which is governed by the total cell current fixed at the iron cathode.\n\n$$\\boxed{(12.20,\\ 1.22)}$$",
+ "final_answer": "(12.20,\\ 1.22)",
+ "correct_answer": "(12.2, 1.22)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(g/h, g/h)"
+}

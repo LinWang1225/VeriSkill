@@ -1,0 +1,11 @@
+{
+ "tid": "m034",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_9.61",
+ "question_text": "A solder batch is made by melting together 64 g of a $40: 60 \\mathrm{~Pb}-\\mathrm{Sn}$ alloy with 53 g of a $60: 40 \\mathrm{~Pb}-\\mathrm{Sn}$ alloy. Calculate the amounts of $\\alpha$ and $\\beta$ phase that would be present in the overall alloy, assuming it is slowly cooled to room temperature, $25^{\\circ} \\mathrm{C}$. Give your answer as a tuple: (alpha_phase_amount, beta_phase_amount).The units of each required answer are (g, g), respectively.",
+ "response": "## Solution\n\n**Step 1: Overall composition**\n\nMelting together:\n- 64 g of 40:60 Pb-Sn → 25.6 g Pb, 38.4 g Sn\n- 53 g of 60:40 Pb-Sn → 31.8 g Pb, 21.2 g Sn\n\nTotal mass = 117 g, with 57.4 g Pb and 59.6 g Sn.\n\nOverall composition: $C_0 = 59.6/117 = 50.94$ wt% Sn (49.06 wt% Pb).\n\n**Step 2: Phase compositions at 25 °C**\n\nFrom the Pb–Sn phase diagram at room temperature:\n- $\\alpha$ (Pb-rich): $C_\\alpha \\approx 2$ wt% Sn\n- $\\beta$ (Sn-rich): $C_\\beta \\approx 100$ wt% Sn\n\n**Step 3: Lever rule**\n\n$$W_\\alpha = \\frac{C_\\beta - C_0}{C_\\beta - C_\\alpha} = \\frac{100 - 50.94}{100 - 2} = 0.5006$$\n\n$$W_\\beta = \\frac{C_0 - C_\\alpha}{C_\\beta - C_\\alpha} = \\frac{50.94 - 2}{98} = 0.4994$$\n\n**Step 4: Phase masses**\n\n$$m_\\alpha = 0.5006 \\times 117 = 58.57 \\text{ g}, \\quad m_\\beta = 0.4994 \\times 117 = 58.43 \\text{ g}$$\n\n(These are exactly $410/7$ and $409/7$ grams, summing to 117 g.)\n\n$$\\boxed{(58.57,\\ 58.43)}$$",
+ "final_answer": "(58.57,\\ 58.43)",
+ "correct_answer": "(58.2, 58.8)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(g, g)"
+}

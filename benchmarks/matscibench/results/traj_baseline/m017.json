@@ -1,0 +1,11 @@
+{
+ "tid": "m017",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 3.16",
+ "question_text": "Calculate the linear density of atoms along the [111] direction in (a) bcc iron and (b) fcc nickel. Give your answer as a tuple: (linear_density_bcc_iron, linear_density_fcc_nickel).The units of each required answer are (atoms/nm, atoms/nm), respectively.",
+ "response": "## Reasoning\n\n**Linear density** = (number of atoms centered on the direction line) / (length of the direction vector within the unit cell).\n\n### (a) BCC iron along [111]\n- Lattice parameter: $a = 0.2866$ nm\n- [111] is the **body diagonal**, length $= a\\sqrt{3}$\n- Atoms lying on this line: the two corner atoms (each shared → contributes $1/2$) plus the **body-center atom** at $(\\tfrac{1}{2},\\tfrac{1}{2},\\tfrac{1}{2})$ which sits fully on the line.\n- Atoms per body diagonal $= 2(\\tfrac{1}{2}) + 1 = 2$\n- $\\text{LD} = \\dfrac{2}{a\\sqrt{3}} = \\dfrac{2}{0.2866\\sqrt{3}} \\approx 4.029\\ \\text{atoms/nm}$\n\n### (b) FCC nickel along [111]\n- Lattice parameter: $a = 0.3524$ nm\n- [111] is again the body diagonal, length $= a\\sqrt{3}$\n- FCC atom positions: $(0,0,0),(\\tfrac{1}{2},\\tfrac{1}{2},0),(\\tfrac{1}{2},0,\\tfrac{1}{2}),(0,\\tfrac{1}{2},\\tfrac{1}{2})$. The point $(\\tfrac{1}{2},\\tfrac{1}{2},\\tfrac{1}{2})$ is **not** an FCC site, so only the corner atoms lie on the [111] line. (The close-packed direction in FCC is [110], not [111].)\n- Atoms per body diagonal $= 2(\\tfrac{1}{2}) = 1$\n- $\\text{LD} = \\dfrac{1}{a\\sqrt{3}} = \\dfrac{1}{0.3524\\sqrt{3}} \\approx 1.638\\ \\text{atoms/nm}$\n\n$$\n\\boxed{(4.029,\\ 1.638)}\n$$",
+ "final_answer": "(4.029,\\ 1.638)",
+ "correct_answer": "(4.03, 1.63)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(atoms/nm, atoms/nm)"
+}

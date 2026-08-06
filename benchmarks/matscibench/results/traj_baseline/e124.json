@@ -1,0 +1,11 @@
+{
+ "tid": "e124",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.4",
+ "question_text": "A cylindrical specimen of a nickel alloy having an elastic modulus of $207 \\mathrm{GPa}\\left(30 \\times 10^{6} \\mathrm{psi}\\right)$ and an original diameter of 10.2 mm ( 0.40 in.) experiences only elastic deformation when a tensile load of $8900 \\mathrm{~N}\\left(2000 \\mathrm{lb}\\right)$ is applied. Compute the maximum length of the specimen before deformation if the maximum allowable elongation is 0.25 mm ( 0.010 in.).The unit of the answer is mm.",
+ "response": "## Solution\n\n**Given:**\n- Elastic modulus: $E = 207 \\text{ GPa} = 207 \\times 10^3 \\text{ MPa}$\n- Original diameter: $d_0 = 10.2 \\text{ mm}$\n- Tensile load: $F = 8900 \\text{ N}$\n- Maximum allowable elongation: $\\Delta L = 0.25 \\text{ mm}$\n\n**Step 1 — Cross-sectional area:**\n$$A_0 = \\frac{\\pi d_0^2}{4} = \\frac{\\pi (10.2)^2}{4} = 81.71 \\text{ mm}^2$$\n\n**Step 2 — Stress:**\n$$\\sigma = \\frac{F}{A_0} = \\frac{8900}{81.71} = 108.92 \\text{ MPa}$$\n\n**Step 3 — Strain (elastic):**\n$$\\epsilon = \\frac{\\sigma}{E} = \\frac{108.92}{207 \\times 10^3} = 5.26 \\times 10^{-4}$$\n\n**Step 4 — Maximum length:**\nSince $\\Delta L = \\epsilon L_0$,\n$$L_0 = \\frac{\\Delta L}{\\epsilon} = \\frac{0.25}{5.26 \\times 10^{-4}} \\approx 475 \\text{ mm}$$\n\n$$\\boxed{475}$$",
+ "final_answer": "475",
+ "correct_answer": "475",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

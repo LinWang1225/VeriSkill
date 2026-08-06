@@ -1,0 +1,11 @@
+{
+ "tid": "e147",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.19",
+ "question_text": "The critical resolved shear stress for copper $(\\mathrm{Cu})$ is 0.48 MPa ( 70 psi ). Determine the maximum possible yield strength for a single crystal of Cu pulled in tension.The unit of the answer is MPa.",
+ "response": "## Result\n\n$$\\sigma_y^{\\max} = 2 \\times 0.48 \\text{ MPa} = 0.96 \\text{ MPa}$$\n\nThis is the classic result: the maximum yield strength of a single crystal equals twice the critical resolved shear stress, corresponding to the optimal slip orientation ($\\phi = \\lambda = 45°$) where the Schmid factor reaches its peak value of 0.5.\n\n$$\\boxed{0.96}$$",
+ "final_answer": "0.96",
+ "correct_answer": "0.96",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

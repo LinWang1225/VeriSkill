@@ -1,0 +1,11 @@
+{
+ "tid": "e231",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 3-81",
+ "question_text": "A diffracted x-ray beam is observed from the (311) planes of aluminum at a $2 \\theta$ angle of $78.3^{\\circ}$ when x -rays of 0.15418 nm wavelength are used. Calculate the lattice parameter of the aluminum. Give your answer as as the value of lattice_parameter_nm.The unit of the answer is nm.",
+ "response": "Using Bragg's law (first order, $n=1$):\n\n$$\\lambda = 2d\\sin\\theta, \\quad \\theta = \\frac{78.3^\\circ}{2}=39.15^\\circ$$\n\n$$d = \\frac{0.15418}{2\\sin 39.15^\\circ}$$\n\nFor cubic aluminum, $d_{hkl} = \\frac{a}{\\sqrt{h^2+k^2+l^2}}$, with $(311)$: $h^2+k^2+l^2 = 9+1+1=11$:\n\n$$a = d\\sqrt{11} \\approx 0.40497 \\text{ nm}$$\n\n$$\\boxed{0.40497}$$",
+ "final_answer": "0.40497",
+ "correct_answer": "0.40497",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "nm"
+}

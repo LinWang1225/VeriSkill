@@ -1,0 +1,12 @@
+{
+  "edits": [
+    {"skill": "g-matsci-grade-designation-not-source", "type": "new_skill", "cluster": "circular-reasoning-grade-backderive", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "新建技能：材料牌号只是标识非答案来源，硬度推强度须用教材通用经验系数，禁止从牌号标称值反推系数再代回（m029 循环论证）。"},
+    {"skill": "g-matsci-shell-radius-attribution", "type": "new_skill", "cluster": "shell-radius-attribution", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "新建技能：球壳/柱壳稳态扩散标称直径取外径、壁厚向内扣得内径，禁止把标称直径当内径再向外加壁厚导致分母偏小通量偏大（m216）。"},
+    {"skill": "g-matsci-sn-fatigue-loglog-interpolation", "type": "patch", "cluster": "unified-basquin-fit", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "重写技能：原技能教逐问局部两点插值（直接导致 m124 折线不自洽），改为有限寿命区全点统一 log-log 最小二乘定一组 A,b 贯穿多问，耐久极限段单独处理。"},
+    {"skill": "g-sci-missing-input-no-fabrication", "type": "patch", "cluster": "underdetermined-misjudge", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "补欠定误判反向条款：题目要数值速率时须先穷尽从给定约束（转化率/浓度）反解时刻再代入，不得一见'依赖 t'就停符号式称欠定（m128）。"}
+  ],
+  "clusters_seen": 4,
+  "clusters_fixed": 4,
+  "skipped": [],
+  "needs_human": false
+}

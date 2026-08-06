@@ -1,19 +1,7 @@
 {
   "edits": [
-    {
-      "critic": "d-officeqa-data-aggregation",
-      "type": "narrow_rule",
-      "rule_id": "R-officeqa-data-aggregation-001",
-      "evidence_items": ["#q021"],
-      "summary": "收窄规则，排除计数类任务（统计某条件出现次数）——此类任务中明细数据项为命中计数值而非待加总的实际数值，原规则误将轨迹中的命中计数当作数据项求和"
-    }
+    {"critic":"d-matsci-comparison-basis","type":"add_rule","rule_id":"R-d-matsci-comparison-basis-001","evidence_items":["#m243"],"summary":"新建 comparison-basis 家族：跨材料比较物量时受控变量须一致"},
+    {"critic":"d-matsci-param-lookup","type":"add_rule","rule_id":"R-d-matsci-param-lookup-001","evidence_items":["#m219","#m041"],"summary":"param-lookup 追加子情形：纤维/基体模量须查表取值，勿用 Voigt 上界反推选 E_f"}
   ],
-  "fp_seen": 1,
-  "fp_resolved": 1,
-  "fn_clusters_seen": 0,
-  "fn_resolved": [],
-  "unjudgeable": ["q044"],
-  "unresolved": [],
-  "skipped": [],
-  "needs_human": false
+  "fp_seen":0,"fp_resolved":0,"fn_clusters_seen":2,"fn_resolved":["m243","m041"],"unjudgeable":[],"unresolved":[],"skipped":[],"needs_human":false
 }

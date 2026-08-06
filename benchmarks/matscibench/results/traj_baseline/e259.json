@@ -1,0 +1,11 @@
+{
+ "tid": "e259",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 23-10",
+ "question_text": "We wish to produce 100 g of platinum per hour on a $1000 \\mathrm{~cm}^2$ cathode by electroplating. What plating current density is required? Determine the current required. \n\nGive your answer as a tuple: (plating current density, current required).The units of each required answer are (A/cm², A), respectively.",
+ "response": "Using Faraday's law of electrolysis, $m = \\dfrac{I\\,t\\,M}{nF}$.\n\nFor platinum electroplating, the bath is chloroplatinic acid with **Pt⁴⁺** (n = 4). Molar mass M = 195.08 g/mol, F = 96485 C/mol, t = 3600 s, m = 100 g.\n\n$$I = \\frac{m\\,n\\,F}{M\\,t} = \\frac{100 \\times 4 \\times 96485}{195.08 \\times 3600} \\approx 54.95\\ \\text{A}$$\n\nCurrent density:\n\n$$j = \\frac{I}{A} = \\frac{54.95}{1000} \\approx 0.0550\\ \\text{A/cm}^2$$\n\n$$\\boxed{(0.055,\\ 55)}$$",
+ "final_answer": "(0.055,\\ 55)",
+ "correct_answer": "(0.055, 55)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(A/cm², A)"
+}

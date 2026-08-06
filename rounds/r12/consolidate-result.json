@@ -1,0 +1,5 @@
+{
+  "merges": [], "uprolls": [], "prunes": [], "noop": true,
+  "summary": "r12 扫描 9 critics / 21 actor_skills：未发现可安全合并的近重对、可上卷的过拟合单题条目或可剪枝的失效/被支配条目。所有单支撑 critic 内容已通用化，D/G 两侧互为检测/预防对而非重复。与 r6 同为 noop。",
+  "actor_skills_before_after": [21, 21], "critics_rules_before_after": [10, 10], "needs_human": false
+}

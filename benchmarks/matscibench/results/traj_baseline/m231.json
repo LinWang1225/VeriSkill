@@ -1,0 +1,11 @@
+{
+ "tid": "m231",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 9-62",
+ "question_text": "A 4-in.-diameter sphere of liquid copper is allowed to solidify, producing a spherical shrinkage cavity in the center of the casting. Compare the volume and diameter of the shrinkage cavity in the copper casting to that obtained when a 4 in. sphere of liquid iron is allowed to solidify. Give your answer as a tuple: (diameter_copper_in, diameter_iron_in).The units of each required answer are (in, in), respectively.",
+ "response": "## Reasoning\n\n**Step 1: Original sphere volume**\n\nFor a 4-in. diameter sphere:\n$$V = \\frac{\\pi}{6}d^3 = \\frac{\\pi}{6}(4)^3 = \\frac{32\\pi}{3} \\approx 33.51 \\text{ in}^3$$\n\n**Step 2: Solidification shrinkage values** (standard tabulated values)\n\n| Metal | Solidification Shrinkage |\n|-------|--------------------------|\n| Copper | 4.5% |\n| Iron | 3.0% |\n\n**Step 3: Cavity volumes**\n\nThe shrinkage cavity volume = (shrinkage fraction) × (sphere volume):\n- $V_{\\text{cav,Cu}} = 0.045 \\times 33.51 \\approx 1.508 \\text{ in}^3$\n- $V_{\\text{cav,Fe}} = 0.030 \\times 33.51 \\approx 1.005 \\text{ in}^3$\n\nThe copper cavity volume is **1.5×** the iron cavity volume (ratio = 4.5/3.0).\n\n**Step 4: Cavity diameters**\n\nSince each cavity is spherical, $d_{\\text{cav}} = \\left(\\frac{6V_{\\text{cav}}}{\\pi}\\right)^{1/3} = d_{\\text{sphere}} \\times (\\text{shrinkage})^{1/3}$:\n\n- $d_{\\text{cav,Cu}} = 4 \\times (0.045)^{1/3} \\approx 1.42 \\text{ in}$\n- $d_{\\text{cav,Fe}} = 4 \\times (0.030)^{1/3} \\approx 1.24 \\text{ in}$\n\nThe copper cavity is larger because copper has a greater solidification shrinkage (4.5% vs. 3.0%).\n\n$$\\boxed{(1.42,\\ 1.24)}$$",
+ "final_answer": "(1.42,\\ 1.24)",
+ "correct_answer": "(1.48, 1.3)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(in, in)"
+}

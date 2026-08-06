@@ -1,0 +1,11 @@
+{
+ "tid": "e005",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 5.1",
+ "question_text": "The rate at which a metal alloy oxidizes in an oxygen-containing atmosphere is a typical example of the practical utility of the Arrhenius equation (rate $=C e^{-Q / R T}$). For example, the rate of oxidation of a magnesium alloy is represented by a rate constant, $k$. The value of $k$ at $300^{\\circ} \\mathrm{C}$ is $1.05 \\times 10^{-8} \\mathrm{~kg} /\\left(\\mathrm{m}^{4} \\cdot \\mathrm{~s}\\right)$. At $400^{\\circ} \\mathrm{C}$, the value of $k$ rises to $2.95 \\times 10^{-4} \\mathrm{~kg} /\\left(\\mathrm{m}^{4} \\cdot \\mathrm{~s}\\right)$. Calculate the activation energy, $Q$, for this oxidation process (in units of $\\mathrm{kJ} / \\mathrm{mol}$ ).The unit of the answer is kJ/mol.",
+ "response": "Using the Arrhenius equation $k = Ce^{-Q/RT}$ with two data points:\n\n$$\\ln\\!\\left(\\frac{k_2}{k_1}\\right) = -\\frac{Q}{R}\\left(\\frac{1}{T_2}-\\frac{1}{T_1}\\right)$$\n\nWith $T_1=573\\,\\text{K}$, $T_2=673\\,\\text{K}$, $k_1=1.05\\times10^{-8}$, $k_2=2.95\\times10^{-4}$, and $R=8.314\\,\\text{J/(mol·K)}$:\n\n$$Q = -\\frac{R\\ln(k_2/k_1)}{1/T_2-1/T_1} \\approx 3.284\\times10^{5}\\,\\text{J/mol} \\approx 328.4\\,\\text{kJ/mol}$$\n\n$$\\boxed{328.4}$$",
+ "final_answer": "328.4",
+ "correct_answer": "328",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kJ/mol"
+}

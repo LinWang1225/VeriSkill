@@ -1,0 +1,11 @@
+{
+ "tid": "m242",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 14-13",
+ "question_text": "Suppose a 24 -in.-long round bar is to support a load of 400 lb without any permanent deformation. Calculate the minimum diameter of the bar if it is made from (a) AZ80A-T5 magnesium alloy and (b) 6061-T6 aluminum alloy. Calculate the weight of the bar and the approximate cost (based on pure Mg and $\\mathrm{Al})$ in each case. Give your answer as a tuple: (min_diameter_AZ80A_in, weight_AZ80A_lb, cost_AZ80A_USD, min_diameter_6061_in, weight_6061_lb, cost_6061_USD).The units of each required answer are (in, lb, USD, in, lb, USD), respectively.",
+ "response": "## Reasoning\n\n**Design criterion:** To avoid permanent deformation, the stress must not exceed the yield strength:\n\n$$\\sigma = \\frac{F}{A} = \\frac{F}{\\pi d^2/4} \\le \\sigma_y \\;\\Rightarrow\\; d_{\\min} = \\sqrt{\\frac{4F}{\\pi\\,\\sigma_y}}$$\n\n**Material properties (standard textbook values):**\n\n| Alloy | Yield strength | Density |\n|-------|---------------|---------|\n| AZ80A-T5 Mg | 275 MPa ≈ 39,885 psi | 1.74 g/cm³ (0.0629 lb/in³) |\n| 6061-T6 Al | 276 MPa ≈ 40,030 psi | 2.70 g/cm³ (0.0975 lb/in³) |\n\n**Minimum diameters:**\n- AZ80A-T5: $d = \\sqrt{4(400)/(\\pi\\cdot39885)} \\approx 0.1130$ in\n- 6061-T6: $d = \\sqrt{4(400)/(\\pi\\cdot40030)} \\approx 0.1128$ in\n\nBoth alloys have nearly the same yield strength, so the diameters are nearly identical — the real comparison is weight and cost.\n\n**Weight** ($W = \\rho\\, \\pi d^2/4 \\cdot L$, using pure-metal densities):\n- Mg: $0.0629 \\times \\pi(0.1130)^2/4 \\times 24 \\approx 0.0151$ lb\n- Al: $0.0975 \\times \\pi(0.1128)^2/4 \\times 24 \\approx 0.0234$ lb\n\n**Cost** (approximate pure-metal prices: Mg ≈ $3.00/lb, Al ≈ $1.00/lb):\n- Mg: $0.0151 \\times 3.00 \\approx \\$0.0454$\n- Al: $0.0234 \\times 1.00 \\approx \\$0.0234$\n\n**Design takeaway:** The magnesium bar is ~35% lighter than the aluminum bar but costs roughly twice as much — the classic weight-vs.-cost trade-off.\n\n$$\\boxed{(0.113,\\;0.0151,\\;0.0454,\\;0.1128,\\;0.0234,\\;0.0234)}$$",
+ "final_answer": "(0.113,\\;0.0151,\\;0.0454,\\;0.1128,\\;0.0234,\\;0.0234)",
+ "correct_answer": "(0.113, 0.0151, 0.023, 0.113, 0.0233, 0.014)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(in, lb, USD, in, lb, USD)"
+}

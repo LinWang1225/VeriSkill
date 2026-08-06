@@ -1,0 +1,11 @@
+{
+ "tid": "e089",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.106",
+ "question_text": "An $A X$ ceramic compound has the rock salt crystal structure. If the radii of the $A$ and $X$ ions are 0.137 and 0.241 nm , respectively, and the respective atomic weights are 22.7 and $91.4 \\mathrm{~g} / \\mathrm{mol}$, what is the density (in $\\mathrm{g} / \\mathrm{cm}^{3}$ ) of this material?The unit of the answer is g/cm^3.",
+ "response": "## Step-by-Step Reasoning\n\n**1. Rock salt structure basics**\nThe rock salt (NaCl) structure is FCC-based with **4 formula units per unit cell** (Z = 4).\n\n**2. Lattice parameter**\nFor the rock salt structure, ions touch along an edge, so:\n$$a = 2(r_A + r_X) = 2(0.137 + 0.241) = 0.756 \\text{ nm}$$\n\nConvert to cm: $a = 0.756 \\times 10^{-7}$ cm.\n\n**3. Density formula**\n$$\\rho = \\frac{n \\cdot (A_A + A_X)}{a^3 \\cdot N_A}$$\n\n- $n = 4$\n- $A_A + A_X = 22.7 + 91.4 = 114.1$ g/mol\n- $N_A = 6.022 \\times 10^{23}$\n\n**4. Calculation**\n$$a^3 = (0.756 \\times 10^{-7})^3 = 0.4319 \\times 10^{-21} \\text{ cm}^3$$\n\n$$\\rho = \\frac{4 \\times 114.1}{0.4319 \\times 10^{-21} \\times 6.022 \\times 10^{23}} \\approx 1.754 \\text{ g/cm}^3$$\n\n$$\\boxed{1.754}$$",
+ "final_answer": "1.754",
+ "correct_answer": "0.219",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g/cm^3"
+}

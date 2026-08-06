@@ -1,0 +1,11 @@
+{
+  "edits": [
+    {"skill": "g-matsci-lefm-crack-length-convention", "type": "new_skill", "cluster": "m122-a-vs-2a", "summary": "新建 LEFM 裂纹长度约定技能：a 半裂纹长、全长 2a，NDT 检测限针对全长，比较前同口径换算"},
+    {"skill": "g-matsci-hall-effect-sign-convention", "type": "description", "cluster": "m136-hall-sign", "summary": "description 补'由给定 Hall 电压求所需磁场 B'触发词"},
+    {"skill": "g-matsci-ttt-phase-from-hold-time", "type": "patch", "cluster": "m235-ttt", "summary": "增加 t_f/t_s 比值合理性校验"},
+    {"skill": "g-sci-model-validity-range", "type": "patch", "cluster": "m250", "summary": "跨物理边界自动不可用门槛 + 承认但回避签名自查"},
+    {"skill": "g-matsci-mixing-rule-select", "type": "patch", "cluster": "m041", "summary": "强化上下界反推自检"},
+    {"skill": "g-sci-independent-verify", "type": "patch", "cluster": "e261", "summary": "伪独立模式第5条：物理定律代回自身是循环论证"}
+  ],
+  "clusters_seen": 6, "clusters_fixed": 6, "needs_human": false
+}

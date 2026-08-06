@@ -1,0 +1,11 @@
+{
+ "tid": "e164",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 12.49",
+ "question_text": "A parallel-plate capacitor using a dielectric material having an $\\varepsilon{r}$ of 2.2 has a plate spacing of $2 \\mathrm{~mm}(0.08$ in.). If another material having a dielectric constant of 3.7 is used and the capacitance is to be unchanged, what must be the new spacing between the plates?The unit of the answer is mm.",
+ "response": "For a parallel-plate capacitor, $C = \\dfrac{\\varepsilon_0 \\varepsilon_r A}{d}$. Keeping $C$ and $A$ unchanged requires $\\dfrac{\\varepsilon_{r1}}{d_1} = \\dfrac{\\varepsilon_{r2}}{d_2}$, so:\n\n$$d_2 = d_1 \\frac{\\varepsilon_{r2}}{\\varepsilon_{r1}} = 2\\,\\text{mm}\\times\\frac{3.7}{2.2} \\approx 3.36\\,\\text{mm}$$\n\n$\\boxed{3.36}$",
+ "final_answer": "3.36",
+ "correct_answer": "3.36",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

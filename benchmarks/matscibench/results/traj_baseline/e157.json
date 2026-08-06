@@ -1,0 +1,11 @@
+{
+ "tid": "e157",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.17",
+ "question_text": "The following tabulated data were gathered from a series of Charpy impact tests on a tempered 4340 steel alloy.\n\n| Temperature $\\left({ }^{\\circ} \\mathbf{C}\\right)$ | Impact Energy $(\\boldsymbol{J})$ |\n| :--: | :--: |\n| 0 | 105 |\n| -25 | 104 |\n| -50 | 103 |\n| -75 | 97 |\n| -100 | 63 |\n| -113 | 40 |\n| -125 | 34 |\n| -150 | 28 |\n| -175 | 25 |\n| -200 | 24 |\n\n(a) Determine a ductile-to-brittle transition temperature as the temperature corresponding to the average of the maximum and minimum impact energies.\n(b) Determine a ductile-to-brittle transition temperature as the temperature at which the impact energy is 50 J .\n\nGive your answer as a tuple (answer to (a), answer to (b)).The units of each required answer are (°C, °C), respectively.",
+ "response": "## Reasoning\n\n**Data:**\n| T (°C) | 0 | −25 | −50 | −75 | −100 | −113 | −125 | −150 | −175 | −200 |\n| E (J) | 105 | 104 | 103 | 97 | 63 | 40 | 34 | 28 | 25 | 24 |\n\n### (a) Transition temperature at average of max and min impact energies\n\n- Maximum impact energy = 105 J (at 0 °C)\n- Minimum impact energy = 24 J (at −200 °C)\n- Average = (105 + 24)/2 = **64.5 J**\n\nThe energy 64.5 J falls between T = −100 °C (63 J) and T = −75 °C (97 J). Linear interpolation:\n\n$$T = -100 + \\frac{64.5 - 63}{97 - 63}(−75 −(−100)) = -100 + \\frac{1.5}{34}(25) \\approx -98.9\\ ^\\circ\\text{C}$$\n\n### (b) Transition temperature at 50 J\n\nThe energy 50 J falls between T = −113 °C (40 J) and T = −100 °C (63 J). Linear interpolation:\n\n$$T = -113 + \\frac{50 - 40}{63 - 40}(−100 −(−113)) = -113 + \\frac{10}{23}(13) \\approx -107.3\\ ^\\circ\\text{C}$$\n\n$$\\boxed{(-98.9,\\ -107.3)}$$",
+ "final_answer": "(-98.9,\\ -107.3)",
+ "correct_answer": "(-100, -110)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(°C, °C)"
+}

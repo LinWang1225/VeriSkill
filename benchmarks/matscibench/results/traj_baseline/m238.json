@@ -1,0 +1,11 @@
+{
+ "tid": "m238",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-90",
+ "question_text": "Describe the complete heat treatment required to produce a quenched and tempered eutectoid steel having an HRC hardness of less than 50. Include appropriate temperatures. Give your answer as a tuple: (austenitizing_temperature_C, tempering_temperature_C).The units of each required answer are (°C, °C), respectively.",
+ "response": "## Reasoning\n\n**Eutectoid steel** has ~0.76 wt% C with a eutectoid temperature (A₁) of **727 °C**.\n\n### Step 1 — Austenitize\nTo form fully austenitic structure, the steel must be heated **above 727 °C** into the single‑phase austenite (γ) region. The standard austenitizing temperature is about 30–60 °C above A₁:\n\n$$T_{\\text{aust}} \\approx 727 + 30\\text{–}60 \\;\\Rightarrow\\; \\boxed{\\approx 760\\;^\\circ\\text{C}}$$\n\nHold long enough (~1 h) for complete transformation to austenite.\n\n### Step 2 — Quench\nRapidly quench to room temperature (water/oil quench) to bypass the eutectoid reaction and form **martensite**. As‑quenched martensite for 0.76 wt% C is very hard (~65 HRC).\n\n### Step 3 — Temper\nReheat below 727 °C to transform brittle martensite into **tempered martensite** (ferrite + dispersed cementite), trading hardness for toughness.\n\nFrom the Callister hardness‑vs‑tempering‑temperature curve for a 0.76 wt% C eutectoid steel (1 h temper), the Rockwell C hardness falls below **50 HRC** when tempering is done **above ~425 °C**:\n\n| Tempering T (°C) | ≈ HRC |\n|---|---|\n| 250 | ~57 |\n| 425 | ~50 |\n| 540 | ~45 |\n| 650 | ~30 |\n\nThus, tempering at **≈ 425 °C** (or above) for ~1 h yields hardness < 50 HRC.\n\n### Complete heat treatment\n1. Austenitize at **760 °C** → 2. Quench to RT → 3. Temper at **425 °C** (or above).\n\n$$\n\\boxed{(760,\\;425)}\n$$",
+ "final_answer": "(760,\\;425)",
+ "correct_answer": "(750, 330)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(°C, °C)"
+}

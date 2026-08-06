@@ -1,0 +1,11 @@
+{
+ "tid": "e084",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.92",
+ "question_text": "Using the data for $\\alpha$-iron in  table 3.1 , compute the interplanar spacings for the (111) and (211) sets of planes.\n\nGive your name as an answer ((111), (211)).\n\n\"Table 3.1\nAtomic Radii and Crystal Structures for 16 Metals\n\\begin{tabular}{|l|l|l|l|l|l|}\n\\hline Metal & Crystal Structure ${ }^a$ & Atomic Radius ${ }^{\\text {b }}$ (nm) & Metal & Crystal Structure & Atomic Radius (nm) \\\\\n\\hline Aluminum & FCC & 0.1431 & Molybdenum & BCC & 0.1363 \\\\\n\\hline Cadmium & HCP & 0.1490 & Nickel & FCC & 0.1246 \\\\\n\\hline Chromium & BCC & 0.1249 & Platinum & FCC & 0.1387 \\\\\n\\hline Cobalt & HCP & 0.1253 & Silver & FCC & 0.1445 \\\\\n\\hline Copper & FCC & 0.1278 & Tantalum & BCC & 0.1430 \\\\\n\\hline Gold & FCC & 0.1442 & Titanium ( $\\alpha$ ) & HCP & 0.1445 \\\\\n\\hline Iron ( $\\alpha$ ) & BCC & 0.1241 & Tungsten & BCC & 0.1371 \\\\\n\\hline Lead & FCC & 0.1750 & Zinc & HCP & 0.1332 \\\\\n\\hline\n\\end{tabular}\n${ }^a$ FCC $=$ face-centered cubic; HCP $=$ hexagonal close-packed; $\\mathrm{BCC}=$ body-centered cubic. ${ }^b \\mathrm{~A}$ nanometer (nm) equals $10^{-9} \\mathrm{~m}$; to convert from nanometers to angstrom units ( $\\AA$ ), multiply the nanometer value by 10 .\"The units of each required answer are (nm, nm), respectively.",
+ "response": "For α-iron (BCC), from Table 3.1 the atomic radius is R = 0.1241 nm.\n\nFor a BCC structure the lattice parameter is\n$$a = \\frac{4R}{\\sqrt{3}} = \\frac{4(0.1241)}{\\sqrt{3}} = 0.2866\\ \\text{nm}$$\n\nThe interplanar spacing for cubic crystals is\n$$d_{hkl} = \\frac{a}{\\sqrt{h^2+k^2+l^2}}$$\n\n**For (111):**\n$$d_{111} = \\frac{0.2866}{\\sqrt{1+1+1}} = \\frac{0.2866}{\\sqrt{3}} = 0.1655\\ \\text{nm}$$\n\n**For (211):**\n$$d_{211} = \\frac{0.2866}{\\sqrt{4+1+1}} = \\frac{0.2866}{\\sqrt{6}} = 0.1170\\ \\text{nm}$$\n\n(All inputs carry 4 significant figures, so results are reported to 4 sig figs.)\n\n$$\\boxed{(0.1655,\\ 0.1170)}$$",
+ "final_answer": "(0.1655,\\ 0.1170)",
+ "correct_answer": "(0.1655, 0.1170)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(nm, nm)"
+}

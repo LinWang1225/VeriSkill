@@ -1,0 +1,11 @@
+{
+ "tid": "m189",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 4-10",
+ "question_text": "We wish to produce a rod composed of a single crystal of pure aluminum, which has a critical resolved shear stress of 148 psi. We would like to orient the rod in such a manner that, when an axial stress of 500 psi is applied, the rod deforms by slip in a $45^{\\circ}$ direction to the axis of the rod and actuates a sensor that detects the overload. Design the rod and a method by which it might be produced. Give your answer as a tuple: (λ_deg, φ_deg).The units of each required answer are (\\circ, \\circ), respectively.",
+ "response": "## Solution\n\n**Design reasoning:**\n\nThe rod must be oriented so that slip activates exactly at 500 psi. Since the slip direction is specified to be at 45° to the rod axis, this directly fixes **λ = 45°**. Schmid's law then determines φ:\n\n$$\\cos\\phi = \\frac{\\tau_c}{\\sigma\\cos\\lambda} = \\frac{148}{500\\cos 45°} = 0.4186$$\n\n$$\\phi = \\arccos(0.4186) \\approx 65.25°$$\n\n**Production method:** Grow a single crystal of pure Al from the melt using a seed crystal (Czochralski or Bridgman technique) cut and oriented so that the desired slip system has its slip direction at 45° and slip-plane normal at 65.25° relative to the growth (rod) axis. The grown crystal is then machined into a rod along that axis.\n\n**Verification:** τ_R = 500 × cos 45° × cos 65.25° = 500 × 0.7071 × 0.4186 = 148 psi ✓ — slip initiates precisely at the overload, actuating the sensor.\n\n$$\\boxed{(45,\\ 65.25)}$$",
+ "final_answer": "(45,\\ 65.25)",
+ "correct_answer": "(45, 65.3)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(\\circ, \\circ)"
+}

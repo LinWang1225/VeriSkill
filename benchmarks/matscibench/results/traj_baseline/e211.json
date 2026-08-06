@@ -1,0 +1,11 @@
+{
+ "tid": "e211",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 4-12",
+ "question_text": "The yield strength of mild steel with an average grain size of 0.05 mm is $20,000 \\mathrm{psi}$. The yield stress of the same steel with a grain size of 0.007 mm is $40,000 \\mathrm{psi}$. What will be the average grain size of the same steel with a yield stress of $30,000 \\mathrm{psi}$? Assume the Hall-Petch equation is valid and that changes in the observed yield stress are due to changes in grain size.The unit of the answer is nm.",
+ "response": "Using the Hall–Petch equation $\\sigma_y = \\sigma_0 + k\\,d^{-1/2}$:\n\nFrom the two data points:\n- $20000 = \\sigma_0 + k/\\sqrt{0.05}$\n- $40000 = \\sigma_0 + k/\\sqrt{0.007}$\n\nSubtracting gives $k$, then $\\sigma_0$, and finally solving $30000 = \\sigma_0 + k/\\sqrt{d}$ for $d$:\n\n$$d = \\left(\\frac{k}{30000-\\sigma_0}\\right)^2 \\approx 0.01483\\ \\text{mm} \\approx 14828\\ \\text{nm}$$\n\n$$\\boxed{14828}$$",
+ "final_answer": "14828",
+ "correct_answer": "0.0148",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "nm"
+}

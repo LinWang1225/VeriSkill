@@ -1,0 +1,11 @@
+{
+ "tid": "e194",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 5.3",
+ "question_text": "Under plane stress (σ₃=0), let the principal stresses be σ₁ and σ₂, and define α=σ₂/σ₁.  Using the von Mises yield criterion with uniaxial tensile yield stress Y, determine the maximum possible value of σ₁/Y at yielding and the corresponding α.  Give your answer as (σ₁/Y, α).",
+ "response": "## Reasoning\n\nUnder plane stress (σ₃ = 0), the von Mises equivalent stress is\n\n$$\\sigma_{vm}^2 = \\tfrac{1}{2}\\left[(\\sigma_1-\\sigma_2)^2 + \\sigma_2^2 + \\sigma_1^2\\right] = \\sigma_1^2 - \\sigma_1\\sigma_2 + \\sigma_2^2$$\n\nYielding occurs when $\\sigma_{vm} = Y$. Substituting $\\sigma_2 = \\alpha\\sigma_1$:\n\n$$\\sigma_1^2(1 - \\alpha + \\alpha^2) = Y^2 \\quad\\Longrightarrow\\quad \\left(\\frac{\\sigma_1}{Y}\\right)^2 = \\frac{1}{1 - \\alpha + \\alpha^2}$$\n\nTo **maximize** $\\sigma_1/Y$, minimize the denominator $f(\\alpha) = \\alpha^2 - \\alpha + 1$:\n\n$$f'(\\alpha) = 2\\alpha - 1 = 0 \\;\\Longrightarrow\\; \\alpha = \\tfrac{1}{2}$$\n\n$$f\\!\\left(\\tfrac{1}{2}\\right) = \\tfrac{3}{4} \\;\\Longrightarrow\\; \\frac{\\sigma_1}{Y} = \\frac{1}{\\sqrt{3/4}} = \\frac{2}{\\sqrt{3}}$$\n\nThis is a minimum of $f$ (since $f''=2>0$), confirming a maximum of $\\sigma_1/Y$.\n\n$$\\boxed{\\left(\\dfrac{2}{\\sqrt{3}},\\;\\dfrac{1}{2}\\right)}$$",
+ "final_answer": "\\left(\\dfrac{2}{\\sqrt{3}},\\;\\dfrac{1}{2}\\right)",
+ "correct_answer": "(1.155, 0.5)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

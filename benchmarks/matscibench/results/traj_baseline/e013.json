@@ -1,0 +1,11 @@
+{
+ "tid": "e013",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 8.2",
+ "question_text": "A high‐strength steel has a yield strength of 1 460 MPa and a fracture toughness K_IC of 98 MPa·√m.  Assuming a through‐thickness center crack (Y = 1), determine the half‐crack length a that will cause catastrophic failure when the applied tensile stress reaches ½ Y.S.The unit of the answer is mm.",
+ "response": "The catastrophic failure condition is when the stress intensity factor reaches the fracture toughness:\n\n$$K_{IC} = Y\\,\\sigma\\sqrt{\\pi a}$$\n\nWith $\\sigma = \\tfrac{1}{2}\\text{Y.S.} = 730\\text{ MPa}$, $Y=1$, and $K_{IC}=98\\text{ MPa·√m}$:\n\n$$a = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{Y\\sigma}\\right)^2 = \\frac{1}{\\pi}\\left(\\frac{98}{730}\\right)^2 \\approx 5.74\\times10^{-3}\\text{ m} = 5.74\\text{ mm}$$\n\n$$\\boxed{5.74}$$",
+ "final_answer": "5.74",
+ "correct_answer": "5.74",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

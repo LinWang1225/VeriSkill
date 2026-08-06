@@ -1,0 +1,7 @@
+{
+  "edits": [
+    {"critic":"d-matsci-scope-misread","type":"rubric","rule_id":"R-d-matsci-scope-misread-001","evidence_items":["#e023"],"summary":"扩展豁免条款：题目措辞已显式指定某约定（如unit cell）且轨迹遵循该约定时，对替代约定的concern一律不成立"},
+    {"critic":"d-matsci-param-lookup","type":"rubric","rule_id":"R-d-matsci-param-lookup-001","evidence_items":["#m256"],"summary":"扩展豁免条款：参数落在教材公认取值区间内且答案在容差内时，不因所取值不同于某单一参考值而扣分"}
+  ],
+  "fp_seen":2,"fp_resolved":2,"fn_clusters_seen":0,"fn_resolved":[],"unjudgeable":[],"unresolved":[],"skipped":[],"needs_human":false
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e233",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 5-26",
+ "question_text": "A 0.001 in . BCC iron foil is used to separate a high hydrogen content gas from a low hydrogen content gas at $650^{\\circ} \\mathrm{C} .5 \\times 10^8 \\mathrm{H}$ atoms $/ \\mathrm{cm}^3$ are in equilibrium on one side of the foil, and $2 \\times 10^3 \\mathrm{H}$ atoms $/ \\mathrm{cm}^3$ are in equilibrium with the other side. Determine (a) the concentration gradient of hydrogen and (b) the flux of hydrogen through the foil. Give your answer as a tuple: (concentration_gradient, flux).The units of each required answer are (H atoms/(cm³·cm), H atoms/(cm²·s)), respectively.",
+ "response": "## Solution\n\n**(a) Concentration gradient**\n\nConverting thickness: Δx = 0.001 in × 2.54 cm/in = 0.00254 cm\n\nTaking x from the high-concentration side to the low-concentration side:\n\n$$\\frac{dC}{dx} = \\frac{C_2 - C_1}{\\Delta x} = \\frac{2\\times10^3 - 5\\times10^8}{0.00254} = -1.97\\times10^{11}\\ \\frac{\\text{H atoms}}{\\text{cm}^3\\cdot\\text{cm}}$$\n\n**(b) Hydrogen flux** — Fick's first law: $J = -D\\frac{dC}{dx}$\n\nDiffusion coefficient for H in BCC iron at 923 K, using $D_0 = 1.4\\times10^{-3}$ m²/s and $Q_d = 13{,}400$ J/mol:\n\n$$D = D_0\\,e^{-Q_d/RT} = 1.4\\times10^{-3}\\,e^{-13400/(8.31\\times923)} = 2.44\\times10^{-4}\\ \\text{m}^2/\\text{s} = 2.44\\ \\text{cm}^2/\\text{s}$$\n\n$$J = -D\\frac{dC}{dx} = -(2.44)(-1.97\\times10^{11}) = 4.80\\times10^{11}\\ \\frac{\\text{H atoms}}{\\text{cm}^2\\cdot\\text{s}}$$\n\n$$\\boxed{(-1.97\\times10^{11},\\ 4.80\\times10^{11})}$$",
+ "final_answer": "(-1.97\\times10^{11},\\ 4.80\\times10^{11})",
+ "correct_answer": "(-196900000000.0, 33000000.0)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(H atoms/(cm³·cm), H atoms/(cm²·s))"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e009",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 6.8",
+ "question_text": "A zinc single crystal is being pulled in tension, with the normal to its basal plane (0001) at $60^{\\circ}$ to the tensile axis and with the slip direction [1120] at $40^{\\circ}$ to the tensile axis.\n(a) What is the resolved shear stress, $\\tau$, acting in the slip direction when a tensile stress of $0.690 \\mathrm{MPa}(100 \\mathrm{psi})$ is applied?\n(b) What tensile stress is necessary to reach the critical resolved shear stress, $\\tau_{c}$, of $0.94 \\mathrm{MPa}(136 \\mathrm{psi})$?\n\nGive your answers as a tuple: (resolved shear stress, tensile stress)The units of each required answer are (MPa,MPa), respectively.",
+ "response": "Using Schmid's law: $\\tau = \\sigma \\cos\\phi \\cos\\lambda$, where $\\phi = 60°$ (angle between slip-plane normal and tensile axis) and $\\lambda = 40°$ (angle between slip direction and tensile axis).\n\n**(a)** $\\tau = 0.690 \\cos 60° \\cos 40° = 0.690 \\times 0.5 \\times 0.7660 = 0.264 \\text{ MPa}$\n\n**(b)** $\\sigma = \\dfrac{\\tau_c}{\\cos\\phi \\cos\\lambda} = \\dfrac{0.94}{0.5 \\times 0.7660} = 2.45 \\text{ MPa}$\n\n$$\\boxed{(0.264,\\ 2.45)}$$",
+ "final_answer": "(0.264,\\ 2.45)",
+ "correct_answer": "(0.264, 2.45)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(MPa,MPa)"
+}

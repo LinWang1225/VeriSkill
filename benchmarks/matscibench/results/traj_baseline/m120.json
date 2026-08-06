@@ -1,0 +1,11 @@
+{
+ "tid": "m120",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.5",
+ "question_text": "A specimen of a 4340 steel alloy with a plane strain fracture toughness of $54.8 \\mathrm{MPa} \\sqrt{\\mathrm{~m}}(50 \\mathrm{ksi} \\sqrt{\\mathrm{in}}$. ) is exposed to a stress of 1030 MPa (150,000 psi). Will this specimen experience fracture if the largest surface crack is $0.5 \\mathrm{~mm}(0.02 \\mathrm{in}$.) long? Why or why not? Assume that the parameter Y has a value of 1.0.The unit of the answer is MPa.",
+ "response": "## Reasoning\n\nFor a surface crack, the stress intensity factor is:\n\n$$K_I = Y\\sigma\\sqrt{\\pi a}$$\n\nwith $Y = 1.0$, $\\sigma = 1030\\ \\text{MPa}$, and $a = 0.5\\ \\text{mm} = 0.5\\times10^{-3}\\ \\text{m}$.\n\n**Compute $K_I$:**\n\n$$K_I = (1.0)(1030\\times10^{6})\\sqrt{\\pi(0.5\\times10^{-3})} \\approx 40.8\\ \\text{MPa}\\sqrt{\\text{m}}$$\n\nSince $K_I \\approx 40.8\\ \\text{MPa}\\sqrt{\\text{m}} < K_{Ic} = 54.8\\ \\text{MPa}\\sqrt{\\text{m}}$, the crack tip stress intensity is below the material's fracture toughness, so **the specimen will not fracture**.\n\nEquivalently, the critical stress required for fracture is:\n\n$$\\sigma_c = \\frac{K_{Ic}}{Y\\sqrt{\\pi a}} = \\frac{54.8\\times10^{6}}{(1.0)\\sqrt{\\pi(0.5\\times10^{-3})}} \\approx 1383\\ \\text{MPa}$$\n\nSince the applied stress ($1030\\ \\text{MPa}$) is well below this critical stress ($1383\\ \\text{MPa}$), fracture does not occur.\n\n$$\\boxed{1383}$$",
+ "final_answer": "1383",
+ "correct_answer": "1380",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "MPa"
+}

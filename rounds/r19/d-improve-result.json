@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "critic": "d-matsci-sign-convention",
+      "type": "narrow_rule",
+      "rule_id": "R-d-matsci-sign-convention-001",
+      "evidence_items": ["#e058"],
+      "summary": "新增磁滞回线轴上截距子情形：coercive field 是 B=0 处的带符号 H 值，下降支 H 为负时须保留负号；轨迹取绝对值报正值即命中。R 判据触发条件与方法库同步扩展，依据追加 r19#e058。"
+    }
+  ],
+  "fp_seen": 0,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["e058"],
+  "unjudgeable": [],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

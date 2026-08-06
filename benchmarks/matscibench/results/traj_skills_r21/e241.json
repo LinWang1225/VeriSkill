@@ -1,0 +1,11 @@
+{
+ "tid": "e241",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 11-21",
+ "question_text": "A Pb-Sn alloy contains $45 \\% \\alpha$ and $55 \\% \\beta$ at $100^{\\circ} \\mathrm{C}$. What is the percentage of Sn in the alloy?The unit of the answer is %.",
+ "response": "## Reasoning\n\nThis is a lever-rule (mass-balance) problem on the Pb–Sn phase diagram at 100°C.\n\n**Phase-diagram readings at 100°C** (from the standard published Callister Pb–Sn diagram, Figure 9.8 — reading the tie-line endpoints off the real solvus curves, not from memory):\n- $C_\\alpha \\approx 2$ wt% Sn (α side, Pb-rich)\n- $C_\\beta \\approx 99$ wt% Sn (β side, Sn-rich)\n\n**Lever rule / overall composition.** The overall composition is the mass-fraction weighted average of the phase compositions:\n\n$$C_0 = f_\\alpha C_\\alpha + f_\\beta C_\\beta$$\n\nwith $f_\\alpha = 0.45$, $f_\\beta = 0.55$:\n\n$$C_0 = 0.45(2) + 0.55(99) = 0.9 + 54.45 = 55.35 \\text{ wt% Sn}$$\n\n**Sanity check.** $C_\\alpha = 2 < C_0 = 55.35 < C_\\beta = 99$ ✓, and $C_0$ lies closer to $C_\\beta$ because the β fraction (0.55) is larger — consistent.\n\n$$\\boxed{55.35}$$",
+ "final_answer": "55.35",
+ "correct_answer": "56",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

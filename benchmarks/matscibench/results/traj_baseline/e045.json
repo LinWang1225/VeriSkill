@@ -1,0 +1,11 @@
+{
+ "tid": "e045",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_11.1",
+ "question_text": "(a) Estimate the density of 1040 carbon steel as the weighted average of the densities of constituent elements. (b) The density of 1040 steel is what percentage of the density of pure Fe ? Give your answer as a tuple: (density_Mg_per_m3, density_percentage).The units of each required answer are (Mg/m^3, %), respectively.",
+ "response": "## Reasoning\n\n**1040 carbon steel** contains approximately **0.40 wt% C** and **99.60 wt% Fe**.\n\n### (a) Weighted-average density\n\nUsing constituent densities:\n- ρ_Fe = 7.87 Mg/m³\n- ρ_C = 2.25 Mg/m³ (graphite form)\n\n$$\\rho_{1040} = w_{Fe}\\rho_{Fe} + w_{C}\\rho_{C} = (0.996)(7.87) + (0.004)(2.25)$$\n\n$$= 7.8385 + 0.0090 = 7.8475 \\approx 7.85\\ \\text{Mg/m}^3$$\n\n### (b) Percentage of pure Fe density\n\n$$\\frac{\\rho_{1040}}{\\rho_{Fe}}\\times 100 = \\frac{7.8475}{7.87}\\times 100 \\approx 99.71\\%$$\n\n$$\\boxed{(7.85,\\ 99.71)}$$",
+ "final_answer": "(7.85,\\ 99.71)",
+ "correct_answer": "(7.85, 99.7)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(Mg/m^3, %)"
+}

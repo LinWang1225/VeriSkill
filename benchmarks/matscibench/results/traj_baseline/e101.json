@@ -1,0 +1,11 @@
+{
+ "tid": "e101",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.30",
+ "question_text": "Calculate the number of atoms per cubic meter in Pb . The density of Pb is $11.35 \\mathrm{~g} / \\mathrm{cm}^3$The unit of the answer is atoms/m^3.",
+ "response": "Lead has atomic weight \\(M = 207.2\\ \\mathrm{g/mol}\\) and Avogadro's number \\(N_A = 6.022\\times10^{23}\\ \\mathrm{atoms/mol}\\).\n\n\\[\nn = \\frac{\\rho N_A}{M}\n= \\frac{(11.35\\times10^{6}\\ \\mathrm{g/m^3})(6.022\\times10^{23}\\ \\mathrm{atoms/mol})}{207.2\\ \\mathrm{g/mol}}\n\\approx 3.30\\times10^{28}\\ \\mathrm{atoms/m^3}\n\\]\n\n\\[\n\\boxed{3.30\\times10^{28}}\n\\]",
+ "final_answer": "3.30\\times10^{28}",
+ "correct_answer": "3.3E+28",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "atoms/m^3"
+}

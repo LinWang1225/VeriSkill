@@ -1,0 +1,19 @@
+{
+  "edits": [
+    {
+      "critic": "d-matsci-sign-convention",
+      "type": "promote_rule",
+      "rule_id": "R-d-matsci-sign-convention-001",
+      "evidence_items": ["#e264", "#e229"],
+      "summary": "新增方法库子情形'tuple(数值,方向标签)符号冗余'：当题目要求 tuple(percent,transformation_type) 且标签已承载方向时，数值字段应取正值、方向仅由标签表达；轨迹在数值字段带符号且与标签语义重复即命中。规则由 soft 升 hard（2 道互异题 e264/e229 佐证、无 FP）。e229 的 HCP/BCC 体积变化题中模型给 (-0.623, contraction) 将收缩方向编码两次，正确应为 (0.6, contraction)。"
+    }
+  ],
+  "fp_seen": 0,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["e229"],
+  "unjudgeable": [],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}

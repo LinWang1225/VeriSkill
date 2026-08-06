@@ -1,0 +1,11 @@
+{
+ "tid": "m115",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.79",
+ "question_text": "The following table gives a number of yield strength values (in MPa) that were measured on the same aluminum alloy. Compute average and standard deviation yield strength values.\n\n| 274.3 | 277.1 | 263.8 |\n| :-- | :-- | :-- |\n| 267.5 | 258.6 | 271.2 |\n| 255.4 | 266.9 | 257.6 |\n| 270.8 | 260.1 | 264.3 |\n| 261.7 | 279.4 | 260.5 |\n\n Give your name as a tuple (mean, average).The units of each required answer are (MPa, MPa), respectively.",
+ "response": "The mean yield strength is approximately **265.95 MPa**, and the sample standard deviation is approximately **7.34 MPa**.\n\n$$\\boxed{(265.95,\\ 7.34)}$$",
+ "final_answer": "(265.95,\\ 7.34)",
+ "correct_answer": "(265.9, 7.34)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(MPa, MPa)"
+}

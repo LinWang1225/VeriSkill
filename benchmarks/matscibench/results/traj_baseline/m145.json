@@ -1,0 +1,11 @@
+{
+ "tid": "m145",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 16.17",
+ "question_text": "Nickel experiences corrosion in an acid solution according to the reaction\n\n$$\n\\mathrm{Ni}+2 \\mathrm{H}^{+} \\rightarrow \\mathrm{Ni}^{2+}+\\mathrm{H}{2}\n$$\n\nThe rates of both oxidation and reduction half-reactions are controlled by activation polarization.\n(a) Compute the rate of oxidation of Ni (in $\\mathrm{mol} / \\mathrm{cm}^{2}-\\mathrm{s}$ ), given the following activation polarization data:\n\nFor Nickel\n\n$$\n\\begin{aligned}\nV{\\left(\\mathrm{Ni} / \\mathrm{Ni}^{2+}\\right)}=-0.25 \\mathrm{~V} & V{\\left(\\mathrm{H}^{+} / \\mathrm{H}{2}\\right)}=0 \\mathrm{~V} \\\\\ni{0}=10^{-8} \\mathrm{~A} / \\mathrm{cm}^{2} & i{0}=6 \\times 10^{-7} \\mathrm{~A} / \\mathrm{cm}^{2} \\\\\n\\beta=+0.12 & \\beta=-0.10\n\\end{aligned}\n$$\n\nCompute the rate of oxidation and value of the corrosion potential.\n\nGive your answer as a tuple (the rate of oxidation, the corrosion potential).The units of each required answer are (mol/cm^2s, V), respectively.",
+ "response": "## Solution\n\n**Mixed-potential theory:** At the corrosion potential, the anodic and cathodic current densities are equal to $i_{corr}$, and the net current is zero.\n\n**Tafel (activation polarization) equations:**\n$$\\eta_a = V_{corr} - V_{Ni} = \\beta_a \\log\\!\\left(\\frac{i_{corr}}{i_{0,a}}\\right), \\qquad \\eta_c = V_{corr} - V_{H} = \\beta_c \\log\\!\\left(\\frac{i_{corr}}{i_{0,c}}\\right)$$\n\n**Eliminating $V_{corr}$** (subtract the two equations):\n\n$$V_H - V_{Ni} = \\beta_a\\log(i_{corr}/i_{0,a}) - \\beta_c\\log(i_{corr}/i_{0,c})$$\n\nWith $x = \\log i_{corr}$:\n\n$$0.25 = 0.12(x+8) + 0.10(x+6.2218) = 0.22x + 1.5822$$\n\n$$x = \\frac{0.25 - 1.5822}{0.22} = -6.0554$$\n\n$$\\boxed{i_{corr} = 10^{-6.0554} = 8.80\\times10^{-7}\\ \\text{A/cm}^2}$$\n\n**Corrosion potential** (from anodic branch):\n$$V_{corr} = -0.25 + 0.12(-6.0554 + 8) = -0.0166\\ \\text{V}$$\n\n**Rate of oxidation** (for Ni → Ni²⁺ + 2e⁻, n = 2):\n$$r = \\frac{i_{corr}}{nF} = \\frac{8.80\\times10^{-7}}{2\\times 96500} = 4.56\\times10^{-12}\\ \\text{mol/cm}^2\\text{-s}$$\n\n$$\\boxed{(4.56\\times10^{-12},\\ -0.0166)}$$",
+ "final_answer": "(4.56\\times10^{-12},\\ -0.0166)",
+ "correct_answer": "(4.56e-12, -0.0167)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(mol/cm^2s, V)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m275",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 17.1",
+ "question_text": "Question: One-half of an electrochemical cell consists of a pure nickel electrode in a solution of \\(\\mathrm{Ni}^{2+}\\) ions; the other half is a cadmium electrode immersed in a \\(\\mathrm{Cd}^{2+}\\) solution.\n(a) If the cell is a standard one, write the spontaneous overall reaction and calculate the voltage that is generated.\n(b) Compute the cell potential at \\(25^{\\circ} \\mathrm{C}\\) if the \\(\\mathrm{Cd}^{2+}\\) and \\(\\mathrm{Ni}^{2+}\\) concentrations are 0.5 and \\(10^{-3} M\\), respectively.\nGive your answer as a tuple (voltage for part a, cell potential for part b).The units of each required answer are (V, V), respectively.",
+ "response": "## Solution\n\n**Standard reduction potentials:**\n- Ni²⁺ + 2e⁻ → Ni,  E° = −0.25 V\n- Cd²⁺ + 2e⁻ → Cd,  E° = −0.40 V\n\n### Part (a) — Standard cell\n\nCd has the more negative reduction potential, so Cd is oxidized (anode) and Ni²⁺ is reduced (cathode):\n\n- Cathode: Ni²⁺ + 2e⁻ → Ni\n- Anode: Cd → Cd²⁺ + 2e⁻\n- **Overall: Ni²⁺ + Cd → Ni + Cd²⁺**\n\n$$E^\\circ_{\\text{cell}} = E^\\circ_{\\text{Ni}} - E^\\circ_{\\text{Cd}} = -0.25 - (-0.40) = 0.15\\ \\text{V}$$\n\n### Part (b) — Nernst equation\n\nFor the reaction Ni²⁺ + Cd → Ni + Cd²⁺, the reaction quotient is\n\n$$Q = \\frac{[\\mathrm{Cd}^{2+}]}{[\\mathrm{Ni}^{2+}]} = \\frac{0.5}{10^{-3}} = 500$$\n\n$$E = E^\\circ - \\frac{0.0592}{n}\\log Q = 0.15 - \\frac{0.0592}{2}\\log(500)$$\n\n$$E = 0.15 - 0.0296(2.699) \\approx 0.070\\ \\text{V}$$\n\n$$\\boxed{(0.15,\\ 0.0701)}$$",
+ "final_answer": "(0.15,\\ 0.0701)",
+ "correct_answer": "(0.153, -0.073)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(V, V)"
+}

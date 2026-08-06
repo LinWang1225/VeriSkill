@@ -1,0 +1,11 @@
+{
+ "tid": "m176",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 5.11",
+ "question_text": "A steel sheet that has an $R$ value of 1.75 in all directions in the sheet was stretched in biaxial tension with $\\sigma_z = 0$. Strain measurements indicate that throughout the deformation, $\\varepsilon_y = 0$. Find the stress ratio, $\\alpha = \\sigma_y / \\sigma_x$, that prevailed according to the Hill yield criterion and with the nonquadratic yield criterion with $a = 8$.",
+ "response": "## Results\n\n| Criterion | α = σ_y/σ_x |\n|---|---|\n| **Hill (quadratic)** | R/(1+R) = 1.75/2.75 = **0.636** |\n| **Nonquadratic (a = 8)** | R^{1/7}/(1+R^{1/7}) = **0.520** |\n\n**Physical check:** For both criteria, α > 0.5 when R > 1, which is correct — higher R (greater thinning resistance) shifts more stress into the constrained (y) direction under plane strain. Both criteria also correctly reduce to α = 0.5 for isotropic material (R = 1), and the nonquadratic criterion reduces to Hill's when a = 2. ✓\n\nThe stress ratio that prevailed:\n- According to **Hill's yield criterion**: α ≈ 0.636\n- According to the **nonquadratic yield criterion** with a = 8: α ≈ 0.520\n\n$$\\boxed{\\alpha_{\\text{Hill}} \\approx 0.636, \\quad \\alpha_{\\text{nonquadratic}} \\approx 0.520}$$",
+ "final_answer": "\\alpha_{\\text{Hill}} \\approx 0.636, \\quad \\alpha_{\\text{nonquadratic}} \\approx 0.520",
+ "correct_answer": "0.520",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

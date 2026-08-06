@@ -1,0 +1,11 @@
+{
+ "tid": "e217",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 17-3",
+ "question_text": "A silver–tungsten composite is produced by first making a porous tungsten powder‐metallurgy compact, then infiltrating pure silver into the pores.  The density of the tungsten compact before infiltration is 14.50 g/cm³.  (Take the density of W to be 19.25 g/cm³ and the density of Ag to be 10.49 g/cm³.)  \n    (a) Calculate the volume fraction of porosity in the tungsten compact.  \n    (b) After infiltration is complete (i.e. all pores are filled with silver), calculate the weight percent of silver in the composite.  \n    \nGive your answer as a tuple: (volume_fraction_porosity, weight_percent_silver).The units of each required answer are (, percent), respectively.",
+ "response": "## Solution\n\n**Part (a): Volume fraction of porosity**\n\nThe tungsten compact consists of solid W + pores. The compact density equals the volume fraction of solid W times the density of W:\n\n$$f_W = \\frac{\\rho_{\\text{compact}}}{\\rho_W} = \\frac{14.50}{19.25} = 0.7532$$\n\n$$f_{\\text{pore}} = 1 - f_W = 1 - 0.7532 = 0.2468$$\n\n**Part (b): Weight percent of silver after infiltration**\n\nTake a basis of 1 cm³ of compact:\n- Mass of W = 14.50 g\n- Volume of pores = 0.2468 cm³ → Mass of Ag = 0.2468 × 10.49 = 2.589 g\n\n$$\\text{wt\\% Ag} = \\frac{m_{\\text{Ag}}}{m_W + m_{\\text{Ag}}} \\times 100 = \\frac{2.589}{14.50 + 2.589} \\times 100 = 15.15\\%$$\n\n$$\\boxed{(0.2468,\\ 15.15)}$$",
+ "final_answer": "(0.2468,\\ 15.15)",
+ "correct_answer": "(0.25, 15)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(, percent)"
+}

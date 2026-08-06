@@ -1,1 +1,5 @@
-{"item": "q049", "segment": "随机"}
+队列：低置信 1 + 随机 1 + 误杀 2（预算 4，剔除已审 0 条）
+{"item": "m128", "segment": "低置信"}
+{"item": "m124", "segment": "随机"}
+{"item": "m029", "segment": "误杀"}
+{"item": "m216", "segment": "误杀"}

@@ -1,0 +1,11 @@
+{
+ "tid": "e205",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 2-2",
+ "question_text": "Scientists are considering 3 nm‐diameter Fe nanoparticles for ultra‐high density data storage.  Given that the density of Fe is 7.8 g·cm⁻³ and its molar mass is 55.85 g·mol⁻¹, estimate the number of Fe atoms in a single spherical nanoparticle.",
+ "response": "## Step-by-step reasoning\n\n**1. Radius in cm:**\n$$r = \\frac{d}{2} = 1.5\\ \\text{nm} = 1.5\\times10^{-7}\\ \\text{cm}$$\n\n**2. Volume of the sphere:**\n$$V = \\frac{4}{3}\\pi r^{3} = \\frac{4}{3}\\pi(1.5\\times10^{-7}\\ \\text{cm})^{3} \\approx 1.41\\times10^{-20}\\ \\text{cm}^{3}$$\n\n**3. Mass of the nanoparticle:**\n$$m = \\rho V = (7.8\\ \\text{g·cm}^{-3})(1.41\\times10^{-20}\\ \\text{cm}^{3}) \\approx 1.10\\times10^{-19}\\ \\text{g}$$\n\n**4. Moles of Fe:**\n$$n = \\frac{m}{M} = \\frac{1.10\\times10^{-19}\\ \\text{g}}{55.85\\ \\text{g·mol}^{-1}} \\approx 1.97\\times10^{-21}\\ \\text{mol}$$\n\n**5. Number of atoms:**\n$$N = n\\,N_{A} = (1.97\\times10^{-21})(6.022\\times10^{23}) \\approx 1.19\\times10^{3}$$\n\n$$\\boxed{1.2\\times10^{3}}$$",
+ "final_answer": "1.2\\times10^{3}",
+ "correct_answer": "1189",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

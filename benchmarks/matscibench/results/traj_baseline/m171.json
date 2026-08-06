@@ -1,0 +1,11 @@
+{
+ "tid": "m171",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_5.1",
+ "question_text": "An aluminum 2014 T 6 tube of 75 mm ( 3 in .) outer diameter and 1 mm ( 0.04 in .) thickness is subjected to internal pressure of $8.4 \\mathrm{MPa}\\left(1200 \\mathrm{lb} / \\mathrm{in}^2\\right)$. What is the factor of safety that was taken against failure by yielding when the pipe was designed?",
+ "response": "## Solution\n\n**Step 1: Identify material properties**\n\nFor aluminum 2014 T6 (from Shigley's properties table):\n- Yield strength: $S_y = 60 \\text{ kpsi} = 414 \\text{ MPa}$\n\n**Step 2: Verify thin-wall assumption**\n\nWith mean radius $r = 37 \\text{ mm}$ and thickness $t = 1 \\text{ mm}$:\n$$\\frac{r}{t} = 37 \\gg 10 \\quad \\checkmark \\text{ (thin-wall valid)}$$\n\n**Step 3: Compute pressure vessel stresses** (using mean diameter $D = 2.96 \\text{ in}$, $r = 1.48 \\text{ in}$)\n\n$$\\sigma_h = \\frac{pr}{t} = \\frac{1200 \\times 1.48}{0.04} = 44{,}400 \\text{ psi} = 44.4 \\text{ kpsi}$$\n\n$$\\sigma_l = \\frac{pr}{2t} = \\frac{1200 \\times 1.48}{2 \\times 0.04} = 22{,}200 \\text{ psi} = 22.2 \\text{ kpsi}$$\n\nThe principal stresses are: $\\sigma_1 = 44.4$, $\\sigma_2 = 22.2$, $\\sigma_3 \\approx 0$ kpsi.\n\n**Step 4: Apply the Distortion Energy (von Mises) theory**\n\nFor ductile materials like aluminum, the distortion energy theory is the preferred failure criterion:\n\n$$\\sigma' = \\sqrt{\\sigma_1^2 - \\sigma_1\\sigma_2 + \\sigma_2^2} = \\sqrt{44.4^2 - (44.4)(22.2) + 22.2^2}$$\n$$\\sigma' = \\sqrt{1971.4 - 985.7 + 492.8} = \\sqrt{1478.5} = 38.45 \\text{ kpsi}$$\n\n**Step 5: Compute factor of safety**\n\n$$n = \\frac{S_y}{\\sigma'} = \\frac{60}{38.45} = 1.56$$\n\n$$\\boxed{1.56}$$",
+ "final_answer": "1.56",
+ "correct_answer": "1.35",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

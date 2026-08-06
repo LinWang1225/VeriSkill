@@ -1,0 +1,11 @@
+{
+ "tid": "e263",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 5.3",
+ "question_text": "The diffusion coefficients for copper in aluminum at 500℃ and 600℃ are 4.8 × 10⁻¹⁴ and 5.3 × 10⁻¹³ m²/s, respectively. Determine the approximate time at 500℃ that will produce the same diffusion result (in terms of concentration of Cu at some specific point in Al) as a 10-h heat treatment at 600℃.The unit of the answer is h.",
+ "response": "## Reasoning\n\nFor diffusion, the concentration profile depends on the dimensionless combination $Dt$ (appearing as $\\frac{x}{2\\sqrt{Dt}}$ in the error-function solution). To produce the **same** concentration of Cu at a specific point in Al, we need:\n\n$$D_{500}\\, t_{500} = D_{600}\\, t_{600}$$\n\nSolving for the time at 500℃:\n\n$$t_{500} = \\frac{D_{600}\\, t_{600}}{D_{500}} = \\frac{(5.3\\times10^{-13})(10)}{4.8\\times10^{-14}}$$\n\n$$t_{500} = \\frac{5.3\\times10^{-12}}{4.8\\times10^{-14}} = \\frac{5.3}{4.8}\\times10^{2} \\approx 110.4 \\text{ h}$$\n\n$$\\boxed{110.4}$$",
+ "final_answer": "110.4",
+ "correct_answer": "110.4",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "h"
+}

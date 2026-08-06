@@ -1,0 +1,11 @@
+{
+ "tid": "e103",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.32",
+ "question_text": "The composition of an Fe–Si alloy is 0.25 wt % Si and 99.75 wt % Fe.  Assuming ideal mixing and taking ρ_Si=2.33 g/cm³, ρ_Fe=7.87 g/cm³, what is the Si concentration in kg / m³ of alloy?The unit of the answer is kg/m^3.",
+ "response": "## Step-by-step Reasoning\n\n**Basis:** Take 100 g of alloy.\n\n- Mass of Si = 0.25 g\n- Mass of Fe = 99.75 g\n\n**Ideal mixing → volumes are additive:**\n\n$$V_{Si} = \\frac{0.25}{2.33} = 0.1073\\ \\text{cm}^3$$\n\n$$V_{Fe} = \\frac{99.75}{7.87} = 12.675\\ \\text{cm}^3$$\n\n$$V_{\\text{total}} = 0.1073 + 12.675 = 12.782\\ \\text{cm}^3$$\n\n**Si concentration:**\n\n$$c_{Si} = \\frac{m_{Si}}{V_{\\text{total}}} = \\frac{0.25\\ \\text{g}}{12.782\\ \\text{cm}^3} = 0.01956\\ \\text{g/cm}^3$$\n\n**Convert to kg/m³** (1 g/cm³ = 1000 kg/m³):\n\n$$c_{Si} = 0.01956 \\times 1000 = 19.56\\ \\text{kg/m}^3$$\n\n$$\\boxed{19.56}$$",
+ "final_answer": "19.56",
+ "correct_answer": "19.6",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg/m^3"
+}

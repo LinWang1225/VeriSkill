@@ -1,0 +1,11 @@
+{
+ "tid": "m214",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-42",
+ "question_text": "The strength of titanium is found to be 65,000 psi when the grain size is $17 \\times 10^{-6} \\mathrm{~m}$ and 82,000 psi when the grain size is $0.8 \\times 10^{-6} \\mathrm{~m}$. Determine (a) the constants in the Hall-Petch equation; and (b) the strength of the titanium when the grain size is reduced to $0.2 \\times 10^{-6} \\mathrm{~m}$. Give your answer as a tuple: (K_psi_sqrt_m, sigma_0_psi, strength_psi).The units of each required answer are (psi sqrt(m), psi, psi), respectively.",
+ "response": "The Hall–Petch equation is $\\sigma = \\sigma_0 + K\\,d^{-1/2}$. Using the two data points to solve for $K$ and $\\sigma_0$, then extrapolating to $d = 0.2\\times10^{-6}$ m:\n\n- $K \\approx 19.42\\ \\text{psi}\\sqrt{\\text{m}}$\n- $\\sigma_0 \\approx 60290.56\\ \\text{psi}$\n- $\\sigma \\approx 103709.44\\ \\text{psi}$\n\n$$\\boxed{(19.42,\\ 60290.56,\\ 103709.44)}$$",
+ "final_answer": "(19.42,\\ 60290.56,\\ 103709.44)",
+ "correct_answer": "(19.4, 60290, 103670)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(psi sqrt(m), psi, psi)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e201",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 15.2",
+ "question_text": "The amplitude of a vibrating member decreases so that the amplitude on the 100th cycle is 13% of the amplitude on the first cycle. Determine logarithmic decrement $\\Lambda$.",
+ "response": "$$\\Lambda = \\frac{-\\ln(0.13)}{99} \\approx 0.0206$$\n\n$$\\boxed{0.0206}$$",
+ "final_answer": "0.0206",
+ "correct_answer": "0.0204",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

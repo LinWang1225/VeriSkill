@@ -1,0 +1,11 @@
+{
+ "tid": "m049",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_15.13",
+ "question_text": "A Boeing 777 aircraft has the following breakdown of materials usage: Aluminum alloys - $70 \\mathrm{wt} \\%$ Composites - $11 \\mathrm{wt} \\%$ Steel - 11 wt \\% Titanium alloys - $7 \\mathrm{wt} \\%$ Other - $1 \\mathrm{wt} \\%$. Take the average density of an aluminum alloy to be $2.80 \\mathrm{Mg} / \\mathrm{m}^3$, the average density for a titanium alloy to be $4.40 \\mathrm{Mg} / \\mathrm{m}^3$, the average density of steel to be $7.80 \\mathrm{Mg} / \\mathrm{m}^3$, and the average composite density to be $1.50 \\mathrm{Mg} / \\mathrm{m}^3$. Ignoring the \"other,\" calculate the average density for the overall structural materials in this aircraft. Give your answer as the value of average_density.The unit of the answer is Mg/m^3.",
+ "response": "Using the inverse rule of mixtures (mass fractions given, so density is the harmonic weighted average), and renormalizing the four structural materials to 100% (excluding the 1% \"other\"):\n\n$$\\rho_{\\text{avg}} = \\frac{1}{\\sum w_i/\\rho_i}$$\n\nwith $w_{\\text{Al}}=0.7071,\\; w_{\\text{Comp}}=0.1111,\\; w_{\\text{Steel}}=0.1111,\\; w_{\\text{Ti}}=0.0707$ gives $\\rho_{\\text{avg}} \\approx 2.80\\ \\mathrm{Mg/m^3}$.\n\n$$\\boxed{2.80}$$",
+ "final_answer": "2.80",
+ "correct_answer": "2.80",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "Mg/m^3"
+}

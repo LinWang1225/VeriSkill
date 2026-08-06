@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"skill":"g-matsci-table-cell-row-column-attribution","type":"new_skill","cluster":"param-lookup","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"e255 查 Callister 比热表行/列错位取错材料 c_p；新建技能要求读单元格前先核行标签=材料、列标签=参数及单位，量级自洽拦截，标注来源。"},
+    {"skill":"g-matsci-thermal-expansion-sign-direction","type":"new_skill","cluster":"physics-reasoning","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"m255 热膨胀方向反了，铝升温膨胀因子应放分子却写成 (1-αΔT) 收缩除项放分母；新建技能要求统一用带符号因子 (1+αΔT)，禁止 (1-αΔT) 收缩形式。"},
+    {"skill":"g-sci-answer-final-numeric-form","type":"new_skill","cluster":"wrong-format","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"e079 FN：最终答案留成含根号的符号表达式 (√6-2)/2≈0.225，checker 解析出多值；新建技能要求 boxed 内只放单个已求值数，不留符号表达式或≈链。"}
+  ],
+  "clusters_seen":3,"clusters_fixed":3,"skipped":[{"items":["e251","m035","m215","m231"],"reason":"均 flipped_by concern-penalty 且 raw_verdict=pass，疑为误杀；无共同真错因，不动手。"}],"needs_human":false
+}

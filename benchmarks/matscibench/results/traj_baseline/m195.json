@@ -1,0 +1,11 @@
+{
+ "tid": "m195",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 12-6",
+ "question_text": "Calculate the amounts and compositions of phases and microconstituents in a $\\mathrm{Fe}-0.60 \\% \\mathrm{C}$ alloy at $726^{\\circ} \\mathrm{C}$. Give your answer as a tuple (amount of proeutectoid alpha, amount of pearlite, composition of proeutectoid alpha, composition of pearlite).",
+ "response": "## Reasoning\n\nFor a **Fe–0.60%C** alloy at **726°C** (just below the eutectoid temperature of 727°C), this is a **hypoeutectoid steel** (0.60 < 0.76).\n\n### Key tie-line values (eutectoid isotherm)\n- Composition of ferrite (α): $C_\\alpha = 0.022\\%\\text{C}$\n- Eutectoid composition (pearlite): $C_p = 0.76\\%\\text{C}$\n- Overall composition: $C_0 = 0.60\\%\\text{C}$\n\n### Microconstituents\nThe two microconstituents are **proeutectoid α** (ferrite that precipitated above the eutectoid) and **pearlite** (the eutectoid transformation product).\n\n**Lever rule** (tie line between $C_\\alpha = 0.022$ and $C_p = 0.76$, fulcrum at $C_0 = 0.60$):\n\n$$W_{\\alpha} = \\frac{C_p - C_0}{C_p - C_\\alpha} = \\frac{0.76 - 0.60}{0.76 - 0.022} = \\frac{0.16}{0.738} \\approx 0.217$$\n\n$$W_{\\text{pearlite}} = \\frac{C_0 - C_\\alpha}{C_p - C_\\alpha} = \\frac{0.60 - 0.022}{0.76 - 0.022} = \\frac{0.578}{0.738} \\approx 0.783$$\n\n### Compositions\n- Proeutectoid α: $0.022\\%\\text{C}$\n- Pearlite: $0.76\\%\\text{C}$ (the eutectoid composition)\n\n### Result\n$$\\boxed{(0.217,\\; 0.783,\\; 0.022,\\; 0.76)}$$",
+ "final_answer": "(0.217,\\; 0.783,\\; 0.022,\\; 0.76)",
+ "correct_answer": "(0.227, 0.773, 0.0218, 0.77)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": ""
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m085",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.63",
+ "question_text": "Copper (Cu) and platinum (Pt) both have the FCC crystal structure, and Cu forms a substitutional solid solution for concentrations up to approximately $6 \\mathrm{wt} \\% \\mathrm{Cu}$ at room temperature. Determine the concentration in weight percent of Cu that must be added to Pt to yield a unit cell edge length of 0.390 nm . The atomic weights for Cu and Pt are, respectively, 63.55 and $195.08 \\mathrm{~g} / \\mathrm{mol}$The unit of the answer is wt%.",
+ "response": "## Reasoning\n\nFor an FCC alloy, the unit cell contains $n = 4$ atoms, and the density relates to the lattice parameter by:\n\n$$\\rho = \\frac{n\\,\\bar{A}}{a^{3}N_{A}}$$\n\n**Average atomic weight** (from a 100 g basis, using atom fractions):\n\n$$\\bar{A} = \\frac{100}{C_{\\mathrm{Cu}}/A_{\\mathrm{Cu}} + C_{\\mathrm{Pt}}/A_{\\mathrm{Pt}}}$$\n\n**Alloy density** (rule of mixtures, volume-additive):\n\n$$\\rho = \\frac{100}{C_{\\mathrm{Cu}}/\\rho_{\\mathrm{Cu}} + C_{\\mathrm{Pt}}/\\rho_{\\mathrm{Pt}}}$$\n\nUsing the standard pure-element densities $\\rho_{\\mathrm{Cu}} = 8.96\\ \\mathrm{g/cm^3}$ and $\\rho_{\\mathrm{Pt}} = 21.45\\ \\mathrm{g/cm^3}$, with $C_{\\mathrm{Pt}} = 100 - C_{\\mathrm{Cu}}$, set $a = 0.390\\ \\mathrm{nm} = 3.90\\times10^{-8}\\ \\mathrm{cm}$ and solve:\n\n$$a^{3} = \\frac{n\\,\\bar{A}}{\\rho\\, N_{A}}$$\n\nSolving numerically gives $C_{\\mathrm{Cu}} \\approx 2.83\\ \\mathrm{wt\\%}$, which is comfortably within the stated ~6 wt% solubility limit.\n\n$$\\boxed{2.83}$$",
+ "final_answer": "2.83",
+ "correct_answer": "2.83",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "wt%"
+}

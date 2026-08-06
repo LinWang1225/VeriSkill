@@ -1,0 +1,11 @@
+{
+ "tid": "m024",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_2.5",
+ "question_text": "$\\mathrm{An} \\mathrm{Al}_2 \\mathrm{O}_3$ whisker is a small single crystal used to reinforce metal-matrix composites. Given a cylindrical shape, calculate the number of Al atoms and the number of O atoms in a whisker with a diameter of $1 \\mu \\mathrm{~m}$ and a length of $25 \\mu \\mathrm{~m}$. (The density of $\\mathrm{Al}_2 \\mathrm{O}_3$ is $3.97 \\mathrm{Mg} / \\mathrm{m}^3$.) Give your answer as a tuple: (number_of_Al_atoms, number_of_O_atoms).",
+ "response": "## Reasoning\n\n**1. Geometry — volume of the cylindrical whisker**\n\n$$V = \\pi\\!\\left(\\frac{d}{2}\\right)^{\\!2} L = \\pi\\!\\left(\\frac{1\\times10^{-6}}{2}\\right)^{\\!2}(25\\times10^{-6}) = 1.9635\\times10^{-17}\\ \\text{m}^3$$\n\n**2. Mass from density** ($\\rho = 3.97\\ \\text{Mg/m}^3 = 3.97\\times10^{3}\\ \\text{kg/m}^3$)\n\n$$m = \\rho V = (3.97\\times10^{3})(1.9635\\times10^{-17}) = 7.795\\times10^{-14}\\ \\text{kg} = 7.795\\times10^{-11}\\ \\text{g}$$\n\n**3. Moles of Al₂O₃** (molar mass $= 2(26.98)+3(16.00)=101.96\\ \\text{g/mol}$)\n\n$$n = \\frac{m}{M} = \\frac{7.795\\times10^{-11}}{101.96} = 7.645\\times10^{-13}\\ \\text{mol}$$\n\n**4. Number of formula units** ($N_A = 6.022\\times10^{23}$)\n\n$$N_{\\text{Al}_2\\text{O}_3} = nN_A = 4.604\\times10^{11}$$\n\n**5. Atom counts** — each formula unit has 2 Al and 3 O atoms:\n\n$$N_{\\text{Al}} = 2N_{\\text{Al}_2\\text{O}_3} \\approx 9.21\\times10^{11}, \\qquad N_{\\text{O}} = 3N_{\\text{Al}_2\\text{O}_3} \\approx 1.38\\times10^{12}$$\n\n$$\\boxed{(9.21\\times10^{11},\\ 1.38\\times10^{12})}$$",
+ "final_answer": "(9.21\\times10^{11},\\ 1.38\\times10^{12})",
+ "correct_answer": "(0.92e12, 1.38e12)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": ""
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e203",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 22.2",
+ "question_text": "Find the horsepower that would be required to cold roll a 48-in.-wide sheet from a thickness of 0.030 in. to 0.025 in. if the exit speed is 80 ft/s and the flow stress is 10,000 psi. Assume a deformation efficiency of 80% and neglect work hardening.The unit of the answer is hp.",
+ "response": "## Step-by-Step Solution\n\n**1. Reduction and true strain (no work hardening → homogeneous deformation):**\n\n$$\\varepsilon = \\ln\\frac{h_0}{h_f} = \\ln\\frac{0.030}{0.025} = \\ln(1.2) = 0.18232$$\n\n**2. Ideal work per unit volume:**\n\n$$w_{\\text{ideal}} = \\sigma\\,\\varepsilon = 10{,}000 \\times 0.18232 = 1823.2 \\;\\text{in·lb/in}^3$$\n\n**3. Actual work per unit volume (deformation efficiency η = 0.80):**\n\n$$w_{\\text{actual}} = \\frac{w_{\\text{ideal}}}{\\eta} = \\frac{1823.2}{0.80} = 2279.0 \\;\\text{in·lb/in}^3$$\n\n**4. Volume flow rate at exit:**\n\n$$A = w\\,h_f = 48 \\times 0.025 = 1.2\\;\\text{in}^2$$\n$$v = 80\\;\\text{ft/s} = 960\\;\\text{in/s}$$\n$$\\dot{V} = A\\,v = 1.2 \\times 960 = 1152\\;\\text{in}^3/\\text{s}$$\n\n**5. Power and horsepower:**\n\n$$P = w_{\\text{actual}}\\,\\dot{V} = 2279.0 \\times 1152 = 2.625\\times10^{6}\\;\\text{in·lb/s}$$\n\nConverting to ft·lb/s (÷12) and then to hp (÷550):\n\n$$\\text{hp} = \\frac{2.625\\times10^{6}}{12 \\times 550} \\approx 397.8$$\n\n$$\\boxed{397.8}$$",
+ "final_answer": "397.8",
+ "correct_answer": "876",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "hp"
+}

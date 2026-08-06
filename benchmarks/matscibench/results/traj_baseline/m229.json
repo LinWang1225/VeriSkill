@@ -1,0 +1,11 @@
+{
+ "tid": "m229",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 9-31",
+ "question_text": "Analysis of a nickel casting suggests that $28 \\%$ of the solidification process occurred in a dendritic manner. Calculate the temperature at which nucleation occurred. The specific heat of nickel is $4.1 \\mathrm{~J} /\\left(\\mathrm{cm}^3 \\cdot{ }^{\\circ} \\mathrm{C}\\right)$. Give your answer as the value of nucleation_temperature.The unit of the answer is °C.",
+ "response": "Using standard nickel properties:\n- Melting point: $T_m = 1455\\,°\\text{C}$\n- Latent heat of fusion: $L = 17.2\\,\\text{kJ/mol}$, with $\\rho = 8.902\\,\\text{g/cm}^3$ and $M = 58.69\\,\\text{g/mol}$, giving $L = 2608.9\\,\\text{J/cm}^3$\n\n$$\\Delta T = \\frac{0.28 \\times 2608.9}{4.1} = 178.2\\,°\\text{C}$$\n\n$$T_n = 1455 - 178.2 = 1276.8\\,°\\text{C} \\approx 1277\\,°\\text{C}$$\n\n$$\\boxed{1277}$$",
+ "final_answer": "1277",
+ "correct_answer": "1265",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "°C"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m269",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 9.4",
+ "question_text": "For a 99.65 wt% Fe-0.35 wt% C alloy at a temperature just below the eutectoid, determine the following: (a) The fractions of total ferrite and cementite phases (b) The fractions of the proeutectoid ferrite and pearlite (c) The fraction of eutectoid ferrite. \n\nGive your answer as a tuple (total ferrite fraction, cementite fraction, proeutectoid ferrite fraction, pearlite fraction, eutectoid ferrite fraction).",
+ "response": "## Solution\n\nFor the Fe–0.35 wt% C alloy just below the eutectoid, we use the lever rule with:\n- Ferrite composition: 0.022 wt% C\n- Eutectoid composition: 0.76 wt% C\n- Cementite composition: 6.67 wt% C\n\n### (a) Total ferrite and cementite phases\n\nUsing the tie line between ferrite (0.022) and cementite (6.67):\n\n$$W_\\alpha = \\frac{6.67-0.35}{6.67-0.022} \\approx 0.951$$\n\n$$W_{\\theta} = \\frac{0.35-0.022}{6.67-0.022} \\approx 0.049$$\n\n### (b) Proeutectoid ferrite and pearlite\n\nUsing the tie line between ferrite (0.022) and eutectoid (0.76):\n\n$$W_{\\text{pro}\\alpha} = \\frac{0.76-0.35}{0.76-0.022} \\approx 0.556$$\n\n$$W_{p} = \\frac{0.35-0.022}{0.76-0.022} \\approx 0.444$$\n\n### (c) Eutectoid ferrite\n\nThe eutectoid ferrite is the ferrite that forms *within* the pearlite. It equals the total ferrite minus the proeutectoid ferrite:\n\n$$W_{\\text{eut}\\alpha} = W_\\alpha - W_{\\text{pro}\\alpha} \\approx 0.951 - 0.556 \\approx 0.395$$\n\n$$\\boxed{(0.951,\\ 0.049,\\ 0.556,\\ 0.444,\\ 0.395)}$$",
+ "final_answer": "(0.951,\\ 0.049,\\ 0.556,\\ 0.444,\\ 0.395)",
+ "correct_answer": "(0.95, 0.05, 0.56, 0.44, 0.39)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": ""
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m153",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 17.28",
+ "question_text": "The two ends of a cylindrical rod of nickel 120.00 mm long and 12.000 mm in diameter are maintained rigid. If the rod is initially at $70^{\\circ} \\mathrm{C}$, to what temperature must it be cooled in order to have a $0.023-\\mathrm{mm}$ reduction in diameter? The values of $v$ and $\\alpha{l}$ for nickel are 0.31 and $13.3 \\times 10^{-6}\\left({ }^{\\circ} \\mathrm{C}\\right)^{-1}$, respectively.The unit of the answer is ${}^{\\circ}\\mathrm{C}$.",
+ "response": "**Calculation:**\n\n$$\\Delta T = \\frac{\\Delta d / d}{\\alpha_l(1+\\nu)} = \\frac{-0.023/12.000}{13.3\\times10^{-6}\\times 1.31} = -110.0\\,°\\mathrm{C}$$\n\n$$T = 70 + (-110.0) = -40.0\\,°\\mathrm{C}$$\n\nThe rod must be cooled to a temperature of:\n\n$$\\boxed{-40.0}$$",
+ "final_answer": "-40.0",
+ "correct_answer": "-40",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "${}^{\\circ}\\mathrm{C}$"
+}

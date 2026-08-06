@@ -1,0 +1,11 @@
+{
+ "tid": "m239",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 13-20",
+ "question_text": "A 1030 steel is given an improper quench and temper heat treatment, producing a final structure composed of $60 \\%$ martensite and $40 \\%$ ferrite. Estimate the carbon content of the martensite and the austenitizing temperature that was used. What austenitizing temperature would you recommend? Give your answer as a tuple: (carbon_content_percent, austenitizing_temperature_used_C, recommended_austenitizing_temperature_C).The units of each required answer are (%, °C, °C), respectively.",
+ "response": "## Reasoning\n\n**Step 1 — Interpret the structure.** A proper austenitizing would heat fully above A₃ (100% γ → 100% martensite on quench). The presence of 40% ferrite means the steel was held in the **intercritical (α + γ) region**. On quenching, the austenite fraction transformed to martensite while the ferrite remained unchanged:\n\n- At the austenitizing temperature: **60% austenite + 40% ferrite**\n- The martensite inherits the austenite's carbon content.\n\n**Step 2 — Lever rule (find C in martensite).** With C₀ = 0.30 wt% (1030 steel), C_α ≈ 0 (negligible carbon in ferrite), and f_γ = 0.60:\n\n$$f_\\alpha = \\frac{C_\\gamma - C_0}{C_\\gamma - C_\\alpha} \\;\\Rightarrow\\; 0.40 = \\frac{C_\\gamma - 0.30}{C_\\gamma} \\;\\Rightarrow\\; C_\\gamma = \\frac{0.30}{0.60} = 0.50\\;\\text{wt\\%}$$\n\nSo the **martensite contains 0.50 wt% C**.\n\n**Step 3 — Austenitizing temperature used.** The austenite composition (0.50% C) lies on the **A₃ (GS) line** of the Fe–Fe₃C diagram. Linearly interpolating the GS line between G(912 °C, 0% C) and S(727 °C, 0.76% C):\n\n$$T \\approx 912 - \\frac{185}{0.76}(0.50) \\approx 790\\;^\\circ\\text{C}$$\n\n**Step 4 — Recommended austenitizing temperature.** For proper hardening, a hypoeutectoid steel must be heated **above A₃** (full austenite) — typically A₃ + 30 °C. For 1030 steel, A₃(0.30% C) ≈ 839 °C, giving a recommended temperature of ≈ **870 °C**.\n\n## Final Answer\n\n$$\\boxed{(0.50,\\ 790,\\ 870)}$$",
+ "final_answer": "(0.50,\\ 790,\\ 870)",
+ "correct_answer": "(0.48, 770, 860)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(%, °C, °C)"
+}

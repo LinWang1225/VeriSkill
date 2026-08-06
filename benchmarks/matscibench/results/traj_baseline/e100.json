@@ -1,0 +1,11 @@
+{
+ "tid": "e100",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.28",
+ "question_text": "What is the composition, in atom percent, of an alloy that contains $44.5 \\mathrm{lbm} $ of $\\mathrm{Ag}, 83.7 \\mathrm{lbm}$ of $A u$, and 5.3 $l b{m}$ of Cu? Atomic weights: Ag =107.87, Au =196.97, Cu =63.55.\n\n\nGive your answer as a tuple (atom percent of Ag, the atom percent of Au, the atom percent of Cu).The units of each required answer are (at%, at%, at%), respectively.",
+ "response": "## Step-by-Step Solution\n\n**1. Convert mass to moles** using $n = m / M$:\n\n| Element | Mass (lbm) | Atomic weight | Moles |\n|---------|-----------|---------------|-------|\n| Ag | 44.5 | 107.87 | $44.5/107.87 = 0.4125$ |\n| Au | 83.7 | 196.97 | $83.7/196.97 = 0.4249$ |\n| Cu | 5.3  | 63.55  | $5.3/63.55 = 0.0834$ |\n\n**2. Total moles:**\n$$n_{\\text{tot}} = 0.4125 + 0.4249 + 0.0834 = 0.9209$$\n\n**3. Atom percent** $= (n_i / n_{\\text{tot}}) \\times 100$:\n\n- $\\text{Ag}: 0.4125/0.9209 \\times 100 = 44.80\\%$\n- $\\text{Au}: 0.4249/0.9209 \\times 100 = 46.15\\%$\n- $\\text{Cu}: 0.0834/0.9209 \\times 100 = 9.06\\%$\n\n$$\\boxed{(44.80,\\ 46.15,\\ 9.06)}$$",
+ "final_answer": "(44.80,\\ 46.15,\\ 9.06)",
+ "correct_answer": "(44.8, 46.2, 9.0)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(at%, at%, at%)"
+}

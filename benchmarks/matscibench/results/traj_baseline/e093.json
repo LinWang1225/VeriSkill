@@ -1,0 +1,11 @@
+{
+ "tid": "e093",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.7",
+ "question_text": "Calculate the fraction of lattice sites that are Schottky defects for cesium chloride at its melting temperature $\\left(645^{\\circ} \\mathrm{C}\\right)$. Assume an energy for defect formation of 1.86 eV .",
+ "response": "For Schottky defects in CsCl, the equilibrium fraction of vacant lattice sites is:\n\n$$\\frac{n}{N} = \\exp\\!\\left(-\\frac{E_s}{2kT}\\right)$$\n\nwhere $E_s = 1.86\\ \\text{eV}$ is the Schottky pair formation energy, $k = 8.617\\times10^{-5}\\ \\text{eV/K}$, and $T = 645 + 273.15 = 918.15\\ \\text{K}$.\n\n$$\\frac{n}{N} = \\exp\\!\\left(-\\frac{1.86}{2(8.617\\times10^{-5})(918.15)}\\right) \\approx 7.85\\times10^{-6}$$\n\n$$\\boxed{7.85\\times10^{-6}}$$",
+ "final_answer": "7.85\\times10^{-6}",
+ "correct_answer": "7.87E-06",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"skill":"g-matsci-unitcell-formula-unit-scaling","type":"patch","cluster":"e229-HCP-Z-wrong","summary":"修正 Z 表中 HCP 常规六方晶胞 Z=2→Z=6（Z=2 仅原胞），新增每原子体积折算节"},
+    {"skill":"g-sci-process-step-qualifier","type":"description","cluster":"e055-zone-refining-activation","summary":"扩展 description 与 tags，使题面无 'zone refining' 字样但含 'previous pass + 杂质浓度/纯度 + silicon bar/ppb/ppm/segregation' 组合时也能触发"},
+    {"skill":"g-sci-explicit-assumptions","type":"patch","cluster":"soft-source-annotation","summary":"强化外部标准值来源标注：查表值须标具体表号/图号/页码，只写'标准值'不算标注；自查改为硬门控"}
+  ],
+  "clusters_seen":3,"clusters_fixed":3,"skipped":[],"needs_human":false
+}

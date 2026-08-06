@@ -1,0 +1,11 @@
+{
+ "tid": "e046",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_11.5",
+ "question_text": "Between 1975 and 1985 , the volume of all iron and steel in a given automobile model decreased from $0.162 \\mathrm{~m}^3$ to $0.116 \\mathrm{~m}^3$. In the same time frame, the volume of all aluminum alloys increased from $0.012 \\mathrm{~m}^3$ to $0.023 \\mathrm{~m}^3$. Using the densities of pure Fe and Al , estimate the mass reduction resulting from this trend in materials substitution. Give your answer as the value of mass_reduction.The unit of the answer is kg.",
+ "response": "## Step-by-Step Reasoning\n\n**Densities (pure elements):**\n- $\\rho_{\\text{Fe}} = 7870\\ \\mathrm{kg/m^3}$\n- $\\rho_{\\text{Al}} = 2700\\ \\mathrm{kg/m^3}$\n\n**Mass in 1975:**\n$$m_{1975} = (0.162)(7870) + (0.012)(2700) = 1274.94 + 32.40 = 1307.34\\ \\mathrm{kg}$$\n\n**Mass in 1985:**\n$$m_{1985} = (0.116)(7870) + (0.023)(2700) = 912.92 + 62.10 = 975.02\\ \\mathrm{kg}$$\n\n**Mass reduction:**\n$$\\Delta m = m_{1975} - m_{1985} = 1307.34 - 975.02 = 332.32\\ \\mathrm{kg}$$\n\n$$\\boxed{332.32}$$",
+ "final_answer": "332.32",
+ "correct_answer": "332",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg"
+}

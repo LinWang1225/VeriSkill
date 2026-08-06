@@ -1,0 +1,11 @@
+{
+ "tid": "m183",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 21.1",
+ "question_text": "A metal composite composed of metal M reinforced by parallel wires of metal W. The volume fraction of W is 50%, and W has a yield stress of 200 MPa and a modulus of 210 GPa. Metal M has a yield stress of 50 MPa and a modulus of 30 GPa. What is the maximum stress that the composite can carry without yielding?The unit of the answer is MPa.",
+ "response": "## Reasoning\n\nThis is a **continuous (parallel) fiber-reinforced composite** loaded along the wire direction, so the **isostrain** condition applies: both constituents experience the same strain.\n\n**Step 1 — Find which constituent yields first.**\n\nThe composite yields when the *first* constituent reaches its yield strain. Compare the yield strains:\n\n- Wire W: $\\varepsilon_{y,W} = \\dfrac{\\sigma_{y,W}}{E_W} = \\dfrac{200\\text{ MPa}}{210\\text{ GPa}} = 9.52\\times10^{-4}$\n- Matrix M: $\\varepsilon_{y,M} = \\dfrac{\\sigma_{y,M}}{E_M} = \\dfrac{50\\text{ MPa}}{30\\text{ GPa}} = 1.67\\times10^{-3}$\n\nSince $\\varepsilon_{y,W} < \\varepsilon_{y,M}$, **W yields first**. At this strain, M is still elastic.\n\n**Step 2 — Stresses at the critical strain** ($\\varepsilon = \\varepsilon_{y,W}$):\n\n- $\\sigma_W = 200$ MPa (at yield)\n- $\\sigma_M = E_M \\varepsilon = 30\\text{ GPa}\\times 9.52\\times10^{-4} = 28.57$ MPa\n\n**Step 3 — Rule of mixtures** (parallel loading, $V_W = V_M = 0.5$):\n\n$$\\sigma_c = V_W\\sigma_W + V_M\\sigma_M = 0.5(200) + 0.5(28.57) = 114.29\\text{ MPa}$$\n\n$$\\boxed{114.29}$$",
+ "final_answer": "114.29",
+ "correct_answer": "115",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "MPa"
+}

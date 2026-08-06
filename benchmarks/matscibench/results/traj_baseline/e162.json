@@ -1,0 +1,11 @@
+{
+ "tid": "e162",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 12.11",
+ "question_text": "At room temperature the electrical conductivity and the electron mobility for aluminum are $3.8 \\times 10^{7}$ $(\\Omega-m)^{-1}$ and $0.0012 \\mathrm{~m}^{2} / \\mathrm{V} \\cdot \\mathrm{s}$, respectively. The atomic weight for Al is $26.98 \\mathrm{~g} / \\mathrm{mol}$ \n(a) Compute the number of free electrons per cubic meter for aluminum at room temperature.\n(b) What is the number of free electrons per aluminum atom? Assume a density of $2.7 \\mathrm{~g} / \\mathrm{cm}^{3}$.\n\nGive your answer as a tuple (answer to (a), answer to (b)).The units of each required answer are (m^-3, electrons/atom), respectively.",
+ "response": "## Reasoning\n\n**(a) Number of free electrons per cubic meter**\n\nUsing the conductivity relation:\n\n$$\\sigma = n e \\mu_e$$\n\nSolving for $n$:\n\n$$n = \\frac{\\sigma}{e \\mu_e} = \\frac{3.8 \\times 10^{7}}{(1.602 \\times 10^{-19})(0.0012)} \\approx 1.98 \\times 10^{29}\\ \\mathrm{m}^{-3}$$\n\n**(b) Number of free electrons per aluminum atom**\n\nThe number of aluminum atoms per cubic meter is:\n\n$$N = \\frac{\\rho N_A}{A} = \\frac{(2.7 \\times 10^{6})(6.022 \\times 10^{23})}{26.98} \\approx 6.03 \\times 10^{28}\\ \\mathrm{atoms/m^3}$$\n\nThe number of free electrons per atom:\n\n$$\\frac{n}{N} = \\frac{1.98 \\times 10^{29}}{6.03 \\times 10^{28}} \\approx 3.28$$\n\nThis is close to 3, consistent with aluminum's three valence electrons.\n\n$$\\boxed{(1.98 \\times 10^{29},\\ 3.28)}$$",
+ "final_answer": "(1.98 \\times 10^{29},\\ 3.28)",
+ "correct_answer": "(1.98e29, 3.28)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(m^-3, electrons/atom)"
+}

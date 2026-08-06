@@ -1,0 +1,11 @@
+{
+ "tid": "e050",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_13.5",
+ "question_text": "A strip of aluminum metallization on a solid-state device is 1 mm long with a thickness of $1 \\mu \\mathrm{~m}$ and a width of $6 \\mu \\mathrm{~m}$. What is the resistance of this strip? Give your answer as the value of resistance.The unit of the answer is Ω.",
+ "response": "## Solution\n\nThis is a resistance calculation for a thin aluminum strip. The resistance is\n\n$$R = \\frac{\\rho L}{A}$$\n\n**Geometry (faithful SI conversion of given dimensions):**\n- Length $L = 1\\ \\text{mm} = 1\\times10^{-3}\\ \\text{m}$\n- Thickness $t = 1\\ \\mu\\text{m} = 1\\times10^{-6}\\ \\text{m}$\n- Width $w = 6\\ \\mu\\text{m} = 6\\times10^{-6}\\ \\text{m}$\n- Cross-sectional area $A = t\\cdot w = (1\\times10^{-6})(6\\times10^{-6}) = 6\\times10^{-12}\\ \\text{m}^2$\n\n**Resistivity (external standard value, not given in problem):**\nThe problem does not supply the resistivity of aluminum, so I look it up. Using the standard room-temperature value from Callister, *Materials Science and Engineering*, Table 18.1:\n\n$$\\rho_{\\text{Al}} = 2.65\\times10^{-8}\\ \\Omega\\cdot\\text{m}$$\n\nThis is a bulk room-temperature value; the linear resistivity model is valid here (no temperature extrapolation involved).\n\n**Calculation:**\n\n$$R = \\frac{(2.65\\times10^{-8})(1\\times10^{-3})}{6\\times10^{-12}} = \\frac{2.65\\times10^{-11}}{6\\times10^{-12}} = 4.4167\\ \\Omega$$\n\n**Sigfig check:** The resistivity is given to 3 sigfigs; the geometric inputs ($1, 1, 6$) are design specifications. Rounding to 2 sigfigs:\n\n$$R \\approx 4.4\\ \\Omega$$\n\n$\\boxed{4.4}$",
+ "final_answer": "4.4",
+ "correct_answer": "4.71",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "Ω"
+}

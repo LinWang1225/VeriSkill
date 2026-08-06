@@ -1,0 +1,11 @@
+{
+ "tid": "m253",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 20-6",
+ "question_text": "Calculate and compare the maximum magnetization we would expect in iron, nickel, cobalt, and gadolinium. There are seven electrons in the $4 f$ level of gadolinium. Compare the calculated values with the experimentally observed values. Give your answer as a tuple: (Fe_magnetization_Oe, Co_magnetization_Oe).The units of each required answer are (Oe, Oe), respectively.",
+ "response": "## Reasoning\n\n**Maximum (saturation) magnetization** comes from aligning every unpaired spin:\n\n$$M_s = n \\cdot \\mu_{\\text{atom}}$$\n\nwhere $n$ = atoms per unit volume and $\\mu_{\\text{atom}}$ = (number of unpaired electrons) × $\\mu_B$, with $\\mu_B = 9.274\\times10^{-21}$ emu.\n\n**Unpaired electrons (Hund's rule):**\n- Fe (3d⁶4s²): 4 unpaired → 4 μB ; BCC, a = 2.8664 Å, 2 atoms/cell\n- Co (3d⁷4s²): 3 unpaired → 3 μB ; HCP, a = 2.506 Å, c = 4.0695 Å, 2 atoms/cell\n- Ni (3d⁸4s²): 2 unpaired → 2 μB ; FCC, a = 3.524 Å, 4 atoms/cell\n- Gd (4f⁷): 7 unpaired → 7 μB ; HCP, a = 3.6336 Å, c = 5.7810 Å, 2 atoms/cell\n\n**Calculated (theoretical maximum) vs. experimental (0 K):**\n\n| Material | $M_s$ calc (Oe) | $M_s$ exp (Oe) | Note |\n|----------|----------------|----------------|------|\n| Fe | 3150 | ~1750 | 3d itinerant → reduced (2.22 μB) |\n| Co | 2514 | ~1440 | reduced (1.72 μB) |\n| Ni | 1695 | ~510 | reduced (0.60 μB) |\n| Gd | 1964 | ~1960 | **near-perfect agreement** |\n\n**Interpretation of the comparison:** Gadolinium's 4f electrons are well localized (core-like), so the simple spin-counting model (7 μB) reproduces experiment almost exactly. The 3d transition metals (Fe, Co, Ni) show large discrepancies because the 3d electrons are itinerant/band-like — the integer Hund's-rule moments (4, 3, 2 μB) are reduced to the observed non-integer values (2.22, 1.72, 0.60 μB), so the calculated $M_s$ overestimates experiment by factors of ~1.8, ~1.7, and ~3.3 respectively.\n\nThe requested tuple is the calculated maximum magnetization for Fe and Co:\n\n$$\\boxed{(3150,\\ 2514)}$$",
+ "final_answer": "(3150,\\ 2514)",
+ "correct_answer": "(39604, 31573)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(Oe, Oe)"
+}

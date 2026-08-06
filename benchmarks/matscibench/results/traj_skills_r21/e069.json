@@ -1,0 +1,11 @@
+{
+ "tid": "e069",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 8.3",
+ "question_text": "Relative permittivity of water at $10^{8} \\mathrm{~Hz}$ and $10^{11} \\mathrm{~Hz}$ is $\\sim 90$ and $\\sim 6$, respectively. Estimate the relative contribution of dipolar polarization, ionic polarization, and electronic polarization to the permittivity of water. The refractive index of water is 1.33 at room temperature. Give your answer as a tuple (dipolar polarization, ionic polarization, electronic polarization).",
+ "response": "## Reasoning\n\nWater's three polarization mechanisms each have a characteristic relaxation (cutoff) frequency:\n\n| Mechanism | Relaxation freq (order) | Responds at 10⁸ Hz? | Responds at 10¹¹ Hz? |\n|---|---|---|---|\n| Dipolar (orientational) | ~10¹⁰ Hz | yes | **no** (frozen out) |\n| Ionic (atomic) | ~10¹³ Hz | yes | yes |\n| Electronic | ~10¹⁵ Hz | yes | yes |\n\nThe measured permittivity at a given frequency is the sum of the contributions from mechanisms that can still follow the field at that frequency.\n\n**Electronic polarization** — at optical frequencies only electronic polarization remains, so\n$$\\varepsilon_{\\text{elec}} = n^2 = (1.33)^2 = 1.77$$\n\n**At 10¹¹ Hz** — dipolar is frozen out, leaving ionic + electronic:\n$$\\varepsilon_{\\text{ion}} + \\varepsilon_{\\text{elec}} = 6 \\;\\Rightarrow\\; \\varepsilon_{\\text{ion}} = 6 - 1.77 = 4.23$$\n\n**At 10⁸ Hz** — all three contribute:\n$$\\varepsilon_{\\text{dip}} + \\varepsilon_{\\text{ion}} + \\varepsilon_{\\text{elec}} = 90 \\;\\Rightarrow\\; \\varepsilon_{\\text{dip}} = 90 - 6 = 84$$\n\nSo the relative contributions to the permittivity of water are:\n\n$$\\boxed{(84,\\; 4.23,\\; 1.77)}$$",
+ "final_answer": "(84,\\; 4.23,\\; 1.77)",
+ "correct_answer": "(84, 4.2, 1.8)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

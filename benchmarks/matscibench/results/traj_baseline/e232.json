@@ -1,0 +1,11 @@
+{
+ "tid": "e232",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-11",
+ "question_text": "We replace 7.5 atomic percent of the chromium atoms in its BCC crystal with tantalum. X-ray diffraction shows that the lattice parameter is 0.29158 nm . Calculate the density of the alloy. Give your answer as as the value of density_g_per_cm3.The unit of the answer is g/cm³.",
+ "response": "For a BCC alloy, there are 2 atoms per unit cell. The alloy composition is 92.5 at% Cr and 7.5 at% Ta, so the average atomic weight is:\n\n$$\\bar{A} = 0.925(51.996) + 0.075(180.948) \\approx 61.67 \\text{ g/mol}$$\n\nThe unit cell volume is $a^3 = (0.29158\\times10^{-7}\\text{ cm})^3 \\approx 2.479\\times10^{-23}\\text{ cm}^3$.\n\nThe density is:\n\n$$\\rho = \\frac{n\\bar{A}}{a^3 N_A} = \\frac{2 \\times 61.67}{(2.479\\times10^{-23})(6.022\\times10^{23})} \\approx 8.26 \\text{ g/cm}^3$$\n\n$$\\boxed{8.26}$$",
+ "final_answer": "8.26",
+ "correct_answer": "8.262",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g/cm³"
+}

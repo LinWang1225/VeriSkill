@@ -1,0 +1,11 @@
+{
+ "tid": "m087",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.9",
+ "question_text": "A sheet of steel 5.0-mm thick has nitrogen atmospheres on both sides at $900^{\\circ} \\mathrm{C}$ and is permitted to achieve a steady-state diffusion condition. The diffusion coefficient for nitrogen in steel at this temperature is $1.85 \\times 10^{-10}$ $m^{2} / s$, and the diffusion flux is found to be $1.0 \\times 10^{-7} \\mathrm{~kg} / \\mathrm{m}^{2} \\cdot \\mathrm{~s}$. Also, it is known that the concentration of nitrogen in the steel at the high-pressure surface is $2 \\mathrm{~kg} / \\mathrm{m}^{3}$. How far into the sheet from this high-pressure side will the concentration be $0.5 \\mathrm{~kg} / \\mathrm{m}^{3}$ ? Assume a linear concentration profile.The unit of the answer is mm.",
+ "response": "Using Fick's first law at steady state:\n\n$$J = -D\\frac{dC}{dx} \\implies \\frac{dC}{dx} = -\\frac{J}{D} = -\\frac{1.0\\times10^{-7}}{1.85\\times10^{-10}} \\approx -540.54\\ \\mathrm{kg/m^4}$$\n\nWith a linear profile and $C(0) = 2\\ \\mathrm{kg/m^3}$:\n\n$$C(x) = 2 - 540.54\\,x$$\n\nSetting $C(x) = 0.5$:\n\n$$x = \\frac{2 - 0.5}{540.54} = 2.775\\times10^{-3}\\ \\mathrm{m} = 2.775\\ \\mathrm{mm}$$\n\n$$\\boxed{2.775}$$",
+ "final_answer": "2.775",
+ "correct_answer": "2.78",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

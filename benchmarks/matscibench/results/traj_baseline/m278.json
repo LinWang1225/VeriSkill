@@ -1,0 +1,11 @@
+{
+ "tid": "m278",
+ "qid": "Physical_Metallurgy_Hosford_Example 16.1",
+ "question_text": "C₀ (eutectoid composition) ≃ 0.77 wt % C  \nCα (ferrite solubility) ≃ 0.02 wt % C  \nCθ (cementite Fe₃C) ≃ 6.67 wt % C  \n\nCalculate the relative widths of the ferrite and carbide platelets using the lever law. Give the value of thickness ratio.",
+ "response": "## Reasoning\n\nFor pearlite at the eutectoid composition, the **lever rule** gives the mass fractions of the two phases (ferrite α and cementite θ):\n\n$$f_\\alpha = \\frac{C_\\theta - C_0}{C_\\theta - C_\\alpha}, \\qquad f_\\theta = \\frac{C_0 - C_\\alpha}{C_\\theta - C_\\alpha}$$\n\nSubstituting the given values:\n\n$$f_\\alpha = \\frac{6.67 - 0.77}{6.67 - 0.02} = \\frac{5.90}{6.65} \\approx 0.887$$\n\n$$f_\\theta = \\frac{0.77 - 0.02}{6.67 - 0.02} = \\frac{0.75}{6.65} \\approx 0.113$$\n\nSince ferrite and cementite have nearly the same density (ρα ≈ 7.87 g/cm³, ρθ ≈ 7.70 g/cm³), the **volume fractions** ≈ mass fractions, and the thickness ratio of the platelets equals the ratio of the volume fractions:\n\n$$\\frac{t_\\alpha}{t_\\theta} = \\frac{f_\\alpha}{f_\\theta} = \\frac{5.90}{0.75} \\approx 7.87$$\n\nThe ferrite platelets are roughly **8 times** thicker than the carbide (cementite) platelets.\n\n$$\\boxed{7.87}$$",
+ "final_answer": "7.87",
+ "correct_answer": "7.99",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

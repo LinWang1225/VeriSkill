@@ -1,0 +1,11 @@
+{
+ "tid": "m221",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 5-49",
+ "question_text": "A $0.80 \\% \\mathrm{C}$ steel must operate at $950^{\\circ} \\mathrm{C}$ in an oxidizing environment for which the carbon content at the steel surface is zero. Only the outermost 0.02 cm of the steel part can fall below $0.75 \\% \\mathrm{C}$. What is the maximum time that the steel part can operate?The unit of the answer is s.",
+ "response": "## Solution\n\n**Governing equation** (semi-infinite solid, constant surface concentration):\n\n$$C(x,t) = C_s + (C_0 - C_s)\\,\\text{erf}\\!\\left(\\frac{x}{2\\sqrt{Dt}}\\right)$$\n\n**Step 1 — Find the error-function argument:**\n\n$$\\text{erf}(z) = \\frac{C_x - C_s}{C_0 - C_s} = \\frac{0.75 - 0}{0.80 - 0} = 0.9375 \\implies z = \\text{erf}^{-1}(0.9375) \\approx 1.317$$\n\n**Step 2 — Diffusion coefficient** for carbon in austenite (γ-iron) at 950°C (Callister Table 5.2):\n\n$$D = D_0\\,e^{-Q/RT} = (2.3\\times10^{-5})\\,\\exp\\!\\left(\\frac{-148{,}000}{8.31\\times1223}\\right) \\approx 1.09\\times10^{-11}\\;\\text{m}^2/\\text{s}$$\n\n**Step 3 — Solve for time** using $z = \\dfrac{x}{2\\sqrt{Dt}} \\implies t = \\dfrac{x^2}{4z^2 D}$:\n\n$$t = \\frac{(2\\times10^{-4})^2}{4\\,(1.317)^2\\,(1.09\\times10^{-11})} \\approx 5.29\\times10^{2}\\;\\text{s}$$\n\nThis is the maximum operating time — beyond it, the carbon at 0.02 cm depth drops below 0.75%.\n\n$$\\boxed{5.29\\times10^{2}}$$",
+ "final_answer": "5.29\\times10^{2}",
+ "correct_answer": "190",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "s"
+}

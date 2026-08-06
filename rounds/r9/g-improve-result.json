@@ -1,7 +1,7 @@
 {
-  "edits": [],
-  "clusters_seen": 0,
-  "clusters_fixed": 0,
-  "skipped": ["q096"],
-  "needs_human": false
+  "edits": [
+    {"skill":"g-matsci-comparison-controlled-variable","type":"new_skill","cluster":"comparison-basis-inconsistency","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"新建技能：跨材料/跨条件比较某物量时受控变量须统一，禁止各取极值或自行截断"},
+    {"skill":"g-matsci-mixing-rule-select","type":"patch","cluster":"bounds-as-parameter-selector","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"补强：Voigt/Reuss 上下界只用于合理性核对，禁止反推选定输入参数；组分模量须查表取值"}
+  ],
+  "clusters_seen":2,"clusters_fixed":2,"skipped":[],"needs_human":false
 }

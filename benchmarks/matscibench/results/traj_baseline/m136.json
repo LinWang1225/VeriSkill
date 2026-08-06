@@ -1,0 +1,11 @@
+{
+ "tid": "m136",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 12.42",
+ "question_text": "A metal alloy is known to have electrical conductivity and electron mobility values of $1.2 \\times 10^{7}(\\Omega-\\mathrm{m})^{-1}$ and $0.0050 \\mathrm{~m}^{2} / V-\\mathrm{s}$, respectively. A current of 40 A is passed through a specimen of this alloy that is 35 mm thick. What magnetic field would need to be imposed to yield a Hall voltage of $-3.5 \\times 10^{-7} \\mathrm{~V}$ ?The unit of the answer is tesla.",
+ "response": "## Reasoning\n\nThe Hall voltage is given by:\n\n$$V_H = -\\frac{I B}{n q d}$$\n\nwhere $d$ is the thickness. Since the conductivity relates to carrier density by $\\sigma = n|q|\\mu_e$, and $q=-e$, we have $nq = -\\sigma/\\mu_e$. Substituting:\n\n$$V_H = -\\frac{I B}{(-\\sigma/\\mu_e)d} = \\frac{I B \\mu_e}{\\sigma d}$$\n\nSolving for the magnetic field:\n\n$$B = \\frac{V_H \\sigma d}{I \\mu_e}$$\n\n**Given values:**\n- $\\sigma = 1.2\\times10^{7}\\ (\\Omega\\text{-m})^{-1}$\n- $\\mu_e = 0.0050\\ \\text{m}^2/\\text{V-s}$\n- $I = 40\\ \\text{A}$\n- $d = 35\\ \\text{mm} = 0.035\\ \\text{m}$\n- $V_H = -3.5\\times10^{-7}\\ \\text{V}$\n\n$$B = \\frac{(-3.5\\times10^{-7})(1.2\\times10^{7})(0.035)}{(40)(0.0050)} = -0.735\\ \\text{T}$$\n\n$$\\boxed{-0.735}$$",
+ "final_answer": "-0.735",
+ "correct_answer": "0.735",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "tesla"
+}

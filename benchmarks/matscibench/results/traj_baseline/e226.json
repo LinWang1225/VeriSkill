@@ -1,0 +1,11 @@
+{
+ "tid": "e226",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 23-2",
+ "question_text": "A 0.1-cm-thick layer of copper is to be electroplated onto a $1 \\mathrm{~cm} \\times 1 \\mathrm{~cm}$ cathode surface. Calculate the mass of copper required for this layer and the necessary product of current and time (lt) for the electroplating process, based on Faraday's equation. Assume the density of copper is $8.93 \\mathrm{~g} / \\mathrm{cm}^3$, the molar mass of copper is $63.54 \\mathrm{~g} / \\mathrm{mol}$, the number of electrons transferred per copper ion is 2, and Faraday's constant is $96,500 \\mathrm{C} / \\mathrm{mol}$. Give your answer as a tuple (mass_of_copper_g, required_It_product_As).The units of each required answer are (g, A·s), respectively.",
+ "response": "## Step-by-step Solution\n\n**1. Volume of the copper layer:**\n$$V = \\text{thickness} \\times \\text{area} = 0.1\\ \\text{cm} \\times 1\\ \\text{cm} \\times 1\\ \\text{cm} = 0.1\\ \\text{cm}^3$$\n\n**2. Mass of copper required:**\n$$m = \\rho \\times V = 8.93\\ \\text{g/cm}^3 \\times 0.1\\ \\text{cm}^3 = 0.893\\ \\text{g}$$\n\n**3. Faraday's equation:**\n$$m = \\frac{M \\cdot I \\cdot t}{n \\cdot F} \\implies I \\cdot t = \\frac{m \\cdot n \\cdot F}{M}$$\n\n$$I \\cdot t = \\frac{0.893 \\times 2 \\times 96{,}500}{63.54} \\approx 2712.45\\ \\text{A·s}$$\n\n$$\\boxed{(0.893,\\ 2712.45)}$$",
+ "final_answer": "(0.893,\\ 2712.45)",
+ "correct_answer": "(0.893, 2712)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(g, A·s)"
+}

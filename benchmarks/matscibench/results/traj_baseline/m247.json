@@ -1,0 +1,11 @@
+{
+ "tid": "m247",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 17-26",
+ "question_text": "Five kilograms of continuous boron fibers are introduced in a unidirectional orientation into 8 kg of an aluminum matrix. Calculate (a) the density of the composite, (b) the modulus of elasticity parallel to the fibers, and (c) the modulus of elasticity perpendicular to the fibers. Give your answer as a tuple: (density_g_per_cm3, modulus_parallel_psi, modulus_perpendicular_psi).The units of each required answer are (g/cm³, psi, psi), respectively.",
+ "response": "## Solution\n\n**Step 1: Volume fractions from masses**\n\nConverting mass to volume using $V = m/\\rho$:\n\n| | Mass (kg) | ρ (g/cm³1) | Volume (m³) |\n|---|---|---|---|\n| Boron fiber | 5 | 2.36 | 2.119×10⁻³ |\n| Aluminum | 8 | 2.70 | 2.963×10⁻³ |\n\n$$V_f = \\frac{5/2.36}{5/2.36 + 8/2.70} = 0.4169, \\qquad V_m = 0.5831$$\n\n**Step 2 (a): Density — rule of mixtures**\n\n$$\\rho_c = V_f\\rho_f + V_m\\rho_m = 0.4169(2.36) + 0.5831(2.70) = 2.56 \\text{ g/cm}^3$$\n\n**Step 3 (b): Modulus parallel — rule of mixtures**\n\nUsing $E_f = 400$ GPa, $E_m = 69$ GPa:\n\n$$E_{c,\\parallel} = V_f E_f + V_m E_m = 0.4169(400) + 0.5831(69) = 207.0 \\text{ GPa} \\approx 30.0\\times10^6 \\text{ psi}$$\n\n**Step 4 (c): Modulus perpendicular — inverse rule of mixtures**\n\n$$\\frac{1}{E_{c,\\perp}} = \\frac{V_f}{E_f} + \\frac{V_m}{E_m} = \\frac{0.4169}{400} + \\frac{0.5831}{69}$$\n\n$$E_{c,\\perp} = 105.3 \\text{ GPa} \\approx 15.3\\times10^6 \\text{ psi}$$\n\n$$\\boxed{(2.56,\\ 3.00\\times10^{7},\\ 1.53\\times10^{7})}$$",
+ "final_answer": "(2.56,\\ 3.00\\times10^{7},\\ 1.53\\times10^{7})",
+ "correct_answer": "(2.56, 29000000.0, 15200000.0)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(g/cm³, psi, psi)"
+}

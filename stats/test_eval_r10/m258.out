@@ -1,0 +1,1 @@
+{"item": "m258", "oracle_pass": true, "evidence": "checker: Rule judge for NUM with 5% relative tolerance: parsed model=[188.0], reference=[187.5]; all values match. ", "skill_hash": "8d3999cbef62", "truth_source": "checker", "skill_result": "188\\ \\text{g/h}"}

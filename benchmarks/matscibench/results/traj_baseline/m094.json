@@ -1,0 +1,11 @@
+{
+ "tid": "m094",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.27",
+ "question_text": "The diffusion coefficients for nickel in iron are given at two temperatures, as follows:\n\n\\begin{tabular}{cc}\n\\hline$T(\\mathrm{~K})$ & $D\\left(\\mathrm{~m}^2 / \\mathrm{s}\\right)$ \\\\\n\\hline 1473 & $2.2 \\times 10^{-15}$ \\\\\n1673 & $4.8 \\times 10^{-14}$ \\\\\n\\hline\n\\end{tabular}\n\n(a) Determine the values of $D_{0}$ and the activation energy $Q_{d}$.\n(b) What is the magnitude of $D$ at $1300^{\\circ} \\mathrm{C}(1573 \\mathrm{~K})$ ?\n\nGive your answer as a tuple ($D_{0}$, $Q_{d}$, D at $1300^{\\circ} \\mathrm{C}(1573 \\mathrm{~K})The units of each required answer are (m^2/s, J/mol, m^2/s), respectively.",
+ "response": "Using the Arrhenius relation $D = D_0 \\exp(-Q_d/RT)$ and taking the ratio of the two data points to eliminate $D_0$:\n\n$$\\ln\\!\\left(\\frac{D_2}{D_1}\\right) = -\\frac{Q_d}{R}\\left(\\frac{1}{T_2}-\\frac{1}{T_1}\\right)$$\n\n$$Q_d = -\\frac{R\\ln(D_2/D_1)}{(1/T_2-1/T_1)} \\approx 3.156\\times10^{5}\\ \\text{J/mol}$$\n\nThen $D_0 = D_1\\exp(Q_d/RT_1) \\approx 3.48\\times10^{-4}\\ \\text{m}^2/\\text{s}$, and at $1573\\ \\text{K}$:\n\n$$D = D_0\\exp(-Q_d/RT) \\approx 1.13\\times10^{-14}\\ \\text{m}^2/\\text{s}$$\n\n$$\\boxed{(3.48\\times10^{-4},\\ 3.156\\times10^{5},\\ 1.13\\times10^{-14})}$$",
+ "final_answer": "(3.48\\times10^{-4},\\ 3.156\\times10^{5},\\ 1.13\\times10^{-14})",
+ "correct_answer": "(3.5e-4, 315700, 1.1e-14)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(m^2/s, J/mol, m^2/s)"
+}

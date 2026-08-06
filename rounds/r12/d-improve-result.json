@@ -1,0 +1,9 @@
+{
+  "edits": [
+    {"critic": "d-sci-underdetermined-claim", "type": "narrow_rule", "rule_id": "R-d-sci-underdetermined-claim-001", "evidence_items": ["#m128"], "summary": "重写动力学速率题子情形：含 t 的速率表达式即为正确答案；G 的错是给正确表达式加拒答注释。依据追加 r12#m128。"},
+    {"critic": "d-matsci-model-selection", "type": "add_rule", "rule_id": "R-d-matsci-model-selection-001", "evidence_items": ["#m168"], "summary": "新增子情形：轴向加载误用偏心弯曲模型——混淆截面维度与焊缝可用长度。依据追加 r12#m168。"},
+    {"critic": "d-sci-answer-format", "type": "add_rule", "rule_id": "R-d-sci-answer-format-001", "evidence_items": ["#m122"], "summary": "新建 critic：题目要求单一数值答案但轨迹答案文本含多个可解析数值。依据 r12#m122。"}
+  ],
+  "fp_seen": 0, "fp_resolved": 0, "fn_clusters_seen": 3,
+  "fn_resolved": ["m128","m168","m122"], "unjudgeable": [], "unresolved": [], "skipped": [], "needs_human": false
+}

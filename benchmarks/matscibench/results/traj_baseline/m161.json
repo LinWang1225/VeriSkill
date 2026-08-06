@@ -1,0 +1,11 @@
+{
+ "tid": "m161",
+ "qid": "Fundamentals_of_Ceramics_Barsoum_Example 15.2",
+ "question_text": "Calculate the magnetic moment of an isolated $\\mathrm{Mn}^{2+}$ cation, assuming that the orbital angular momentum is quenched, that is, $L=0$.The unit of the answer is \\mu_{B}.",
+ "response": "$$\\mu_{\\text{eff}} = \\sqrt{35}\\,\\mu_B \\approx 5.916\\,\\mu_B$$\n\nThis is the well-known spin-only moment for a $d^5$ high-spin configuration.\n\n$$\\boxed{\\sqrt{35}}$$",
+ "final_answer": "\\sqrt{35}",
+ "correct_answer": "5.92",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "\\mu_{B}"
+}

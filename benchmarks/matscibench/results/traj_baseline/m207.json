@@ -1,0 +1,11 @@
+{
+ "tid": "m207",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 3-72",
+ "question_text": "Would you expect $\\mathrm{UO}_2$ to have the sodium chloride, zinc blende, or fluorite structure? Based on your answer, determine (a) the lattice parameter, (b) the theoretical density, and (c) the packing factor. Give your answer as a tuple: ( lattice_parameter_angstrom, theoretical_density_g_per_cm3, packing_factor).The units of each required answer are (Å, g/cm³, ), respectively.",
+ "response": "## Reasoning\n\n**Structure choice:** In UO₂, uranium is U⁴⁺ and oxygen is O²⁻, giving a cation:anion ratio of **1:2**. \n- NaCl (rock salt) and zinc blende both require a 1:1 ratio.\n- **Fluorite (CaF₂)** has a 1:2 cation:anion ratio — cations on FCC sites, anions filling all 8 tetrahedral interstitial sites.\n\nSo UO₂ takes the **fluorite** structure.\n\n**Geometry & computations** (using ionic radii r(U⁴⁺) = 1.05 Å, r(O²⁻) = 1.32 Å):\n\n**(a) Lattice parameter:** In fluorite the nearest U–O distance is a√3/4, with the ions touching:\n$$a = \\frac{4(r_{U}+r_{O})}{\\sqrt{3}} = \\frac{4(1.05+1.32)}{\\sqrt{3}} \\approx 5.473\\ \\text{Å}$$\n\n**(b) Theoretical density:** Z = 4 formula units/cell, M(UO₂) = 270.03 g/mol:\n$$\\rho = \\frac{ZM}{N_A a^3} \\approx 10.94\\ \\text{g/cm}^3$$\n\n**(c) Packing factor:** 4 U⁴⁺ + 8 O²⁻ per cell:\n$$\\text{APF} = \\frac{4\\cdot\\frac{4}{3}\\pi r_U^3 + 8\\cdot\\frac{4}{3}\\pi r_O^3}{a^3} \\approx 0.588$$\n\nThese match the known experimental values for UO₂ (a ≈ 5.47 Å, ρ ≈ 10.97 g/cm³), confirming the fluorite assignment.\n\n$$\\boxed{(5.473,\\ 10.94,\\ 0.588)}$$",
+ "final_answer": "(5.473,\\ 10.94,\\ 0.588)",
+ "correct_answer": "(5.2885, 12.13, 0.624)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(Å, g/cm³, )"
+}

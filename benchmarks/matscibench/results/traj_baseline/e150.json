@@ -1,0 +1,11 @@
+{
+ "tid": "e150",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.33",
+ "question_text": "Experimentally, it has been observed for single crystals of a number of metals that the critical resolved shear stress $\\tau{\\text {crss }}$ is a function of the dislocation density $\\rho{D}$ as\n\n$$\n\\tau_{\\text {crss }}=\\tau{0}+A \\sqrt{\\rho{\\mathrm{D}}}\n$$\n\nwhere $\\tau{0}$ and $A$ are constants. For copper, the critical resolved shear stress is 0.69 MPa (100 psi) at a dislocation density of $10^{4} \\mathrm{~mm}^{-2}$. If it is known that the value of $\\tau{0}$ for copper is 0.069 MPa (10 psi), compute $\\tau_{\\text {crss }}$ at a dislocation density of $10^{6} \\mathrm{~mm}^{-2}$.The unit of the answer is MPa.",
+ "response": "## Solution\n\nThe relationship is:\n\n$$\\tau_{\\text{crss}} = \\tau_0 + A\\sqrt{\\rho_D}$$\n\n**Step 1 — Find $A$** using the known point $(\\rho_D = 10^4\\,\\text{mm}^{-2},\\; \\tau_{\\text{crss}} = 0.69\\,\\text{MPa})$:\n\n$$0.69 = 0.069 + A\\sqrt{10^4} = 0.069 + 100A$$\n\n$$A = \\frac{0.69 - 0.069}{100} = \\frac{0.621}{100} = 0.00621\\;\\text{MPa·mm}$$\n\n**Step 2 — Compute $\\tau_{\\text{crss}}$ at $\\rho_D = 10^6\\,\\text{mm}^{-2}$:**\n\n$$\\tau_{\\text{crss}} = 0.069 + 0.00621\\sqrt{10^6} = 0.069 + 0.00621 \\times 1000$$\n\n$$\\tau_{\\text{crss}} = 0.069 + 6.21 = 6.279\\;\\text{MPa}$$\n\n$$\\boxed{6.279}$$",
+ "final_answer": "6.279",
+ "correct_answer": "6.28",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

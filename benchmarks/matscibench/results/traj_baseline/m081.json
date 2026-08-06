@@ -1,0 +1,11 @@
+{
+ "tid": "m081",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.39",
+ "question_text": "Niobium forms a substitutional solid solution with vanadium. Compute the number of niobium atoms per cubic centimeter for a niobium-vanadium alloy that contains $24 \\mathrm{wt} \\% \\mathrm{Nb}$ and $76 \\mathrm{wt} \\% \\mathrm{~V}$. The densities of pure niobium and vanadium are 8.57 and $6.10 \\mathrm{~g} / \\mathrm{cm}^{3}$, respectively.The unit of the answer is atoms/cm^3.",
+ "response": "## Step-by-Step Reasoning\n\nFor a **substitutional solid solution**, the alloy density is found using the inverse rule of mixtures (based on volume additivity):\n\n$$\\rho_{\\text{alloy}} = \\frac{1}{\\dfrac{C_{\\text{Nb}}}{\\rho_{\\text{Nb}}} + \\dfrac{C_{\\text{V}}}{\\rho_{\\text{V}}}}$$\n\nwith weight fractions $C_{\\text{Nb}}=0.24$, $C_{\\text{V}}=0.76$:\n\n$$\\rho_{\\text{alloy}} = \\frac{1}{0.24/8.57 + 0.76/6.10} = 6.553\\ \\text{g/cm}^3$$\n\nThe number of Nb atoms per cubic centimeter is:\n\n$$N_{\\text{Nb}} = \\frac{C_{\\text{Nb}}\\,\\rho_{\\text{alloy}}}{A_{\\text{Nb}}}\\,N_A$$\n\nUsing $A_{\\text{Nb}}=92.91\\ \\text{g/mol}$ and $N_A=6.022\\times10^{23}\\ \\text{atoms/mol}$:\n\n$$N_{\\text{Nb}} = \\frac{0.24 \\times 6.553}{92.91}\\times 6.022\\times10^{23} \\approx 1.019\\times10^{22}\\ \\text{atoms/cm}^3$$\n\n$$\\boxed{1.019 \\times 10^{22}}$$",
+ "final_answer": "1.019 \\times 10^{22}",
+ "correct_answer": "1.02E+22",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "atoms/cm^3"
+}

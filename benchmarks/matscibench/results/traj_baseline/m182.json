@@ -1,0 +1,11 @@
+{
+ "tid": "m182",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 18.1",
+ "question_text": "A bar of copper with randomly oriented grains was deformed in tension to a stress, $\\sigma_{\\text{av}}$, which caused plastic deformation and then the load was released. Determine whether a grain oriented with [100] parallel to the tensile axis would be left in a state of residual tension or residual compression. For [100], the Taylor factor, $M=2.449$ and $E=66 \\text{ GPa}$. For randomly oriented copper, $M=3.067$ and $E=128 \\text{ GPa}$. Give your answer as 1 if it would be left in a state of residual tension, 2  if residual compression, and 3 otherwise.",
+ "response": "## Reasoning\n\nWhen a polycrystalline aggregate is plastically deformed in tension and then unloaded, individual grains retain residual stresses because the plastic strains are incompatible between grains of different orientations.\n\n**At the loaded state** (aggregate stress = σ_av):\n\nAll grains share the same critical resolved shear stress τ_c (uniform work hardening). A grain yields at σ_grain = M_grain·τ_c, while the aggregate obeys σ_av = M_av·τ_c. Hence:\n\n$$\\sigma_{\\text{grain}}^{\\text{loaded}} = \\frac{M_{\\text{grain}}}{M_{\\text{av}}}\\,\\sigma_{\\text{av}}$$\n\n**During elastic unloading:**\n\nThe aggregate unloads elastically by a uniform strain Δε = σ_av / E_av. By compatibility, each grain undergoes the same elastic strain change, so the stress removed from a grain is:\n\n$$\\Delta\\sigma_{\\text{grain}} = E_{\\text{grain}}\\cdot\\frac{\\sigma_{\\text{av}}}{E_{\\text{av}}}$$\n\n**Residual stress:**\n\n$$\\sigma_{\\text{res}} = \\sigma_{\\text{av}}\\!\\left(\\frac{M_{\\text{grain}}}{M_{\\text{av}}} - \\frac{E_{\\text{grain}}}{E_{\\text{av}}}\\right)$$\n\nSubstituting the [100] grain values:\n\n- M_grain/M_av = 2.449 / 3.067 = **0.7985**\n- E_grain/E_av = 66 / 128 = **0.5156**\n- Difference = 0.7985 − 0.5156 = **+0.2829**\n\nThe [100] grain has a low Taylor factor (yields easily, so it sits at a relatively low stress during loading) **but** an even lower elastic modulus (so little stress is recovered during elastic unloading). The net result is positive: the grain is left in **residual tension**.\n\n$$\\boxed{1}$$",
+ "final_answer": "1",
+ "correct_answer": "1",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

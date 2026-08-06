@@ -1,0 +1,11 @@
+{
+ "tid": "e272",
+ "qid": "Physical_Metallurgy_Hosford_Example 2.3",
+ "question_text": "Consider the freezing of pure aluminum. Estimate the temperature gradient in the solid near the liquid-solid interface if the interface moves at $5 \\mathrm{~mm} / \\mathrm{min}$. For aluminum, the thermal conductivity $k=4.8 \\mathrm{Jm} /(\\mathrm{Ks})$, the latent heat of freezing is $397 \\mathrm{~kJ} /$ kg , and the density is $2.7 \\mathrm{mg} / \\mathrm{m}^3$. Give your answer as the value of temperature_gradient.The unit of the answer is K/m.",
+ "response": "## Reasoning\n\nAt the moving solid–liquid interface, the latent heat released by solidification must be removed by conduction through the solid. The Stefan-type heat balance gives:\n\n$$k\\frac{dT}{dx} = \\rho L V \\quad\\Longrightarrow\\quad \\frac{dT}{dx} = \\frac{\\rho L V}{k}$$\n\n**Values used:**\n| Quantity | Value | SI |\n|---|---|---|\n| $\\rho$ | $2.7\\ \\mathrm{Mg/m^3}$ (the \"mg\" is a typo for Mg) | $2700\\ \\mathrm{kg/m^3}$ |\n| $L$ | $397\\ \\mathrm{kJ/kg}$ | $397{,}000\\ \\mathrm{J/kg}$ |\n| $V$ | $5\\ \\mathrm{mm/min}$ | $8.333\\times10^{-5}\\ \\mathrm{m/s}$ |\n| $k$ | $4.8\\ \\mathrm{J/(s\\,m\\,K)}$ | $4.8\\ \\mathrm{W/(m\\,K)}$ |\n\n**Calculation:**\n$$\\frac{dT}{dx} = \\frac{(2700)(397{,}000)(8.333\\times10^{-5})}{4.8} = \\frac{89{,}325}{4.8} \\approx 18{,}609\\ \\mathrm{K/m}$$\n\n$$\\boxed{18609.375}$$",
+ "final_answer": "18609.375",
+ "correct_answer": "18.6",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "K/m"
+}

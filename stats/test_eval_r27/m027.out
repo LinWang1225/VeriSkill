@@ -1,0 +1,1 @@
+{"item": "m027", "oracle_pass": true, "evidence": "checker: Rule judge for NUM with exact-expression support and 5% relative tolerance: '(8/3, 4/3)' matches '(2.67, 1.33)'. ", "skill_hash": "54add79d95e5", "truth_source": "checker", "skill_result": "(8/3, 4/3)"}

@@ -1,0 +1,11 @@
+{
+ "tid": "e016",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 12.7",
+ "question_text": "A dispersion-strengthened aluminum contains 10 vol $\\% \\mathrm{Al}_{2} \\mathrm{O}_{3}$. Assuming that the metal phase is essentially pure aluminum, calculate the density of the composite. (The density of $\\mathrm{Al}_{2} \\mathrm{O}_{3}$ is $3.97 \\mathrm{Mg} / \\mathrm{m}^{3}$.). Assume the density of pure aluminum is $2.70 \\mathrm{Mg} / \\mathrm{m}^3$.The unit of the answer is Mg/m^3.",
+ "response": "The composite density is the volume-fraction-weighted sum of the constituent densities:\n\n$$\\rho_c = V_{\\text{Al}}\\rho_{\\text{Al}} + V_{\\text{Al}_2\\text{O}_3}\\rho_{\\text{Al}_2\\text{O}_3} = 0.90(2.70) + 0.10(3.97) = 2.43 + 0.397 = 2.827 \\ \\text{Mg/m}^3$$\n\n$$\\boxed{2.827}$$",
+ "final_answer": "2.827",
+ "correct_answer": "2.83",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "Mg/m^3"
+}

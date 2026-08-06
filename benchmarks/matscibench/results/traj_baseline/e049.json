@@ -1,0 +1,11 @@
+{
+ "tid": "e049",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_12.45",
+ "question_text": "Calculate the modulus of elasticity of a metal-matrix composite under isostrain conditions. Assume an aluminum matrix is reinforced by $60 \\mathrm{vol} \\% \\mathrm{SiC}$ fibers. Give your answer as the value of modulus_of_elasticity.The unit of the answer is MPa.",
+ "response": "For an isostrain (longitudinal) loaded metal-matrix composite, the modulus follows the **rule of mixtures**:\n\n$$E_c = V_m E_m + V_f E_f$$\n\nUsing standard moduli:\n- Aluminum matrix: $E_m = 69\\,\\text{GPa} = 69000\\,\\text{MPa}$\n- SiC fibers: $E_f = 410\\,\\text{GPa} = 410000\\,\\text{MPa}$\n- Volume fractions: $V_f = 0.60$, $V_m = 0.40$\n\n$$E_c = 0.40(69000) + 0.60(410000) = 27600 + 246000 = 273600\\,\\text{MPa}$$\n\n$$\\boxed{273600}$$",
+ "final_answer": "273600",
+ "correct_answer": "2.86E+05",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

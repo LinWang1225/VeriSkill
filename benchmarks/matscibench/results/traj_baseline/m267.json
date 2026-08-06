@@ -1,0 +1,11 @@
+{
+ "tid": "m267",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 6.6",
+ "question_text": "Question: Average and Standard Deviation Computations\n\nThe following tensile strengths were measured for four specimens of the same steel alloy:\n\n\n\\begin{tabular}{|c|c|}\n\\hline\n\\textbf{Sample Number} & \\textbf{Tensile Strength (MPa)} \\\\\n\\hline\n1 & 520 \\\\\n2 & 512 \\\\\n3 & 515 \\\\\n4 & 522 \\\\\n\\hline\n\\end{tabular}\n\n\n\n(a) Compute the average tensile strength.\n(b) Determine the standard deviation.\nGive your answer as a tuple (average tensile strength, standard deviation).The units of each required answer are (MPa, MPa), respectively.",
+ "response": "## Solution\n\n**Given data:** 520, 512, 515, 522 MPa\n\n**(a) Average tensile strength:**\n\n$$\\bar{x} = \\frac{520 + 512 + 515 + 522}{4} = \\frac{2069}{4} = 517.25 \\text{ MPa}$$\n\n**(b) Standard deviation:**\n\nUsing the sample standard deviation formula $s = \\sqrt{\\frac{\\sum(x_i - \\bar{x})^2}{n-1}}$:\n\n| $x_i$ | $x_i - \\bar{x}$ | $(x_i - \\bar{x})^2$ |\n|------|----------------|---------------------|\n| 520  | +2.75          | 7.5625              |\n| 512  | −5.25          | 27.5625             |\n| 515  | −2.25          | 5.0625              |\n| 522  | +4.75          | 22.5625             |\n\n$$\\sum(x_i - \\bar{x})^2 = 62.75$$\n\n$$s = \\sqrt{\\frac{62.75}{3}} = \\sqrt{20.9167} \\approx 4.57 \\text{ MPa}$$\n\n$$\\boxed{(517.25,\\ 4.57)}$$",
+ "final_answer": "(517.25,\\ 4.57)",
+ "correct_answer": "(517, 4.6)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(MPa, MPa)"
+}

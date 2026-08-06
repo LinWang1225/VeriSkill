@@ -1,0 +1,11 @@
+{
+ "tid": "e080",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.31",
+ "question_text": "Calculate the theoretical density of NiO, given that it has the rock salt crystal structure. The ionic radii of $\\mathrm{Ni}^{2+}$ and $\\mathrm{O}^{2-}$ are 0.069 nm and 0.140 nm.\n\nReference:\n$$\n\\begin{aligned}\n& \\sum A{\\mathrm{Ni}}=A{\\mathrm{Ni}}=58.69 \\mathrm{~g} / \\mathrm{mol} \\\\\n& \\sum A{\\mathrm{O}}=A{\\mathrm{O}}=16.00 \\mathrm{~g} / \\mathrm{mol}\n\\end{aligned}\n$$The unit of the answer is g/cm^3.",
+ "response": "## Solution\n\n**Rock salt structure** is an FCC lattice with **4 formula units per unit cell** ($Z = 4$). The anion and cation touch along the unit cell edge, so:\n\n$$a = 2(r_{\\mathrm{Ni}^{2+}} + r_{\\mathrm{O}^{2-}}) = 2(0.069 + 0.140)\\,\\text{nm} = 0.418\\,\\text{nm} = 4.18\\times10^{-8}\\,\\text{cm}$$\n\nThe theoretical density is:\n\n$$\\rho = \\frac{Z \\cdot \\sum A}{N_A \\cdot a^3}$$\n\nwhere $\\sum A = 58.69 + 16.00 = 74.69\\ \\text{g/mol}$ and $N_A = 6.022\\times10^{23}\\ \\text{mol}^{-1}$.\n\n$$\\rho = \\frac{4 \\times 74.69}{(6.022\\times10^{23})(4.18\\times10^{-8})^3} \\approx 6.79\\ \\text{g/cm}^3$$\n\n$$\\boxed{6.79}$$",
+ "final_answer": "6.79",
+ "correct_answer": "6.80",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g/cm^3"
+}

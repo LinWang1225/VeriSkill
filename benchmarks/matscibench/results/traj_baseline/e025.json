@@ -1,0 +1,11 @@
+{
+ "tid": "e025",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 4.4",
+ "question_text": "Calculate the magnitude of the Burgers vector for an hcp metal, Mg . Give your answer as the value of Burgers_vector.The unit of the answer is nm.",
+ "response": "The magnitude of the Burgers vector for hcp Mg equals the lattice constant a = 0.3209 nm.\n\n$$\\boxed{0.3209}$$",
+ "final_answer": "0.3209",
+ "correct_answer": "0.320",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "nm"
+}

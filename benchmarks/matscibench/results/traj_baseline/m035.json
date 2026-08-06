@@ -1,0 +1,11 @@
+{
+ "tid": "m035",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_10.1",
+ "question_text": "For an aluminum alloy, the activation energy for crystal growth is $120 \\mathrm{~kJ} / \\mathrm{mol}$. By what factor would the rate of crystal growth change by dropping the alloy temperature from $500^{\\circ} \\mathrm{C}$ to room temperature $\\left(25^{\\circ} \\mathrm{C}\\right)$ ? Give your answer as the value of growth_rate_factor.",
+ "response": "The rate of crystal growth follows an Arrhenius relationship, $\\text{rate} \\propto \\exp\\!\\left(-\\dfrac{Q}{RT}\\right)$. Dropping from $T_1=773\\ \\text{K}$ to $T_2=298\\ \\text{K}$ with $Q=120\\ \\text{kJ/mol}$:\n\n$$\\text{factor}=\\exp\\!\\left[-\\frac{Q}{R}\\left(\\frac{1}{T_2}-\\frac{1}{T_1}\\right)\\right]\\approx 1.19\\times10^{-13}$$\n\nThe growth rate decreases by roughly $10^{13}$.\n\n$$\\boxed{1.19\\times10^{-13}}$$",
+ "final_answer": "1.19\\times10^{-13}",
+ "correct_answer": "8.43E+12",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

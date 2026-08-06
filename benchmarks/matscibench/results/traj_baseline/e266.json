@@ -1,0 +1,11 @@
+{
+ "tid": "e266",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 6.5",
+ "question_text": "Compute the strain-hardening exponent \\(n\\) in $\\sigma_T=K \\varepsilon_T^n$ for an alloy in which a true stress of \\(415 \\mathrm{MPa}(60,000 \\mathrm{psi})\\) produces a true strain of 0.10 ; assume a value of \\(1035 \\mathrm{MPa}(150,000 \\mathrm{psi})\\) for \\(K\\).",
+ "response": "## Solution\n\nStarting from the strain-hardening equation:\n\n$$\\sigma_T = K \\varepsilon_T^n$$\n\nSubstitute the given values ($\\sigma_T = 415$ MPa, $\\varepsilon_T = 0.10$, $K = 1035$ MPa):\n\n$$415 = 1035\\,(0.10)^n$$\n\nSolve for $n$ by taking the logarithm of both sides:\n\n$$(0.10)^n = \\frac{415}{1035}$$\n\n$$n \\ln(0.10) = \\ln\\!\\left(\\frac{415}{1035}\\right)$$\n\n$$n = \\frac{\\ln(415/1035)}{\\ln(0.10)} \\approx \\frac{-0.914}{-2.303} \\approx 0.397$$\n\n$$\\boxed{0.397}$$",
+ "final_answer": "0.397",
+ "correct_answer": "0.40",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

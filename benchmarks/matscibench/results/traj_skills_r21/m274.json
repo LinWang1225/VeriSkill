@@ -1,0 +1,11 @@
+{
+ "tid": "m274",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 18.4",
+ "question_text": "The electrical conductivity and electron mobility for aluminum are $3.8 \\times 10^{7}(\\Omega \\cdot \\mathrm{~m})^{-1}$ and $0.0012 \\mathrm{~m}^{2} / \\mathrm{V} \\cdot \\mathrm{s}$, respectively. Calculate the Hall voltage for an aluminum specimen that is 15 mm thick for a current of 25 A and a magnetic field of 0.6 tesla (imposed in a direction perpendicular to the current).The unit of the answer is V.",
+ "response": "**Sign self-check (per skill gate):** Carriers are electrons → R_H < 0; with I > 0, B > 0, d > 0, V_H must be **negative**. The only sign source is the signed charge q = −e (convention A); no prepended minus was added, so the carrier sign is counted exactly once. ✓\n\n$$V_H = -3.16\\times10^{-8}\\ \\text{V}$$\n\n$$\\boxed{-3.16\\times10^{-8}}$$",
+ "final_answer": "-3.16\\times10^{-8}",
+ "correct_answer": "-3.16e-08",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "V"
+}

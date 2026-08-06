@@ -1,0 +1,11 @@
+{
+ "tid": "e112",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.8",
+ "question_text": "Compute the number of kilograms of hydrogen that pass per hour through a 6-mm thick sheet of palladium having an area of $0.25 \\mathrm{~m}^{2}$ at $600^{\\circ} \\mathrm{C}$. Assume a diffusion coefficient of $1.7 \\times 10^{-8} \\mathrm{~m}^{2} / \\mathrm{s}$, that the respective concentrations at the high- and low-pressure sides of the plate are 2.0 and 0.4 kg of hydrogen per cubic meter of palladium, and that steady-state conditions have been attained.The unit of the answer is kg/h.",
+ "response": "Using Fick's first law at steady state, the flux is:\n\n$$J = -D\\frac{\\Delta C}{\\Delta x} = D\\frac{C_{\\text{high}}-C_{\\text{low}}}{\\Delta x}$$\n\n$$J = \\frac{(1.7\\times10^{-8})(2.0-0.4)}{6\\times10^{-3}} = 4.533\\times10^{-6}\\ \\text{kg/(m}^2\\text{·s)}$$\n\nTotal mass per hour:\n\n$$m = J \\cdot A \\cdot t = (4.533\\times10^{-6})(0.25)(3600) = 0.00408\\ \\text{kg/h}$$\n\n$$\\boxed{0.00408}$$",
+ "final_answer": "0.00408",
+ "correct_answer": "4.1E-03",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg/h"
+}

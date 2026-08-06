@@ -1,0 +1,11 @@
+{
+ "tid": "e091",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.3",
+ "question_text": "(a) Calculate the fraction of atom sites that are vacant for copper $(\\mathrm{Cu})$ at its melting temperature of $1084^{\\circ} \\mathrm{C}(1357 \\mathrm{~K})$. Assume an energy for vacancy formation of $0.90 \\mathrm{eV} /$ atom.\n(b) Repeat this calculation at room temperature (298 K).\n(c) What is ratio of $N{V} / N(1357 \\mathrm{~K})$ and $N{V} / N(298 \\mathrm{~K})$ ?\n\nGive your answer as a tuple (the fraction of atom sites in (a), the fraction of atom sites in (b), ratio of $N{V} / N(1357 \\mathrm{~K})$ and $N{V} / N(298 \\mathrm{~K})$)",
+ "response": "## Solution\n\nThe equilibrium fraction of vacant lattice sites is given by the Arrhenius relation:\n\n$$\\frac{N_V}{N} = \\exp\\!\\left(-\\frac{Q_v}{kT}\\right)$$\n\nwith $Q_v = 0.90\\ \\text{eV/atom}$ and $k = 8.617\\times10^{-5}\\ \\text{eV/K}$.\n\n**(a) At $T = 1357\\ \\text{K}$ (melting point):**\n\n$$\\frac{N_V}{N} = \\exp\\!\\left(-\\frac{0.90}{(8.617\\times10^{-5})(1357)}\\right) = \\exp(-7.703) \\approx 4.54\\times10^{-4}$$\n\n**(b) At $T = 298\\ \\text{K}$ (room temperature):**\n\n$$\\frac{N_V}{N} = \\exp\\!\\left(-\\frac{0.90}{(8.617\\times10^{-5})(298)}\\right) = \\exp(-35.04) \\approx 6.0\\times10^{-16}$$\n\n**(c) Ratio:**\n\n$$\\frac{(N_V/N)_{1357}}{(N_V/N)_{298}} = \\frac{4.54\\times10^{-4}}{6.0\\times10^{-16}} \\approx 7.56\\times10^{11}$$\n\nThis enormous ratio (~756 billion) illustrates why solid-state diffusion is negligible at room temperature but becomes significant near the melting point.\n\n$$\\boxed{(4.54\\times10^{-4},\\ 6.0\\times10^{-16},\\ 7.56\\times10^{11})}$$",
+ "final_answer": "(4.54\\times10^{-4},\\ 6.0\\times10^{-16},\\ 7.56\\times10^{11})",
+ "correct_answer": "(4.56e-4, 6.08e-16, 7.5e11)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

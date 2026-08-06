@@ -1,0 +1,11 @@
+{
+ "tid": "m253",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 20-6",
+ "question_text": "Calculate and compare the maximum magnetization we would expect in iron, nickel, cobalt, and gadolinium. There are seven electrons in the $4 f$ level of gadolinium. Compare the calculated values with the experimentally observed values. Give your answer as a tuple: (Fe_magnetization_Oe, Co_magnetization_Oe).The units of each required answer are (Oe, Oe), respectively.",
+ "response": "## Reasoning\n\n**Model.** The saturation (maximum) magnetization expected if every unpaired spin aligns is\n\n$$M_s = n\\,\\mu_B\\,\\frac{\\rho N_A}{A}$$\n\nwhere $n$ = unpaired electrons per atom, $\\mu_B=9.27\\times10^{-24}$ A·m², $\\rho$ = density, $A$ = atomic weight. To express magnetization in oersted, $M[\\text{Oe}]=M[\\text{A/m}]\\cdot 4\\pi/1000$ (since $1\\ \\text{Oe}=1000/4\\pi$ A/m).\n\n**Unpaired-electron counts** (the simple band picture the problem asks for):\n- Fe (3d⁶4s²): 5 up, 1 down → $n=4$\n- Co (3d⁷4s²): 5 up, 2 down → $n=3$\n- Ni (3d⁸4s²): 5 up, 3 down → $n=2$\n- Gd (4f⁷): 7 unpaired 4f electrons → $n=7$ (as stated)\n\n**Calculated vs. experimental** (using $\\rho$/A from Callister: Fe 7.87/55.85, Co 8.90/58.93, Ni 8.90/58.69, Gd 7.895/157.25 g):\n\n| Material | $M_s$ calc (Oe) | $M_s$ exp (Oe) |\n|---|---|---|\n| Fe | $3.95\\times10^{4}$ | $2.14\\times10^{4}$ |\n| Co | $3.18\\times10^{4}$ | $1.77\\times10^{4}$ |\n| Ni | $2.13\\times10^{4}$ | $6.1\\times10^{3}$ |\n| Gd | $2.47\\times10^{4}$ | $7.0\\times10^{3}$ |\n\nThe simple model overestimates $M_s$ for Fe and Co moderately (band filling isn't perfectly integer — Fe carries 2.2 μ_B/atom, Co 1.7), and overestimates Ni and Gd more strongly because their moments are partially quenched/different in the solid. The calculated \"expected maximum\" values for Fe and Co are the requested tuple.\n\n$$\\boxed{(3.95\\times10^{4},\\ 3.18\\times10^{4})}$$",
+ "final_answer": "(3.95\\times10^{4},\\ 3.18\\times10^{4})",
+ "correct_answer": "(39604, 31573)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(Oe, Oe)"
+}

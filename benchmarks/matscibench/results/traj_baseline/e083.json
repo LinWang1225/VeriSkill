@@ -1,0 +1,11 @@
+{
+ "tid": "e083",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.91",
+ "question_text": "Using the data for aluminum in  table 3.1 , compute the interplanar spacing for the (110) set of planes.\n\n\n\"Table 3.1\nAtomic Radii and Crystal Structures for 16 Metals\n\\begin{tabular}{|l|l|l|l|l|l|}\n\\hline Metal & Crystal Structure ${ }^a$ & Atomic Radius ${ }^{\\text {b }}$ (nm) & Metal & Crystal Structure & Atomic Radius (nm) \\\\\n\\hline Aluminum & FCC & 0.1431 & Molybdenum & BCC & 0.1363 \\\\\n\\hline Cadmium & HCP & 0.1490 & Nickel & FCC & 0.1246 \\\\\n\\hline Chromium & BCC & 0.1249 & Platinum & FCC & 0.1387 \\\\\n\\hline Cobalt & HCP & 0.1253 & Silver & FCC & 0.1445 \\\\\n\\hline Copper & FCC & 0.1278 & Tantalum & BCC & 0.1430 \\\\\n\\hline Gold & FCC & 0.1442 & Titanium ( $\\alpha$ ) & HCP & 0.1445 \\\\\n\\hline Iron ( $\\alpha$ ) & BCC & 0.1241 & Tungsten & BCC & 0.1371 \\\\\n\\hline Lead & FCC & 0.1750 & Zinc & HCP & 0.1332 \\\\\n\\hline\n\\end{tabular}\n${ }^a$ FCC $=$ face-centered cubic; HCP $=$ hexagonal close-packed; $\\mathrm{BCC}=$ body-centered cubic. ${ }^b \\mathrm{~A}$ nanometer (nm) equals $10^{-9} \\mathrm{~m}$; to convert from nanometers to angstrom units ( $\\AA$ ), multiply the nanometer value by 10 .\"The unit of the answer is nm.",
+ "response": "For FCC aluminum:\n\n- **Lattice parameter:** $a = 2R\\sqrt{2} = 2(0.1431)\\sqrt{2}$ nm\n- **Interplanar spacing** for $(hkl)=(110)$:\n\n$$d_{110} = \\frac{a}{\\sqrt{h^2+k^2+l^2}} = \\frac{2R\\sqrt{2}}{\\sqrt{1^2+1^2+0^2}} = \\frac{2R\\sqrt{2}}{\\sqrt{2}} = 2R$$\n\n$$d_{110} = 2(0.1431) = 0.2862 \\text{ nm}$$\n\n$$\\boxed{0.2862}$$",
+ "final_answer": "0.2862",
+ "correct_answer": "0.2860",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "nm"
+}

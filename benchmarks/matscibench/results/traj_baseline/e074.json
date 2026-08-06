@@ -1,0 +1,11 @@
+{
+ "tid": "e074",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 2.4",
+ "question_text": "Indium has two naturally occurring isotopes: ${ }^{113}$ In with an atomic weight of 112.904 amu, and ${ }^{115}$ In with an atomic weight of 114.904 amu. If the average atomic weight for In is 114.818 amu, calculate the fraction of occurrences of these two isotopes.\n\nGive your answer as a tuple (${ }^{113}$, ${ }^{115}$).",
+ "response": "Let $x$ be the fraction of ${}^{113}\\text{In}$ and $(1-x)$ the fraction of ${}^{115}\\text{In}$:\n\n$$112.904x + 114.904(1-x) = 114.818$$\n\n$$114.904 - 2x = 114.818 \\implies x = \\frac{0.086}{2} = 0.043$$\n\nSo ${}^{113}\\text{In} = 0.043$ and ${}^{115}\\text{In} = 0.957$.\n\n$$\\boxed{(0.043,\\ 0.957)}$$",
+ "final_answer": "(0.043,\\ 0.957)",
+ "correct_answer": "(0.043, 0.957)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

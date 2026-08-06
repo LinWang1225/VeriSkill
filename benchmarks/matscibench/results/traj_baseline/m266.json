@@ -1,0 +1,11 @@
+{
+ "tid": "m266",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 10.2",
+ "question_text": "It is known that the kinetics of recrystallization for some alloy obeys the Avrami equation and that the value of n is 3.1. If the fraction recrystallized is 0.30 after 20 min, determine the rate of recrystallization.The unit of the answer is (min)^-1.",
+ "response": "**Step 3: Verify**\n\n- k = −ln(0.70) / 20^3.1 ≈ 3.304 × 10⁻⁵\n- dy/dt = n·k·t^(n−1)·exp(−k·tⁿ) = 3.1 × (3.304×10⁻⁵) × 20^2.1 × 0.70\n\nThe rate of recrystallization at t = 20 min is approximately **0.0387 min⁻¹**.\n\n$$\\boxed{0.0387}$$",
+ "final_answer": "0.0387",
+ "correct_answer": "4.0e-02",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "(min)^-1"
+}

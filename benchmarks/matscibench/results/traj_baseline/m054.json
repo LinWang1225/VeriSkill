@@ -1,0 +1,11 @@
+{
+ "tid": "m054",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_15.39",
+ "question_text": "The maximum corrosion-current density in a galvanized steel sheet used in the design of the new engineering laboratories on campus is found to be $5 \\mathrm{~mA} / \\mathrm{m}^2$. What thickness of the zinc layer is necessary to ensure at least (a) 1 year and (b) 5 years of rust resistance? Give your answer as a tuple: (thickness_1_year, thickness_5_years).The units of each required answer are (μm, μm), respectively.",
+ "response": "Using Faraday's law for the anodic dissolution of zinc (Zn → Zn²⁺ + 2e⁻):\n\n$$\\frac{\\Delta m}{A\\cdot t}=\\frac{iM}{nF}$$\n\nwith $i=5\\times10^{-3}\\,\\text{A/m}^2$, $M_{\\text{Zn}}=65.38\\,\\text{g/mol}$, $n=2$, $F=96485\\,\\text{C/mol}$, and $\\rho_{\\text{Zn}}=7.13\\,\\text{g/cm}^3$. The thickness is $x=\\dfrac{iMt}{nF\\rho}$.\n\nFor $t=1$ yr ($3.156\\times10^{7}$ s): $x\\approx 7.5\\,\\mu\\text{m}$\nFor $t=5$ yr: $x\\approx 37.5\\,\\mu\\text{m}$\n\n$$\\boxed{(7.5,\\ 37.5)}$$",
+ "final_answer": "(7.5,\\ 37.5)",
+ "correct_answer": "(7.50, 37.5)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(μm, μm)"
+}

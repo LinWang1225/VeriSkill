@@ -1,0 +1,11 @@
+{
+ "tid": "e004",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 4.4",
+ "question_text": "Using the atomic radii RFe=0.124 nm for bcc Fe and RAl=0.143 nm for fcc Al, calculate the magnitude of the Burgers vector for (a) α-Fe and (b) Al.\n\nGive your answer as a tuple (magnitude for α-Fe, magnitude for Al).The units of each required answer are (nm, nm), respectively.",
+ "response": "## Reasoning\n\nThe Burgers vector magnitude depends on the crystal structure and the perfect-slip dislocation type:\n\n- **BCC (α-Fe):** shortest lattice vector is $\\frac{a}{2}\\langle 111\\rangle$, so $|\\mathbf{b}| = \\frac{a\\sqrt{3}}{2}$.\n  In BCC, atoms touch along the body diagonal: $4R = a\\sqrt{3} \\Rightarrow a = \\frac{4R}{\\sqrt{3}}$.\n  Thus $|\\mathbf{b}| = \\frac{1}{2}\\cdot\\frac{4R}{\\sqrt{3}}\\cdot\\sqrt{3} = 2R = 2(0.124) = 0.248$ nm.\n\n- **FCC (Al):** shortest lattice vector is $\\frac{a}{2}\\langle 110\\rangle$, so $|\\mathbf{b}| = \\frac{a\\sqrt{2}}{2}$.\n  In FCC, atoms touch along the face diagonal: $4R = a\\sqrt{2} \\Rightarrow a = 2R\\sqrt{2}$.\n  Thus $|\\mathbf{b}| = \\frac{1}{2}\\cdot 2R\\sqrt{2}\\cdot\\sqrt{2} = 2R = 2(0.143) = 0.286$ nm.\n\nBoth reduce to $|\\mathbf{b}| = 2R$.\n\n$$\n\\boxed{(0.248,\\ 0.286)}\n$$",
+ "final_answer": "(0.248,\\ 0.286)",
+ "correct_answer": "(0.248, 0.286)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(nm, nm)"
+}

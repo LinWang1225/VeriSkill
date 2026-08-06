@@ -1,0 +1,11 @@
+{
+ "tid": "m139",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 15.2",
+ "question_text": "Estimate the maximum and minimum thermal conductivity values for a cermet that contains 90 vol\\% titanium carbide (TiC) particles in a nickel matrix. Assume thermal conductivities of 27 and $67 \\mathrm{~W} / \\mathrm{m} \\cdot \\mathrm{K}$ for TiC and Ni, respectively.\n\nGive your answer as a tuple (maximum, minimum).The units of each required answer are (W/mK, W/mK), respectively.",
+ "response": "For a two-phase composite, the maximum thermal conductivity corresponds to the **parallel (rule-of-mixtures)** bound and the minimum to the **series (inverse rule-of-mixtures)** bound:\n\n- **Maximum:** $k_{\\max} = V_{\\text{TiC}}k_{\\text{TiC}} + V_{\\text{Ni}}k_{\\text{Ni}} = 0.90(27) + 0.10(67) = 31.0$\n- **Minimum:** $\\dfrac{1}{k_{\\min}} = \\dfrac{V_{\\text{TiC}}}{k_{\\text{TiC}}} + \\dfrac{V_{\\text{Ni}}}{k_{\\text{Ni}}} = \\dfrac{0.90}{27} + \\dfrac{0.10}{67} \\Rightarrow k_{\\min} \\approx 28.71$\n\n$$\\boxed{(31.0,\\ 28.71)}$$",
+ "final_answer": "(31.0,\\ 28.71)",
+ "correct_answer": "(31.0, 28.7)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(W/mK, W/mK)"
+}

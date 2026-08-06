@@ -1,0 +1,11 @@
+{
+ "tid": "e113",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.10",
+ "question_text": "A sheet of BCC iron 2-mm thick was exposed to a carburizing gas atmosphere on one side and a decarburizing atmosphere on the other side at $675^{\\circ} \\mathrm{C}$. After reaching steady state, the iron was quickly cooled to room temperature. The carbon concentrations at the two surfaces of the sheet were determined to be 0.015 and $0.0068 \\mathrm{wt} \\%$, respectively. Compute the diffusion coefficient if the diffusion flux is $7.36 \\times 10^{-9} \\mathrm{~kg} / \\mathrm{m}^{2} \\cdot \\mathrm{~s}$. Hint: Use equation (\\begin{aligned}\n&C_1^{\\prime \\prime}=\\left(\\frac{C_1}{\\frac{C_1}{\\rho_1}+\\frac{C_2}{\\rho_2}}\\right) \\times 10^3\\\\\n&C_2^{\\prime \\prime}=\\left(\\frac{C_2}{\\frac{C_1}{\\rho_1}+\\frac{C_2}{\\rho_2}}\\right) \\times 10^3\n\\end{aligned}) to convert the concentrations from weight percent to kilograms of carbon per cubic meter of iron. The densities of carbon and iron are $2.25 \\mathrm{~g} / \\mathrm{cm}^{3}$ and $7.87 \\mathrm{~g} / \\mathrm{cm}^{3}$. For $0.015 \\mathrm{wt} \\% \\mathrm{C}$The unit of the answer is m^2/s.",
+ "response": "## Solution\n\n**Step 1: Convert wt% concentrations to kg/m³**\n\nFor each surface, carbon wt% = $C_1$ and iron wt% = $C_2 = 100 - C_1$, then:\n\n$$C_1'' = \\left(\\frac{C_1}{\\frac{C_1}{\\rho_1} + \\frac{C_2}{\\rho_2}}\\right) \\times 10^3$$\n\n- **Surface 1** (0.015 wt% C): $C_1'' = \\frac{0.015}{\\frac{0.015}{2.25} + \\frac{99.985}{7.87}} \\times 10^3 = 1.180 \\text{ kg/m}^3$\n- **Surface 2** (0.0068 wt% C): $C_1'' = \\frac{0.0068}{\\frac{0.0068}{2.25} + \\frac{99.9932}{7.87}} \\times 10^3 = 0.535 \\text{ kg/m}^3$\n\n**Step 2: Apply Fick's first law at steady state**\n\nAt steady state the concentration profile is linear, so:\n\n$$J = -D\\frac{C_2 - C_1}{\\Delta x} = D\\frac{C_1 - C_2}{\\Delta x}$$\n\nSolving for $D$:\n\n$$D = \\frac{J \\cdot \\Delta x}{C_1 - C_2} = \\frac{(7.36 \\times 10^{-9})(2 \\times 10^{-3})}{1.180 - 0.535} = \\frac{1.472 \\times 10^{-11}}{0.645}$$\n\n$$D \\approx 2.28 \\times 10^{-11} \\text{ m}^2\\text{/s}$$\n\n$$\\boxed{2.28 \\times 10^{-11}}$$",
+ "final_answer": "2.28 \\times 10^{-11}",
+ "correct_answer": "2.3E-11",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m^2/s"
+}

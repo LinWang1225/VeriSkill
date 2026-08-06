@@ -1,0 +1,11 @@
+{
+ "tid": "e223",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 21-5_1",
+ "question_text": "Design a filter to transmit at least $95 \\%$ of the energy of a beam composed of zinc $K_{\\alpha} \\mathrm{x}$-rays, using aluminum as the shielding material. (The aluminum has a linear absorption coefficient of $108 \\mathrm{~cm}^{-1}$.) Assume no loss to reflection. Give your answer as the value of required_thickness.The unit of the answer is cm.",
+ "response": "## Reasoning\n\nThe intensity transmission through an absorbing material follows the **Beer–Lambert law**:\n\n$$\\frac{I}{I_0} = e^{-\\mu x}$$\n\nwhere:\n- $\\mu = 108\\ \\mathrm{cm^{-1}}$ (linear absorption coefficient of aluminum for zinc $K_\\alpha$ x-rays),\n- $x$ is the thickness,\n- We require at least 95% transmission: $I/I_0 = 0.95$.\n\nSolving for $x$:\n\n$$0.95 = e^{-\\mu x}$$\n$$\\ln(0.95) = -\\mu x$$\n$$x = -\\frac{\\ln(0.95)}{\\mu} = -\\frac{\\ln(0.95)}{108}$$\n\nComputing:\n\n$$x = -\\frac{-0.051293}{108} \\approx 4.75\\times10^{-4}\\ \\mathrm{cm}$$\n\nThis is the **maximum** thickness that still transmits *at least* 95%; any thinner filter transmits more. The required thickness is:\n\n$$\\boxed{4.75\\times10^{-4}}$$",
+ "final_answer": "4.75\\times10^{-4}",
+ "correct_answer": "0.00047",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "cm"
+}

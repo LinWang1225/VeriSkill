@@ -1,0 +1,11 @@
+{
+ "tid": "e253",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 21-38",
+ "question_text": "What voltage must be applied to a tungsten filament to produce a continuous spectrum of x-rays having a minimum wavelength of 0.09 nm?The unit of the answer is V.",
+ "response": "Using the Duane–Hunt law, the minimum (short-wavelength cutoff) of the continuous x-ray spectrum relates to the accelerating voltage by:\n\n$$\\lambda_{\\min} = \\frac{hc}{eV} \\quad\\Rightarrow\\quad V = \\frac{hc}{e\\,\\lambda_{\\min}}$$\n\nWith $\\lambda_{\\min} = 0.09\\ \\text{nm} = 0.09\\times10^{-9}\\ \\text{m}$, $h = 6.626\\times10^{-34}\\ \\text{J·s}$, $c = 3.0\\times10^{8}\\ \\text{m/s}$, and $e = 1.602\\times10^{-19}\\ \\text{C}$:\n\n$$V = \\frac{(6.626\\times10^{-34})(3.0\\times10^{8})}{(1.602\\times10^{-19})(0.09\\times10^{-9})} \\approx 1.38\\times10^{4}\\ \\text{V}$$\n\n$$\\boxed{1.38\\times10^{4}}$$",
+ "final_answer": "1.38\\times10^{4}",
+ "correct_answer": "13800",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "V"
+}

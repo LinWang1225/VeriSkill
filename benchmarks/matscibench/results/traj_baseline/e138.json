@@ -1,0 +1,11 @@
+{
+ "tid": "e138",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.45",
+ "question_text": "A tensile test is performed on a metal specimen, and it is found that a true plastic strain of 0.16 is produced when a true stress of 500 MPa (72,500 psi) is applied; for the same metal, the value of $K$ is 825 MPa (120,000 psi). Calculate the true strain that results from the application of a true stress of 600 MPa (87,000 psi).",
+ "response": "## Step-by-step Reasoning\n\nThe true stress–true plastic strain relationship follows the **Hollomon equation**:\n\n$$\\sigma_T = K \\varepsilon_T^n$$\n\n**Step 1 — Find the strain-hardening exponent $n$.**\n\nUsing the first data point ($\\sigma_T = 500$ MPa, $\\varepsilon_T = 0.16$, $K = 825$ MPa):\n\n$$500 = 825(0.16)^n$$\n\n$$(0.16)^n = \\frac{500}{825} = 0.6061$$\n\n$$n = \\frac{\\ln(0.6061)}{\\ln(0.16)} = \\frac{-0.5004}{-1.8326} \\approx 0.273$$\n\n**Step 2 — Find the true strain at $\\sigma_T = 600$ MPa.**\n\n$$600 = 825(\\varepsilon_T)^{0.273}$$\n\n$$(\\varepsilon_T)^{0.273} = \\frac{600}{825} = 0.7273$$\n\n$$\\varepsilon_T = (0.7273)^{1/0.273} = (0.7273)^{3.663} \\approx 0.312$$\n\n$$\\boxed{0.312}$$",
+ "final_answer": "0.312",
+ "correct_answer": "0.311",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

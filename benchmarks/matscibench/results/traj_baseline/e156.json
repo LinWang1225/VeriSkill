@@ -1,0 +1,11 @@
+{
+ "tid": "e156",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.10",
+ "question_text": "Calculate the maximum internal crack length allowable for a Ti-6Al-4V titanium alloy ( table 9.1 ) component that is loaded to a stress one-half its yield strength. Assume that the value of $Y$ is 1.50 .\n\nReference:\n\"Table 9.1\nRoom-Temperature Yield Strength and Plane Strain Fracture Toughness Data for Selected Engineering Materials\n\\begin{tabular}{|l|l|l|l|l|}\n\\hline \\multirow[b]{2}{*}{Material} & \\multicolumn{2}{|c|}{Yield Strength} & \\multicolumn{2}{|c|}{$\\boldsymbol{K}_{\\boldsymbol{I} \\boldsymbol{c}}$} \\\\\n\\hline & MPa & ksi & $\\mathrm{MPa} \\sqrt{\\mathrm{m}}$ & ksi $\\sqrt{\\text { in. }}$ \\\\\n\\hline \\multicolumn{5}{|c|}{Metals} \\\\\n\\hline Aluminum alloy ${ }^a$ (7075-T651) & 495 & 72 & 24 & 22 \\\\\n\\hline Aluminum alloy ${ }^a$ (2024-T3) & 345 & 50 & 44 & 40 \\\\\n\\hline Titanium alloy ${ }^a$ (Ti-6Al-4V) & 910 & 132 & 55 & 50 \\\\\n\\hline Alloy steel ${ }^a$ (4340 tempered @ $260^{\\circ} \\mathrm{C}$ ) & 1640 & 238 & 50.0 & 45.8 \\\\\n\\hline Alloy steel ${ }^a$ ( 4340 tempered @ $425{ }^{\\circ}$ C) & 1420 & 206 & 87.4 & 80.0 \\\\\n\\hline \\multicolumn{5}{|c|}{Ceramics} \\\\\n\\hline Concrete & - & - & 0.2-1.4 & 0.18-1.27 \\\\\n\\hline Soda-lime glass & - & - & 0.7-0.8 & 0.64-0.73 \\\\\n\\hline Aluminum oxide & - & - & 2.7-5.0 & 2.5-4.6 \\\\\n\\hline & \\multicolumn{4}{|l|}{Polymers} \\\\\n\\hline Polystyrene (PS) & 25.0-69.0 & 3.63-10.0 & 0.7-1.1 & 0.64-1.0 \\\\\n\\hline Poly(methyl methacrylate) (PMMA) & 53.8-73.1 & 7.8-10.6 & 0.7-1.6 & 0.64-1.5 \\\\\n\\hline Polycarbonate (PC) & 62.1 & 9.0 & 2.2 & 2.0 \\\\\n\\hline\n\\end{tabular}\"The unit of the answer is mm.",
+ "response": "**Calculation:**\n\n$$a = \\frac{1}{\\pi}\\left(\\frac{55}{1.50 \\times 455}\\right)^2 = \\frac{1}{\\pi}(0.08058)^2 = 2.067 \\times 10^{-3}\\ \\text{m} = 2.067\\ \\text{mm}$$\n\nThe **internal crack length** is $2a$:\n\n$$2a = 2 \\times 2.067 = 4.13\\ \\text{mm}$$\n\n$$\\boxed{4.13}$$",
+ "final_answer": "4.13",
+ "correct_answer": "4.1",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

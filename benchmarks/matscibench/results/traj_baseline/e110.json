@@ -1,0 +1,11 @@
+{
+ "tid": "e110",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.65",
+ "question_text": "What is the composition, in atom percent, of an alloy that consists of $4.5 \\mathrm{wt} \\% \\mathrm{~Pb}$ and $95.5 \\mathrm{wt} \\% \\mathrm{Sn}$ ? The atomic weights for Pb and Sn are $207.19 \\mathrm{~g} / \\mathrm{mol}$ and $118.71 \\mathrm{~g} / \\mathrm{mol}$, respectively.\n\nGive your answer as a tuple (the atom percent of Pb, the atom precent of Sn).The units of each required answer are (at%, at%), respectively.",
+ "response": "Converting weight percent to atom percent using \\(C_A = \\frac{m_A/M_A}{m_A/M_A + m_B/M_B}\\times 100\\):\n\n- \\(n_{Pb} = 4.5/207.19 = 0.02172\\) mol\n- \\(n_{Sn} = 95.5/118.71 = 0.80445\\) mol\n- \\(C_{Pb} = \\frac{0.02172}{0.82617}\\times 100 \\approx 2.63\\) at%\n- \\(C_{Sn} = \\frac{0.80445}{0.82617}\\times 100 \\approx 97.37\\) at%\n\n$$\\boxed{(2.63,\\ 97.37)}$$",
+ "final_answer": "(2.63,\\ 97.37)",
+ "correct_answer": "(2.6, 97.4)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(at%, at%)"
+}

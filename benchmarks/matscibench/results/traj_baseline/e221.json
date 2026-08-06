@@ -1,0 +1,11 @@
+{
+ "tid": "e221",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 20-1",
+ "question_text": "Calculate the saturation magnetization and flux density of bcc iron, given that its lattice parameter is a=2.866 Å and that each Fe atom carries a magnetic moment of 4 Bohr magnetons. \n\nGive your answer as a tuple: (saturation_magnetization, saturation_flux_density).The units of each required answer are (A/m, tesla), respectively.",
+ "response": "## Solution\n\nFor **BCC iron**, the saturation magnetization is the net magnetic moment per unit volume.\n\n**Step 1: Magnetic moment per unit cell**\n\nBCC has **2 atoms per unit cell**. Each atom carries 4 μ_B:\n\n$$\\mu_{\\text{cell}} = 2 \\times 4\\,\\mu_B = 8\\,\\mu_B$$\n\n**Step 2: Unit cell volume**\n\n$$V = a^3 = (2.866\\times10^{-10}\\,\\text{m})^3 = 2.355\\times10^{-29}\\,\\text{m}^3$$\n\n**Step 3: Saturation magnetization**\n\n$$M_s = \\frac{\\mu_{\\text{cell}}}{V} = \\frac{8 \\times 9.274\\times10^{-24}\\,\\text{A·m}^2}{2.355\\times10^{-29}\\,\\text{m}^3} \\approx 3.15\\times10^{6}\\,\\text{A/m}$$\n\n**Step 4: Saturation flux density**\n\n$$B_s = \\mu_0 M_s = (4\\pi\\times10^{-7})(3.15\\times10^{6}) \\approx 3.96\\,\\text{T}$$\n\n$$\\boxed{(3.15\\times10^{6},\\ 3.96)}$$",
+ "final_answer": "(3.15\\times10^{6},\\ 3.96)",
+ "correct_answer": "(3150000.0, 3.96)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(A/m, tesla)"
+}

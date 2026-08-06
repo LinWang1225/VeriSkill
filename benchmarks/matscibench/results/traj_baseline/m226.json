@@ -1,0 +1,11 @@
+{
+ "tid": "m226",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 9-11",
+ "question_text": "Suppose that liquid nickel is undercooled until homogeneous nucleation occurs. Calculate (a) the critical radius of the nucleus required and (b) the number of nickel atoms in the nucleus. Assume that the lattice parameter of the solid FCC nickel is 0.356 nm. Give your answer as a tuple: (critical_radius_Å, number_of_atoms).The units of each required answer are (Å, ), respectively.",
+ "response": "## Reasoning\n\nThis is the classic Callister homogeneous nucleation problem for nickel. I use the standard nickel parameters that accompany this problem:\n\n- Melting temperature: $T_m = 1455°\\text{C} = 1728\\text{ K}$\n- Solid–liquid surface energy: $\\gamma = 0.255\\text{ J/m}^2$\n- Heat of fusion per unit volume: $\\Delta H_f = 2.65\\times10^9\\text{ J/m}^3$\n- Undercooling for homogeneous nucleation: $\\Delta T = 319\\text{ K}$\n- FCC lattice parameter: $a = 0.356\\text{ nm}$\n\n### (a) Critical radius\n\nFor homogeneous nucleation,\n\n$$r^* = \\frac{2\\gamma T_m}{\\Delta H_f\\,\\Delta T}$$\n\n$$r^* = \\frac{2(0.255)(1728)}{(2.65\\times10^9)(319)} = 1.043\\times10^{-9}\\text{ m} \\approx 10.43\\text{ Å}$$\n\n### (b) Number of atoms in the nucleus\n\nTreating the nucleus as a sphere of radius $r^*$ and the FCC unit cell (4 atoms/cell) of volume $a^3$:\n\n$$N = \\frac{\\frac{4}{3}\\pi r^{*3}}{a^3}\\times 4$$\n\n$$N = \\frac{\\frac{4}{3}\\pi(1.043\\text{ nm})^3}{(0.356\\text{ nm})^3}\\times 4 \\approx 421$$\n\nThe computation confirms $r^* = 10.43$ Å and $N \\approx 421$ atoms.\n\n$$\\boxed{(10.43,\\ 421)}$$",
+ "final_answer": "(10.43,\\ 421)",
+ "correct_answer": "(6.65, 109)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(Å, )"
+}

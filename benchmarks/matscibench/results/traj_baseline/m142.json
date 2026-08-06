@@ -1,0 +1,11 @@
+{
+ "tid": "m142",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 16.5",
+ "question_text": "An $\\mathrm{Fe} / \\mathrm{Fe}^{2+}$ concentration cell is constructed in which both electrodes are pure iron. The $\\mathrm{Fe}^{2+}$ concentration for one cell half is 0.5 M and for the other cell half is $2 \\times 10^{-2} \\mathrm{M}$. Is a voltage generated between the two cell halves? If so, what is its magnitude and which electrode will be oxidized?The unit of the answer is V.",
+ "response": "## Reasoning\n\nThis is an **iron concentration cell**: both electrodes are the same pure metal, so $E^\\circ_{\\text{cell}} = 0$. A voltage arises solely from the unequal $\\mathrm{Fe^{2+}}$ ion concentrations.\n\n**Half-reaction:** $\\mathrm{Fe^{2+} + 2e^- \\rightarrow Fe}$, so $n = 2$.\n\n**Direction of spontaneous reaction:** A concentration cell always \"tries to equalize\" the two concentrations. Iron will **plate out** (reduce) on the side with the **higher** $\\mathrm{Fe^{2+}}$ concentration, and **dissolve** (oxidize) on the side with the **lower** concentration.\n\n- Concentrated half ($0.5\\ \\mathrm{M}$) → cathode (reduction, plating)\n- Dilute half ($2\\times10^{-2}\\ \\mathrm{M}$) → anode (oxidation, $\\mathrm{Fe \\rightarrow Fe^{2+} + 2e^-}$)\n\nSo **the electrode in the $2\\times10^{-2}\\ \\mathrm{M}$ half-cell is oxidized.**\n\n**Nernst equation** for the overall cell reaction $\\mathrm{Fe + Fe^{2+}_{conc} \\rightarrow Fe^{2+}_{dil} + Fe}$:\n\n$$E_{\\text{cell}} = -\\frac{RT}{nF}\\ln\\!\\left(\\frac{[\\mathrm{Fe^{2+}}]_{\\text{anode}}}{[\\mathrm{Fe^{2+}}]_{\\text{cathode}}}\\right) = -\\frac{RT}{2F}\\ln\\!\\left(\\frac{2\\times10^{-2}}{0.5}\\right)$$\n\n$$E_{\\text{cell}} = -\\frac{0.0257}{2}\\ln(0.04) = -\\frac{0.0257}{2}(-3.219) \\approx 0.0413\\ \\mathrm{V}$$\n\nYes — a voltage of about **0.0413 V** is generated, and the electrode immersed in the **$2\\times10^{-2}\\ \\mathrm{M}$** (dilute) half-cell is oxidized.\n\n$$\\boxed{0.0413}$$",
+ "final_answer": "0.0413",
+ "correct_answer": "0.0414",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "V"
+}

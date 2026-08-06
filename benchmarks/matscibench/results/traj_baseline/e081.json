@@ -1,0 +1,11 @@
+{
+ "tid": "e081",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.32",
+ "question_text": "Iron oxide (FeO) has the rock salt crystal structure and a density of $5.70 \\mathrm{~g} / \\mathrm{cm}^{3}$, determine the unit cell edge length.\n\nReference:\n$$\n\\begin{aligned}\n& \\sum A{\\mathrm{Fe}}=A{\\mathrm{Fe}}=55.85 \\mathrm{~g} / \\mathrm{mol} \\\\\n& \\sum A{\\mathrm{O}}=A{\\mathrm{O}}=16.00 \\mathrm{~g} / \\mathrm{mol}\n\\end{aligned}\n$$The unit of the answer is nm.",
+ "response": "For the rock salt (NaCl) structure, there are **4 formula units per unit cell** (Z = 4).\n\nThe density relation is:\n\n$$\\rho = \\frac{Z \\cdot M}{a^{3} N_{A}}$$\n\nwith $M_{\\text{FeO}} = 55.85 + 16.00 = 71.85\\ \\mathrm{g/mol}$.\n\nSolving for $a$:\n\n$$a = \\left(\\frac{Z M}{\\rho N_{A}}\\right)^{1/3} = \\left(\\frac{4 \\times 71.85}{5.70 \\times 6.022\\times10^{23}}\\right)^{1/3}$$\n\n$$a \\approx 4.375\\times10^{-8}\\ \\mathrm{cm} = 0.4375\\ \\mathrm{nm}$$\n\n$$\\boxed{0.4375}$$",
+ "final_answer": "0.4375",
+ "correct_answer": "0.437",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "nm"
+}

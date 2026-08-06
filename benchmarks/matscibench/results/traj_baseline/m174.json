@@ -1,0 +1,11 @@
+{
+ "tid": "m174",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 5.6",
+ "question_text": "Circles were printed on the surface of a part before it was deformed. Examination after deformation revealed that the principal strains in the sheet are $\\varepsilon_1 = 0.18$ and $\\varepsilon_2 = 0.078$. Assume that the tools did not touch the surface of concern and that the ratio of stresses remained constant during the deformation. Using the von Mises criterion, find the ratio of the principal stresses $\\alpha = \\sigma_2/\\sigma_1$.",
+ "response": "**Verification:** With $\\alpha = 56/73$: $(2\\alpha-1)/(2-\\alpha) = (39/73)/(90/73) = 39/90 = 13/30 = 0.078/0.18$ ✓\n\nThe ratio $\\varepsilon_2/\\varepsilon_1 = 13/30$ yields $\\alpha = 56/73 \\approx 0.767$.\n\n$$\\boxed{0.767}$$",
+ "final_answer": "0.767",
+ "correct_answer": "0.7671",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

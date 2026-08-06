@@ -1,0 +1,11 @@
+{
+ "tid": "e228",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 2-8",
+ "question_text": "In order to plate a steel part having a surface area of $200 \\mathrm{in} .{ }^2$ with a 0.002 in.-thick layer of nickel: (a) How many atoms of nickel are required? (b) How many moles of nickel are required? Give your answer as a tuple: (number_of_nickel_atoms, moles_of_nickel_required).The units of each required answer are (atoms, mol), respectively.",
+ "response": "## Solution\n\n**Step 1: Volume of nickel required**\n\n$$V = \\text{area} \\times \\text{thickness} = 200 \\text{ in}^2 \\times 0.002 \\text{ in} = 0.4 \\text{ in}^3$$\n\n**Step 2: Convert volume to cm³**\n\n$$V = 0.4 \\text{ in}^3 \\times (2.54 \\text{ cm/in})^3 = 6.555 \\text{ cm}^3$$\n\n**Step 3: Mass of nickel** (using density of Ni = 8.902 g/cm³)\n\n$$m = \\rho V = 8.902 \\text{ g/cm}^3 \\times 6.555 \\text{ cm}^3 = 58.35 \\text{ g}$$\n\n**Step 4: Moles of nickel** (using atomic weight of Ni = 58.69 g/mol)\n\n$$n = \\frac{m}{M} = \\frac{58.35 \\text{ g}}{58.69 \\text{ g/mol}} = 0.994 \\text{ mol}$$\n\n**Step 5: Atoms of nickel** (using Avogadro's number = 6.022 × 10²³ atoms/mol)\n\n$$N = n \\times N_A = 0.994 \\text{ mol} \\times 6.022 \\times 10^{23} \\text{ atoms/mol} = 5.99 \\times 10^{23} \\text{ atoms}$$\n\n$$\\boxed{(5.99 \\times 10^{23},\\ 0.994)}$$",
+ "final_answer": "(5.99 \\times 10^{23},\\ 0.994)",
+ "correct_answer": "(5.99e+23, 0.994)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(atoms, mol)"
+}

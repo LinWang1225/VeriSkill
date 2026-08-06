@@ -1,0 +1,7 @@
+{
+  "edits": [
+    {"critic":"d-matsci-sign-convention","type":"narrow_rule","rule_id":"R-d-matsci-sign-convention-001","evidence_items":["#e229"],"summary":"收窄 tuple 触发条件：仅当数值字段实际带负号时才触发，正模量+方向标签的正确答案不命中；从依据移除 r7#e229（FP）"},
+    {"critic":"d-matsci-model-selection","type":"add_rule","rule_id":"R-d-matsci-model-selection-001","evidence_items":["#e184"],"summary":"在方法库新增'同一题多问中前后混用不同物理模型/近似层次'子情形（CM完整式 vs 稀释极限线性近似混用），依据追加 r28#e184"}
+  ],
+  "fp_resolved":1, "fn_resolved":["e184"], "needs_human":false
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e225",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 23-1",
+ "question_text": "Suppose 1 g of copper as $\\mathrm{Cu}^{2+}$ is dissolved in 1000 g of water to produce an electrolyte. Calculate the electrode potential of the copper half-cell in this electrolyte. Assume $T=25^{\\circ} \\mathrm{C}$. Given the standard electrode potential for the $\\mathrm{Cu}^{2+} / \\mathrm{Cu}$ half-cell ( $E^0=+0.34 \\mathrm{~V}$ ).The unit of the answer is V.",
+ "response": "## Solution\n\n**Step 1: Find the molar concentration of Cu²⁺**\n\nMolar mass of Cu ≈ 63.546 g/mol. With 1 g of Cu²⁺ in 1000 g water (≈ 1 L):\n\n$$[\\mathrm{Cu}^{2+}] = \\frac{1/63.546}{1\\ \\mathrm{L}} \\approx 0.01574\\ \\mathrm{M}$$\n\n**Step 2: Apply the Nernst equation**\n\nFor $\\mathrm{Cu}^{2+} + 2e^- \\to \\mathrm{Cu}$, $n=2$ and $Q = 1/[\\mathrm{Cu}^{2+}]$:\n\n$$E = E^\\circ + \\frac{RT}{nF}\\ln[\\mathrm{Cu}^{2+}]$$\n\nAt 25 °C using $\\frac{0.05916}{n}\\log[\\mathrm{Cu}^{2+}]$:\n\n$$\\log(0.01574) \\approx -1.803$$\n\n$$E = 0.34 + \\frac{0.05916}{2}(-1.803) \\approx 0.34 - 0.0533 \\approx 0.287\\ \\mathrm{V}$$\n\n$$\\boxed{0.287}$$",
+ "final_answer": "0.287",
+ "correct_answer": "0.29",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "V"
+}

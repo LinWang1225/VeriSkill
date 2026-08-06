@@ -1,0 +1,11 @@
+{
+ "tid": "m002",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 3.2",
+ "question_text": "Calculate the density of copper, given that copper is an fcc metal with an atomic radius of 0.128 nm and a molar mass of 63.55 g/mol.The unit of the answer is g/cm^3.",
+ "response": "For an FCC metal, the lattice parameter is $a = 2\\sqrt{2}\\,R$. With $R = 0.128\\ \\text{nm}$, $n=4$ atoms/cell, $M=63.55\\ \\text{g/mol}$, and $N_A = 6.022\\times10^{23}$:\n\n$$\\rho = \\frac{nM}{N_A a^3} \\approx 8.90\\ \\text{g/cm}^3$$\n\n$$\\boxed{8.90}$$",
+ "final_answer": "8.90",
+ "correct_answer": "8.89",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "g/cm^3"
+}

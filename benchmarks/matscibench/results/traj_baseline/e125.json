@@ -1,0 +1,11 @@
+{
+ "tid": "e125",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.5",
+ "question_text": "An aluminum bar 125 mm (5.0 in.) long and having a square cross section 16.5 mm ( 0.65 in.) on an edge is pulled in tension with a load of $66,700 \\mathrm{~N}\\left(15,000 \\mathrm{lb}\\right)$ and experiences an elongation of $0.43 \\mathrm{~mm}\\left(1.7 \\times 10^{-2} \\mathrm{in}\\right.$.). Assuming that the deformation is entirely elastic, calculate the modulus of elasticity of the aluminum.The unit of the answer is GPa.",
+ "response": "## Solution\n\n**Given:**\n- Original length: $L_0 = 125\\ \\text{mm}$\n- Square cross section: $16.5\\ \\text{mm}$ on an edge → $A_0 = (16.5)^2 = 272.25\\ \\text{mm}^2$\n- Load: $F = 66{,}700\\ \\text{N}$\n- Elongation: $\\Delta L = 0.43\\ \\text{mm}$\n\n**Step 1 — Stress:**\n$$\\sigma = \\frac{F}{A_0} = \\frac{66{,}700}{272.25}\\ \\text{MPa}$$\n\n**Step 2 — Strain:**\n$$\\epsilon = \\frac{\\Delta L}{L_0} = \\frac{0.43}{125}$$\n\n**Step 3 — Modulus of elasticity** (Hooke's law, $\\sigma = E\\epsilon$):\n$$E = \\frac{\\sigma}{\\epsilon} = \\frac{F\\,L_0}{A_0\\,\\Delta L} = \\frac{66{,}700 \\times 125}{272.25 \\times 0.43}\\ \\text{MPa}$$\n\n$$E \\approx 71{,}220\\ \\text{MPa} \\approx 71.2\\ \\text{GPa}$$\n\nThis value is consistent with the typical modulus of elasticity for aluminum alloys (≈ 69–73 GPa).\n\n$$\\boxed{71.2}$$",
+ "final_answer": "71.2",
+ "correct_answer": "71.2",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "GPa"
+}

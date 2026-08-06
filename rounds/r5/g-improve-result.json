@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"skill":"g-matsci-weld-group-control-point","type":"new_skill","cluster":"control-point-selection","summary":"焊缝群偏心载荷控制点取保守端"},
+    {"skill":"g-sci-named-force-magnitude-report","type":"new_skill","cluster":"sign-convention-magnitude","summary":"有名力大小报非负模量"},
+    {"skill":"g-matsci-arrhenius-paired-d0-q","type":"new_skill","cluster":"arrhenius-param-pairing","summary":"D0与Q同表同相配套"}
+  ],
+  "clusters_fixed":3,"needs_human":false
+}

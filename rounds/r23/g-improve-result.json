@@ -1,0 +1,7 @@
+{"edits":[
+{"skill":"g-matsci-arrhenius-paired-d0-q","type":"patch","cluster":"e233-D0-magnitude","summary":"D0量级拦截硬约束"},
+{"skill":"g-matsci-table-cell-row-column-attribution","type":"patch","cluster":"e233-D0-magnitude","summary":"量级自洽拦截扩展"},
+{"skill":"g-sci-unit-system-consistency","type":"new_skill","cluster":"m025-unit-system-mix","summary":"新建单位制一致性技能"},
+{"skill":"g-matsci-sigfig-rounding","type":"patch","cluster":"sigfig-overreport-ambiguous","summary":"软信号位数多报/末尾0歧义检测"},
+{"skill":"g-matsci-weld-group-control-point","type":"description","cluster":"m168-leg-width","summary":"description前置腿宽误当长度上限警告"}
+],"clusters_seen":4,"clusters_fixed":4,"needs_human":false}

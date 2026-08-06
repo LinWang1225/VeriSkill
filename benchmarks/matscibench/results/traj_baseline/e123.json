@@ -1,0 +1,11 @@
+{
+ "tid": "e123",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.49",
+ "question_text": "Calculate the diffusion coefficient for copper in aluminum at $600^{\\circ} \\mathrm{C}$. Preexponential and activation energy values for this system are $6.5 \\times 10^{-5} \\mathrm{~m}^{2} / \\mathrm{s}$ and $136,000 \\mathrm{~J} / \\mathrm{mol}$, respectively.The unit of the answer is m^2/s.",
+ "response": "Using the Arrhenius equation for diffusion:\n\n$$D = D_0 \\exp\\!\\left(-\\frac{Q}{RT}\\right)$$\n\nwith $D_0 = 6.5\\times10^{-5}\\ \\mathrm{m^2/s}$, $Q = 136{,}000\\ \\mathrm{J/mol}$, $R = 8.31\\ \\mathrm{J/(mol\\cdot K)}$, and $T = 600 + 273 = 873\\ \\mathrm{K}$:\n\n$$D = (6.5\\times10^{-5})\\exp\\!\\left(-\\frac{136000}{8.31 \\times 873}\\right) \\approx 4.69\\times10^{-13}\\ \\mathrm{m^2/s}$$\n\n$$\\boxed{4.69 \\times 10^{-13}}$$",
+ "final_answer": "4.69 \\times 10^{-13}",
+ "correct_answer": "4.7E-13",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m^2/s"
+}

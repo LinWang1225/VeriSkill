@@ -1,0 +1,11 @@
+{
+ "tid": "m162",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 2.6",
+ "question_text": "A rotating shaft in a power‐generation system has been inspected; nondestructive tests can only reveal surface cracks larger than 2 mm. The shaft is made of AISI 4340 (T = 260 °C) steel with fracture toughness K_IC = 50 MPa·m^1/2. Under service it sees an alternating stress Δσ = 200 MPa. Using a surface‐crack geometry factor β = 1.0 and Paris’ law with C = 1.0×10^–12 and n = 3, estimate the fatigue life (number of cycles) of the shaft.The unit of the answer is cycles.",
+ "response": "## Step-by-Step Solution\n\n**Step 1: Identify the initial crack size**\n\nThe NDT can only detect surface cracks larger than 2 mm, so the smallest crack that could go undetected is:\n$$a_0 = 2 \\text{ mm} = 0.002 \\text{ m}$$\n\n**Step 2: Find the critical crack size $a_c$**\n\nAt fracture, $K = K_{IC}$. Using the surface-crack relation $K = \\beta\\,\\sigma_{\\max}\\sqrt{\\pi a}$ and taking $\\sigma_{\\max} = \\Delta\\sigma = 200$ MPa (R = 0 loading):\n\n$$a_c = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{\\beta\\,\\Delta\\sigma}\\right)^2 = \\frac{1}{\\pi}\\left(\\frac{50}{1.0 \\times 200}\\right)^2 = \\frac{0.0625}{\\pi} \\approx 0.01989 \\text{ m} \\approx 19.9 \\text{ mm}$$\n\n**Step 3: Integrate Paris' law**\n\n$$\\frac{da}{dN} = C(\\Delta K)^n, \\qquad \\Delta K = \\beta\\,\\Delta\\sigma\\sqrt{\\pi a}$$\n\n$$N_f = \\int_{a_0}^{a_c}\\frac{da}{C(\\beta\\,\\Delta\\sigma)^n(\\pi a)^{n/2}} = \\frac{a_c^{1-n/2}-a_0^{1-n/2}}{(1-n/2)\\,C\\,(\\beta\\,\\Delta\\sigma)^n\\,\\pi^{n/2}}$$\n\nWith $n=3$ so $1-n/2 = -0.5$:\n\n$$N_f = \\frac{a_c^{-0.5}-a_0^{-0.5}}{(-0.5)\\,(1.0\\times10^{-12})\\,(200)^3\\,\\pi^{1.5}}$$\n\n**Step 4: Numerical evaluation**\n\n- $a_c^{-0.5} = 1/\\sqrt{0.01989} = 7.090$\n- $a_0^{-0.5} = 1/\\sqrt{0.002} = 22.361$\n- Numerator: $7.090 - 22.361 = -15.271$\n- Denominator: $(-0.5)(10^{-12})(8\\times10^{6})(5.568) = -2.227\\times10^{-5}$\n\n$$N_f = \\frac{-15.271}{-2.227\\times10^{-5}} \\approx 6.86 \\times 10^{5} \\text{ cycles}$$\n\n$$\\boxed{6.86\\times10^{5}}$$",
+ "final_answer": "6.86\\times10^{5}",
+ "correct_answer": "1.4e5",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "cycles"
+}

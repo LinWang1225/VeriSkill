@@ -1,26 +1,9 @@
 {
   "edits": [
-    {
-      "skill": "g-officeqa-extract-verify",
-      "type": "distill",
-      "cluster": "tn",
-      "support": 2,
-      "audited_support": 2,
-      "attribution": "能力缺陷",
-      "summary": "Add independent calculation verification step (Python/tool cross-check) to catch formula and arithmetic errors, distilled from q055 and q113"
-    },
-    {
-      "skill": "g-officeqa-locate-source",
-      "type": "distill",
-      "cluster": "tn",
-      "support": 2,
-      "audited_support": 2,
-      "attribution": "能力缺陷",
-      "summary": "Add negative publication-lag sanity check (verify preceding edition lacks target data) to confirm edition mapping, distilled from q072 and q097"
-    }
+    {"file": "workspace/actor_skills/g-matsci-unitcell-formula-unit-scaling.md", "action": "new_skill", "summary": "题面问 per unit cell 而结构含 Z>1 式单元时须先确认 Z 再缩放（e023 漏乘 Z=8）"},
+    {"file": "workspace/actor_skills/g-sci-missing-input-no-fabrication.md", "action": "new_skill", "summary": "题面缺关键输入参数时不得自行凑取整洁值，须保留为变量函数或声明不可定解（m128 捏造 t=100s）"},
+    {"file": "workspace/actor_skills/g-sci-model-validity-range.md", "action": "new_skill", "summary": "使用线性化/一阶近似前确认待求点落在模型有效区内（e252 线性电阻率外推至 Debye 温度以下）"}
   ],
-  "clusters_seen": 1,
-  "clusters_fixed": 0,
-  "skipped": ["q128 (singleton failure, audited: true, Macaulay duration formula error -- only 1 item, cannot form a group)"],
-  "needs_human": false
+  "needs_human": false,
+  "notes": "3 个新技能。e023/m128 确凿失败各建一技能；e252 错因+软信号建 model-validity-range。"
 }

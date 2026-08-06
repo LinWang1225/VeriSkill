@@ -1,0 +1,11 @@
+{
+ "tid": "m108",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.31",
+ "question_text": "A specimen of magnesium having a rectangular cross section of dimensions $3.2 \\mathrm{~mm} \\times 19.1 \\mathrm{~mm}\\left(\\frac{1}{8} \\mathrm{in} . \\times \\frac{3}{4}\\right.$ in.) is deformed in tension. Using the load-elongation data shown in the following table. Compute the modulus of resilience.\n\n| Load |  | Length |  |\n| :--: | :--: | :--: | :--: |\n| $l b{f}$ | N | in. | mm |\n| 0 | 0 | 2.500 | 63.50 |\n| 310 | 1380 | 2.501 | 63.53 |\n| 625 | 2780 | 2.502 | 63.56 |\n| 1265 | 5630 | 2.505 | 63.62 |\n| 1670 | 7430 | 2.508 | 63.70 |\n| 1830 | 8140 | 2.510 | 63.75 |\n| 2220 | 9870 | 2.525 | 64.14 |\n| 2890 | 12,850 | 2.575 | 65.41 |\n| 3170 | 14,100 | 2.625 | 66.68 |\n| 3225 | 14,340 | 2.675 | 67.95 |\n| 3110 | 13,830 | 2.725 | 69.22 |\n| 2810 | 12,500 | 2.775 | 70.49 |\n|  |  |  |  |The unit of the answer is J/m^3.",
+ "response": "## Solution\n\nThe **modulus of resilience** is the strain energy per unit volume absorbed up to the elastic limit (proportional limit):\n\n$$U_r = \\int_0^{\\varepsilon_y} \\sigma\\, d\\varepsilon = \\frac{\\sigma_y^2}{2E} = \\frac{1}{2}\\sigma_y \\varepsilon_y$$\n\n**Step 1 — Cross-sectional area and gauge length**\n$$A_0 = 3.2 \\times 19.1 = 61.12\\ \\text{mm}^2, \\quad L_0 = 63.50\\ \\text{mm}$$\n\n**Step 2 — Identify the elastic (linear) region**\n\nComputing engineering stress $\\sigma = P/A_0$ and strain $\\varepsilon = \\Delta L/L_0$, the data are linear through the first four points (0–5630 N); the slope drops sharply afterward (49,350 → 23,376 MPa), so the **proportional limit** is at 5630 N:\n\n$$\\sigma_y = \\frac{5630}{61.12} = 92.1\\ \\text{MPa}, \\qquad \\varepsilon_y = \\frac{63.62-63.50}{63.50} = 0.00189$$\n\n**Step 3 — Elastic modulus** (linear regression on the elastic points)\n$$E \\approx 48{,}790\\ \\text{MPa} \\approx 48.8\\ \\text{GPa}$$\n\n**Step 4 — Modulus of resilience**\n$$U_r = \\tfrac{1}{2}\\sigma_y \\varepsilon_y = \\tfrac{1}{2}(92.1\\times10^6)(0.00189) \\approx 8.7\\times10^4\\ \\text{J/m}^3$$\n\n$$\\boxed{8.7\\times10^{4}}$$",
+ "final_answer": "8.7\\times10^{4}",
+ "correct_answer": "1.96E+05",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "J/m^3"
+}

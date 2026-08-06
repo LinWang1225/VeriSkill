@@ -1,0 +1,11 @@
+{
+ "tid": "m178",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 6.6",
+ "question_text": "For an aluminum alloy under constant load, the creep rate increased by a factor of 2 when the temperature was increased from $71\\,^\\circ\\text{C}$ to $77\\,^\\circ\\text{C}$. Find the activation energy.The unit of the answer is kJ/mole.",
+ "response": "The creep rate follows the Arrhenius equation:\n\n$$\\dot{\\varepsilon} = A\\exp\\!\\left(-\\frac{Q}{RT}\\right)$$\n\nTaking the ratio at the two temperatures (344 K and 350 K):\n\n$$2 = \\exp\\!\\left[\\frac{Q}{R}\\left(\\frac{1}{T_1}-\\frac{1}{T_2}\\right)\\right]$$\n\n$$Q = \\frac{R\\ln 2}{\\dfrac{1}{T_1}-\\dfrac{1}{T_2}} = \\frac{8.314\\ln 2}{\\dfrac{1}{344}-\\dfrac{1}{350}} \\approx 115{,}641\\ \\text{J/mol}$$\n\n$$\\boxed{115.6}$$",
+ "final_answer": "115.6",
+ "correct_answer": "116",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "kJ/mole"
+}

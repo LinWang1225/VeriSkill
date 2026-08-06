@@ -1,0 +1,11 @@
+{
+ "tid": "e036",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_5.19",
+ "question_text": "Using data in Table, calculate the self-diffusivity for copper in copper at $1,000^{\\circ} \\mathrm{C}$. Give your answer as the value of self_diffusivity.\n(Referrence to Table: \n\\begin{tabular}{llrcc}\n\\hline \\multicolumn{5}{c}{ Diffusivity Data for a Number of Metallic Systems ${ }^{\\text {a }}$} \\\\\n\\hline Solute & Solvent & $\\boldsymbol{D}_{\\mathbf{0}}\\left(\\mathbf{m}^{\\mathbf{2}} / \\mathbf{s}\\right)$ & $\\boldsymbol{Q ( k J} / \\mathbf{m o l})$ & $\\boldsymbol{Q ( k c a l} / \\mathbf{m o l})$ \\\\\n\\hline Carbon & Fcc iron & $20 \\times 10^{-6}$ & 142 & 34.0 \\\\\nCarbon & Bcc iron & $220 \\times 10^{-6}$ & 122 & 29.3 \\\\\nIron & Fcc iron & $22 \\times 10^{-6}$ & 268 & 64.0 \\\\\nIron & Bcc iron & $200 \\times 10^{-6}$ & 240 & 57.5 \\\\\nNickel & Fcc iron & $77 \\times 10^{-6}$ & 280 & 67.0 \\\\\nManganese & Fcc iron & $35 \\times 10^{-6}$ & 282 & 67.5 \\\\\nZinc & Copper & $34 \\times 10^{-6}$ & 191 & 45.6 \\\\\nCopper & Aluminum & $15 \\times 10^{-6}$ & 126 & 30.2 \\\\\nCopper & Copper & $20 \\times 10^{-6}$ & 197 & 47.1 \\\\\nSilver & Silver & $40 \\times 10^{-6}$ & 184 & 44.1 \\\\\nCarbon & Hcp titanium & $511 \\times 10^{-6}$ & 182 & 43.5 \\\\\n\\hline\n\\end{tabular}\n)The unit of the answer is m^2/s.",
+ "response": "The self-diffusivity follows the Arrhenius relation:\n\n$$D = D_0 \\exp\\!\\left(-\\frac{Q}{RT}\\right)$$\n\nFor copper in copper, from the table:\n- $D_0 = 20 \\times 10^{-6}\\ \\mathrm{m^2/s}$\n- $Q = 197\\ \\mathrm{kJ/mol} = 197{,}000\\ \\mathrm{J/mol}$\n- $T = 1000^{\\circ}\\mathrm{C} = 1273\\ \\mathrm{K}$\n- $R = 8.314\\ \\mathrm{J/(mol\\cdot K)}$\n\n$$D = (20\\times10^{-6})\\exp\\!\\left(-\\frac{197000}{8.314 \\times 1273}\\right) \\approx 1.65 \\times 10^{-13}\\ \\mathrm{m^2/s}$$\n\n$$\\boxed{1.65 \\times 10^{-13}}$$",
+ "final_answer": "1.65 \\times 10^{-13}",
+ "correct_answer": "1.65E-13",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m^2/s"
+}

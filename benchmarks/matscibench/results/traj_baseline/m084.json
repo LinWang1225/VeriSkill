@@ -1,0 +1,11 @@
+{
+ "tid": "m084",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.47",
+ "question_text": "Iron (Fe) and vanadium (V) both crystallize in the body-centered cubic (BCC) structure. Vanadium forms a substitutional solid solution with iron up to approximately 20 weight percent at room temperature. Given a $90~\\mathrm{wt}\\%~\\mathrm{Fe} - 10~\\mathrm{wt}\\%~\\mathrm{V}$ alloy, compute the unit cell edge length (in nanometers) of this alloy.\n\nAtomic radius of Fe: $0.124~\\mathrm{nm}$\nAtomic radius of V: $0.132~\\mathrm{nm}$\nDensity of Fe: $7.87~\\mathrm{g/cm^3}$\nDensity of V: $6.10~\\mathrm{g/cm^3}$\nAtomic weight of Fe: $55.85~\\mathrm{g/mol}$\nAtomic weight of V: $50.94~\\mathrm{g/mol}$\nAvogadro’s number: $6.022 \\times 10^{23}~\\mathrm{atoms/mol}$The unit of the answer is nm.",
+ "response": "Both methods converge, confirming the data is self-consistent.\n\n**Reasoning summary:**\n\n1. **Alloy density** (inverse rule of mixtures):\n$$\\rho_{\\text{alloy}} = \\frac{1}{w_{\\text{Fe}}/\\rho_{\\text{Fe}} + w_{\\text{V}}/\\rho_{\\text{V}}} = \\frac{1}{0.90/7.87 + 0.10/6.10} = 7.648~\\mathrm{g/cm^3}$$\n\n2. **Atom fractions** (via $C_i' = \\frac{w_i/A_i}{\\sum w_j/A_j}$):\n$$C_{\\text{Fe}}' = 89.14\\%, \\quad C_{\\text{V}}' = 10.86\\%$$\n\n3. **Average atomic weight:**\n$$\\bar{A} = C_{\\text{Fe}}'A_{\\text{Fe}} + C_{\\text{V}}'A_{\\text{V}} = 55.32~\\mathrm{g/mol}$$\n\n4. **Lattice parameter** (BCC, $n=2$):\n$$a = \\left(\\frac{n\\bar{A}}{\\rho_{\\text{alloy}}\\,N_A}\\right)^{1/3} = 0.2885~\\mathrm{nm}$$\n\nA cross-check using Vegard's law on atomic radius ($R_{\\text{avg}}=0.1249$ nm, $a=4R/\\sqrt{3}$) gives $0.2884$ nm — in excellent agreement.\n\n$$\\boxed{0.2885}$$",
+ "final_answer": "0.2885",
+ "correct_answer": "0.289",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "nm"
+}

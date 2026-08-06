@@ -1,0 +1,11 @@
+{
+ "tid": "e235",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 6-22",
+ "question_text": "(a) A force of $100,000 \\mathrm{~N}$ is applied to an iron bar with a cross-sectional area of $10 \\mathrm{~mm} \\times 20 \\mathrm{~mm}$ and having a yield strength of 400 MPa and a tensile strength of 480 MPa. calculate the maximum force that a 0.2 -in. diameter rod of $\\mathrm{Al}_2 \\mathrm{O}_3$, having a yield strength of $35,000 \\mathrm{psi}$, can withstand with no plastic deformation.The unit of the answer is N.",
+ "response": "## Reasoning\n\nFor the rod to withstand the load with **no plastic deformation**, the applied stress must not exceed the **yield strength**:\n\n$$\\sigma_{\\max} = \\sigma_y \\quad\\Rightarrow\\quad F_{\\max} = \\sigma_y \\cdot A$$\n\n**Given (Al₂O₃ rod):**\n- Diameter $d = 0.2\\ \\text{in}$\n- Yield strength $\\sigma_y = 35{,}000\\ \\text{psi}$\n\n**Cross-sectional area:**\n\n$$A = \\frac{\\pi d^2}{4} = \\frac{\\pi(0.2)^2}{4} = 0.031416\\ \\text{in}^2$$\n\n**Maximum force (in lbf):**\n\n$$F = 35{,}000 \\times 0.031416 = 1099.56\\ \\text{lbf}$$\n\n**Convert to Newtons** ($1\\ \\text{lbf} = 4.4482\\ \\text{N}$):\n\n$$F = 1099.56 \\times 4.4482 \\approx 4891\\ \\text{N}$$\n\n(The iron-bar data — 100,000 N, 10×20 mm area, 400/480 MPa — is a separate part of the problem and is not needed for this calculation.)\n\n$$\\boxed{4891}$$",
+ "final_answer": "4891",
+ "correct_answer": "4891",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "N"
+}

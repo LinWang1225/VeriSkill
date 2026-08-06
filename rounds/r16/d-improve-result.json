@@ -1,0 +1,10 @@
+{
+  "edits": [
+    {"critic": "d-sci-answer-format", "type": "rubric", "rule_id": null, "evidence_items": [], "summary": "拓宽 description/tags 以覆盖有效数字舍入精度（加法结构 vs 乘法结构）"},
+    {"critic": "d-sci-answer-format", "type": "add_rule", "rule_id": "R-d-sci-answer-format-002", "evidence_items": ["#m057"], "summary": "新增 soft 判据：加法结构公式须按小数位舍入，误按乘法最少有效数字位数舍入即命中"},
+    {"critic": "d-matsci-scope-misread", "type": "rubric", "rule_id": null, "evidence_items": [], "summary": "拓宽 description/tags 以覆盖丢弃题目给定约束条件"},
+    {"critic": "d-matsci-scope-misread", "type": "add_rule", "rule_id": "R-d-matsci-scope-misread-002", "evidence_items": ["#m102"], "summary": "新增 soft 判据：通量比+总通量须联立，丢弃总量或漏带原子/分子换算因子即命中"}
+  ],
+  "fp_seen": 0, "fp_resolved": 0, "fn_clusters_seen": 3,
+  "fn_resolved": ["m057", "m102"], "unjudgeable": ["m022"], "unresolved": [], "skipped": [], "needs_human": false
+}

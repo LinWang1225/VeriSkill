@@ -1,0 +1,11 @@
+{
+ "tid": "e105",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.38",
+ "question_text": "Molybdenum (Mo) forms a substitutional solid solution with tungsten (W). Compute the number of molybdenum atoms per cubic centimeter for a molybdenum-tungsten alloy that contains 16.4 wt\\% Mo and 83.6 wt\\% W. The densities of pure molybdenum and tungsten are 10.22 and $19.30 \\mathrm{~g} / \\mathrm{cm}^{3}$, respectively.The unit of the answer is atoms/cm^3.",
+ "response": "For a substitutional solid solution, the alloy density follows the rule of mixtures:\n\n$$\\rho_{\\text{alloy}} = \\frac{1}{\\frac{w_{\\text{Mo}}}{\\rho_{\\text{Mo}}}+\\frac{w_{\\text{W}}}{\\rho_{\\text{W}}}}$$\n\nWith $w_{\\text{Mo}}=0.164$, $w_{\\text{W}}=0.836$, $\\rho_{\\text{Mo}}=10.22$, $\\rho_{\\text{W}}=19.30$:\n\n$$\\rho_{\\text{alloy}} = \\frac{1}{0.164/10.22 + 0.836/19.30} \\approx 16.85\\ \\text{g/cm}^3$$\n\nThe concentration of Mo atoms (atoms per cm³) is:\n\n$$N_{\\text{Mo}} = \\frac{w_{\\text{Mo}}\\,\\rho_{\\text{alloy}}}{A_{\\text{Mo}}}N_A = \\frac{0.164 \\times 16.85}{95.94}\\times 6.022\\times10^{23}$$\n\n$$N_{\\text{Mo}} \\approx 1.73\\times10^{22}\\ \\text{atoms/cm}^3$$\n\n$$\\boxed{1.73 \\times 10^{22}}$$",
+ "final_answer": "1.73 \\times 10^{22}",
+ "correct_answer": "1.73E+22",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "atoms/cm^3"
+}

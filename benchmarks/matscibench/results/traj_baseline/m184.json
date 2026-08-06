@@ -1,0 +1,11 @@
+{
+ "tid": "m184",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 3-4",
+ "question_text": "Calculate the packing factor for the FCC unit cell. The volume of one atom is $\\frac{4}{3} \\pi r^{3}$ and the volume of the unit cell is $a_{0}^{3}$, where $r$ is the radius of the atom and $a_{0}$ is the lattice parameter. For FCC unit cells, $a_{0} = \\frac{4r}{\\sqrt{2}}$.",
+ "response": "## Reasoning\n\nThe **atomic packing factor (APF)** is the fraction of the unit-cell volume occupied by atoms:\n\n$$\\text{APF} = \\frac{\\text{volume of atoms in cell}}{\\text{volume of unit cell}}$$\n\n**Step 1: Count atoms in the FCC unit cell.**\n- 8 corner atoms × 1/8 each = 1 atom\n- 6 face atoms × 1/2 each = 3 atoms\n- **Total = 4 atoms per unit cell**\n\n**Step 2: Volume occupied by atoms.**\n\n$$V_{\\text{atoms}} = 4 \\cdot \\frac{4}{3}\\pi r^{3} = \\frac{16}{3}\\pi r^{3}$$\n\n**Step 3: Volume of the unit cell.** Using $a_0 = \\dfrac{4r}{\\sqrt{2}}$:\n\n$$V_{\\text{cell}} = a_0^{3} = \\left(\\frac{4r}{\\sqrt{2}}\\right)^{3} = \\frac{64 r^{3}}{2\\sqrt{2}} = 16\\sqrt{2}\\, r^{3}$$\n\n**Step 4: Compute the packing factor.**\n\n$$\\text{APF} = \\frac{\\frac{16}{3}\\pi r^{3}}{16\\sqrt{2}\\, r^{3}} = \\frac{\\pi}{3\\sqrt{2}} \\approx 0.7405$$\n\n$$\\boxed{0.74}$$",
+ "final_answer": "0.74",
+ "correct_answer": "0.74",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

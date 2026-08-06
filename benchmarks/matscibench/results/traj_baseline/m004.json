@@ -1,0 +1,11 @@
+{
+ "tid": "m004",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 3.17",
+ "question_text": "Calculate the planar density of ions in the (111) plane of MgO. Given the lattice constant $a=0.420 \\mathrm{~nm}$.The unit of the answer is nm^{-2}.",
+ "response": "With $a = 0.420\\ \\mathrm{nm}$:\n\n$$\\text{PD}_{(111)} = \\frac{4}{\\sqrt3\\,(0.420)^2} = \\frac{4}{1.7321 \\times 0.1764} \\approx 13.09\\ \\mathrm{nm}^{-2}$$\n\n$$\\boxed{13.09}$$",
+ "final_answer": "13.09",
+ "correct_answer": "13.1",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "nm^{-2}"
+}

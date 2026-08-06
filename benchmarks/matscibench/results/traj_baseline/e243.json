@@ -1,0 +1,11 @@
+{
+ "tid": "e243",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 12-51",
+ "question_text": "A steel contains $8 \\%$ cementite and $92 \\%$ ferrite at room temperature. Estimate the carbon content of the steel.The unit of the answer is %.",
+ "response": "## Reasoning\n\nAt room temperature, the microstructure consists of ferrite (α-Fe) and cementite (Fe₃C).\n\n**Key data:**\n- **Cementite (Fe₃C)** has a fixed carbon content of **6.67 wt%** (this is a stoichiometric line compound).\n- **Ferrite** at room temperature has negligible carbon solubility (~0 wt% C).\n\n**Mass balance (lever rule):**\n\nThe total carbon content of the steel equals the weighted sum of the carbon in each phase:\n\n$$w_C = f_{\\text{cementite}} \\cdot w_{C,\\text{cementite}} + f_{\\text{ferrite}} \\cdot w_{C,\\text{ferrite}}$$\n\n$$w_C = 0.08 \\times 6.67 + 0.92 \\times 0 = 0.5336 \\approx 0.53\\%$$\n\nThis result is consistent with a hypoeutectoid steel (just below the eutectoid composition of 0.76% C), which at room temperature would indeed be mostly ferrite with a smaller fraction of cementite.\n\n$$\\boxed{0.53}$$",
+ "final_answer": "0.53",
+ "correct_answer": "0.53",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

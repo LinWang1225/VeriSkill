@@ -1,0 +1,11 @@
+{
+ "tid": "e078",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.21",
+ "question_text": "Cobalt (Co) has an HCP crystal structure, an atomic radius of 0.1253 nm , and a c/a ratio of 1.623 . Compute the volume of the unit cell for Co.The unit of the answer is nm^3.",
+ "response": "For an HCP unit cell:\n\n- The lattice parameter \\(a = 2R = 2(0.1253) = 0.2506\\ \\text{nm}\\)\n- \\(c = (c/a)\\cdot a = 1.623 \\times 0.2506\\ \\text{nm}\\)\n- The HCP unit cell volume is \\(V = \\dfrac{3\\sqrt{3}}{2}a^{2}c\\)\n\nComputing:\n\n\\[\nV = \\frac{3\\sqrt{3}}{2}(0.2506)^2(1.623\\times 0.2506) \\approx 0.0664\\ \\text{nm}^3\n\\]\n\n\\(\\boxed{0.0664}\\)",
+ "final_answer": "0.0664",
+ "correct_answer": "6.64E-02",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "nm^3"
+}

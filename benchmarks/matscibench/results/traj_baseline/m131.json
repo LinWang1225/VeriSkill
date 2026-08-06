@@ -1,0 +1,11 @@
+{
+ "tid": "m131",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 11.10",
+ "question_text": "The kinetics of the austenite-to-pearlite transformation obeys the Avrami relationship. Using the fraction transformed-time data given here, determine the total time required for $95 \\%$ of the austenite to transform to pearlite:\n\n| Fraction Transformed | Time $(\\mathrm{s})$ |\n| :--: | :--: |\n| 0.2 | 280 |\n| 0.6 | 425 |The unit of the answer is s.",
+ "response": "The Avrami equation is $y = 1 - \\exp(-k t^n)$. Taking $\\ln(1-y) = -k t^n$ and dividing the two data points eliminates $k$:\n\n$$\\frac{\\ln 0.8}{\\ln 0.4} = \\left(\\frac{280}{425}\\right)^n \\;\\Rightarrow\\; n \\approx 3.385$$\n\nThen $k = -\\ln(0.8)/280^n \\approx 1.16\\times10^{-9}$. For $y=0.95$:\n\n$$t = \\left(\\frac{-\\ln 0.05}{k}\\right)^{1/n} \\approx 603.1\\ \\text{s}$$\n\n$$\\boxed{603.1}$$",
+ "final_answer": "603.1",
+ "correct_answer": "603",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "s"
+}

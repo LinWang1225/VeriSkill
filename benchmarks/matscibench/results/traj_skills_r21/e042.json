@@ -1,0 +1,11 @@
+{
+ "tid": "e042",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_8.23",
+ "question_text": "A structural steel with a fracture toughness of $60 \\mathrm{MPa} \\sqrt{\\mathrm{m}}$ has no surface crack larger than 3 mm in length. By how much (in \\%) would this largest surface crack have to grow before the system would experience fast fracture under an applied stress of 500 MPa ?The unit of the answer is %.",
+ "response": "## Reasoning\n\nThis is a Linear Elastic Fracture Mechanics (LEFM) fast-fracture problem. I checked the relevant skill `g-matsci-lefm-crack-length-convention`.\n\n**Formula:** $K_{Ic} = Y\\sigma\\sqrt{\\pi a_c}$\n\n**Crack-length convention check (from skill):** The skill's factor-of-2 pitfall applies to *internal* through-cracks, where $a$ is the half-length but NDT detection limits are quoted as full length $2a$. Here the flaw is a **surface crack**, for which $a$ is the crack length itself (the full extent from the free surface). Both the given \"3 mm\" and the computed $a_c$ are therefore in the same caliber (full surface-crack length) — no factor-of-2 conversion is needed.\n\n**Geometry factor $Y$:** The problem doesn't state $Y$, but for a surface crack the standard value (Callister) is $Y = 1.1$. Per the skill, a missing standard parameter must be looked up, not defaulted to 1.\n\n**Solve for critical crack length:**\n$$a_c = \\frac{1}{\\pi}\\left(\\frac{K_{Ic}}{Y\\sigma}\\right)^2 = \\frac{1}{\\pi}\\left(\\frac{60}{1.1\\times 500}\\right)^2 = 3.788\\ \\text{mm}$$\n\n**Percent growth (reference = original crack length $a_0 = 3$ mm, the natural basis for \"% growth\"):**\n$$\\% = \\frac{a_c - a_0}{a_0}\\times 100 = \\frac{3.788 - 3}{3}\\times 100 = 26.3\\%$$\n\n$$\\boxed{26.3}$$",
+ "final_answer": "26.3",
+ "correct_answer": "52.8",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

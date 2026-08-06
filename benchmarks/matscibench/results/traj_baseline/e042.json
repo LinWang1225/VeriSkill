@@ -1,0 +1,11 @@
+{
+ "tid": "e042",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_8.23",
+ "question_text": "A structural steel with a fracture toughness of $60 \\mathrm{MPa} \\sqrt{\\mathrm{m}}$ has no surface crack larger than 3 mm in length. By how much (in \\%) would this largest surface crack have to grow before the system would experience fast fracture under an applied stress of 500 MPa ?The unit of the answer is %.",
+ "response": "## Solution\n\n**Given:**\n- Fracture toughness $K_{Ic} = 60\\ \\mathrm{MPa\\sqrt{m}}$\n- Initial surface crack length $a_0 = 3\\ \\mathrm{mm} = 0.003\\ \\mathrm{m}$\n- Applied stress $\\sigma = 500\\ \\mathrm{MPa}$\n- Surface crack geometry factor $Y = 1.12$\n\n**Step 1 — Critical crack length at fast fracture:**\n\nSetting $K_I = K_{Ic}$:\n\n$$a_c = \\frac{1}{\\pi}\\left(\\frac{K_{Ic}}{Y\\sigma}\\right)^2 = \\frac{1}{\\pi}\\left(\\frac{60}{1.12 \\times 500}\\right)^2 = \\frac{1}{\\pi}(0.1071)^2 \\approx 3.654\\ \\mathrm{mm}$$\n\n**Step 2 — Percentage growth required:**\n\n$$\\%\\,\\text{growth} = \\frac{a_c - a_0}{a_0}\\times 100 = \\frac{3.654 - 3.0}{3.0}\\times 100 \\approx 21.8\\%$$\n\nThe crack must grow from 3 mm to about 3.65 mm — a relatively small increase, reflecting how sharply the stress intensity rises with crack length (square-root dependence) and how close the initial crack already is to critical.\n\n$$\\boxed{21.8}$$",
+ "final_answer": "21.8",
+ "correct_answer": "52.8",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

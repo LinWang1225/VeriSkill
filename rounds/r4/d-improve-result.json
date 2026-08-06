@@ -1,19 +1,7 @@
 {
   "edits": [
-    {
-      "critic": "d-officeqa-data-aggregation",
-      "type": "rubric",
-      "rule_id": "",
-      "evidence_items": ["#q085"],
-      "summary": "Added rubric item about verifying claimed numerical values are visible in the raw table data shown in the trajectory"
-    }
+    {"critic":"d-matsci-model-selection","type":"narrow_rule","rule_id":"R-d-matsci-model-selection-001","evidence_items":["#m164","#m180"],"summary":"拓宽触发条件覆盖一般模型/公式选择，方法库新增两体对磨磨损因子2和Orowan 2D/3D几何子情形"},
+    {"critic":"d-matsci-extrapolate-validity","type":"add_rule","rule_id":"R-d-matsci-extrapolate-validity-002","evidence_items":["#e252"],"summary":"新增soft判据：显式承认近似不适用却回避改用正确模型"}
   ],
-  "fp_seen": 0,
-  "fp_resolved": 0,
-  "fn_clusters_seen": 0,
-  "fn_resolved": [],
-  "unjudgeable": ["q028", "q032", "q040"],
-  "unresolved": [],
-  "skipped": [],
-  "needs_human": false
+  "fp_seen":1,"fp_resolved":0,"fn_clusters_seen":3,"fn_resolved":["e252","m164","m180"],"unjudgeable":[],"unresolved":["m025"],"needs_human":false
 }

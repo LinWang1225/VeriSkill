@@ -1,0 +1,11 @@
+{
+ "tid": "e032",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 15.7",
+ "question_text": "Calculate the volume of $\\mathrm{O}_2$ gas consumed (at STP) by the corrosion of 100 g of chromium. (In this case, trivalent $\\mathrm{Cr}^{3+}$ ions are found at the anode.) Give your answer as the value of volume.The unit of the answer is m^3.",
+ "response": "## Reasoning\n\n**Oxidation (anode):** Chromium is oxidized to trivalent ions:\n$$\\mathrm{Cr} \\rightarrow \\mathrm{Cr}^{3+} + 3e^-$$\n\n**Reduction (cathode):** Oxygen is reduced:\n$$\\mathrm{O_2} + 4e^- \\rightarrow 2\\mathrm{H_2O}$$\n\nEach Cr atom releases **3 electrons**; each O₂ molecule consumes **4 electrons**. Therefore the mole ratio is:\n\n$$n(\\mathrm{O_2}) = \\frac{3}{4}\\,n(\\mathrm{Cr})$$\n\n**Moles of Cr:**\n$$n(\\mathrm{Cr}) = \\frac{100\\ \\mathrm{g}}{52.00\\ \\mathrm{g/mol}} = 1.923\\ \\mathrm{mol}$$\n\n**Moles of O₂:**\n$$n(\\mathrm{O_2}) = \\frac{3}{4}\\times 1.923 = 1.442\\ \\mathrm{mol}$$\n\n**Volume at STP** (using $V_m = 22.414\\ \\mathrm{L/mol} = 0.022414\\ \\mathrm{m^3/mol}$):\n$$V = 1.442 \\times 0.022414 \\approx 0.0323\\ \\mathrm{m^3}$$\n\n$$\\boxed{0.0323}$$",
+ "final_answer": "0.0323",
+ "correct_answer": "0.0323",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m^3"
+}

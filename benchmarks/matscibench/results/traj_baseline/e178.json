@@ -1,0 +1,11 @@
+{
+ "tid": "e178",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 19.16",
+ "question_text": "The fraction of nonreflected radiation that is transmitted through a 5-mm thickness of a transparent material is 0.95 . If the thickness is increased to 12 mm , what fraction of light will be transmitted?",
+ "response": "The transmitted (non-reflected) fraction obeys the Beer–Lambert law, $I/I_0 = e^{-\\alpha x}$, so it decays exponentially with thickness.\n\nGiven $0.95 = e^{-\\alpha(5\\,\\text{mm})}$, at $12\\,\\text{mm}$:\n\n$$\\frac{I}{I_0} = e^{-\\alpha(12)} = \\left(e^{-\\alpha(5)}\\right)^{12/5} = 0.95^{12/5} \\approx 0.884$$\n\n$$\\boxed{0.884}$$",
+ "final_answer": "0.884",
+ "correct_answer": "0.884",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e207",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 3-5",
+ "question_text": "Determine the density of BCC iron, which has a lattice parameter of 0.2866 nm. The atomic mass of iron is 55.847 g/mol, and the Avogadro constant is $6.022 \\times 10^{23}$ atoms/mol. The volume of the unit cell can be calculated using the formula $V = a_{0}^{3}$, where $a_{0}$ is the lattice parameter. The theoretical density can be calculated using the formula $\\rho = \\frac{(\\text{number of atoms/cell})(\\text{atomic mass})}{(\\text{volume of unit cell})(\\text{Avogadro constant})}$.The unit of the answer is g/cm^3.",
+ "response": "For BCC iron, there are **2 atoms per unit cell**. Converting the lattice parameter to cm: $a_0 = 0.2866\\,\\text{nm} = 2.866\\times10^{-8}\\,\\text{cm}$.\n\n$$V = a_0^3 = (2.866\\times10^{-8})^3 = 2.356\\times10^{-23}\\,\\text{cm}^3$$\n\n$$\\rho = \\frac{(2)(55.847)}{(2.356\\times10^{-23})(6.022\\times10^{23})} \\approx 7.88\\,\\text{g/cm}^3$$\n\n$$\\boxed{7.88}$$",
+ "final_answer": "7.88",
+ "correct_answer": "7.879",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g/cm^3"
+}

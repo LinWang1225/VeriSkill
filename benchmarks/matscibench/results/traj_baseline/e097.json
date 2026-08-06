@@ -1,0 +1,11 @@
+{
+ "tid": "e097",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.25",
+ "question_text": "What is the composition, in weight percent, of an alloy that consists of $5 \\mathrm{at} \\% \\mathrm{Cu}$ and $95 \\mathrm{at} \\% \\mathrm{Pt}$ ?\n\\begin{aligned}\n& A_{\\mathrm{Cu}}=63.55 \\mathrm{~g} / \\mathrm{mol} \\\\\n& A_{\\mathrm{Pt}}=195.08 \\mathrm{~g} / \\mathrm{mol}\n\\end{aligned}\nGive your answer as (the weight percent of Cu, the weight percent of Pt)The units of each required answer are (wt%, wt%), respectively.",
+ "response": "Taking a basis of 100 atoms: 5 atoms of Cu and 95 atoms of Pt.\n\n- Mass of Cu = $5 \\times 63.55 = 317.75$ g\n- Mass of Pt = $95 \\times 195.08 = 18532.6$ g\n- Total mass = $18850.35$ g\n\n$$w_{\\mathrm{Cu}} = \\frac{317.75}{18850.35}\\times 100 \\approx 1.69\\,\\mathrm{wt\\%}$$\n\n$$w_{\\mathrm{Pt}} = \\frac{18532.6}{18850.35}\\times 100 \\approx 98.31\\,\\mathrm{wt\\%}$$\n\n$$\\boxed{(1.69,\\ 98.31)}$$",
+ "final_answer": "(1.69,\\ 98.31)",
+ "correct_answer": "(1.68, 98.32)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(wt%, wt%)"
+}

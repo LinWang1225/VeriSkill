@@ -1,0 +1,9 @@
+{
+  "edits":[
+    {"file":"workspace/actor_skills/g-matsci-zone-refining-multi-pass.md","action":"new_skill","summary":"新建区熔技能：辨析单步界面平衡 C_s=k·C_l vs 多道次分布方程/递推"},
+    {"file":"workspace/actor_skills/g-sci-model-validity-range.md","action":"patch","summary":"补居里点/磁相变为线性电阻率硬边界"}
+  ],
+  "new_skills":["g-matsci-zone-refining-multi-pass"],
+  "needs_human":false,
+  "notes":"e055新建区熔多道次技能;m250补居里点硬边界"
+}

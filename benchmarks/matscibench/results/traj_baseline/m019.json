@@ -1,0 +1,11 @@
+{
+ "tid": "m019",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 4.3",
+ "question_text": "Calculate the density of vacant sites (in $\\mathrm{m}^{-3}$ ) for aluminum at $660^{\\circ} \\mathrm{C}$ (just below its melting point) where the fraction of vacant lattice sites is $8.82 \\times 10^{-4}$. Give your answer as the value of density_of_vacant_sites.The unit of the answer is m^-3.",
+ "response": "## Solution\n\nFor aluminum (FCC), the density of vacant sites is the fraction of vacancies multiplied by the total number of atomic sites per unit volume:\n\n$$N_v = \\frac{\\rho N_A}{A} \\cdot \\text{(fraction of vacancies)}$$\n\n**Given values:**\n- Density of Al: $\\rho = 2.70 \\text{ g/cm}^3 = 2.70 \\times 10^6 \\text{ g/m}^3$\n- Avogadro's number: $N_A = 6.022 \\times 10^{23} \\text{ atoms/mol}$\n- Atomic weight of Al: $A = 26.98 \\text{ g/mol}$\n- Vacancy fraction: $8.82 \\times 10^{-4}$\n\n**Step 1 — Atomic site density:**\n\n$$N = \\frac{(2.70 \\times 10^6)(6.022 \\times 10^{23})}{26.98} = 6.026 \\times 10^{28} \\text{ m}^{-3}$$\n\n**Step 2 — Vacant site density:**\n\n$$N_v = (6.026 \\times 10^{28})(8.82 \\times 10^{-4}) = 5.315 \\times 10^{25} \\text{ m}^{-3}$$\n\n$$\\boxed{5.315 \\times 10^{25}}$$",
+ "final_answer": "5.315 \\times 10^{25}",
+ "correct_answer": "5.31E+25",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "m^-3"
+}

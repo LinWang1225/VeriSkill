@@ -1,0 +1,11 @@
+{
+ "tid": "m208",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 3-74",
+ "question_text": "Would you expect CsBr to have the sodium chloride, zinc blende, fluorite, or cesium chloride structure? Based on your answer, determine (a) the lattice parameter; (b) the density; and (c) the packing factor. \n\nGive your answer as a tuple: (attice_parameter_Å, density_g_cm3, packing_factor).The units of each required answer are (Å, g/cm³, ), respectively.",
+ "response": "## Reasoning\n\n**Structure determination:**\n\nUsing the radius-ratio rule with ionic radii r(Cs⁺) = 1.70 Å and r(Br⁻) = 1.96 Å:\n\n$$\\frac{r_{Cs^+}}{r_{Br^-}} = \\frac{1.70}{1.96} = 0.867$$\n\nSince **0.732 < 0.867 < 1.0**, the coordination number is 8, which corresponds to the **cesium chloride (CsCl) structure**. This agrees with the known crystal chemistry: CsCl, CsBr, and CsI all adopt the CsCl structure.\n\n**(a) Lattice parameter:** In the CsCl structure, ions touch along the body diagonal:\n$$a\\sqrt{3} = 2(r_{Cs^+} + r_{Br^-}) \\;\\Rightarrow\\; a = \\frac{2(1.70+1.96)}{\\sqrt{3}} = 4.23\\;\\text{Å}$$\n\n**(b) Density:** The CsCl structure has n = 1 formula unit per unit cell, with M(CsBr) = 132.905 + 79.904 = 212.809 g/mol:\n$$\\rho = \\frac{n \\cdot M}{V_c \\cdot N_A} = \\frac{1 \\times 212.809}{(4.226\\times10^{-8})^3 \\times 6.022\\times10^{23}} = 4.68\\;\\text{g/cm}^3$$\n\n**(c) Packing factor:** With one Cs⁺ and one Br⁻ per cell:\n$$APF = \\frac{\\frac{4}{3}\\pi(r_{Cs^+}^3 + r_{Br^-}^3)}{a^3} = 0.690$$\n\n$$\\boxed{(4.23,\\ 4.68,\\ 0.690)}$$",
+ "final_answer": "(4.23,\\ 4.68,\\ 0.690)",
+ "correct_answer": "(4.1916, 4.8, 0.693)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(Å, g/cm³, )"
+}

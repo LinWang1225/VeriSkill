@@ -1,0 +1,11 @@
+{
+ "tid": "m015",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 15.4",
+ "question_text": "Given that the density of $\\mathrm{Cu}_{2} \\mathrm{O}$ is $6.00 \\mathrm{Mg} / \\mathrm{m}^{3}$, calculate the Pilling-Bedworth ratio for copper.\n\n\\[\n\\begin{aligned}\n\\text{Atomic weight of copper:} \\quad & M_{\\mathrm{Cu}} = 63.55 \\;\\mathrm{g/mol} \\\\\n\\text{Atomic weight of oxygen:} \\quad & M_{\\mathrm{O}} = 16.00 \\;\\mathrm{g/mol} \\\\\n\\text{Density of copper metal:} \\quad & d_{\\mathrm{Cu}} = 8.93 \\;\\mathrm{Mg/m^3} \\\\\n\\text{Density of } \\mathrm{Cu_2O}: \\quad & D_{\\mathrm{Cu_2O}} = 6.00 \\;\\mathrm{Mg/m^3}\n\\end{aligned}\n\\]",
+ "response": "$$\n\\text{PBR} = \\frac{143.10 \\times 8.93}{2 \\times 63.55 \\times 6.00} \\approx 1.68\n$$\n\nA PBR between 1 and 2 indicates a protective, adherent oxide layer — consistent with copper forming a passivating $\\mathrm{Cu_2O}$ film.\n\n$$\\boxed{1.68}$$",
+ "final_answer": "1.68",
+ "correct_answer": "1.68",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

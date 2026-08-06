@@ -1,0 +1,11 @@
+{
+ "tid": "e273",
+ "qid": "Physical_Metallurgy_Hosford_Example 2.5",
+ "question_text": "Estimate the length of dendrites in the freezing of copper alloys containing, (a) $5 \\% \\mathrm{Zn}$, (b) $5 \\% \\mathrm{Sn}$, and (c) $0.05 \\% \\mathrm{Sn}$. In each case, assume a thermal gradient of $G=0.5^{\\circ} \\mathrm{C} / \\mathrm{mm}$ and assume the temperatures at the tips and bases of the dendrites are the equilibrium for liquidus and solidus temperatures the alloy. Assume the freezing ranges for the alloys are: (a) $5 \\% \\mathrm{Zn}, 6^{\\circ} \\mathrm{C}$; (b) $5 \\% \\mathrm{Sn}, 130^{\\circ} \\mathrm{C}$; and (c) $0.05 \\% \\mathrm{Sn}, 1.3^{\\circ} \\mathrm{C}$. Give your answer as a tuple: (dendrite_length_5pct_Zn, dendrite_length_5pct_Sn, dendrite_length_0.05pct_Sn).The units of each required answer are (mm, mm, mm), respectively.",
+ "response": "The calculations are confirmed. The dendrite length scales directly with the freezing range — the larger the freezing range, the longer the dendrites must be to span the temperature interval at the given gradient.\n\n$$\\boxed{(12,\\ 260,\\ 2.6)}$$",
+ "final_answer": "(12,\\ 260,\\ 2.6)",
+ "correct_answer": "(12, 260, 2.6)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(mm, mm, mm)"
+}

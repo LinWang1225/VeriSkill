@@ -1,0 +1,11 @@
+{
+ "tid": "m191",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 5-8_1",
+ "question_text": "Design of a More Economical Heat TreatmentnnWe find that 10 hours are required to successfully carburize a batch of 500 steel gears at $900^{\\circ} \\mathrm{C}$, where the iron has the FCC structure. It costs $\\$1000$ per hour to operate the carburizing furnace at $900^{\\circ} \\mathrm{C}$ and $\\$1500$ per hour to operate the furnace at $1000^{\\circ} \\mathrm{C}$. For carbon diffusing in FCC iron, the activation energy is $32,900 \\mathrm{cal} / \\mathrm{mol}$. Is it economical to increase the carburizing temperature to $1000^{\\circ} \\mathrm{C}$?\n\n **Give your answer as a tuple: (required_time_at_1000C, cost_per_part_at_900C, cost_per_part_at_1000C).*The units of each required answer are (hours, dollars/part, dollars/part), respectively.",
+ "response": "Using the Arrhenius ratio method (D₀ cancels, so no cross-table pairing issue), with Q = 32,900 cal/mol for C in FCC iron (the phase specified by the problem), R = 1.987 cal/(mol·K):\n\nFor the same case depth, $D_1 t_1 = D_2 t_2$, so\n$$t_2 = t_1 \\exp\\!\\left[-\\frac{Q}{R}\\left(\\frac{1}{T_1}-\\frac{1}{T_2}\\right)\\right]$$\nwith $T_1=1173\\,\\text{K}$, $T_2=1273\\,\\text{K}$, $t_1=10\\,\\text{h}$.\n\n- $t_2 \\approx 3.30$ h\n- Cost/part at 900°C $= (10\\times1000)/500 = \\$20.00$\n- Cost/part at 1000°C $= (3.30\\times1500)/500 \\approx \\$9.90$\n\nSince \\$9.90 < \\$20.00 per part, raising the temperature to 1000°C **is economical**.\n\n$$\\boxed{(3.30,\\ 20.00,\\ 9.90)}$$",
+ "final_answer": "(3.30,\\ 20.00,\\ 9.90)",
+ "correct_answer": "(3.299, 20.0, 9.90)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(hours, dollars/part, dollars/part)"
+}

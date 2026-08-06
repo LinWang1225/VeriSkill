@@ -1,0 +1,11 @@
+{
+ "tid": "m225",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 8-68",
+ "question_text": "Using the data in Table, plot the recrystallization temperature versus the melting temperature of each metal, using absolute temperatures (kelvin). Measure the slope and compare with the expected relationship between these two temperatures. Is our approximation a good one? Give your answer as the value of slope.\n\nTable:\n\\begin{tabular}{|l|l|l|}\n\\hline TABLE 8-4 & \\multicolumn{2}{|l|}{Typical recrystallization temperatures for selected metals} \\\\\n\\hline Metal & Melting Temperature ( ${ }^{\\circ} \\mathrm{C}$ ) & Recrystallization Temperature ( ${ }^{\\circ} \\mathrm{C}$ ) \\\\\n\\hline Sn & 232 & -4 \\\\\n\\hline Pb & 327 & -4 \\\\\n\\hline Zn & 420 & 10 \\\\\n\\hline Al & 660 & 150 \\\\\n\\hline Mg & 650 & 200 \\\\\n\\hline Ag & 962 & 200 \\\\\n\\hline Cu & 1085 & 200 \\\\\n\\hline Fe & 1538 & 450 \\\\\n\\hline Ni & 1453 & 600 \\\\\n\\hline Mo & 2610 & 900 \\\\\n\\hline W & 3410 & 1200 \\\\\n\\hline\n\\end{tabular}",
+ "response": "Converting all temperatures to kelvin (T_K = T_C + 273.15) and performing a linear fit of recrystallization temperature versus melting temperature:\n\n- Measured slope ≈ **0.39** (intercept ≈ 48 K)\n- Expected rule of thumb: T_rec ≈ 0.4 T_m (in kelvin)\n\nThe measured slope (≈0.39) is very close to the expected value of 0.4, so the approximation is a good one.\n\n$$\\boxed{0.4}$$",
+ "final_answer": "0.4",
+ "correct_answer": "0.4",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

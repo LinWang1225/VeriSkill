@@ -1,0 +1,11 @@
+{
+ "tid": "e154",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.8",
+ "question_text": "A structural component is fabricated from an alloy that has a plane-strain fracture toughness of $62 \\mathrm{MPa} \\sqrt{\\mathrm{m}}$. It has been determined that this component fails at a stress of 250 MPa when the maximum length of a surface crack is 1.6 mm . What is the maximum allowable surface crack length (in mm) without fracture for this same component exposed to a stress of 250 MPa and made from another alloy that has a plane strain fracture toughness of $51 \\mathrm{MPa} \\sqrt{\\mathrm{m}}$ ?The unit of the answer is mm.",
+ "response": "## Reasoning\n\nFor a surface crack under plane strain, fracture occurs when:\n\n$$K_{Ic} = Y \\sigma \\sqrt{\\pi a}$$\n\nwhere $Y$ is the geometry factor, $\\sigma$ is the applied stress, and $a$ is the surface crack length.\n\n**From the first alloy** (known failure condition):\n\n$$62 = Y \\cdot 250 \\cdot \\sqrt{\\pi \\cdot 1.6\\times10^{-3}}$$\n\n**For the second alloy** (same component, same stress, same geometry factor $Y$, different toughness):\n\n$$51 = Y \\cdot 250 \\cdot \\sqrt{\\pi \\cdot a_2}$$\n\nSince $Y$ and $\\sigma$ are identical in both cases, dividing the two equations eliminates them:\n\n$$\\frac{62}{51} = \\frac{\\sqrt{a_1}}{\\sqrt{a_2}} \\implies a_2 = a_1 \\left(\\frac{51}{62}\\right)^2$$\n\n$$a_2 = 1.6 \\times \\frac{51^2}{62^2} = 1.6 \\times \\frac{2601}{3844} \\approx 1.0826 \\text{ mm}$$\n\n$$\\boxed{1.08}$$",
+ "final_answer": "1.08",
+ "correct_answer": "1.08",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

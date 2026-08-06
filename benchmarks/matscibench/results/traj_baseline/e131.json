@@ -1,0 +1,11 @@
+{
+ "tid": "e131",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.17",
+ "question_text": "A cylindrical specimen of a metal alloy 10 mm ( 0.4 in.) in diameter is stressed elastically in tension. A force of $15,000 \\mathrm{~N}$ (3,370 lbs) produces a reduction in specimen diameter of $7 \\times 10^{-3} \\mathrm{~mm}\\left(2.8 \\times 10^{-4} \\mathrm{in}\\right.$.). Compute Poisson's ratio for this material if its elastic modulus is 100 GPa ( $14.5 \\times 10^{6} \\mathrm{psi}$ ).",
+ "response": "**Step-by-step reasoning:**\n\n1. **Cross-sectional area:**\n$$A = \\pi\\left(\\frac{d_0}{2}\\right)^2 = \\pi(5\\,\\text{mm})^2 = 78.54\\,\\text{mm}^2$$\n\n2. **Longitudinal (tensile) stress:**\n$$\\sigma = \\frac{F}{A} = \\frac{15000\\,\\text{N}}{78.54\\times10^{-6}\\,\\text{m}^2} = 190.99\\,\\text{MPa}$$\n\n3. **Longitudinal strain (elastic):**\n$$\\epsilon_z = \\frac{\\sigma}{E} = \\frac{190.99\\,\\text{MPa}}{100\\,\\text{GPa}} = 1.91\\times10^{-3}$$\n\n4. **Lateral (transverse) strain** (diameter reduced):\n$$\\epsilon_x = \\frac{\\Delta d}{d_0} = \\frac{-7\\times10^{-3}\\,\\text{mm}}{10\\,\\text{mm}} = -7\\times10^{-4}$$\n\n5. **Poisson's ratio:**\n$$\\nu = -\\frac{\\epsilon_x}{\\epsilon_z} = -\\frac{-7\\times10^{-4}}{1.91\\times10^{-3}} \\approx 0.367$$\n\n$$\\boxed{0.367}$$",
+ "final_answer": "0.367",
+ "correct_answer": "0.367",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

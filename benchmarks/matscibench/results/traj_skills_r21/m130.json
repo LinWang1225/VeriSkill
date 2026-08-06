@@ -1,0 +1,11 @@
+{
+ "tid": "m130",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 11.9",
+ "question_text": "It is known that the kinetics of some transformation obeys the Avrami equation and that the value of $k$ is 2.6 $\\times 10^{-6}$ (for time in minutes). If the fraction recrystallized is 0.65 after 120 min, determine the rate of this transformation.The unit of the answer is min^-1.",
+ "response": "## Solution\n\nThe Avrami equation is:\n\n$$y = 1 - \\exp(-k\\,t^n)$$\n\n**Step 1 — Solve for the Avrami exponent $n$.**\n\nWith $y = 0.65$, $t = 120$ min, $k = 2.6\\times10^{-6}$:\n\n$$k\\,t^n = -\\ln(1-y) = -\\ln(0.35) = 1.04982$$\n\n$$t^n = \\frac{1.04982}{2.6\\times10^{-6}} = 4.0378\\times10^{5}$$\n\n$$n = \\frac{\\ln(4.0378\\times10^{5})}{\\ln(120)} = \\frac{12.907}{4.7875} \\approx 2.696$$\n\n**Step 2 — Compute the transformation rate $dy/dt$.**\n\nDifferentiating the Avrami equation:\n\n$$\\frac{dy}{dt} = n\\,k\\,t^{n-1}\\exp(-k\\,t^n) = n\\,k\\,t^{n-1}(1-y)$$\n\nUsing $k\\,t^n = 1.04982$, so $k\\,t^{n-1} = 1.04982/120 = 0.0087485$:\n\n$$\\frac{dy}{dt} = (2.696)(0.0087485)(0.35) = 8.26\\times10^{-3}\\ \\text{min}^{-1}$$\n\n**Step 3 — Significant figures.** The inputs $k = 2.6\\times10^{-6}$ and $y = 0.65$ each carry 2 significant figures, so the result is reported to 2 sig figs: $8.3\\times10^{-3}$.\n\n$$\\boxed{0.0083}$$",
+ "final_answer": "0.0083",
+ "correct_answer": "9.8E-03",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "min^-1"
+}

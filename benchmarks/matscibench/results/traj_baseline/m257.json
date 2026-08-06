@@ -1,0 +1,11 @@
+{
+ "tid": "m257",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 23-12",
+ "question_text": "A 2-in.-inside-diameter, 12-ft-long copper distribution pipe in a plumbing system is accidentally connected to the power system of a manufacturing plant, causing a current of 0.05 A to flow through the pipe. If the wall thickness of the pipe is 0.125 in ., estimate the time required before the pipe begins to leak, assuming a uniform rate of corrosion.The unit of the answer is years.",
+ "response": "## Reasoning\n\nThis is an **electrolytic corrosion** problem governed by **Faraday's law of electrolysis**. The stray current dissolves copper from the pipe wall; when the full wall thickness (0.125 in.) is consumed, the pipe leaks.\n\n**Step 1 — Volume of copper to be removed**\n\nThe corrosion proceeds uniformly from the inner surface. The volume of the wall ring is:\n\n$$V = \\pi \\, d \\, L \\, t_{\\text{wall}}$$\n\n- $d = 2\\ \\text{in}$, $L = 12\\ \\text{ft} = 144\\ \\text{in}$, $t_{\\text{wall}} = 0.125\\ \\text{in}$\n- $V = \\pi(2)(144)(0.125) = 113.1\\ \\text{in}^3 = 113.1 \\times 16.387 = 1853\\ \\text{cm}^3$\n\n**Step 2 — Mass of copper**\n\n$$m = \\rho V = (8.96\\ \\text{g/cm}^3)(1853\\ \\text{cm}^3) \\approx 16{,}606\\ \\text{g}$$\n\n**Step 3 — Faraday's law**\n\nCopper dissolves as $\\text{Cu}^{2+}$, so $n = 2$:\n\n$$m = \\frac{M\\, I\\, t}{n\\, F} \\;\\Rightarrow\\; t = \\frac{m\\, n\\, F}{M\\, I}$$\n\nWith $M = 63.5\\ \\text{g/mol}$, $I = 0.05\\ \\text{A}$, $F = 96{,}485\\ \\text{C/mol}$:\n\n$$t = \\frac{(16{,}606)(2)(96{,}485)}{(63.5)(0.05)} \\approx 1.01 \\times 10^{9}\\ \\text{s} \\approx 32.0\\ \\text{years}$$\n\n$$\\boxed{32}$$",
+ "final_answer": "32",
+ "correct_answer": "34",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "years"
+}

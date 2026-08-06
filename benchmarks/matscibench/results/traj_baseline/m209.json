@@ -1,0 +1,11 @@
+{
+ "tid": "m209",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-2",
+ "question_text": "Calculate the number of vacancies per $\\mathrm{cm}^3$ expected in copper at $1080^{\\circ} \\mathrm{C}$ (just below the melting temperature). The energy for vacancy formation is $20,000 \\mathrm{cal} / \\mathrm{mol}$. Give your answer as as the value of number_of_vacancies_per_cm3.The unit of the answer is vacancies/cm³.",
+ "response": "## Reasoning\n\nThe equilibrium number of vacancies is given by:\n\n$$N_v = N \\exp\\!\\left(-\\frac{Q_v}{RT}\\right)$$\n\n**Step 1 — Number of atomic sites in copper (per cm³):**\n\n$$N = \\frac{\\rho N_A}{A} = \\frac{(8.96\\ \\text{g/cm}^3)(6.022\\times10^{23}\\ \\text{atoms/mol})}{63.5\\ \\text{g/mol}} \\approx 8.50\\times10^{22}\\ \\text{sites/cm}^3$$\n\n**Step 2 — Temperature (absolute):**\n\n$$T = 1080 + 273 = 1353\\ \\text{K}$$\n\n**Step 3 — Vacancy concentration factor:**\n\n$$\\exp\\!\\left(-\\frac{Q_v}{RT}\\right) = \\exp\\!\\left(-\\frac{20000}{(1.987)(1353)}\\right) = \\exp(-7.438) \\approx 5.87\\times10^{-4}$$\n\n**Step 4 — Vacancies per cm³:**\n\n$$N_v = (8.50\\times10^{22})(5.87\\times10^{-4}) \\approx 4.99\\times10^{19}\\ \\text{vacancies/cm}^3$$\n\nThis is just below copper's melting point (1085 °C), so the vacancy population is very large — about 5 × 10¹⁹ per cm³, roughly one vacancy per ~1700 atoms.\n\n$$\\boxed{4.99\\times10^{19}}$$",
+ "final_answer": "4.99\\times10^{19}",
+ "correct_answer": "4.98E+19",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "vacancies/cm³"
+}

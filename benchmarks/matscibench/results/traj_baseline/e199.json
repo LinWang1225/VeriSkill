@@ -1,0 +1,11 @@
+{
+ "tid": "e199",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 11.3",
+ "question_text": "Aluminum alloy 6061 is an age-hardenable alloy containing about 1% Mg and 0.6% Si. The precipitates that form on aging are $\\text{Mg}_2\\text{Si}$. The yield strength in the solution-treated and quenched condition is 150 MPa. After aging 1 hr at $230\\,^\\circ\\text{C}$, the yield strength is about 250 MPa. In the completely overaged condition, the yield strength is about 75 MPa. In the aged condition, what is the strength increase, $\\Delta\\sigma$, attributable to particle hardening? What is the strength increase attributable to solid solution hardening by Mg and Si in the solution-treated condition? Give your answer as a tuple (strength increase attributable to particle hardening, strength increase attributable to solid solution).The units of each required answer are (MPa, MPa), respectively.",
+ "response": "## Result\n\n| Condition | Strength (MPa) | Composition |\n|-----------|---------------|-------------|\n| Overaged | 75 | $\\sigma_i$ only (intrinsic) |\n| Solution-treated | 150 | $\\sigma_i + \\Delta\\sigma_{ss}$ |\n| Aged | 250 | $\\sigma_i + \\Delta\\sigma_{particle}$ |\n\n- **Particle hardening** (aged): $250 - 75 = 175$ MPa\n- **Solid-solution hardening** (solution-treated): $150 - 75 = 75$ MPa\n\n$$\\boxed{(175, 75)}$$",
+ "final_answer": "(175, 75)",
+ "correct_answer": "(175, 75)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(MPa, MPa)"
+}

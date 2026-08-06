@@ -1,0 +1,11 @@
+{
+ "tid": "e073",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 2.3",
+ "question_text": "Zinc has five naturally occurring isotopes: $48.63 \\%$ of ${ }^{64} \\mathrm{Zn}$ with an atomic weight of 63.929 amu; $27.90 \\%$ of ${ }^{66} \\mathrm{Zn}$ with an atomic weight of 65.926 amu; $4.10 \\%$ of ${ }^{67} \\mathrm{Zn}$ with an atomic weight of 66.927 amu; $18.75 \\%$ of ${ }^{68} \\mathrm{Zn}$ with an atomic weight of 67.925 amu; and $0.62 \\%$ of ${ }^{70} \\mathrm{Zn}$ with an atomic weight of 69.925 amu. Calculate the average atomic weight of Zn .The unit of the answer is amu.",
+ "response": "The average atomic weight is the abundance-weighted sum of the isotope masses:\n\n$$\\bar{M} = 0.4863(63.929) + 0.2790(65.926) + 0.0410(66.927) + 0.1875(67.925) + 0.0062(69.925)$$\n\nComputing each contribution and summing gives approximately $65.40$ amu.\n\n$$\\boxed{65.40}$$",
+ "final_answer": "65.40",
+ "correct_answer": "65.400",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "amu"
+}

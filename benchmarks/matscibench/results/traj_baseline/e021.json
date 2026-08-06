@@ -1,0 +1,11 @@
+{
+ "tid": "e021",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 13.8",
+ "question_text": "Given that at 20 °C a Cu–0.1 wt% Si alloy has a resistivity of ρ₍₂₀ °C₎=23.6×10⁻⁹ Ω·m, and that the temperature coefficient of resistivity of copper (and its dilute alloys) is α=0.00393 °C⁻¹, estimate the resistivity of the Cu–0.1 wt% Si alloy at 100 °C.The unit of the answer is \\Omega \\cdot \\mathrm{m}.",
+ "response": "Using the linear temperature dependence of resistivity:\n\n$$\\rho(T) = \\rho(T_0)\\,[1 + \\alpha\\,(T - T_0)]$$\n\nwith $T - T_0 = 100 - 20 = 80\\ ^\\circ\\mathrm{C}$:\n\n$$\\rho(100^\\circ\\mathrm{C}) = 23.6\\times10^{-9}\\,[1 + 0.00393 \\times 80] = 23.6\\times10^{-9}\\times 1.3144 \\approx 3.10\\times10^{-8}\\ \\Omega\\cdot\\mathrm{m}$$\n\n$$\\boxed{3.10\\times10^{-8}}$$",
+ "final_answer": "3.10\\times10^{-8}",
+ "correct_answer": "3.1E-08",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "\\Omega \\cdot \\mathrm{m}"
+}

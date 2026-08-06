@@ -1,0 +1,11 @@
+{
+ "tid": "m249",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 19-8",
+ "question_text": "We apply 10 V to an aluminum wire 2 mm in diameter and 20 m long. If $10 \\%$ of the valence electrons carry the electrical charge, calculate the average drift velocity of the electrons in $\\mathrm{km} / \\mathrm{h}$ and miles $/ \\mathrm{h}$. Give your answer as a tuple: (average_drift_velocity_km_per_h, average_drift_velocity_miles_per_h).The units of each required answer are (km/h, miles/h), respectively.",
+ "response": "## Step-by-Step Solution\n\n**1. Electric field:**\n$$E = \\frac{V}{L} = \\frac{10}{20} = 0.5 \\text{ V/m}$$\n\n**2. Current density** (using aluminum resistivity ρ = 2.65 × 10⁻⁸ Ω·m):\n$$J = \\frac{E}{\\rho} = \\frac{0.5}{2.65 \\times 10^{-8}} = 1.887 \\times 10^{7} \\text{ A/m}^2$$\n\n**3. Number of atoms per m³** (density = 2700 kg/m³, M = 26.98 g/mol):\n$$n_{\\text{atoms}} = \\frac{\\rho_{\\text{mass}}}{M} N_A = \\frac{2700}{0.02698}(6.022\\times10^{23}) = 6.026 \\times 10^{28} \\text{ atoms/m}^3$$\n\n**4. Effective charge carriers** (Al has 3 valence electrons, 10% carry charge → 0.3/atom):\n$$n = 0.3 \\times 6.026 \\times 10^{28} = 1.808 \\times 10^{28} \\text{ carriers/m}^3$$\n\n**5. Drift velocity:**\n$$v_d = \\frac{J}{ne} = \\frac{1.887 \\times 10^{7}}{(1.808 \\times 10^{28})(1.602 \\times 10^{-19})} = 6.51 \\times 10^{-3} \\text{ m/s}$$\n\n**6. Unit conversions:**\n- km/h: $6.51 \\times 10^{-3} \\times 3.6 = 0.0235$ km/h\n- miles/h: $6.51 \\times 10^{-3} \\times 2.23694 = 0.0146$ miles/h\n\n$$\\boxed{(0.0235,\\ 0.0146)}$$",
+ "final_answer": "(0.0235,\\ 0.0146)",
+ "correct_answer": "(0.0234, 0.0146)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(km/h, miles/h)"
+}

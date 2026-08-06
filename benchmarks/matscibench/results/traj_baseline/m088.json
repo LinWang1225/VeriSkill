@@ -1,0 +1,11 @@
+{
+ "tid": "m088",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.11",
+ "question_text": "When $\\alpha$-iron is subjected to an atmosphere of nitrogen gas, the concentration of nitrogen in the iron, $C{N}$ (in weight percent), is a function of hydrogen pressure, $p{N{2}}$ (in MPa), and absolute temperature (T) according to\n\n$$\nC{\\mathrm{N}}=4.90 \\times 10^{-3} \\sqrt{p{\\mathrm{N}{2}}} \\exp \\left(-\\frac{37,600 \\mathrm{~J} / \\mathrm{mol}}{R T}\\right)\n$$\n\nFurthermore, the values of $D{0}$ and $Q{d}$ for this diffusion system are $5.0 \\times 10^{-7} \\mathrm{~m}^{2} / \\mathrm{s}$ and $77,000 \\mathrm{~J} / \\mathrm{mol}$, respectively. Consider a thin iron membrane $1.5-\\mathrm{mm}$ thick that is at $300^{\\circ} \\mathrm{C}$. Compute the diffusion flux through this membrane if the nitrogen pressure on one side of the membrane is 0.10 MPa ( 0.99 atm ) and that on the other side is 5.0 MPa (49.3 atm).The unit of the answer is kg/m^2s.",
+ "response": "## Solution\n\n**Step 1: Surface concentrations (wt%)**\n\nUsing $C_N = 4.90\\times10^{-3}\\sqrt{p_{N_2}}\\exp\\!\\left(-\\dfrac{37600}{RT}\\right)$ with $T = 300+273 = 573\\text{ K}$, $R=8.314\\text{ J/mol·K}$:\n\n- High-pressure side ($p_{N_2}=5.0$ MPa): $C_1 \\approx 4.08\\times10^{-6}$ wt%\n- Low-pressure side ($p_{N_2}=0.10$ MPa): $C_2 \\approx 5.77\\times10^{-7}$ wt%\n\n**Step 2: Diffusivity**\n\n$$D = D_0\\exp\\!\\left(-\\frac{Q_d}{RT}\\right) = 5.0\\times10^{-7}\\exp\\!\\left(-\\frac{77000}{8.314\\times573}\\right) \\approx 4.74\\times10^{-14}\\text{ m}^2/\\text{s}$$\n\n**Step 3: Convert wt% → kg/m³**\n\nUsing iron density $\\rho = 7.87\\times10^{3}\\text{ kg/m}^3$: $C' = \\dfrac{C_N\\cdot\\rho}{100}$\n\n- $C_1' \\approx 3.21\\times10^{-4}\\text{ kg/m}^3$\n- $C_2' \\approx 4.54\\times10^{-5}\\text{ kg/m}^3$\n\n**Step 4: Steady-state flux (Fick's first law)**\n\n$$J = D\\frac{C_1' - C_2'}{\\Delta x} = (4.74\\times10^{-14})\\frac{(3.21\\times10^{-4}-4.54\\times10^{-5})}{1.5\\times10^{-3}}$$\n\n$$\\boxed{8.81\\times10^{-15}}$$",
+ "final_answer": "8.81\\times10^{-15}",
+ "correct_answer": "8.72E-15",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "kg/m^2s"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m135",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 12.41",
+ "question_text": "A hypothetical metal is known to have an electrical resistivity of $3.3 \\times 10^{-8}(\\Omega-\\mathrm{m})$. A current of 25 A is passed through a specimen of this metal 15 mm thick. When a magnetic field of 0.95 tesla is simultaneously imposed in a direction perpendicular to that of the current, a Hall voltage of $-2.4 \\times 10^{-7} \\mathrm{~V}$ is measured. Compute the following:\n(a) the electron mobility for this metal\n(b) the number of free electrons per cubic meter.\nGive your answer a tuple: (answer to (a), answer to (b)).The unit of the answer is ($\\mathrm{m}^2 / \\mathrm{V}-\\mathrm{s}$, $\\mathrm{m}^{-3}$).",
+ "response": "## Reasoning\n\n**Hall effect relations:**\n\nThe Hall coefficient is\n$$R_H = \\frac{V_H d}{I B}$$\n\nwhere $d$ is the specimen thickness (along the field direction). For a single-carrier metal,\n\n$$R_H = -\\frac{1}{n e}, \\qquad \\mu_e = \\frac{|R_H|}{\\rho}, \\qquad \\sigma = \\frac{1}{\\rho}=n e \\mu_e$$\n\n**Numbers:**\n- $\\rho = 3.3\\times10^{-8}\\ \\Omega\\cdot\\text{m}$\n- $I = 25\\ \\text{A}$, $d = 0.015\\ \\text{m}$, $B = 0.95\\ \\text{T}$\n- $V_H = -2.4\\times10^{-7}\\ \\text{V}$\n\n$$R_H = \\frac{(-2.4\\times10^{-7})(0.015)}{(25)(0.95)} = -1.516\\times10^{-10}\\ \\text{m}^3/\\text{C}$$\n\n**(a) Mobility:**\n$$\\mu_e = \\frac{|R_H|}{\\rho} = \\frac{1.516\\times10^{-10}}{3.3\\times10^{-8}} \\approx 4.6\\times10^{-3}\\ \\text{m}^2/\\text{V·s}$$\n\n**(b) Electron concentration:**\n$$n = \\frac{1}{|R_H|e} = \\frac{1}{(1.516\\times10^{-10})(1.602\\times10^{-19})} \\approx 4.1\\times10^{28}\\ \\text{m}^{-3}$$\n\n$$\\boxed{(4.6\\times10^{-3},\\ 4.1\\times10^{28})}$$",
+ "final_answer": "(4.6\\times10^{-3},\\ 4.1\\times10^{28})",
+ "correct_answer": "(0.00455, 4.12e+28)",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "($\\mathrm{m}^2 / \\mathrm{V}-\\mathrm{s}$, $\\mathrm{m}^{-3}$)"
+}

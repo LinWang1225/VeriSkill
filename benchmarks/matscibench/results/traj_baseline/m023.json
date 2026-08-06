@@ -1,0 +1,11 @@
+{
+ "tid": "m023",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 14.12",
+ "question_text": "Calculate the magnetic moment of a unit cell of copper ferrite. Give your answer as the value of magnetic_moment.The unit of the answer is \\mu_B.",
+ "response": "# Magnetic Moment of a Copper Ferrite Unit Cell\n\n## Step 1: Identify the composition and structure\n\nCopper ferrite is **CuFe₂O₄**, which adopts an **inverse spinel** structure.\n\nIn an inverse spinel, the cation distribution is:\n\n$$[\\text{Fe}^{3+}]_A \\; [\\text{Cu}^{2+}\\text{Fe}^{3+}]_B \\; \\text{O}_4$$\n\n- **A sites (tetrahedral):** Fe³⁺\n- **B sites (octahedral):** Cu²⁺ and Fe³⁺\n\n## Step 2: Determine individual ionic moments\n\n| Ion | Config | Unpaired e⁻ | Spin-only moment |\n|-----|--------|-------------|------------------|\n| Fe³⁺ | 3d⁵ | 5 | 5 μ_B |\n| Cu²⁺ | 3d⁹ | 1 | 1 μ_B |\n\n## Step 3: Net moment per formula unit\n\nIn spinel ferrites, the A and B sublattice moments are **antiparallel**:\n\n$$M_A = 5\\;\\mu_B, \\qquad M_B = 5 + 1 = 6\\;\\mu_B$$\n\n$$\\mu_{\\text{per f.u.}} = M_B - M_A = 6 - 5 = 1\\;\\mu_B$$\n\n## Step 4: Scale to the unit cell\n\nA spinel unit cell contains **8 formula units**:\n\n$$\\mu_{\\text{unit cell}} = 8 \\times 1 = 8\\;\\mu_B$$\n\n$$\\boxed{8}$$",
+ "final_answer": "8",
+ "correct_answer": "8",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "\\mu_B"
+}

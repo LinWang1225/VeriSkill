@@ -1,0 +1,11 @@
+{
+ "tid": "e119",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 6.25",
+ "question_text": "The preexponential and activation energy for the diffusion of chromium in nickel are $1.1 \\times 10^{-4} \\mathrm{~m}^{2} / \\mathrm{s}$ and 272,000 J/mol, respectively. At what temperature will the diffusion coefficient have a value of $1.2 \\times 10^{-14} \\mathrm{~m}^{2} / \\mathrm{s}$ ?The unit of the answer is K.",
+ "response": "Using the Arrhenius equation $D = D_0 \\exp\\!\\left(-\\dfrac{Q_d}{RT}\\right)$ and solving for temperature:\n\n$$T = \\frac{Q_d}{R \\ln(D_0/D)}$$\n\nWith $D_0 = 1.1\\times10^{-4}\\ \\mathrm{m^2/s}$, $Q_d = 272{,}000\\ \\mathrm{J/mol}$, $D = 1.2\\times10^{-14}\\ \\mathrm{m^2/s}$, and $R = 8.31\\ \\mathrm{J/(mol\\cdot K)}$:\n\n$$T = \\frac{272000}{8.31\\,\\ln(1.1\\times10^{-4}/1.2\\times10^{-14})} \\approx 1427\\ \\mathrm{K}$$\n\n$$\\boxed{1427}$$",
+ "final_answer": "1427",
+ "correct_answer": "1427",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "K"
+}

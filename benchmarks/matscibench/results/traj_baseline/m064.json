@@ -1,0 +1,11 @@
+{
+ "tid": "m064",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.2",
+ "question_text": "If the atomic radius of lead is 0.175 nm, calculate the volume of its unit cell in cubic meters.The unit of the answer is m^3.",
+ "response": "Lead has an FCC crystal structure. For FCC, the relationship between the lattice parameter $a$ and the atomic radius $R$ is:\n\n$$a = 2R\\sqrt{2}$$\n\n**Step 1:** Convert the atomic radius to meters.\n$$R = 0.175 \\text{ nm} = 0.175 \\times 10^{-9} \\text{ m} = 1.75 \\times 10^{-10} \\text{ m}$$\n\n**Step 2:** Compute the lattice parameter.\n$$a = 2(1.75 \\times 10^{-10})\\sqrt{2} = 4.95 \\times 10^{-10} \\text{ m}$$\n\n**Step 3:** Compute the unit cell volume ($V = a^3$).\n$$V = (4.95 \\times 10^{-10})^3 = 1.21 \\times 10^{-28} \\text{ m}^3$$\n\n$$\\boxed{1.21 \\times 10^{-28}}$$",
+ "final_answer": "1.21 \\times 10^{-28}",
+ "correct_answer": "1.213E-28",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "m^3"
+}

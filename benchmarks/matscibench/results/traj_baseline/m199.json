@@ -1,0 +1,11 @@
+{
+ "tid": "m199",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 19-2",
+ "question_text": "Assuming that all of the valence electrons contribute to current flow, (a) calculate the mobility of an electron in copper and (b) calculate the average drift velocity for electrons in a 100 cm copper wire when 10 V are applied. The lattice parameter of copper is $3.6151 \\times 10^{-8} \\mathrm{~cm}$ and, since copper is FCC, there are four atoms/unit cell. The conductivity $\\sigma=5.98 \\times 10^{5} \\Omega^{-1} \\cdot \\mathrm{~cm}^{-1}$. Give your answer as a tuple (mobility of an electron in copper, average drift velocity for electrons in a 100 cm copper wire when 10 V are applied).The units of each required answer are (cm^2/(V·s), cm/s), respectively.",
+ "response": "## Solution\n\n**(a) Electron concentration**\n\nCopper is FCC with 4 atoms/unit cell and contributes 1 valence electron per atom:\n\n$$n = \\frac{4 \\text{ atoms/cell} \\times 1 \\text{ e}^{-}/\\text{atom}}{a^3} = \\frac{4}{(3.6151\\times10^{-8}\\,\\text{cm})^3} = 8.466\\times10^{22}\\,\\text{e}^{-}/\\text{cm}^3$$\n\n**(a) Mobility**\n\nUsing $\\sigma = nq\\mu$:\n\n$$\\mu = \\frac{\\sigma}{nq} = \\frac{5.98\\times10^{5}}{(8.466\\times10^{22})(1.6\\times10^{-19})} \\approx 44.15\\,\\text{cm}^2/(\\text{V·s})$$\n\n**(b) Drift velocity**\n\nThe electric field in the wire is $E = V/L = 10/100 = 0.1\\,\\text{V/cm}$, so\n\n$$v_d = \\mu E = (44.15)(0.1) \\approx 4.41\\,\\text{cm/s}$$\n\n$$\\boxed{(44.15,\\ 4.41)}$$",
+ "final_answer": "(44.15,\\ 4.41)",
+ "correct_answer": "(44.1, 4.41)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(cm^2/(V·s), cm/s)"
+}

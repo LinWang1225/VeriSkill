@@ -1,0 +1,11 @@
+{
+ "tid": "e094",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.21",
+ "question_text": "Given that the atomic radius of Fe in its BCC structure is 0.124 nm and that of C is 0.071 nm, \n(a) For BCC iron, compute the radius of a tetrahedral interstitial site. The relationship between $r$ and $R$ for BCC iron is $r=0.291 R$.\n(b) Lattice strains are imposed on iron atoms surrounding this site when carbon atoms occupy it. Compute the approximate magnitude of this strain by taking the difference between the carbon atom radius and the site radius and then dividing this difference by the site radius. The radius of a carbon atom $\\left(r_{\\mathrm{C}}\\right)$ is 0.071 nm\n\nGive your answer as a tuple (the radius of a tetrahedral interstitial site, the approximate magnitude of this strain)The units of each required answer are (nm, ), respectively.",
+ "response": "## Solution\n\n**Given:**\n- Fe atomic radius (BCC): $R = 0.124$ nm\n- C atomic radius: $r_C = 0.071$ nm\n- BCC tetrahedral site relation: $r = 0.291\\,R$\n\n### (a) Radius of the tetrahedral interstitial site\n\n$$r = 0.291 \\times R = 0.291 \\times 0.124 = 0.0361 \\text{ nm}$$\n\n### (b) Approximate lattice strain\n\n$$\\text{strain} = \\frac{r_C - r}{r} = \\frac{0.071 - 0.0361}{0.0361} = \\frac{0.0349}{0.0361} \\approx 0.97$$\n\nThis large strain (~97%) explains why carbon occupation of tetrahedral sites in BCC iron produces significant lattice distortion — a key factor in the solubility limit of C in α-iron.\n\n$$\\boxed{(0.0361,\\ 0.97)}$$",
+ "final_answer": "(0.0361,\\ 0.97)",
+ "correct_answer": "(0.036, 0.97)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(nm, )"
+}

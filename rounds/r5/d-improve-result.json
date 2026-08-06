@@ -1,33 +1,8 @@
 {
   "edits": [
-    {
-      "critic": "d-officeqa-data-aggregation",
-      "type": "add_rule",
-      "rule_id": "R-officeqa-data-aggregation-002",
-      "evidence_items": ["#q085", "#q046"],
-      "summary": "新增R-002 hard规则: 检查轨迹中模型自述的取数来源（表格名称/编号）与工具调用执行记录中实际读取的表格标题行是否一致，不一致则命中。覆盖q085（声称CM-IV-2但执行记录显示CM-I-2）和q046（声称CM-1-3但执行记录显示CM-I-2）"
-    },
-    {
-      "critic": "d-officeqa-data-aggregation",
-      "type": "rubric",
-      "rule_id": "",
-      "evidence_items": ["#q028", "#q127"],
-      "summary": "新增评分细则项: 数据提取分类一致性——验证模型自述的每个数据项的描述（如"固定到期、无赎回部分"）是否与题目要求的分类条件一致，若自述不符合分类条件却被计入答案则扣分"
-    },
-    {
-      "critic": "d-officeqa-answer-format",
-      "type": "rubric",
-      "rule_id": "",
-      "evidence_items": ["#q032"],
-      "summary": "新增评分细则项: 列表格式精确性——当题目要求以逗号分隔列表形式输出时，验证每个列表元素的数值格式（千位分隔符、精度、括号等）及分隔符是否与题目要求完全一致"
-    }
+    {"critic":"d-matsci-model-selection","type":"narrow_rule","rule_id":"R-d-matsci-model-selection-001","evidence_items":["#m168"],"summary":"新增子情形'偏心焊缝群扭转控制点选取'"},
+    {"critic":"d-matsci-sign-convention","type":"add_rule","rule_id":"R-d-matsci-sign-convention-001","evidence_items":["#e264"],"summary":"新建critic,R-001[soft]命名物理量期望模量"},
+    {"critic":"d-matsci-param-lookup","type":"add_rule","rule_id":"R-d-matsci-param-lookup-001","evidence_items":["#m219"],"summary":"新建critic,R-001[soft]查表参数须成套配套"}
   ],
-  "fp_seen": 2,
-  "fp_resolved": 0,
-  "fn_clusters_seen": 2,
-  "fn_resolved": ["q085", "q046"],
-  "unjudgeable": ["q040"],
-  "unresolved": ["q017", "q126"],
-  "skipped": [],
-  "needs_human": false
+  "fp_seen":0,"fn_resolved":["m168","e264","m219"],"unjudgeable":[],"needs_human":false
 }

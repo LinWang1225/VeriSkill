@@ -1,0 +1,11 @@
+{
+ "tid": "m165",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 5.2",
+ "question_text": "If the range of strength of an alloy is given as $800-1200 \\mathrm{MPa}$, what is the mean strength, the standard deviation, and coefficient of variation? Give your answer as a tuple: (mean_strength, standard_deviation, coefficient_of_variation).The units of each required answer are (MPa, MPa,), respectively.",
+ "response": "For a uniform distribution over the range $[a, b] = [800, 1200]$ MPa:\n\n- **Mean**: $\\mu = \\dfrac{a+b}{2} = \\dfrac{800+1200}{2} = 1000$ MPa\n- **Standard deviation**: $\\sigma = \\dfrac{b-a}{\\sqrt{12}} = \\dfrac{400}{\\sqrt{12}} \\approx 115.47$ MPa\n- **Coefficient of variation**: $CV = \\dfrac{\\sigma}{\\mu} = \\dfrac{115.47}{1000} \\approx 0.1155$\n\n$$\\boxed{(1000,\\ 115.47,\\ 0.1155)}$$",
+ "final_answer": "(1000,\\ 115.47,\\ 0.1155)",
+ "correct_answer": "(1000, 66.67, 0.0667)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(MPa, MPa,)"
+}

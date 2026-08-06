@@ -1,0 +1,11 @@
+{
+ "tid": "m200",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 22-4",
+ "question_text": "An aluminum casting must measure 25.00 cm × 25.00 cm × 3.00 cm at 25 °C.  Pure aluminum melts (and solidifies) at 660 °C, and its linear coefficient of thermal expansion is α=25×10⁻⁶ °C⁻¹.  Design a pattern (made at 25 °C) whose dimensions will yield the correct final casting dimensions after the metal cools and contracts.  \n\nGive your answer as a tuple (pattern_length_cm, pattern_width_cm, pattern_height_cm).The units of each required answer are (cm, cm, cm), respectively.",
+ "response": "**Verification:** 25.4033 × (1 − 0.015875) = 25.4033 × 0.984125 = 25.00 ✓, and 3.0484 × 0.984125 = 3.00 ✓.\n\nThe pattern must be oversized by the same factor in all three directions to compensate for the ~1.5875% linear thermal contraction upon cooling from 660 °C to 25 °C.\n\n$$\\boxed{(25.4033,\\ 25.4033,\\ 3.0484)}$$",
+ "final_answer": "(25.4033,\\ 25.4033,\\ 3.0484)",
+ "correct_answer": "(25.4, 25.4, 3.05)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(cm, cm, cm)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e090",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.1",
+ "question_text": "The equilibrium fraction of lattice sites that are vacant in silver (Ag) at $700^{\\circ} \\mathrm{C}$ is $2 \\times 10^{-6}$. Calculate the number of vacancies (per meter cubed) at $700^{\\circ} \\mathrm{C}$. Assume a density of $10.35 \\mathrm{~g} / \\mathrm{cm}^{3}$ for Ag . $A_{\\mathrm{Ag}}=107.87 \\mathrm{~g} / \\mathrm{mol}$.The unit of the answer is vacancies/m^3.",
+ "response": "## Step-by-Step Solution\n\n**Given:**\n- Vacancy fraction: $N_v/N = 2 \\times 10^{-6}$\n- Density of Ag: $\\rho = 10.35 \\text{ g/cm}^3$\n- Atomic weight: $A_{\\text{Ag}} = 107.87 \\text{ g/mol}$\n- Avogadro's number: $N_A = 6.022 \\times 10^{23} \\text{ atoms/mol}$\n\n**Step 1: Number of lattice sites per unit volume**\n\n$$N = \\frac{\\rho N_A}{A_{\\text{Ag}}}$$\n\n$$N = \\frac{10.35 \\times 6.022 \\times 10^{23}}{107.87} = 5.778 \\times 10^{22} \\text{ atoms/cm}^3$$\n\n**Step 2: Number of vacancies per unit volume**\n\n$$N_v = N \\times \\frac{N_v}{N} = (5.778 \\times 10^{22}) \\times (2 \\times 10^{-6}) = 1.156 \\times 10^{17} \\text{ vacancies/cm}^3$$\n\n**Step 3: Convert to vacancies/m³**\n\n$$N_v = 1.156 \\times 10^{17} \\times 10^6 = 1.16 \\times 10^{23} \\text{ vacancies/m}^3$$\n\n$$\\boxed{1.16 \\times 10^{23}}$$",
+ "final_answer": "1.16 \\times 10^{23}",
+ "correct_answer": "1.156E+23",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "vacancies/m^3"
+}

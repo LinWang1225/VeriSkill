@@ -1,0 +1,11 @@
+{
+ "tid": "e050",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_13.5",
+ "question_text": "A strip of aluminum metallization on a solid-state device is 1 mm long with a thickness of $1 \\mu \\mathrm{~m}$ and a width of $6 \\mu \\mathrm{~m}$. What is the resistance of this strip? Give your answer as the value of resistance.The unit of the answer is Ω.",
+ "response": "Using the resistance formula $R = \\rho L / A$ with aluminum's resistivity $\\rho \\approx 2.65\\times10^{-8}\\ \\Omega\\cdot\\text{m}$:\n\n- $L = 1\\ \\text{mm} = 10^{-3}\\ \\text{m}$\n- $A = (1\\ \\mu\\text{m})(6\\ \\mu\\text{m}) = 6\\times10^{-12}\\ \\text{m}^2$\n\n$$R = \\frac{(2.65\\times10^{-8})(10^{-3})}{6\\times10^{-12}} \\approx 4.42\\ \\Omega$$\n\n$$\\boxed{4.42}$$",
+ "final_answer": "4.42",
+ "correct_answer": "4.71",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "Ω"
+}

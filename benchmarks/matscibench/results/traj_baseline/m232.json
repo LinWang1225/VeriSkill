@@ -1,0 +1,11 @@
+{
+ "tid": "m232",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 11-27",
+ "question_text": "Calculate the total amount of $\\alpha$ and $\\beta$ and the amount of each microconstituent in a $\\mathrm{Pb}-50 \\% \\mathrm{Sn}$ alloy at $182^{\\circ} \\mathrm{C}$. What fraction of the total $\\alpha$ in the alloy is contained in the eutectic microconstituent? Give your answer as a tuple: (total_alpha_percent, total_beta_percent, primary_alpha_percent, eutectic_percent, fraction_eutectic_alpha).The units of each required answer are (%, %, %, %, ), respectively.",
+ "response": "## Step-by-Step Reasoning\n\n**Phase diagram data at 182°C (just below eutectic, 183°C):**\n- C_α = 19.2 wt% Sn, C_β = 97.5 wt% Sn, C_eut = 61.9 wt% Sn, C₀ = 50 wt% Sn\n\n**1. Total α and β (lever rule across the α+β two-phase region):**\n$$W_\\alpha = \\frac{C_\\beta - C_0}{C_\\beta - C_\\alpha} = \\frac{97.5-50}{97.5-19.2} = 60.66\\%$$\n$$W_\\beta = \\frac{C_0 - C_\\alpha}{C_\\beta - C_\\alpha} = \\frac{50-19.2}{97.5-19.2} = 39.34\\%$$\n\n**2. Microconstituents (lever rule using the eutectic composition):**\n$$W_{\\text{primary }\\alpha} = \\frac{C_{eut}-C_0}{C_{eut}-C_\\alpha} = \\frac{61.9-50}{61.9-19.2} = 27.87\\%$$\n$$W_{\\text{eutectic}} = \\frac{C_0-C_\\alpha}{C_{eut}-C_\\alpha} = \\frac{50-19.2}{61.9-19.2} = 72.13\\%$$\n\n**3. Fraction of total α contained in the eutectic:**\n\nThe α within the eutectic microconstituent:\n$$W_{\\alpha\\text{ in eut}} = W_{\\text{eut}}\\times\\frac{C_\\beta-C_{eut}}{C_\\beta-C_\\alpha} = 72.13\\times\\frac{97.5-61.9}{97.5-19.2}=32.80\\%$$\n\n$$\\text{fraction} = \\frac{32.80}{60.66} = 0.541$$\n\n$$\\boxed{(60.66,\\ 39.34,\\ 27.87,\\ 72.13,\\ 0.541)}$$",
+ "final_answer": "(60.66,\\ 39.34,\\ 27.87,\\ 72.13,\\ 0.541)",
+ "correct_answer": "(60.5, 39.5, 27.7, 72.3, 0.54)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(%, %, %, %, )"
+}

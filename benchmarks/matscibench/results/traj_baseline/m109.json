@@ -1,0 +1,11 @@
+{
+ "tid": "m109",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.47",
+ "question_text": "The following true stresses produce the corresponding true plastic strains for a brass alloy:\n\n| True Stress (psi) | True Strain |\n| :--: | :--: |\n| 60,000 | 0.15 |\n| 70,000 | 0.25 |\n\nWhat true stress is necessary to produce a true plastic strain of 0.21 ?The unit of the answer is MPa.",
+ "response": "Using the Hollomon equation $\\sigma = K\\varepsilon^n$:\n\n$$n = \\frac{\\ln(\\sigma_2/\\sigma_1)}{\\ln(\\varepsilon_2/\\varepsilon_1)} = \\frac{\\ln(70000/60000)}{\\ln(0.25/0.15)} \\approx 0.3018$$\n\n$$K = \\sigma_1/\\varepsilon_1^n \\approx 106360 \\text{ psi}$$\n\n$$\\sigma = K(0.21)^n \\approx 66412 \\text{ psi} \\approx 457.9 \\text{ MPa}$$\n\n$$\\boxed{457.9}$$",
+ "final_answer": "457.9",
+ "correct_answer": "460",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "MPa"
+}

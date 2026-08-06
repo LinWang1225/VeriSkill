@@ -1,0 +1,11 @@
+{
+ "tid": "e095",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.23",
+ "question_text": "What is the composition, in atom percent, of an alloy that consists of $92.5 \\mathrm{wt} \\% \\mathrm{Ag}$ and $7.5 \\mathrm{wt} \\% \\mathrm{Cu}$ ? \n\\begin{aligned}\n& A_{\\mathrm{Ag}}=107.87 \\mathrm{~g} / \\mathrm{mol} \\\\\n& A_{\\mathrm{Cu}}=63.55 \\mathrm{~g} / \\mathrm{mol}\n\\end{aligned}\n\nGive your answer as (the atom percent of Ag, the atom percent of Cu).The units of each required answer are (at %, at %), respectively.",
+ "response": "## Step-by-step Reasoning\n\nConvert weight percent to moles (per 100 g of alloy):\n\n$$n_{\\mathrm{Ag}} = \\frac{92.5}{107.87} = 0.8575 \\text{ mol}, \\qquad n_{\\mathrm{Cu}} = \\frac{7.5}{63.55} = 0.1180 \\text{ mol}$$\n\nTotal moles:\n\n$$n_{\\text{tot}} = 0.8575 + 0.1180 = 0.9755 \\text{ mol}$$\n\nAtom percents:\n\n$$C_{\\mathrm{Ag}}' = \\frac{0.8575}{0.9755}\\times 100 \\approx 87.90\\text{ at\\%}$$\n\n$$C_{\\mathrm{Cu}}' = \\frac{0.1180}{0.9755}\\times 100 \\approx 12.10\\text{ at\\%}$$\n\n$$\\boxed{(87.90,\\ 12.10)}$$",
+ "final_answer": "(87.90,\\ 12.10)",
+ "correct_answer": "(87.9, 12.1)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(at %, at %)"
+}

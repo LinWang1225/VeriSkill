@@ -1,0 +1,11 @@
+{
+ "tid": "m201",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 22-5",
+ "question_text": "A ceramic enamel is to be applied to a 1020 steel plate. The ceramic has a fracture strength of 4000 psi , a modulus of elasticity of $15 \\times 10^6 \\mathrm{psi}$, and a coefficient of thermal expansion of $10 \\times 10^{-6 \\circ} \\mathrm{C}^{-1}$. Design the maximum temperature change that can be allowed without cracking the ceramic.\nSteel (modulus of elasticity) Eₛ = 30×10⁶ psi  \nSteel (coefficient of thermal expansion) αₛ = 12×10⁻⁶ /°C  \n\nGive your answer as a tuple: (max_temperature_change_restrained, max_temperature_change_net).The units of each required answer are (°C, °C), respectively.",
+ "response": "## Reasoning\n\nThis is a classic thermal-stress problem (Callister) with two scenarios.\n\n### Given\n- Ceramic: σ_f = 4000 psi, E_c = 15×10⁶ psi, α_c = 10×10⁻⁶ /°C\n- Steel: E_s = 30×10⁶ psi, α_s = 12×10⁻⁶ /°C\n\n### Case 1 — Fully restrained ceramic\nIf the ceramic is completely restrained from thermal expansion, the developed stress is\n\n$$\\sigma = E_c\\,\\alpha_c\\,\\Delta T$$\n\nSet σ = σ_f and solve:\n\n$$\\Delta T = \\frac{4000}{(15\\times10^6)(10\\times10^{-6})} = \\frac{4000}{150} = 26.67\\ ^\\circ\\mathrm{C}$$\n\n### Case 2 — Net (bi-material, ceramic bonded to steel)\nBecause the steel substrate is much thicker/stiffer, the assembly expands at essentially the steel's rate. The stress in the ceramic is driven by the **mismatch** in expansion coefficients:\n\n$$\\sigma = E_c\\,(\\alpha_s - \\alpha_c)\\,\\Delta T$$\n\nSet σ = σ_f:\n\n$$\\Delta T = \\frac{4000}{(15\\times10^6)(12\\times10^{-6}-10\\times10^{-6})} = \\frac{4000}{30} = 133.33\\ ^\\circ\\mathrm{C}$$\n\nThe steel substrate relieves much of the stress (only the 2×10⁻⁶ mismatch matters instead of the full 10×10⁻⁶), so the allowable temperature change is far larger.\n\n$$\\boxed{(26.67,\\ 133.33)}$$",
+ "final_answer": "(26.67,\\ 133.33)",
+ "correct_answer": "(26.7, 133)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(°C, °C)"
+}

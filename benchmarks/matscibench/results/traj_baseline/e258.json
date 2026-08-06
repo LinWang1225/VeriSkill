@@ -1,0 +1,11 @@
+{
+ "tid": "e258",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 23-8",
+ "question_text": "An electrode potential in a platinum halfcell is 1.10 V . Determine the concentration of $\\mathrm{Pt}^{4+}$ ions in the electrolyte.The unit of the answer is g/L.",
+ "response": "**Solution:**\n\nFor the half-cell reaction: **Pt⁴⁺ + 4e⁻ → Pt(s)**, with n = 4 and E° = +1.20 V\n\nApplying the Nernst equation at 25°C:\n$$E = E^\\circ + \\frac{0.0591}{n}\\log[\\mathrm{Pt}^{4+}]$$\n\n$$1.10 = 1.20 + \\frac{0.0591}{4}\\log[\\mathrm{Pt}^{4+}]$$\n\n$$\\log[\\mathrm{Pt}^{4+}] = \\frac{-0.10 \\times 4}{0.0591} = -6.768$$\n\n$$[\\mathrm{Pt}^{4+}] = 1.70 \\times 10^{-7} \\text{ mol/L}$$\n\nConverting to g/L using M(Pt) = 195.08 g/mol:\n$$[\\mathrm{Pt}^{4+}] = 1.70 \\times 10^{-7} \\times 195.08 = 3.33 \\times 10^{-5} \\text{ g/L}$$\n\n$$\\boxed{3.33 \\times 10^{-5}}$$",
+ "final_answer": "3.33 \\times 10^{-5}",
+ "correct_answer": "0.000034",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "g/L"
+}

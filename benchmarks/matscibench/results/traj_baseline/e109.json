@@ -1,0 +1,11 @@
+{
+ "tid": "e109",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.62",
+ "question_text": "Pure Al has ρAl=2.71 g/cm³ and pure Li has ρLi=0.534 g/cm³.  An Al–Li alloy is desired to have an overall density of 2.47 g/cm³.  What weight percent Li must be added?The unit of the answer is wt%.",
+ "response": "Using ideal volume mixing (the standard rule of mixtures for density):\n\n$$\\frac{1}{\\rho} = \\frac{w_{\\text{Al}}}{\\rho_{\\text{Al}}} + \\frac{w_{\\text{Li}}}{\\rho_{\\text{Li}}}, \\quad w_{\\text{Al}} = 1 - w_{\\text{Li}}}$$\n\nSolving for the Li weight fraction:\n\n$$w_{\\text{Li}} = \\frac{\\tfrac{1}{\\rho} - \\tfrac{1}{\\rho_{\\text{Al}}}}{\\tfrac{1}{\\rho_{\\text{Li}}} - \\tfrac{1}{\\rho_{\\text{Al}}}} = \\frac{\\tfrac{1}{2.47} - \\tfrac{1}{2.71}}{\\tfrac{1}{0.534} - \\tfrac{1}{2.71}} \\approx 0.0238$$\n\n$$\\boxed{2.38}$$",
+ "final_answer": "2.38",
+ "correct_answer": "2.38",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "wt%"
+}

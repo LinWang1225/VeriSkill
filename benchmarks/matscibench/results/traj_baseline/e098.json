@@ -1,0 +1,11 @@
+{
+ "tid": "e098",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.26",
+ "question_text": "Calculate the composition, in weight percent, of an alloy that contains 105 kg of iron, 0.2 kg of carbon, and 1.0 kg of chromium.\n\nGive your answer as a tuple (the weight percent of Fe, the weigh percent of C, the weight percent of Cr)The units of each required answer are (wt%, wt%, wt%), respectively.",
+ "response": "Total mass = 105 + 0.2 + 1.0 = 106.2 kg\n\n- Fe: 105/106.2 × 100 = 98.87 wt%\n- C: 0.2/106.2 × 100 = 0.19 wt%\n- Cr: 1.0/106.2 × 100 = 0.94 wt%\n\n$$\\boxed{(98.87,\\ 0.19,\\ 0.94)}$$",
+ "final_answer": "(98.87,\\ 0.19,\\ 0.94)",
+ "correct_answer": "(98.87, 0.19, 0.94)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(wt%, wt%, wt%)"
+}

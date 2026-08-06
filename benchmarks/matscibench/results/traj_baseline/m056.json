@@ -1,0 +1,11 @@
+{
+ "tid": "m056",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 2.8",
+ "question_text": "Given that the mobility of electrons in copper is $32 \\mathrm{~cm}^{2} / \\mathrm{V} \\cdot \\mathrm{s}$ and conductivity σ=5.97×10^5 S/cm. What is the number of conduction electrons contributed per Cu atom?\n\nReference: $\\begin{gathered}\\rho=8.96 \\mathrm{~g} / \\mathrm{cm}^3=8960 \\mathrm{~kg} / \\mathrm{m}^3, \\quad M=63.546 \\mathrm{~g} / \\mathrm{mol}=63.546 \\times 10^{-3} \\mathrm{~kg} / \\mathrm{mol} \\\\ N_{\\mathrm{A}}=6.022 \\times 10^{23} \\text { atoms } / \\mathrm{mol}\\end{gathered}$",
+ "response": "## Step-by-Step Solution\n\n**Given:**\n- Electron mobility: $\\mu = 32 \\text{ cm}^2/\\text{V·s}$\n- Conductivity: $\\sigma = 5.97 \\times 10^5 \\text{ S/cm}$\n- Density: $\\rho = 8.96 \\text{ g/cm}^3$\n- Molar mass: $M = 63.546 \\text{ g/mol}$\n- Avogadro's number: $N_A = 6.022 \\times 10^{23} \\text{ atoms/mol}$\n- Electron charge: $e = 1.602 \\times 10^{-19} \\text{ C}$\n\n**Step 1: Find the conduction electron density $n$**\n\nUsing the conductivity relation $\\sigma = n e \\mu$:\n\n$$n = \\frac{\\sigma}{e\\mu} = \\frac{5.97 \\times 10^5}{(1.602 \\times 10^{-19})(32)} \\approx 1.165 \\times 10^{23} \\text{ electrons/cm}^3$$\n\n**Step 2: Find the number of Cu atoms per unit volume**\n\n$$N = \\frac{\\rho N_A}{M} = \\frac{(8.96)(6.022 \\times 10^{23})}{63.546} \\approx 8.49 \\times 10^{22} \\text{ atoms/cm}^3$$\n\n**Step 3: Find conduction electrons per Cu atom**\n\n$$\\frac{n}{N} = \\frac{1.165 \\times 10^{23}}{8.49 \\times 10^{22}} \\approx 1.37$$\n\n$$\\boxed{1.37}$$",
+ "final_answer": "1.37",
+ "correct_answer": "1.38",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

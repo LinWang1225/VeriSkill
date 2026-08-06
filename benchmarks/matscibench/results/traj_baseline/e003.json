@@ -1,0 +1,11 @@
+{
+ "tid": "e003",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 4.3",
+ "question_text": "The fraction of vacant lattice sites in a crystal is typically small. For example, the fraction of aluminum sites vacant at $400^{\\circ} \\mathrm{C}$ is $2.29 \\times 10^{-5}$. Calculate the density of these sites (in units of $\\mathrm{m}^{-3}$ ). Given the density of aluminum to be $2.70 \\mathrm{Mg} / \\mathrm{m}^{3}$ and its atomic mass to be 26.98 amu .The unit of the answer is m^{-3}.",
+ "response": "## Step-by-Step Solution\n\n**1. Find the number of aluminum atoms per unit volume (atomic number density):**\n\n$$N = \\frac{\\rho \\, N_A}{M}$$\n\nwhere:\n- $\\rho = 2.70 \\;\\text{Mg/m}^3 = 2.70 \\times 10^6 \\;\\text{g/m}^3$\n- $M = 26.98 \\;\\text{g/mol}$\n- $N_A = 6.022 \\times 10^{23} \\;\\text{atoms/mol}$\n\n$$N = \\frac{(2.70 \\times 10^6)(6.022 \\times 10^{23})}{26.98} \\approx 6.026 \\times 10^{28} \\;\\text{atoms/m}^3$$\n\n**2. Multiply by the vacancy fraction to get the vacancy density:**\n\n$$N_v = (2.29 \\times 10^{-5})\\, N$$\n\n$$N_v = (2.29 \\times 10^{-5})(6.026 \\times 10^{28}) \\approx 1.38 \\times 10^{24} \\;\\text{m}^{-3}$$\n\n$$\\boxed{1.38 \\times 10^{24}}$$",
+ "final_answer": "1.38 \\times 10^{24}",
+ "correct_answer": "1.38E+24",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m^{-3}"
+}

@@ -1,0 +1,1 @@
+回归门失败：历史 TP m255（r22 确认 fail）用改后 critics 重跑翻成 pass（adjusted=0.8，独立核查用标准 CTE 重解与 G 答案一致）。d-improve 本轮在 d-matsci-model-selection 新增 CM/介电模型混用子情形，并收窄 sign-convention-001 的 tuple 触发条件；其中一处改动使 m255 不再被判 fail。整库回滚到 r28 D before 快照。G 侧编辑不受影响。

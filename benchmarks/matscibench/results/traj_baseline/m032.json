@@ -1,0 +1,11 @@
+{
+ "tid": "m032",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_7.7",
+ "question_text": "At room temperature $\\left(25^{\\circ} \\mathrm{C}\\right)$, a 5.000 -mm-diameter tungsten pin is too large for a 4.999 -mm-diameter hole in a nickel bar. To what temperature must these two parts be heated in order for the pin to just fit? Give your answer as the value of temperature.The unit of the answer is °C.",
+ "response": "The pin fits when the hole expands to match the pin's expanded diameter:\n\n$$d_{Ni}(1+\\alpha_{Ni}\\Delta T)=d_W(1+\\alpha_W\\Delta T)$$\n\nUsing $\\alpha_W=4.5\\times10^{-6}/°C$, $\\alpha_{Ni}=13.0\\times10^{-6}/°C$:\n\n$$\\Delta T=\\frac{d_W-d_{Ni}}{d_{Ni}\\alpha_{Ni}-d_W\\alpha_W}\\approx 23.54\\,°C$$\n\n$$T=25+23.54\\approx 48.54\\,°C$$\n\n$$\\boxed{48.54}$$",
+ "final_answer": "48.54",
+ "correct_answer": "49.4",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "°C"
+}

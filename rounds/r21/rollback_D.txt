@@ -1,0 +1,8 @@
+冒烟测试失败：TN 条目 m143 在改后 critics 下被 concern-penalty 翻转判 fail
+(adjusted_score 0.62 < 0.75，2 条 concerns：K=534 舍入 + 验证非独立)，
+而 before critics 下判 pass (adjusted_score 0.85，1 条 concern)。
+d-improve 新增的 model-selection 子情形（spinel Z=8、Soderberg）与
+param-lookup 子情形（间隙位点半径）虽未直接命中 m143，但扩充的方法库
+内容使 D 对 m143 腐蚀常数精度生成了更多 concerns，触发存疑扣分翻转。
+按门控规则整库回滚。d-improve 本轮 3 条编辑（2 FP rubric + 1 FN narrow）
+全部退回。G 侧编辑不受影响。

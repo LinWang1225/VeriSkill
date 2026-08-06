@@ -1,0 +1,11 @@
+{
+ "tid": "e170",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 17.8",
+ "question_text": "A 0.4-m (15.7-in.) rod of a metal elongates 0.48 mm ( 0.019 in.) on heating from $20^{\\circ} \\mathrm{C}$ to $100^{\\circ} \\mathrm{C}\\left(68^{\\circ} \\mathrm{F}\\right.$ to $212^{\\circ} \\mathrm{F}$ ). Determine the value of the linear coefficient of thermal expansion for this material.The unit of the answer is C^-1.",
+ "response": "The linear coefficient of thermal expansion is defined by:\n\n$$\\Delta L = \\alpha L_0 \\Delta T$$\n\nSolving for $\\alpha$:\n\n$$\\alpha = \\frac{\\Delta L}{L_0 \\Delta T} = \\frac{0.48\\times10^{-3}\\ \\text{m}}{(0.4\\ \\text{m})(100-20)\\ ^\\circ\\text{C}} = \\frac{0.48\\times10^{-3}}{32} = 1.5\\times10^{-5}\\ ^\\circ\\text{C}^{-1}$$\n\n$$\\boxed{1.5\\times10^{-5}}$$",
+ "final_answer": "1.5\\times10^{-5}",
+ "correct_answer": "1.5E-05",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "C^-1"
+}

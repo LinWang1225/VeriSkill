@@ -1,0 +1,12 @@
+{
+  "edits": [
+    {"file": "workspace/actor_skills/g-matsci-percent-basis-reference.md", "action": "new_skill", "cluster": "e239-percent-basis",
+     "summary": "新建技能：算百分比/比率量前据物理定义显式确定分母；凝固收缩率以 V_solid=m/ρ 为基准而非 V_nominal，区分收缩率与孔隙率分母"},
+    {"file": "workspace/actor_skills/g-matsci-sigfig-rounding.md", "action": "patch", "cluster": "soft-intermediate-rounding-chain",
+     "summary": "补中间舍入链一致性规则：写出的舍入值与下一步实际代入值须一致"},
+    {"file": "workspace/actor_skills/g-sci-explicit-assumptions.md", "action": "patch", "cluster": "soft-reference-value-source",
+     "summary": "强化外部标准值标注：即使常用值也须标出处"}
+  ],
+  "needs_human": false,
+  "summary": "e239 FN→新建 percent-basis-reference；软信号 m122 舍入链→补 sigfig；e033/e228/m149 参考量未标来源→强化 explicit-assumptions。"
+}

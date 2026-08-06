@@ -1,0 +1,11 @@
+{
+ "tid": "e227",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 23-13",
+ "question_text": "At $1000^{\\circ} \\mathrm{C}$, pure nickel follows a parabolic oxidation curve given by the constant $\\mathrm{k}=3.9 \\times 10^{-12} \\mathrm{~cm}^2 / \\mathrm{s}$ in an oxygen atmosphere. If this relationship is not affected by the thickness of the oxide film, calculate the time required for a $0.1-\\mathrm{cm}$ nickel sheet to oxidize completely. Assuming that the sheet oxidizes from both sides.\n\n**Give your answer as time_years).**The unit of the answer is years.",
+ "response": "## Reasoning\n\nThe parabolic oxidation law relates oxide thickness $x$ to time $t$:\n\n$$x^2 = kt$$\n\n**Complete oxidation from both sides:**\n- Sheet thickness = $0.1\\ \\text{cm}$\n- Oxidizing from **both sides**, so each side must grow an oxide layer of:\n\n$$x = \\frac{0.1}{2} = 0.05\\ \\text{cm}$$\n\n**Solve for time:**\n\n$$t = \\frac{x^2}{k} = \\frac{(0.05)^2}{3.9\\times10^{-12}} = \\frac{2.5\\times10^{-3}}{3.9\\times10^{-12}} \\approx 6.41\\times10^{8}\\ \\text{s}$$\n\n**Convert to years:**\n\n$$t = \\frac{6.41\\times10^{8}}{365.25 \\times 24 \\times 3600} \\approx 20.31\\ \\text{years}$$\n\n$$\\boxed{20.31}$$",
+ "final_answer": "20.31",
+ "correct_answer": "20.3",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "years"
+}

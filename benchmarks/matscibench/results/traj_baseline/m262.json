@@ -1,0 +1,11 @@
+{
+ "tid": "m262",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 6.2",
+ "question_text": "A tensile stress is to be applied along the long axis of a cylindrical brass rod that has a diameter of 10 mm. Brass has Young’s modulus E = 97 GPa and Poisson’s ratio ν = 0.34. Determine the magnitude of the load required to produce a 2.5×10⁻³ mm decrease in diameter if the deformation is entirely elastic.The unit of the answer is N.",
+ "response": "The load required is approximately **5602 N**.\n\n**Summary of the calculation:**\n- Transverse strain: $\\varepsilon_x = -2.5\\times10^{-4}$\n- Axial strain: $\\varepsilon_z = \\dfrac{2.5\\times10^{-4}}{0.34} = 7.353\\times10^{-4}$\n- Stress: $\\sigma = (97\\times10^3\\,\\text{MPa})(7.353\\times10^{-4}) = 71.32\\,\\text{MPa}$\n- Cross-sectional area: $A = \\pi(5\\,\\text{mm})^2 = 78.54\\,\\text{mm}^2$\n- Load: $F = \\sigma A \\approx 5602\\,\\text{N}$\n\n$$\\boxed{5602}$$",
+ "final_answer": "5602",
+ "correct_answer": "5600",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "N"
+}

@@ -1,0 +1,2 @@
+{"item": "m064", "verdict": "pass", "rules_hit": [], "rubric_scores": {}, "normalized_score": 1.0, "adjusted_score": 0.95, "confidence": 0.95, "concerns": [], "reason": "无适用 critic 命中；独立重解（FCC, a=2R√2, V=a³）得 1.2127e-28 m³，与 G 的 1.21e-28 m³ 一致，单位、模型、量级均正确。"}
+{"item": "m273", "verdict": "pass", "rules_hit": [], "rubric_scores": {}, "normalized_score": 1.0, "adjusted_score": 0.95, "confidence": 0.95, "concerns": [], "reason": "无适用 critic，独立核查：Python 独立求解混合电位方程得 i_corr≈1.19e-4、rate≈6.18e-10 mol/cm²·s、V_corr≈-0.486 V，与 G 逐项一致；模型/单位/符号均正确。"}

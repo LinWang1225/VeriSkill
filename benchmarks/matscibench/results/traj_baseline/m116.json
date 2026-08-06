@@ -1,0 +1,11 @@
+{
+ "tid": "m116",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.16",
+ "question_text": "A single crystal of a metal that has the BCC crystal structure is oriented such that a tensile stress is applied in the [100] direction. If the magnitude of this stress is 4.0 MPa , compute the resolved shear stress in the [1 $\\overline{1} 1]$ direction on each of the (110), (011), and (101) planes.\n\nGive your answer as a tuple (resolved shear stress on (110), on (011), on (101))The units of each required answer are (MPa, MPa, MPa), respectively.",
+ "response": "## Solution\n\nThe resolved shear stress is given by Schmid's law:\n\n$$\\tau_R = \\sigma \\cos\\phi \\cos\\lambda$$\n\nwhere:\n- $\\phi$ = angle between the tensile axis **[100]** and the slip-plane normal\n- $\\lambda$ = angle between the tensile axis **[100]** and the slip direction **[1̄11]**\n\nFor a cubic crystal, the normal to plane $(hkl)$ is $[hkl]$.\n\n**Slip direction term** (same for all three planes):\n\n$$\\cos\\lambda = \\frac{[100]\\cdot[1\\bar{1}1]}{|[100]|\\,|[1\\bar{1}1]|} = \\frac{1}{1\\cdot\\sqrt{3}} = \\frac{1}{\\sqrt{3}}$$\n\n### (110) plane — normal $[110]$\n$$\\cos\\phi = \\frac{[100]\\cdot[110]}{1\\cdot\\sqrt{2}} = \\frac{1}{\\sqrt{2}}$$\n$$\\tau_R = 4.0 \\cdot \\frac{1}{\\sqrt{2}} \\cdot \\frac{1}{\\sqrt{3}} = \\frac{4.0}{\\sqrt{6}} = 1.633 \\text{ MPa}$$\n\n### (011) plane — normal $[011]$\n$$\\cos\\phi = \\frac{[100]\\cdot[011]}{1\\cdot\\sqrt{2}} = 0$$\n$$\\tau_R = 0 \\text{ MPa}$$\n\n### (101) plane — normal $[101]$\n$$\\cos\\phi = \\frac{[100]\\cdot[101]}{1\\cdot\\sqrt{2}} = \\frac{1}{\\sqrt{2}}$$\n$$\\tau_R = \\frac{4.0}{\\sqrt{6}} = 1.633 \\text{ MPa}$$\n\n$$\\boxed{(1.633,\\ 0,\\ 1.633)}$$",
+ "final_answer": "(1.633,\\ 0,\\ 1.633)",
+ "correct_answer": "(1.63, 0, 1.63)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(MPa, MPa, MPa)"
+}

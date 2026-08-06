@@ -1,0 +1,10 @@
+{
+  "edits": [
+    {"file": "workspace/actor_skills/g-matsci-yield-strength-definition-select.md", "action": "new_skill", "summary": "屈服强度定义选择——0.002偏移法 vs 比例极限"},
+    {"file": "workspace/actor_skills/g-sci-electrochem-nernst-complete.md", "action": "new_skill", "summary": "Nernst方程完整构造——E°项不可丢"},
+    {"file": "workspace/actor_skills/g-sci-final-answer-unit-dimension-check.md", "action": "new_skill", "summary": "最终答案单位量纲自检"},
+    {"file": "workspace/actor_skills/g-sci-independent-verify.md", "action": "patch", "summary": "新增伪独立模式6"}
+  ],
+  "needs_human": false,
+  "notes": "3 new skills + 1 patch. e056/m234 skipped (answers correct)."
+}

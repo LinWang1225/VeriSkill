@@ -1,0 +1,11 @@
+{
+ "tid": "m170",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 8.10",
+ "question_text": "Aluminum alloy 7075-T6 (yield strength $Y_{\\text{Al}} = 511$ MPa, density $\\rho_{\\text{Al}} = 2.7$ g/cm$^3$) and Ti-6Al-4V (yield strength $Y_{\\text{Ti}} = 939$ MPa, density $\\rho_{\\text{Ti}} = 4.5$ g/cm$^3$) are being considered for a 200 mm long tensile member carrying a load of 50 kN. Assume a factor of safety of 1.5.\n\nWhich material results in a lighter tensile member, and which material results in a lower embodied-energy impact?\n\nUse the following specific embodied energies:  \nAluminum: 193.5 MJ/kg  \nTitanium: 915 MJ/kg\n\nGive your answer as a tuple $(m_{\\text{Al}},\\ m_{\\text{Ti}},\\ E_{\\text{Al}},\\ E_{\\text{Ti}})$  \nThe units of each required answer are (g, g, MJ, MJ), respectively.",
+ "response": "## Reasoning\n\nFor a tensile member, the required cross-sectional area comes from the allowable stress:\n\n$$\\sigma_{\\text{allow}} = \\frac{Y}{FS}, \\qquad A = \\frac{P}{\\sigma_{\\text{allow}}} = \\frac{P\\cdot FS}{Y}$$\n\nThe member mass is $m = \\rho A L$, and the embodied energy is $E = m \\cdot e$ (specific embodied energy × mass).\n\n**Aluminum 7075-T6:**\n- $\\sigma_{\\text{allow}} = 511/1.5 = 340.7$ MPa → $A = 50000/340.7\\times10^{6} = 1.468\\times10^{-4}$ m²\n- $m_{\\text{Al}} = 2700 \\times 1.468\\times10^{-4} \\times 0.2 = 0.0793$ kg ≈ **79.26 g**\n- $E_{\\text{Al}} = 0.0793 \\times 193.5 \\approx$ **15.34 MJ**\n\n**Ti-6Al-4V:**\n- $\\sigma_{\\text{allow}} = 939/1.5 = 626$ MPa → $A = 50000/626\\times10^{6} = 7.99\\times10^{-5}$ m²\n- $m_{\\text{Ti}} = 4500 \\times 7.99\\times10^{-5} \\times 0.2 = 0.0719$ kg ≈ **71.88 g**\n- $E_{\\text{Ti}} = 0.0719 \\times 915 \\approx$ **65.77 MJ**\n\n**Conclusion:** Titanium gives the lighter member (71.88 g < 79.26 g) because its higher yield strength more than offsets its higher density. Aluminum gives the lower embodied-energy impact (15.34 MJ < 65.77 MJ) due to its much lower specific embodied energy.\n\n$$\\boxed{(79.26,\\ 71.88,\\ 15.34,\\ 65.77)}$$",
+ "final_answer": "(79.26,\\ 71.88,\\ 15.34,\\ 65.77)",
+ "correct_answer": "(79.3, 71.9, 15.4, 65.7)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(g, g, MJ, MJ)"
+}

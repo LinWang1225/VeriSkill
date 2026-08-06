@@ -1,0 +1,11 @@
+{
+ "tid": "m255",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 22-11",
+ "question_text": "An aluminum casting is made using the permanent mold process. In this process, the liquid aluminum is poured into a gray cast iron mold that is heated to $350^{\\circ} \\mathrm{C}$. We wish to produce an aluminum casting that is 15 in . long at $25^{\\circ} \\mathrm{C}$. Calculate the length of the cavity that must be machined into the gray cast iron mold.The unit of the answer is m.",
+ "response": "The cavity must be slightly longer than 15 in. because the aluminum contracts more (higher CTE) than the gray iron mold when cooling from 350°C to 25°C, so we need extra length to compensate.\n\n- $L_{\\text{mold}} = 15.062$ in $= 0.3826$ m\n\n$$\\boxed{0.3826}$$",
+ "final_answer": "0.3826",
+ "correct_answer": "15.182",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "m"
+}

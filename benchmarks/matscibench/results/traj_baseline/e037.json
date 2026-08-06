@@ -1,0 +1,11 @@
+{
+ "tid": "e037",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_5.25",
+ "question_text": "A differential nitrogen pressure exists across a $2-\\mathrm{mm}$ thick steel furnace wall. After some time, steadystate diffusion of the nitrogen is established across the wall. Given that the nitrogen concentration on the high-pressure surface of the wall is $2 \\mathrm{~kg} / \\mathrm{m}^3$ and on the low-pressure surface is $0.2 \\mathrm{~kg} / \\mathrm{m}^3$, calculate the flow of nitrogen through the wall (in $\\mathrm{kg} / \\mathrm{m}^2 \\cdot \\mathrm{~h}$ ) if the diffusion coefficient for nitrogen in this steel is $1.0 \\times 10^{-10} \\mathrm{~m}^2 / \\mathrm{s}$ at the furnace operating temperature. Give your answer as the value of nitrogen_flow.The unit of the answer is kg/m^2*h.",
+ "response": "Using Fick's first law at steady state, the diffusion flux is:\n\n$$J = -D\\frac{dC}{dx} = D\\frac{C_{\\text{high}} - C_{\\text{low}}}{\\Delta x}$$\n\nWith $D = 1.0\\times10^{-10}\\ \\mathrm{m^2/s}$, $\\Delta C = 2 - 0.2 = 1.8\\ \\mathrm{kg/m^3}$, and $\\Delta x = 2\\times10^{-3}\\ \\mathrm{m}$:\n\n$$J = \\frac{(1.0\\times10^{-10})(1.8)}{2\\times10^{-3}} = 9\\times10^{-8}\\ \\mathrm{kg/(m^2\\cdot s)}$$\n\nConverting to per hour: $9\\times10^{-8}\\times 3600 = 3.24\\times10^{-4}\\ \\mathrm{kg/(m^2\\cdot h)}$\n\n$$\\boxed{3.24\\times10^{-4}}$$",
+ "final_answer": "3.24\\times10^{-4}",
+ "correct_answer": "3.24E-04",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg/m^2*h"
+}

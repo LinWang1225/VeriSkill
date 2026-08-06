@@ -1,0 +1,11 @@
+{
+ "tid": "e106",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.42",
+ "question_text": "Silicon (ρSi = 2.33 g·cm–3) has been doped with 1.0×10–5 at.% aluminum. Using NA = 6.022×10^23 mol–1, AWAl = 26.98 g·mol–1 and AWSi = 28.09 g·mol–1, calculate the number of Al atoms per cubic meter of the alloy.The unit of the answer is atoms/m³.",
+ "response": "## Step-by-Step Solution\n\n**Given:**\n- ρ_Si = 2.33 g·cm⁻³\n- Doping: 1.0×10⁻⁵ at.% Al\n- N_A = 6.022×10²³ mol⁻¹, A_W,Si = 28.09 g·mol⁻¹\n\n**Step 1 — Atomic fraction of Al**\n\nAtomic percent means atoms of Al per 100 total atoms:\n$$\\frac{N_{Al}}{N_{total}} = \\frac{1.0\\times10^{-5}}{100} = 1.0\\times10^{-7}$$\n\n**Step 2 — Number of Si atoms per unit volume**\n\n$$N_{Si} = \\frac{\\rho_{Si}}{A_{W,Si}}\\,N_A = \\frac{2.33}{28.09}(6.022\\times10^{23}) = 4.995\\times10^{22}\\ \\text{atoms/cm}^3$$\n\n**Step 3 — Al atoms per cm³ (dilute approximation, N_total ≈ N_Si)**\n\n$$N_{Al} = N_{Si}\\times(1.0\\times10^{-7}) = 4.995\\times10^{15}\\ \\text{atoms/cm}^3$$\n\n**Step 4 — Convert to per m³ (1 m³ = 10⁶ cm³)**\n\n$$N_{Al} = 4.995\\times10^{15}\\times10^{6} = 4.995\\times10^{21}\\ \\text{atoms/m}^3$$\n\n*(Note: A_W,Al is not needed since the composition is given in atomic percent.)*\n\n$$\\boxed{4.995\\times10^{21}}$$",
+ "final_answer": "4.995\\times10^{21}",
+ "correct_answer": "4.99E+21",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "atoms/m³"
+}

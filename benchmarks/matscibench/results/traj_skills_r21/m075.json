@@ -1,0 +1,11 @@
+{
+ "tid": "m075",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 3.41",
+ "question_text": "Compute the theoretical density of ZnS , given that the $\\mathrm{Zn}-\\mathrm{S}$ distance and bond angle are 0.234 nm and $109.5^{\\circ}$, respectively.The unit of the answer is g/cm^3.",
+ "response": "## Reasoning\n\n**Structure identification.** The bond angle 109.5° is the ideal tetrahedral angle, so Zn is tetrahedrally coordinated by S (and vice‑versa). This is the **zinc‑blende (sphalerite)** structure — an FCC lattice with a two‑atom basis. (Wurtzite also has 109.5° tetrahedral bonds; for *ideal* tetrahedra both polymorphs give the same density for the same bond length, so the choice does not affect the result.)\n\n**Lattice parameter from bond length.** In zinc blende, the nearest‑neighbor Zn–S distance is along ⟨111⟩ at one‑quarter of the body diagonal:\n\n$$d_{\\mathrm{Zn-S}} = \\frac{\\sqrt{3}}{4}\\,a \\;\\Rightarrow\\; a = \\frac{4d}{\\sqrt{3}}$$\n\nWith $d = 0.234\\ \\mathrm{nm}$:\n\n$$a = \\frac{4(0.234)}{\\sqrt{3}} = 0.5404\\ \\mathrm{nm} = 5.404\\times10^{-8}\\ \\mathrm{cm}$$\n\n**Density.** Zinc blende has $Z = 4$ formula units per conventional cubic cell ($V=a^{3}$):\n\n$$\\rho = \\frac{Z\\,M_{\\mathrm{ZnS}}}{N_{\\!A}\\,a^{3}}$$\n\nUsing $M_{\\mathrm{Zn}}=65.38$, $M_{\\mathrm{S}}=32.06\\ \\mathrm{g/mol}$ (CRC Handbook / Callister), so $M_{\\mathrm{ZnS}}=97.44\\ \\mathrm{g/mol}$, and $N_{\\!A}=6.022\\times10^{23}\\ \\mathrm{mol^{-1}}$:\n\n$$\\rho = \\frac{4(97.44)}{(6.022\\times10^{23})(5.404\\times10^{-8})^{3}} = 4.10\\ \\mathrm{g/cm^{3}}$$\n\n**Significant figures.** The least‑precise input is $d = 0.234\\ \\mathrm{nm}$ (3 sig figs; the angle 109.5° has 4), so the result is reported to 3 sig figs → **4.10**.\n\n$$\\boxed{4.10}$$",
+ "final_answer": "4.10",
+ "correct_answer": "4.11",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "g/cm^3"
+}

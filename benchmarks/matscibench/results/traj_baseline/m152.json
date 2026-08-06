@@ -1,0 +1,11 @@
+{
+ "tid": "m152",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 17.27",
+ "question_text": "If a cylindrical rod of brass 150.00 mm long and 10.000 mm in diameter is heated from $20^{\\circ} \\mathrm{C}$ to $160^{\\circ} \\mathrm{C}$ while its ends are maintained rigid, determine its change in diameter. Hint: You may want to consult  table 7.1 . For brass, $v=0.34$; the value of $\\alpha_l$ for brass is $20.0 \\times 10^{-6}\\left({ }^{\\circ} \\mathrm{C}\\right)^{-1}$.The unit of the answer is mm.",
+ "response": "## Result\n\nWith ΔT = 140°C, d₀ = 10.000 mm, α_l = 20.0×10⁻⁶/°C, and ν = 0.34:\n\n$$\\Delta d = (10.000)(20.0\\times10^{-6})(140)(1 + 0.34) = 0.03752 \\text{ mm}$$\n\nThe rod's diameter **increases** by this amount (the Poisson effect from the longitudinal compressive stress adds to the ordinary thermal lateral expansion).\n\n$$\\boxed{0.03752}$$",
+ "final_answer": "0.03752",
+ "correct_answer": "0.0375",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

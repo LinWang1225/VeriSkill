@@ -1,0 +1,11 @@
+{
+ "tid": "e010",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 6.10",
+ "question_text": "In a laboratory creep experiment at $1,000^{\\circ} \\mathrm{C}$, a steady-state creep rate of $5 \\times 10^{-1} \\%$ per hour is obtained in a metal alloy. The creep mechanism for this alloy is known to be dislocation climb with an activation energy of $200 \\mathrm{~kJ} / \\mathrm{mol}$. Predict the creep rate at a service temperature of $600^{\\circ} \\mathrm{C}$. (Assume that the laboratory experiment duplicated the service stress.)The unit of the answer is % per hour.",
+ "response": "The steady-state creep rate follows an Arrhenius relationship:\n\n$$\\dot{\\varepsilon} = A\\exp\\!\\left(-\\frac{Q}{RT}\\right)$$\n\nWith the same stress, the pre-exponential factor $A$ is unchanged, so\n\n$$\\frac{\\dot{\\varepsilon}_2}{\\dot{\\varepsilon}_1}=\\exp\\!\\left[-\\frac{Q}{R}\\!\\left(\\frac{1}{T_2}-\\frac{1}{T_1}\\right)\\right]$$\n\nUsing $T_1=1273\\ \\mathrm{K}$, $T_2=873\\ \\mathrm{K}$, $Q=200{,}000\\ \\mathrm{J/mol}$, $R=8.314\\ \\mathrm{J/(mol\\cdot K)}$, and $\\dot{\\varepsilon}_1=5\\times10^{-1}\\ \\%/ \\mathrm{hr}$:\n\n$$\\dot{\\varepsilon}_2 = 0.5\\cdot\\exp\\!\\left[-\\frac{200000}{8.314}\\!\\left(\\frac{1}{873}-\\frac{1}{1273}\\right)\\right]\\approx 8.68\\times10^{-5}\\ \\%/ \\mathrm{hr}$$\n\n$$\\boxed{8.68\\times10^{-5}}$$",
+ "final_answer": "8.68\\times10^{-5}",
+ "correct_answer": "8.68E-05",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "% per hour"
+}

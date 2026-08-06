@@ -1,0 +1,11 @@
+{
+ "tid": "m181",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 15.3",
+ "question_text": "A piece of metal is subjected to a cyclic stress of 80 MPa. If the phase angle $\\delta = 0.1^\\circ$ and no heat is transferred to the surroundings, what will be the temperature rise after 100,000 cycles? Data: $E = 80 \\text{ GPa}$, $C = 800 \\text{ J} / (\\text{kg} \\cdot \\text{K})$, and $\\rho = 4.2 \\text{ Mg} / \\text{m}^3$.The unit of the answer is $ {}^{\\circ} C$.",
+ "response": "## Reasoning\n\nWhen a material is cyclically stressed with a phase lag $\\delta$ between stress and strain, the stress–strain curve forms a **hysteresis loop**. The area of this loop is the energy dissipated (as heat) per unit volume per cycle:\n\n$$\\Delta u = \\frac{\\pi \\sigma^{2}}{E}\\sin\\delta$$\n\nFor small $\\delta$, $\\sin\\delta \\approx \\delta$ (in radians).\n\n**Energy per unit volume after $N$ cycles:**\n\n$$u_{\\text{tot}} = N\\,\\frac{\\pi \\sigma^{2}}{E}\\sin\\delta$$\n\nSince **no heat escapes to the surroundings**, all dissipated energy raises the temperature:\n\n$$\\Delta T = \\frac{u_{\\text{tot}}}{\\rho C} = \\frac{N\\,\\pi \\sigma^{2}\\sin\\delta}{E\\,\\rho\\,C}$$\n\n**Substitution of values:**\n\n| Symbol | Value |\n|---|---|\n| $\\sigma$ | $80\\times10^{6}$ Pa |\n| $\\delta$ | $0.1^{\\circ}=1.745\\times10^{-3}$ rad |\n| $E$ | $80\\times10^{9}$ Pa |\n| $\\rho$ | $4.2\\times10^{3}$ kg/m³ |\n| $C$ | $800$ J/(kg·K) |\n| $N$ | $10^{5}$ |\n\n$$\\Delta T = \\frac{10^{5}\\cdot\\pi\\cdot(80\\times10^{6})^{2}\\cdot\\sin(0.1^{\\circ})}{(80\\times10^{9})(4200)(800)} \\approx 13.06\\;^{\\circ}\\mathrm{C}$$\n\n$$\\boxed{13.06}$$",
+ "final_answer": "13.06",
+ "correct_answer": "6.5",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "$ {}^{\\circ} C$"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m181",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 15.3",
+ "question_text": "A piece of metal is subjected to a cyclic stress of 80 MPa. If the phase angle $\\delta = 0.1^\\circ$ and no heat is transferred to the surroundings, what will be the temperature rise after 100,000 cycles? Data: $E = 80 \\text{ GPa}$, $C = 800 \\text{ J} / (\\text{kg} \\cdot \\text{K})$, and $\\rho = 4.2 \\text{ Mg} / \\text{m}^3$.The unit of the answer is $ {}^{\\circ} C$.",
+ "response": "## Solution\n\nThis is a **self-heating under cyclic stress** problem. The phase angle δ between stress and strain represents internal (viscoelastic) damping; the area of the stress–strain hysteresis loop is the energy dissipated as heat per unit volume per cycle.\n\n**Energy dissipated per unit volume per cycle** (hysteresis loop area):\n\n$$\\Delta w = \\pi\\,\\sigma_0 \\varepsilon_0 \\sin\\delta = \\pi\\,\\frac{\\sigma_0^2}{E}\\sin\\delta$$\n\nWith no heat transferred to the surroundings, all dissipated energy raises the temperature:\n\n$$N\\,\\Delta w = \\rho\\,C\\,\\Delta T \\;\\;\\Longrightarrow\\;\\; \\Delta T = \\frac{N\\,\\pi\\,\\sigma_0^2\\,\\sin\\delta}{E\\,\\rho\\,C}$$\n\n**Unit-faithful conversions** (per the unit-conversion skill):\n- $\\sigma_0 = 80\\ \\text{MPa} = 8.0\\times10^{7}\\ \\text{Pa}$\n- $E = 80\\ \\text{GPa} = 8.0\\times10^{10}\\ \\text{Pa}$\n- $\\rho = 4.2\\ \\text{Mg/m}^3 = 4.2\\times10^{3}\\ \\text{kg/m}^3$\n- $\\delta = 0.1^\\circ = 1.7453\\times10^{-3}\\ \\text{rad}$\n- $C = 800\\ \\text{J/(kg·K)}$, $N = 10^{5}$\n\n**Computation:**\n\n$$\\Delta T = \\frac{(10^{5})\\,\\pi\\,(8.0\\times10^{7})^{2}\\,\\sin(0.1^\\circ)}{(8.0\\times10^{10})(4.2\\times10^{3})(800)}$$\n\nThe arithmetic gives $\\Delta w \\approx 438.6\\ \\text{J/m}^3$ per cycle, total $4.386\\times10^{7}\\ \\text{J/m}^3$, and\n\n$$\\Delta T = \\frac{4.386\\times10^{7}}{(4200)(800)} \\approx 13.06\\ ^\\circ\\text{C}$$\n\nThe dominant input precision is 2 significant figures (80 MPa, 80 GPa, 4.2 Mg/m³), so rounding to 2 sig figs:\n\n$$\\boxed{13}$$",
+ "final_answer": "13",
+ "correct_answer": "6.5",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "$ {}^{\\circ} C$"
+}

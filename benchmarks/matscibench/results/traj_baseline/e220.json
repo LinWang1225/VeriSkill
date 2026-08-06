@@ -1,0 +1,11 @@
+{
+ "tid": "e220",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 19-8",
+ "question_text": "A multi-layer capacitor is to be designed using a $\\mathrm{BaTiO}_{3}$ formulation containing $\\mathrm{SrTiO}_{3}$. The dielectric constant of the material is 3000. (a) Calculate the capacitance of a multi-layer capacitor consisting of 100 layers connected in parallel using nickel electrodes. The area of each layer is $10 \\mathrm{~mm} \\times 5 \\mathrm{~mm}$, and the thickness of each layer is $10 \\mu \\mathrm{m}$.\n\n**Give your answer as a tuple: (capacitance_per_layer, total_capacitance).**The units of each required answer are (F, F), respectively.",
+ "response": "## Solution\n\nFor a parallel-plate capacitor, the capacitance of each layer is:\n\n$$C = \\frac{\\varepsilon_0 \\varepsilon_r A}{d}$$\n\n**Given values:**\n- $\\varepsilon_r = 3000$\n- $A = 10\\,\\text{mm} \\times 5\\,\\text{mm} = 50 \\times 10^{-6}\\,\\text{m}^2 = 5 \\times 10^{-5}\\,\\text{m}^2$\n- $d = 10\\,\\mu\\text{m} = 1 \\times 10^{-5}\\,\\text{m}$\n- $\\varepsilon_0 = 8.854 \\times 10^{-12}\\,\\text{F/m}$\n\n**Capacitance per layer:**\n\n$$C_{\\text{layer}} = \\frac{(8.854 \\times 10^{-12})(3000)(5 \\times 10^{-5})}{1 \\times 10^{-5}}$$\n\n$$C_{\\text{layer}} = (8.854 \\times 10^{-12})(3000)(5) = 1.328 \\times 10^{-7}\\,\\text{F}$$\n\n**Total capacitance (100 layers in parallel — capacitances add):**\n\n$$C_{\\text{total}} = 100 \\times C_{\\text{layer}} = 1.328 \\times 10^{-5}\\,\\text{F}$$\n\n$$\\boxed{(1.328 \\times 10^{-7},\\ 1.328 \\times 10^{-5})}$$",
+ "final_answer": "(1.328 \\times 10^{-7},\\ 1.328 \\times 10^{-5})",
+ "correct_answer": "(1.328e-07, 1.328e-05)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(F, F)"
+}

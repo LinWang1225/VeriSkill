@@ -1,0 +1,11 @@
+{
+ "tid": "e027",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 7.1",
+ "question_text": "Show that a heat capacity of $3 R$ is a reasonable approximation to the specific heat of copper given in Table. Give your answer as the value of specific_heat.\n(Reference to Table:\n\\begin{tabular}{lc}\n\\hline \\multicolumn{2}{c}{ Values of Specific Heat for a Variety of Materials } \\\\\n\\hline Material & $\\boldsymbol{c}_p[\\mathbf{J} / \\mathbf{k g} \\cdot \\mathbf{K}]$ \\\\\n\\hline Metals $^{\\mathrm{a}}$ & \\\\\nAluminum & 900 \\\\\nCopper & 385 \\\\\nGold & 129 \\\\\nIron $(\\alpha)$ & 444 \\\\\nLead & 159 \\\\\nNickel & 444 \\\\\nSilver & 237 \\\\\nTitanium & 523 \\\\\nTungsten & 133 \\\\\nCeramics ${ }^{\\text {a,b }}$ & \\\\\nAl $\\mathrm{O}_3$. & 160 \\\\\nMgO & 457 \\\\\nSiC & 344 \\\\\nCarbon (diamond) & 519 \\\\\nCarbon (graphite) & 711 \\\\\nPolymers & \\\\\nNylon 66 & $1260-2090$ \\\\\nPhenolic & $1460-1670$ \\\\\nPolyethylene (high density) & $1920-2300$ \\\\\nPolypropylene & 1880 \\\\\nPolytetraflouroethylene (PTFE) & 1050 \\\\\n\\hline\n\\end{tabular}\n)The unit of the answer is J/kg*K.",
+ "response": "## Result\n\n$$c_p = \\frac{3R}{M} = \\frac{24.942}{0.06355} \\approx 392.5\\ \\text{J/(kg·K)}$$\n\n**Comparison:** The table value for copper is $385\\ \\text{J/(kg·K)}$. Our Dulong–Petit estimate of $\\approx 392.5\\ \\text{J/(kg·K)}$ differs by only about 1.9%, confirming that $3R$ is indeed a reasonable approximation to the specific heat of copper.\n\n$$\\boxed{392.5}$$",
+ "final_answer": "392.5",
+ "correct_answer": "385",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "J/kg*K"
+}

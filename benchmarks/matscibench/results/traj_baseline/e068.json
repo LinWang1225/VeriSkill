@@ -1,0 +1,11 @@
+{
+ "tid": "e068",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 8.1",
+ "question_text": "Both sides of an alumina plate are coated with a metal electrode. The surface area of the electrode is $5 \\mathrm{~mm}^{2}$ and the relative dielectric constant and dielectric strength of the alumina are 9.1 and 17 volt $/ \\mathrm{mm}$, respectively. What is the maximum amount of electric charge that can be stored on the alumina plate's surface?The unit of the answer is F.",
+ "response": "## Reasoning\n\nThe alumina plate with electrodes on both sides forms a parallel-plate capacitor. The maximum charge is limited by the dielectric strength (breakdown field).\n\n**Capacitance:**\n$$C = \\frac{\\varepsilon_0 \\varepsilon_r A}{d}$$\n\n**Maximum voltage** (before dielectric breakdown):\n$$V_{max} = E_{max} \\cdot d$$\n\n**Maximum charge:**\n$$Q_{max} = C \\cdot V_{max} = \\frac{\\varepsilon_0 \\varepsilon_r A}{d} \\cdot E_{max} \\cdot d = \\varepsilon_0 \\varepsilon_r A \\cdot E_{max}$$\n\nNotice the plate thickness $d$ **cancels out**, so it isn't needed.\n\n**Substituting values:**\n- $\\varepsilon_0 = 8.854 \\times 10^{-12}\\ \\mathrm{F/m}$\n- $\\varepsilon_r = 9.1$\n- $A = 5\\ \\mathrm{mm^2} = 5 \\times 10^{-6}\\ \\mathrm{m^2}$\n- $E_{max} = 17\\ \\mathrm{V/mm} = 1.7 \\times 10^{4}\\ \\mathrm{V/m}$\n\n$$Q_{max} = (8.854\\times10^{-12})(9.1)(5\\times10^{-6})(1.7\\times10^{4})$$\n$$Q_{max} \\approx 6.85 \\times 10^{-12}\\ \\mathrm{C}$$\n\n$$\\boxed{6.85 \\times 10^{-12}}$$",
+ "final_answer": "6.85 \\times 10^{-12}",
+ "correct_answer": "7.23E-12",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "F"
+}

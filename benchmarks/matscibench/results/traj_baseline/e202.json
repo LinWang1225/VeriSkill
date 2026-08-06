@@ -1,0 +1,11 @@
+{
+ "tid": "e202",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 22.1",
+ "question_text": "Consider the 16:1 extrusion of a round aluminum billet from a diameter of 24 cm to a diameter of 6 cm. Assume that the flow stress is 15 MPa at the appropriate temperature and extrusion rate. Estimate the extrusion force, assuming an efficiency of 0.50.The unit of the answer is MN.",
+ "response": "## Solution\n\nFor **axisymmetric (round-to-round) extrusion**, the ideal extrusion pressure is:\n\n$$p_{\\text{ideal}} = \\bar{\\sigma}\\,\\ln R$$\n\n**Extrusion ratio:**\n$$R = \\frac{A_0}{A_f} = \\left(\\frac{D_0}{D_f}\\right)^2 = \\left(\\frac{24}{6}\\right)^2 = 16 \\quad (\\text{matches } 16{:}1)$$\n\n**Ideal pressure:**\n$$p_{\\text{ideal}} = 15\\;\\text{MPa}\\times \\ln(16) = 15 \\times 2.7726 = 41.59\\;\\text{MPa}$$\n\n**Accounting for efficiency** $\\eta = 0.50$:\n$$p_{\\text{actual}} = \\frac{p_{\\text{ideal}}}{\\eta} = \\frac{41.59}{0.50} = 83.18\\;\\text{MPa}$$\n\n**Billet cross-sectional area:**\n$$A_0 = \\frac{\\pi}{4}D_0^2 = \\frac{\\pi}{4}(0.24)^2 = 0.04524\\;\\text{m}^2$$\n\n**Extrusion force:**\n$$F = p_{\\text{actual}}\\,A_0 = 83.18\\times10^6 \\times 0.04524 = 3.76\\times10^6\\;\\text{N}$$\n\n$$\\boxed{3.76}$$",
+ "final_answer": "3.76",
+ "correct_answer": "3.76",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MN"
+}

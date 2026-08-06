@@ -1,0 +1,11 @@
+{
+ "tid": "e096",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.24",
+ "question_text": "What is the composition, in atom percent, of an alloy that consists of $5.5 \\mathrm{wt} \\% \\mathrm{~Pb}$ and $94.5 \\mathrm{wt} \\% \\mathrm{Sn}$ ?\n\\begin{aligned}\n& A_{\\mathrm{Pb}}=207.2 \\mathrm{~g} / \\mathrm{mol} \\\\\n& A_{\\mathrm{Sn}}=118.71 \\mathrm{~g} / \\mathrm{mol}\n\\end{aligned}\nGive your answer as (the atom percent of Pb, the atom percent of Sn).The units of each required answer are (at%, at%), respectively.",
+ "response": "For a 100 g basis: $n_{\\mathrm{Pb}}=5.5/207.2$ and $n_{\\mathrm{Sn}}=94.5/118.71$. Dividing each by the total moles and multiplying by 100:\n\n- $C'_{\\mathrm{Pb}} = \\dfrac{5.5/207.2}{5.5/207.2 + 94.5/118.71}\\times 100 \\approx 3.23\\,\\text{at\\%}$\n- $C'_{\\mathrm{Sn}} = \\dfrac{94.5/118.71}{5.5/207.2 + 94.5/118.71}\\times 100 \\approx 96.77\\,\\text{at\\%}$\n\n$$\\boxed{(3.23,\\ 96.77)}$$",
+ "final_answer": "(3.23,\\ 96.77)",
+ "correct_answer": "(3.23, 96.77)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(at%, at%)"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e142",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.82",
+ "question_text": "A large tower is to be supported by a series of steel wires; it is estimated that the load on each wire will be $13,300 \\mathrm{~N}(3000 \\mathrm{lb})$. Determine the minimum required wire diameter, assuming a factor of safety of 2.0 and a yield strength of $860 \\mathrm{MPa}(125,000 \\mathrm{psi})$ for the steel.The unit of the answer is mm.",
+ "response": "The allowable (working) stress is the yield strength divided by the factor of safety:\n\n$$\\sigma_w = \\frac{860\\ \\text{MPa}}{2.0} = 430\\ \\text{MPa}$$\n\nThe required cross‑sectional area supports the load at this stress:\n\n$$A = \\frac{F}{\\sigma_w} = \\frac{13{,}300\\ \\text{N}}{430\\times10^{6}\\ \\text{N/m}^2} \\approx 3.093\\times10^{-5}\\ \\text{m}^2$$\n\nFor a circular wire, $A = \\pi d^2/4$, so\n\n$$d = \\sqrt{\\frac{4A}{\\pi}} \\approx 6.28\\ \\text{mm}$$\n\n$$\\boxed{6.28}$$",
+ "final_answer": "6.28",
+ "correct_answer": "6.3",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

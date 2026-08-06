@@ -1,0 +1,11 @@
+{
+ "tid": "e019",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 13.4",
+ "question_text": "Given $\\mu = 3.5 \\times 10^{-3} \\mathrm{~m}^{2} /(\\mathrm{V} \\cdot \\mathrm{~s})$ for copper, calculate the drift velocity of the free electrons in copper for an electric field strength of $0.5 \\mathrm{~V} / \\mathrm{m}$.The unit of the answer is m/s.",
+ "response": "$$\\boxed{1.75 \\times 10^{-3}}$$",
+ "final_answer": "1.75 \\times 10^{-3}",
+ "correct_answer": "1.75E-03",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "m/s"
+}

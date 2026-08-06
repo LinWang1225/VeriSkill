@@ -1,0 +1,11 @@
+{
+ "tid": "e031",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 13.2",
+ "question_text": "How many free electrons would there be in a spool of high-purity copper wire ( 1 mm diameter $\\times 10 \\mathrm{~m}$ long)? Give your answer as the value of free_electrons.The unit of the answer is electrons.",
+ "response": "## Reasoning\n\nCopper is monovalent for free-electron purposes: **each Cu atom contributes 1 conduction (free) electron**. So the number of free electrons equals the number of copper atoms in the wire.\n\n**Step 1 — Wire volume**\n$$V = \\pi r^{2} L = \\pi(0.5\\times10^{-3}\\,\\text{m})^{2}(10\\,\\text{m}) = 7.854\\times10^{-6}\\,\\text{m}^{3}$$\n\n**Step 2 — Mass of copper**\nUsing density $\\rho = 8.96\\,\\text{g/cm}^{3} = 8960\\,\\text{kg/m}^{3}$:\n$$m = \\rho V = 8960 \\times 7.854\\times10^{-6} \\approx 0.07036\\,\\text{kg} = 70.36\\,\\text{g}$$\n\n**Step 3 — Moles of copper**\nMolar mass $M = 63.546\\,\\text{g/mol}$:\n$$n = \\frac{70.36}{63.546} \\approx 1.1075\\,\\text{mol}$$\n\n**Step 4 — Number of atoms (and thus free electrons)**\n$$N = n \\times N_{A} = 1.1075 \\times 6.022\\times10^{23} \\approx 6.669\\times10^{23}$$\n\n$$\\boxed{6.669\\times10^{23}}$$",
+ "final_answer": "6.669\\times10^{23}",
+ "correct_answer": "8.17E+23",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "electrons"
+}

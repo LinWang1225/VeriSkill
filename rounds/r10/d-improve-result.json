@@ -1,11 +1,13 @@
 {
-  "edits": [],
-  "fp_seen": 0,
+  "edits": [
+    {"critic":"d-matsci-model-selection","type":"narrow_rule","rule_id":"R-d-matsci-model-selection-001","evidence_items":["#m123"],"summary":"在方法库中新增 S-N 疲劳离散数据逐段局部 log-log 插值 vs 全局幂律回归子情形，更新触发条件与依据"}
+  ],
+  "fp_seen": 1,
   "fp_resolved": 0,
-  "fn_clusters_seen": 0,
-  "fn_resolved": [],
-  "unjudgeable": ["q028", "q032", "q044", "q008", "q033", "q038", "q063", "q127"],
-  "unresolved": [],
+  "fn_clusters_seen": 1,
+  "fn_resolved": ["m123"],
+  "unjudgeable": [],
+  "unresolved": [{"item":"m132","reason":"评分路径误杀（rules_hit 空，normalized_score=0.0），D 对舍入偏差阈值过严，交由阈值自校准处理"}],
   "skipped": [],
   "needs_human": false
 }

@@ -1,0 +1,11 @@
+{
+ "tid": "e052",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_13.9",
+ "question_text": "At what temperature will the $5.60-\\mathrm{eV}$ energy level for electrons in silver be $25 \\%$ filled? (The Fermi level for silver is 5.48 eV .) Give your answer as the value of temperature.The unit of the answer is °C.",
+ "response": "Using the Fermi–Dirac distribution:\n\n$$f(E) = \\frac{1}{e^{(E-E_F)/kT}+1} = 0.25$$\n\nWith $E - E_F = 5.60 - 5.48 = 0.12$ eV:\n\n$$e^{0.12/kT} = \\frac{1}{0.25}-1 = 3 \\;\\Rightarrow\\; T = \\frac{0.12}{k\\ln 3} \\approx 1267.6\\ \\text{K} \\approx 994.4\\ ^\\circ\\text{C}$$\n\n$$\\boxed{994.4}$$",
+ "final_answer": "994.4",
+ "correct_answer": "994",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "°C"
+}

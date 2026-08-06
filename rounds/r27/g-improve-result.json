@@ -1,0 +1,9 @@
+{
+  "edits": [
+    {"skill":"g-sci-answer-final-numeric-form","type":"patch","cluster":"R-d-sci-answer-format-001","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"增加硬约束：题面指定单位时只报该单位，禁止双单位并列，e211"},
+    {"skill":"g-sci-named-force-magnitude-report","type":"patch","cluster":"R-d-matsci-sign-convention-001","support":1,"audited_support":1,"attribution":"能力缺陷","summary":"将编号方程符号约定检查提升为 STEP 0 硬门控，e264"},
+    {"skill":"g-matsci-anisotropic-yield-r-placement","type":"new_skill","cluster":"route-miss","support":1,"audited_support":0,"attribution":"激活缺陷","summary":"新建技能：Hosford/Hill 各向异性屈服函数 R 乘差应力项，m176"},
+    {"skill":"g-matsci-param-lookup-consistent-source","type":"patch","cluster":"R-d-matsci-param-lookup-001","support":1,"audited_support":0,"attribution":"能力缺陷","summary":"禁止用模型一致性不等式筛选参数，m041"}
+  ],
+  "clusters_seen":4,"clusters_fixed":4,"skipped":[],"needs_human":false
+}

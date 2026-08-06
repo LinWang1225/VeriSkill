@@ -1,0 +1,11 @@
+{
+ "tid": "e208",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 3-18_2",
+ "question_text": "Perovskite is a mineral containing calcium, titanium, and oxygen. The unit cell is cubic and has a calcium atom at each corner, an oxygen atom at each face center, and a titanium atom at the body-centered position. The atoms contribute to the unit cell in the usual way ( $1 / 8$ atom contribution for each atom at the corners, etc.). How many atoms of each type are there per unit cell?",
+ "response": "## Reasoning\n\nFor a cubic unit cell of perovskite (CaTiO₃), we count each atom's fractional contribution to the unit cell:\n\n**Calcium (Ca) — corner atoms:**\nA cube has 8 corners, and each corner atom is shared among 8 neighboring unit cells, contributing \\(1/8\\) per cell:\n$$8 \\times \\frac{1}{8} = 1 \\text{ Ca atom}$$\n\n**Oxygen (O) — face-centered atoms:**\nA cube has 6 faces, and each face-centered atom is shared between 2 unit cells, contributing \\(1/2\\) per cell:\n$$6 \\times \\frac{1}{2} = 3 \\text{ O atoms}$$\n\n**Titanium (Ti) — body-centered atom:**\nThe body center lies entirely within one unit cell, contributing \\(1\\) per cell:\n$$1 \\times 1 = 1 \\text{ Ti atom}$$\n\nThis gives the formula **CaTiO₃**, consistent with the known composition of perovskite.\n\n$$\\boxed{1\\text{ Ca},\\ 1\\text{ Ti},\\ 3\\text{ O}}$$",
+ "final_answer": "1\\text{ Ca},\\ 1\\text{ Ti},\\ 3\\text{ O}",
+ "correct_answer": "5",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

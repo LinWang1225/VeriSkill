@@ -1,0 +1,11 @@
+{
+ "tid": "m186",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 3-14",
+ "question_text": "Calculate the density of MgO. Reference the radius ratio and coordination number to justify the crystal structure, and use the given ionic radii and atomic masses for your calculations. the ionic radii are $r_{\\mathrm{Mg}^{+2}}=0.066 \\mathrm{~nm}$ and $r_{\\mathrm{O}^{-2}}=0.132 \\mathrm{~nm}$, Atomic masses: Mg = 24.31 g mol⁻¹; O = 16.00 g mol⁻¹.The unit of the answer is g/cm^3.",
+ "response": "## Step-by-step solution\n\n**1. Radius ratio → coordination number → crystal structure**\n\n$$\\frac{r_{\\mathrm{Mg}^{2+}}}{r_{\\mathrm{O}^{2-}}} = \\frac{0.066}{0.132} = 0.50$$\n\nA radius ratio of **0.50** falls in the range **0.414–0.732**, which corresponds to **octahedral coordination (CN = 6)**. Since both Mg²⁺ and O²⁻ have CN = 6, MgO adopts the **NaCl (rock salt) structure** — an FCC lattice with **4 formula units per unit cell**.\n\n**2. Lattice parameter**\n\nIn the NaCl structure, anions and cations touch along the cube edge:\n\n$$a = 2(r_{\\mathrm{Mg}^{2+}} + r_{\\mathrm{O}^{2-}}) = 2(0.066 + 0.132) = 0.396\\ \\mathrm{nm} = 3.96\\times10^{-8}\\ \\mathrm{cm}$$\n\n**3. Density**\n\n$$\\rho = \\frac{n \\cdot M}{N_A \\cdot a^{3}}$$\n\n- $n = 4$ formula units/unit cell\n- $M = 24.31 + 16.00 = 40.31\\ \\mathrm{g\\ mol^{-1}}$\n- $N_A = 6.022\\times10^{23}\\ \\mathrm{mol^{-1}}$\n\n$$\\rho = \\frac{4 \\times 40.31}{6.022\\times10^{23}\\times(3.96\\times10^{-8})^3} \\approx 4.31\\ \\mathrm{g/cm^3}$$\n\n$$\\boxed{4.31}$$",
+ "final_answer": "4.31",
+ "correct_answer": "4.31",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "g/cm^3"
+}

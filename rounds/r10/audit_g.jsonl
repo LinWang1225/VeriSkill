@@ -1,0 +1,2 @@
+{"item":"e023","segment":"随机","d_verdict":"pass","oracle_pass":true,"kind":"TN","skill_hash":"bcac21a9deab","truth_source":"checker","rules_hit":[],"normalized_score":1.0,"confidence":0.95,"oracle_evidence":"checker: all values match.","skill_result":"(40, 40, 40) mu_B"}
+{"item":"m132","segment":"误杀","d_verdict":"fail","oracle_pass":true,"kind":"FP","skill_hash":"bcac21a9deab","truth_source":"checker","rules_hit":[],"normalized_score":0.0,"confidence":0.62,"oracle_evidence":"checker: all values match.","skill_result":"0.65"}

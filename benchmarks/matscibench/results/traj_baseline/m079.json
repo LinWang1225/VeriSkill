@@ -1,0 +1,11 @@
+{
+ "tid": "m079",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 5.5",
+ "question_text": "Calculate the energy for vacancy formation in nickel (Ni), given that the equilibrium number of vacancies at $850^{\\circ} \\mathrm{C}(1123 \\mathrm{~K})$ is $4.7 \\times 10^{22} \\mathrm{~m}^{-3}$. The atomic weight and density (at $850^{\\circ} \\mathrm{C}$ ) for Ni are, respectively, $58.69 \\mathrm{~g} / \\mathrm{mol}$ and $8.80 \\mathrm{~g} / \\mathrm{cm}^{3}$.The unit of the answer is eV/atom.",
+ "response": "## Step-by-Step Solution\n\nThe equilibrium number of vacancies is given by:\n\n$$N_v = N \\exp\\!\\left(-\\frac{Q_v}{kT}\\right)$$\n\n**Step 1 — Number of atomic sites per unit volume:**\n\n$$N = \\frac{\\rho N_A}{A} = \\frac{(8.80\\times10^{6}\\,\\text{g/m}^3)(6.022\\times10^{23}\\,\\text{atoms/mol})}{58.69\\,\\text{g/mol}} = 9.03\\times10^{28}\\,\\text{m}^{-3}$$\n\n**Step 2 — Solve for $Q_v$:**\n\n$$Q_v = -kT\\ln\\!\\left(\\frac{N_v}{N}\\right)$$\n\n$$\\frac{N_v}{N} = \\frac{4.7\\times10^{22}}{9.03\\times10^{28}} = 5.21\\times10^{-7}$$\n\n**Step 3 — Substitute** with $k = 8.62\\times10^{-5}$ eV/K and $T = 1123$ K:\n\n$$Q_v = -(8.62\\times10^{-5})(1123)\\ln(5.21\\times10^{-7})$$\n\n$$Q_v = (0.0968)(14.47) \\approx 1.40\\;\\text{eV/atom}$$\n\n$$\\boxed{1.40}$$",
+ "final_answer": "1.40",
+ "correct_answer": "1.40",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "eV/atom"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "e262",
+ "qid": "Materials_Science_and_Engineering_An_Introduction_Callister_Example 5.1",
+ "question_text": "A plate of iron is exposed to a carburizing (carbon-rich) atmosphere on one side and a decarburizing (carbon-deficient) atmosphere on the other side at $700^{\\circ}C(1300^{\\circ}F)$. If a condition of steady state is achieved, calculate the diffusion flux of carbon through the plate if the concentrations of carbon at positions of 5 and 10 mm ($5 \\times 10^{-3}$ and $10^{-2} m$) beneath the carburizing surface are 1.2 and 0.8 $kg/m^3$, respectively. Assume a diffusion coefficient of $3 \\times 10^{-11} m^2/s$ at this temperature.The unit of the answer is kg/m^2s.",
+ "response": "The flux is positive, indicating carbon diffuses from the carburizing (high-concentration) side toward the decarburizing (low-concentration) side, as expected.\n\n$$\\boxed{2.4 \\times 10^{-9}}$$",
+ "final_answer": "2.4 \\times 10^{-9}",
+ "correct_answer": "2.4e-09",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "kg/m^2s"
+}

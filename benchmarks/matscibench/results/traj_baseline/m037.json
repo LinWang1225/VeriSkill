@@ -1,0 +1,11 @@
+{
+ "tid": "m037",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_10.33",
+ "question_text": "Specify an aging temperature for a $95 \\mathrm{Al}-5 \\mathrm{Cu}$ alloy that will produce a maximum of $5 \\mathrm{wt} \\% \\theta$ precipitate. Give your answer as the value of aging_temperature.The unit of the answer is °C.",
+ "response": "## Solution\n\n**Step 1 — Lever rule setup**\n\nFor the 95Al-5Cu alloy (C₀ = 5 wt% Cu), the equilibrium fraction of θ (Al₂Cu, Cθ ≈ 53 wt% Cu) at an aging temperature is:\n\n$$f_\\theta = \\frac{C_0 - C_\\alpha}{C_\\theta - C_\\alpha}$$\n\n**Step 2 — Solve for required matrix composition**\n\nSetting f_θ = 0.05 (the maximum allowed 5 wt% θ):\n\n$$C_\\alpha = \\frac{C_0 - f_\\theta C_\\theta}{1 - f_\\theta} = \\frac{5 - 0.05(53)}{0.95} = \\frac{2.35}{0.95} \\approx 2.47 \\text{ wt% Cu}$$\n\n**Step 3 — Find the temperature on the solvus where Cu solubility in α-Al equals 2.47 wt%**\n\nThe Al-rich solvus of the Al-Cu diagram passes through ~5.65 wt% at 548 °C (eutectic) and decreases with temperature. Reading/interpolating the solvus (both linear and Arrhenius interpolation between the 450 °C / 2.5 wt% and 475 °C / 3.2 wt% data points) gives the temperature where solubility = 2.47 wt% Cu:\n\n$$T \\approx 449\\text{–}452\\ °C \\;\\approx\\; 450\\ °C$$\n\nAging below ~450 °C would drive the equilibrium θ fraction above 5 wt%; aging above it keeps θ below 5 wt%. Thus the highest permissible aging temperature (giving exactly the 5 wt% maximum) is:\n\n$$\\boxed{450}$$",
+ "final_answer": "450",
+ "correct_answer": "400",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "°C"
+}

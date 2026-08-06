@@ -1,0 +1,11 @@
+{
+ "tid": "m132",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 11.11",
+ "question_text": "The fraction recrystallized-time data for the recrystallization at $350^{\\circ} \\mathrm{C}$ of a previously deformed aluminum are tabulated here. Assuming that the kinetics of this process obey the Avrami relationship, determine the fraction recrystallized after a total time of 116.8 min .\n\n| Fraction Recrystallized | Time $(\\mathbf{m i n})$ |\n| :--: | :--: |\n| 0.30 | 95.2 |\n| 0.80 | 126.6 |",
+ "response": "Using the Avrami relationship, $y = 1 - \\exp(-k t^n)$, which rearranges to:\n\n$$\\ln[-\\ln(1-y)] = \\ln k + n \\ln t$$\n\nWith the two data points $(y_1,t_1)=(0.30, 95.2)$ and $(y_2,t_2)=(0.80, 126.6)$, I solve the two simultaneous linear equations for $n$ and $k$:\n\n- $n = \\dfrac{\\ln[-\\ln(1-y_2)] - \\ln[-\\ln(1-y_1)]}{\\ln t_2 - \\ln t_1} \\approx 5.29$\n- $k \\approx 1.24\\times10^{-11}$\n\nThen at $t = 116.8$ min:\n\n$$y = 1 - \\exp\\!\\big(-k\\,t^{\\,n}\\big) \\approx 0.65$$\n\n$$\\boxed{0.66}$$",
+ "final_answer": "0.66",
+ "correct_answer": "0.65",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

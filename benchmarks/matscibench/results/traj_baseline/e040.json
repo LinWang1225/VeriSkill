@@ -1,0 +1,11 @@
+{
+ "tid": "e040",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_7.1",
+ "question_text": "Estimate the amount of heat (in J) required to raise 2 kg of (a) $\\alpha$-iron, (b) graphite, and (c) polypropylene from room temperature $\\left(25^{\\circ} \\mathrm{C}\\right)$ to $100^{\\circ} \\mathrm{C}$. Give your answer as a tuple: (heat_alpha_iron, heat_graphite, heat_polypropylene).The units of each required answer are (J, J, J), respectively.",
+ "response": "Using \\(Q = m c_p \\Delta T\\) with \\(\\Delta T = 75\\ \\text{K}\\) and \\(m = 2\\ \\text{kg}\\):\n\n- **α-iron:** \\(c_p \\approx 0.449\\ \\text{J g}^{-1}\\text{K}^{-1}\\Rightarrow Q \\approx 67{,}350\\ \\text{J}\\)\n- **graphite:** \\(c_p \\approx 0.709\\ \\text{J g}^{-1}\\text{K}^{-1}\\Rightarrow Q \\approx 106{,}350\\ \\text{J}\\)\n- **polypropylene:** \\(c_p \\approx 1.9\\ \\text{J g}^{-1}\\text{K}^{-1}\\Rightarrow Q \\approx 285{,}000\\ \\text{J}\\)\n\n\\[\n\\boxed{(67350,\\ 106350,\\ 285000)}\n\\]",
+ "final_answer": "(67350,\\ 106350,\\ 285000)",
+ "correct_answer": "(66600, 107000, 282000)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(J, J, J)"
+}

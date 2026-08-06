@@ -1,0 +1,11 @@
+{
+ "tid": "e139",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.46",
+ "question_text": "For some metal alloy, a true stress of 345 MPa (50,000 psi) produces a plastic true strain of 0.02 . How much does a specimen of this material elongate when a true stress of 415 MPa (60,000 psi) is applied if the original length is 500 mm (20 in.)? Assume a value of 0.22 for the strain-hardening exponent, $n$.The unit of the answer is mm.",
+ "response": "## Step-by-Step Reasoning\n\nFor plastic deformation, the true stress–true strain relationship follows the strain-hardening (Hollomon) equation:\n\n$$\\sigma_T = K \\varepsilon_T^n$$\n\n**Step 1: Relate the two stress states.** Since $K$ and $n$ are material constants, taking the ratio eliminates $K$:\n\n$$\\frac{\\sigma_{T2}}{\\sigma_{T1}} = \\left(\\frac{\\varepsilon_{T2}}{\\varepsilon_{T1}}\\right)^n$$\n\n**Step 2: Solve for the true strain at 415 MPa.**\n\n$$\\varepsilon_{T2} = \\varepsilon_{T1}\\left(\\frac{\\sigma_{T2}}{\\sigma_{T1}}\\right)^{1/n} = 0.02\\left(\\frac{415}{345}\\right)^{1/0.22} \\approx 0.0463$$\n\n**Step 3: Convert true strain to elongation.** True strain is $\\varepsilon_T = \\ln(l/l_0)$, so $l = l_0 e^{\\varepsilon_T}$ and the elongation is:\n\n$$\\Delta l = l_0\\left(e^{\\varepsilon_{T2}} - 1\\right) = 500\\left(e^{0.0463} - 1\\right) \\approx 23.7 \\text{ mm}$$\n\n$$\\boxed{23.7}$$",
+ "final_answer": "23.7",
+ "correct_answer": "23.7",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

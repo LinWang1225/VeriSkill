@@ -1,0 +1,11 @@
+{
+ "tid": "e055",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_13.79",
+ "question_text": "When the aluminum impurity level in a silicon bar has reached 1 ppb , what would have been the purity of the liquid on the previous pass?The unit of the answer is ppm.",
+ "response": "The liquid on the previous pass would have had an aluminum concentration of **500 ppb = 0.5 ppm**.\n\n$$\\boxed{0.5}$$",
+ "final_answer": "0.5",
+ "correct_answer": "2.76",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "ppm"
+}

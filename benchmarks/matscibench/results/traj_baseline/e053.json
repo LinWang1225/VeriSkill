@@ -1,0 +1,11 @@
+{
+ "tid": "e053",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_13.15",
+ "question_text": "A strip of copper metallization on a solid-state device is 1 mm long with a thickness of $1 \\mu \\mathrm{~m}$ and a width of $6 \\mu \\mathrm{~m}$. If a voltage of 0.1 V is applied along the long dimension, what is the resulting current? Give your answer as the value of current.The unit of the answer is mV.",
+ "response": "## Solution\n\n**Step 1: Cross-sectional area**\n$$A = w \\times t = (6\\times10^{-6})(1\\times10^{-6}) = 6\\times10^{-12}\\ \\text{m}^2$$\n\n**Step 2: Resistance**\n$$R = \\frac{\\rho L}{A} = \\frac{(1.7\\times10^{-8})(10^{-3})}{6\\times10^{-12}} = \\frac{1.7\\times10^{-11}}{6\\times10^{-12}} \\approx 2.83\\ \\Omega$$\n\n**Step 3: Current (Ohm's Law)**\n$$I = \\frac{V}{R} = \\frac{0.1}{2.83} \\approx 0.0353\\ \\text{A} = 35.3\\ \\text{mA}$$\n\nThe problem asks for the current value (the stated unit \"mV\" appears to be a typo for mA, since current is requested). The resulting current is approximately **35.3 mA**.\n\n$$\\boxed{35.3}$$",
+ "final_answer": "35.3",
+ "correct_answer": "34.8",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mV"
+}

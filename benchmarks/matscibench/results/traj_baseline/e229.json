@@ -1,0 +1,11 @@
+{
+ "tid": "e229",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 3-31",
+ "question_text": "Above $882^{\\circ} \\mathrm{C}$, titanium has a BCC crystal structure, with $a=0.332 \\mathrm{~nm}$. Below this temperature, titanium has a HCP structure with $a=0.2978 \\mathrm{~nm}$ and $c=0.4735 \\mathrm{~nm}$. Determine the percent volume change when BCC titanium transforms to HCP titanium. Is this a contraction or expansion? Give your answer as a tuple: (percent_volume_change, transformation_type).The unit of the answer is (%, ).",
+ "response": "The volume per atom is the correct basis for comparison since the two structures have different numbers of atoms per cell.\n\n- **BCC** (2 atoms/cell): $V_{\\text{BCC}}/\\text{atom} = a^3/2$\n- **HCP** (6 atoms/cell): $V_{\\text{HCP}}/\\text{atom} = \\dfrac{(3\\sqrt{3}/2)\\,a^2 c}{6} = \\dfrac{\\sqrt{3}}{4}a^2 c$\n\n$$\\frac{\\Delta V}{V} = \\frac{V_{\\text{HCP}} - V_{\\text{BCC}}}{V_{\\text{BCC}}}\\times 100 \\approx -0.623\\%$$\n\nThe negative sign indicates a **contraction** (volume decreases on cooling from BCC to HCP).\n\n$$\\boxed{(-0.623,\\ \\text{contraction})}$$",
+ "final_answer": "(-0.623,\\ \\text{contraction})",
+ "correct_answer": "(0.6, contraction)",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "(%, )"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m141",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 15.13",
+ "question_text": "Consider a unidirectional fiber‐reinforced composite with fiber volume fraction Vf=0.45 and matrix volume fraction Vm=0.55.  The fibers have Young’s modulus Ef=131 GPa and the matrix has Young’s modulus Em=2.4 GPa.  The composite’s cross‐sectional area is Ac=480 mm² and it is subjected to an axial tensile load Fc=53 400 N.  (a) Find the fiber–matrix load ratio Ff/Fm.  \n(b) Find the actual loads Ff and Fm carried by the fibers and the matrix.  \n(c) Compute the stresses σf and σm in each phase.  \n(d) Compute the common strain ε in the composite.\n\nGive your answer as a tuple (the fiber-matrix load ratio, the actual loads carried by fiber, the actual loads carried by matrix phases,  the magnitude of the stress on fiber, the magnitude of the stress on matrix phases, strain in (d)).The units of each required answer are (, N, N, MPa, MPa, ), respectively.",
+ "response": "## Step-by-step solution\n\nFor a unidirectional composite under axial tension, the **isostrain** condition applies: $\\varepsilon_f = \\varepsilon_m = \\varepsilon$.\n\n**Phase areas:** $A_f = V_f A_c = 0.45(480)=216\\text{ mm}^2$, $A_m = V_m A_c = 0.55(480)=264\\text{ mm}^2$.\n\n**(a) Load ratio.** Since $F = \\sigma A = E\\varepsilon A$,\n$$\\frac{F_f}{F_m}=\\frac{E_f V_f}{E_m V_m}=\\frac{131(0.45)}{2.4(0.55)}=44.66$$\n\n**(b) Actual loads.** $F_f+F_m = F_c = 53\\,400$ N, with $F_f/F_m = 44.659$:\n$$F_m = \\frac{F_c}{1+44.659}=1169.5\\text{ N},\\qquad F_f = 53\\,400-F_m = 52\\,230\\text{ N}$$\n\n**(c) Stresses.**\n$$\\sigma_f = \\frac{F_f}{A_f}=\\frac{52\\,230}{216}=241.8\\text{ MPa},\\qquad \\sigma_m = \\frac{F_m}{A_m}=\\frac{1169.5}{264}=4.43\\text{ MPa}$$\n\n**(d) Common strain.**\n$$\\varepsilon = \\frac{\\sigma_f}{E_f}=\\frac{241.8}{131\\,000}=1.846\\times10^{-3}$$\n\n$$\\boxed{(44.66,\\; 52230,\\; 1169.5,\\; 241.8,\\; 4.43,\\; 0.001846)}$$",
+ "final_answer": "(44.66,\\; 52230,\\; 1169.5,\\; 241.8,\\; 4.43,\\; 0.001846)",
+ "correct_answer": "(44.7, 52232, 1168, 242, 4.4, 1.84e-3)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(, N, N, MPa, MPa, )"
+}

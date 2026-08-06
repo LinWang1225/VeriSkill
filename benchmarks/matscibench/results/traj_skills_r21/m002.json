@@ -1,0 +1,11 @@
+{
+ "tid": "m002",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 3.2",
+ "question_text": "Calculate the density of copper, given that copper is an fcc metal with an atomic radius of 0.128 nm and a molar mass of 63.55 g/mol.The unit of the answer is g/cm^3.",
+ "response": "## Solution\n\nFor an **FCC** metal, the relationship between the lattice parameter $a$ and the atomic radius $R$ is:\n\n$$a = 2\\sqrt{2}\\,R$$\n\n**Unit-cell / formula-unit scaling check (per skill `g-matsci-unitcell-formula-unit-scaling`):**\n- Structure: FCC → conventional cubic cell, $V_{\\text{cell}} = a^3$, with $Z = 4$ atoms per unit cell. This is a legal $(V, Z)$ pair (FCC: $V=a^3$, $Z=4$). ✓\n\n**Faithful unit conversion (per skill `g-sci-given-unit-faithful-conversion`):**\n- $R = 0.128\\ \\text{nm} = 0.128 \\times 10^{-7}\\ \\text{cm} = 1.28 \\times 10^{-8}\\ \\text{cm}$\n\n**Density formula:**\n\n$$\\rho = \\frac{Z \\cdot M}{N_A \\cdot a^3}$$\n\n**Required but not given — Avogadro's number** (a recognized physical constant, not a fabricated input per `g-sci-missing-input-no-fabrication`):\n- $N_A = 6.02214076 \\times 10^{23}\\ \\text{mol}^{-1}$ (CODATA defined value)\n\n**Computation:**\n\n$$a = 2\\sqrt{2}(1.28 \\times 10^{-8}) = 3.6204 \\times 10^{-8}\\ \\text{cm}$$\n\n$$a^3 = 4.7453 \\times 10^{-23}\\ \\text{cm}^3$$\n\n$$\\rho = \\frac{4 \\times 63.55}{6.0221 \\times 10^{23} \\times 4.7453 \\times 10^{-23}} = 8.8953\\ \\text{g/cm}^3$$\n\n**Significant-figures check (per skill `g-matsci-sigfig-rounding`):**\n- $R = 0.128$ → 3 sig figs; $M = 63.55$ → 4 sig figs. $n_{\\min} = 3$.\n- The expression is purely multiplicative/divisive → result rounded to 3 sig figs.\n- $8.8953 \\to 8.90$ (standard round-half-up; the 4th digit is 5, round up the 9, carrying to $8.90$).\n\n$$\\boxed{8.90}$$",
+ "final_answer": "8.90",
+ "correct_answer": "8.89",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "g/cm^3"
+}

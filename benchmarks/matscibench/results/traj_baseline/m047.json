@@ -1,0 +1,11 @@
+{
+ "tid": "m047",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_14.31",
+ "question_text": "The following data are obtained for a nickel-iron alloy during the generation of a steady-state ferromagnetic hysteresis loop: \\begin{tabular}{cc} \\hline $\\boldsymbol{H}$ (amperes/m) & $\\boldsymbol{B}\\left(\\right.$ weber $\\left./ \\mathbf{m}^{\\mathbf{2}}\\right)$ \\\\ \\hline 50 & 0.95 \\\\ 25 & 0.94 \\\\ 0 & 0.92 \\\\ -10 & 0.90 \\\\ -15 & 0.75 \\\\ -20 & -0.55 \\\\ -25 & -0.87 \\\\ -50 & -0.95 \\\\ \\hline \\end{tabular} (a) Plot the data. (b) What is the remanent induction? (c) What is the coercive field? Give your answer as a tuple: (remanent_induction, coercive_field).The units of each required answer are (Wb/m^2, A/m), respectively.",
+ "response": "## Analysis\n\n**(a) Plot** — The data traces the descending branch of a ferromagnetic hysteresis loop for the Ni-Fe alloy: $B$ stays high (~0.9) as $H$ drops from 50 to −10, then drops sharply between $H=-15$ and $H=-20$, and saturates near −0.95 for $H=-50$.\n\n**(b) Remanent induction** — This is $B$ at $H=0$:\n\n$$B_r = 0.92\\ \\text{Wb/m}^2$$\n\n**(c) Coercive field** — This is $H$ at $B=0$. From the table, $B$ crosses zero between $(H=-15,\\ B=0.75)$ and $(H=-20,\\ B=-0.55)$. Linear interpolation:\n\n$$H_c = -15 + \\frac{0-0.75}{-0.55-0.75}(-20+15) = -15 - 2.885 \\approx -17.88\\ \\text{A/m}$$\n\n$$\\boxed{(0.92,\\ -17.88)}$$",
+ "final_answer": "(0.92,\\ -17.88)",
+ "correct_answer": "(0.92, -18)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(Wb/m^2, A/m)"
+}

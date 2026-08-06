@@ -1,0 +1,11 @@
+{
+ "tid": "e031",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 13.2",
+ "question_text": "How many free electrons would there be in a spool of high-purity copper wire ( 1 mm diameter $\\times 10 \\mathrm{~m}$ long)? Give your answer as the value of free_electrons.The unit of the answer is electrons.",
+ "response": "## Solution\n\nThis is the classic Callister free-electron counting problem. Copper is monovalent (Group 11, 1 conduction electron per atom), so the number of free electrons equals the number of atoms.\n\n**Step 1 — Wire volume (faithful unit conversion of the given 1 mm, 10 m):**\n\n$$V = \\pi\\!\\left(\\frac{d}{2}\\right)^{\\!2}L = \\pi(0.5\\times10^{-3}\\,\\text{m})^2(10\\,\\text{m}) = 7.85\\times10^{-6}\\,\\text{m}^3$$\n\n**Step 2 — Free-electron concentration of Cu.**\nUsing external standard values (declared per g-sci-explicit-assumptions):\n- ρ_Cu = 8.94 g/cm³ (Callister, *Materials Science and Engineering*, Table 3.1)\n- A_Cu = 63.55 g/mol (Callister, inside front cover)\n- N_A = 6.022 × 10²³ mol⁻¹\n- 1 free electron per Cu atom (monovalent metal)\n\n$$n = \\frac{\\rho N_A}{A} = \\frac{(8.94)(6.022\\times10^{23})}{63.55}\\times10^{6} \\approx 8.5\\times10^{28}\\;\\text{electrons/m}^3$$\n\n(This tabulated value n = 8.5 × 10²⁸ m⁻³ is also given directly in Callister Table 18.1.)\n\n**Step 3 — Total free electrons:**\n\n$$N = nV = (8.5\\times10^{28})(7.85\\times10^{-6}) = 6.68\\times10^{23}$$\n\n**Step 4 — Sig figs (g-matsci-sigfig-rounding):** The limiting input is n = 8.5 × 10²⁸ (2 sig figs) and the given \"1 mm\"/\"10 m\" (treated as 2 sig figs in this textbook problem). Round the product 6.68 × 10²³ to 2 sig figs → **6.7 × 10²³**.\n\n$$\\boxed{6.7\\times10^{23}}$$",
+ "final_answer": "6.7\\times10^{23}",
+ "correct_answer": "8.17E+23",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "electrons"
+}

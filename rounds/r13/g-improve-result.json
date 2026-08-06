@@ -1,0 +1,11 @@
+{
+  "edits": [
+    {"skill": "g-matsci-unitcell-formula-unit-scaling","type": "patch","cluster": "e229","support": 1,"audited_support": 1,"attribution": "能力缺陷","summary": "在每原子体积折算步骤中加入配套表硬检查：HCP只有(V=√3/2·a²c,Z=6)或(V=(√3/2·a²c)/3,Z=2)两对合法，写了常规胞体积却填Z=2时立即纠正"},
+    {"skill": "g-matsci-regular-solution-sign-convention","type": "new_skill","cluster": "m276","support": 1,"audited_support": 0,"attribution": "能力缺陷","summary": "新建regular-solution符号约定技能：Ω<0完全互溶无miscibility gap、solvus方程无物理根，禁止以|Ω|替换有符号Ω伪造solvus根"},
+    {"skill": "g-sci-model-validity-range","type": "patch","cluster": "m276","support": 1,"audited_support": 0,"attribution": "能力缺陷","summary": "在Dilute-solution条目下补regular-solution特别注意：切换模型前先查Ω符号，Ω<0时不得套solvus方程"}
+  ],
+  "clusters_seen": 2,
+  "clusters_fixed": 2,
+  "skipped": [],
+  "needs_human": false
+}

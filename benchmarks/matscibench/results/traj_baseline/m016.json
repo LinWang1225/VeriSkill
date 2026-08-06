@@ -1,0 +1,11 @@
+{
+ "tid": "m016",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 2.1",
+ "question_text": "Calculate the number of atoms contained in a cylinder $1 \\mu \\mathrm{~m}$ in diameter by $1 \\mu \\mathrm{~m}$ deep of (a) magnesium and (b) lead. Give your answer as a tuple: (number_of_atoms_magnesium, number_of_atoms_lead).",
+ "response": "## Solution\n\nThe cylinder has diameter $1\\,\\mu\\text{m}$ and depth $1\\,\\mu\\text{m}$. Converting to centimeters:\n\n- radius $r = 0.5\\,\\mu\\text{m} = 5\\times10^{-5}\\,\\text{cm}$\n- height $h = 1\\,\\mu\\text{m} = 10^{-4}\\,\\text{cm}$\n\n**Volume:**\n$$V = \\pi r^{2} h = \\pi(5\\times10^{-5})^{2}(10^{-4}) = 7.854\\times10^{-13}\\,\\text{cm}^{3}$$\n\n**Number of atoms** $= \\dfrac{\\rho\\,V\\,N_A}{A}$, where $\\rho$ is density, $A$ is atomic weight, and $N_A = 6.022\\times10^{23}\\,\\text{mol}^{-1}$.\n\n**(a) Magnesium** ($\\rho = 1.74\\,\\text{g/cm}^3$, $A = 24.31\\,\\text{g/mol}$):\n$$N_{\\text{Mg}} = \\frac{1.74 \\times 7.854\\times10^{-13} \\times 6.022\\times10^{23}}{24.31} \\approx 3.39\\times10^{10}$$\n\n**(b) Lead** ($\\rho = 11.35\\,\\text{g/cm}^3$, $A = 207.2\\,\\text{g/mol}$):\n$$N_{\\text{Pb}} = \\frac{11.35 \\times 7.854\\times10^{-13} \\times 6.022\\times10^{23}}{207.2} \\approx 2.59\\times10^{10}$$\n\n$$\\boxed{(3.39\\times10^{10},\\ 2.59\\times10^{10})}$$",
+ "final_answer": "(3.39\\times10^{10},\\ 2.59\\times10^{10})",
+ "correct_answer": "(3.38e10, 2.59e10)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": ""
+}

@@ -1,0 +1,15 @@
+{
+  "edits": [
+    {"file":"d-matsci-model-selection","action":"narrow_rule","summary":"收窄多问S-N疲劳子情形的错误签名：要求拟合方程确为log S=a+b·log N（应力轴也取对数）才命中；排除虽提及loglog但实际用S=a+b·log N半对数的正确做法"},
+    {"file":"d-matsci-scope-misread","action":"rubric","summary":"修正区熔精炼子情形的正确方法描述：从错误的'两次除以k0'改为多道次区熔分布方程递推"},
+    {"file":"d-matsci-scope-misread","action":"promote_rule","summary":"R-d-matsci-scope-misread-001升hard（依据r2#qe055,r14#m029,r15#e055三道互异题，0 FP）"},
+    {"file":"d-matsci-extrapolate-validity","action":"rubric","summary":"新增子情形：线性电阻率外推跨越居里点/磁性相变临界温度，须分温区切换α或改用非线性模型"},
+    {"file":"d-matsci-extrapolate-validity","action":"promote_rule","summary":"R-d-matsci-extrapolate-validity-001升hard（依据r3#e252,r15#m250两道互异题，0 FP）"},
+    {"file":"d-matsci-extrapolate-validity","action":"promote_rule","summary":"R-d-matsci-extrapolate-validity-002升hard（依据r4#e252,r15#m250两道互异题，0 FP）"}
+  ],
+  "narrow_rule":["R-d-matsci-model-selection-001"],
+  "fn_resolved":["e055","m250"],
+  "unjudgeable":[],
+  "needs_human":false,
+  "notes":"FP m124收窄loglog签名;FN e055修正区熔描述+升hard;FN m250新增居里点子情形+升hard"
+}

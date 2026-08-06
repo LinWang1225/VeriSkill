@@ -1,0 +1,9 @@
+{
+  "edits": [
+    {"skill":"g-sci-model-validity-range","type":"patch","cluster":"e252-近似外推到失效域","summary":"强化逃生条款：模型给出非物理值或远在有效区外时必须换模型"},
+    {"skill":"g-sci-independent-verify","type":"patch","cluster":"m164-伪独立验算","summary":"新增反模式：同一量标度换算非独立路径"},
+    {"skill":"g-matsci-wear-two-body-archard","type":"new_skill","cluster":"m164-两体磨损丢因子2","summary":"两体Archard磨损：等硬度对因子2"},
+    {"skill":"g-matsci-dimensionality-geometry-match","type":"new_skill","cluster":"m180-维度不匹配","summary":"几何律维度匹配：面现象二维/体现象三维"}
+  ],
+  "clusters_seen":3,"clusters_fixed":3,"needs_human":false
+}

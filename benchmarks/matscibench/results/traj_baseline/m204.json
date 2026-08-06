@@ -1,0 +1,11 @@
+{
+ "tid": "m204",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Example 23-8",
+ "question_text": "Consider a copper-zinc corrosion couple. If the current density at the copper cathode is $0.05 \\mathrm{~A} / \\mathrm{cm}^2$, calculate the weight loss of zinc per hour if (1) the copper cathode area is $100 \\mathrm{~cm}^2$ and the zinc anode area is $1 \\mathrm{~cm}^2$ and (2) the copper cathode area is $1 \\mathrm{~cm}^2$ and the zinc anode area is $100 \\mathrm{~cm}^2$.\n\nGive your answer as a tuple: (weight_loss_small_anode, weight_loss_large_anode).The units of each required answer are (g/h, g/h), respectively.",
+ "response": "## Reasoning\n\nIn a galvanic corrosion couple, the total current is conserved: the current flowing at the copper cathode equals the current flowing at the zinc anode.\n\n**Given:** Copper cathode current density $i_{\\text{Cu}} = 0.05\\ \\text{A/cm}^2$\n\nThe total corrosion current is determined by the cathode:\n$$I = i_{\\text{Cu}} \\times A_{\\text{Cu}}$$\n\nThis same current drives zinc dissolution at the anode. Weight loss via Faraday's law:\n$$\\Delta m = \\frac{I \\cdot t \\cdot M_{\\text{Zn}}}{n \\cdot F},\\quad M_{\\text{Zn}}=65.38\\ \\text{g/mol},\\ n=2,\\ F=96485\\ \\text{C/mol},\\ t=3600\\ \\text{s}$$\n\n**Case (1):** $A_{\\text{Cu}}=100\\ \\text{cm}^2$ (small Zn anode $=1\\ \\text{cm}^2$)\n$$I = 0.05 \\times 100 = 5\\ \\text{A}$$\n$$\\Delta m_1 = \\frac{5 \\times 3600 \\times 65.38}{2 \\times 96485} \\approx 6.10\\ \\text{g/h}$$\n\n**Case (2):** $A_{\\text{Cu}}=1\\ \\text{cm}^2$ (large Zn anode $=100\\ \\text{cm}^2$)\n$$I = 0.05 \\times 1 = 0.05\\ \\text{A}$$\n$$\\Delta m_2 = \\frac{0.05 \\times 3600 \\times 65.38}{2 \\times 96485} \\approx 0.0610\\ \\text{g/h}$$\n\nThis illustrates the **area effect**: a small anode coupled to a large cathode suffers dramatically higher weight loss (100× more here), since the same total current is funneled through less anode area.\n\n$$\\boxed{(6.10,\\ 0.0610)}$$",
+ "final_answer": "(6.10,\\ 0.0610)",
+ "correct_answer": "(6.1, 0.061)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(g/h, g/h)"
+}

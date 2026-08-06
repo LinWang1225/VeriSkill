@@ -1,0 +1,11 @@
+{
+ "tid": "m053",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_15.33",
+ "question_text": "A copper-nickel ( $35 \\mathrm{wt} \\%-65 \\mathrm{wt} \\%$ ) alloy is corroded in an oxygen-concentration cell using boiling water. What volume of oxygen gas (at 1 atm ) must be consumed at the cathode to corrode 10 g of the alloy? (Assume only divalent ions are produced.)The unit of the answer is m^3.",
+ "response": "## Reasoning\n\n**Alloy composition (10 g total):**\n- Mass of Cu = 0.35 × 10 = 3.5 g\n- Mass of Ni = 0.65 × 10 = 6.5 g\n\n**Anode (oxidation) — divalent ions:**\n$$\\text{Cu} \\to \\text{Cu}^{2+} + 2e^- \\qquad \\text{Ni} \\to \\text{Ni}^{2+} + 2e^-$$\n\nEach mole of metal releases 2 moles of electrons.\n\n$$n_{\\text{Cu}} = \\frac{3.5}{63.5} = 0.0551\\ \\text{mol}, \\quad n_{\\text{Ni}} = \\frac{6.5}{58.7} = 0.1108\\ \\text{mol}$$\n\n$$n_{e^-} = 2(n_{\\text{Cu}} + n_{\\text{Ni}}) = 2(0.0551 + 0.1108) = 0.3317\\ \\text{mol}$$\n\n**Cathode (oxygen reduction):**\n$$\\text{O}_2 + 2\\text{H}_2\\text{O} + 4e^- \\to 4\\text{OH}^-$$\n\n1 mol O₂ consumes 4 mol e⁻:\n\n$$n_{\\text{O}_2} = \\frac{0.3317}{4} = 0.0829\\ \\text{mol}$$\n\n**Volume at 1 atm, boiling water (T = 373 K):**\n$$V = \\frac{nRT}{P} = \\frac{(0.0829)(0.08206)(373)}{1} = 2.54\\ \\text{L} = 2.54\\times10^{-3}\\ \\text{m}^3$$\n\n$$\\boxed{2.54\\times10^{-3}}$$",
+ "final_answer": "2.54\\times10^{-3}",
+ "correct_answer": "2.54E-03",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "m^3"
+}

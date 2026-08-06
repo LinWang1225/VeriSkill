@@ -1,0 +1,11 @@
+{
+ "tid": "e144",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 8.13",
+ "question_text": "A single crystal of zinc is oriented for a tensile test such that its slip plane normal makes an angle of $65^{\\circ}$ with the tensile axis. Three possible slip directions make angles of $30^{\\circ}, 48^{\\circ}$, and $78^{\\circ}$ with the same tensile axis. If plastic deformation begins at a tensile stress of 2.5 MPa ( 355 psi ), determine the critical resolved shear stress for zinc.The unit of the answer is MPa.",
+ "response": "The resolved shear stress on a slip system is given by Schmid's law:\n\n$$\\tau_R = \\sigma \\cos\\phi \\cos\\lambda$$\n\nwhere $\\phi = 65°$ is the angle between the slip plane normal and the tensile axis, and $\\lambda$ is the angle between the slip direction and the tensile axis.\n\nPlastic deformation begins on the slip system with the **largest Schmid factor** $\\cos\\phi\\cos\\lambda$. Evaluating the three slip directions:\n\n| $\\lambda$ | $\\cos 65°\\cos\\lambda$ | $\\tau_R$ (MPa) |\n|---|---|---|\n| 30° | 0.3660 | 0.915 |\n| 48° | 0.2828 | 0.707 |\n| 78° | 0.0879 | 0.220 |\n\nThe maximum resolved shear stress occurs for $\\lambda = 30°$. At the yield stress $\\sigma = 2.5$ MPa:\n\n$$\\tau_c = 2.5 \\times \\cos 65° \\times \\cos 30° \\approx 0.915 \\text{ MPa}$$\n\n$$\\boxed{0.915}$$",
+ "final_answer": "0.915",
+ "correct_answer": "0.91",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "MPa"
+}

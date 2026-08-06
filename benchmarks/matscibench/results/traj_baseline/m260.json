@@ -1,0 +1,11 @@
+{
+ "tid": "m260",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 23-36",
+ "question_text": "At $800^{\\circ} \\mathrm{C}$, iron oxidizes at a rate of $0.014 \\mathrm{~g} / \\mathrm{cm}^2$ per hour; at $1000^{\\circ} \\mathrm{C}$, iron oxidizes at a rate of $0.0656 \\mathrm{~g} / \\mathrm{cm}^2$ per hour. Assuming a parabolic oxidation rate, determine the maximum temperature at which iron can be held if the oxidation rate is to be less than $0.005 \\mathrm{~g} / \\mathrm{cm}^2$ per hour.The unit of the answer is °C.",
+ "response": "**Reasoning:**\n\nFor parabolic oxidation, the rate constant follows the Arrhenius equation $k = A\\exp(-Q/RT)$. Taking the ratio eliminates $A$ and $Q$:\n\n$$\\frac{\\ln(r/r_1)}{\\ln(r_2/r_1)} = \\frac{(1/T - 1/T_1)}{(1/T_2 - 1/T_1)}$$\n\nWith $T_1 = 1073\\text{ K}$, $T_2 = 1273\\text{ K}$, $r_1 = 0.014$, $r_2 = 0.0656$, and $r = 0.005$:\n\n- $\\ln(0.005/0.014) = -1.0296$\n- $\\ln(0.0656/0.014) = 1.5444$\n- Ratio $= -0.6668$\n- $1/T = 1/1073 + (-0.6668)(1/1273 - 1/1073) = 0.0010297$\n- $T = 971.3\\text{ K} = 698.3°\\text{C}$\n\n$$\\boxed{698}$$",
+ "final_answer": "698",
+ "correct_answer": "698",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "°C"
+}

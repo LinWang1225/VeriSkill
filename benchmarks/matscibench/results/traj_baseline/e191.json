@@ -1,0 +1,11 @@
+{
+ "tid": "e191",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 8.1",
+ "question_text": "Select the least-expensive alternative out of the candidate materials in Table 8.2 for making a suspension member in the cable car system. The member is 1 m long and is expected to carry a tensile load of 50 kN without yielding. Give your answer as the value of relative_cost_of_member.\n\n(Table 8.2: TABLE 8.2\nCandidate Materials for Suspension Member\n\\begin{tabular}{lccccc} \nMaterial & YS (MPa) & \\begin{tabular}{c} \nSpecific \\\\\nGravity\n\\end{tabular} & \\begin{tabular}{c} \nRelative \\\\\nCost\n\\end{tabular} & \\begin{tabular}{c} \nCross-Sectional \\\\\nArea $\\left(\\mathbf{m m}^2\\right)$\n\\end{tabular} & \\begin{tabular}{c} \nRelative Cost \\\\\nof Member\n\\end{tabular} \\\\\nAISI 1015 & 329 & 7.8 & 1 & 152 & 1 \\\\\nAISI 1040 & 380 & 7.8 & 1.1 & 132 & 0.95 \\\\\nAISI 4820 & 492 & 7.8 & 1.8 & 102 & 1.2 \\\\\nBrass & 532 & 8.5 & 7 & 94 & 4.7 \\\\\n\\hline\n\\end{tabular} )",
+ "response": "Looking at this problem, I need to find the least-expensive material based on the \"Relative Cost of Member\" column, which already accounts for the required cross-sectional area (determined by the yield strength needed to carry 50 kN without yielding) and the material's cost and density.\n\nLet me verify the calculation method. The relative cost of member scales with (Relative Cost) × (Specific Gravity) × (Cross-Sectional Area), normalized to the reference material (AISI 1015):\n\n- **AISI 1015:** A = 50000/329 = 152 mm² → 1 × 7.8 × 152 = 1185.6 (reference = 1)\n- **AISI 1040:** A = 50000/380 = 132 mm² → (1.1 × 7.8 × 132)/1185.6 = 0.95\n- **AISI 4820:** A = 50000/492 = 102 mm² → (1.8 × 7.8 × 102)/1185.6 = 1.21 ≈ 1.2\n- **Brass:** A = 50000/532 = 94 mm² → (7 × 8.5 × 94)/1185.6 = 4.7\n\nThe calculations confirm the table values. Comparing the relative costs of member:\n\n| Material | Relative Cost of Member |\n|---|---|\n| AISI 1015 | 1 |\n| **AISI 1040** | **0.95** ← minimum |\n| AISI 4820 | 1.2 |\n| Brass | 4.7 |\n\nThe least-expensive alternative is **AISI 1040**, with the lowest relative cost of member.\n\n$$\\boxed{0.95}$$",
+ "final_answer": "0.95",
+ "correct_answer": "0.95",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": ""
+}

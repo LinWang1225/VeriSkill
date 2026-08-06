@@ -1,0 +1,11 @@
+{
+ "tid": "m000",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_Example 2.6_2",
+ "question_text": "(a) Assuming that the ionic radii are $r_{\\mathrm{Na}^{+}}=0.098 \\mathrm{~nm}$ and $r_{\\mathrm{Cl}^{-}}=0.181 \\mathrm{~nm}$., calculate the coulombic force of attraction between $\\mathrm{Na}^{+}$ and $\\mathrm{Cl}^{-}$ in NaCl. (b) What is the repulsive force in this case? \n\nGive your answer as a tuple (coulombic force of attraction, repulsive force).The units of each required answer are (N, N), respectively.",
+ "response": "## Reasoning\n\n**(a) Coulombic force of attraction**\n\nThe equilibrium separation is the sum of ionic radii:\n$$r_0 = r_{\\text{Na}^+} + r_{\\text{Cl}^-} = 0.098 + 0.181 = 0.279 \\text{ nm} = 2.79 \\times 10^{-10} \\text{ m}$$\n\nThe Coulombic force of attraction between the two ions (with $Z_1 = 1$, $Z_2 = 1$):\n$$F_A = \\frac{1}{4\\pi\\varepsilon_0}\\frac{Z_1 Z_2 e^2}{r_0^2} = \\frac{(8.988\\times10^9)(1.602\\times10^{-19})^2}{(2.79\\times10^{-10})^2}$$\n\n$$F_A \\approx 2.96 \\times 10^{-9} \\text{ N}$$\n\n**(b) Repulsive force**\n\nAt the equilibrium separation $r_0$, the net force on each ion is zero — the attractive and repulsive forces balance. Therefore, the repulsive force has the same magnitude as the Coulombic attractive force:\n\n$$F_R = F_A \\approx 2.96 \\times 10^{-9} \\text{ N}$$\n\n$$\\boxed{(2.96\\times10^{-9},\\ 2.96\\times10^{-9})}$$",
+ "final_answer": "(2.96\\times10^{-9},\\ 2.96\\times10^{-9})",
+ "correct_answer": "(2.98 \\times 10^{-9}, -2.98 \\times 10^{-9})",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(N, N)"
+}

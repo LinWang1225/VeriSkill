@@ -1,0 +1,11 @@
+{
+ "tid": "m246",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 17-17",
+ "question_text": "An electrical contact material is produced by infiltrating copper into a porous tungsten carbide (WC) compact. The density of the final composite is $12.3 \\mathrm{~g} / \\mathrm{cm}^3$. Assuming that all of the pores are filled with copper, calculate (a) the volume fraction of copper in the composite, (b) the volume fraction of pores in the WC compact prior to infiltration, and (c) the original density of the WC compact before infiltration. Give your answer as a tuple: (volume_fraction_copper, volume_fraction_pores, original_density_WC).The units of each required answer are (, , g/cm³), respectively.",
+ "response": "## Solution\n\n**Setup:** Using standard theoretical densities:\n- Tungsten carbide (WC): $\\rho_{WC} = 15.77\\ \\mathrm{g/cm^3}$\n- Copper (Cu): $\\rho_{Cu} = 8.96\\ \\mathrm{g/cm^3}$\n- Final composite: $\\rho_c = 12.3\\ \\mathrm{g/cm^3}$\n\n**(a) Volume fraction of copper**\n\nWith $V_{Cu} + V_{WC} = 1$ and the rule of mixtures:\n\n$$\\rho_c = V_{Cu}\\rho_{Cu} + (1-V_{Cu})\\rho_{WC}$$\n\n$$12.3 = 8.96\\,V_{Cu} + 15.77(1-V_{Cu})$$\n\n$$V_{Cu} = \\frac{15.77 - 12.3}{15.77 - 8.96} = \\frac{3.47}{6.81} \\approx 0.510$$\n\n**(b) Volume fraction of pores in the WC compact prior to infiltration**\n\nSince all pores are filled with copper, the pore volume equals the copper volume:\n\n$$V_{pores} = V_{Cu} \\approx 0.510$$\n\n**(c) Original density of the WC compact before infiltration**\n\nThe compact's total volume is unchanged; its mass comes only from the solid WC skeleton:\n\n$$\\rho_{orig} = V_{WC}\\cdot\\rho_{WC} = (1 - 0.510)(15.77) = 0.490 \\times 15.77 \\approx 7.73\\ \\mathrm{g/cm^3}$$\n\n$$\\boxed{(0.510,\\ 0.510,\\ 7.73)}$$",
+ "final_answer": "(0.510,\\ 0.510,\\ 7.73)",
+ "correct_answer": "(0.507, 0.507, 7.77)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(, , g/cm³)"
+}

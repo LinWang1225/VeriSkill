@@ -1,0 +1,11 @@
+{
+ "tid": "m172",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_5.3",
+ "question_text": "A structural member is made of steel of mean yield strength of 200 MPa ( 28.6 ksi ) and a standard deviation on strength of $30 \\mathrm{MPa}(4.3 \\mathrm{ksi})$. The applied stress has a mean value of $150 \\mathrm{MPa}(14.3 \\mathrm{ksi})$ and a standard deviation of $5 \\mathrm{MPa}\\left(700 \\mathrm{lb} / \\mathrm{in}^2{ }^2\\right)$. (a) What is the probability of failure? (b) What factor of safety is required if the allowable failure rate is $1 \\%$ ? Give your answer as a tuple: (probability_of_failure, factor_of_safety).The units of each required answer are (%, ), respectively.",
+ "response": "## Solution\n\n**Part (a) — Probability of failure**\n\nSafety margin M = S − L (strength minus stress), assumed normally distributed:\n- μ_M = 200 − 150 = 50 MPa\n- σ_M = √(30² + 5²) = √925 = 30.414 MPa\n\nReliability index:\n$$\\beta = \\frac{\\mu_M}{\\sigma_M} = \\frac{50}{30.414} = 1.644$$\n\n$$P_f = \\Phi(-\\beta) = \\Phi(-1.644) \\approx 0.0501 \\;\\Rightarrow\\; 5.01\\%$$\n\n**Part (b) — Factor of safety for 1% failure**\n\nFor P_f = 1% = 0.01, require β = Φ⁻¹(0.99) = 2.326.\n\nWith n = μ_S/μ_L (standard deviations held fixed, mean strength scaled):\n$$\\beta = \\frac{n\\mu_L - \\mu_L}{\\sqrt{\\sigma_S^2+\\sigma_L^2}} \\;\\Rightarrow\\; n = 1 + \\frac{\\beta\\sqrt{\\sigma_S^2+\\sigma_L^2}}{\\mu_L}$$\n\n$$n = 1 + \\frac{2.326 \\times 30.414}{150} = 1 + 0.4717 = 1.472$$\n\n$$\\boxed{(5.01,\\ 1.47)}$$",
+ "final_answer": "(5.01,\\ 1.47)",
+ "correct_answer": "(6.9,1.55)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(%, )"
+}

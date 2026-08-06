@@ -1,0 +1,10 @@
+{
+  "edits": [
+    {"skill":"g-matsci-regular-solution-sign-convention","type":"patch","cluster":"m276","summary":"修正稀溶公式符号 exp(Ω/RT)→exp(−Ω/RT)，Ω<0 报完全互溶"},
+    {"skill":"g-matsci-sn-fatigue-slogn-graphical","type":"patch","cluster":"m124","summary":"重写为教材 S–log N 半对数图解法，禁止 log-log Basquin 回归"},
+    {"skill":"g-sci-named-force-magnitude-report","type":"patch","cluster":"e264","summary":"补 carve-out：题面引用带符号约定编号方程时按方程约定报"},
+    {"skill":"g-matsci-grade-designation-not-source","type":"patch","cluster":"m029","summary":"补硬约束：规格下限非实测强度，禁止直接当答案提交"},
+    {"skill":"g-sci-model-validity-range","type":"patch","cluster":"m276","summary":"更新 regular-solution 交叉引用一致"}
+  ],
+  "clusters_seen":4,"clusters_fixed":4,"skipped":[],"needs_human":false
+}

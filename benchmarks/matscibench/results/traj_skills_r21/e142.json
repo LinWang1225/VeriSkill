@@ -1,0 +1,11 @@
+{
+ "tid": "e142",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.82",
+ "question_text": "A large tower is to be supported by a series of steel wires; it is estimated that the load on each wire will be $13,300 \\mathrm{~N}(3000 \\mathrm{lb})$. Determine the minimum required wire diameter, assuming a factor of safety of 2.0 and a yield strength of $860 \\mathrm{MPa}(125,000 \\mathrm{psi})$ for the steel.The unit of the answer is mm.",
+ "response": "## Reasoning\n\nThis is a **tension** member design problem (steel *wires* supporting a tower — wires carry tensile load and cannot buckle), so the column yield/buckling dual-check skill does not apply (it explicitly excludes tension members). A pure strength criterion suffices.\n\n**Allowable (working) stress:**\n$$\\sigma_{\\text{allow}} = \\frac{\\sigma_y}{N} = \\frac{860\\ \\text{MPa}}{2.0} = 430\\ \\text{MPa}$$\n\n**Required cross-sectional area:**\n$$A = \\frac{F}{\\sigma_{\\text{allow}}} = \\frac{13300\\ \\text{N}}{430\\times10^{6}\\ \\text{N/m}^2} = 3.093\\times10^{-5}\\ \\text{m}^2$$\n\n**Minimum diameter (circular wire, $A=\\pi d^2/4$):**\n$$d = \\sqrt{\\frac{4A}{\\pi}} = \\sqrt{\\frac{4(3.093\\times10^{-5})}{\\pi}} = 6.275\\times10^{-3}\\ \\text{m} = 6.28\\ \\text{mm}$$\n\n**Significant figures:** The limiting input is the factor of safety $2.0$ (2 sig figs), so round to 2 sig figs: $6.3\\ \\text{mm}$.\n\n$$\\boxed{6.3}$$",
+ "final_answer": "6.3",
+ "correct_answer": "6.3",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "mm"
+}

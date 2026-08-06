@@ -1,0 +1,11 @@
+{
+ "tid": "m140",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 15.3",
+ "question_text": "A large-particle composite consisting of tungsten particles within a copper matrix is to be prepared. If the volume fractions of tungsten and copper are 0.70 and 0.30, respectively, estimate the upper limit for the specific stiffness of this composite, given the data that follow.\n\n|  | Specific Gravity | Modulus of Elasticity (GPa) |\n| :-- | :--: | :--: |\n| Copper | 8.9 | 110 |\n| Tungsten | 19.3 | 407 |The unit of the answer is GPa.",
+ "response": "## Reasoning\n\n**Specific stiffness** = Modulus of Elasticity / Density. For a composite, the **upper bound** (Voigt / rule-of-mixtures) is used for the modulus, and density follows the rule of mixtures.\n\n**Step 1 — Upper-bound modulus (Voigt):**\n$$E_c = V_W E_W + V_{Cu} E_{Cu} = 0.70(407) + 0.30(110) = 284.9 + 33.0 = 317.9 \\text{ GPa}$$\n\n**Step 2 — Composite density** (specific gravity ≡ density in g/cm³, since ρ_water = 1):\n$$\\rho_c = V_W \\rho_W + V_{Cu} \\rho_{Cu} = 0.70(19.3) + 0.30(8.9) = 13.51 + 2.67 = 16.18 \\text{ g/cm}^3$$\n\n**Step 3 — Upper-limit specific stiffness:**\n$$\\frac{E_c}{\\rho_c} = \\frac{317.9}{16.18} \\approx 19.6 \\text{ GPa}$$\n\n$$\\boxed{19.6}$$",
+ "final_answer": "19.6",
+ "correct_answer": "19.65",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "GPa"
+}

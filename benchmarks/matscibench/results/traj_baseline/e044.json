@@ -1,0 +1,11 @@
+{
+ "tid": "e044",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_10.39",
+ "question_text": "A 12 -mm-diameter rod of steel is drawn through a $10-\\mathrm{mm}$-diameter die. What is the resulting percentage of cold work? Give your answer as the value of percentage_cold_work.The unit of the answer is %.",
+ "response": "$$\\%CW \\approx 30.56\\%$$\n\n$$\\boxed{30.6}$$",
+ "final_answer": "30.6",
+ "correct_answer": "31",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "%"
+}

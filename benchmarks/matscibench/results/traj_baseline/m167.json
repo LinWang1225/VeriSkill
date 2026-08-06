@@ -1,0 +1,11 @@
+{
+ "tid": "m167",
+ "qid": "Materials_and_Process_Selection_for_Engineering_Design_Farag_Example 6.9",
+ "question_text": "Assuming that a turbine blade made of Nimonic 105 alloy had a life of $10,000 \\mathrm{~h}$ at 150 MPa with a service temperature of $810^{\\circ} \\mathrm{C}$, what is the expected life at the same stress but with a service temperature of $750^{\\circ} \\mathrm{C}$ ?  Give your answer as the value of expected_life.The unit of the answer is h.",
+ "response": "Using the **Larson–Miller parameter** for Nimonic 105,\n\n\\[\nP = T\\,(C+\\log_{10} t)\n\\]\n\nwith \\(C \\approx 20\\) and \\(T\\) in kelvin. Since the stress is unchanged, \\(P\\) is constant.\n\nGiven point: \\(T_1=810+273=1083\\,\\text{K}\\), \\(t_1=10000\\,\\text{h}\\)\n\n\\[\nP = 1083\\,(20+\\log_{10}10000)=1083(24)=25992\n\\]\n\nAt \\(T_2=750+273=1023\\,\\text{K}\\),\n\n\\[\n\\log_{10} t_2 = \\frac{P}{T_2}-C=\\frac{25992}{1023}-20 \\approx 5.4076\n\\]\n\n\\[\nt_2 = 10^{5.4076}\\approx 2.56\\times10^{5}\\,\\text{h}\n\\]\n\n\\[\n\\boxed{2.56\\times10^{5}}\n\\]",
+ "final_answer": "2.56\\times10^{5}",
+ "correct_answer": "255637",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "h"
+}

@@ -1,0 +1,11 @@
+{
+ "tid": "m206",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 3-61",
+ "question_text": "Determine the planar density and packing fraction for FCC nickel in the (100), (110), and (111) planes. Which, if any, of these planes are close packed? Give your answer as a tuple: (planar_density_100, packing_fraction_100, planar_density_110, packing_fraction_110, planar_density_111, packing_fraction_111, close_packed_planes).The units of each required answer are (atoms/cm², , atoms/cm², , atoms/cm², , ), respectively.",
+ "response": "## Reasoning\n\nFor **FCC nickel**, the atomic radius is R = 0.125 nm, giving lattice parameter **a = 2R√2 = 0.354 nm = 3.54 × 10⁻⁸ cm**.\n\n### (100) plane\n- Square of side a; **2 atoms** (4 corners × ¼ + 1 face-center × 1).\n- Area = a² → PD = 2/a²\n- Packing fraction = 2πR² / a² = 2πR²/8R² = **π/4 ≈ 0.785**\n\n### (110) plane\n- Rectangle a × a√2; **2 atoms** (4 corners × ¼ + 2 edge face-centers × ½).\n- Area = a²√2 → PD = 2/(a²√2)\n- Packing fraction = 2πR²/(8R²√2) = **π/(4√2) ≈ 0.555**\n\n### (111) plane\n- Equilateral triangle, side a√2; **2 atoms** (3 corners × ⅙ + 3 edge-centers × ½).\n- Area = (√3/2)a² → PD = 4/(√3 a²)\n- Packing fraction = 2πR²/(4√3 R²) = **π/(2√3) ≈ 0.907**\n\nThe **(111)** plane has the highest packing fraction (0.907), so it is the **close-packed** plane. (100) and (110) are not close-packed.\n\n### Numerical results\n- PD₁₀₀ = 1.60 × 10¹⁵ atoms/cm², PF₁₀₀ = 0.785\n- PD₁₁₀ = 1.13 × 10¹⁵ atoms/cm², PF₁₁₀ = 0.555\n- PD₁₁₁ = 1.85 × 10¹⁵ atoms/cm², PF₁₁₁ = 0.907\n\n$$\\boxed{(1.60\\times10^{15},\\ 0.785,\\ 1.13\\times10^{15},\\ 0.555,\\ 1.85\\times10^{15},\\ 0.907,\\ (111))}$$",
+ "final_answer": "(1.60\\times10^{15},\\ 0.785,\\ 1.13\\times10^{15},\\ 0.555,\\ 1.85\\times10^{15},\\ 0.907,\\ (111))",
+ "correct_answer": "(1617000000000000.0, 0.7854, 1144000000000000.0, 0.555, 1867000000000000.0, 0.907, 111)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(atoms/cm², , atoms/cm², , atoms/cm², , )"
+}

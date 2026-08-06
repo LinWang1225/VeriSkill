@@ -1,0 +1,11 @@
+{
+ "tid": "e043",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_9.3",
+ "question_text": "Calculate the degrees of freedom for a $50: 50$ copper-nickel alloy at (a) $1,400^{\\circ} \\mathrm{C}$, where it exists as a single, liquid phase; (b) $1,300^{\\circ} \\mathrm{C}$, where it exists as a two-phase mixture of liquid and solid solutions; and (c) $1,200^{\\circ} \\mathrm{C}$, where it exists as a single, solid-solution phase. Assume a constant pressure of 1 atm above the alloy in each case. Give your answer as a tuple: (degrees_of_freedom_a, degrees_of_freedom_b, degrees_of_freedom_c).",
+ "response": "## Solution\n\nThis problem applies the **Gibbs phase rule**. Since pressure is held constant at 1 atm, we use the **condensed phase rule**:\n\n$$F = C - P + 1$$\n\nwhere:\n- $F$ = degrees of freedom\n- $C$ = number of components = 2 (Cu and Ni)\n- $P$ = number of phases present\n- The \"+1\" (instead of \"+2\") reflects the constant-pressure constraint.\n\n### (a) 1,400 °C — single liquid phase\n- $P = 1$\n- $F = 2 - 1 + 1 = 2$\n\nBoth temperature and composition can vary independently within the single-phase region.\n\n### (b) 1,300 °C — two-phase mixture (liquid + solid)\n- $P = 2$\n- $F = 2 - 2 + 1 = 1$\n\nOnly one variable can be changed independently; the phase compositions are fixed by the tie-line at a given temperature.\n\n### (c) 1,200 °C — single solid-solution phase\n- $P = 1$\n- $F = 2 - 1 + 1 = 2$\n\nAgain, both temperature and composition can vary independently.\n\n$$\\boxed{(2,\\ 1,\\ 2)}$$",
+ "final_answer": "(2,\\ 1,\\ 2)",
+ "correct_answer": "(2, 1, 2)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": ""
+}

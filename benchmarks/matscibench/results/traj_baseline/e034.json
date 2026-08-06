@@ -1,0 +1,11 @@
+{
+ "tid": "e034",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_2.7",
+ "question_text": "Thirty grams of magnesium filings are to be oxidized in a laboratory demonstration. (a) How many $\\mathrm{O}_2$ molecules would be consumed in this demonstration? (b) How many moles of $\\mathrm{O}_2$ does this represent? Give your answer as a tuple: (O2_molecules, O2_moles).The units of each required answer are (molecules, mol), respectively.",
+ "response": "## Solution\n\n**Reaction:** $2\\,\\mathrm{Mg} + \\mathrm{O}_2 \\rightarrow 2\\,\\mathrm{MgO}$\n\n**Step 1 — Moles of Mg:**\n$$n_{\\mathrm{Mg}} = \\frac{30.0\\ \\mathrm{g}}{24.305\\ \\mathrm{g/mol}} = 1.2343\\ \\mathrm{mol}$$\n\n**Step 2 — Moles of O₂ (stoichiometry 2 Mg : 1 O₂):**\n$$n_{\\mathrm{O}_2} = \\frac{n_{\\mathrm{Mg}}}{2} = 0.6172\\ \\mathrm{mol}$$\n\n**Step 3 — Molecules of O₂:**\n$$N_{\\mathrm{O}_2} = n_{\\mathrm{O}_2}\\,N_A = 0.6172 \\times 6.022\\times10^{23} \\approx 3.72\\times10^{23}\\ \\text{molecules}$$\n\n$$\\boxed{(3.72\\times10^{23},\\ 0.617)}$$",
+ "final_answer": "(3.72\\times10^{23},\\ 0.617)",
+ "correct_answer": "(0.372e24, 0.617)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(molecules, mol)"
+}

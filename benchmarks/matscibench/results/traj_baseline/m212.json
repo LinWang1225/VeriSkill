@@ -1,0 +1,11 @@
+{
+ "tid": "m212",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 4-13",
+ "question_text": "The density of BCC iron is $7.882 \\mathrm{~g} / \\mathrm{cm}^3$, and the lattice parameter is 0.2866 nm when hydrogen atoms are introduced at interstitial positions. Calculate (a) the atomic fraction of hydrogen atoms; and (b) the number of unit cells on average that contain hydrogen atoms. Give your answer as a tuple: (atomic_fraction_of_hydrogen, number_of_unit_cells_on_average_that_contain_hydrogen_atoms.).The units of each required answer are (, ), respectively.",
+ "response": "## Reasoning\n\nFor BCC iron, there are 2 Fe atoms per unit cell. When hydrogen occupies interstitial sites, the extra mass comes only from the H atoms. The density equation is:\n\n$$\\rho = \\frac{n_{\\text{Fe}}M_{\\text{Fe}} + n_{\\text{H}}M_{\\text{H}}}{N_A a^3}$$\n\n**Solving for hydrogen atoms per unit cell:**\n\n$$n_{\\text{H}} = \\frac{\\rho N_A a^3 - n_{\\text{Fe}}M_{\\text{Fe}}}{M_{\\text{H}}}$$\n\nWith $\\rho = 7.882\\;\\text{g/cm}^3$, $a = 0.2866\\times10^{-7}\\;\\text{cm}$, $n_{\\text{Fe}}=2$, $M_{\\text{Fe}}=55.85$, $M_{\\text{H}}=1.008$, $N_A=6.023\\times10^{23}$:\n\n$$n_{\\text{H}} = \\frac{7.882(6.023\\times10^{23})(2.866\\times10^{-8})^3 - 2(55.85)}{1.008} \\approx 0.0573$$\n\n**(a) Atomic fraction of hydrogen:**\n\n$$x_{\\text{H}} = \\frac{n_{\\text{H}}}{n_{\\text{Fe}}+n_{\\text{H}}} = \\frac{0.0573}{2.0573} \\approx 0.0279$$\n\n**(b) Number of unit cells on average that contain hydrogen atoms:**\n\nSince $n_{\\text{H}} \\approx 0.0573$ H atoms per unit cell (dilute, so multiple occupancy is negligible), the average number of unit cells per hydrogen atom is:\n\n$$\\frac{1}{n_{\\text{H}}} \\approx \\frac{1}{0.0573} \\approx 17.4$$\n\ni.e., roughly 1 in every 17.4 unit cells contains a hydrogen atom.\n\n$$\\boxed{(0.028,\\ 17.4)}$$",
+ "final_answer": "(0.028,\\ 17.4)",
+ "correct_answer": "(0.0449, 22.3)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(, )"
+}

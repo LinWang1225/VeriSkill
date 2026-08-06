@@ -1,0 +1,11 @@
+{
+ "tid": "m058",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 4.1",
+ "question_text": "In Cu, if we assume that each Cu atom donates one electron, the free electron concentration is $8.5 \\times 10^{22} \\mathrm{~cm}^{-3}$. (a) What is the value of $E_{\\mathrm{F}, 0}$? (b) If the concentration of conduction electrons estimated by conductivity measurements is $1.5 \\times 10^{23} \\mathrm{~cm}^{-3}$, then find the number of electrons donated per Cu atom. Give your answer as a tuple (Fermi energy at 0K, number of electrons donated per Cu atom).\n\nRefer to Table:\nFermi Energy Levels ( $E_{F, 0}$ ) and Work Functions ( $\\phi$ ) for Different Metals\n\\begin{tabular}{|l|l|l|}\n\\hline Metal & Work Function ( $\\phi$ ) ( eV ) & Fermi Energy Level at $0 \\mathrm{~K}\\left(E_{F, 0}\\right)$ \\\\\n\\hline Silver & 4.26 & 5.5 \\\\\n\\hline Aluminum & 4.28 & 11.7 \\\\\n\\hline Gold & 5.1 & 5.5 \\\\\n\\hline Copper & 4.65 & 7.0 \\\\\n\\hline Lithium & 2.3 & 4.7 \\\\\n\\hline Magnesium & 3.7 & 7.1 \\\\\n\\hline Sodium & 2.75 & 3.2 \\\\\n\\hline\n\\end{tabular}The units of each required answer are (eV, ), respectively.",
+ "response": "## Reasoning\n\n### Part (a): Fermi Energy at 0 K\n\nThe Fermi energy for a free electron gas is:\n\n$$E_{F,0} = \\frac{h^2}{8m}\\left(\\frac{3n}{\\pi}\\right)^{2/3}$$\n\nWith $n = 8.5 \\times 10^{22}\\,\\text{cm}^{-3} = 8.5 \\times 10^{28}\\,\\text{m}^{-3}$, $h = 6.626\\times10^{-34}$ J·s, $m = 9.109\\times10^{-31}$ kg:\n\n$$E_{F,0} \\approx 1.13\\times10^{-18}\\,\\text{J} \\approx 7.05\\,\\text{eV} \\approx 7.0\\,\\text{eV}$$\n\nThis matches the table value for Copper ($E_{F,0} = 7.0$ eV). ✓\n\n### Part (b): Electrons donated per Cu atom\n\nThe atomic concentration of Cu is $8.5 \\times 10^{22}\\,\\text{cm}^{-3}$ (one electron per atom). The conductivity-based conduction electron concentration is $1.5 \\times 10^{23}\\,\\text{cm}^{-3}$.\n\n$$\\text{electrons per atom} = \\frac{1.5\\times10^{23}}{8.5\\times10^{22}} = \\frac{1.5}{0.85} \\approx 1.76$$\n\n## Answer\n\n$$\\boxed{(7.0,\\ 1.76)}$$",
+ "final_answer": "(7.0,\\ 1.76)",
+ "correct_answer": "(7, 1.76)",
+ "n_ans": "multiple",
+ "level": "hard",
+ "unit": "(eV, )"
+}

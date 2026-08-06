@@ -1,0 +1,11 @@
+{
+ "tid": "m059",
+ "qid": "Electronic_Magnetic_and_Optical_Materials_Fulay_Example 7.7",
+ "question_text": "The dielectric constant of MgO is 9.83, and its molar volume $(V_{\\mathrm{m}})$ is $18.69 \\AA^{3}$. The dielectric constant of $\\mathrm{Al}_{2} \\mathrm{O}_{3}$ is estimated to be 10.126, and its molar volume $(V_{\\mathrm{m}})$ is $42.45 \\AA^{3}$. What is the dielectric constant of $\\mathrm{MgAl}_{2} \\mathrm{O}_{4}$? The molar volume $(V_{\\mathrm{m}})$ of $\\mathrm{MgAl}_{2} \\mathrm{O}_{4}$ is $66.00 \\AA^{3}$.",
+ "response": "## Reasoning\n\n**Step 1: Clausius-Mossotti relation.** The dielectric constant $\\varepsilon$ relates to the molar polarizability $\\alpha_m$ and molar volume $V_m$ via:\n\n$$\\frac{\\varepsilon - 1}{\\varepsilon + 2} = \\frac{\\alpha_m}{3V_m} \\quad\\Longrightarrow\\quad \\alpha_m = \\frac{3V_m(\\varepsilon-1)}{\\varepsilon+2}$$\n\n**Step 2: Compute molar polarizabilities of the constituents.**\n\n- MgO: $\\alpha_m = \\dfrac{3(18.69)(9.83-1)}{9.83+2} = 41.85\\;\\text{Å}^3$\n- Al₂O₃: $\\alpha_m = \\dfrac{3(42.45)(10.126-1)}{10.126+2} = 95.84\\;\\text{Å}^3$\n\n**Step 3: Additivity of polarizability.** Since MgAl₂O₄ = MgO + Al₂O₃, the ionic polarizabilities sum:\n\n$$\\alpha_m(\\text{MgAl}_2\\text{O}_4) = 41.85 + 95.84 = 137.69\\;\\text{Å}^3$$\n\n**Step 4: Solve for $\\varepsilon$ of MgAl₂O₄** using its given $V_m = 66.00\\;\\text{Å}^3$:\n\n$$r = \\frac{\\alpha_m}{3V_m} = \\frac{137.69}{198.00} = 0.6954, \\qquad \\varepsilon = \\frac{1+2r}{1-r} = \\frac{2.3909}{0.3046} \\approx 7.85$$\n\nThe result is lower than both MgO (9.83) and Al₂O₃ (10.126) because the actual molar volume (66.00 Å³) exceeds the sum of the constituent volumes (61.14 Å³), diluting the polarizability density — consistent with the more open spinel structure.\n\n$$\\boxed{7.85}$$",
+ "final_answer": "7.85",
+ "correct_answer": "7.923",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": ""
+}

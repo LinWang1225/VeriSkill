@@ -1,0 +1,35 @@
+```json
+{
+  "edits": [
+    {
+      "critic": "d-matsci-model-selection",
+      "type": "narrow_rule",
+      "rule_id": "R-d-matsci-model-selection-001",
+      "evidence_items": ["#m164"],
+      "summary": "新增子情形：比较不同轴瓦材料磨损率时钢轴项相消，只比轴瓦单面磨损；错误签名=偷换成两体总磨损并对同材工况引入因子2翻倍"
+    },
+    {
+      "critic": "d-matsci-model-selection",
+      "type": "promote_rule",
+      "rule_id": "R-d-matsci-model-selection-001",
+      "evidence_items": ["#m134", "#m180", "#m168", "#m123", "#m124", "#m276", "#m164"],
+      "summary": "升 hard：依据含7互异题、rule_fp_counts=0，满足晋升门"
+    },
+    {
+      "critic": "d-matsci-param-lookup",
+      "type": "narrow_rule",
+      "rule_id": "R-d-matsci-param-lookup-001",
+      "evidence_items": ["#m069"],
+      "summary": "新增子情形：晶胞体积公式与原子数Z须成套配套（同一晶胞选择）；错误签名=取常规胞Z=6却配初基胞V=(√3/2)a²c"
+    }
+  ],
+  "fp_seen": 0,
+  "fp_resolved": 0,
+  "fn_clusters_seen": 2,
+  "fn_resolved": ["m164", "m069"],
+  "unjudgeable": ["m022"],
+  "unresolved": [],
+  "skipped": [],
+  "needs_human": false
+}
+```

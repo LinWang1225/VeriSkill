@@ -1,0 +1,11 @@
+{
+ "tid": "m125",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 9.36",
+ "question_text": "The following creep data were taken on an aluminum alloy at $480^{\\circ} \\mathrm{C}\\left(900^{\\circ} \\mathrm{F}\\right)$ and a constant stress of 2.75 MPa (400 psi). Determine the steady-state or minimum creep rate. Note: The initial and instantaneous strain is not included.\n\n| Time $(\\mathbf{m i n})$ | Strain | Time $(\\mathbf{m i n})$ | Strain |\n| :--: | :--: | :--: | :--: |\n| 0 | 0.00 | 18 | 0.82 |\n| 2 | 0.22 | 20 | 0.88 |\n| 4 | 0.34 | 22 | 0.95 |\n| 6 | 0.41 | 24 | 1.03 |\n| 8 | 0.48 | 26 | 1.12 |\n| 10 | 0.55 | 28 | 1.22 |\n| 12 | 0.62 | 30 | 1.36 |\n| 14 | 0.68 | 32 | 1.53 |\n| 16 | 0.75 | 34 | 1.77 |The unit of the answer is min^-1.",
+ "response": "## Reasoning\n\nThe creep curve has three classic regions:\n\n1. **Primary creep** (t = 0→4 min): strain rate decreases rapidly — 0.11, then 0.06 min⁻¹.\n2. **Secondary (steady-state) creep** (t ≈ 4→22 min): strain rate is approximately constant at a plateau value of **0.035 min⁻¹** (intervals give 0.035, 0.035, 0.035, 0.035, 0.030, 0.035, 0.035, 0.030, 0.035).\n3. **Tertiary creep** (t ≈ 22→34 min): strain rate accelerates — 0.04, 0.045, 0.05, 0.07, 0.085, 0.12 min⁻¹, leading to rupture.\n\nThe steady-state (minimum) creep rate is the slope of the linear portion of the strain–time curve. A linear fit over the secondary region (t = 4–22 min) gives a slope of ≈ 0.034 min⁻¹, and the dominant interval rate throughout the plateau is 0.035 min⁻¹.\n\n$$\\boxed{0.035}$$",
+ "final_answer": "0.035",
+ "correct_answer": "3.2E-02",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "min^-1"
+}

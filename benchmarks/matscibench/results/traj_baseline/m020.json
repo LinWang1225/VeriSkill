@@ -1,0 +1,11 @@
+{
+ "tid": "m020",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 6.9",
+ "question_text": "Suppose that a ductile iron (100-70-03, air-quenched) has a tensile strength of 700 MPa . What diameter impression would you expect the $3,000-\\mathrm{kg}$ load to produce with the $10-\\mathrm{mm}$-diameter ball? Give your answer as the value of diameter_impression.The unit of the answer is mm.",
+ "response": "## Reasoning\n\n**Step 1 — Brinell hardness from tensile strength:**\nFor ductile iron, the Callister tensile-strength–Brinell-hardness correlation figure (ductile-iron line) is used. At TS = 700 MPa, the ductile-iron line gives **HB ≈ 215**. This is consistent with real 100-70-03 data (TS ≈ 689 MPa ↔ HB ≈ 220–229).\n\n**Step 2 — Brinell hardness formula:**\n\n$$HB = \\frac{2P}{\\pi D\\!\\left(D-\\sqrt{D^{2}-d^{2}}\\right)}$$\n\nWith P = 3000 kgf, D = 10 mm, HB = 215:\n\n$$D-\\sqrt{D^{2}-d^{2}} = \\frac{2P}{\\pi D\\cdot HB} = \\frac{6000}{\\pi(10)(215)} = 0.8883$$\n\n$$\\sqrt{100-d^{2}} = 9.1117 \\;\\Rightarrow\\; 100-d^{2}=83.02 \\;\\Rightarrow\\; d^{2}=16.98$$\n\n$$d \\approx 4.12\\ \\text{mm}$$\n\n$$\\boxed{4.1}$$",
+ "final_answer": "4.1",
+ "correct_answer": "4.08",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

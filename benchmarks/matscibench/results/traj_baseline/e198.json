@@ -1,0 +1,11 @@
+{
+ "tid": "e198",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 9.1",
+ "question_text": "Slip was found to first occur in some aluminum crystals when the resolved shear stress reached 1.0 MPa. Assuming that this is the stress necessary to operate the largest Frank-Read sources, calculate the size, $d$, of these sources.The unit of the answer is $\\mu$m.",
+ "response": "With $G = 26$ GPa and $b = 0.286$ nm:\n\n$$d = \\frac{(26\\times10^9)(0.286\\times10^{-9})}{1.0\\times10^6} = 7.45\\times10^{-6}\\,\\text{m} \\approx 7.4\\,\\mu\\text{m}$$\n\nThe shear modulus and Burgers vector of aluminum combine with the 1.0 MPa critical stress to give a source size on the order of a few micrometers, consistent with the largest Frank-Read sources being the easiest to activate (longest segments require the least stress).\n\n$$\\boxed{7.4}$$",
+ "final_answer": "7.4",
+ "correct_answer": "14",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "$\\mu$m"
+}

@@ -1,0 +1,8 @@
+{
+  "edits": [
+    {"skill": "g-sci-missing-input-no-fabrication", "type": "patch", "cluster": "m128", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "新增步骤2(a″)：速率表达式题含自变量符号式即终答，不得以未给t拒答"},
+    {"skill": "g-matsci-weld-group-control-point", "type": "patch", "cluster": "m168", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "新增步骤0(载荷过形心=轴向无弯曲)+轴向/偏心二分+间距≠焊缝长度上限警示"},
+    {"skill": "g-matsci-sigfig-rounding", "type": "patch", "cluster": "m122", "support": 1, "audited_support": 1, "attribution": "能力缺陷", "summary": "步骤1补有效数字计数规则(尾0算有效/前导0不算)和自查误数判据"}
+  ],
+  "clusters_seen": 3, "clusters_fixed": 3, "skipped": [], "needs_human": false
+}

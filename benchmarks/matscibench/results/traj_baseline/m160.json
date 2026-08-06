@@ -1,0 +1,11 @@
+{
+ "tid": "m160",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 19.18",
+ "question_text": "The transmissivity $T$ of a transparent material 15 mm thick to normally incident light is 0.80 . If the index of refraction of this material is 1.5, compute the thickness of material that will yield a transmissivity of 0.70. All reflection losses should be considered.The unit of the answer is mm.",
+ "response": "## Result\n\nThe calculation gives:\n\n$$l_2 = 15 \\cdot \\frac{\\ln(0.70/0.9216)}{\\ln(0.80/0.9216)} = 15 \\cdot \\frac{\\ln(0.75955)}{\\ln(0.86806)} \\approx 29.16 \\text{ mm}$$\n\nThe absorption coefficient is positive ($\\alpha \\approx 0.00904\\;\\text{mm}^{-1}$), so increasing thickness reduces transmissivity — consistent with needing a thicker slab to drop $T$ from 0.80 to 0.70.\n\n$$\\boxed{29.16}$$",
+ "final_answer": "29.16",
+ "correct_answer": "29.2",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "mm"
+}

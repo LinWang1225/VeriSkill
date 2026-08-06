@@ -1,0 +1,11 @@
+{
+ "tid": "m112",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 7.56",
+ "question_text": "A three-point bending test was performed on an aluminum oxide specimen having a circular cross section of radius 5.0 mm ( 0.20 in.); the specimen fractured at a load of $3000 \\mathrm{~N}\\left(675 \\mathrm{lb}\\right.$ ) when the distance between the support points was 40 mm (1.6 in.). Another test is to be performed on a specimen of this same material, but one that has a square cross section of 15 mm ( 0.6 in.) length on each edge. At what load would you expect this specimen to fracture if the support point separation is maintained at 40 mm (1.6 in.)?The unit of the answer is N.",
+ "response": "## Solution\n\nFor a **three-point bending test**, the maximum bending moment is $M = \\dfrac{FL}{4}$, and the fracture stress (modulus of rupture) is $\\sigma = \\dfrac{Mc}{I}$.\n\n**Circular cross section** (radius $R$): $I = \\dfrac{\\pi R^{4}}{4},\\; c = R$\n\n$$\\sigma_1 = \\frac{(F_1L/4)\\,R}{\\pi R^{4}/4} = \\frac{F_1 L}{\\pi R^{3}}$$\n\n**Square cross section** (edge $a$): $I = \\dfrac{a^{4}}{12},\\; c = \\dfrac{a}{2}$\n\n$$\\sigma_2 = \\frac{(F_2L/4)(a/2)}{a^{4}/12} = \\frac{3F_2 L}{2a^{3}}$$\n\nSince the material is the same, $\\sigma_1 = \\sigma_2$, and the support span $L$ is identical, it cancels:\n\n$$\\frac{F_1}{\\pi R^{3}} = \\frac{3F_2}{2a^{3}}\n\\;\\Longrightarrow\\;\nF_2 = \\frac{2a^{3}\\,F_1}{3\\pi R^{3}}$$\n\nSubstituting $F_1 = 3000\\,\\text{N}$, $R = 5.0\\,\\text{mm}$, $a = 15\\,\\text{mm}$:\n\n$$F_2 = \\frac{2(15)^{3}(3000)}{3\\pi(5)^{3}} = \\frac{54000}{\\pi} \\approx 17188.7\\,\\text{N}$$\n\n$$\\boxed{17190}$$",
+ "final_answer": "17190",
+ "correct_answer": "17200",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": "N"
+}

@@ -1,0 +1,1 @@
+{"edits":[{"skill":"g-matsci-grade-designation-not-source","type":"patch","summary":"m029补三条硬约束+四条自查项"},{"skill":"g-matsci-ttt-phase-from-hold-time","type":"description+patch","summary":"m235激活缺陷description加IT diagram触发特征+补两条硬约束两条自查"},{"skill":"g-sci-independent-verify","type":"patch","summary":"软信号伪独立验证：新增常见伪独立模式节+自查步骤"}],"clusters_fixed":3,"needs_human":false}

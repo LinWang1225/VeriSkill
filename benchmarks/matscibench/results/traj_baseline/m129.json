@@ -1,0 +1,11 @@
+{
+ "tid": "m129",
+ "qid": "Fundamentals_of_Materials_Instructors_Example 11.8",
+ "question_text": "It is known that the kinetics of recrystallization for some alloy obeys the Avrami equation, and that the value of $n$ in the exponential is 5.0. If, at some temperature, the fraction recrystallized is 0.30 after 100 min , determine the rate of recrystallization at this temperature.The unit of the answer is $(\\min )^{-1}$.",
+ "response": "## Solution\n\nThe Avrami equation for recrystallization is:\n\n$$y = 1 - \\exp(-k\\,t^n)$$\n\nwhere $y$ is the fraction recrystallized, $n$ is the Avrami exponent, $k$ is the rate constant, and $t$ is time.\n\n**Step 1 — Solve for the rate constant $k$:**\n\nGiven $y = 0.30$, $t = 100$ min, $n = 5.0$:\n\n$$0.30 = 1 - \\exp(-k\\cdot 100^5)$$\n$$\\exp(-k\\cdot 100^5) = 0.70$$\n$$k = \\frac{-\\ln(0.70)}{100^5} = \\frac{0.3567}{10^{10}} \\approx 3.567\\times 10^{-11}\\ \\text{min}^{-5}$$\n\n**Step 2 — Compute the rate of recrystallization $dy/dt$:**\n\nDifferentiating the Avrami equation:\n\n$$\\frac{dy}{dt} = n\\,k\\,t^{n-1}\\exp(-k\\,t^n)$$\n\nSince $\\exp(-k\\,t^n) = 0.70$ and $k\\,t^n = 0.3567$, so $k\\,t^{n-1} = 0.3567/100 = 0.003567$:\n\n$$\\frac{dy}{dt} = 5 \\times 0.003567 \\times 0.70 \\approx 0.01248\\ \\text{min}^{-1}$$\n\n$$\\boxed{0.0125}$$",
+ "final_answer": "0.0125",
+ "correct_answer": "8.76E-03",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "$(\\min )^{-1}$"
+}

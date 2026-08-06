@@ -1,0 +1,11 @@
+{
+ "tid": "e180",
+ "qid": "Fundamentals_of_Ceramics_Barsoum_Example 3.4",
+ "question_text": "Starting with the radii of the ions or atoms, calculate the theoretical densities of MgO and SiC. \nr(Mg²⁺) = 0.086 nm, r(O²⁻) = 0.126 nm  \nr(Si) = 0.118 nm, r(C) = 0.071 nm \nThe atomic weight of Mg is $24.31 \\mathrm{~g} / \\mathrm{mol}$, and the atomic weight of O is $16 \\mathrm{~g} / \\mathrm{mol}$.\n\nGive your answer as a tuple (density of MgO, density of SiC).The units of each required answer are (g/cm^3, g/cm^3), respectively.",
+ "response": "## Reasoning\n\n**MgO — Rock salt (NaCl) structure**\n- Ions touch along the unit cell edge: $a = 2(r_{\\text{Mg}^{2+}} + r_{\\text{O}^{2-}}) = 2(0.086 + 0.126) = 0.424\\ \\text{nm}$\n- 4 formula units per cell ($Z=4$), $M = 24.31 + 16 = 40.31\\ \\text{g/mol}$\n- $\\rho = \\dfrac{ZM}{N_A a^3} = \\dfrac{4(40.31)}{6.022\\times10^{23}(4.24\\times10^{-8})^3} \\approx 3.51\\ \\text{g/cm}^3$\n\n**SiC — Zinc blende structure**\n- Nearest-neighbor (tetrahedral) contact: $r_{\\text{Si}} + r_{\\text{C}} = \\dfrac{a\\sqrt{3}}{4}$, so $a = \\dfrac{4(0.118+0.071)}{\\sqrt{3}} = 0.436\\ \\text{nm}$\n- 4 formula units per cell ($Z=4$), $M = 28.09 + 12.01 = 40.10\\ \\text{g/mol}$\n- $\\rho = \\dfrac{4(40.10)}{6.022\\times10^{23}(4.36\\times10^{-8})^3} \\approx 3.20\\ \\text{g/cm}^3$\n\n$$\\boxed{(3.51,\\ 3.20)}$$",
+ "final_answer": "(3.51,\\ 3.20)",
+ "correct_answer": "(3.51, 3.214)",
+ "n_ans": "multiple",
+ "level": "easy",
+ "unit": "(g/cm^3, g/cm^3)"
+}

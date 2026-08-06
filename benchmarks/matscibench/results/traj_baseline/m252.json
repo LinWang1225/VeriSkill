@@ -1,0 +1,11 @@
+{
+ "tid": "m252",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 19-41",
+ "question_text": "Calculate the displacement of the electrons or ions for the following conditions: (a) electronic polarization in nickel of $2 \\times 10^{-7} \\mathrm{C} / \\mathrm{m}^2$; (b) electronic polarization in aluminum of $2 \\times 10^{-8} \\mathrm{C} / \\mathrm{m}^2$ (c) ionic polarization in NaCl of $4.3 \\times 10^{-8} \\mathrm{C} / \\mathrm{m}^2$; and (d) ionic polarization in ZnS of $5 \\times 10^{-8} \\mathrm{C} / \\mathrm{m}^2$. Give your answer as a tuple: (displacement_nickel_m, displacement_NaCl_m).The units of each required answer are (m, m), respectively.",
+ "response": "For electronic polarization, the electron cloud of each atom (Z electrons) shifts by \\(d\\) relative to the nucleus, so \\(P = NZe\\,d\\). For ionic polarization in NaCl, each ion pair carries charge \\(e\\), so \\(P = ne\\,d\\).\n\n- **Nickel** (FCC, \\(a=0.352\\) nm, \\(Z=28\\)): \\(N=4/a^3\\),  \n  \\(d = \\dfrac{P}{ZeN} \\approx 4.86\\times10^{-19}\\,\\text{m}\\)\n\n- **NaCl** (rock salt, \\(a=0.563\\) nm, 4 formula units/cell): \\(n=4/a^3\\),  \n  \\(d = \\dfrac{P}{en} \\approx 1.20\\times10^{-17}\\,\\text{m}\\)\n\n\\[\n\\boxed{(4.86\\times10^{-19},\\ 1.20\\times10^{-17})}\n\\]",
+ "final_answer": "(4.86\\times10^{-19},\\ 1.20\\times10^{-17})",
+ "correct_answer": "(4.85e-19, 1.15e-17)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(m, m)"
+}

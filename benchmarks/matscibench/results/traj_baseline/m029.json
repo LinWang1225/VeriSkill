@@ -1,0 +1,11 @@
+{
+ "tid": "m029",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_6.45",
+ "question_text": "You are asked to measure nondestructively the yield strength and tensile strength of an annealed 65-45-12 cast iron structural member. Fortunately, a small hardness indentation in this structural design will not impair its future usefulness, which is a working definition of nondestructive. A $10-\\mathrm{mm}$-diameter tungsten carbide sphere creates a $4.26-\\mathrm{mm}$-diameter impression under a $3,000-\\mathrm{kg}$ load. What are the yield and tensile strengths? Give your answer as a tuple: (yield_strength, tensile_strength).The units of each required answer are (MPa, MPa), respectively.",
+ "response": "## Solution\n\n### Step 1: Calculate the Brinell Hardness Number (BHN)\n\nThe Brinell hardness is given by:\n\n$$HB = \\frac{2P}{\\pi D\\left(D - \\sqrt{D^2 - d^2}\\right)}$$\n\nWith $P = 3000$ kg, $D = 10$ mm, $d = 4.26$ mm:\n\n$$HB = \\frac{2(3000)}{\\pi(10)\\left(10 - \\sqrt{100 - 18.15}\\right)} = \\frac{6000}{\\pi(10)(10 - 9.047)} \\approx 200.5$$\n\n### Step 2: Apply ductile cast iron hardness–strength correlations\n\nFor **ductile cast iron**, the empirical correlations relating Brinell hardness to strength (as presented in Callister) are:\n\n- **Tensile strength:** $\\sigma_{UTS} \\text{ (MPa)} \\approx 2.5 \\times HB$\n- **Yield strength:** $\\sigma_y \\text{ (MPa)} \\approx 1.6 \\times HB$\n\nThese differ from the steel correlation ($3.45 \\times HB$) because graphite nodules in ductile iron reduce the strength-to-hardness ratio.\n\n### Step 3: Compute the strengths\n\n$$\\sigma_y = 1.6 \\times 200.45 = 320.7 \\text{ MPa} \\approx 321 \\text{ MPa}$$\n\n$$\\sigma_{UTS} = 2.5 \\times 200.45 = 501.1 \\text{ MPa} \\approx 501 \\text{ MPa}$$\n\n### Verification\nThe 65-45-12 grade specifies minimum $YS = 310$ MPa and $TS = 448$ MPa with a hardness range of 156–217 HB. Since the measured BHN ≈ 200 falls in the **upper portion** of this range, estimated strengths somewhat above the minimum specified values are expected — consistent with our results.\n\n$$\\boxed{(321,\\ 501)}$$",
+ "final_answer": "(321,\\ 501)",
+ "correct_answer": "(400, 550)",
+ "n_ans": "multiple",
+ "level": "medium",
+ "unit": "(MPa, MPa)"
+}

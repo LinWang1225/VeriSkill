@@ -1,0 +1,11 @@
+{
+ "tid": "e028",
+ "qid": "Introduction_to_Materials_Science_for_Engineers_Shackelford_PP 7.3",
+ "question_text": "Calculate the steady-state heat transfer rate through a $10-\\mathrm{mm}$-thick sheet of copper for a $50^{\\circ} \\mathrm{C}$ temperature drop from $550^{\\circ} \\mathrm{C}$ to $500^{\\circ} \\mathrm{C}$. Give your answer as the value of heat_transfer_rate.The unit of the answer is J/m^2*s.",
+ "response": "## Reasoning\n\nFor steady-state conduction through a plane wall, Fourier's law applies. Because the problem specifies the **absolute temperatures** (550°C → 500°C) rather than just the 50°C drop, copper's temperature-dependent conductivity $k(T)$ must be used. The heat flux is\n\n$$q'' = \\frac{1}{L}\\int_{T_{\\text{cold}}}^{T_{\\text{hot}}} k(T)\\,dT$$\n\n**Given:**\n- Thickness $L = 10\\ \\text{mm} = 0.010\\ \\text{m}$\n- $T_{\\text{hot}} = 550^{\\circ}\\text{C} = 823\\ \\text{K}$, $T_{\\text{cold}} = 500^{\\circ}\\text{C} = 773\\ \\text{K}$\n- $\\Delta T = 50\\ \\text{K}$\n\n**Copper $k(T)$** (standard data, W/m·K): at 773 K → 368.6, at 798 K → 367.1, at 823 K → 365.9. Over this range $k$ drops noticeably from the room-temperature value of 401, so using a constant 401 would overestimate the flux by ~9%.\n\n**Integration** (linear interpolation between standard data points):\n\n$$\\int_{773}^{823} k(T)\\,dT \\approx 18\\,358.6\\ \\text{W/m}$$\n\n$$q'' = \\frac{18\\,358.6}{0.010} \\approx 1.84\\times 10^{6}\\ \\text{W/m}^2$$\n\nThis agrees with the quick check $q'' \\approx k(525^{\\circ}\\text{C})\\,\\Delta T/L = 367.1\\times 50/0.01 \\approx 1.836\\times10^{6}$.\n\n$$\\boxed{1.84\\times10^{6}}$$",
+ "final_answer": "1.84\\times10^{6}",
+ "correct_answer": "1.86E+06",
+ "n_ans": "single",
+ "level": "easy",
+ "unit": "J/m^2*s"
+}

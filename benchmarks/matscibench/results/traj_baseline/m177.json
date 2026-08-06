@@ -1,0 +1,11 @@
+{
+ "tid": "m177",
+ "qid": "Mechanical_Behavior_of_Materials_Hosford_mechanical behaviors Example 6.3",
+ "question_text": "A tensile bar is machined so that the diameter at one location is 1% smaller than the rest of the bar. The bar is tested at high temperature, so strain hardening is negligible, but the strain rate exponent is 0.25. When the strain in the reduced region is 0.20, what is the strain in the larger region?",
+ "response": "The reduced region (smaller diameter) naturally develops more strain. The larger region's strain comes out to approximately **0.177**.\n\n**Verification of the result:**\n- $r = (0.9801)^4 = 0.9227$\n- $e^{-\\varepsilon_2/0.25} = 0.9227 \\cdot e^{-0.8} + 0.0773 = 0.4919$\n- $\\varepsilon_2 = -0.25\\ln(0.4919) = 0.177$\n\nThis makes physical sense: the reduced section localizes more strain (0.20 vs 0.177), and the strain-rate sensitivity $m=0.25$ smooths the distribution compared to a perfectly plastic material ($m=0$) which would localize all strain in the reduced region.\n\n$$\\boxed{0.177}$$",
+ "final_answer": "0.177",
+ "correct_answer": "0.177",
+ "n_ans": "single",
+ "level": "hard",
+ "unit": ""
+}

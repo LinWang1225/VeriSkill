@@ -1,0 +1,11 @@
+{
+ "tid": "m256",
+ "qid": "The_Science_And_Engineering_of_Materials_Askeland_Problem 22-29",
+ "question_text": "Suppose we just dip a 1 -cm-diameter, 10cm -long rod of aluminum into one liter of water at $20^{\\circ} \\mathrm{C}$. The other end of the rod is in contact with a heat source operating at $400^{\\circ} \\mathrm{C}$. Determine the length of time required to heat the water to $25^{\\circ} \\mathrm{C}$ if $75 \\%$ of the heat is lost by radiation from the bar.The unit of the answer is min.",
+ "response": "## Solution\n\n**Step 1: Heat required to raise the water temperature**\n\n$$Q = mc\\Delta T = (1000\\,\\text{g})(4.186\\,\\text{J/g·°C})(25-20)\\,\\text{°C} = 20{,}930\\,\\text{J}$$\n\n**Step 2: Steady-state heat conduction through the aluminum rod (Fourier's Law)**\n\n$$\\dot{Q} = \\frac{kA\\Delta T}{L}$$\n\n- Thermal conductivity of aluminum: $k = 205\\,\\text{W/(m·K)}$\n- Cross-sectional area: $A = \\pi(0.005)^2 = 7.854\\times10^{-5}\\,\\text{m}^2$\n- Temperature gradient: $\\Delta T = 400 - 20 = 380\\,\\text{K}$\n- Length: $L = 0.10\\,\\text{m}$\n\n$$\\dot{Q} = \\frac{205 \\times 7.854\\times10^{-5} \\times 380}{0.10} = 61.18\\,\\text{W}$$\n\n**Step 3: Account for radiation loss**\n\nSince 75% of heat is lost by radiation, only 25% reaches the water:\n\n$$\\dot{Q}_{\\text{water}} = 0.25 \\times 61.18 = 15.30\\,\\text{J/s}$$\n\n**Step 4: Time required**\n\n$$t = \\frac{Q}{\\dot{Q}_{\\text{water}}} = \\frac{20{,}930}{15.30} = 1368\\,\\text{s} \\approx 22.8\\,\\text{min}$$\n\n$$\\boxed{22.8}$$",
+ "final_answer": "22.8",
+ "correct_answer": "19.6",
+ "n_ans": "single",
+ "level": "medium",
+ "unit": "min"
+}
