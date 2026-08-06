@@ -47,7 +47,7 @@ for r in 1..rounds:
     3 审计    挑 B 条：Oracle 重跑取真值，记 TP/FP/FN/TN，新轨迹放回
     4 训 D    d-improve 按审计修 critics：先修误杀，其余由它分析判断
     5 训 G    g-improve 按失败和软信号修 actor_skills：由它分析判断
-    6 门控    格式合法性 + 反作弊 + 冒烟测试 → 接受或整体回滚
+    6 门控    格式合法性 + 反作弊 + 冒烟(防误杀) + 回归门(防遗忘) → 接受或回滚
     7 记账    report.md 追加一行，聊天报一行
 
 停止: 跑满 rounds / 最近 20 次审计全对 / 池子耗尽 / 故障率超限 / 用户叫停
@@ -147,8 +147,9 @@ $ARGUMENTS
 
 - 只有 `split=train` 的条目能进 batch、作为改进 D/G 的依据。
 - `split=test` 的条目在收尾前不判决、不审计、不作为改进依据。例外
-  只有三个：Setup 的登记和格式体检（只做结构解析）、每 10 轮一次的
-  周期性 test 评估（见第 7 步，结果只记录不反馈）。
+  只有两个：Setup 的登记和格式体检（只做结构解析），以及收尾的 final_test。
+  周期性 test 评估已移出轮内、由轮外脚本 `eval_test.sh` 独立执行，
+  **你在任何一步都不得触碰 split=test 的条目**。
 - Oracle 重跑的做题工作区只有题目、技能库和任务数据——看不到旧轨迹
   的过程和答案，也看不到 gold/checker/truth。
 - `verify.sh` 的工作区只有轨迹和 critics，看不到任何 Oracle 真值。
@@ -351,12 +352,16 @@ audited.json、不放回，队列不补位。重试成功的按成功计，重�
 {"item":"<id>", "segment":"误杀|低置信|随机", "d_verdict":"pass|fail",
  "oracle_pass": true, "kind":"TP|FP|FN|TN", "skill_hash":"<12位>",
  "truth_source":"checker|truth|redo", "rules_hit":[],
- "normalized_score": 0.72, "confidence": 0.6, "oracle_evidence":"...",
+ "normalized_score": 0.72, "adjusted_score": 0.52, "flipped_by": null,
+ "confidence": 0.6, "oracle_evidence":"...",
  "skill_result":"重跑得出的答案"}
 ```
 
 （`skill_hash`、`truth_source`、`skill_result` 抄 oracle_run 输出；
-`normalized_score` 从判决行抄，hard 命中记 null。）
+`normalized_score`、`adjusted_score`、`flipped_by` 从判决行抄，hard
+命中的 `normalized_score` 记 null。**`flipped_by` 必须如实抄**：值为
+`"concern-penalty"` 表示这条 fail 不是 D 直接判的，是存疑扣分翻过来的；
+分开记账才知道这条通道在抓 FN 还是在造 FP。）
 
 **放回**（每条审计成功的条目，按此顺序）：
 
@@ -399,9 +404,15 @@ audited.json、不放回，队列不补位。重试成功的按成功计，重�
 条目只有自带真值可用）。同一条目已有暂存行时覆盖不追加（换指纹重审
 再 FN 不能算两个例子）。追加后删掉 `round` 早于 `r−6` 的条目。
 这一步是必要的：每轮 FN 常只有 0–1 条。d-improve 单个 FN 可立一条
-**`[soft]` 判据**，但要升 `[hard]`（命中即判死）需 **≥2 道不同题**佐证
-（晋升门，见其提示词与第 6 步门控）；不跨轮攒，soft 判据永远等不到
-第二道题来晋升。
+**`[soft]` 判据**，升 `[hard]`（命中即判死）有两条路（晋升门，见其
+提示词与第 6 步门控）：**≥2 道不同题**佐证，或**实战积累**——该判据
+历史命中 ≥2 次且从未造成 FP（跑 `python3 lib/rule_stats.py` 查）。
+不跨轮攒，soft 判据永远等不到第二道题来晋升。
+
+**主动清 soft**：每轮 d-improve 开工前先跑 `python3 lib/rule_stats.py`，
+把 `可晋升=是` 的 `[soft]` 判据升成 `[hard]`，这不占编辑预算。r1–r16
+十条判据里只有 4 条升上去、其余长期挂 soft，而 soft 不改判决——这是
+召回长期卡在 30% 的机械原因之一。
 
 本轮 `FP == 0` 且暂存为空 → 跳过，记 `D=noop`。否则调 `d-improve`，
 只给它：
@@ -468,10 +479,14 @@ pass 但 D 存疑"的条目也是可改进的稠密反馈。**只要 `g_fail_ite
 - 新增 R 判据只查信封：行首 `- R-<critic名>-<三位数> [hard|soft] `、
   行内含 ` 依据:`；
 - R 的 ID 全库唯一；
-- **晋升门（机件2，机械强制）**：任一 `[hard]` 判据的 `依据:` 必须含
-  **≥2 个互异 `#qNNN`**（同一 #q 在多轮各出现一次只算一个）。不足即
-  违规——挡住"单题过拟合规则直接判死"。`[soft]` 无此要求。用脚本抽
-  每条 `[hard]` 行的 `依据:` 里的 `#q\d+`，去重后计数 <2 即命中违规；
+- **晋升门（机件2，机械强制）**：任一 `[hard]` 判据须满足下面**任一**条：
+  - `依据:` 含 **≥2 个互异 `#qNNN`**（同一 #q 在多轮各出现一次只算一个）；
+  - 或 `python3 lib/rule_stats.py --rule <R编号>` 退 0（历史命中 ≥2 次
+    且 fp==0）——实战里反复命中且从没误杀，与两道题佐证同强度。
+
+  两条都不满足即违规——挡住"单题过拟合规则直接判死"。`[soft]` 无此
+  要求。用脚本抽每条 `[hard]` 行的 `依据:` 里的 `#q\d+` 去重计数，
+  <2 时再查 rule_stats，仍不过才判违规；
 - 新增文本不含具体答案值、题面原句、条目 ID（条目 ID 唯一例外：
   critics 里 R 判据的 `依据:` 字段）。题面/答案照抄用脚本比对新增行
   与本轮派发给该子 Agent 的任何轨迹文件的公共片段，按下面判定
@@ -489,12 +504,29 @@ before 快照（编辑常互相依赖，不做单文件回滚）。原因写
 `rounds/r<r>/rollback_D.txt`（或 `_G.txt`）并记报告，下轮派活时给
 对应子 Agent。
 
-**冒烟测试**：从 `stats/tn_seen.list` 随机抽 2 条，用改后的 critics
-对 `stats/tn_traj/` 里的快照重跑 verify.sh（临时
+**冒烟测试（防误杀）**：从 `stats/tn_seen.list` 随机抽 2 条，用改后的
+critics 对 `stats/tn_traj/` 里的快照重跑 verify.sh（临时
 `export VERISKILL_TRAJ=stats/tn_traj`，跑完恢复）。要求跑通、JSON
 合法、且这 2 条仍判 pass——TN 是双确认过的好轨迹，改后被判 fail
 说明新规则过宽。任一条不满足，critics 整库回滚到
 `history/r<r>_D_before/`。（开局头几轮清单可能不足 2 条：跳过并记录。）
+
+**回归门（防遗忘）**：
+
+```bash
+python3 lib/build_regression.py            # 先刷新回归集（含本轮新 TP）
+bash regression_gate.sh rounds/r<r>/regression.jsonl 4
+```
+
+拿历史上**确认过的 TP 轨迹**用改后的 critics 重跑，要求**仍判 fail**。
+退出码 2 = 有条目翻成 pass，critics 整库回滚到 `history/r<r>_D_before/`，
+原因写 `rounds/r<r>/rollback_D.txt`。
+
+为什么加这一门：冒烟只防误杀、不防遗忘。实测 e055 r6/r7 连抓两次、
+r15 又漏；m128 r3 抓到、r11/r12 连漏；m029 r11 抓到、r14 漏。12 道被
+重复审计的题里 9 道最后一次仍 oracle-fail——新规则在挤掉旧能力，而
+r1–r16 的门控完全看不见这件事。默认只跑最近 4 条（每条一次后端调用，
+串行，别放大成整轮预算）；`all` 跑全量。回归集为空时跳过并记录。
 
 **接受**：通过的版本快照到 `history/r<r>_accepted_D/`、
 `history/r<r>_accepted_G/`；`ledger.round = r`；G 侧有编辑存活时
@@ -520,28 +552,28 @@ r=<r> 批=<n> fail_rate=<x> FP=<n> FN=<n> 审计=<x/y> 放回=<n> D=<动作> G=<
 
 单轮 fail_rate 和 FP/FN 只记录不判断；收敛只看累计账。
 
-**阈值自校准**：每条被审计条目自带一对标注（判决 `normalized_score`
+**阈值自校准**：每条被审计条目自带一对标注（判决 **`adjusted_score`**
 + 真值）。历史累计非 null 行 ≥ 15 时：扫描候选阈值取判对率最高者，
-并列取最接近当前值的；与当前值差 ≥ 0.05 才更换；更换即
-`export VERISKILL_RUBRIC_THRESHOLD=<新值>` 并记报告（旧值、新值、
-样本数）。
+并列取最接近当前值的；与当前值差 ≥ 0.05 才更换；更换时**必须改写
+`env.sh` 里的 `VERISKILL_RUBRIC_THRESHOLD=<新值>`**（只在轮内 export
+不算数，下一轮就丢），并记报告（旧值、新值、样本数）。
+
+⚠️ 校准必须用 `adjusted_score`，**不是** `normalized_score`。后者是
+二值的（pass→1.0 / fail→0.0）：r1–r16 的 28 条 FN 里 26 条 ns=1.0，
+与 19 条 TN 完全重合，任何阈值都分不开——r6 之后连报五轮"无增益保持"
+不是收敛，是这个旋钮没接线。`adjusted_score` 才带 concerns / soft
+命中 / 自报信心的连续信息。
 
 子 Agent 返回 `needs_human=true` 只记录，不停循环、不回滚合法编辑。
 
-**周期性 test 评估**（`r` 是 10 的倍数时，本步最后做）：用**当前**
-技能测一次 test 集成功率。按收尾同款抽样（test 条目按 ID 排序、
-`random.seed(0)`、取 `final_test_max` 条），逐条
-`bash oracle_run.sh pool/traj/<id>.md`（**不带 --new-traj-out、不
-放回**，test 池不动；环境故障条目剔除出分母）。结果追加一行进
-`stats/test_curve.jsonl`：
+**周期性 test 评估**：**已从轮内移出，不要在本步做**。test 集有 48 条，
+逐条 oracle 重解耗时超过整轮预算，放在轮内必然触发 ROUND_TIMEOUT 把整轮
+连同 test 结果一起砍掉（r10 实测：跑到第 31 条被 SIGKILL）。改由独立脚本
+`eval_test.sh` 在轮外并发跑，结果同样追加进 `stats/test_curve.jsonl`。
 
-```json
-{"round": 10, "g_version": 4, "skill_hash": "<12位>",
- "pass": 11, "total": 18, "rate": 0.611}
-```
-
-并在报告记一行。**只做记录**：不作为任何改进依据、不给子 Agent 看、
-不参与停止判断——test 隔离原则不变，这条曲线是给人看的成长记录。
+**你在本步什么都不用做**——不要抽 test 样本、不要调 oracle_run.sh 跑 test
+条目、不要写 test_curve.jsonl。test 隔离原则不变：这条曲线是给人看的成长
+记录，不作为任何改进依据、不给子 Agent 看、不参与停止判断。
 
 ### 8. 周期性合并（`consolidate_every>0` 且 `r % consolidate_every == 0` 时）
 

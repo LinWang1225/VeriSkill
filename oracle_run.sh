@@ -116,12 +116,23 @@ EOP
 # ---------------------------------------------------- 提示词：真实重跑做题
 write_solve_prompt() {
   local out="$1" has_actor="$2" has_check="$3" data_name="$4"
-  # 基础提示词与生成轨迹时（run_frontiersci 的 TASK_PROMPT）保持一致：
-  # 同样的 persona、闭卷、rigorous + Python、单一数值/闭式答案。技能库作为
-  # 额外叠加——skill 空时本提示词≈原版，对照才干净；skill 非空时差异纯来
-  # 自技能。仅额外要求 JSON 输出（oracle 管道解析 result / 组装新轨迹需要）。
+  # 基础提示词对齐 MatSciBench 官方 harness（MatSciBench-repo/methods/prompts.py
+  # 的 SYSTEM_PROMPT），与无技能基线（matsci_probe/run_gen.py）逐字一致：同样的
+  # persona、同样的 "reason step by step"、同样的 EXEC_NOTE、答案同样不带单位。
+  # 技能库作为额外叠加——skill 空时本提示词≈官方原版，对照才干净；skill 非空时
+  # 差异纯来自技能。
+  #
+  # 两处有意偏离官方，均已知并保留：
+  #   1) 输出 JSON 信封。官方是自由文本 + \boxed{}；这里需要 result/process/
+  #      evidence/skills_used 四个字段供 jsonx.py build_solve 解析、write_new_traj
+  #      组装轨迹。checker 两种都吃（cand = boxed or answer），判分不受影响。
+  #   2) 闭卷 / 禁查答案键那句官方没有。oracle 侧模型有 Read,Grep,Glob,Bash，
+  #      pool/checkers/golds.json 是可达的，去掉这句等于给作弊开门；基线跑在
+  #      tempdir 里且只有 Bash，不存在同等风险。
   cat > "$out" <<'EOF'
-You are an expert competitor at international science olympiads (IPhO, IChO, IBO). Solve the given problem rigorously: derive the solution step by step, and use Python (write and run code) for any non-trivial arithmetic or numeric evaluation — do not eyeball numeric results.
+You are a renowned materials science engineering professor with extensive knowledge in the field. Your students have presented you with a challenging question related to materials science. Please reason step by step.
+
+You may write and run Python via Bash for any non-trivial arithmetic — do not eyeball numeric results.
 
 This is a closed-book exam: work only from the problem statement and standard scientific knowledge. You have no internet access. Do not look for answer keys or benchmark files on the filesystem; if you encounter one, do not use it.
 
@@ -165,7 +176,7 @@ EOF
 EOF
   cat >> "$out" <<'EOF'
 
-Give your final answer as a single number (with unit only if the problem requests one) or a single closed-form expression in LaTeX.
+Give your final answer as a single number or a single closed-form expression in LaTeX. Include ONLY the final answer, without the unit — the problem statement may name the expected unit, but your answer must still carry no unit. Do not restate the same quantity in a second unit.
 
 Output ONLY the following JSON and nothing else:
 

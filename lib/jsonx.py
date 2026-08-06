@@ -12,8 +12,17 @@
 """
 import argparse
 import json
+import os
 import re
 import sys
+
+
+def _w(name, default):
+    """惩罚权重，环境变量可覆盖；置 0 即关掉对应通道。"""
+    try:
+        return float(os.environ.get(name, default))
+    except Exception:
+        return default
 
 
 def _candidates(text):
@@ -111,6 +120,7 @@ def build_verdict(obj, item, threshold):
         confidence = round(clamp01(float(mc)), 2) if mc is not None else None
     except Exception:
         confidence = None
+    model_reported_conf = confidence is not None
     if confidence is None:  # 兜底：旧机械换算
         if norm is None:
             confidence = 0.9 if hard_hit else 0.5
@@ -122,16 +132,50 @@ def build_verdict(obj, item, threshold):
 
     reason = str(obj.get("reason", ""))[:600]
 
-    return {
+    # ---- 存疑扣分：把 concerns / soft 命中 / 自报信心折进分数 ----
+    # 起因：r1–r16 的 normalized_score 实际是二值的（判 pass 一律 1.0、
+    # 判 fail 一律 0.0），28 条 FN 里 26 条 ns=1.0，与 19 条 TN 完全重合，
+    # 任何阈值都分不开——每轮的"阈值自校准"因此是空转。但同一批样本里
+    # D 自报的 confidence 和 concerns 是有区分度的（TN: conf 均值 0.92 /
+    # concerns 均值 0.89；FN: 0.80 / 1.54），且 soft 命中 4 次全落在 FN。
+    # 所以这里在 pass 侧按这三路扣分，低于阈值就翻成 fail。
+    # 权重在 r1–r16 的 47 条已审计 pass 样本上网格搜索得到：
+    # 翻转 22/28 FN、误伤 4/19 TN（召回 30%→85%，精度 71%→79%）。
+    adjusted, flipped = norm, False
+    if verdict == "pass":
+        base = norm if norm is not None else 1.0
+        # 信心那一路只在模型**自己报了** confidence 时才算。没报时走的是
+        # 上面那段机械兜底（分数离阈值的距离），它跟"D 有多大把握"没关系，
+        # 拿它扣分会把没报信心的条目一律打成 fail。
+        conf_gap = (1.0 - confidence) if model_reported_conf else 0.0
+        adjusted = round(
+            base
+            - _w("VERISKILL_W_SOFT", 0.25) * len(rules)
+            - _w("VERISKILL_W_CONCERN", 0.10) * len(concerns)
+            - _w("VERISKILL_W_CONF", 1.0) * conf_gap,
+            3,
+        )
+        if adjusted < threshold:
+            verdict, flipped = "fail", True
+
+    out = {
         "item": item,
         "verdict": verdict,
         "rules_hit": rules,
         "rubric_scores": scores,
         "normalized_score": norm,
+        "adjusted_score": adjusted,
         "confidence": confidence,
         "concerns": concerns,
         "reason": reason,
     }
+    if flipped:
+        # 留痕：审计要能分开"D 本来就判 fail"和"被扣分翻过来的"，
+        # 否则没法评估这条通道到底是在抓 FN 还是在制造 FP。
+        out["flipped_by"] = "concern-penalty"
+        out["raw_verdict"] = "pass"
+        out["reason"] = (f"[存疑扣分翻转 {adjusted:.2f}<{threshold}] " + reason)[:600]
+    return out
 
 
 class EnvFailure(Exception):
