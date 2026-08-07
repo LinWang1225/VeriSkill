@@ -278,19 +278,43 @@ benchmarks, chosen to vary the domain, the answer format, and — deliberately �
 | Benchmark | Domain | Answer form | Oracle | Base rate |
 |---|---|---|---|---|
 | MatSciBench, `Materials: Metals` (Zhang et al. 2026) | materials science | numeric / closed form | official `rule_judge`: sympy equivalence + 5% relative tolerance, **no model call** | 50.0% |
-| SciBench, statistics subset (Wang et al. 2024) | physics / statistics | numeric | deterministic numeric checker with tolerance, **no model call** | `[TBD]` |
-| HLE, math subset (Phan et al. 2025) | research-level mixed | open-answer exact match | official HLE judge prompt, **model-based** | `[TBD]` |
+| HotpotQA (Yang et al. 2018) | multi-hop retrieval QA | short string | normalized exact match, **no model call** | `[TBD]` |
+| MuSiQue (Trivedi et al. 2022) | compositional multi-hop QA | short string | normalized exact match, **no model call** | `[TBD]` |
 | OfficeQA | document / spreadsheet QA | numeric, string, date | deterministic checker over extracted answer | 50.0% |
 
-Two rows are chosen deliberately rather than for convenience. **HLE**'s official judge is
-itself an LLM: our claim concerns a *budgeted* oracle, not a perfect one, so this row tests
-whether the loop survives when the scarce ground truth is also noisy. **OfficeQA** is not a
-scientific reasoning task at all — it requires locating evidence in office documents,
-aggregating tabular data, and formatting extracted values — so it tests whether the loop is
-specific to closed-form derivation or applies wherever failures have recurring structure.
-OfficeQA additionally exhibits genuine *environment* failures (a chart's data points lost
-during PDF-to-text extraction, for instance), which we must separate from reasoning
-failures; §6.1 shows why that distinction is not cosmetic.
+The suite is chosen so that the *kind* of failure varies while the budget constraint stays
+constant. MatSciBench failures are derivational (wrong model, wrong convention, wrong
+constant); multi-hop QA failures are structural (bad decomposition, entity confusion, hop
+ordering); OfficeQA failures are locational (wrong source, wrong aggregation, wrong
+format). If the loop only works on one of these, that is worth knowing.
+
+Two choices need justification.
+
+**We adopt the multi-hop QA benchmarks used by SESA** (Fu et al. 2026) rather than a
+second science benchmark. This is deliberate: it makes SESA directly runnable as a
+baseline on identical data (§6.3), which is otherwise the hardest comparison to arrange —
+SESA is the closest prior work that also couples skill memory to an evolving task
+distribution. We use HotpotQA and MuSiQue (multi-hop, where failures have recurring
+structure that a skill can capture) and not NQ/TriviaQA/PopQA (largely single-hop factual
+recall, where failures are knowledge gaps that procedural skills cannot repair).
+
+**We do not use the program-verification benchmarks** of Jia et al. (2026) — Dafny,
+Frama-C, VeriFast — despite their apparent fit. In those domains a formal verifier decides
+correctness for free, without limit, at both training *and* deployment time. There is
+consequently no ground-truth budget to allocate, which is the entire object of this paper;
+running CADRE there would test a mechanism whose motivating constraint is absent. The same
+observation suggests a useful control we leave to future work: a free-oracle domain is
+where the `audit_frac = 1.0` condition of §6.4 becomes the natural operating point rather
+than an upper bound.
+
+**On oracle purity.** All four oracles above are deterministic. We note that the standard
+QA evaluation protocol (including SESA's) augments exact match with a model-based
+semantic-equivalence fallback. We report strict normalized EM as the oracle used *inside*
+the loop, and additionally report the SESA-protocol number for comparability; the gap
+between them is itself informative about how much of the reported difficulty is scoring
+strictness. OfficeQA additionally exhibits genuine *environment* failures (a chart's data
+points lost during PDF-to-text extraction, for instance), which must be separated from
+reasoning failures; §6.1 shows why that distinction is not cosmetic.
 
 We considered and excluded **GPQA-diamond**: its oracle is ideal (exact letter match, no
 model), but an agentic solver is already near ceiling on it, leaving no headroom for skill
@@ -331,8 +355,8 @@ evolved library against the no-skill baseline on identical items.
 | Benchmark | Skills | No skill | CADRE | Δ | Improved / Regressed | McNemar *p* |
 |---|---|---|---|---|---|---|
 | MatSciBench (metals) | 37 | 24/48 = 50.0% | **32/48 = 66.7%** | **+16.7** | 9 / 1 | **0.0215** |
-| SciBench (statistics) | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
-| HLE (math) | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
+| HotpotQA | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
+| MuSiQue | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
 | OfficeQA | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
 | **Average** | — | `[TBD]` | `[TBD]` | `[TBD]` | — | — |
 
@@ -365,18 +389,28 @@ not a harness artifact.
 
 ### 6.3 Comparison with Baselines `[TBD]`
 
-| Method | Held-out accuracy | Δ vs No-Skill | Oracle calls |
-|---|---|---|---|
-| No Skill | 50.0% | — | 0 |
-| One-pass LLM Skill | | | |
-| Human-written Skill | | | |
-| Skill-Creator | | | |
-| EvoSkill | | | |
-| SkillOpt-Lite | | | |
-| CoEvoSkills | | | |
-| **CADRE (ours)** | **66.7%** | **+16.7** | **116** |
+All baselines receive the same pool, backbone, harness, and oracle. The rightmost column
+matters as much as the accuracy: methods differ in how much ground truth they consume, and
+a method that wins by spending ten times the oracle budget has not won.
 
-> 未跑。这是投稿的硬缺口——目前只有 No-Skill 一个对照。
+| Method | MatSciBench | HotpotQA | MuSiQue | OfficeQA | Oracle calls |
+|---|---|---|---|---|---|
+| No Skill | 50.0% | `[TBD]` | `[TBD]` | `[TBD]` | 0 |
+| One-pass LLM Skill | | | | | |
+| Human-written Skill | | | | | |
+| Skill-Creator | | | | | |
+| EvoSkill | | | | | |
+| SkillOpt-Lite | | | | | |
+| **SESA** (Fu et al. 2026) | — | | | — | |
+| CoEvoSkills | | | | | |
+| **CADRE (ours)** | **66.7%** | | | | **116** |
+
+*Table: baseline comparison. SESA is run only on the multi-hop QA rows, where its
+self-play problem generator applies; it has no proposer for a fixed scientific item pool.*
+
+> 未跑。这是投稿的硬缺口——目前只有 No-Skill 一个对照。选用 SESA 的数据集正是为了让
+> SESA 这一行可跑：它是最接近的先前工作（同样把技能记忆耦合到演进中的任务分布），
+> 也是审稿人最可能追问的对照。
 
 ### 6.4 Oracle Budget Sweep `[TBD]`
 
@@ -469,12 +503,17 @@ reason. We repeat the reweighted critic analysis of §6.5 on each benchmark.
 | Benchmark | Fail rate *f* | Precision | Pass-side accuracy | Reweighted recall |
 |---|---|---|---|---|
 | MatSciBench (metals) | 0.074 → 0.359 | 0.74 → 0.71 | 0.55 → 0.54 | 0.11 → 0.46 |
-| SciBench (statistics) | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
-| HLE (math) | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
+| HotpotQA | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
+| MuSiQue | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
+| OfficeQA | `[TBD]` | `[TBD]` | `[TBD]` | `[TBD]` |
 
-The HLE row carries additional weight: its oracle is model-based, so any degradation in
-critic calibration there separates "the critic is hard to train" from "the critic was
-calibrated against a noisy target".
+The pass-side column is the one to watch. On MatSciBench it is flat, and §6.6 traces the
+plateau to exactly that. Whether it is flat because judging a derivation without the answer
+is intrinsically hard, or because *our* critic is weak, is not decidable from one benchmark.
+Multi-hop QA offers a partial answer: a wrong multi-hop answer often leaves a visible
+structural trace (a dropped hop, an entity substitution) that a critic can catch without
+knowing the target, so a materially higher pass-side accuracy there would indicate the
+limitation is domain-specific rather than fundamental.
 
 ### 6.10 Variance `[TBD]`
 
@@ -581,6 +620,8 @@ skill generation, as the bottleneck when ground truth must be rationed.
 - Chen, Y.; Wang, Y.; Zhu, S.; et al. 2025. Multi-agent evolve: LLM self-improve through co-evolution. arXiv:2510.23595.
 - Fu, Z.; Li, Z.; Ai, Q.; et al. 2026. Self-Play Meets Skill Evolution: Self-Evolving Search Agents that Pose, Solve, and Remember. arXiv:2607.29468.
 - Jia, C.; Zhao, T.; Xiao, Z.; Zhang, W.; Zhou, M. 2026. VeriSkill: A Self-Evolution Framework for Program Verification Skills. arXiv:2607.27733.
+- Trivedi, H.; Balasubramanian, N.; Khot, T.; Sabharwal, A. 2022. MuSiQue: Multihop Questions via Single-hop Question Composition. *TACL* 10: 539–554.
+- Yang, Z.; Qi, P.; Zhang, S.; Bengio, Y.; Cohen, W. W.; Salakhutdinov, R.; Manning, C. D. 2018. HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering. In *EMNLP*.
 - Li, X.; Liu, Y.; Chen, W.; et al. 2026. SkillsBench: Benchmarking how well agent skills work across diverse tasks. arXiv:2602.12670.
 - Lu, H.; Wen, Y.; Cheng, P.; et al. 2026. Search Self-Play: Pushing the Frontier of Agent Capability without Supervision. ICLR.
 - Ni, J.; Liu, Y.; Liu, X.; et al. 2026. Trace2skill: Distill trajectory-local lessons into transferable agent skills. arXiv:2603.25158.
@@ -612,22 +653,26 @@ skill generation, as the bottleneck when ground truth must be rationed.
 ### P0 —— 不做就无法投稿
 
 **A′. 多数据集主结果（§6.1、§6.9）**
-在 SciBench（统计子集）和 HLE（数学子集）上各跑一遍完整 CADRE，配置与 MatSciBench
-完全一致、不做任何逐数据集调参。每个数据集独立建池、独立演进、独立评估，**不跨域复用
-技能库**——Table 1 要证明的是「这个循环在不同设定下都成立」，不是「技能可迁移」。
+在 HotpotQA、MuSiQue、OfficeQA 上各跑一遍完整 CADRE，配置与 MatSciBench 完全一致、
+不做任何逐数据集调参。每个数据集独立建池、独立演进、独立评估，**不跨域复用技能库**
+——Table 1 要证明的是「这个循环在不同设定下都成立」，不是「技能可迁移」。
 
-两个 harness 仓库里已有（`benchmarks/hle/`、`adapters/run_rounds_stat.sh` +
-`pool/checkers/checker_core_stat.py`），主要工作是建 1:1 平衡池和对齐各自的官方 harness。
+需要新建的 harness：两个多跳 QA 数据集要接检索工具与归一化 EM 判分（`build_pool.py` 的
+1:1 平衡与分层划分逻辑可直接复用，判分核心要新写）。OfficeQA 的 harness 仓库里已有，
+但**必须用 §4 的循环重跑**，不能沿用 main 分支那 11 轮。
 
 选型说明：
-- **SciBench 统计子集** —— 判分确定性、零模型调用，与 MatSciBench 同性质，是干净的重复验证
-- **HLE 数学子集** —— 官方判分器本身是 LLM。这一条是**故意选的**：论文主张的是「预算内的
-  oracle」而不是「完美的 oracle」，HLE 用来测循环在真值本身带噪时还成不成立
-- **OfficeQA** —— 根本不是科学推理任务（文档定位、表格聚合、抽取值格式化），用来测这套循环
-  是不是只对闭式推导有效。它还有真实的**环境故障**（PDF 转文本丢掉图表数据点等），正好逼我们
-  把环境故障和推理失败分开计
-- **GPQA-diamond 排除** —— 判分理想（精确字母匹配、零模型），但 agentic solver 已接近天花板，
-  没有提升空间。测一下 base rate 写进附录即可，不跑循环
+- **HotpotQA / MuSiQue** —— 取自 SESA 那篇用的多跳检索问答。选它们最大的理由是**能让 SESA
+  变成同数据上可直接跑的基线**（§6.3），否则那个对照几乎没法安排。判分是归一化精确匹配、
+  零模型调用。失败模式是结构性的（拆解错、实体混淆、跳序错），技能抓得住
+- **不选 NQ / TriviaQA / PopQA** —— 基本是单跳事实召回，失败源于知识缺口，程序性技能修不了
+- **OfficeQA** —— 非科学推理任务（文档定位、表格聚合、抽取值格式化），测循环是不是只对闭式
+  推导有效。它还有真实**环境故障**，逼我们把环境故障和推理失败分开计
+- **不选 Dafny / Frama-C / VeriFast**（VeriSkill-PV 那篇的数据集）—— 看着很像，但形式化验证器
+  在训练和部署时都免费、无限次可用，那个域**根本不存在真值预算**，而预算正是本文的全部对象。
+  在那里跑 CADRE 等于测一个动机已被抽掉的机制。反过来它是个好的对照：免费 oracle 的域里，
+  §6.4 的 `audit_frac = 1.0` 从上界变成了自然工作点，列为 future work
+- **GPQA-diamond 排除** —— 判分理想但 agentic solver 已接近天花板，没有提升空间，附录报 base rate
 
 ⚠️ **OfficeQA 必须重跑，不能直接用旧数据。** 仓库 main 分支上那 11 轮跑的是
 `flow_version: 6` 的**候选审查流程**（G 提候选技能 → D 做 review_candidate → Oracle 做
@@ -695,10 +740,10 @@ OfficeQA 单题成本实测约 $1，需单独核预算。
 如果时间有限，按此顺序：
 
 1. **D 跨模型迁移**（4 小时）—— 性价比最高，一次评估就能拿一行
-2. **A′ 多数据集：先只加 SciBench**（2 天）—— 单数据集结论撑不起投稿，第二个数据集是
-   从「一个案例」到「一个方法」的分水岭。若还有余力，**第三个优先 OfficeQA 而不是 HLE**：
-   它是非科学推理任务，对「这套循环不只对闭式推导有效」这条主张的边际价值最大，而 HLE
-   的模型判分器会引入一个需要额外解释的变量。HLE 留到 rebuttal
+2. **A′ 多数据集：先只加 HotpotQA**（2–3 天，含建 harness）—— 单数据集结论撑不起投稿，
+   第二个数据集是从「一个案例」到「一个方法」的分水岭。选 HotpotQA 而不是 OfficeQA 打头，
+   是因为它同时解锁 §6.3 的 SESA 基线行——一次投入拿两个缺口。第三个再上 OfficeQA
+   （非科学任务，边际价值最大），MuSiQue 留到 rebuttal
 3. **C 的 `w/o critic` 一行**（1 天）—— 直接回答「学判别器值不值」
 4. **B 的 `audit_frac = 0` 与 `= 1.0` 两端**（2 天）—— 标题主张「真值是有限资源」，
    这两端就是该主张的直接证据，缺了标题站不住
